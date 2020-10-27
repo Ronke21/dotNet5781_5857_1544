@@ -45,6 +45,7 @@ namespace dotNet5781_01_5857_1544
 
             return test.Year >= 1;
         }
+
         public void printBus()
         {
             Console.WriteLine(this.licenseNum);
