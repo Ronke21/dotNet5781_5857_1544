@@ -4,28 +4,33 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Threading;
 using System.Runtime.CompilerServices;
+using System.Linq;
 
 namespace dotNet5781_01_5857_1544
 {
 
     public class Bus
     {
-        public int licenseNum { get; set; }
+        private int licenseNum;
+        public int LICENSENUM
+        {
+            get { return licenseNum; }
+            set { licenseNum = value; }
+        }
+
         public DateTime startService { get; set; }
-
         public double fuel { get; set; }
-        private double mileage { get; set; }
-
+        private double mileage;
+        public double MILEAGE
+        {
+            get { return mileage; }
+        }
         public void addToMileage(int add)
         {
             if (add > 0)
                 this.mileage += add;
         }
 
-        public double getMileage()
-        {
-            return this.mileage;
-        }
         public double lastMaintMileage { get; set; } = 0;
         public DateTime lastMaintDate { get; set; }
 
@@ -45,15 +50,16 @@ namespace dotNet5781_01_5857_1544
 
         private bool qualifiedDate()
         {
+            DateTime zeroTime = new DateTime(1, 1, 1);
             TimeSpan t = (DateTime.Now - this.lastMaintDate);
-            DateTime test = Convert.ToDateTime(t);
-
-            return test.Year >= 1;
+         //  DateTime test = Convert.ToDateTime(DateTime.Now - this.lastMaintDate);
+           int year = (zeroTime + t).Year - 1;
+           return year <= 1;
         }
 
         private bool qualifiedFuel(int ride)
         {
-            return ride + mileage <= 1200;
+            return ride + fuel <= 1200;
         }
 
         public bool allQuailified(int ride)
@@ -75,7 +81,7 @@ namespace dotNet5781_01_5857_1544
         }
         public void printMilageSinceLastMaint()
         {
-            Console.WriteLine("Bus number :" + this.stringLicenseNum() + ", mileage since last maintenance: " + (this.mileage - this.lastMaintMileage));
+            Console.WriteLine("\nBus number: " + this.stringLicenseNum() + "\t\tMileage since last maintenance: " + (this.mileage - this.lastMaintMileage) + "\t\tFuel amount: " + this.fuel + "\t\tMileage: " + this.mileage + "\t\tDate of last maintenance: " + this.lastMaintDate);
         }
     }
 
@@ -85,6 +91,8 @@ namespace dotNet5781_01_5857_1544
         {
             List<Bus> DB = new List<Bus>();
             int num;
+            DB.Add(new Bus(1234567, new DateTime(21 / 08 / 1992), 111, 19000, DateTime.Now ));
+            DB.Add(new Bus(87654321, new DateTime(21 / 4 / 2019), 888, 10000, DateTime.Now ));
 
             do
             {
@@ -102,16 +110,29 @@ namespace dotNet5781_01_5857_1544
                         {
                             int id, fuel, km;
                             DateTime start, lastMaint;
-                            do
-                            {
-                                Console.WriteLine("Please enter the bus license number (7 or 8 digits): ");
-                                Int32.TryParse(Console.ReadLine(), out id);
-                            } while ((id < 1000000) || (id > 99999999));
+
                             do
                             {
                                 Console.WriteLine("Please enter the bus starting date (dd/mm/yyyy): ");
                                 DateTime.TryParse(Console.ReadLine(), out start);
                             } while (start.Year < 1948);
+                            if (start.Year >2017)
+                            {
+                                do
+                                {
+                                    Console.WriteLine("Please enter the bus license number (8 digits): ");
+                                    Int32.TryParse(Console.ReadLine(), out id);
+                                } while ((id < 10000000) || (id > 99999999));
+                            }
+                            else
+                            {
+                                do
+                                {
+                                    Console.WriteLine("Please enter the bus license number (7 digits): ");
+                                    Int32.TryParse(Console.ReadLine(), out id);
+                                } while ((id < 1000000) || (id > 9999999));
+                            }
+
                             do
                             {
                                 Console.WriteLine("Please enter the bus fuel amount (how many KM left in tank): ");
@@ -141,13 +162,14 @@ namespace dotNet5781_01_5857_1544
                             Console.WriteLine("Ride length in KM: " + rideLength);
                             foreach (Bus element in DB)
                             {
-                                if (element.licenseNum == id)
+                                if (element.LICENSENUM == id)
                                 {
                                     if (element.allQuailified(rideLength))
                                     {
                                         Console.WriteLine("The bus made the ride");
-                                        element.fuel -= rideLength;
+                                        element.fuel += rideLength;
                                         element.addToMileage(rideLength);
+                                        break;
                                     }
                                     else
                                     {
@@ -155,8 +177,9 @@ namespace dotNet5781_01_5857_1544
                                         break;
                                     }
                                 }
+                                else if (element.Equals(DB.Last()))
+                                    Console.WriteLine("Bus license num is not found! ");
                             }
-                            Console.WriteLine("Bus license num is not found! ");
                             break;
                         }
 
@@ -171,7 +194,7 @@ namespace dotNet5781_01_5857_1544
                             } while ((id < 1000000) || (id > 99999999));
                             foreach (Bus element in DB)
                             {
-                                if (element.licenseNum == id)
+                                if (element.LICENSENUM == id)
                                 {
                                     temp = element;
                                     break;
@@ -187,12 +210,13 @@ namespace dotNet5781_01_5857_1544
                             if (action == 1)
                             {
                                 temp.fuel = 1200;
-                                Console.WriteLine("Fuel updated!");
+                                Console.WriteLine("Fuel updated to 1200!");
                             }
                             else
                             {
                                 temp.lastMaintDate = DateTime.Now;
-                                temp.lastMaintMileage = temp.getMileage();
+                                temp.lastMaintMileage = temp.MILEAGE;
+                                Console.WriteLine("Last maintenance date updated for today!");
                             }
                             break;
                         }
