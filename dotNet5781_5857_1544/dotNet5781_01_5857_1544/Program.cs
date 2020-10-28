@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * Course mini project in .Net framework
+ * Exercise number 1
+ * Lecturer - David kidron
+ * Student - Amihay Hassan, Ron Keinan
+ * 
+ */
+
+
+using System;
 using System.ComponentModel;
 using System.Collections.Generic;
 using System.Xml;
@@ -9,18 +18,19 @@ using System.Linq;
 namespace dotNet5781_01_5857_1544
 {
 
+    /// <summary>
+    /// class representing a bus unit
+    /// </summary>
     public class Bus
     {
-        private int licenseNum;
+        private int licenseNum; // licenseNum is the bus id - can't be changed, so property has only get!
         public int LICENSENUM
         {
             get { return licenseNum; }
-            set { licenseNum = value; }
         }
-
-        public DateTime startService { get; set; }
-        public double fuel { get; set; }
-        private double mileage;
+        public DateTime startService { get; set; } //the day that the bus started riding
+        public double fuel { get; set; } //amount of fuel in tank
+        private double mileage; //the total kilometers the bus drived - private so it won't be changed to less, can be only added.
         public double MILEAGE
         {
             get { return mileage; }
@@ -105,7 +115,6 @@ namespace dotNet5781_01_5857_1544
                 Int32.TryParse(Console.ReadLine(), out num);
                 switch (num)
                 {
-                    //צריך לקלוט פה אם האוטובוס יוצר לפני 2018 ואז מספר ספרות רישוי בהתאם
                     case 1:
                         {
                             int id, fuel, km;
