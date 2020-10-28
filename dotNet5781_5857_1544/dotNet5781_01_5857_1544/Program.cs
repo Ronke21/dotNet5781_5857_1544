@@ -35,16 +35,15 @@ namespace dotNet5781_01_5857_1544
         {
             get { return mileage; }
         }
-        public void addToMileage(int add)
+        public void addToMileage(int add) //add to milage, public because it is used after rides
         {
             if (add > 0)
                 this.mileage += add;
         }
+        public double lastMaintMileage { get; set; } = 0; //the Kilometers level in the last maintenance care. for qualifacation
+        public DateTime lastMaintDate { get; set; } //the last date of maintenance care. for qualifacation
 
-        public double lastMaintMileage { get; set; } = 0;
-        public DateTime lastMaintDate { get; set; }
-
-        public Bus(int ID, DateTime begin, int delek, int km, DateTime maint)
+        public Bus(int ID, DateTime begin, int delek, int km, DateTime maint) //constructor, get all the details from user.
         {
             this.licenseNum = ID;
             this.startService = begin;
@@ -53,31 +52,30 @@ namespace dotNet5781_01_5857_1544
             this.lastMaintDate = maint;
         }
 
-        private bool qualifiedMilage()
+        private bool qualifiedMilage() //checks if we passed 20000 km from last maintenance care -so we can't ride until we do another care
         {
             return this.mileage - this.lastMaintMileage <= 20000;
         }
 
-        private bool qualifiedDate()
+        private bool qualifiedDate() //checks if we passed 1 year from last maintenance care -so we can't ride until we do another care
         {
             DateTime zeroTime = new DateTime(1, 1, 1);
             TimeSpan t = (DateTime.Now - this.lastMaintDate);
-         //  DateTime test = Convert.ToDateTime(DateTime.Now - this.lastMaintDate);
            int year = (zeroTime + t).Year - 1;
            return year <= 1;
         }
 
-        private bool qualifiedFuel(int ride)
+        private bool qualifiedFuel(int ride) //checks if we passed 1200 km so the fuel tank is empty -so we can't ride until we refuel
         {
             return ride + fuel <= 1200;
         }
 
-        public bool allQuailified(int ride)
+        public bool allQuailified(int ride) // a public function that gather all the private qualifaction checks
         {
             return qualifiedFuel(ride) && qualifiedDate() && qualifiedMilage();
         }
 
-        public string stringLicenseNum()
+        public string stringLicenseNum() // a function that recieve the bus id as an integer and returns as a string in the correct form (xx-xxx-xx)
         {
 
             if (licenseNum > 9999999)
@@ -89,7 +87,7 @@ namespace dotNet5781_01_5857_1544
                 return this.licenseNum / 100000 + "-" + (this.licenseNum / 100) % 1000 + "-" + this.licenseNum % 100;
             }
         }
-        public void printMilageSinceLastMaint()
+        public void printMilageSinceLastMaint() //a func that prints a bus details
         {
             Console.WriteLine("\nBus number: " + this.stringLicenseNum() + "\t\tMileage since last maintenance: " + (this.mileage - this.lastMaintMileage) + "\t\tFuel amount: " + this.fuel + "\t\tMileage: " + this.mileage + "\t\tDate of last maintenance: " + this.lastMaintDate);
         }
@@ -99,11 +97,12 @@ namespace dotNet5781_01_5857_1544
     {
         public static void Main(string[] args)
         {
-            List<Bus> DB = new List<Bus>();
+            List<Bus> DB = new List<Bus>(); // a list of buses - our data base!
             int num;
-            DB.Add(new Bus(1234567, new DateTime(21 / 08 / 1992), 111, 19000, DateTime.Now ));
+            DB.Add(new Bus(1234567, new DateTime(21 / 08 / 1992), 111, 19000, DateTime.Now )); //adding 2 buses to DB in order to check the func
             DB.Add(new Bus(87654321, new DateTime(21 / 4 / 2019), 888, 10000, DateTime.Now ));
 
+            // the main is based on a choosing option that repeat itself and provide the request of the user
             do
             {
                 Console.WriteLine("\nEnter your choice please:");
@@ -124,41 +123,41 @@ namespace dotNet5781_01_5857_1544
                             {
                                 Console.WriteLine("Please enter the bus starting date (dd/mm/yyyy): ");
                                 DateTime.TryParse(Console.ReadLine(), out start);
-                            } while (start.Year < 1948);
-                            if (start.Year >2017)
+                            } while (start.Year < 1948); //recieve a valid starting date since the establishment of Israel
+                            if (start.Year >2017) //so the ID is 8 digit
                             {
                                 do
                                 {
                                     Console.WriteLine("Please enter the bus license number (8 digits): ");
                                     Int32.TryParse(Console.ReadLine(), out id);
-                                } while ((id < 10000000) || (id > 99999999));
+                                } while ((id < 10000000) || (id > 99999999)); //valid id 8 digits
                             }
-                            else
+                            else //7 digit ID
                             {
                                 do
                                 {
                                     Console.WriteLine("Please enter the bus license number (7 digits): ");
                                     Int32.TryParse(Console.ReadLine(), out id);
-                                } while ((id < 1000000) || (id > 9999999));
+                                } while ((id < 1000000) || (id > 9999999)); //valid id 7 digits
                             }
 
                             do
                             {
                                 Console.WriteLine("Please enter the bus fuel amount (how many KM left in tank): ");
                                 Int32.TryParse(Console.ReadLine(), out fuel);
-                            } while (fuel < 0 || fuel > 1200);
+                            } while (fuel < 0 || fuel > 1200); //valid fuel amount according to the tank size
                             do
                             {
                                 Console.WriteLine("Please enter the bus milage amount (how many KM he drived): ");
                                 Int32.TryParse(Console.ReadLine(), out km);
-                            } while (km < 0);
+                            } while (km < 0); //valid km is positive
                             do
                             {
                                 Console.WriteLine("Please enter the last maintenance date (dd/mm/yyyy): ");
                                 DateTime.TryParse(Console.ReadLine(), out lastMaint);
                             } while (lastMaint.Year < 1948);
 
-                            DB.Add(new Bus(id, start, fuel, km, lastMaint));
+                            DB.Add(new Bus(id, start, fuel, km, lastMaint)); //send details to constructor
                             break;
                         }
 
@@ -167,13 +166,13 @@ namespace dotNet5781_01_5857_1544
                             Console.WriteLine("Please enter the bus license number: ");
                             Int32.TryParse(Console.ReadLine(), out int id);
                             Random r = new Random(DateTime.Now.Millisecond);
-                            int rideLength = r.Next(1200);
+                            int rideLength = r.Next(1200); // a random number of km for the ride 
                             Console.WriteLine("Ride length in KM: " + rideLength);
-                            foreach (Bus element in DB)
+                            foreach (Bus element in DB) //search the bus in the DB
                             {
                                 if (element.LICENSENUM == id)
                                 {
-                                    if (element.allQuailified(rideLength))
+                                    if (element.allQuailified(rideLength)) //if can make the ride, update the fuel and km
                                     {
                                         Console.WriteLine("The bus made the ride");
                                         element.fuel += rideLength;
@@ -186,7 +185,7 @@ namespace dotNet5781_01_5857_1544
                                         break;
                                     }
                                 }
-                                else if (element.Equals(DB.Last()))
+                                else if (element.Equals(DB.Last())) //if the foreach loop passed all the DB
                                     Console.WriteLine("Bus license num is not found! ");
                             }
                             break;
@@ -203,25 +202,25 @@ namespace dotNet5781_01_5857_1544
                             } while ((id < 1000000) || (id > 99999999));
                             foreach (Bus element in DB)
                             {
-                                if (element.LICENSENUM == id)
+                                if (element.LICENSENUM == id) //find the bus in the DB and make a "pointer" to it
                                 {
                                     temp = element;
                                     break;
                                 }
                             }
-                            if (temp == null)
+                            if (temp == null) //"pointer" is null
                             {
                                 Console.WriteLine("Bus is not in the DB!");
                                 break;
                             }
                             Console.WriteLine("Enter 1 -> refuel, otherwise -> maintenance");
                             Int32.TryParse(Console.ReadLine(), out int action);
-                            if (action == 1)
+                            if (action == 1) //if want to refuel - fill the tank
                             {
                                 temp.fuel = 1200;
                                 Console.WriteLine("Fuel updated to 1200!");
                             }
-                            else
+                            else //if want maintenance - update last maint for today
                             {
                                 temp.lastMaintDate = DateTime.Now;
                                 temp.lastMaintMileage = temp.MILEAGE;
@@ -232,17 +231,17 @@ namespace dotNet5781_01_5857_1544
 
                     case 4:
                         {
-                            foreach (Bus element in DB)
+                            foreach (Bus element in DB) //print every bus in the DB
                                 element.printMilageSinceLastMaint();
                             break;
                         }
 
-                    case 5:
+                    case 5: //get out from switch loop
                         {
                             break;
                         }
 
-                    default:
+                    default: //choice different  then 1-5
                         {
                             Console.WriteLine("Error, invalid input, choose again: ");
                             break;
