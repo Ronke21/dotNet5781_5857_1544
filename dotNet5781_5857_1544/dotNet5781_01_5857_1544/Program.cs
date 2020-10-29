@@ -51,31 +51,41 @@ namespace dotNet5781_01_5857_1544
             this.lastMaintDate = maint;
         }
 
-        //checks if we passed 20,000 km from last maintenance care -so we can't ride until we do another care
+        /// <summary>
+        ///checks if we passed 20,000 km from last maintenance care -so we can't ride until we do another care
+        /// </summary>
+        /// <returns></returns>
         private bool qualifiedMilage()
         {
             return this.mileage - this.lastMaintMileage <= 20000;
         }
-
-        //checks if we passed 1 year from last maintenance care -so we can't ride until we do another one
+        /// <summary>
+        /// checks if we passed 1 year from last maintenance care -so we can't ride until we do another one
+        /// </summary>
+        /// <returns></returns>
         public bool qualifiedDate()
         {
             return this.lastMaintDate.AddYears(1).CompareTo(DateTime.Now) > 0;
         }
-
-        //checks if we passed 1,200 km which means the fuel tank is empty -so we can't ride until we refuel
+        /// <summary>
+        ///checks if we passed 1,200 km which means the fuel tank is empty -so we can't ride until we refuel
+        /// <param name="ride"></param>
+        /// <returns></returns>
         private bool qualifiedFuel(int ride)
         {
             return Fuel - ride >= 0;
         }
-
-        // a public function that gather all the private qualifaction checks
+        /// <summary>
+        ///         a public function that gather all the private qualifaction checks
+        /// <param name="ride"></param>
+        /// <returns></returns>
         public bool allQuailified(int ride)
         {
             return qualifiedFuel(ride) && qualifiedDate() && qualifiedMilage();
         }
-
-        // a function that receive the bus id as an integer and returns as a string in the correct form (xx-xxx-xx)
+        /// <summary>
+        /// a function that receive the bus id as an integer and returns as a string in the correct form (xx-xxx-xx)
+        /// <returns></returns>
         public string stringLicenseNum()
         {
             if (licenseNum > 9999999)
@@ -86,8 +96,9 @@ namespace dotNet5781_01_5857_1544
             return this.licenseNum / 100000 + "-" + (this.licenseNum / 100) % 1000 + "-" + this.licenseNum % 100;
 
         }
-
-        //a func that prints a bus details
+        /// <summary>
+        ///a func that prints a bus details
+        /// </summary>
         public void printMilageSinceLastMaint()
         {
             Console.WriteLine("\nBus number: " + this.stringLicenseNum() + "\t\tMileage since last maintenance: " + (this.mileage - this.lastMaintMileage) + "\t\tFuel amount: " + this.Fuel + "\t\tMileage: " + this.mileage + "\t\tDate of last maintenance: " + this.lastMaintDate);
