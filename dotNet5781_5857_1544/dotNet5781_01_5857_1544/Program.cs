@@ -86,9 +86,9 @@ namespace dotNet5781_01_5857_1544
             return this.licenseNum / 100000 + "-" + (this.licenseNum / 100) % 1000 + "-" + this.licenseNum % 100;
 
         }
-            
+
         //a func that prints a bus details
-        public void printMilageSinceLastMaint() 
+        public void printMilageSinceLastMaint()
         {
             Console.WriteLine("\nBus number: " + this.stringLicenseNum() + "\t\tMileage since last maintenance: " + (this.mileage - this.lastMaintMileage) + "\t\tFuel amount: " + this.Fuel + "\t\tMileage: " + this.mileage + "\t\tDate of last maintenance: " + this.lastMaintDate);
         }
@@ -100,7 +100,7 @@ namespace dotNet5781_01_5857_1544
         {
             List<Bus> DB = new List<Bus>(); // a list of buses - our data base!
             int num;
-            
+
             //adding 2 buses to DB in order to check the func
             DB.Add(new Bus(1234567, new DateTime(21 / 08 / 1992), 111, 19000, DateTime.Now.AddYears(-2)));
             DB.Add(new Bus(87654321, new DateTime(21 / 4 / 2019), 888, 10000, DateTime.Now));
@@ -129,19 +129,37 @@ namespace dotNet5781_01_5857_1544
                             } while (start.Year < 1948); //recieve a valid starting date since the establishment of Israel
                             if (start.Year > 2017) //so the ID is 8 digit
                             {
+                                bool exist = false;
                                 do
                                 {
                                     Console.WriteLine("Please enter the bus license number (8 digits): ");
                                     Int32.TryParse(Console.ReadLine(), out id);
-                                } while ((id < 10000000) || (id > 99999999)); //valid id 8 digits
+                                    foreach (var bus in DB)
+                                    {
+                                        if (id == bus.LICENSENUM)
+                                        {
+                                            exist = true;
+                                            break;
+                                        }
+                                    }
+                                } while ((id < 10000000) || (id > 99999999) || exist); //valid id 8 digits
                             }
                             else //7 digit ID
                             {
+                                bool exist = false;
                                 do
                                 {
                                     Console.WriteLine("Please enter the bus license number (7 digits): ");
                                     Int32.TryParse(Console.ReadLine(), out id);
-                                } while ((id < 1000000) || (id > 9999999)); //valid id 7 digits
+                                    foreach (var bus in DB)
+                                    {
+                                        if (id == bus.LICENSENUM)
+                                        {
+                                            exist = true;
+                                            break;
+                                        }
+                                    }
+                                } while ((id < 1000000) || (id > 9999999) || exist); //valid id 7 digits
                             }
 
                             do
