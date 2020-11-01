@@ -234,7 +234,8 @@ namespace dotNet5781_01_5857_1544
                             {
                                 Console.WriteLine("Please enter the bus license number (7 or 8 digits): ");
                                 Int32.TryParse(Console.ReadLine(), out id);
-                            } while ((id < 1000000) || (id > 99999999));
+                            }
+                            while ((id < 1000000) || (id > 99999999));
                             foreach (Bus element in DB)
                             {
                                 if (element.LICENSENUM == id) //find the bus in the DB and make a "pointer" to it
