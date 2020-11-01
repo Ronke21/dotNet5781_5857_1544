@@ -55,9 +55,9 @@ namespace dotNet5781_01_5857_1544
         ///checks if we passed 20,000 km from last maintenance care -so we can't ride until we do another care
         /// </summary>
         /// <returns></returns>
-        private bool qualifiedMilage()
+        private bool qualifiedMilage(int ride = 0)
         {
-            return this.mileage - this.lastMaintMileage <= 20000;
+            return this.mileage + ride - this.lastMaintMileage <= 20000;
         }
         /// <summary>
         /// checks if we passed 1 year from last maintenance care -so we can't ride until we do another one
@@ -137,7 +137,9 @@ namespace dotNet5781_01_5857_1544
                             {
                                 Console.WriteLine("Please enter the bus starting date (dd/mm/yyyy): ");
                                 DateTime.TryParse(Console.ReadLine(), out start);
-                            } while (start.Year < 1948); //recieve a valid starting date since the establishment of Israel
+                            }
+                            while (start.Year < 1948); //recieve a valid starting date since the establishment of Israel
+
                             if (start.Year > 2017) //so the ID is 8 digit
                             {
                                 bool exist = false;
@@ -170,7 +172,8 @@ namespace dotNet5781_01_5857_1544
                                             break;
                                         }
                                     }
-                                } while ((id < 1000000) || (id > 9999999) || exist); //valid id 7 digits
+                                }
+                                while ((id < 1000000) || (id > 9999999) || exist); //valid id 7 digits
                             }
 
                             do
@@ -207,7 +210,7 @@ namespace dotNet5781_01_5857_1544
                                     if (element.allQuailified(rideLength)) //if can make the ride, update the fuel and km
                                     {
                                         Console.WriteLine("The bus made the ride");
-                                        element.Fuel += rideLength;
+                                        element.Fuel -= rideLength;
                                         element.addToMileage(rideLength);
                                         break;
                                     }
