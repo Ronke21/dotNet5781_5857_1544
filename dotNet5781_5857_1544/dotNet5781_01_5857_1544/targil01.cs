@@ -105,7 +105,7 @@ namespace dotNet5781_01_5857_1544
         }
     }
 
-    class Program
+    class targil01
     {
         public static void Main(string[] args)
         {
