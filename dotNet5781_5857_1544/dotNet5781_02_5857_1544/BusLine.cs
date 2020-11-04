@@ -6,12 +6,28 @@ namespace dotNet5781_02_5857_1544
 {
 
     enum Area { General = 1, North, South, Center, Jerusalem }
-    class BusLine : IComparable
+    class BusLine : IComparable<BusLine>
     {
         private int BusLineID;
-        private List<BusLineStation> Stations;
+        public int BUSLINEID
+        {
+            get { return BusLineID; }
+        }
+
+        public List<BusLineStation> Stations;
+
         private BusLineStation FirstStation;
+        public BusLineStation FIRSTSTATION
+        {
+            get { return FirstStation; }
+        }
+
         private BusLineStation LastStation;
+        public BusLineStation LASTSTATION
+        {
+            get { return LastStation; }
+        }
+
         private Area area;
 
         public BusLine()
@@ -47,32 +63,28 @@ namespace dotNet5781_02_5857_1544
         public override string ToString()
         {
             string regular = "";
-            string reverse = "";
 
             foreach (var BLS in Stations)
             {
                 regular += BLS + ", ";
             }
 
-            Stations.Reverse();
-
-            foreach (var BLS in Stations)
-            {
-                reverse += BLS + ", ";
-            }
-
-            Stations.Reverse();
-
             return "Bus Line Number: " + BusLineID +
                    ", Area: " + area +
-                   "\n Stations regular side:  " + regular +
-                   "\n Stations reverse side:  " + reverse;
+                   "\n Stations regular side:  " + regular;
         }
 
-        public int CompareTo(object other)
+        /// <summary>
+        /// compare bus lines by total travel time
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>
+        /// 0 if equal, 1 (or higher) if other is longer, -1 (or lower) if other is shorter
+        /// </returns>
+        public int CompareTo(BusLine other)
         {
             return this.timeBetween2(this.FirstStation, this.LastStation)
-                .CompareTo(timeBetween2(((BusLine)other).FirstStation, ((BusLine)other).LastStation));
+                .CompareTo(timeBetween2(other.FirstStation, other.LastStation));
         }
 
         public void addStation(int index, BusLineStation station)
