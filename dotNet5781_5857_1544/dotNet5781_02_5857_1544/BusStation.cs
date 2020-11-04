@@ -28,7 +28,7 @@ namespace dotNet5781_02_5857_1544
             {
                 BusStationKey = r.Next(999999);
             }
-            while (unique.Contains(BusStationKey));
+            while (unique.Contains(BUSSTATIONKEY));
             unique.Add(BusStationKey);
         }
 

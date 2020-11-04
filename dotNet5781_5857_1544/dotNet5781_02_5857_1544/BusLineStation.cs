@@ -7,13 +7,13 @@ namespace dotNet5781_02_5857_1544
     class BusLineStation : BusStation
     {
         private double distanceFromLast;
-
         public double DISTANCEFROMLAST
         {
             get { return distanceFromLast; }
         }
-        private TimeSpan interval;
 
+
+        private TimeSpan interval;
         public TimeSpan INTERVAL
         {
             get { return interval; }

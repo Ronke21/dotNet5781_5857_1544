@@ -6,7 +6,7 @@ namespace dotNet5781_02_5857_1544
 {
 
     enum Area { General = 1, North, South, Center, Jerusalem }
-    class BusLine
+    class BusLine : IComparable
     {
         private int BusLineID;
         private List<BusLineStation> Stations;
@@ -69,6 +69,12 @@ namespace dotNet5781_02_5857_1544
                    "\n Stations reverse side:  " + reverse;
         }
 
+        public int CompareTo(object other)
+        {
+            return this.timeBetween2(this.FirstStation, this.LastStation)
+                .CompareTo(timeBetween2(((BusLine)other).FirstStation, ((BusLine)other).LastStation));
+        }
+
         public void addStation(int index, BusLineStation station)
         {
             // וידוא אי כפילויות בראשי
@@ -99,7 +105,7 @@ namespace dotNet5781_02_5857_1544
         {
             double sum = 0;
             int i = 0;
-            for (; Stations[i] != stat1; i++) ;
+            for (; Stations[i] != stat1; i++) { }
             for (int j = i; Stations[j] != stat2; ++j)
                 sum += Stations[j].DISTANCEFROMLAST;
             return sum;
@@ -114,10 +120,6 @@ namespace dotNet5781_02_5857_1544
                 sum.Add((Stations[j].INTERVAL));
             return sum;
         }
-
-
-
-
 
         public BusLine route(BusLineStation s1, BusLineStation s2)
         {
