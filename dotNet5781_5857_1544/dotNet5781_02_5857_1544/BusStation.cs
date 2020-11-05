@@ -17,7 +17,7 @@ namespace dotNet5781_02_5857_1544
         //protected string address;
 
         /// <summary>
-        /// 
+        /// this ctor randomly assigns coordinates and bus station key
         /// </summary>
         public BusStation()
         {
@@ -33,10 +33,10 @@ namespace dotNet5781_02_5857_1544
         }
 
         /// <summary>
-        /// 
+        /// print out the station details in an orderly fashion
         /// </summary>
         /// <returns>
-        ///
+        /// a string that represents the current bus station
         /// </returns>
         public override string ToString()
         {
