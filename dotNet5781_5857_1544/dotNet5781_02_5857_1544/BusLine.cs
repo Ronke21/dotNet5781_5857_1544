@@ -4,8 +4,6 @@ using System.Linq.Expressions;
 
 namespace dotNet5781_02_5857_1544
 {
-
-    enum Area { General = 1, North, South, Center, Jerusalem }
     class BusLine : IComparable<BusLine>
     {
         private int BusLineID;
@@ -14,51 +12,68 @@ namespace dotNet5781_02_5857_1544
             get { return BusLineID; }
         }
 
+        //public readonly bool Regular = false;
+
         public List<BusLineStation> Stations;
 
-        private BusLineStation FirstStation;
+        private BusLineStation firstStation;
         public BusLineStation FIRSTSTATION
         {
-            get { return FirstStation; }
+            get { return firstStation; }
         }
 
-        private BusLineStation LastStation;
+        private BusLineStation lastStation;
         public BusLineStation LASTSTATION
         {
-            get { return LastStation; }
+            get { return lastStation; }
         }
 
         private Area area;
 
-        public BusLine()
+        public BusLine(/*bool regular*/)
         {
             Random r = new Random(DateTime.Now.Millisecond);
             BusLineID = r.Next(1, 999);
+            if (BusLineID < 0 || BusLineID > 999)
+            {
+                throw new OutOfRangeException("Bus line ID must be between 1 and 999");
+            }
 
             Stations = new List<BusLineStation>();
 
-            for (int i = 0; i < r.Next(5, 15); i++)
+            int to = r.Next(5, 15);
+            for (int i = 0; i < to; i++)
             {
                 Stations.Add(new BusLineStation());
             }
 
-            FirstStation = Stations[0];
-            LastStation = Stations[-1];
+            //Regular = regular;
+
+            firstStation = Stations[0];
+            lastStation = Stations[-1];
 
             area = (Area)r.Next(1, 5);
+            // add exception, correlate between area and bus line id for interurban lines
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="lst"></param>
+        /// <param name="ar"></param>
         public BusLine(int id, List<BusLineStation> lst, Area ar)
         {
             this.BusLineID = id;
+            if (BusLineCollection.Eged.Contains())
             this.area = ar;
             foreach (var item in lst)
             {
                 this.Stations.Add(item);
             }
 
-            FirstStation = Stations[0];
-            LastStation = Stations[-1];
+            firstStation = Stations[0];
+            lastStation = Stations[-1];
         }
         public override string ToString()
         {
@@ -83,37 +98,37 @@ namespace dotNet5781_02_5857_1544
         /// </returns>
         public int CompareTo(BusLine other)
         {
-            return this.timeBetween2(this.FirstStation, this.LastStation)
-                .CompareTo(timeBetween2(other.FirstStation, other.LastStation));
+            return this.TimeBetween2(this.firstStation, this.lastStation)
+                .CompareTo(TimeBetween2(other.firstStation, other.lastStation));
         }
 
-        public void addStation(int index, BusLineStation station)
+        public void AddStation(int index, BusLineStation station)
         {
             // וידוא אי כפילויות בראשי
             Stations.Insert(index, station);
             if (index == 1)
-                FirstStation = station;
+                firstStation = station;
             if (index == Stations.Count)
-                LastStation = station;
+                lastStation = station;
         }
 
-        public void delStation(BusLineStation stat)
+        public void DelStation(BusLineStation stat)
         {
             // אין צורך לבדוק קיום לפני מחיקה
             Stations.Remove(stat);
             // לבדוק אם זה מתייחס כמצביע או ערך
-            //if (FirstStation.BUSSTATIONKEY == stat.BUSSTATIONKEY)
-            FirstStation = Stations[0];
-            //if (LastStation.BUSSTATIONKEY == stat.BUSSTATIONKEY)
-            LastStation = Stations[-1];
+            //if (firstStation.BUSSTATIONKEY == stat.BUSSTATIONKEY)
+            firstStation = Stations[0];
+            //if (lastStation.BUSSTATIONKEY == stat.BUSSTATIONKEY)
+            lastStation = Stations[-1];
         }
 
-        public bool existStation(BusLineStation stat)
+        public bool ExistStation(BusLineStation stat)
         {
             return Stations.Contains(stat);
         }
 
-        public double distanceBetween2(BusLineStation stat1, BusLineStation stat2)
+        public double DistanceBetween2(BusLineStation stat1, BusLineStation stat2)
         {
             double sum = 0;
             int i = 0;
@@ -123,7 +138,7 @@ namespace dotNet5781_02_5857_1544
             return sum;
         }
 
-        public TimeSpan timeBetween2(BusLineStation stat1, BusLineStation stat2)
+        public TimeSpan TimeBetween2(BusLineStation stat1, BusLineStation stat2)
         {
             TimeSpan sum = new TimeSpan(0, 0, 0);
             int i = 0;
@@ -133,7 +148,7 @@ namespace dotNet5781_02_5857_1544
             return sum;
         }
 
-        public BusLine route(BusLineStation s1, BusLineStation s2)
+        public BusLine Route(BusLineStation s1, BusLineStation s2)
         {
             List<BusLineStation> lst = new List<BusLineStation>();
             int start = this.Stations.FindIndex(x => x.BUSSTATIONKEY == s1.BUSSTATIONKEY);
