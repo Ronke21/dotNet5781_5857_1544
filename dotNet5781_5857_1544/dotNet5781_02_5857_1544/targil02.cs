@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Channels;
 
 namespace dotNet5781_02_5857_1544
 {
@@ -8,9 +10,23 @@ namespace dotNet5781_02_5857_1544
     {
         static void Main(string[] args)
         {
-            //לאתחל רשימה
-
             int num;
+            Random r = new Random(DateTime.Now.Millisecond);
+
+            BusLineCollection Eged = new BusLineCollection();
+
+
+
+            for (int i = 0; i < 20; i++)
+            {
+                List<BusLineStation> station = new List<BusLineStation>();
+                for (int j = 0; j < r.Next(5, 15); j++)
+                {
+                    station.Add(new BusLineStation());
+                }
+                Eged.AddBusLine(new BusLine(r.Next(200), station));
+            }
+
 
             // the main is based on a choosing option that repeat itself and provide the request of the user
             do
@@ -30,9 +46,36 @@ namespace dotNet5781_02_5857_1544
                 {
                     case 1:
                         {
+                            try
+                            {
+                                int id;
+                                List<BusLineStation> tmp = new List<BusLineStation>();
+                                do
+                                {
+                                    Console.WriteLine("Please enter the bus line number: ");
+                                    id = Convert.ToInt32(Console.ReadLine());
+                                } while (id > 999 || id < 1);
 
+                                Console.WriteLine("Choose how many stations");
+                                int numOfStations = Convert.ToInt32(Console.ReadLine());
+                                for (int j = 0; j < numOfStations; j++)
+                                {
+                                    tmp.Add(new BusLineStation());
+                                }
+
+                                Eged.AddBusLine(new BusLine(id, tmp));
+                            }
+                            catch (FormatException ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                            }
+                            catch (BusLineAlreadyExistsException ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                            }
                             break;
                         }
+
 
                     case 2:
                         {

@@ -30,7 +30,22 @@ namespace dotNet5781_02_5857_1544
 
         private Area area;
 
-        public BusLine(/*bool regular*/)
+        private void SetArea()
+        {
+            if (BusLineID > 99) area = Area.General;
+            else
+            {
+                if (Stations[0].Latitude >= 32.25) area = Area.North;
+                else if (Stations[0].Latitude <= 31.5) area = Area.South;
+                else if (Stations[0].Latitude >= 31.4 &&
+                         Stations[0].Latitude <= 31.5 &&
+                         Stations[0].Longitude >= 35.05) area = Area.Jerusalem;
+                else area = Area.Jerusalem;
+            }
+        }
+
+
+        public BusLine()
         {
             Random r = new Random(DateTime.Now.Millisecond);
             BusLineID = r.Next(1, 999);
@@ -50,10 +65,9 @@ namespace dotNet5781_02_5857_1544
             //Regular = regular;
 
             firstStation = Stations[0];
-            lastStation = Stations[-1];
+            lastStation = Stations[^1];
 
-            area = (Area)r.Next(1, 5);
-            // add exception, correlate between area and bus line id for interurban lines
+            SetArea();
         }
 
         /// <summary>
@@ -62,31 +76,37 @@ namespace dotNet5781_02_5857_1544
         /// <param name="id"></param>
         /// <param name="lst"></param>
         /// <param name="ar"></param>
-        public BusLine(int id, List<BusLineStation> lst, Area ar)
+        public BusLine(int id, List<BusLineStation> lst)
         {
+            Stations = new List<BusLineStation>();
+            if (BusLineID < 0 || BusLineID > 999)
+            {
+                throw new OutOfRangeException("Bus line ID must be between 1 and 999");
+            }
             this.BusLineID = id;
-            if (BusLineCollection.Eged.Contains())
-            this.area = ar;
+
             foreach (var item in lst)
             {
                 this.Stations.Add(item);
             }
 
             firstStation = Stations[0];
-            lastStation = Stations[-1];
+            lastStation = Stations[^1];
+
+            SetArea();
         }
         public override string ToString()
         {
-            string regular = "";
+            string str = "";
 
             foreach (var BLS in Stations)
             {
-                regular += BLS + ", ";
+                str += BLS + ", ";
             }
 
             return "Bus Line Number: " + BusLineID +
                    ", Area: " + area +
-                   "\n Stations regular side:  " + regular;
+                   "\n Stations regular side:  " + str;
         }
 
         /// <summary>
@@ -98,6 +118,10 @@ namespace dotNet5781_02_5857_1544
         /// </returns>
         public int CompareTo(BusLine other)
         {
+            if (other is null)
+            {
+                throw new FormatException("Object sent to compare function is not bus line type!");
+            }
             return this.TimeBetween2(this.firstStation, this.lastStation)
                 .CompareTo(TimeBetween2(other.firstStation, other.lastStation));
         }
@@ -106,30 +130,45 @@ namespace dotNet5781_02_5857_1544
         {
             // וידוא אי כפילויות בראשי
             Stations.Insert(index, station);
+            if (Stations.Contains(station))
+            {
+                throw new StationAlreadyExistsException("Station already exists in this bus line");
+            }
             if (index == 1)
                 firstStation = station;
-            if (index == Stations.Count)
+            if (index == Stations.Count - 1)
                 lastStation = station;
         }
 
         public void DelStation(BusLineStation stat)
         {
-            // אין צורך לבדוק קיום לפני מחיקה
+            int count = Stations.Count;
             Stations.Remove(stat);
-            // לבדוק אם זה מתייחס כמצביע או ערך
-            //if (firstStation.BUSSTATIONKEY == stat.BUSSTATIONKEY)
+            if (Stations.Count == count)
+            {
+                throw new StationDoesNotExistException("Couldn't find station in the list, can't delete");
+            }
             firstStation = Stations[0];
             //if (lastStation.BUSSTATIONKEY == stat.BUSSTATIONKEY)
-            lastStation = Stations[-1];
+            lastStation = Stations[^1];
         }
 
         public bool ExistStation(BusLineStation stat)
         {
+            if (stat is null)
+            {
+                throw new ArgumentNullException("Not valid station");
+            }
             return Stations.Contains(stat);
         }
 
         public double DistanceBetween2(BusLineStation stat1, BusLineStation stat2)
         {
+            if (stat1 is null || stat2 is null)
+            {
+                throw new ArgumentNullException("Not valid stations");
+            }
+
             double sum = 0;
             int i = 0;
             for (; Stations[i] != stat1; i++) { }
@@ -140,6 +179,11 @@ namespace dotNet5781_02_5857_1544
 
         public TimeSpan TimeBetween2(BusLineStation stat1, BusLineStation stat2)
         {
+            if (stat1 is null || stat2 is null)
+            {
+                throw new ArgumentNullException("Not valid stations");
+            }
+
             TimeSpan sum = new TimeSpan(0, 0, 0);
             int i = 0;
             for (; Stations[i] != stat1; i++) ;
@@ -150,15 +194,27 @@ namespace dotNet5781_02_5857_1544
 
         public BusLine Route(BusLineStation s1, BusLineStation s2)
         {
+
+            if (s1 is null || s2 is null)
+            {
+                throw new ArgumentNullException("Not valid stations");
+            }
+
             List<BusLineStation> lst = new List<BusLineStation>();
             int start = this.Stations.FindIndex(x => x.BUSSTATIONKEY == s1.BUSSTATIONKEY);
             int end = this.Stations.FindIndex(x => x.BUSSTATIONKEY == s2.BUSSTATIONKEY);
+
+            if (start == -1 || end == -1)
+            {
+                throw new StationDoesNotExistException("The line does not contain one or more of the requested stations");
+            }
+
             for (int i = start; i < end; i++)
             {
                 lst.Add(Stations[i]);
             }
 
-            return new BusLine(this.BusLineID, lst, this.area);
+            return new BusLine(this.BusLineID, lst);
         }
     }
 }

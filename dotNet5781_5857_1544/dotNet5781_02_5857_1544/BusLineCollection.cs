@@ -16,6 +16,11 @@ namespace dotNet5781_02_5857_1544
 
         public void AddBusLine(BusLine toAdd)
         {
+            if (toAdd is null)
+            {
+                throw new ArgumentNullException("Can't add null");
+            }
+
             int counter = 0;
             int index = -1;
 
@@ -28,18 +33,22 @@ namespace dotNet5781_02_5857_1544
                 }
             }
 
-            if (counter == 2) return;
-            if (counter == 1 && Eged[index].FIRSTSTATION == toAdd.FIRSTSTATION) return;
-            // counter = 0 or 1 (if we add the opposite direction line, regular already exist)
+            if (counter == 2 || (counter == 1 && Eged[index].FIRSTSTATION == toAdd.FIRSTSTATION))
+            {
+                throw new BusLineAlreadyExistsException("Bus line already exist");
+            }
+            // counter = 0 or 1 (if we add the opposite direction line, regular already exist or vice versa)
             Eged.Add(toAdd);
         }
 
         public void RemoveBusLine(int id)
         {
+            int count = Eged.Count;
             foreach (var bus in Eged)
             {
                 if (bus.BUSLINEID == id) Eged.Remove(bus);
             }
+            if (count == Eged.Count) throw new BusLineDoesNotExistsException("Bus line already exist for both directions");
         }
 
         public List<BusLine> BusLinesInStations(int id)
@@ -54,16 +63,21 @@ namespace dotNet5781_02_5857_1544
                 }
             }
 
+            if (tmp.Count == 0)
+            {
+                throw new StationDoesNotExistException("Station Does not exist or unused");
+            }
+
             return tmp;
         }
 
         public List<BusLine> SortedList()
         {
-            List<BusLine> tmp = new List<BusLine>();
-            foreach (var bus in Eged)
-            {
-                tmp.Add(bus);
-            }
+            List<BusLine> tmp = new List<BusLine>(Eged);
+            //foreach (var bus in Eged)
+            //{
+            //    tmp.Add(bus);
+            //}
             tmp.Sort();
             return tmp;
         }
@@ -72,37 +86,46 @@ namespace dotNet5781_02_5857_1544
         {
             get
             {
-                BusLine temp = null;
+                if (num < 0 || num >= Eged.Count)
+                {
+                    throw new OutOfRangeException("Index out of range");
+                }
                 foreach (var bus in Eged)
                 {
                     if (bus.BUSLINEID == num) return bus;
                 }
-
                 return null;
-                //Exception ex = new Exception("bus not in the list");
-                //throw ex;
             }
         }
 
-        public static int counter(int id)
-        {
-            int count = 0;
-            foreach (var line in Eged)
-            {
-                if (line.BUSLINEID == id)
-                {
-                    count++;
-                }
-            }
-            return count;
-        }
+        //public static int counter(int id)
+        //{
+        //    int count = 0;
+        //    foreach (var line in Eged)
+        //    {
+        //        if (line.BUSLINEID == id)
+        //        {
+        //            count++;
+        //        }
+        //    }
+        //    return count;
+        //}
 
+        //public IEnumerator<BusLine> GetEnumerator()
+        //{
+        //    for (int i = 0; i < Eged.Count; i++)
+        //    {
+        //        yield return Eged[i];
+        //    }
+        //}
+
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    return GetEnumerator();
+        //}
         public IEnumerator<BusLine> GetEnumerator()
         {
-            for (int i = 0; i < Eged.Count; i++)
-            {
-                yield return Eged[i];
-            }
+            return Eged.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

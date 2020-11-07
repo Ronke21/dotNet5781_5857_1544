@@ -12,8 +12,8 @@ namespace dotNet5781_02_5857_1544
             get { return BusStationKey; }
         }
 
-        protected double Latitude;
-        protected double Longitude;
+        public readonly double Latitude;
+        public readonly double Longitude;
         //protected string address;
 
         /// <summary>

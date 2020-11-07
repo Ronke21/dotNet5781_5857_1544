@@ -22,6 +22,16 @@ public class StationAlreadyExistsException : Exception
 }
 #endregion
 
+#region StationDoesNotExistException
+[Serializable]
+public class StationDoesNotExistException : Exception
+{
+    public StationDoesNotExistException() : base() { }
+
+    public StationDoesNotExistException(string message) : base(message) { }
+}
+#endregion
+
 #region OutOfRangeException
 [Serializable]
 public class OutOfRangeException : Exception
@@ -44,3 +54,24 @@ public class TooLongException : Exception
     { return "Can't ride over 1 hour without stop, you tried to ride" + Message + "\n"; }
 }
 #endregion
+
+#region BusLineAlreadyExistsException
+[Serializable]
+public class BusLineAlreadyExistsException : Exception
+{
+    public BusLineAlreadyExistsException() : base() { }
+
+    public BusLineAlreadyExistsException(string message) : base(message) { }
+}
+#endregion
+
+#region BusLineDoesNotExistsException
+[Serializable]
+public class BusLineDoesNotExistsException : Exception
+{
+    public BusLineDoesNotExistsException() : base() { }
+
+    public BusLineDoesNotExistsException(string message) : base(message) { }
+}
+#endregion
+

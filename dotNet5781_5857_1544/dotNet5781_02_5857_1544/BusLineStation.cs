@@ -3,7 +3,7 @@ using System.Data;
 
 namespace dotNet5781_02_5857_1544
 {
-    class BusLineStation : BusStation
+    class BusLineStation : BusStation, IEquatable<BusLineStation>
     {
         public readonly TimeSpan MAX_INTERVAL = new TimeSpan(1, 0, 0);
 
@@ -22,8 +22,7 @@ namespace dotNet5781_02_5857_1544
         {
             get { return interval; }
         }
-
-
+        
 
         public BusLineStation() : base()
         {
@@ -39,5 +38,15 @@ namespace dotNet5781_02_5857_1544
             }
         }
 
+        public bool Equals(BusLineStation other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return MAX_INTERVAL.Equals(other.MAX_INTERVAL) &&
+                   urbanSpeed == other.urbanSpeed &&
+                   INTERURBANSPEED == other.INTERURBANSPEED &&
+                   distanceFromLast.Equals(other.distanceFromLast) &&
+                   interval.Equals(other.interval);
+        }
     }
 }
