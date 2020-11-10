@@ -195,6 +195,10 @@ namespace dotNet5781_02_5857_1544
 
                     case 7:
                         {
+                            foreach (var bus in Eged)
+                            {
+                                Console.WriteLine(bus);
+                            }
                             break;
                         }
 
