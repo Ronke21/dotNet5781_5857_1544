@@ -70,7 +70,7 @@ namespace dotNet5781_02_5857_1544
                         }
 
 
-                    case 2:
+                    case 2: // add station to bus line, adding one line will automatically add the reversed one
                         {
                             try
                             {
@@ -97,6 +97,7 @@ namespace dotNet5781_02_5857_1544
                                     index = Convert.ToInt32(Console.ReadLine());
                                 } while (index < 1);
 
+
                                 Eged.AddStationToBusLine(id, index, new BusLineStation(stat));
                             }
                             catch (BusLineDoesNotExistsException e)
@@ -110,18 +111,80 @@ namespace dotNet5781_02_5857_1544
                             break;
                         }
 
-                    case 3:
+                    case 3: // remove bus line, will also remove the reversed one (because they have the same id)
                         {
+                            // line id
+                            int id;
+                            do
+                            {
+                                Console.WriteLine("Please enter the bus line number: ");
+                                id = Convert.ToInt32(Console.ReadLine());
+                            } while (id > 999 || id < 1 || !Eged.ExistLine(id));
+
+                            Eged.RemoveBusLine(id);
+
                             break;
                         }
 
-                    case 4:
+                    case 4: // delete a station from a bus line, will also delete from reversed
                         {
+                            try
+                            {
+                                // bus line id
+                                int id;
+                                do
+                                {
+                                    Console.WriteLine("Please enter the bus line number: ");
+                                    id = Convert.ToInt32(Console.ReadLine());
+                                } while (id > 999 || id < 1);
+
+                                // station id
+                                int stat;
+                                do
+                                {
+                                    Console.WriteLine("Enter station number:");
+                                    stat = Convert.ToInt32(Console.ReadLine());
+                                } while (stat > 999999 || stat < 1);
+
+                                Eged.DelStationFromBusLine(id, new BusLineStation(stat));
+                            }
+                            catch (StationDoesNotExistException ex)
+                            {
+                                Console.WriteLine(ex);
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e);
+                            }
                             break;
                         }
 
-                    case 5:
+                    case 5: // add all the lines their stations list includes a station, then print the list
                         {
+
+                            // station id
+                            int stat;
+                            do
+                            {
+                                Console.WriteLine("Enter station number:");
+                                stat = Convert.ToInt32(Console.ReadLine());
+                            } while (stat > 999999 || stat < 1);
+
+                            List<BusLine> lines = new List<BusLine>();
+
+                            foreach (var line in Eged)
+                            {
+                                if (line.Stations.Contains(new BusLineStation(stat)))
+                                {
+                                    lines.Add(line);
+                                }
+                            }
+
+                            foreach (var line in lines)
+                            {
+                                Console.WriteLine(line);
+                            }
+
                             break;
                         }
 

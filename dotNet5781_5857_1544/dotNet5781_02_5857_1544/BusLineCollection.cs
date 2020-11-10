@@ -46,10 +46,13 @@ namespace dotNet5781_02_5857_1544
             int count = Eged.Count;
             foreach (var bus in Eged)
             {
-                if (bus.BUSLINEID == id) Eged.Remove(bus);
+                if (bus.BUSLINEID == id)
+                {
+                    Eged.Remove(bus);
+                }
             }
             // throw exception if no bus was deleted
-            if (count == Eged.Count) throw new BusLineDoesNotExistsException("Bus line already exist for both directions");
+            if (count == Eged.Count) throw new BusLineDoesNotExistsException("Line" + id + "does not exist");
         }
 
         public List<BusLine> BusLinesInStations(int id)
@@ -105,6 +108,20 @@ namespace dotNet5781_02_5857_1544
                 }
             }
             if (!found) throw new BusLineDoesNotExistsException("Line" + id + "does not exist");
+        }
+
+        public void DelStationFromBusLine(int id, BusLineStation stat)
+        {
+            bool found = false;
+            foreach (var bus in Eged)
+            {
+                if (bus.BUSLINEID == id)
+                {
+                    found = true;
+                    bus.DelStation(stat);
+                }
+            }
+            if (!found) throw new StationDoesNotExistException("Station" + id + "does not exist");
         }
 
         public BusLine this[int num]
