@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Channels;
 
 namespace dotNet5781_02_5857_1544
@@ -15,16 +16,14 @@ namespace dotNet5781_02_5857_1544
 
             BusLineCollection Eged = new BusLineCollection();
 
-
-
             for (int i = 0; i < 20; i++)
             {
-                List<BusLineStation> station = new List<BusLineStation>();
-                for (int j = 0; j < r.Next(5, 15); j++)
+                int line = r.Next(1,300);
+                Eged.AddBusLine(line);
+                for (int j = 0; j < r.Next(10); j++)
                 {
-                    station.Add(new BusLineStation());
+                    Eged.AddStationToBusLine(line, j, new BusLineStation());
                 }
-                Eged.AddBusLine(new BusLine(r.Next(200), station));
             }
 
 
@@ -37,17 +36,18 @@ namespace dotNet5781_02_5857_1544
                 Console.WriteLine("3. To delete a bus line");
                 Console.WriteLine("4. To delete a station from a bus line");
                 Console.WriteLine("5. To search a line by a station number");
-                Console.WriteLine("6. To print ride oportunities between 2 stations");
+                Console.WriteLine("6. To print ride opportunities between 2 stations");
                 Console.WriteLine("7. To print all bus lines in system");
                 Console.WriteLine("8. To print all stations and lines going through them");
                 Console.WriteLine("9. Exit");
                 Int32.TryParse(Console.ReadLine(), out num);
                 switch (num)
                 {
-                    case 1:
+                    case 1: // add empty bus line, adding one line will automatically add the reversed one 
                         {
                             try
                             {
+                                // bus line id
                                 int id;
                                 List<BusLineStation> tmp = new List<BusLineStation>();
                                 do
@@ -56,14 +56,7 @@ namespace dotNet5781_02_5857_1544
                                     id = Convert.ToInt32(Console.ReadLine());
                                 } while (id > 999 || id < 1);
 
-                                Console.WriteLine("Choose how many stations");
-                                int numOfStations = Convert.ToInt32(Console.ReadLine());
-                                for (int j = 0; j < numOfStations; j++)
-                                {
-                                    tmp.Add(new BusLineStation());
-                                }
-
-                                Eged.AddBusLine(new BusLine(id, tmp));
+                                Eged.AddBusLine(id);
                             }
                             catch (FormatException ex)
                             {
@@ -79,6 +72,41 @@ namespace dotNet5781_02_5857_1544
 
                     case 2:
                         {
+                            try
+                            {
+                                // line id
+                                int id;
+                                do
+                                {
+                                    Console.WriteLine("Please enter the bus line number: ");
+                                    id = Convert.ToInt32(Console.ReadLine());
+                                } while (id > 999 || id < 1 || !Eged.ExistLine(id));
+
+                                // station id
+                                int stat;
+                                do
+                                {
+                                    Console.WriteLine("Enter station number:");
+                                    stat = Convert.ToInt32(Console.ReadLine());
+                                } while (stat > 999999 || stat < 1);
+
+                                int index;
+                                do
+                                {
+                                    Console.WriteLine("Enter station index:");
+                                    index = Convert.ToInt32(Console.ReadLine());
+                                } while (index < 1);
+
+                                Eged.AddStationToBusLine(id, index, new BusLineStation(stat));
+                            }
+                            catch (BusLineDoesNotExistsException e)
+                            {
+                                Console.WriteLine(e);
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e);
+                            }
                             break;
                         }
 

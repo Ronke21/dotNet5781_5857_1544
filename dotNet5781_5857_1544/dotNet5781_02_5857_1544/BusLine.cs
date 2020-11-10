@@ -6,6 +6,8 @@ namespace dotNet5781_02_5857_1544
 {
     class BusLine : IComparable<BusLine>
     {
+        public readonly bool reverse;
+
         private int BusLineID;
         public int BUSLINEID
         {
@@ -76,8 +78,10 @@ namespace dotNet5781_02_5857_1544
         /// <param name="id"></param>
         /// <param name="lst"></param>
         /// <param name="ar"></param>
-        public BusLine(int id, List<BusLineStation> lst)
+        public BusLine(int id, List<BusLineStation> lst, bool rev)
         {
+            reverse = rev;
+
             Stations = new List<BusLineStation>();
             if (BusLineID < 0 || BusLineID > 999)
             {
@@ -214,7 +218,7 @@ namespace dotNet5781_02_5857_1544
                 lst.Add(Stations[i]);
             }
 
-            return new BusLine(this.BusLineID, lst);
+            return new BusLine(this.BusLineID, lst, false);
         }
     }
 }

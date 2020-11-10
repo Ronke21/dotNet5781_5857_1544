@@ -32,6 +32,19 @@ namespace dotNet5781_02_5857_1544
             unique.Add(BusStationKey);
         }
 
+        public BusStation(int id)
+        {
+            Random r = new Random(DateTime.Now.Millisecond);
+            Latitude = r.NextDouble() * (33.3 - 31) + 31;
+            Longitude = r.NextDouble() * 35.5 - 34.3 + 34.3;
+            if (unique.Contains(id))
+            {
+                throw new StationAlreadyExistsException("Bus station number" + id + " already exist");
+            }
+            BusStationKey = id;
+            unique.Add(BusStationKey);
+        }
+
         /// <summary>
         /// print out the station details in an orderly fashion
         /// </summary>

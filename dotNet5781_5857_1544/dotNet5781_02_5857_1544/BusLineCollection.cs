@@ -14,31 +14,31 @@ namespace dotNet5781_02_5857_1544
             Eged = new List<BusLine>();
         }
 
-        public void AddBusLine(BusLine toAdd)
+        public bool ExistLine(int num)
         {
-            if (toAdd is null)
+            foreach (var bus in Eged)
             {
-                throw new ArgumentNullException("Can't add null");
+                if (bus.BUSLINEID == num) return true;
             }
 
-            int counter = 0;
-            int index = -1;
-
-            foreach (var line in Eged)
+            return false;
+        }
+        public void AddBusLine(int id)
+        {
+            foreach (var bus in Eged)
             {
-                if (line.BUSLINEID == toAdd.BUSLINEID)
+                if (bus.BUSLINEID == id)
                 {
-                    counter++;
-                    index = Eged.IndexOf(line);
+                    throw new BusLineAlreadyExistsException("Line already exist");
                 }
             }
 
-            if (counter == 2 || (counter == 1 && Eged[index].FIRSTSTATION == toAdd.FIRSTSTATION))
-            {
-                throw new BusLineAlreadyExistsException("Bus line already exist");
-            }
-            // counter = 0 or 1 (if we add the opposite direction line, regular already exist or vice versa)
-            Eged.Add(toAdd);
+            BusLine reg = new BusLine(id, new List<BusLineStation>(), false);
+            BusLine rev = new BusLine(id, new List<BusLineStation>(), true);
+
+
+            Eged.Add(reg);
+            Eged.Add(rev);
         }
 
         public void RemoveBusLine(int id)
@@ -48,6 +48,7 @@ namespace dotNet5781_02_5857_1544
             {
                 if (bus.BUSLINEID == id) Eged.Remove(bus);
             }
+            // throw exception if no bus was deleted
             if (count == Eged.Count) throw new BusLineDoesNotExistsException("Bus line already exist for both directions");
         }
 
@@ -59,7 +60,10 @@ namespace dotNet5781_02_5857_1544
             {
                 foreach (var station in bus.Stations)
                 {
-                    if (station.BUSSTATIONKEY == id) tmp.Add(bus);
+                    if (station.BUSSTATIONKEY == id)
+                    {
+                        tmp.Add(bus);
+                    }
                 }
             }
 
@@ -80,6 +84,27 @@ namespace dotNet5781_02_5857_1544
             //}
             tmp.Sort();
             return tmp;
+        }
+
+        public void AddStationToBusLine(int id, int index, BusLineStation stat)
+        {
+            bool found = false;
+            foreach (var bus in Eged)
+            {
+                if (bus.BUSLINEID == id)
+                {
+                    found = true;
+                    if (bus.reverse == false)
+                    {
+                        bus.AddStation(index, stat);
+                    }
+                    else
+                    {
+                        bus.AddStation(bus.Stations.Count - index, stat);
+                    }
+                }
+            }
+            if (!found) throw new BusLineDoesNotExistsException("Line" + id + "does not exist");
         }
 
         public BusLine this[int num]
