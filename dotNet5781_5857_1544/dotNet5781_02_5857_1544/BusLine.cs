@@ -34,15 +34,18 @@ namespace dotNet5781_02_5857_1544
 
         private void SetArea()
         {
-            if (BusLineID > 99) area = Area.General;
-            else
+            if (this.Stations.Count > 0)
             {
-                if (Stations[0].Latitude >= 32.25) area = Area.North;
-                else if (Stations[0].Latitude <= 31.5) area = Area.South;
-                else if (Stations[0].Latitude >= 31.4 &&
-                         Stations[0].Latitude <= 31.5 &&
-                         Stations[0].Longitude >= 35.05) area = Area.Jerusalem;
-                else area = Area.Jerusalem;
+                if (BusLineID > 99) area = Area.General;
+                else
+                {
+                    if (Stations[0].Latitude >= 32.25) area = Area.North;
+                    else if (Stations[0].Latitude <= 31.5) area = Area.South;
+                    else if (Stations[0].Latitude >= 31.4 &&
+                             Stations[0].Latitude <= 31.5 &&
+                             Stations[0].Longitude >= 35.05) area = Area.Jerusalem;
+                    else area = Area.Jerusalem;
+                }
             }
         }
 
@@ -94,8 +97,11 @@ namespace dotNet5781_02_5857_1544
                 this.Stations.Add(item);
             }
 
-            firstStation = Stations[0];
-            lastStation = Stations[^1];
+            if (lst.Count > 0)
+            {
+                firstStation = Stations[0];
+                lastStation = Stations[^1];
+            }
 
             SetArea();
         }
