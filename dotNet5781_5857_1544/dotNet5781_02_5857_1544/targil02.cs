@@ -158,7 +158,7 @@ namespace dotNet5781_02_5857_1544
                             }
                             break;
                         }
-
+                        // לוודא שזה עובד כי קונטיינס יקבל אובייקט תחנה חדש רנדומלי
                     case 5: // add all the lines their stations list includes a station, then print the list
                         {
 
@@ -190,6 +190,31 @@ namespace dotNet5781_02_5857_1544
 
                     case 6:
                         {
+                            List<BusLine> answer = new List<BusLine>();
+                            int stat1, stat2;
+                            do
+                            {
+                                Console.WriteLine("Enter first station number:");
+                                stat1 = Convert.ToInt32(Console.ReadLine());
+                            } while (stat1 > 999999 || stat1 < 1);
+                            do
+                            {
+                                Console.WriteLine("Enter last station number:");
+                                stat2 = Convert.ToInt32(Console.ReadLine());
+                            } while (stat2 > 999999 || stat2 < 1);
+                            foreach (var line in Eged)
+                            {
+                                if (line.ExistStation(stat1) && line.ExistStation(stat2))
+                                {
+                                    answer.Add(line.Route(stat1, stat2));
+                                }
+                            }
+
+                            answer.Sort((x, y) => x.TimeBetween2(x.FIRSTSTATION, x.LASTSTATION).CompareTo(y.TimeBetween2(y.FIRSTSTATION, y.LASTSTATION)));
+                            foreach (var line in answer)
+                            {
+                                Console.WriteLine(line + "Route time: " + line.TimeBetween2(line.FIRSTSTATION, line.LASTSTATION));
+                            }
                             break;
                         }
 
@@ -204,11 +229,31 @@ namespace dotNet5781_02_5857_1544
 
                     case 8:
                         {
+                            List<int> arr = new List<int>(); //list of all stations
+                            foreach (var line in Eged)
+                            {
+                                foreach(var stat in line.Stations)
+                                {
+                                    if (!(arr.Contains(stat.BUSSTATIONKEY)))
+                                        arr.Add(stat.BUSSTATIONKEY);
+                                }
+                            }
+
+                            foreach (int statID in arr)
+                            {
+                                List<BusLine> tmp = Eged.BusLinesInStations(statID);
+                                Console.WriteLine("BusLines in Station number - " + statID + " : ");
+                                foreach(var line in tmp)
+                                {
+                                    Console.Write(line.BUSLINEID + ", ");
+                                }
+                            }
                             break;
                         }
 
                     case 9: //get out from switch loop
                         {
+                            
                             break;
                         }
 

@@ -166,6 +166,16 @@ namespace dotNet5781_02_5857_1544
             return Stations.Contains(stat);
         }
 
+        public bool ExistStation(int id)
+        {
+            foreach(var stat in Stations)
+            {
+                if (stat.BUSSTATIONKEY == id)
+                    return true;
+            }
+            return false;
+        }
+
         public double DistanceBetween2(BusLineStation stat1, BusLineStation stat2)
         {
             if (stat1 is null || stat2 is null)
@@ -207,6 +217,31 @@ namespace dotNet5781_02_5857_1544
             List<BusLineStation> lst = new List<BusLineStation>();
             int start = this.Stations.FindIndex(x => x.BUSSTATIONKEY == s1.BUSSTATIONKEY);
             int end = this.Stations.FindIndex(x => x.BUSSTATIONKEY == s2.BUSSTATIONKEY);
+
+            if (start == -1 || end == -1)
+            {
+                throw new StationDoesNotExistException("The line does not contain one or more of the requested stations");
+            }
+
+            for (int i = start; i < end; i++)
+            {
+                lst.Add(Stations[i]);
+            }
+
+            return new BusLine(this.BusLineID, lst, false);
+        }
+
+        public BusLine Route(int s1, int s2)
+        {
+
+            if (!ExistStation(s1) || !ExistStation(s2))
+            {
+                throw new StationDoesNotExistException("Not valid stations");
+            }
+
+            List<BusLineStation> lst = new List<BusLineStation>();
+            int start = this.Stations.FindIndex(x => x.BUSSTATIONKEY == s1);
+            int end = this.Stations.FindIndex(x => x.BUSSTATIONKEY == s2);
 
             if (start == -1 || end == -1)
             {
