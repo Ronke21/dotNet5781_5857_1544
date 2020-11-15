@@ -162,6 +162,16 @@ namespace dotNet5781_02_5857_1544
             return Stations.Contains(stat);
         }
 
+        public bool ExistStation(int id)
+        {
+            foreach (var stat in Stations)
+            {
+                if (stat.BUSSTATIONKEY == id)
+                    return true;
+            }
+            return false;
+        }
+
         public double DistanceBetween2(BusLineStation stat1, BusLineStation stat2)
         {
             if (stat1 is null || stat2 is null)
