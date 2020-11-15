@@ -5,6 +5,8 @@ namespace dotNet5781_02_5857_1544
 {
     class BusStation
     {
+        Random r = new Random(DateTime.Now.Millisecond);
+
         static List<int> unique = new List<int>();
         protected int BusStationKey;
         public int BUSSTATIONKEY
@@ -21,7 +23,6 @@ namespace dotNet5781_02_5857_1544
         /// </summary>
         public BusStation()
         {
-            Random r = new Random(DateTime.Now.Millisecond);
             Latitude = r.NextDouble() * (33.3 - 31) + 31;
             Longitude = r.NextDouble() * 35.5 - 34.3 + 34.3;
             do
@@ -29,6 +30,18 @@ namespace dotNet5781_02_5857_1544
                 BusStationKey = r.Next(999999);
             }
             while (unique.Contains(BUSSTATIONKEY));
+            unique.Add(BusStationKey);
+        }
+
+        public BusStation(int id)
+        {
+            Latitude = r.NextDouble() * (33.3 - 31) + 31;
+            Longitude = r.NextDouble() * 35.5 - 34.3 + 34.3;
+            if (unique.Contains(id))
+            {
+                throw new StationAlreadyExistsException("Bus station number" + id + " already exist");
+            }
+            BusStationKey = id;
             unique.Add(BusStationKey);
         }
 

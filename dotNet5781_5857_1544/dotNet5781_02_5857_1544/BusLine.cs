@@ -6,6 +6,10 @@ namespace dotNet5781_02_5857_1544
 {
     class BusLine : IComparable<BusLine>
     {
+        Random r = new Random(DateTime.Now.Millisecond);
+
+        public readonly bool reverse;
+
         private int BusLineID;
         public int BUSLINEID
         {
@@ -32,22 +36,24 @@ namespace dotNet5781_02_5857_1544
 
         private void SetArea()
         {
-            if (BusLineID > 99) area = Area.General;
-            else
+            if (this.Stations.Count > 0)
             {
-                if (Stations[0].Latitude >= 32.25) area = Area.North;
-                else if (Stations[0].Latitude <= 31.5) area = Area.South;
-                else if (Stations[0].Latitude >= 31.4 &&
-                         Stations[0].Latitude <= 31.5 &&
-                         Stations[0].Longitude >= 35.05) area = Area.Jerusalem;
-                else area = Area.Jerusalem;
+                if (BusLineID > 99) area = Area.General;
+                else
+                {
+                    if (Stations[0].Latitude >= 32.25) area = Area.North;
+                    else if (Stations[0].Latitude <= 31.5) area = Area.South;
+                    else if (Stations[0].Latitude >= 31.4 &&
+                             Stations[0].Latitude <= 31.5 &&
+                             Stations[0].Longitude >= 35.05) area = Area.Jerusalem;
+                    else area = Area.Jerusalem;
+                }
             }
         }
 
 
         public BusLine()
         {
-            Random r = new Random(DateTime.Now.Millisecond);
             BusLineID = r.Next(1, 999);
             if (BusLineID < 0 || BusLineID > 999)
             {
@@ -76,13 +82,16 @@ namespace dotNet5781_02_5857_1544
         /// <param name="id"></param>
         /// <param name="lst"></param>
         /// <param name="ar"></param>
-        public BusLine(int id, List<BusLineStation> lst)
+        public BusLine(int id, List<BusLineStation> lst, bool rev)
         {
+            reverse = rev;
             Stations = new List<BusLineStation>();
+
             if (BusLineID < 0 || BusLineID > 999)
             {
                 throw new OutOfRangeException("Bus line ID must be between 1 and 999");
             }
+
             this.BusLineID = id;
 
             foreach (var item in lst)
@@ -90,8 +99,11 @@ namespace dotNet5781_02_5857_1544
                 this.Stations.Add(item);
             }
 
-            firstStation = Stations[0];
-            lastStation = Stations[^1];
+            if (lst.Count > 0)
+            {
+                firstStation = Stations[0];
+                lastStation = Stations[^1];
+            }
 
             SetArea();
         }
@@ -224,7 +236,32 @@ namespace dotNet5781_02_5857_1544
                 lst.Add(Stations[i]);
             }
 
-            return new BusLine(this.BusLineID, lst);
+            return new BusLine(this.BusLineID, lst, false);
+        }
+
+        public BusLine Route(int s1, int s2)
+        {
+
+            if (!ExistStation(s1) || !ExistStation(s2))
+            {
+                throw new StationDoesNotExistException("Not valid stations");
+            }
+
+            List<BusLineStation> lst = new List<BusLineStation>();
+            int start = this.Stations.FindIndex(x => x.BUSSTATIONKEY == s1);
+            int end = this.Stations.FindIndex(x => x.BUSSTATIONKEY == s2);
+
+            if (start == -1 || end == -1)
+            {
+                throw new StationDoesNotExistException("The line does not contain one or more of the requested stations");
+            }
+
+            for (int i = start; i < end; i++)
+            {
+                lst.Add(Stations[i]);
+            }
+
+            return new BusLine(this.BusLineID, lst, false);
         }
     }
 }
