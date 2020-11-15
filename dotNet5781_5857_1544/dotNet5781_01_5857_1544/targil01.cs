@@ -109,6 +109,9 @@ namespace dotNet5781_01_5857_1544
     {
         public static void Main(string[] args)
         {
+
+            Random r = new Random(DateTime.Now.Millisecond);
+
             List<Bus> DB = new List<Bus>(); // a list of buses - our data base!
             int num;
 
@@ -145,6 +148,7 @@ namespace dotNet5781_01_5857_1544
                                 bool exist = false;
                                 do
                                 {
+                                    exist = false;
                                     Console.WriteLine("Please enter the bus license number (8 digits): ");
                                     Int32.TryParse(Console.ReadLine(), out id);
                                     foreach (var bus in DB)
@@ -200,7 +204,6 @@ namespace dotNet5781_01_5857_1544
                         {
                             Console.WriteLine("Please enter the bus license number: ");
                             Int32.TryParse(Console.ReadLine(), out int id);
-                            Random r = new Random(DateTime.Now.Millisecond);
                             int rideLength = r.Next(1200); // a random number of km for the ride 
                             Console.WriteLine("Ride length in KM: " + rideLength);
                             foreach (Bus element in DB) //search the bus in the DB

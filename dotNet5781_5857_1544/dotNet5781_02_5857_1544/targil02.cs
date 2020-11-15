@@ -15,15 +15,21 @@ namespace dotNet5781_02_5857_1544
             Random r = new Random(DateTime.Now.Millisecond);
 
             BusLineCollection Eged = new BusLineCollection();
-
-            for (int i = 0; i < 20; i++)
+            try
             {
-                int line = r.Next(1,300);
-                Eged.AddBusLine(line);
-                for (int j = 0; j < r.Next(10); j++)
+                for (int i = 0; i < 20; i++)
                 {
-                    Eged.AddStationToBusLine(line, j, new BusLineStation());
+                    int line = r.Next(1, 300);
+                    Eged.AddBusLine(line);
+                    for (int j = 0; j < r.Next(10); j++)
+                    {
+                        Eged.AddStationToBusLine(line, j, new BusLineStation());
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
 
 
