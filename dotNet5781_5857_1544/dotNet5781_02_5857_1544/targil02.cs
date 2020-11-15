@@ -9,29 +9,29 @@ namespace dotNet5781_02_5857_1544
 
     class Program
     {
+        public static Random r = new Random(DateTime.Now.Millisecond);
         static void Main(string[] args)
         {
             int num;
-            Random r = new Random(DateTime.Now.Millisecond);
 
             BusLineCollection Eged = new BusLineCollection();
-            //try
-            //{
-            for (int i = 0; i < 20; i++)
+            try
             {
-                int line = r.Next(1, 300);
-                Eged.AddBusLine(line);
-                int num_of_stat = r.Next(5, 15);
-                for (int j = 0; j < num_of_stat; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    Eged.AddStationToBusLine(line, j, new BusLineStation());
+                    int line = r.Next(1, 300);
+                    Eged.AddBusLine(line);
+                    int num_of_stat = r.Next(3, 7);
+                    for (int j = 0; j < num_of_stat; j++)
+                    {
+                        Eged.AddStationToBusLine(line, j, new BusLineStation());
+                    }
                 }
             }
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e);
-            //}
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
 
 
             // the main is based on a choosing option that repeat itself and provide the request of the user
@@ -249,10 +249,12 @@ namespace dotNet5781_02_5857_1544
                             foreach (int statID in arr)
                             {
                                 List<BusLine> tmp = Eged.BusLinesInStations(statID);
-                                Console.WriteLine("BusLines in Station number - " + statID + " : ");
+                                Console.WriteLine("\nBusLines in Station number - " + statID + " : ");
                                 foreach (var line in tmp)
                                 {
-                                    Console.Write(line.BUSLINEID + ", ");
+                                    string rev = line.reverse ? " reverse " : " regular ";
+
+                                    Console.Write(line.BUSLINEID +" "+rev+ ", ");
                                 }
                             }
                             break;

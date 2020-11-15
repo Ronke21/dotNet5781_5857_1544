@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 
 namespace dotNet5781_02_5857_1544
 {
@@ -26,8 +25,6 @@ namespace dotNet5781_02_5857_1544
 
         public BusLineStation() : base()
         {
-            Random r = new Random();
-
             distanceFromLast = r.Next(20); // replace with real distance (m)
 
             //  calculate time interval in seconds
@@ -39,8 +36,6 @@ namespace dotNet5781_02_5857_1544
         }
         public BusLineStation(int id) : base(id)
         {
-            Random r = new Random();
-
             distanceFromLast = r.Next(20); // replace with real distance (m)
 
             //  calculate time interval in seconds

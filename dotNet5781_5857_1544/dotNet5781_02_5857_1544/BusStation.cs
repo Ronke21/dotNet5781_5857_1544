@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 namespace dotNet5781_02_5857_1544
 {
+
     class BusStation
     {
-        Random r = new Random(DateTime.Now.Millisecond);
+        public static Random r = new Random(DateTime.Now.Millisecond);
 
-        static List<int> unique = new List<int>();
+        static List<int> unique_id = new List<int>();
+        static List<BusStation> unique_station = new List<BusStation>();
         protected int BusStationKey;
         public int BUSSTATIONKEY
         {
@@ -23,26 +25,47 @@ namespace dotNet5781_02_5857_1544
         /// </summary>
         public BusStation()
         {
-            Latitude = r.NextDouble() * (33.3 - 31) + 31;
-            Longitude = r.NextDouble() * 35.5 - 34.3 + 34.3;
+            Latitude = System.Math.Round(r.NextDouble() * (33.3 - 31) + 31, 3);
+            Longitude = System.Math.Round(r.NextDouble() * 35.5 - 34.3 + 34.3, 3);
             do
             {
                 BusStationKey = r.Next(999999);
             }
-            while (unique.Contains(BUSSTATIONKEY));
-            unique.Add(BusStationKey);
+            while (unique_id.Contains(BUSSTATIONKEY));
+            unique_id.Add(BusStationKey);
+            unique_station.Add(this);
+        }
+
+        public int returnindex(int id)
+        {
+            int index = 0;
+            foreach (var stat in unique_station)
+            {
+                if (stat.BUSSTATIONKEY == id)
+                {
+                    return index;
+                }
+                index++;
+            }
+            return -1;
         }
 
         public BusStation(int id)
         {
-            Latitude = r.NextDouble() * (33.3 - 31) + 31;
-            Longitude = r.NextDouble() * 35.5 - 34.3 + 34.3;
-            if (unique.Contains(id))
-            {
-                throw new StationAlreadyExistsException("Bus station number" + id + " already exist");
-            }
             BusStationKey = id;
-            unique.Add(BusStationKey);
+            if (unique_id.Contains(id))
+            {
+                int index = returnindex(id);
+                Latitude = unique_station[index].Latitude;
+                Longitude = unique_station[index].Longitude;
+            }
+            else
+            {
+                Latitude = System.Math.Round(r.NextDouble() * (33.3 - 31) + 31, 3);
+                Longitude = System.Math.Round(r.NextDouble() * 35.5 - 34.3 + 34.3, 3);
+                unique_id.Add(BusStationKey);
+                unique_station.Add(this);
+            }
         }
 
         /// <summary>

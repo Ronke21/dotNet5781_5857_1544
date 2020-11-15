@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Text;
 
 namespace dotNet5781_02_5857_1544
@@ -43,16 +44,25 @@ namespace dotNet5781_02_5857_1544
 
         public void RemoveBusLine(int id)
         {
-            int count = Eged.Count;
+            int index = -1;
             foreach (var bus in Eged)
             {
                 if (bus.BUSLINEID == id)
                 {
-                    Eged.Remove(bus);
+                    index = Eged.IndexOf(bus);
+                    break;
                 }
             }
+
+            if (index == -1)
+            {
+                throw new BusLineDoesNotExistsException("Line" + id + "does not exist");
+            }
+
+            Eged.RemoveAt(index);
+            Eged.RemoveAt(index);
+
             // throw exception if no bus was deleted
-            if (count == Eged.Count) throw new BusLineDoesNotExistsException("Line" + id + "does not exist");
         }
 
         public List<BusLine> BusLinesInStations(int id)

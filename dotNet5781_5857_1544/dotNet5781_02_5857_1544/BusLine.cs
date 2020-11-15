@@ -6,7 +6,7 @@ namespace dotNet5781_02_5857_1544
 {
     class BusLine : IComparable<BusLine>
     {
-        Random r = new Random(DateTime.Now.Millisecond);
+        public static Random r = new Random(DateTime.Now.Millisecond);
 
         public readonly bool reverse;
 
@@ -113,12 +113,14 @@ namespace dotNet5781_02_5857_1544
 
             foreach (var BLS in Stations)
             {
-                str += BLS + ", ";
+                str += "\n" + BLS + ", ";
             }
+
+            string rev = reverse ? " reverse " : " regular ";
 
             return "Bus Line Number: " + BusLineID +
                    ", Area: " + area +
-                   "\n Stations regular side:  " + str;
+                   "\n Stations" + rev +  "side:  " + str;
         }
 
         /// <summary>
@@ -141,11 +143,11 @@ namespace dotNet5781_02_5857_1544
         public void AddStation(int index, BusLineStation station)
         {
             // וידוא אי כפילויות בראשי
-            Stations.Insert(index, station);
             if (Stations.Contains(station))
             {
                 throw new StationAlreadyExistsException("Station already exists in this bus line");
             }
+            Stations.Insert(index, station);
             if (index == 1)
                 firstStation = station;
             if (index == Stations.Count - 1)
