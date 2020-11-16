@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Device.Location;
 
 namespace dotNet5781_02_5857_1544
 {
@@ -25,6 +26,7 @@ namespace dotNet5781_02_5857_1544
         /// </summary>
         public BusStation()
         {
+
             Latitude = System.Math.Round(r.NextDouble() * (33.3 - 31) + 31, 3);
             Longitude = System.Math.Round(r.NextDouble() * 35.5 - 34.3 + 34.3, 3);
             do
@@ -34,6 +36,8 @@ namespace dotNet5781_02_5857_1544
             while (unique_id.Contains(BUSSTATIONKEY));
             unique_id.Add(BusStationKey);
             unique_station.Add(this);
+            
+            //GeoCoordinate Location = new GeoCoordinate(Latitude, Longitude);
         }
 
         public int ReturnIndex(int id)

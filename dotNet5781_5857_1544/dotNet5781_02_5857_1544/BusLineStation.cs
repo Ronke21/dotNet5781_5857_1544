@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Device.Location;
+
 
 namespace dotNet5781_02_5857_1544
 {
@@ -13,6 +15,12 @@ namespace dotNet5781_02_5857_1544
         public double DISTANCEFROMLAST
         {
             get { return distanceFromLast; }
+        }
+
+        public int Calc_dist_from_last()
+        {
+            var a = new GeoCoordinate(Latitude, Longitude);
+            return 0;
         }
 
 
