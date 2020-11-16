@@ -36,7 +36,7 @@ namespace dotNet5781_02_5857_1544
             unique_station.Add(this);
         }
 
-        public int returnindex(int id)
+        public int ReturnIndex(int id)
         {
             int index = 0;
             foreach (var stat in unique_station)
@@ -55,7 +55,7 @@ namespace dotNet5781_02_5857_1544
             BusStationKey = id;
             if (unique_id.Contains(id))
             {
-                int index = returnindex(id);
+                int index = ReturnIndex(id);
                 Latitude = unique_station[index].Latitude;
                 Longitude = unique_station[index].Longitude;
             }
