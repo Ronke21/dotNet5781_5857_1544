@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq.Expressions;
+using System.Device.Location;
 
 namespace dotNet5781_02_5857_1544
 {
@@ -85,6 +86,8 @@ namespace dotNet5781_02_5857_1544
             SetArea();
 
             this.interval = new TimeSpan(0, 0, 0);
+
+
         }
 
 
@@ -123,6 +126,7 @@ namespace dotNet5781_02_5857_1544
             {
                 this.interval = TimeBetween2(firstStation, lastStation);
             }
+
             else this.interval = new TimeSpan(0, 0, 0);
         }
 

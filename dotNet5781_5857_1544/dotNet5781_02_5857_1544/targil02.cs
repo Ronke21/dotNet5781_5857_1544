@@ -6,6 +6,10 @@
  * 
  * this programs shows a managing system for bus lines and thier stations - and aloows to add, delete and change them
  */
+
+// בגלל שכל ההכנסות מתבצעות בצורה רנדומלית, לא מימשנו פונקציית זמן בין תחנות מכיוון שהמיקומים אקראיים לחלוטין ואין לכך משמעות אצלנו, יטופל בפרויקט בו נשתמש בתחנות אמיתיות
+// מאותה סיבה אין אצלנו תחנות משותפות, אפשר להגדיל את מספרי הרנדום בתוכנית הראשית וסטטיסטית לקבל תחנות משותפות אם רוצים
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,11 +30,11 @@ namespace dotNet5781_02_5857_1544
             //add a few bus lines to the current collection - with random details
             try
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 20; i++)
                 {
                     int line = r.Next(1, 300);
                     Eged.AddBusLine(line);
-                    int num_of_stat = r.Next(3, 7);
+                    int num_of_stat = r.Next(10, 20);
                     for (int j = 0; j < num_of_stat; j++)
                     {
                         Eged.AddStationToBusLine(line, j, new BusLineStation());
