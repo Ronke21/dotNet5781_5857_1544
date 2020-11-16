@@ -21,10 +21,12 @@ namespace dotNet5781_02_5857_1544
         {
             int num;
 
-            BusLineCollection Eged = new BusLineCollection();
+            BusLineCollection Eged = new BusLineCollection(); //the bus lines in the system
+            
+            //add a few bus lines to the current collection - with random details
             try
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     int line = r.Next(1, 300);
                     Eged.AddBusLine(line);
@@ -49,26 +51,24 @@ namespace dotNet5781_02_5857_1544
                 Console.WriteLine("2. To add a new station to a bus line");
                 Console.WriteLine("3. To delete a bus line");
                 Console.WriteLine("4. To delete a station from a bus line");
-                Console.WriteLine("5. To search a line by a station number");
+                Console.WriteLine("5. To print all lines in a station");
                 Console.WriteLine("6. To print ride opportunities between 2 stations");
                 Console.WriteLine("7. To print all bus lines in system");
                 Console.WriteLine("8. To print all stations and lines going through them");
                 Console.WriteLine("9. Exit");
-                Int32.TryParse(Console.ReadLine(), out num);
+                Int32.TryParse(Console.ReadLine(), out num); //get the choice
                 switch (num)
                 {
                     case 1: // add empty bus line, adding one line will automatically add the reversed one 
                         {
                             try
                             {
-                                // bus line id
-                                int id;
-                                List<BusLineStation> tmp = new List<BusLineStation>();
+                                int id; // bus line id
                                 do
                                 {
                                     Console.WriteLine("Please enter the bus line number: ");
                                     id = Convert.ToInt32(Console.ReadLine());
-                                } while (id > 999 || id < 1);
+                                } while (id > 999 || id < 1); //3 digit number
 
                                 Eged.AddBusLine(id);
                             }
@@ -80,6 +80,7 @@ namespace dotNet5781_02_5857_1544
                             {
                                 Console.WriteLine(ex.Message);
                             }
+                            Console.WriteLine();
                             break;
                         }
 
@@ -88,28 +89,28 @@ namespace dotNet5781_02_5857_1544
                         {
                             try
                             {
-                                // line id
-                                int id;
+                                
+                                int id; // line id
                                 do
                                 {
                                     Console.WriteLine("Please enter the bus line number: ");
                                     id = Convert.ToInt32(Console.ReadLine());
                                 } while (id > 999 || id < 1 || !Eged.ExistLine(id));
 
-                                // station id
-                                int stat;
-                                do
+                                
+                                int stat; // station id
+                                do //3 digit uniqe bus line number
                                 {
                                     Console.WriteLine("Enter station number:");
                                     stat = Convert.ToInt32(Console.ReadLine());
-                                } while (stat > 999999 || stat < 1);
+                                } while (stat > 999999 || stat < 1); //6 digit number
 
-                                int index;
+                                int index; //place in station list to add the station
                                 do
                                 {
                                     Console.WriteLine("Enter station index:");
                                     index = Convert.ToInt32(Console.ReadLine());
-                                } while (index < 1);
+                                } while (index < 0); //real place in lisy must be possitive
 
 
                                 Eged.AddStationToBusLine(id, index, new BusLineStation(stat));
@@ -122,21 +123,21 @@ namespace dotNet5781_02_5857_1544
                             {
                                 Console.WriteLine(e);
                             }
+                            Console.WriteLine();
                             break;
                         }
 
                     case 3: // remove bus line, will also remove the reversed one (because they have the same id)
                         {
-                            // line id
-                            int id;
+                            int id; // line id
                             do
                             {
                                 Console.WriteLine("Please enter the bus line number: ");
                                 id = Convert.ToInt32(Console.ReadLine());
-                            } while (id > 999 || id < 1 || !Eged.ExistLine(id));
+                            } while (id > 999 || id < 1 || !Eged.ExistLine(id));   //3 digit uniqe bus line number
 
                             Eged.RemoveBusLine(id);
-
+                            Console.WriteLine();
                             break;
                         }
 
@@ -144,21 +145,21 @@ namespace dotNet5781_02_5857_1544
                         {
                             try
                             {
-                                // bus line id
-                                int id;
+                                
+                                int id; // bus line id
                                 do
                                 {
                                     Console.WriteLine("Please enter the bus line number: ");
                                     id = Convert.ToInt32(Console.ReadLine());
-                                } while (id > 999 || id < 1);
+                                } while (id > 999 || id < 1); //3 digit bus line number
 
-                                // station id
-                                int stat;
+                                
+                                int stat; // station id
                                 do
                                 {
                                     Console.WriteLine("Enter station number:");
                                     stat = Convert.ToInt32(Console.ReadLine());
-                                } while (stat > 999999 || stat < 1);
+                                } while (stat > 999999 || stat < 1); //6 digit number
 
                                 Eged.DelStationFromBusLine(id, new BusLineStation(stat));
                             }
@@ -170,22 +171,23 @@ namespace dotNet5781_02_5857_1544
                             {
                                 Console.WriteLine(e);
                             }
+                            Console.WriteLine();
                             break;
                         }
-                    case 5: // add all the lines their stations list includes a station, then print the list
+
+                    case 5: // print all the lines passes in a station
                         {
 
-                            // station id
-                            int stat;
+                            int stat; // station id
                             do
                             {
                                 Console.WriteLine("Enter station number:");
                                 stat = Convert.ToInt32(Console.ReadLine());
-                            } while (stat > 999999 || stat < 1);
+                            } while (stat > 999999 || stat < 1); //6 digit number
 
-                            List<BusLine> lines = new List<BusLine>();
+                            List<BusLine> lines = new List<BusLine>(); //list of lines to print
 
-                            foreach (var line in Eged)
+                            foreach (var line in Eged) //if the line contains the station, add to list
                             {
                                 if (line.Stations.Contains(new BusLineStation(stat)))
                                 {
@@ -193,15 +195,16 @@ namespace dotNet5781_02_5857_1544
                                 }
                             }
 
-                            foreach (var line in lines)
+                            Console.WriteLine("Buse lines in station " + stat + " : \n");
+                            foreach (var line in lines) //print
                             {
-                                Console.WriteLine(line);
+                                Console.Write(line.BUSLINEID + " " + (line.reverse? "reverse, " : "regular, "));
                             }
-
+                            Console.WriteLine();
                             break;
                         }
 
-                    case 6:
+                    case 6: //print all possible routes between 2 stations
                         {
                             List<BusLine> answer = new List<BusLine>();
                             int stat1, stat2;
@@ -209,29 +212,29 @@ namespace dotNet5781_02_5857_1544
                             {
                                 Console.WriteLine("Enter first station number:");
                                 stat1 = Convert.ToInt32(Console.ReadLine());
-                            } while (stat1 > 999999 || stat1 < 1);
+                            } while (stat1 > 999999 || stat1 < 1); //6 digit
                             do
                             {
                                 Console.WriteLine("Enter last station number:");
                                 stat2 = Convert.ToInt32(Console.ReadLine());
-                            } while (stat2 > 999999 || stat2 < 1);
+                            } while (stat2 > 999999 || stat2 < 1 || stat2 == stat1); //6 digit and uniqe
                             foreach (var line in Eged)
                             {
                                 if (line.ExistStation(stat1) && line.ExistStation(stat2))
                                 {
-                                    answer.Add(line.Route(stat1, stat2));
+                                    answer.Add(line.Route(stat1, stat2)); //creating list of sub bus lines with the route
                                 }
                             }
 
-                            answer.Sort((x, y) => x.TimeBetween2(x.FIRSTSTATION, x.LASTSTATION).CompareTo(y.TimeBetween2(y.FIRSTSTATION, y.LASTSTATION)));
+                            answer.Sort((x, y) => x.TimeBetween2(x.FIRSTSTATION, x.LASTSTATION).CompareTo(y.TimeBetween2(y.FIRSTSTATION, y.LASTSTATION))); //sorting the list by time of ride
                             foreach (var line in answer)
                             {
-                                Console.WriteLine(line + "Route time: " + line.TimeBetween2(line.FIRSTSTATION, line.LASTSTATION));
+                                Console.WriteLine(line + "Route time: " + line.TimeBetween2(line.FIRSTSTATION, line.LASTSTATION)); //print
                             }
                             break;
                         }
 
-                    case 7:
+                    case 7: //print all buses in the system and thier details
                         {
                             foreach (var bus in Eged)
                             {
@@ -240,7 +243,7 @@ namespace dotNet5781_02_5857_1544
                             break;
                         }
 
-                    case 8:
+                    case 8: //print all station numbers and the lines going through them
                         {
                             List<int> arr = new List<int>(); //list of all stations
                             foreach (var line in Eged)
@@ -248,11 +251,11 @@ namespace dotNet5781_02_5857_1544
                                 foreach (var stat in line.Stations)
                                 {
                                     if (!(arr.Contains(stat.BUSSTATIONKEY)))
-                                        arr.Add(stat.BUSSTATIONKEY);
+                                        arr.Add(stat.BUSSTATIONKEY); // enter stations to list
                                 }
                             }
 
-                            foreach (int statID in arr)
+                            foreach (int statID in arr) //check kines in every station
                             {
                                 List<BusLine> tmp = Eged.BusLinesInStations(statID);
                                 Console.WriteLine("\nBusLines in Station number - " + statID + " : ");
@@ -268,11 +271,10 @@ namespace dotNet5781_02_5857_1544
 
                     case 9: //get out from switch loop
                         {
-
                             break;
                         }
 
-                    default: //choice different  then 1-5
+                    default: //choice different  then 1-9
                         {
                             Console.WriteLine("Error, invalid input, choose again: ");
                             break;

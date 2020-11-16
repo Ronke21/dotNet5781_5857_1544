@@ -123,7 +123,7 @@ namespace dotNet5781_02_5857_1544
             }
 
             string rev = reverse ? " reverse " : " regular ";
-
+            // Enum.GetName(typeof(Area), area)
             return "Bus Line Number: " + BusLineID +
                    ", Area: " + area +
                    "\n Stations" + rev +  "side:  " + str;
@@ -167,6 +167,7 @@ namespace dotNet5781_02_5857_1544
             //update first/last station if changed
             firstStation = Stations[0];
             lastStation = Stations[^1];
+            SetArea(); //update area
         }
 
         /// <summary>
