@@ -1,11 +1,18 @@
-﻿using System;
+﻿/*
+ * Course mini project in .Net framework
+ * Exercise number 2
+ * Lecturer - David kidron
+ * Student - Amihay Hassan, Ron Keinan
+ * 
+ * this programs shows a managing system for bus lines and thier stations - and aloows to add, delete and change them
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Channels;
 
 namespace dotNet5781_02_5857_1544
 {
-    //מסעיף 6 ואילך
 
     class Program
     {
@@ -165,7 +172,6 @@ namespace dotNet5781_02_5857_1544
                             }
                             break;
                         }
-                    // לוודא שזה עובד כי קונטיינס יקבל אובייקט תחנה חדש רנדומלי
                     case 5: // add all the lines their stations list includes a station, then print the list
                         {
 
