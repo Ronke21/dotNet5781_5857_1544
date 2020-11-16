@@ -9,7 +9,6 @@ using System.Device.Location;
 
 namespace dotNet5781_02_5857_1544
 {
-
     class BusStation
     {
         public static Random r = new Random(DateTime.Now.Millisecond);
@@ -33,7 +32,7 @@ namespace dotNet5781_02_5857_1544
         public BusStation()
         {
             Latitude = System.Math.Round(r.NextDouble() * (33.3 - 31) + 31, 3);
-            Longitude = System.Math.Round(r.NextDouble() * 35.5 - 34.3 + 34.3, 3);
+            Longitude = System.Math.Round(r.NextDouble() * (35.5 - 34.3) + 34.3, 3);
             do
             {
                 BusStationKey = r.Next(999999);
@@ -79,7 +78,7 @@ namespace dotNet5781_02_5857_1544
             else //id is new - give random location and update list
             {
                 Latitude = System.Math.Round(r.NextDouble() * (33.3 - 31) + 31, 3);
-                Longitude = System.Math.Round(r.NextDouble() * 35.5 - 34.3 + 34.3, 3);
+                Longitude = System.Math.Round(r.NextDouble() * (35.5 - 34.3) + 34.3, 3);
                 unique_id.Add(BusStationKey);
                 unique_station.Add(this);
             }

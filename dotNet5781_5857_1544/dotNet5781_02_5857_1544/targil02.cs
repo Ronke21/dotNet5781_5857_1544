@@ -22,7 +22,7 @@ namespace dotNet5781_02_5857_1544
             int num;
 
             BusLineCollection Eged = new BusLineCollection(); //the bus lines in the system
-            
+
             //add a few bus lines to the current collection - with random details
             try
             {
@@ -80,6 +80,10 @@ namespace dotNet5781_02_5857_1544
                             {
                                 Console.WriteLine(ex.Message);
                             }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("couldn't identify specific problem" + ex);
+                            }
                             Console.WriteLine();
                             break;
                         }
@@ -89,7 +93,7 @@ namespace dotNet5781_02_5857_1544
                         {
                             try
                             {
-                                
+
                                 int id; // line id
                                 do
                                 {
@@ -97,7 +101,7 @@ namespace dotNet5781_02_5857_1544
                                     id = Convert.ToInt32(Console.ReadLine());
                                 } while (id > 999 || id < 1 || !Eged.ExistLine(id));
 
-                                
+
                                 int stat; // station id
                                 do //3 digit uniqe bus line number
                                 {
@@ -121,7 +125,7 @@ namespace dotNet5781_02_5857_1544
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine(e);
+                                Console.WriteLine("couldn't identify specific problem" + e);
                             }
                             Console.WriteLine();
                             break;
@@ -129,23 +133,35 @@ namespace dotNet5781_02_5857_1544
 
                     case 3: // remove bus line, will also remove the reversed one (because they have the same id)
                         {
-                            int id; // line id
-                            do
+                            try
                             {
-                                Console.WriteLine("Please enter the bus line number: ");
-                                id = Convert.ToInt32(Console.ReadLine());
-                            } while (id > 999 || id < 1 || !Eged.ExistLine(id));   //3 digit uniqe bus line number
+                                int id; // line id
+                                do
+                                {
+                                    Console.WriteLine("Please enter the bus line number: ");
+                                    id = Convert.ToInt32(Console.ReadLine());
+                                } while (id > 999 || id < 1 || !Eged.ExistLine(id)); //3 digit uniqe bus line number
 
-                            Eged.RemoveBusLine(id);
-                            Console.WriteLine();
+                                Eged.RemoveBusLine(id);
+                                Console.WriteLine();
+                            }
+                            catch (BusLineDoesNotExistsException ex)
+                            {
+                                Console.WriteLine(ex);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("couldn't identify specific problem" + ex);
+                            }
                             break;
+
                         }
 
                     case 4: // delete a station from a bus line, will also delete from reversed
                         {
                             try
                             {
-                                
+
                                 int id; // bus line id
                                 do
                                 {
@@ -153,7 +169,7 @@ namespace dotNet5781_02_5857_1544
                                     id = Convert.ToInt32(Console.ReadLine());
                                 } while (id > 999 || id < 1); //3 digit bus line number
 
-                                
+
                                 int stat; // station id
                                 do
                                 {
@@ -169,7 +185,7 @@ namespace dotNet5781_02_5857_1544
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine(e);
+                                Console.WriteLine("couldn't identify specific problem" + e);
                             }
                             Console.WriteLine();
                             break;
@@ -177,60 +193,90 @@ namespace dotNet5781_02_5857_1544
 
                     case 5: // print all the lines passes in a station
                         {
-
-                            int stat; // station id
-                            do
+                            try
                             {
-                                Console.WriteLine("Enter station number:");
-                                stat = Convert.ToInt32(Console.ReadLine());
-                            } while (stat > 999999 || stat < 1); //6 digit number
-
-                            List<BusLine> lines = new List<BusLine>(); //list of lines to print
-
-                            foreach (var line in Eged) //if the line contains the station, add to list
-                            {
-                                if (line.Stations.Contains(new BusLineStation(stat)))
+                                int stat; // station id
+                                do
                                 {
-                                    lines.Add(line);
+                                    Console.WriteLine("Enter station number:");
+                                    stat = Convert.ToInt32(Console.ReadLine());
+                                } while (stat > 999999 || stat < 1); //6 digit number
+
+                                List<BusLine> lines = new List<BusLine>(); //list of lines to print
+
+                                foreach (var line in Eged) //if the line contains the station, add to list
+                                {
+                                    if (line.Stations.Contains(new BusLineStation(stat)))
+                                    {
+                                        lines.Add(line);
+                                    }
                                 }
+
+                                Console.WriteLine("Buse lines in station " + stat + " : \n");
+                                foreach (var line in lines) //print
+                                {
+                                    Console.Write(line.BUSLINEID + " " + (line.reverse ? "reverse, " : "regular, "));
+                                }
+
+                                Console.WriteLine();
+                            }
+                            catch (StationDoesNotExistException ex)
+                            {
+                                Console.WriteLine(ex);
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("couldn't identify specific problem" + e);
                             }
 
-                            Console.WriteLine("Buse lines in station " + stat + " : \n");
-                            foreach (var line in lines) //print
-                            {
-                                Console.Write(line.BUSLINEID + " " + (line.reverse? "reverse, " : "regular, "));
-                            }
-                            Console.WriteLine();
                             break;
                         }
 
                     case 6: //print all possible routes between 2 stations
                         {
-                            List<BusLine> answer = new List<BusLine>();
-                            int stat1, stat2;
-                            do
+                            try
                             {
-                                Console.WriteLine("Enter first station number:");
-                                stat1 = Convert.ToInt32(Console.ReadLine());
-                            } while (stat1 > 999999 || stat1 < 1); //6 digit
-                            do
-                            {
-                                Console.WriteLine("Enter last station number:");
-                                stat2 = Convert.ToInt32(Console.ReadLine());
-                            } while (stat2 > 999999 || stat2 < 1 || stat2 == stat1); //6 digit and uniqe
-                            foreach (var line in Eged)
-                            {
-                                if (line.ExistStation(stat1) && line.ExistStation(stat2))
+                                List<BusLine> answer = new List<BusLine>();
+                                int stat1, stat2;
+                                do
                                 {
-                                    answer.Add(line.Route(stat1, stat2)); //creating list of sub bus lines with the route
+                                    Console.WriteLine("Enter first station number:");
+                                    stat1 = Convert.ToInt32(Console.ReadLine());
+                                } while (stat1 > 999999 || stat1 < 1); //6 digit
+
+                                do
+                                {
+                                    Console.WriteLine("Enter last station number:");
+                                    stat2 = Convert.ToInt32(Console.ReadLine());
+                                } while (stat2 > 999999 || stat2 < 1 || stat2 == stat1); //6 digit and uniqe
+
+                                foreach (var line in Eged)
+                                {
+                                    if (line.ExistStation(stat1) && line.ExistStation(stat2))
+                                    {
+                                        if (line.IndexStation(stat1) > line.IndexStation(stat2))
+                                        {
+                                            answer.Add(line.Route(stat1, stat2)); //creating list of sub bus lines with the route
+                                        }
+                                    }
+                                }
+
+                                answer.Sort(); //sorting the list by time of ride
+                                foreach (var line in answer)
+                                {
+                                    Console.WriteLine("Line number: " + line.BUSLINEID + (line.reverse ? " reverse " : " regular ") + "Route time: " +
+                                                      line.interval + " " + line.AREA); //print
                                 }
                             }
-
-                            answer.Sort((x, y) => x.TimeBetween2(x.FIRSTSTATION, x.LASTSTATION).CompareTo(y.TimeBetween2(y.FIRSTSTATION, y.LASTSTATION))); //sorting the list by time of ride
-                            foreach (var line in answer)
+                            catch (StationDoesNotExistException ex)
                             {
-                                Console.WriteLine(line + "Route time: " + line.TimeBetween2(line.FIRSTSTATION, line.LASTSTATION)); //print
+                                Console.WriteLine(ex);
                             }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("couldn't identify specific problem" + e);
+                            }
+
                             break;
                         }
 
@@ -263,7 +309,7 @@ namespace dotNet5781_02_5857_1544
                                 {
                                     string rev = line.reverse ? " reverse " : " regular ";
 
-                                    Console.Write(line.BUSLINEID +" "+rev+ ", ");
+                                    Console.Write(line.BUSLINEID + " " + rev + ", ");
                                 }
                             }
                             break;

@@ -1,9 +1,10 @@
-﻿/*
+﻿/*IComparable
   this class represents a single bus line with its number and stations, and a variable refering the direction (regular or reverse)
  */
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq.Expressions;
 
 namespace dotNet5781_02_5857_1544
@@ -36,6 +37,13 @@ namespace dotNet5781_02_5857_1544
 
         private Area area; //enum type - the area in Israel of the line
 
+        public Area AREA
+        {
+            get { return area; }
+        }
+
+
+        public TimeSpan interval;
         /// <summary>
         /// private method - sets the area according to loaction in israel
         /// </summary>
@@ -75,7 +83,10 @@ namespace dotNet5781_02_5857_1544
             lastStation = Stations[^1];
 
             SetArea();
+
+            this.interval = new TimeSpan(0, 0, 0);
         }
+
 
         /// <summary>
         /// this ctor sets a bus line cy a user input of line number, list of stations and regular/reverse
@@ -107,6 +118,12 @@ namespace dotNet5781_02_5857_1544
             }
 
             SetArea(); //choose an area for bus
+
+            if (lst.Count != 0)
+            {
+                this.interval = TimeBetween2(firstStation, lastStation);
+            }
+            else this.interval = new TimeSpan(0, 0, 0);
         }
 
         /// <summary>
@@ -126,7 +143,7 @@ namespace dotNet5781_02_5857_1544
             // Enum.GetName(typeof(Area), area)
             return "Bus Line Number: " + BusLineID +
                    ", Area: " + area +
-                   "\n Stations" + rev +  "side:  " + str;
+                   "\n Stations" + rev + "side:  " + str;
         }
 
         /// <summary>
@@ -136,15 +153,15 @@ namespace dotNet5781_02_5857_1544
         /// <returns>
         /// 0 if equal, 1 (or higher) if other is longer, -1 (or lower) if other is shorter
         /// </returns>
-        public int CompareTo(BusLine other) //used to sorting
-        {
-            if (other is null)
-            {
-                throw new FormatException("Object sent to compare function is not bus line type!");
-            }
-            return this.TimeBetween2(this.firstStation, this.lastStation)
-                .CompareTo(TimeBetween2(other.firstStation, other.lastStation));
-        }
+        //public int CompareTo(BusLine other) //used to sorting
+        //{
+        //    if (other is null)
+        //    {
+        //        throw new FormatException("Object sent to compare function is not bus line type!");
+        //    }
+        //    return this.TimeBetween2(this.firstStation, this.lastStation)
+        //        .CompareTo(TimeBetween2(other.firstStation, other.lastStation));
+        //}
 
         /// <summary>
         /// adds a new station to bus
@@ -168,6 +185,8 @@ namespace dotNet5781_02_5857_1544
             firstStation = Stations[0];
             lastStation = Stations[^1];
             SetArea(); //update area
+
+            this.interval = TimeBetween2(firstStation, lastStation);
         }
 
         /// <summary>
@@ -186,6 +205,8 @@ namespace dotNet5781_02_5857_1544
             //update first/last station if changed
             firstStation = Stations[0];
             lastStation = Stations[^1];
+
+            this.interval = TimeBetween2(firstStation, lastStation);
         }
 
         /// <summary>
@@ -215,6 +236,27 @@ namespace dotNet5781_02_5857_1544
                     return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// return the index of station by its id
+        /// </summary>
+        /// <param name="id">
+        /// number of stations
+        /// </param>
+        /// <returns>
+        /// the index in the stations list
+        /// </returns>
+        public int IndexStation(int id)
+        {
+            int index = -1;
+            foreach (var stat in Stations)
+            {
+                index++;
+                if (stat.BUSSTATIONKEY == id)
+                    return index;
+            }
+            return index;
         }
 
         /// <summary>
@@ -288,7 +330,7 @@ namespace dotNet5781_02_5857_1544
                 lst.Add(Stations[i]);
             }
 
-            return new BusLine(this.BusLineID, lst, false); 
+            return new BusLine(this.BusLineID, lst, false);
         }
 
         /// <summary>
@@ -314,12 +356,20 @@ namespace dotNet5781_02_5857_1544
                 throw new StationDoesNotExistException("The line does not contain one or more of the requested stations");
             }
 
-            for (int i = start; i < end; i++)
+            if (start < end)
             {
-                lst.Add(Stations[i]);
+                for (int i = start; i < end; i++)
+                {
+                    lst.Add(Stations[i]);
+                }
             }
 
             return new BusLine(this.BusLineID, lst, false);
+        }
+
+        public int CompareTo(BusLine other)
+        {
+            return interval.CompareTo(other.interval);
         }
     }
 }
