@@ -36,6 +36,11 @@ namespace dotNet5781_02_5857_1544
 
         private Area area; //enum type - the area in Israel of the line
 
+        public Area AREA
+        {
+            get { return area; }
+        }
+
         /// <summary>
         /// private method - sets the area according to loaction in israel
         /// </summary>

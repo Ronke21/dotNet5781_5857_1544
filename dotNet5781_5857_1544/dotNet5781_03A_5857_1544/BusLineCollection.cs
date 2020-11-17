@@ -55,10 +55,10 @@ namespace dotNet5781_02_5857_1544
 
             //add twice - the line and an opposite version for the reverse line
             BusLine reg = new BusLine(id, new List<BusLineStation>(), false);
-            BusLine rev = new BusLine(id, new List<BusLineStation>(), true);
+            //BusLine rev = new BusLine(id, new List<BusLineStation>(), true);
 
             Eged.Add(reg);
-            Eged.Add(rev);
+            //Eged.Add(rev);
         }
 
         /// <summary>
@@ -179,10 +179,6 @@ namespace dotNet5781_02_5857_1544
         {
             get
             {
-                if (num < 0 || num >= Eged.Count)
-                {
-                    throw new OutOfRangeException("Index out of range");
-                }
                 foreach (var bus in Eged)
                 {
                     if (bus.BUSLINEID == num) return bus;

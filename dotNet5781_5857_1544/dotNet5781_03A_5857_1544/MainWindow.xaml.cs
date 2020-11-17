@@ -46,30 +46,42 @@ namespace dotNet5781_03A_5857_1544
             InitializeComponent();
 
             Eged = new BusLineCollection(); //the bus lines in the system
-            AddBuses(ref Eged);
+            try
+            {
+                AddBuses(ref Eged);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
 
-            cbBusLines.ItemsSource = Eged;
-            cbBusLines.DisplayMemberPath = " BusLineID ";
-            cbBusLines.SelectedIndex = 0;
-            ShowBusLine(0);
-
+            CbBusLines.ItemsSource = Eged;
+            CbBusLines.DisplayMemberPath = " BUSLINEID ";
+            CbBusLines.SelectedIndex = 0;
+            ShowBusLine(dotNet5781_02_5857_1544.BusLineCollection.Eged[0].BUSLINEID);
 
         }
 
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ShowBusLine((cbBusLines.SelectedValue as BusLine).BUSLINEID);
+            ShowBusLine((CbBusLines.SelectedValue as BusLine).BUSLINEID);
         }
 
         private void ShowBusLine(int index)
         {
             currentDisplayBusLine = Eged[index];
             UpGrid.DataContext = currentDisplayBusLine;
-            lbBusLineStations.DataContext = currentDisplayBusLine.Stations;
+            LbBusLineStations.DataContext = currentDisplayBusLine.Stations;
         }
 
+        //private void TbArea_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    TbArea.Text = Convert.ToString((CbBusLines.SelectedValue as BusLine).AREA);
+        //}
+
+        //private void TbArea_OnSourceUpdated(object? sender, DataTransferEventArgs e)
+        //{
+        //    TbArea.Text = Convert.ToString((CbBusLines.SelectedValue as BusLine).AREA);
+        //}
     }
-
-
 }
-       
