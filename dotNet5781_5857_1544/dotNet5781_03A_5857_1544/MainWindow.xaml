@@ -3,8 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:dotNet5781_03A_5857_1544"
-        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
         Icon="https://icons.iconarchive.com/icons/icons8/ios7/128/Transport-Bus-2-icon.png"
         Title=" Eged"
@@ -29,8 +27,16 @@
             >
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF8CC0D6"/>
-                    <GradientStop Color="White" Offset="1"/>
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#AA01A77C" Offset="0.013"/>
+                    <GradientStop Color="#AA30A4B8" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.Background>
 
@@ -53,24 +59,28 @@
             HorizontalAlignment="Left" 
             VerticalAlignment="Center"
             Grid.Column="1"
-            Margin="62,0,0,0"
+            Margin="62,0,0,0" 
+            FontSize="30" 
+            FontWeight="Bold" 
+            FontFamily="Segoe UI Light"
             />
 
             <ComboBox 
             Name="CbBusLines"
             Grid.Column="1" 
             HorizontalAlignment="Left" 
-            VerticalAlignment="Center"
-            Margin="177,0,0,0"
-            Width="150"
+            VerticalAlignment="Top"
+            Margin="318,27,0,0"
+            Width="59"
             SelectionChanged="cbBusLines_SelectionChanged"
+            FontFamily="Enhanced LED Board-7"
             />
 
             <Viewbox 
                 Grid.Column="2"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Margin="115,0,0,0"
+                Margin="110,10,0,10"
             >
                 <Image Source="https://img.icons8.com/fluent/344/google-maps-new.png"/>
             </Viewbox>
@@ -79,7 +89,10 @@
             Content="Area :"
             Grid.Column="2" 
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+            VerticalAlignment="Center" 
+            FontSize="30" 
+            FontWeight="Bold" 
+            FontFamily="Segoe UI Light"
             />
 
             <TextBlock
@@ -88,16 +101,30 @@
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Center"
                 Width="100"                
-                Text="{Binding Path=AREA}" Margin="225,0,0,0" 
+                Text="{Binding Path=AREA}"
+                Margin="246,0,0,0" 
+                FontSize="30" 
              />
-
-
         </Grid>
-        <ListBox 
+
+        <Grid
+            Name ="DownGrid" 
+              HorizontalAlignment="Stretch" 
+              Height="auto"
+              Grid.Row="1" 
+              VerticalAlignment="Stretch" 
+              Width="auto"
+            >
+            <ListBox 
             Name="LbBusLineStations" 
             Grid.Row="1"
             ItemsSource="{Binding }"
-         />
+            FontFamily="Calibri Light"
+            FontSize="30"
+            />
+
+        </Grid>
+
 
     </Grid>
 
