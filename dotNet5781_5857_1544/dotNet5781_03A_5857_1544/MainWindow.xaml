@@ -70,10 +70,11 @@
             Grid.Column="1" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top"
-            Margin="318,27,0,0"
-            Width="59"
+            Margin="302,25,0,0"
+            Width="75"
             SelectionChanged="cbBusLines_SelectionChanged"
             FontFamily="Enhanced LED Board-7"
+            FontSize="15"
             />
 
             <Viewbox 
