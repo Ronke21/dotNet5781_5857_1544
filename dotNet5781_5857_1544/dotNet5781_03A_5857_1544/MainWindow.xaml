@@ -4,10 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03A_5857_1544"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="MainWindow" Height="640
+        Icon="https://icons.iconarchive.com/icons/icons8/ios7/128/Transport-Bus-2-icon.png"
+        Title=" Eged"
+        Height="640
 " Width="800">
-    <Grid Name ="MainGrid">
+    <Grid 
+        Name ="MainGrid"
+        >
 
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
@@ -21,44 +26,70 @@
               Grid.Row="0" 
               VerticalAlignment="Stretch" 
               Width="auto"
-            
             >
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF8CC0D6"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="23*"/>
+                <ColumnDefinition Width="377*"/>
+                <ColumnDefinition Width="400*"/>
             </Grid.ColumnDefinitions>
 
-            <Label 
-            Content="Bus Line Number" 
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center"
-            Grid.Column="0"
-            />
+            <Viewbox 
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                Margin="15,3,0,3" Grid.ColumnSpan="2"
+                >
+                <Image Source="https://img.icons8.com/color/344/bus.png"/>
+            </Viewbox>
 
             <Label 
-            Content="Area" 
-            Grid.Column="2" 
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center"/>
+            Content="Bus Line Number :" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Center"
+            Grid.Column="1"
+            Margin="62,0,0,0"
+            />
 
             <ComboBox 
             Name="CbBusLines"
             Grid.Column="1" 
-            HorizontalAlignment="Center" 
+            HorizontalAlignment="Left" 
             VerticalAlignment="Center"
+            Margin="177,0,0,0"
+            Width="150"
             SelectionChanged="cbBusLines_SelectionChanged"
+            />
+
+            <Viewbox 
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="115,0,0,0"
+            >
+                <Image Source="https://img.icons8.com/fluent/344/google-maps-new.png"/>
+            </Viewbox>
+
+            <Label
+            Content="Area :"
+            Grid.Column="2" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
             />
 
             <TextBlock
                 Name="tbArea"
-                Grid.Column="3" 
-                HorizontalAlignment="Center" 
+                Grid.Column="2" 
+                HorizontalAlignment="Left" 
                 VerticalAlignment="Center"
-                Text="{Binding Path=AREA}" 
-                />
+                Width="100"                
+                Text="{Binding Path=AREA}" Margin="225,0,0,0" 
+             />
 
 
         </Grid>
@@ -66,7 +97,7 @@
             Name="LbBusLineStations" 
             Grid.Row="1"
             ItemsSource="{Binding }"
-            />
+         />
 
     </Grid>
 
