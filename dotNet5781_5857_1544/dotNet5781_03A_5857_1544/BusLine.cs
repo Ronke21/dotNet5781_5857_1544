@@ -34,7 +34,7 @@ namespace dotNet5781_02_5857_1544
             get { return lastStation; }
         }
 
-        private Area area; //enum type - the area in Israel of the line
+        private Area area; //enum type - the AREA in Israel of the line
 
         public Area AREA
         {
@@ -42,14 +42,14 @@ namespace dotNet5781_02_5857_1544
         }
 
         /// <summary>
-        /// private method - sets the area according to loaction in israel
+        /// private method - sets the AREA according to loaction in israel
         /// </summary>
         private void SetArea()
         {
             if (this.Stations.Count > 0)
             {
                 if (BusLineID > 99) area = Area.General; //all outside town lines arr general
-                else //inside town lines get a specific area - according to landmarks
+                else //inside town lines get a specific AREA - according to landmarks
                 {
                     if (Stations[0].Latitude >= 32.25) area = Area.North;
                     else if (Stations[0].Latitude <= 31.5) area = Area.South;
@@ -111,7 +111,7 @@ namespace dotNet5781_02_5857_1544
                 lastStation = Stations[^1];
             }
 
-            SetArea(); //choose an area for bus
+            SetArea(); //choose an AREA for bus
         }
 
         /// <summary>
@@ -128,9 +128,9 @@ namespace dotNet5781_02_5857_1544
             }
 
             string rev = reverse ? " reverse " : " regular ";
-            // Enum.GetName(typeof(Area), area)
+            // Enum.GetName(typeof(Area), AREA)
             return "Bus Line Number: " + BusLineID +
-                   ", Area: " + area +
+                   ", Area: " + AREA +
                    "\n Stations" + rev +  "side:  " + str;
         }
 
@@ -172,7 +172,7 @@ namespace dotNet5781_02_5857_1544
             //update first/last station if changed
             firstStation = Stations[0];
             lastStation = Stations[^1];
-            SetArea(); //update area
+            SetArea(); //update AREA
         }
 
         /// <summary>

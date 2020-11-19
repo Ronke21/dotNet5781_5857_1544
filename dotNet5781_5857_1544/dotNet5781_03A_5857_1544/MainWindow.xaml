@@ -43,7 +43,8 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="23*"/>
-                <ColumnDefinition Width="377*"/>
+                <ColumnDefinition Width="55*"/>
+                <ColumnDefinition Width="322*"/>
                 <ColumnDefinition Width="400*"/>
             </Grid.ColumnDefinitions>
 
@@ -59,8 +60,8 @@
             Content="Bus Line Number :" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Center"
-            Grid.Column="1"
-            Margin="62,0,0,0" 
+            Grid.Column="2"
+            Margin="7,0,0,0" 
             FontSize="30" 
             FontWeight="Bold" 
             FontFamily="Segoe UI Light"
@@ -68,10 +69,10 @@
 
             <ComboBox 
             Name="CbBusLines"
-            Grid.Column="1" 
+            Grid.Column="2" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top"
-            Margin="302,25,0,0"
+            Margin="247,25,0,0"
             Width="75"
             SelectionChanged="cbBusLines_SelectionChanged"
             FontFamily="Enhanced LED Board-7"
@@ -79,44 +80,44 @@
             />
 
             <Viewbox 
-                Grid.Column="2"
+                Grid.Column="3"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Margin="50,10,0,10"
+                Margin="60,10,0,10"
             >
                 <Image Source="https://img.icons8.com/fluent/344/google-maps-new.png"/>
             </Viewbox>
 
             <Label
             Content="Area :"
-            Grid.Column="2" 
-            HorizontalAlignment="Center"
+            Grid.Column="3" 
+            HorizontalAlignment="Left"
             VerticalAlignment="Center" 
             FontSize="30" 
             FontWeight="Bold" 
-            FontFamily="Segoe UI Light" Margin="-100,0,0,0"
+            FontFamily="Segoe UI Light" Margin="108,0,0,0"
             />
 
-            <TextBlock
+            <TextBox
                 Name="tbArea"
-                Grid.Column="2" 
-                HorizontalAlignment="Center" 
+                Grid.Column="3" 
+                HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Width="150"                
-                Text="{Binding Path=AREA}" 
+                Width="150"
                 FontSize="30"
-                Margin="140,0,0,0" 
+                Margin="195,0,0,0"
              />
         </Grid>
 
         <Grid
-            Name ="DownGrid" 
+              Name ="DownGrid" 
               HorizontalAlignment="Stretch" 
               Height="auto"
               Grid.Row="1" 
               VerticalAlignment="Stretch" 
               Width="auto"
             >
+
             <ListBox 
             Name="LbBusLineStations" 
             Grid.Row="1"
