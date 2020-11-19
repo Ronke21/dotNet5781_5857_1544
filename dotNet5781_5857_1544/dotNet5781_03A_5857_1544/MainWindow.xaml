@@ -8,6 +8,7 @@
         Title=" Eged"
         Height="640
 " Width="800">
+
     <Grid 
         Name ="MainGrid"
         >
@@ -81,7 +82,7 @@
                 Grid.Column="2"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Margin="110,10,0,10"
+                Margin="50,10,0,10"
             >
                 <Image Source="https://img.icons8.com/fluent/344/google-maps-new.png"/>
             </Viewbox>
@@ -93,18 +94,18 @@
             VerticalAlignment="Center" 
             FontSize="30" 
             FontWeight="Bold" 
-            FontFamily="Segoe UI Light"
+            FontFamily="Segoe UI Light" Margin="-100,0,0,0"
             />
 
             <TextBlock
                 Name="tbArea"
                 Grid.Column="2" 
-                HorizontalAlignment="Left" 
+                HorizontalAlignment="Center" 
                 VerticalAlignment="Center"
-                Width="100"                
-                Text="{Binding Path=AREA}"
-                Margin="246,0,0,0" 
-                FontSize="30" 
+                Width="150"                
+                Text="{Binding Path=AREA}" 
+                FontSize="30"
+                Margin="140,0,0,0" 
              />
         </Grid>
 
