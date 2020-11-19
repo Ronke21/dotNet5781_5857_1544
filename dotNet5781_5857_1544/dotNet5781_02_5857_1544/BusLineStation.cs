@@ -93,7 +93,7 @@ namespace dotNet5781_02_5857_1544
         public override string ToString()
         {
             //    return "Bus Station Code: " + BusStationKey + ",\t " + Latitude + "°N " + Longitude + "°E, " + INTERVAL.ToString(@"hh\:mm\:ss");
-            return String.Format("Bus Station Code: {0,7},\t{1,7} °N,\t{2,7}°E,\t{3}", BusStationKey, Latitude, Longitude, INTERVAL.ToString(@"hh\:mm\:ss"));
+            return String.Format("Bus Station Code: {0,-8},\t{1,-8} °N,\t{2,-8}°E,\t{3,-8}", BusStationKey, Latitude, Longitude, INTERVAL.ToString(@"hh\:mm\:ss"));
         }
     }
 }

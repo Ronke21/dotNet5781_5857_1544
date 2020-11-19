@@ -9,7 +9,6 @@ using System.Device.Location;
 
 namespace dotNet5781_02_5857_1544
 {
-
     class BusStation
     {
         public static Random r = new Random(DateTime.Now.Millisecond);
@@ -21,7 +20,7 @@ namespace dotNet5781_02_5857_1544
         {
             get { return BusStationKey; }
         }
-        
+
         //Location of station - given once in the constructor
         public readonly double Latitude;
         public readonly double Longitude;
@@ -41,8 +40,6 @@ namespace dotNet5781_02_5857_1544
             while (unique_id.Contains(BUSSTATIONKEY)); //prevent duplicate station ID
             unique_id.Add(BusStationKey);
             unique_station.Add(this);
-            
-            //GeoCoordinate Location = new GeoCoordinate(Latitude, Longitude);
         }
 
         /// <summary>
@@ -93,7 +90,7 @@ namespace dotNet5781_02_5857_1544
         /// </returns>
         public override string ToString()
         {
-            return "Bus Station Code: " + BusStationKey + ",\t " + Latitude + "°N " + Longitude + "°E, \t";
+            return "Bus Station Code: " + BusStationKey + ", " + Latitude + "°N " + Longitude + "°E";
         }
     }
 }

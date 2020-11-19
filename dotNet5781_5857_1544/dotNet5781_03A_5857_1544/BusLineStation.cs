@@ -22,6 +22,7 @@ namespace dotNet5781_02_5857_1544
         public double DISTANCEFROMLAST //distance from last station in meters
         {
             get { return distanceFromLast; }
+            set { distanceFromLast = value; }
         }
 
         public int Calc_dist_from_last() //calculate distance according to landmarks
@@ -31,11 +32,11 @@ namespace dotNet5781_02_5857_1544
         }
 
 
-        private TimeSpan interval;
+        private TimeSpan interval; //time from last station
         public TimeSpan INTERVAL
         {
             get { return interval; }
-            set {INTERVAL=value; }
+            set { interval = value; }
         }
 
         /// <summary>
@@ -46,8 +47,9 @@ namespace dotNet5781_02_5857_1544
             distanceFromLast = r.Next(10000);
 
             //  calculate time interval in seconds
-            // interval = new TimeSpan(0, 0, (int)(distanceFromLast / urbanSpeed));
+            //  interval = new TimeSpan(0, 0, (int)(distanceFromLast / urbanSpeed));
             interval = TimeSpan.FromSeconds(distanceFromLast / urbanSpeed);
+
             if (interval > MAX_INTERVAL) //more than hour
             {
                 throw new TooLongException(interval.ToString());
@@ -63,7 +65,7 @@ namespace dotNet5781_02_5857_1544
             distanceFromLast = r.Next(10000);
 
             //  calculate time interval in seconds
-            // interval = new TimeSpan(0, 0, (int)(distanceFromLast / urbanSpeed));
+            //  interval = new TimeSpan(0, 0, (int)(distanceFromLast / urbanSpeed));
             interval = TimeSpan.FromSeconds(distanceFromLast / urbanSpeed);
             if (interval > MAX_INTERVAL)
             {
@@ -90,8 +92,8 @@ namespace dotNet5781_02_5857_1544
 
         public override string ToString()
         {
-        //    return "Bus Station Code: " + BusStationKey + ",\t " + Latitude + "°N " + Longitude + "°E, " + INTERVAL.ToString(@"hh\:mm\:ss");
-            return String.Format("Bus Station Code: {0},\t{1} °N,   {2}\t°E,\t{3} ", BusStationKey, Latitude, Longitude, INTERVAL.ToString(@"hh\:mm\:ss"));
+            //    return "Bus Station Code: " + BusStationKey + ",\t " + Latitude + "°N " + Longitude + "°E, " + INTERVAL.ToString(@"hh\:mm\:ss");
+            return String.Format("Bus Station Code: {0,-8} \t{1,-8} °N,  {2,-8}°E \t{3,-8}", BusStationKey, Latitude, Longitude, INTERVAL.ToString(@"hh\:mm\:ss"));
         }
     }
 }
