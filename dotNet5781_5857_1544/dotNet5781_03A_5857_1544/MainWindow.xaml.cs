@@ -57,7 +57,7 @@ namespace dotNet5781_03A_5857_1544
             ShowBusLine((CbBusLines.SelectedValue as BusLine).BUSLINEID);
             ShowArea((CbBusLines.SelectedValue as BusLine).BUSLINEID);
         }
-
+        
         private void ShowArea(int index)
         {
             currentDisplayBusLine = Eged[index];
