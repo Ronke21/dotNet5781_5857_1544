@@ -64,9 +64,20 @@ namespace dotNet5781_02_5857_1544
                 }
             }
         }
-
+        /// <summary>
+        /// sets time between stations to all buses
+        /// </summary>
         public void setInterval()
         {
+            foreach (var tmp in this.Stations)
+            {
+                if (this.area == Area.General)
+                    tmp.INTERVAL = TimeSpan.FromSeconds(tmp.DISTANCEFROMLAST / tmp.INTERURBANSPEED);
+                else
+                    tmp.INTERVAL = TimeSpan.FromSeconds(tmp.DISTANCEFROMLAST / tmp.urbanSpeed);
+            }
+            if (Stations.Count > 0)
+                Stations[0].INTERVAL = new TimeSpan(0, 0, 0);
             foreach (var stat in this.Stations)
             {
                 interval += stat.INTERVAL;
@@ -87,11 +98,11 @@ namespace dotNet5781_02_5857_1544
             {
                 BusLineStation tmp = new BusLineStation();
                 //  UPDATE INTERVAL TO AREA SPEED!
-                if (this.area==Area.General)
-                    tmp.INTERVAL=TimeSpan.FromSeconds(tmp.DISTANCEFROMLAST / tmp.INTERURBANSPEED);
+                if (this.area == Area.General)
+                    tmp.INTERVAL = TimeSpan.FromSeconds(tmp.DISTANCEFROMLAST / tmp.INTERURBANSPEED);
                 else
                     tmp.INTERVAL = TimeSpan.FromSeconds(tmp.DISTANCEFROMLAST / tmp.urbanSpeed);
-                
+
                 Stations.Add(tmp);
             }
 
@@ -100,8 +111,7 @@ namespace dotNet5781_02_5857_1544
 
             SetArea();
 
-           this.interval = new TimeSpan(0, 0, 0);
-
+            this.interval = new TimeSpan(0, 0, 0);
 
         }
 
