@@ -56,8 +56,7 @@ namespace dotNet5781_02_5857_1544
             //add twice - the line and an opposite version for the reverse line
             BusLine reg = new BusLine(id, new List<BusLineStation>(), false);
             BusLine rev = new BusLine(id, new List<BusLineStation>(), true);
-            rev.setInterval();
-            reg.setInterval();
+
             Eged.Add(reg);
             Eged.Add(rev);
         }
@@ -147,10 +146,10 @@ namespace dotNet5781_02_5857_1544
                     {
                         bus.AddStation(bus.Stations.Count - index, stat);
                     }
-                    bus.setInterval();
                 }
             } //bus line number doesnt exist in the list
-            if (!found) throw new BusLineDoesNotExistsException("Line" + id + "does not exist");
+
+                if (!found) throw new BusLineDoesNotExistsException("Line" + id + "does not exist");
         }
 
         /// <summary>
@@ -167,7 +166,6 @@ namespace dotNet5781_02_5857_1544
                 {
                     found = true;
                     bus.DelStation(stat);
-                    bus.setInterval();
                 }
             } //nu such bus line number in the list
             if (!found) throw new StationDoesNotExistException("Station" + id + "does not exist");

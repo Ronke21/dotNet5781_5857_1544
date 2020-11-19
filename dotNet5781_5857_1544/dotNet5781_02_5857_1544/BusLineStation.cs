@@ -22,6 +22,7 @@ namespace dotNet5781_02_5857_1544
         public double DISTANCEFROMLAST //distance from last station in meters
         {
             get { return distanceFromLast; }
+            set { distanceFromLast = value; }
         }
 
         public int Calc_dist_from_last() //calculate distance according to landmarks
@@ -92,7 +93,7 @@ namespace dotNet5781_02_5857_1544
         public override string ToString()
         {
             //    return "Bus Station Code: " + BusStationKey + ",\t " + Latitude + "°N " + Longitude + "°E, " + INTERVAL.ToString(@"hh\:mm\:ss");
-            return String.Format("Bus Station Code: {0},\t{1} °N,   {2}\t°E,\t{3} ", BusStationKey, Latitude, Longitude, INTERVAL.ToString(@"hh\:mm\:ss"));
+            return String.Format("Bus Station Code: {0,7},\t{1,7} °N,\t{2,7}°E,\t{3}", BusStationKey, Latitude, Longitude, INTERVAL.ToString(@"hh\:mm\:ss"));
         }
     }
 }

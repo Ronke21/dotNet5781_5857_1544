@@ -64,6 +64,7 @@ namespace dotNet5781_02_5857_1544
                 }
             }
         }
+        /*
         /// <summary>
         /// sets time between stations to all buses
         /// </summary>
@@ -76,13 +77,16 @@ namespace dotNet5781_02_5857_1544
                 else
                     tmp.INTERVAL = TimeSpan.FromSeconds(tmp.DISTANCEFROMLAST / tmp.urbanSpeed);
             }
+
             if (Stations.Count > 0)
-                Stations[0].INTERVAL = new TimeSpan(0, 0, 0);
+                Stations[0].INTERVAL = new TimeSpan(0,0,0);
+
             foreach (var stat in this.Stations)
             {
                 interval += stat.INTERVAL;
             }
         }
+        */
 
         /// <summary>
         /// this ctor sets a random busline number of 3 digits, and sets a random number of random stations
@@ -157,8 +161,7 @@ namespace dotNet5781_02_5857_1544
 
             if (lst.Count != 0)
             {
-                // this.interval = TimeBetween2(firstStation, lastStation);
-                setInterval();
+                 this.interval = TimeBetween2(firstStation, lastStation);
             }
 
             else this.interval = new TimeSpan(0, 0, 0);
@@ -224,8 +227,7 @@ namespace dotNet5781_02_5857_1544
             lastStation = Stations[^1];
             SetArea(); //update area
 
-            //this.interval = TimeBetween2(firstStation, lastStation);
-            setInterval();
+            this.interval = TimeBetween2(firstStation, lastStation);
         }
 
         /// <summary>
@@ -245,8 +247,8 @@ namespace dotNet5781_02_5857_1544
             firstStation = Stations[0];
             lastStation = Stations[^1];
 
-            //    this.interval = TimeBetween2(firstStation, lastStation);
-            setInterval();
+               this.interval = TimeBetween2(firstStation, lastStation);
+
         }
 
         /// <summary>
