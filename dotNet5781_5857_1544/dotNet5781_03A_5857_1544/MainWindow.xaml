@@ -95,7 +95,8 @@
             VerticalAlignment="Center" 
             FontSize="30" 
             FontWeight="Bold" 
-            FontFamily="Segoe UI Light" Margin="108,0,0,0"
+            FontFamily="Segoe UI Light"
+            Margin="108,0,0,0"
             />
 
             <TextBox
