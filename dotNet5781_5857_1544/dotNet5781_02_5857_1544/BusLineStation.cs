@@ -15,8 +15,8 @@ namespace dotNet5781_02_5857_1544
     {
         public readonly TimeSpan MAX_INTERVAL = new TimeSpan(1, 0, 0); //a permanent value - 1 hour is the maximum ride time between stations
 
-        private readonly int urbanSpeed = 16; //driving speed inside the city (approximatly 60 kmh, is 16 meters per sec)
-        private readonly int INTERURBANSPEED = 25; //driving speed outside the city (approximatly 90 kmh, is 25 meters per sec)
+        public readonly int urbanSpeed = 16; //driving speed inside the city (approximatly 60 kmh, is 16 meters per sec)
+        public readonly int INTERURBANSPEED = 25; //driving speed outside the city (approximatly 90 kmh, is 25 meters per sec)
 
         private double distanceFromLast;
         public double DISTANCEFROMLAST //distance from last station in meters
@@ -31,10 +31,11 @@ namespace dotNet5781_02_5857_1544
         }
 
 
-        private TimeSpan interval;
+        private TimeSpan interval; //time from last station
         public TimeSpan INTERVAL
         {
             get { return interval; }
+            set { interval = value; }
         }
 
         /// <summary>
@@ -42,10 +43,12 @@ namespace dotNet5781_02_5857_1544
         /// </summary>
         public BusLineStation() : base()
         {
-            distanceFromLast = r.Next(20); 
+            distanceFromLast = r.Next(10000);
 
             //  calculate time interval in seconds
-            interval = new TimeSpan(0, 0, (int)(distanceFromLast / urbanSpeed));
+            //  interval = new TimeSpan(0, 0, (int)(distanceFromLast / urbanSpeed));
+            interval = TimeSpan.FromSeconds(distanceFromLast / urbanSpeed);
+
             if (interval > MAX_INTERVAL) //more than hour
             {
                 throw new TooLongException(interval.ToString());
@@ -58,10 +61,11 @@ namespace dotNet5781_02_5857_1544
         /// <param name="id"> the key number of the wanted station</param>
         public BusLineStation(int id) : base(id)
         {
-            distanceFromLast = r.Next(20); 
+            distanceFromLast = r.Next(10000);
 
             //  calculate time interval in seconds
-            interval = new TimeSpan(0, 0, (int)(distanceFromLast / urbanSpeed));
+            //  interval = new TimeSpan(0, 0, (int)(distanceFromLast / urbanSpeed));
+            interval = TimeSpan.FromSeconds(distanceFromLast / urbanSpeed);
             if (interval > MAX_INTERVAL)
             {
                 throw new TooLongException(interval.ToString());
@@ -83,6 +87,12 @@ namespace dotNet5781_02_5857_1544
             //       distanceFromLast.Equals(other.distanceFromLast) &&
             //       interval.Equals(other.interval);
             return other != null && this.BUSSTATIONKEY == other.BUSSTATIONKEY;
+        }
+
+        public override string ToString()
+        {
+            //    return "Bus Station Code: " + BusStationKey + ",\t " + Latitude + "°N " + Longitude + "°E, " + INTERVAL.ToString(@"hh\:mm\:ss");
+            return String.Format("Bus Station Code: {0},\t{1} °N,   {2}\t°E,\t{3} ", BusStationKey, Latitude, Longitude, INTERVAL.ToString(@"hh\:mm\:ss"));
         }
     }
 }

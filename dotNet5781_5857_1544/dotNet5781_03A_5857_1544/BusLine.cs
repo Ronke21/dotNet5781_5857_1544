@@ -73,7 +73,14 @@ namespace dotNet5781_02_5857_1544
             int to = r.Next(5, 15);
             for (int i = 0; i < to; i++)
             {
-                Stations.Add(new BusLineStation());
+                BusLineStation tmp = new BusLineStation();
+                /*  UPDATE INTERVAL TO AREA SPEED!
+                if (this.area==Area.General)
+                    tmp.INTERVAL=TimeSpan.FromSeconds(tmp.DISTANCEFROMLAST / tmp.INTERURBANSPEED);
+                else
+                    tmp.INTERVAL = TimeSpan.FromSeconds(tmp.DISTANCEFROMLAST / tmp.urbanSpeed);
+                */
+                Stations.Add(tmp);
             }
 
             firstStation = Stations[0];

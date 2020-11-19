@@ -10,6 +10,8 @@
 // בגלל שכל ההכנסות מתבצעות בצורה רנדומלית, לא מימשנו פונקציית זמן בין תחנות מכיוון שהמיקומים אקראיים לחלוטין ואין לכך משמעות אצלנו, יטופל בפרויקט בו נשתמש בתחנות אמיתיות
 // מאותה סיבה אין אצלנו תחנות משותפות, אפשר להגדיל את מספרי הרנדום בתוכנית הראשית וסטטיסטית לקבל תחנות משותפות אם רוצים
 
+//נקודה חשובה - יכול להיות שבהרצה מיד יופע חריגה שיש אוטובוס קיים - זה בגלל הקצאה רנדומלית של הרבה קווים, יכולה להיות חזרה. אפשר לנסות להפעיל שוב ולא תהיה חריגה
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -227,6 +229,31 @@ namespace dotNet5781_02_5857_1544
             }
         }
 
+        public static void PrintAllStatAndTheirLines(BusLineCollection Eged)
+        {
+            List<int> arr = new List<int>(); //list of all stations
+            foreach (var line in Eged)
+            {
+                foreach (var stat in line.Stations)
+                {
+                    if (!(arr.Contains(stat.BUSSTATIONKEY)))
+                        arr.Add(stat.BUSSTATIONKEY); // enter stations to list
+                }
+            }
+
+            foreach (int statID in arr) //check lines in every station
+            {
+                List<BusLine> tmp = Eged.BusLinesInStations(statID);
+                Console.WriteLine("\nBusLines in Station number - " + statID + " : ");
+                foreach (var line in tmp)
+                {
+                    string rev = line.reverse ? " reverse " : " regular ";
+
+                    Console.Write(line.BUSLINEID + " " + rev + ", ");
+                }
+            }
+
+        }
 
 
 
@@ -303,27 +330,7 @@ namespace dotNet5781_02_5857_1544
 
                     case 8: //print all station numbers and the lines going through them
                         {
-                            List<int> arr = new List<int>(); //list of all stations
-                            foreach (var line in Eged)
-                            {
-                                foreach (var stat in line.Stations)
-                                {
-                                    if (!(arr.Contains(stat.BUSSTATIONKEY)))
-                                        arr.Add(stat.BUSSTATIONKEY); // enter stations to list
-                                }
-                            }
-
-                            foreach (int statID in arr) //check kines in every station
-                            {
-                                List<BusLine> tmp = Eged.BusLinesInStations(statID);
-                                Console.WriteLine("\nBusLines in Station number - " + statID + " : ");
-                                foreach (var line in tmp)
-                                {
-                                    string rev = line.reverse ? " reverse " : " regular ";
-
-                                    Console.Write(line.BUSLINEID + " " + rev + ", ");
-                                }
-                            }
+                            PrintAllStatAndTheirLines(Eged);
                             break;
                         }
 

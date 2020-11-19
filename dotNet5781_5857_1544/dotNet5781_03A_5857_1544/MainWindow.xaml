@@ -124,7 +124,7 @@
             Grid.Row="1"
             ItemsSource="{Binding }"
             FontFamily="Calibri Light"
-            FontSize="30"
+            FontSize="24"
             />
 
         </Grid>
