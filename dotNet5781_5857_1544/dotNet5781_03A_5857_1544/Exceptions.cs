@@ -84,3 +84,13 @@ public class BusLineDoesNotExistsException : Exception
 }
 #endregion
 
+//exception for a input of station that does not exist in the bus collection
+#region NoSuchRouteException
+[Serializable]
+public class NoSuchRouteException : Exception
+{
+    public NoSuchRouteException () : base() { }
+
+    public NoSuchRouteException (string message) : base(message) { }
+}
+#endregion

@@ -44,7 +44,7 @@ namespace dotNet5781_02_5857_1544
         }
 
 
-        public TimeSpan interval;
+        public TimeSpan interval; //duration of line
         /// <summary>
         /// private method - sets the area according to loaction in israel
         /// </summary>
@@ -64,6 +64,29 @@ namespace dotNet5781_02_5857_1544
                 }
             }
         }
+        /*
+        /// <summary>
+        /// sets time between stations to all buses
+        /// </summary>
+        public void setInterval()
+        {
+            foreach (var tmp in this.Stations)
+            {
+                if (this.area == Area.General)
+                    tmp.INTERVAL = TimeSpan.FromSeconds(tmp.DISTANCEFROMLAST / tmp.INTERURBANSPEED);
+                else
+                    tmp.INTERVAL = TimeSpan.FromSeconds(tmp.DISTANCEFROMLAST / tmp.urbanSpeed);
+            }
+
+            if (Stations.Count > 0)
+                Stations[0].INTERVAL = new TimeSpan(0,0,0);
+
+            foreach (var stat in this.Stations)
+            {
+                interval += stat.INTERVAL;
+            }
+        }
+        */
 
         /// <summary>
         /// this ctor sets a random busline number of 3 digits, and sets a random number of random stations
@@ -77,7 +100,14 @@ namespace dotNet5781_02_5857_1544
             int to = r.Next(5, 15);
             for (int i = 0; i < to; i++)
             {
-                Stations.Add(new BusLineStation());
+                BusLineStation tmp = new BusLineStation();
+                //  UPDATE INTERVAL TO AREA SPEED!
+                if (this.area == Area.General)
+                    tmp.INTERVAL = TimeSpan.FromSeconds(tmp.DISTANCEFROMLAST / tmp.INTERURBANSPEED);
+                else
+                    tmp.INTERVAL = TimeSpan.FromSeconds(tmp.DISTANCEFROMLAST / tmp.urbanSpeed);
+
+                Stations.Add(tmp);
             }
 
             firstStation = Stations[0];
@@ -86,7 +116,6 @@ namespace dotNet5781_02_5857_1544
             SetArea();
 
             this.interval = new TimeSpan(0, 0, 0);
-
 
         }
 
@@ -109,8 +138,16 @@ namespace dotNet5781_02_5857_1544
 
             this.BusLineID = id;
 
-            foreach (var item in lst) // copy all given stations. copying the list only do a reference
+            foreach (BusLineStation item in lst) // copy all given stations. copying the list only do a reference
             {
+
+                //  UPDATE INTERVAL TO AREA SPEED!
+                if (this.area == Area.General)
+                    item.INTERVAL = TimeSpan.FromSeconds(item.DISTANCEFROMLAST / item.INTERURBANSPEED);
+                else
+                    item.INTERVAL = TimeSpan.FromSeconds(item.DISTANCEFROMLAST / item.urbanSpeed);
+
+                Stations.Add(item);
                 this.Stations.Add(item);
             }
 
@@ -124,7 +161,7 @@ namespace dotNet5781_02_5857_1544
 
             if (lst.Count != 0)
             {
-                this.interval = TimeBetween2(firstStation, lastStation);
+                 this.interval = TimeBetween2(firstStation, lastStation);
             }
 
             else this.interval = new TimeSpan(0, 0, 0);
@@ -210,7 +247,8 @@ namespace dotNet5781_02_5857_1544
             firstStation = Stations[0];
             lastStation = Stations[^1];
 
-            this.interval = TimeBetween2(firstStation, lastStation);
+               this.interval = TimeBetween2(firstStation, lastStation);
+
         }
 
         /// <summary>

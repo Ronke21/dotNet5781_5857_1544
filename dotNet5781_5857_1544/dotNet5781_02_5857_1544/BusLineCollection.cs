@@ -148,7 +148,8 @@ namespace dotNet5781_02_5857_1544
                     }
                 }
             } //bus line number doesnt exist in the list
-            if (!found) throw new BusLineDoesNotExistsException("Line" + id + "does not exist");
+
+                if (!found) throw new BusLineDoesNotExistsException("Line" + id + "does not exist");
         }
 
         /// <summary>
