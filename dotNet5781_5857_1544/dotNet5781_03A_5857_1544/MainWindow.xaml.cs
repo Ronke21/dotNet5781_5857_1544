@@ -63,7 +63,7 @@ namespace dotNet5781_03A_5857_1544
             CbBusLines.SelectedIndex = 0;
             ShowBusLine(dotNet5781_02_5857_1544.BusLineCollection.Eged[0].BUSLINEID); //call func to print busline details
         }
-         
+        
         /// <summary>
         /// func to present bus details that is chosen in combo box
         /// </summary>

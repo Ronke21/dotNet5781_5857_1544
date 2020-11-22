@@ -121,14 +121,35 @@
 
             <ListBox 
             Name="LbBusLineStations" 
-            Grid.Row="1"
             ItemsSource="{Binding }"
             FontFamily="Calibri Light"
             FontSize="24"
+            Margin="0,0,0,275"
+            />
+
+            <MediaElement
+                Source="https://content.egged.co.il/content/videos/eged_shayara_short.mp4"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="0,260,0,0"
+                />
+
+            <MediaElement
+                Source="https://content.egged.co.il/content/videos/garage_720.mp4"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Width="295"
+            />
+
+            <MediaElement
+                Source="https://content.egged.co.il/content/videos/eged_station_ver_3.mp4"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0,0,0,110"
+                Width="295"
             />
 
         </Grid>
-
 
     </Grid>
 
