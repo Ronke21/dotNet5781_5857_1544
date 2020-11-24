@@ -113,7 +113,7 @@ namespace dotNet5781_03B_5857_1544
         }
         public override string ToString()
         {
-            return this.stringLicenseNum() + "\t" + (this.mileage - this.lastMaintMileage) + "\t" + this.Fuel + "\t" + this.mileage + "\t" + this.lastMaintDate.ToString("dd/MM/yyyy");
+            return this.stringLicenseNum() + "\t" + (this.mileage - this.lastMaintMileage) + "\t" + this.Fuel + "\t" + this.mileage + "\t" + this.lastMaintDate.ToString("dd/MM/yyyy") + "\t" + this.BUSSTATE.ToString();
         }
     }
 

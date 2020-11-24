@@ -60,6 +60,10 @@ namespace dotNet5781_03B_5857_1544
             lbBuses.Items.Refresh();
         }
 
-
+        private void Sort_by_status(object sender, RoutedEventArgs e)
+        {
+            Eged.Sort((bus1, bus2) => bus1.BUSSTATE.CompareTo(bus2.BUSSTATE));
+            lbBuses.Items.Refresh();
+        }
     }
 }

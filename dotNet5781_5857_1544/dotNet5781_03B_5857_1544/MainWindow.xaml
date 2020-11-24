@@ -74,6 +74,16 @@
                 Grid.Column="4"
                 Click="Sort_by_last_Maintainance"
                     />
+
+            <Button 
+                x:Name="Status"
+                Content="Status"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Grid.Column="5"
+                Click="Sort_by_status"
+            />
+
         </Grid>
 
         <Grid
