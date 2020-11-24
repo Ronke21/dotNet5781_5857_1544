@@ -72,7 +72,7 @@
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"
                 Grid.Column="4"
-                Click="Sort_by_last_Maintainance"
+                Click="Sort_by_last_Maintenance"
                     />
 
             <Button 

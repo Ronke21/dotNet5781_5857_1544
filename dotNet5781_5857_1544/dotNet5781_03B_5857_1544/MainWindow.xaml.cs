@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
+using System.Windows.Media;
 
 namespace dotNet5781_03B_5857_1544
 {
@@ -54,7 +56,7 @@ namespace dotNet5781_03B_5857_1544
             lbBuses.Items.Refresh();
         }
 
-        private void Sort_by_last_Maintainance(object sender, RoutedEventArgs e)
+        private void Sort_by_last_Maintenance(object sender, RoutedEventArgs e)
         {
             Eged.Sort((bus1, bus2) => bus1.lastMaintDate.CompareTo(bus2.lastMaintDate));
             lbBuses.Items.Refresh();
@@ -62,8 +64,24 @@ namespace dotNet5781_03B_5857_1544
 
         private void Sort_by_status(object sender, RoutedEventArgs e)
         {
-            Eged.Sort((bus1, bus2) => bus1.BUSSTATE.CompareTo(bus2.BUSSTATE));
+            // different solution in order to implement stable sort, because many buses are likely to share status
+
+            IEnumerable<Bus> b = Eged.OrderBy(bus => bus.BUSSTATE);
+
+            List<Bus> l = new List<Bus>();
+            foreach (var bus in b)
+            {
+                l.Add(bus);
+            }
+
+            Eged.Clear();
+            foreach (var bus in l)
+            {
+                Eged.Add(bus);
+            }
+            
             lbBuses.Items.Refresh();
+            //Eged.Sort((bus1, bus2) => bus1.BUSSTATE.CompareTo(bus2.BUSSTATE));
         }
     }
 }
