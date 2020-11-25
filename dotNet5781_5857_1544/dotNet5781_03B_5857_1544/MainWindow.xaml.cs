@@ -58,6 +58,7 @@ namespace dotNet5781_03B_5857_1544
 
         private void Sort_by_last_Maintenance(object sender, RoutedEventArgs e)
         {
+            // sort by the time passed from the last maintenance
             Eged.Sort((bus1, bus2) => bus1.lastMaintDate.CompareTo(bus2.lastMaintDate));
             lbBuses.Items.Refresh();
         }
