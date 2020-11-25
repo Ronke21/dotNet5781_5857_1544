@@ -9,8 +9,8 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="650"/>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="796.8"/>
+            <ColumnDefinition Width="3.2"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -19,9 +19,11 @@
         </Grid.RowDefinitions>
 
         <Grid x:Name="Buttons"
-              Grid.Row="0"
+              Grid.Row="0" Margin="0,0,4.8,599.6" Grid.RowSpan="2"
               >
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -84,19 +86,57 @@
                 Click="Sort_by_status"
             />
 
+            <Label 
+                x:Name="button1"
+                Content="button1"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Grid.Column="6"
+            />
+            <Label 
+                x:Name="button2"
+                Content="button2"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Grid.Column="7"
+            />
+
+
         </Grid>
 
         <Grid
             Name="BusGrid"
-            Grid.Row="1"
+            Grid.Row="1" Margin="0,0.4,1.8,-0.4"
             >
-            <ListBox 
+            <ListBox
             Name="lbBuses"
             HorizontalAlignment="Left"  
             VerticalAlignment="Top"
             ItemsSource="{Binding}"
-            Width="900
-            "/>
+            Width="1100
+            ">
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding}" FontWeight="Bold" FontSize="12"  />
+                            <Button Grid.Column="1" Name="button1" Click="list_click1" FontSize="12">Button1</Button>
+                            <Button Grid.Column="2" Name="button2" Click="list_click2" FontSize="12">Button2</Button>
+                        </Grid>
+                    </DataTemplate>
+
+                </ListBox.ItemTemplate>
+
+
+
+            </ListBox>
+
+
         </Grid>
 
 

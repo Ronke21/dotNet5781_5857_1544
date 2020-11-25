@@ -14,7 +14,7 @@ namespace dotNet5781_03B_5857_1544
         {
             get { return licenseNum; }
         }
-
+        public string strID;
         private Status busState;
         public Status BUSSTATE
         {
@@ -58,6 +58,7 @@ namespace dotNet5781_03B_5857_1544
             this.mileage = km;
             this.lastMaintDate = maint;
             setStatus();
+            this.strID = this.stringLicenseNum();
         }
 
         /// <summary>

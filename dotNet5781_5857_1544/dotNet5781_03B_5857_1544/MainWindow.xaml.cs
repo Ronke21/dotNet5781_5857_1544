@@ -77,5 +77,11 @@ namespace dotNet5781_03B_5857_1544
             }
             lbBuses.Items.Refresh();
         }
+        private void list_click1(object sender, RoutedEventArgs e)
+        {
+        }
+        private void list_click2(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
