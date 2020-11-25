@@ -21,7 +21,7 @@ namespace dotNet5781_03B_5857_1544
 
             for (int i = 0; i < 10; i++)
             {
-                Eged.Add(new Bus(r.Next(1000000, 9999999), new DateTime(r.Next(1948, 2017), r.Next(1, 13), r.Next(1, 31)), r.Next(1200), r.Next(19000), DateTime.Now.AddMonths(r.Next(-20,-1))));
+                Eged.Add(new Bus(r.Next(1000000, 9999999), new DateTime(r.Next(1948, 2017), r.Next(1, 13), r.Next(1, 31)), r.Next(1200), r.Next(19000), DateTime.Now.AddMonths(r.Next(-20, -1))));
                 Eged.Add(new Bus(r.Next(10000000, 99999999), new DateTime(r.Next(2018, 2020), r.Next(1, 13), r.Next(1, 31)), r.Next(1200), r.Next(19000), DateTime.Now.AddMonths(r.Next(-20, -1))));
             }
             Eged[0].lastMaintDate = DateTime.Now.AddMonths(-13);
@@ -66,22 +66,15 @@ namespace dotNet5781_03B_5857_1544
         {
             // different solution in order to implement stable sort, because many buses are likely to share status
 
-            IEnumerable<Bus> b = Eged.OrderBy(bus => bus.BUSSTATE);
+            IEnumerable<Bus> b = Eged.OrderBy(bus => bus.BUSSTATE).ToList();
 
-            List<Bus> l = new List<Bus>();
-            foreach (var bus in b)
-            {
-                l.Add(bus);
-            }
-
+            if (Eged.SequenceEqual(b)) return;
             Eged.Clear();
-            foreach (var bus in l)
+            foreach (var bus in b)
             {
                 Eged.Add(bus);
             }
-            
             lbBuses.Items.Refresh();
-            //Eged.Sort((bus1, bus2) => bus1.BUSSTATE.CompareTo(bus2.BUSSTATE));
         }
     }
 }
