@@ -87,18 +87,19 @@
             />
 
             <Label 
-                x:Name="button1"
-                Content="button1"
+                x:Name="lbl1"
+                Content=""
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"
                 Grid.Column="6"
             />
-            <Label 
-                x:Name="button2"
-                Content="button2"
+            <Button 
+                x:Name="Add"
+                Content="Add Bus"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"
                 Grid.Column="7"
+                Click="Add_Bus_to_Eged"
             />
 
 
@@ -106,7 +107,7 @@
 
         <Grid
             Name="BusGrid"
-            Grid.Row="1" Margin="0,0.4,1.8,-0.4"
+            Grid.Row="1" Margin="0,0.4,1.8,162.6"
             >
             <ListBox
             Name="lbBuses"

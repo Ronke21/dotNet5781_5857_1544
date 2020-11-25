@@ -1,0 +1,25 @@
+﻿<Window x:Class="dotNet5781_03B_5857_1544.AddBusWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotNet5781_03B_5857_1544"
+        mc:Ignorable="d"
+        Title="Add a new Bus" Height="247.394" Width="327.607">
+    <Grid Margin="0,0,3.6,-1.4">
+        <Label Content="Bus starting date: " HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label Content="Bus license number: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,31,0,0"/>
+        <Label Content="Bus fuel amount: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,63,0,0"/>
+        <Label Content="Bus mileage amount: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,94,0,0"/>
+        <Label Content="Bus last maintenance date: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,123,0,0"/>
+        
+        <TextBox Name="tbStartDate" HorizontalAlignment="Left" Height="26" Margin="157,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="155" TextChanged="TextBox_TextChanged"/>
+        <TextBox Name="tbLicense" HorizontalAlignment="Left" Height="26" Margin="157,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="155"/>
+        <TextBox Name="tbFuel" HorizontalAlignment="Left" Height="26" Margin="157,65,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="155"/>
+        <TextBox Name="tbSKM" HorizontalAlignment="Left" Height="26" Margin="157,96,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="155"/>
+        <TextBox Name="tbLastMaint" HorizontalAlignment="Left" Height="26" Margin="157,127,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="155"/>
+       
+        <Button Content="Add Bus to Eged" HorizontalAlignment="Left" Margin="93,174,0,0" VerticalAlignment="Top" Width="114" Height="35" Click="add_bus_button"/>
+
+    </Grid>
+</Window>

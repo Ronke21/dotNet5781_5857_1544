@@ -6,14 +6,16 @@ using System.Windows.Media;
 
 namespace dotNet5781_03B_5857_1544
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+  
         public static Random r = new Random(DateTime.Now.Millisecond);
 
-        private List<Bus> CurrentDisplay;
+        private Bus CurrentDisplay;
         public List<Bus> Eged = new List<Bus>(); // a list of buses - our data base!
         public MainWindow()
         {
@@ -79,9 +81,42 @@ namespace dotNet5781_03B_5857_1544
         }
         private void list_click1(object sender, RoutedEventArgs e)
         {
+            CurrentDisplay = (Bus)lbBuses.SelectedItem;
+            CurrentDisplay.Fuel = 0;
+            lbBuses.Items.Refresh();
         }
         private void list_click2(object sender, RoutedEventArgs e)
         {
+            CurrentDisplay = (Bus)lbBuses.SelectedItem;
+            CurrentDisplay.lastMaintDate = DateTime.Now;
+            lbBuses.Items.Refresh();
+        }
+
+        private void Add_Bus_to_Eged(object sender, RoutedEventArgs e)
+        {
+            /*
+            DateTime start = getStartingDate();
+
+            int id;
+            if (start.Year > 2017) //so the ID is 8 digit
+            {
+                id = get8DigitsLineID(Eged);
+            }
+            else //7 digit ID
+            {
+                id = get7DigitsLineID(Eged);
+            }
+
+            int fuel = getFuelAmount();
+
+            int km = getMileage();
+
+            DateTime lastMaint = getLastMaint();
+
+            Eged.Add(new Bus(id, start, fuel, km, lastMaint)); //send details to constructor
+            */
+            AddBusWindow addingWin = new AddBusWindow();
+            addingWin.Show();
         }
     }
 }
