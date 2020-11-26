@@ -28,11 +28,13 @@ namespace dotNet5781_03B_5857_1544
                 Eged.Add(new Bus(r.Next(1000000, 9999999), new DateTime(r.Next(1948, 2018), r.Next(1, 13), 1), r.Next(1201), r.Next(19000), DateTime.Now.AddMonths(r.Next(-20, -1))));
                 Eged.Add(new Bus(r.Next(10000000, 99999999), new DateTime(r.Next(2018, 2021), r.Next(1, 13), 1), r.Next(1201), r.Next(19000), DateTime.Now.AddMonths(r.Next(-20, -1))));
             }
+
             Eged[0].lastMaintDate = DateTime.Now.AddMonths(-13);
             Eged[1].lastMaintDate = DateTime.Now.AddMonths(-11);
             Eged[2].Fuel = 10;
 
             LbBuses.ItemsSource = Eged;
+
         }
 
         private void Sort_by_ID(object sender, RoutedEventArgs e)
@@ -94,6 +96,13 @@ namespace dotNet5781_03B_5857_1544
         {
             AddBusWindow addingWin = new AddBusWindow();
             addingWin.ShowDialog();
+            LbBuses.Items.Refresh();
+        }
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
+            ChooseBusWindow chooseBus = new ChooseBusWindow(CurrentDisplay);
+            chooseBus.ShowDialog();
             LbBuses.Items.Refresh();
         }
     }

@@ -119,6 +119,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="0.5*" />
                                 <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition Width="0.5*" />
                             </Grid.ColumnDefinitions>
 
                             <TextBlock
@@ -199,6 +200,11 @@
                                     <Image Source="https://img.icons8.com/wired/344/gear.png"/>
                                 </Viewbox>
                             </Button>
+
+                            <Button Name="ChooseBusForARide"
+                                Grid.Column="8"
+                                Click="ButtonBase_OnClick"
+                                ></Button>
 
                         </Grid>
 

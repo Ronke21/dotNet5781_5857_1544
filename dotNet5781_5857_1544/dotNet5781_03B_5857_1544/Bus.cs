@@ -88,6 +88,15 @@ namespace dotNet5781_03B_5857_1544
             setStatus();
         }
 
+        public Bus()
+        {
+            this.licenseNum = 0;
+            this.startService = DateTime.Today;
+            this.Fuel = 0;
+            this.mileage = 0;
+            this.lastMaintDate = DateTime.Today;
+            setStatus();
+        }
         /// <summary>
         ///checks if we passed 20,000 km from last maintenance care -so we can't ride until we do another care
         /// </summary>
