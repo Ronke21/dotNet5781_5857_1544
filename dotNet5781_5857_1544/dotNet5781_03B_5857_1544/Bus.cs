@@ -10,25 +10,51 @@ namespace dotNet5781_03B_5857_1544
     public class Bus
     {
         private int licenseNum;   // licenseNum is the bus id - can't be changed, so property has only get!
-        public int LICENSENUM
+        public int LICENSENUMINT
         {
             get { return licenseNum; }
         }
-        public string strID;
+        public string LICENSENUMSTR
+        {
+            get
+            {
+                string num = licenseNum.ToString();
+                return (num.Length > 7) ? num.Insert(3, "-").Insert(6, "-") : num.Insert(2, "-").Insert(6, "-");
+            }
+        }
+
         private Status busState;
         public Status BUSSTATE
         {
             get { return busState; }
             set { busState = value; }
         }
-        public DateTime startService { get; set; }   //the day that the bus started riding
-        public double Fuel { get; set; }             //amount of fuel in tank
+        public string BUSSTATESTR
+        {
+            get { return busState.ToString(); }
+        }
 
-        private double mileage;                      //the total kilometers the bus drived - private so it won't be changed to less, can be only added.
-        public double MILEAGE
+        public DateTime startService { get; set; }   //the day that the bus started riding
+        public int Fuel { get; set; }             //amount of fuel in tank
+        public string FUELTSTR
+        {
+            get { return Convert.ToString(Fuel); }
+        }
+
+        private int mileage;                      //the total kilometers the bus drived - private so it won't be changed to less, can be only added.
+        public int MILEAGE
         {
             get { return mileage; }
         }
+        public string MILEAGESTR
+        {
+            get { return Convert.ToString(mileage); }
+        }
+        public string MILAGESINCELASTMAINTSTR
+        {
+            get { return Convert.ToString(mileage - lastMaintMileage); }
+        }
+
         public void setStatus(int ride = 0)
         {
             if (!this.qualifiedDate() || !this.qualifiedMilage(ride))
@@ -37,7 +63,6 @@ namespace dotNet5781_03B_5857_1544
                 BUSSTATE = Status.reFueling;
             else
                 BUSSTATE = Status.Ready;
-
         }
         public void addToMileage(int add)            //add to milage, public because it is used after rides
         {
@@ -47,9 +72,12 @@ namespace dotNet5781_03B_5857_1544
                 setStatus();
             }
         }
-        public double lastMaintMileage { get; set; } = 0;   //the Kilometers level in the last maintenance care. for qualifacation
+        public int lastMaintMileage { get; set; } = 0;   //the Kilometers level in the last maintenance care. for qualifacation
         public DateTime lastMaintDate { get; set; }         //the last date of maintenance care. for qualifacation
-
+        public string LASTMAINTDATESTR
+        {
+            get { return lastMaintDate.ToString("dd/MM/yyyy"); }
+        }
         public Bus(int ID, DateTime begin, int delek, int km, DateTime maint) //constructor, get all the details from user.
         {
             this.licenseNum = ID;
@@ -58,7 +86,6 @@ namespace dotNet5781_03B_5857_1544
             this.mileage = km;
             this.lastMaintDate = maint;
             setStatus();
-            this.strID = this.stringLicenseNum();
         }
 
         /// <summary>
@@ -93,28 +120,17 @@ namespace dotNet5781_03B_5857_1544
         {
             return qualifiedFuel(ride) && qualifiedDate() && qualifiedMilage();
         }
-        /// <summary>
-        /// a function that receive the bus id as an integer and returns as a string in the correct form (xx-xxx-xx)
-        /// <returns></returns>
-        public string stringLicenseNum()
-        {
-            string num = licenseNum.ToString();
-            if (licenseNum > 9999999)
-            {
-                return num.Substring(0, 3) + "-" + num.Substring(3, 2) + "-" + num.Substring(5, 3);
-            }
-            return num.Substring(0, 2) + "-" + num.Substring(2, 3) + "-" + num.Substring(5, 2);
-        }
+
         /// <summary>
         ///a func that prints a bus details
         /// </summary>
         public void printMilageSinceLastMaint()
         {
-            Console.WriteLine("\nBus number: " + this.stringLicenseNum() + "\t\tMileage since last maintenance: " + (this.mileage - this.lastMaintMileage) + "\t\tFuel amount: " + this.Fuel + "\t\tMileage: " + this.mileage + "\t\tDate of last maintenance: " + this.lastMaintDate);
+            Console.WriteLine("\nBus number: " + this.LICENSENUMSTR + "\t\tMileage since last maintenance: " + (this.mileage - this.lastMaintMileage) + "\t\tFuel amount: " + this.Fuel + "\t\tMileage: " + this.mileage + "\t\tDate of last maintenance: " + this.lastMaintDate);
         }
         public override string ToString()
         {
-            return this.stringLicenseNum() + "\t" + (this.mileage - this.lastMaintMileage) + "\t" + this.Fuel + "\t" + this.mileage + "\t" + this.lastMaintDate.ToString("dd/MM/yyyy") + "\t" + this.BUSSTATE.ToString();
+            return this.LICENSENUMSTR + "\t" + (this.mileage - this.lastMaintMileage) + "\t" + this.Fuel + "\t" + this.mileage + "\t" + this.lastMaintDate.ToString("dd/MM/yyyy") + "\t" + this.BUSSTATE.ToString();
         }
     }
 

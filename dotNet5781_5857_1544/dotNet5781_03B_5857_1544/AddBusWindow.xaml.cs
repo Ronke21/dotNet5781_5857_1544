@@ -19,106 +19,101 @@ namespace dotNet5781_03B_5857_1544
     /// </summary>
     public partial class AddBusWindow : Window
     {
-
-        public static DateTime getStartingDate()
-        {
-            DateTime start;
-            do
-            {
-                Console.WriteLine("Please enter the bus starting date (dd/mm/yyyy): ");
-                DateTime.TryParse(Console.ReadLine(), out start);
-            }
-            while (start.Year < 1948); //recieve a valid starting date since the establishment of Israel
-            return start;
-        }
-        public static DateTime getLastMaint()
-        {
-            DateTime lastMaint;
-            do
-            {
-                Console.WriteLine("Please enter the last maintenance date (dd/mm/yyyy): ");
-                DateTime.TryParse(Console.ReadLine(), out lastMaint);
-            } while (lastMaint.Year < 1948);
-            return lastMaint;
-        }
-        public static int get8DigitsLineID(List<Bus> DB)
-        {
-            int id;
-            bool exist = false;
-            do
-            {
-                exist = false;
-                Console.WriteLine("Please enter the bus license number (8 digits): ");
-                Int32.TryParse(Console.ReadLine(), out id);
-                foreach (var bus in DB)
-                {
-                    if (id == bus.LICENSENUM)
-                    {
-                        exist = true;
-                        break;
-                    }
-                }
-            } while ((id < 10000000) || (id > 99999999) || exist); //valid id 8 digits
-            return id;
-        }
-
-        public static int get7DigitsLineID(List<Bus> DB)
-        {
-            int id;
-            bool exist = false;
-            do
-            {
-                Console.WriteLine("Please enter the bus license number (7 digits): ");
-                Int32.TryParse(Console.ReadLine(), out id);
-                foreach (var bus in DB)
-                {
-                    if (id == bus.LICENSENUM)
-                    {
-                        exist = true;
-                        break;
-                    }
-                }
-            }
-            while ((id < 1000000) || (id > 9999999) || exist); //valid id 7 digits
-            return id;
-        }
-
-        public static int getFuelAmount()
-        {
-            int fuel;
-            do
-            {
-                Console.WriteLine("Please enter the bus fuel amount (how many KM left in tank): ");
-                Int32.TryParse(Console.ReadLine(), out fuel);
-            } while (fuel < 0 || fuel > 1200); //valid fuel amount according to the tank size
-            return fuel;
-        }
-
-        public static int getMileage()
-        {
-            int km;
-            do
-            {
-                Console.WriteLine("Please enter the bus milage amount (how many KM he drived): ");
-                Int32.TryParse(Console.ReadLine(), out km);
-            } while (km < 0); //valid km is positive
-            return km;
-        }
-
         public AddBusWindow()
         {
             InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBoxBusLicenseNumber_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-
+            int.TryParse(TextBoxBusLicenseNumber.Text, out int num);
+            if (num > 99999999)
+            {
+                MessageBox.Show("not valid");
+            }
         }
-
-        private void add_bus_button(object sender, RoutedEventArgs e)
+        private void TextBoxBusLicenseNumber_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            
-            this.Close();
+            int.TryParse(TextBoxBusLicenseNumber.Text, out int num);
+            if (TextBoxBusLicenseNumber.Text != String.Empty)
+            {
+                if (num < 1000000)
+                {
+                    MessageBox.Show("not valid");
+                }
+            }
+        }
+        private void TextBoxFuelAmount_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            int.TryParse(TextBoxFuelAmount.Text, out int fuel);
+            if (fuel < 0 || fuel > 1200)
+            {
+                MessageBox.Show("not valid");
+            }
+        }
+        private void TextBoxMileage_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            int.TryParse(TextBoxMileage.Text, out int mileage);
+            if (mileage < 0 || mileage > 1000000)
+            {
+                MessageBox.Show("not valid");
+            }
+        }
+        private void DatePickerStart_OnCalendarClosed(object sender, RoutedEventArgs e)
+        {
+            if (DatePickerStart.Text == String.Empty)
+            {
+                DatePickerStart.SelectedDate = DateTime.Today;
+            }
+            DateTime.TryParse(DatePickerStart.Text, out DateTime last);
+            if (DatePickerStart.SelectedDate != DateTime.Today)
+            {
+                if (last > DateTime.Today || last < new DateTime(2000, 1, 1))
+                {
+                    MessageBox.Show("not valid");
+                }
+            }
+        }
+        private void DatePickerLastMaintenance_OnCalendarClosed(object sender, RoutedEventArgs e)
+        {
+            if (DatePickerLastMaintenance.Text == String.Empty)
+            {
+                DatePickerLastMaintenance.SelectedDate = DateTime.Today;
+            }
+            DateTime.TryParse(DatePickerLastMaintenance.Text, out DateTime last);
+            if (DatePickerLastMaintenance.SelectedDate != DateTime.Today)
+            {
+                if (last > DateTime.Today || last < new DateTime(2000, 1, 1))
+                {
+                    MessageBox.Show("not valid");
+                }
+            }
+        }
+        private void Add_OnClick(object sender, RoutedEventArgs e)
+        {
+            DateTime.TryParse(DatePickerStart.Text, out DateTime start);
+            DateTime.TryParse(DatePickerLastMaintenance.Text, out DateTime last);
+
+            int.TryParse(TextBoxBusLicenseNumber.Text, out int license);
+
+            int.TryParse(TextBoxFuelAmount.Text, out int fuel);
+            int.TryParse(TextBoxMileage.Text, out int mileage);
+
+            if (start.Year > 2017)
+            {
+                if (license < 1000000)
+                {
+                    MessageBox.Show("");
+                }
+            }
+            else if (license > 99999999)
+            {
+                MessageBox.Show("");
+            }
+
+            MainWindow.Eged.Add(new Bus(license, start, fuel, mileage, last));
+
+            Close();
         }
     }
 }

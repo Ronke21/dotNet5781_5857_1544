@@ -5,22 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_5857_1544"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="800">
+        Title="MainWindow" Height="650" Width="725">
+
     <Grid>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="796.8"/>
-            <ColumnDefinition Width="3.2"/>
-        </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="600"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="600*"/>
         </Grid.RowDefinitions>
 
         <Grid x:Name="Buttons"
-              Grid.Row="0" Margin="0,0,4.8,599.6" Grid.RowSpan="2"
-              >
+              Grid.Column="0"
+              Grid.Row="0" 
+        >
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -28,118 +26,192 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
 
-            <Button 
-                x:Name="BusLineNum"
-                Content="ID"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                Grid.Column="0"
-                Click="Sort_by_ID"
-                    />
-
-            <Button 
-                x:Name="Mileage_from_last_maint"
-                Content="   mileage from&#xa;last maintainance"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                Grid.Column="1"
-                Click="Sort_by_last_maint"
-                    />
-
-            <Button 
-                x:Name="fuel"
-                Content="Fuel"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                Grid.Column="2"
-                Click="Sort_by_fuel_Amount"
-                    />
-
-            <Button 
-                x:Name="total_mileage"
-                Content="Mileage"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                Grid.Column="3"
-                Click="Sort_by_Mileage"
-                    />
-
-            <Button 
-                x:Name="Last_Maintainance"
-                Content="Last Maintainance"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                Grid.Column="4"
-                Click="Sort_by_last_Maintenance"
-                    />
-
-            <Button 
-                x:Name="Status"
-                Content="Status"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                Grid.Column="5"
-                Click="Sort_by_status"
+            <Button x:Name="BusLineNum"
+                    Content="ID"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Grid.Column="0"
+                    Click="Sort_by_ID"
             />
 
-            <Label 
-                x:Name="lbl1"
-                Content=""
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                Grid.Column="6"
+            <Button x:Name="MileageFromLastMaintenance"
+                    Content="   mileage from&#xa;last maintenance"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Grid.Column="1"
+                    Click="Sort_by_last_maint"
             />
-            <Button 
-                x:Name="Add"
-                Content="Add Bus"
+
+            <Button x:Name="Fuel"
+                    Content="Fuel"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Grid.Column="2"
+                    Click="Sort_by_fuel_Amount"
+            />
+
+            <Button x:Name="TotalMileage"
+                    Content="Mileage"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Grid.Column="3"
+                    Click="Sort_by_Mileage"
+            />
+
+            <Button x:Name="LastMaintenance"
+                    Content="Last Maintenance"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Grid.Column="4"
+                    Click="Sort_by_last_Maintenance"
+            />
+
+            <Button x:Name="Status"
+                    Content="Status"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Grid.Column="5"
+                    Click="Sort_by_status"
+            />
+
+            <Button x:Name="Add"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"
-                Grid.Column="7"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
                 Click="Add_Bus_to_Eged"
-            />
-
+                Grid.Column="7"
+                >
+                <Image Source="https://img.icons8.com/pastel-glyph/344/plus--v1.png"/>
+            </Button>
 
         </Grid>
 
         <Grid
-            Name="BusGrid"
-            Grid.Row="1" Margin="0,0.4,1.8,162.6"
+            Name="BusesGrid"
+            Grid.Row="1"
             >
+
             <ListBox
-            Name="lbBuses"
-            HorizontalAlignment="Left"  
+            Name="LbBuses"
+            HorizontalAlignment="Stretch"  
             VerticalAlignment="Top"
-            ItemsSource="{Binding}"
-            Width="1100
-            ">
+            >
 
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
+
+                        <Grid Name ="BusDetails"
+                              Width="677"
+                              Height="40"
+                        >
+
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition Width="0.5*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding}" FontWeight="Bold" FontSize="12"  />
-                            <Button Grid.Column="1" Name="button1" Click="list_click1" FontSize="12">Button1</Button>
-                            <Button Grid.Column="2" Name="button2" Click="list_click2" FontSize="12">Button2</Button>
+
+                            <TextBlock
+                                Name ="ID"
+                                Grid.Column="0"
+                                Text="{Binding Path=LICENSENUMSTR}"
+                                FontWeight="Bold"
+                                FontSize="12"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                />
+
+                            <TextBlock
+                                Name ="mileage"
+                                Grid.Column="1"
+                                Text="{Binding Path=MILAGESINCELASTMAINTSTR}"
+                                FontWeight="Bold"
+                                FontSize="12"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                            />
+
+                            <TextBlock
+                                Name ="Fuel"
+                                Grid.Column="2"
+                                Text="{Binding Path=FUELTSTR}"
+                                FontWeight="Bold"
+                                FontSize="12"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                            />
+
+                            <TextBlock
+                                Name ="Mileage"
+                                Grid.Column="3"
+                                Text="{Binding Path=MILEAGESTR}"
+                                FontWeight="Bold"
+                                FontSize="12"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                            />
+
+                            <TextBlock
+                                Name ="LastMaintenance"
+                                Grid.Column="4"
+                                Text="{Binding Path=LASTMAINTDATESTR}"
+                                FontWeight="Bold"
+                                FontSize="12"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                            />
+
+                            <TextBlock
+                                Name ="Status"
+                                Grid.Column="5"
+                                Text="{Binding Path=BUSSTATESTR}"
+                                FontWeight="Bold"
+                                FontSize="12"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                            />
+                            <Button
+                                Grid.Column="6"
+                                Name="Refuel"
+                                Click="Refuel"
+                                FontSize="12">
+                                <Viewbox>
+                                    <Image Source="https://img.icons8.com/dotty/344/gas-pump.png"/>
+                                </Viewbox>
+                            </Button>
+
+                            <Button
+                                Grid.Column="7"
+                                Name="Maintain"
+                                Click="Maintain" 
+                                FontSize="12">
+                                <Viewbox>
+                                    <Image Source="https://img.icons8.com/wired/344/gear.png"/>
+                                </Viewbox>
+                            </Button>
+
                         </Grid>
+
                     </DataTemplate>
 
                 </ListBox.ItemTemplate>
 
-
-
             </ListBox>
 
+            
 
         </Grid>
 
-
     </Grid>
+
 </Window>
