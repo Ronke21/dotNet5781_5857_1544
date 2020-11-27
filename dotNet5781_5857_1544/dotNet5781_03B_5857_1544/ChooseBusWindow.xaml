@@ -14,8 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <TextBox Name="ChooseMileage"
+        <TextBox x:Name="ChooseMileage"
             Grid.Row="0"
             Width="200"
             Height="50"
@@ -23,7 +22,7 @@
             HorizontalContentAlignment="Center"
             VerticalAlignment="Center"
             VerticalContentAlignment="Center"
-            KeyDown="ChooseMileage_OnKeyDown"
+            KeyDown="ChooseMileage_OnKeyDown" Margin="47,109,46.6,61"
             />
 
     </Grid>

@@ -96,5 +96,10 @@ namespace dotNet5781_03A_5857_1544
             UpGrid.DataContext = currentDisplayBusLine;
             LbBusLineStations.DataContext = currentDisplayBusLine.Stations;
         }
+
+        private void LbBusLineStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
