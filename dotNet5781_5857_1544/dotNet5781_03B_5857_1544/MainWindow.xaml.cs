@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -112,7 +109,10 @@ namespace dotNet5781_03B_5857_1544
 
         private async void Refuel(object sender, RoutedEventArgs e)
         {
-            if (sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
+            if (sender != null && sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
+
+            Progress<Reporter> reportProgress = new Progress<Reporter>();
+            reportProgress.ProgressChanged += reportFuelAmount;
 
             CurrentDisplay.BUSSTATE = dotNet5781_03B_5857_1544.Status.Refueling;
             LbBuses.Items.Refresh();
@@ -129,15 +129,23 @@ namespace dotNet5781_03B_5857_1544
 
             else
             {
-                await RefuelAsync();
+                await RefuelAsync(reportProgress);
 
                 LbBuses.Items.Refresh();
             }
         }
 
-        private async Task RefuelAsync()
+        private void reportFuelAmount(object sender, Reporter e)
         {
+            ProgressReport.Value = e.PercentageComplete;
+        }
+
+        private async Task RefuelAsync(IProgress<Reporter> progress)
+        {
+            Reporter reporter = new Reporter();
             await Task.Run(() => CurrentDisplay.Refuel());
+            reporter.PercentageComplete = CurrentDisplay.Fuel;
+            progress.Report(reporter);
         }
 
         //private void Maintain(object sender, RoutedEventArgs e)
@@ -158,7 +166,7 @@ namespace dotNet5781_03B_5857_1544
 
         void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            if (sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
+            if (sender != null && sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
             ChooseBusWindow chooseBus = new ChooseBusWindow(CurrentDisplay);
 
             if (!CurrentDisplay.qualifiedDate())
@@ -182,5 +190,11 @@ namespace dotNet5781_03B_5857_1544
             LbBuses.Items.Refresh();
         }
 
+        private void EXIT_OnClick(object sender, RoutedEventArgs e)
+        {
+            ApproveClosing AC = new ApproveClosing();
+            var ans = AC.ShowDialog();
+            if((bool)ans) Close();
+        }
     }
 }

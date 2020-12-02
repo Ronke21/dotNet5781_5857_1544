@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net.Mime;
-using System.Text;
 using System.Threading;
 
 namespace dotNet5781_03B_5857_1544
@@ -146,7 +143,11 @@ namespace dotNet5781_03B_5857_1544
         public void Refuel()
         {
             BUSSTATE = Status.Refueling;
-            Thread.Sleep(5000);
+            int toFill = 1200 - Fuel;
+            for (; Fuel < 1200; Fuel += (toFill / 10))
+            {
+                Thread.Sleep(500);
+            }
             Fuel = 1200;
             setStatus();
         }

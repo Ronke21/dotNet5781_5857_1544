@@ -2,7 +2,6 @@
  all the inheritances from Exception class
  */
 using System;
-using System.Runtime.Serialization;
 
 //exception for input of a station location that is not in Israel
 #region NotInIsraelException

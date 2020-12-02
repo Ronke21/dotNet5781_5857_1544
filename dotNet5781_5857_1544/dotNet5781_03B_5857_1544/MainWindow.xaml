@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_5857_1544"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="725">
-
+        Title="MainWindow"
+        WindowState="Maximized"
+        WindowStyle="None"
+        >
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="600*"/>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="750*"/>
         </Grid.RowDefinitions>
 
         <Grid x:Name="Buttons"
@@ -78,15 +80,37 @@
                     Click="Sort_by_status"
             />
 
-            <Button x:Name="Add"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                Click="Add_Bus_to_Eged"
+            <Button
                 Grid.Column="7"
-                >
-                <Image Source="https://img.icons8.com/pastel-glyph/344/plus--v1.png"/>
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+
+                Click="EXIT_OnClick"
+            >
+
+                <Image Source="https://img.icons8.com/carbon-copy/344/exit.png"/>
+
+                <Button.Resources>
+
+                    <Style TargetType="Border">
+
+                        <Setter 
+                            Property="CornerRadius" 
+                            Value="10"
+                        />
+
+                    </Style>
+
+                </Button.Resources>
+
+                <Button.Effect>
+                    <DropShadowEffect
+                        BlurRadius="15"
+                        Color="Gray"
+                        ShadowDepth="1"
+                    />
+                </Button.Effect>
+
             </Button>
 
         </Grid>
@@ -123,7 +147,7 @@
                             <DataTrigger
 
                                 Binding="{Binding BUSSTATESTR}"
-                                Value="inMaintenance">
+                                Value="InMaintenance">
                                 
                                 <Setter 
                                     Property="Background"
@@ -176,9 +200,9 @@
                     <DataTemplate>
 
                         <Grid Name ="BusDetails"
-                              Height="40"
-                              Width="750"
-                        >
+                              Height="45"
+                              Width="1500"
+                              >
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -189,7 +213,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="0.5*" />
                                 <ColumnDefinition Width="0.5*" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="0.5*" />
                                 <!--<ColumnDefinition Width="0.5*" />-->
                             </Grid.ColumnDefinitions>
 
@@ -266,21 +290,8 @@
 
                             </Button>
 
-                            <!--<Button
-
-                                Grid.Column="7"
-                                Name="Maintain"
-                                Click="Maintain" 
-                                FontSize="12">
-
-                                <Viewbox>
-                                    <Image Source="https://img.icons8.com/wired/344/gear.png"/>
-                                </Viewbox>
-
-                            </Button>-->
-
                             <Button Name="ChooseBusForARide"
-                                Grid.Column="8"
+                                Grid.Column="7"
                                 Click="ButtonBase_OnClick"
                                 >
 
@@ -288,13 +299,19 @@
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
                                     >
+
                                     <Image
                                         Source="https://icons.iconarchive.com/icons/icons8/ios7/128/Transport-Bus-2-icon.png"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         />
+
                                 </Viewbox>
+
                             </Button>
+
+
+
 
                         </Grid>
 
@@ -304,7 +321,50 @@
 
             </ListBox>
 
+            <Button x:Name="Add"
+                    Width="75"
+                    Height="75"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,15,15"
+                    Click="Add_Bus_to_Eged"
+            >
 
+                <Image Source="https://img.icons8.com/pastel-glyph/344/plus--v1.png"/>
+
+                <Button.Resources>
+
+                    <Style TargetType="Border">
+
+                        <Setter 
+                            Property="CornerRadius" 
+                            Value="50"
+                        />
+
+                    </Style>
+
+                </Button.Resources>
+
+                <Button.Effect>
+                    <DropShadowEffect
+                        BlurRadius="15"
+                        Color="Gray"
+                        ShadowDepth="1"
+                    />
+                </Button.Effect>
+
+            </Button>
+
+            <ProgressBar
+                x:Name ="ProgressReport"
+                Width="150"
+                Height="30"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Value="0"
+            />
 
         </Grid>
 
