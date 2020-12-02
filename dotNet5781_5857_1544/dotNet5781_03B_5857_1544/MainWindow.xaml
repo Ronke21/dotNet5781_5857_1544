@@ -214,7 +214,7 @@
                                 <ColumnDefinition Width="0.5*" />
                                 <ColumnDefinition Width="0.5*" />
                                 <ColumnDefinition Width="0.5*" />
-                                <!--<ColumnDefinition Width="0.5*" />-->
+                                <ColumnDefinition Width="0.5*" />
                             </Grid.ColumnDefinitions>
 
                             <TextBlock
@@ -310,6 +310,15 @@
 
                             </Button>
 
+                            <ProgressBar
+                                Name="pbStatus"
+                                Grid.Column="8" 
+                                Grid.ColumnSpan="3" 
+                                Background="White" 
+                                Minimum = "0"
+                                Value="{Binding Path = Fuel, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                                Maximum="100"
+                                />
 
 
 
@@ -363,7 +372,7 @@
                 Height="30"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
-                Value="0"
+                Value="55"
             />
 
         </Grid>

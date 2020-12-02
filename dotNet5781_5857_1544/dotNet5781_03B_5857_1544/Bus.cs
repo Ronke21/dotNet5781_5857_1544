@@ -3,11 +3,14 @@ using System.Threading;
 
 namespace dotNet5781_03B_5857_1544
 {
+
     /// <summary>
     ///     /// class representing a bus unit
     /// </summary>
     public class Bus
     {
+        public static Random r = new Random(DateTime.Now.Millisecond);
+
         private int licenseNum;   // licenseNum is the bus id - can't be changed, so property has only get!
         public int LICENSENUMINT
         {
@@ -155,7 +158,7 @@ namespace dotNet5781_03B_5857_1544
         public void Ride(int km)
         {
             BUSSTATE = Status.During;
-            Thread.Sleep(km * 100); // (mileage / 60) * 6000, km/10 = num of seconds
+            Thread.Sleep(((km / r.Next(20, 50)) / 3600)*1000); // (mileage / 60) * 6000, km/10 = num of seconds
             addToMileage(km);
             setStatus();
         }

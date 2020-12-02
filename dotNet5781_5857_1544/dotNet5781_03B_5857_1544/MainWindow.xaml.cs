@@ -110,6 +110,7 @@ namespace dotNet5781_03B_5857_1544
         private async void Refuel(object sender, RoutedEventArgs e)
         {
             if (sender != null && sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
+            LbBuses.SelectedItem = null;
 
             Progress<Reporter> reportProgress = new Progress<Reporter>();
             reportProgress.ProgressChanged += reportFuelAmount;
@@ -148,15 +149,6 @@ namespace dotNet5781_03B_5857_1544
             progress.Report(reporter);
         }
 
-        //private void Maintain(object sender, RoutedEventArgs e)
-        //{
-        //    if (sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
-        //    CurrentDisplay.lastMaintDate = DateTime.Now;
-        //    CurrentDisplay.Fuel = 1200;
-        //    CurrentDisplay.setStatus();
-        //    LbBuses.Items.Refresh();
-        //}
-
         private void Add_Bus_to_Eged(object sender, RoutedEventArgs e)
         {
             AddBusWindow addingWin = new AddBusWindow();
@@ -168,6 +160,7 @@ namespace dotNet5781_03B_5857_1544
         {
             if (sender != null && sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
             ChooseBusWindow chooseBus = new ChooseBusWindow(CurrentDisplay);
+            LbBuses.SelectedItem = null;
 
             if (!CurrentDisplay.qualifiedDate())
             {
@@ -186,15 +179,19 @@ namespace dotNet5781_03B_5857_1544
         {
             CurrentDisplay = (Bus)LbBuses.SelectedItem;
             listDoubleClick doubleC = new listDoubleClick(CurrentDisplay);
+            LbBuses.SelectedItem = null;
             doubleC.ShowDialog();
             LbBuses.Items.Refresh();
         }
 
         private void EXIT_OnClick(object sender, RoutedEventArgs e)
         {
+            /*
             ApproveClosing AC = new ApproveClosing();
             var ans = AC.ShowDialog();
             if((bool)ans) Close();
+            */
+            Close();
         }
     }
 }
