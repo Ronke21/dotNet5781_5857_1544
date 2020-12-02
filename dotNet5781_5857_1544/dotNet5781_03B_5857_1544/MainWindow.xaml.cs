@@ -20,7 +20,6 @@ namespace dotNet5781_03B_5857_1544
 
         private Bus CurrentDisplay;
         public static List<Bus> Eged = new List<Bus>(); // a list of buses - our data base!
-        public static ObservableCollection<Bus> Egged = new ObservableCollection<Bus>(); // a list of buses - our data base!
 
 
         public MainWindow()
@@ -42,50 +41,36 @@ namespace dotNet5781_03B_5857_1544
             Eged[2].Fuel = 10;
             Eged[2].setStatus();
 
-            LbBuses.ItemsSource = Egged;
+            LbBuses.ItemsSource = Eged;
 
-            EgedToEgged();
         }
 
-        public void EgedToEgged()
-        {
-            Egged.Clear();
-            foreach (var bus in Eged)
-            {
-                Egged.Add(bus);
-            }
-        }
 
         #region Sort
         private void Sort_by_ID(object sender, RoutedEventArgs e)
         {
             Eged.Sort((bus1, bus2) => bus1.LICENSENUMINT.CompareTo(bus2.LICENSENUMINT));
-            EgedToEgged();
             LbBuses.Items.Refresh();
         }
         private void Sort_by_last_maint(object sender, RoutedEventArgs e)
         {
             Eged.Sort((bus1, bus2) => (bus1.MILEAGE - bus1.lastMaintMileage).CompareTo((bus2.MILEAGE - bus2.lastMaintMileage)));
-            EgedToEgged();
             LbBuses.Items.Refresh();
         }
         private void Sort_by_fuel_Amount(object sender, RoutedEventArgs e)
         {
             Eged.Sort((bus1, bus2) => bus2.Fuel.CompareTo(bus1.Fuel));
-            EgedToEgged();
             LbBuses.Items.Refresh();
         }
         private void Sort_by_Mileage(object sender, RoutedEventArgs e)
         {
             Eged.Sort((bus1, bus2) => bus1.MILEAGE.CompareTo(bus2.MILEAGE));
-            EgedToEgged();
             LbBuses.Items.Refresh();
         }
         private void Sort_by_last_Maintenance(object sender, RoutedEventArgs e)
         {
             // sort by the time passed from the last maintenance
             Eged.Sort((bus1, bus2) => bus1.lastMaintDate.CompareTo(bus2.lastMaintDate));
-            EgedToEgged();
             LbBuses.Items.Refresh();
         }
         private void Sort_by_status(object sender, RoutedEventArgs e)
@@ -100,7 +85,6 @@ namespace dotNet5781_03B_5857_1544
             {
                 Eged.Add(bus);
             }
-            EgedToEgged();
             LbBuses.Items.Refresh();
         }
 
@@ -113,7 +97,7 @@ namespace dotNet5781_03B_5857_1544
             LbBuses.SelectedItem = null;
 
             Progress<Reporter> reportProgress = new Progress<Reporter>();
-            reportProgress.ProgressChanged += reportFuelAmount;
+        //    reportProgress.ProgressChanged += reportFuelAmount;
 
             CurrentDisplay.BUSSTATE = dotNet5781_03B_5857_1544.Status.Refueling;
             LbBuses.Items.Refresh();

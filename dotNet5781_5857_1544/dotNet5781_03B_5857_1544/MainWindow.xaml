@@ -317,7 +317,7 @@
                                 Background="White" 
                                 Minimum = "0"
                                 Value="{Binding Path = Fuel, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
-                                Maximum="100"
+                                Maximum="1200"
                                 />
 
 
