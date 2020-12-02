@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,39 +22,64 @@ namespace dotNet5781_03B_5857_1544
     public partial class ChooseBusWindow : Window
     {
         private Bus b;
+        MainWindow wnd = (MainWindow)Application.Current.MainWindow;
+
         public ChooseBusWindow(Bus bus)
         {
             InitializeComponent();
-            b = bus;
+            this.b = bus;
         }
 
+
+        // BONUS
         private void ChooseMileage_OnKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
+
                 int.TryParse(ChooseMileage.Text, out int mileage);
 
-                if (b.Fuel < mileage)
+                if (b.MILEAGE - b.lastMaintMileage + mileage > 20000)
                 {
+                    Close();
                     MessageBox.Show("this bus is not qualified for a ride\ntake it to maintenance");
-                    Close();
                 }
 
-                if (mileage > 1200)
+                else if (mileage > 1200)
                 {
+                    Close();
                     MessageBox.Show("ride cannot be over 1200KM");
-                    Close();
                 }
 
-                if (mileage > b.Fuel)
+                else if (mileage > b.Fuel)
                 {
-                    MessageBox.Show("not enough fuel\nplease refuel");
                     Close();
+                    MessageBox.Show("not enough fuel\nplease refuel");
                 }
 
-                b.addToMileage(mileage);
-                MessageBox.Show("the bus has made the ride successfully");
-                Close();
+                else
+                {
+                    Close();
+
+                    Thread rideThread = new Thread(() => b.Ride(mileage));
+                    rideThread.Start();
+                    wnd.LbBuses.Items.Refresh();
+                    MessageBox.Show("the bus has started the ride");
+                    while (rideThread.IsAlive) { }
+                    wnd.LbBuses.Items.Refresh();
+                }
+            }
+        }
+
+
+        // BONUS
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+            if (e.Handled)
+            {
+                MessageBox.Show($"digits only\n'{e.Text}' is not a digit");
             }
         }
     }

@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace dotNet5781_03B_5857_1544
 {
@@ -21,13 +10,15 @@ namespace dotNet5781_03B_5857_1544
     public partial class listDoubleClick : Window
     {
         private Bus currentBus;
+        MainWindow wnd = (MainWindow)Application.Current.MainWindow;
+
         public listDoubleClick(Bus b)
         {
             InitializeComponent();
             currentBus = b;
 
             lbFuel.DataContext = currentBus.FUELTSTR;
-            lbID.DataContext= currentBus.LICENSENUMSTR;
+            lbID.DataContext = currentBus.LICENSENUMSTR;
             lbKM.DataContext = currentBus.MILEAGESTR;
             lbLast.DataContext = currentBus.LASTMAINTDATESTR;
             lblState.DataContext = currentBus.BUSSTATESTR;
@@ -36,25 +27,34 @@ namespace dotNet5781_03B_5857_1544
 
         private void Maintain_Click(object sender, RoutedEventArgs e)
         {
-            currentBus.lastMaintDate = DateTime.Now;
-            currentBus.Fuel = 1200;
-            currentBus.setStatus();
-            lbFuel.DataContext = currentBus.FUELTSTR;
-            lbLast.DataContext = currentBus.LASTMAINTDATESTR;
-            lblState.DataContext = currentBus.BUSSTATESTR;
-            MessageBox.Show("Last Maintenance updated for today!\nfuel tank is full!");
             Close();
+
+            Thread maintainThread = new Thread(currentBus.Maintain);
+            maintainThread.Start();
+            
+            wnd.LbBuses.Items.Refresh();
+            MessageBox.Show("maintenance started");
+
+            while (maintainThread.IsAlive) { }
+            wnd.LbBuses.Items.Refresh();
+
+            //MessageBox.Show($@"Last Maintenance for {currentBus.LICENSENUMSTR} updated for today!\nfuel tank is full!");
         }
 
         private void Refuel_Click(object sender, RoutedEventArgs e)
         {
-            currentBus.Fuel = 1200;
-            currentBus.setStatus();
-            lbFuel.DataContext = currentBus.FUELTSTR;
-            lblState.DataContext = currentBus.BUSSTATESTR;
-            MessageBox.Show("Fuel tank is full!");
-
             Close();
+            
+            Thread refuelThread = new Thread(currentBus.Refuel);
+            refuelThread.Start();
+            
+            wnd.LbBuses.Items.Refresh();
+            MessageBox.Show("refuel started");
+
+            while (refuelThread.IsAlive) { }
+            wnd.LbBuses.Items.Refresh();
+            
+            //MessageBox.Show("Fuel tank is full!");
         }
     }
 }

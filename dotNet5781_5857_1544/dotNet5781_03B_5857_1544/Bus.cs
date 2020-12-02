@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace dotNet5781_03B_5857_1544
 {
@@ -57,10 +58,8 @@ namespace dotNet5781_03B_5857_1544
 
         public void setStatus(int ride = 0)
         {
-            if (!this.qualifiedDate() || !this.qualifiedMilage(ride))
-                BUSSTATE = Status.inMaintenance;
-            else if (!this.qualifiedFuel(ride))
-                BUSSTATE = Status.reFueling;
+            if (!this.qualifiedDate() || !this.qualifiedMilage(ride) || !this.qualifiedFuel(ride))
+                BUSSTATE = Status.Unfit;
             else
                 BUSSTATE = Status.Ready;
         }
@@ -69,6 +68,7 @@ namespace dotNet5781_03B_5857_1544
             if (add > 0)
             {
                 this.mileage += add;
+                this.Fuel -= add;
                 setStatus();
             }
         }
@@ -140,6 +140,32 @@ namespace dotNet5781_03B_5857_1544
         public override string ToString()
         {
             return this.LICENSENUMSTR + "\t" + (this.mileage - this.lastMaintMileage) + "\t" + this.Fuel + "\t" + this.mileage + "\t" + this.lastMaintDate.ToString("dd/MM/yyyy") + "\t" + this.BUSSTATE.ToString();
+        }
+
+        public void Refuel()
+        {
+            BUSSTATE = Status.ReFueling;
+            Thread.Sleep(3000);
+            Fuel = 1200;
+            setStatus();
+        }
+
+        public void Ride(int km)
+        {
+            BUSSTATE = Status.During;
+            Thread.Sleep(km * 100); // (mileage / 60) * 6000, km/10 = num of seconds
+            addToMileage(km);
+            setStatus();
+        }
+
+        public void Maintain()
+        {
+            BUSSTATE = Status.InMaintenance;
+            Thread.Sleep(5000);
+            lastMaintMileage = mileage;
+            Fuel = 1200;
+            lastMaintDate = DateTime.Today;
+            setStatus();
         }
     }
 

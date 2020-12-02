@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -30,13 +33,20 @@ namespace dotNet5781_03B_5857_1544
             }
 
             Eged[0].lastMaintDate = DateTime.Now.AddMonths(-13);
+            Eged[0].setStatus();
+
             Eged[1].lastMaintDate = DateTime.Now.AddMonths(-11);
+            Eged[1].setStatus();
+
             Eged[2].Fuel = 10;
+            Eged[2].setStatus();
 
             LbBuses.ItemsSource = Eged;
 
         }
 
+
+        #region Sort
         private void Sort_by_ID(object sender, RoutedEventArgs e)
         {
             Eged.Sort((bus1, bus2) => bus1.LICENSENUMINT.CompareTo(bus2.LICENSENUMINT));
@@ -77,34 +87,56 @@ namespace dotNet5781_03B_5857_1544
             }
             LbBuses.Items.Refresh();
         }
+
+
+        #endregion
+
         private void Refuel(object sender, RoutedEventArgs e)
         {
             if (sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
-            CurrentDisplay.Fuel = 1200;
-            CurrentDisplay.setStatus();
+
+            Thread refuelThreadStart = new Thread(CurrentDisplay.Refuel);
+            refuelThreadStart.Start();
+
+            LbBuses.Items.Refresh();
+            MessageBox.Show("refuel started");
+
+            while (refuelThreadStart.IsAlive) { }
             LbBuses.Items.Refresh();
         }
-        private void Maintain(object sender, RoutedEventArgs e)
-        {
-            if (sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
-            CurrentDisplay.lastMaintDate = DateTime.Now;
-            CurrentDisplay.Fuel = 1200;
-            CurrentDisplay.setStatus();
-            LbBuses.Items.Refresh();
-        }
+
+        //private void Maintain(object sender, RoutedEventArgs e)
+        //{
+        //    if (sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
+        //    CurrentDisplay.lastMaintDate = DateTime.Now;
+        //    CurrentDisplay.Fuel = 1200;
+        //    CurrentDisplay.setStatus();
+        //    LbBuses.Items.Refresh();
+        //}
+
         private void Add_Bus_to_Eged(object sender, RoutedEventArgs e)
         {
             AddBusWindow addingWin = new AddBusWindow();
             addingWin.ShowDialog();
             LbBuses.Items.Refresh();
         }
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             if (sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
             ChooseBusWindow chooseBus = new ChooseBusWindow(CurrentDisplay);
-            chooseBus.ShowDialog();
-            LbBuses.Items.Refresh();
+
+            if (!CurrentDisplay.qualifiedDate())
+            {
+                MessageBox.Show("this bus is not qualified for a ride\ntake it to maintenance");
+            }
+
+            else
+            {
+                chooseBus.ShowDialog();
+                LbBuses.Items.Refresh();
+            }
         }
+
 
         private void LbBuses_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {

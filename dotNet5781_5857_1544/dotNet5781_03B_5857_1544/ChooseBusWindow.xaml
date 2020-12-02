@@ -9,20 +9,36 @@
         Height="250"
         Width="300">
 
-    <Grid>
+    <Grid
+        Background="DarkCyan"
+        >
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="ChooseMileage"
+
+        <Label
             Grid.Row="0"
+            Content="Enter ride mileage"
+            HorizontalAlignment="Center"
+            HorizontalContentAlignment="Center"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            FontSize="30"
+            />
+        <TextBox 
+            x:Name="ChooseMileage"
+            PreviewTextInput="NumberValidationTextBox"
+            BorderBrush="Black"
+            Grid.Row="1"
             Width="200"
             Height="50"
             HorizontalAlignment="Center"
             HorizontalContentAlignment="Center"
             VerticalAlignment="Center"
             VerticalContentAlignment="Center"
-            KeyDown="ChooseMileage_OnKeyDown" Margin="47,109,46.6,61"
+            KeyDown="ChooseMileage_OnKeyDown"
             />
 
     </Grid>

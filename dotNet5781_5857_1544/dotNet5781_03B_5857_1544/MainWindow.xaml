@@ -100,34 +100,84 @@
             Name="LbBuses"
             HorizontalAlignment="Stretch"  
             VerticalAlignment="Top"
-                MouseDoubleClick="LbBuses_MouseDoubleClick"   
+            MouseDoubleClick="LbBuses_MouseDoubleClick"
             >
+
                 <ListBox.ItemContainerStyle>
+
                     <Style TargetType="ListBoxItem">
+
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding BUSSTATESTR}" Value="Ready">
-                                <Setter Property="Foreground" Value="LightGreen"></Setter>
+
+                            <DataTrigger
+                                
+                                Binding="{Binding BUSSTATESTR}"
+                                Value="Ready">
+                                
+                                <Setter
+                                    Property="Background"
+                                    Value="LightGreen"/>
+
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding BUSSTATESTR}" Value="inMaintenance">
-                                <Setter Property="Foreground" Value="Red"></Setter>
+
+                            <DataTrigger
+
+                                Binding="{Binding BUSSTATESTR}"
+                                Value="inMaintenance">
+                                
+                                <Setter 
+                                    Property="Background"
+                                    Value="Yellow"/>
+
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding BUSSTATESTR}" Value="reFueling">
-                                <Setter Property="Foreground" Value="Red"></Setter>
+
+                            <DataTrigger 
+
+                                Binding="{Binding BUSSTATESTR}"
+                                Value="reFueling">
+
+                                <Setter
+                                    Property="Background"
+                                    Value="Yellow"/>
+
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding BUSSTATESTR}" Value="During">
-                                <Setter Property="Foreground" Value="Yellow"></Setter>
+
+                            <DataTrigger
+                                Binding="{Binding BUSSTATESTR}" 
+                                Value="During">
+
+                                <Setter 
+                                    Property="Background" 
+                                    Value="Yellow"/>
+
                             </DataTrigger>
-                            
+
+                            <DataTrigger 
+
+                                Binding="{Binding BUSSTATESTR}" 
+                                Value="Unfit">
+
+                                <Setter
+                                    Property="Background" 
+                                    Value="Red"/>
+
+                            </DataTrigger>
+
                         </Style.Triggers>
+
                     </Style>
+
                 </ListBox.ItemContainerStyle>
+
+
+
                 <ListBox.ItemTemplate>
-                    
+
                     <DataTemplate>
 
                         <Grid Name ="BusDetails"
-                              Width="677"
                               Height="40"
+                              Width="750"
                         >
 
                             <Grid.ColumnDefinitions>
@@ -139,7 +189,8 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="0.5*" />
                                 <ColumnDefinition Width="0.5*" />
-                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition Width="*" />
+                                <!--<ColumnDefinition Width="0.5*" />-->
                             </Grid.ColumnDefinitions>
 
                             <TextBlock
@@ -201,32 +252,47 @@
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                             />
+
                             <Button
+
                                 Grid.Column="6"
                                 Name="Refuel"
                                 Click="Refuel"
                                 FontSize="12">
+
                                 <Viewbox>
                                     <Image Source="https://img.icons8.com/dotty/344/gas-pump.png"/>
                                 </Viewbox>
+
                             </Button>
 
-                            <Button
+                            <!--<Button
+
                                 Grid.Column="7"
                                 Name="Maintain"
                                 Click="Maintain" 
                                 FontSize="12">
+
                                 <Viewbox>
                                     <Image Source="https://img.icons8.com/wired/344/gear.png"/>
                                 </Viewbox>
-                            </Button>
+
+                            </Button>-->
 
                             <Button Name="ChooseBusForARide"
                                 Grid.Column="8"
                                 Click="ButtonBase_OnClick"
                                 >
-                                <Viewbox>
-                                    <Image Source="C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\bus.png"/>
+
+                                <Viewbox
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    >
+                                    <Image
+                                        Source="https://icons.iconarchive.com/icons/icons8/ios7/128/Transport-Bus-2-icon.png"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        />
                                 </Viewbox>
                             </Button>
 
@@ -238,7 +304,7 @@
 
             </ListBox>
 
-            
+
 
         </Grid>
 

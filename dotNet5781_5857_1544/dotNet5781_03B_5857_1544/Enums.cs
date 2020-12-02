@@ -1,5 +1,5 @@
 ﻿
 namespace dotNet5781_03B_5857_1544
 {
-    public enum Status {Ready, During, reFueling, inMaintenance }
+    public enum Status {Ready, During, ReFueling, InMaintenance, Unfit }
 }
