@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Mime;
 using System.Text;
 using System.Threading;
 
@@ -119,7 +120,7 @@ namespace dotNet5781_03B_5857_1544
         /// <returns></returns>
         private bool qualifiedFuel(int ride)
         {
-            return Fuel - ride >= 0;
+            return Fuel - ride > 0;
         }
         /// <summary>
         ///         a public function that gather all the private qualifaction checks
@@ -144,8 +145,8 @@ namespace dotNet5781_03B_5857_1544
 
         public void Refuel()
         {
-            BUSSTATE = Status.ReFueling;
-            Thread.Sleep(3000);
+            BUSSTATE = Status.Refueling;
+            Thread.Sleep(5000);
             Fuel = 1200;
             setStatus();
         }
@@ -162,7 +163,7 @@ namespace dotNet5781_03B_5857_1544
         {
             BUSSTATE = Status.InMaintenance;
             Thread.Sleep(5000);
-            lastMaintMileage = mileage;
+            lastMaintMileage = MILEAGE;
             Fuel = 1200;
             lastMaintDate = DateTime.Today;
             setStatus();

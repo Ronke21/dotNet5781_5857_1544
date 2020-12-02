@@ -32,12 +32,12 @@ namespace dotNet5781_03B_5857_1544
 
 
         // BONUS
-        private void ChooseMileage_OnKeyDown(object sender, KeyEventArgs e)
+        private async void ChooseMileage_OnKeyDown(object sender, KeyEventArgs e)
         {
+
             if (e.Key == Key.Return)
             {
-
-                int.TryParse(ChooseMileage.Text, out int mileage);
+                int.TryParse(ChooseMileage.Text, out var mileage);
 
                 if (b.MILEAGE - b.lastMaintMileage + mileage > 20000)
                 {
@@ -61,14 +61,18 @@ namespace dotNet5781_03B_5857_1544
                 {
                     Close();
 
-                    Thread rideThread = new Thread(() => b.Ride(mileage));
-                    rideThread.Start();
-                    wnd.LbBuses.Items.Refresh();
-                    MessageBox.Show("the bus has started the ride");
-                    while (rideThread.IsAlive) { }
+                    await RideAsync();
+
                     wnd.LbBuses.Items.Refresh();
                 }
             }
+        }
+
+        private async Task RideAsync()
+        {
+            int.TryParse(ChooseMileage.Text, out var mileage);
+            await Task.Run(() => b.Ride(mileage));
+            b.setStatus();
         }
 
 

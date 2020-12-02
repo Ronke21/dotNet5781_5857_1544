@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -22,6 +23,9 @@ namespace dotNet5781_03B_5857_1544
 
         private Bus CurrentDisplay;
         public static List<Bus> Eged = new List<Bus>(); // a list of buses - our data base!
+        public static ObservableCollection<Bus> Egged = new ObservableCollection<Bus>(); // a list of buses - our data base!
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,36 +45,50 @@ namespace dotNet5781_03B_5857_1544
             Eged[2].Fuel = 10;
             Eged[2].setStatus();
 
-            LbBuses.ItemsSource = Eged;
+            LbBuses.ItemsSource = Egged;
 
+            EgedToEgged();
         }
 
+        public void EgedToEgged()
+        {
+            Egged.Clear();
+            foreach (var bus in Eged)
+            {
+                Egged.Add(bus);
+            }
+        }
 
         #region Sort
         private void Sort_by_ID(object sender, RoutedEventArgs e)
         {
             Eged.Sort((bus1, bus2) => bus1.LICENSENUMINT.CompareTo(bus2.LICENSENUMINT));
+            EgedToEgged();
             LbBuses.Items.Refresh();
         }
         private void Sort_by_last_maint(object sender, RoutedEventArgs e)
         {
             Eged.Sort((bus1, bus2) => (bus1.MILEAGE - bus1.lastMaintMileage).CompareTo((bus2.MILEAGE - bus2.lastMaintMileage)));
+            EgedToEgged();
             LbBuses.Items.Refresh();
         }
         private void Sort_by_fuel_Amount(object sender, RoutedEventArgs e)
         {
             Eged.Sort((bus1, bus2) => bus2.Fuel.CompareTo(bus1.Fuel));
+            EgedToEgged();
             LbBuses.Items.Refresh();
         }
         private void Sort_by_Mileage(object sender, RoutedEventArgs e)
         {
             Eged.Sort((bus1, bus2) => bus1.MILEAGE.CompareTo(bus2.MILEAGE));
+            EgedToEgged();
             LbBuses.Items.Refresh();
         }
         private void Sort_by_last_Maintenance(object sender, RoutedEventArgs e)
         {
             // sort by the time passed from the last maintenance
             Eged.Sort((bus1, bus2) => bus1.lastMaintDate.CompareTo(bus2.lastMaintDate));
+            EgedToEgged();
             LbBuses.Items.Refresh();
         }
         private void Sort_by_status(object sender, RoutedEventArgs e)
@@ -85,24 +103,41 @@ namespace dotNet5781_03B_5857_1544
             {
                 Eged.Add(bus);
             }
+            EgedToEgged();
             LbBuses.Items.Refresh();
         }
 
 
         #endregion
 
-        private void Refuel(object sender, RoutedEventArgs e)
+        private async void Refuel(object sender, RoutedEventArgs e)
         {
             if (sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
 
-            Thread refuelThreadStart = new Thread(CurrentDisplay.Refuel);
-            refuelThreadStart.Start();
-
+            CurrentDisplay.BUSSTATE = dotNet5781_03B_5857_1544.Status.Refueling;
             LbBuses.Items.Refresh();
-            MessageBox.Show("refuel started");
 
-            while (refuelThreadStart.IsAlive) { }
-            LbBuses.Items.Refresh();
+            if (CurrentDisplay.BUSSTATE == dotNet5781_03B_5857_1544.Status.InMaintenance)
+            {
+                MessageBox.Show("bus is in maintenance, no need to refuel twice");
+            }
+
+            else if (CurrentDisplay.BUSSTATE == dotNet5781_03B_5857_1544.Status.During)
+            {
+                MessageBox.Show("bus is in a ride, wait until it gets back");
+            }
+
+            else
+            {
+                await RefuelAsync();
+
+                LbBuses.Items.Refresh();
+            }
+        }
+
+        private async Task RefuelAsync()
+        {
+            await Task.Run(() => CurrentDisplay.Refuel());
         }
 
         //private void Maintain(object sender, RoutedEventArgs e)
@@ -120,7 +155,8 @@ namespace dotNet5781_03B_5857_1544
             addingWin.ShowDialog();
             LbBuses.Items.Refresh();
         }
-        async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+
+        void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             if (sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
             ChooseBusWindow chooseBus = new ChooseBusWindow(CurrentDisplay);

@@ -127,18 +127,18 @@
                                 
                                 <Setter 
                                     Property="Background"
-                                    Value="Yellow"/>
+                                    Value="Orange"/>
 
                             </DataTrigger>
 
                             <DataTrigger 
 
                                 Binding="{Binding BUSSTATESTR}"
-                                Value="reFueling">
+                                Value="Refueling">
 
                                 <Setter
                                     Property="Background"
-                                    Value="Yellow"/>
+                                    Value="Orange"/>
 
                             </DataTrigger>
 
@@ -159,7 +159,7 @@
 
                                 <Setter
                                     Property="Background" 
-                                    Value="Red"/>
+                                    Value="Crimson"/>
 
                             </DataTrigger>
 

@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace dotNet5781_03B_5857_1544
@@ -25,36 +26,58 @@ namespace dotNet5781_03B_5857_1544
             lbfromLast.DataContext = currentBus.MILAGESINCELASTMAINTSTR;
         }
 
-        private void Maintain_Click(object sender, RoutedEventArgs e)
+        private async void Maintain_Click(object sender, RoutedEventArgs e)
         {
             Close();
 
-            Thread maintainThread = new Thread(currentBus.Maintain);
-            maintainThread.Start();
-            
-            wnd.LbBuses.Items.Refresh();
-            MessageBox.Show("maintenance started");
+            if (currentBus.BUSSTATE == Status.Refueling)
+            {
+                MessageBox.Show("bus is in refuel, wait until it gets back");
+            }
 
-            while (maintainThread.IsAlive) { }
-            wnd.LbBuses.Items.Refresh();
+            else if (currentBus.BUSSTATE == Status.During)
+            {
+                MessageBox.Show("bus is in a ride, wait until it gets back");
+            }
 
-            //MessageBox.Show($@"Last Maintenance for {currentBus.LICENSENUMSTR} updated for today!\nfuel tank is full!");
+            else
+            {
+                await MaintainAsync();
+
+                wnd.LbBuses.Items.Refresh();
+            }
         }
 
-        private void Refuel_Click(object sender, RoutedEventArgs e)
+        private async Task MaintainAsync()
+        {
+            await Task.Run(() => currentBus.Maintain());
+        }
+
+        private async void Refuel_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            
-            Thread refuelThread = new Thread(currentBus.Refuel);
-            refuelThread.Start();
-            
-            wnd.LbBuses.Items.Refresh();
-            MessageBox.Show("refuel started");
 
-            while (refuelThread.IsAlive) { }
-            wnd.LbBuses.Items.Refresh();
-            
-            //MessageBox.Show("Fuel tank is full!");
+            if (currentBus.BUSSTATE == Status.InMaintenance)
+            {
+                MessageBox.Show("bus is in maintenance, no need to refuel twice");
+            }
+
+            else if (currentBus.BUSSTATE == Status.During)
+            {
+                MessageBox.Show("bus is in a ride, wait until it gets back");
+            }
+
+            else
+            {
+                await RefuelAsync();
+
+                wnd.LbBuses.Items.Refresh();
+            }
+        }
+
+        private async Task RefuelAsync()
+        {
+            await Task.Run(() => currentBus.Refuel());
         }
     }
 }
