@@ -329,7 +329,7 @@
                             </Button>
 
                             <ProgressBar
-                                Name="pbStatus"
+                                x:Name="pbStatus"
                                 Grid.Column="5" 
                                 Grid.ColumnSpan="3" 
                                 Background="White" 
