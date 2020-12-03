@@ -149,7 +149,7 @@
 
                                 Binding="{Binding BUSSTATESTR}"
                                 Value="InMaintenance">
-                                
+
                                 <Setter 
                                     Property="Background"
                                     Value="Orange"/>
@@ -384,6 +384,20 @@
                 </Button.Effect>
 
             </Button>
+            
+            <ProgressBar 
+                Name ="resultProgressBar"
+                HorizontalAlignment="Left" 
+                Height="45" 
+                Margin="229,436,0,-0.2" 
+                VerticalAlignment="Top" 
+                Width="180"/>
+            <Label 
+                Name="resultLabel" 
+                Content="Label" 
+                HorizontalAlignment="Left" 
+                Margin="451,435,0,0" 
+                VerticalAlignment="Top"/>
 
         </Grid>
 
