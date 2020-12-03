@@ -123,7 +123,7 @@ namespace dotNet5781_03B_5857_1544
             return Fuel - ride > 0;
         }
         /// <summary>
-        ///         a public function that gather all the private qualifaction checks
+        /// a public function that gather all the private qualifaction checks
         /// <param name="ride"></param>
         /// <returns></returns>
         public bool allQuailified(int ride)
@@ -158,7 +158,8 @@ namespace dotNet5781_03B_5857_1544
         public void Ride(int km)
         {
             BUSSTATE = Status.During;
-            Thread.Sleep(((km / r.Next(20, 50)) / 3600)*1000); // (mileage / 60) * 6000, km/10 = num of seconds
+            //Thread.Sleep(((km / r.Next(20, 50)) / 3600)*1000); // (mileage / 60) * 6000, km/10 = num of seconds
+            Thread.Sleep((km / r.Next(20, 50)) * 6000);
             addToMileage(km);
             setStatus();
         }

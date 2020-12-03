@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_5857_1544"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Icon="https://img.icons8.com/color/344/bus.png"
         mc:Ignorable="d"
         Title="Add Bus"
@@ -76,8 +77,8 @@
         HorizontalAlignment="Left" 
         VerticalAlignment="Center"
         />
-        
-        <DatePicker
+
+            <DatePicker
         Name="DatePickerStart"
         Grid.Row="0"
         Grid.Column="1"
@@ -86,6 +87,7 @@
         HorizontalContentAlignment="Center"
         VerticalContentAlignment="Center"
         CalendarClosed="DatePickerStart_OnCalendarClosed"
+        SelectedDate="{x:Static sys:DateTime.Now}"
         />
 
             <TextBox
@@ -98,7 +100,8 @@
         HorizontalContentAlignment="Center"
         TextChanged="TextBoxBusLicenseNumber_OnTextChanged"
         MouseLeave="TextBoxBusLicenseNumber_OnMouseLeave"
-        />
+        PreviewTextInput="TextBoxBusLicenseNumber_OnPreviewTextInput"
+            />
 
             <TextBox
         Name="TextBoxFuelAmount"
@@ -109,6 +112,7 @@
         VerticalContentAlignment="Center"
         HorizontalContentAlignment="Center"
         TextChanged="TextBoxFuelAmount_OnTextChanged"
+        PreviewTextInput="TextBoxFuelAmount_OnPreviewTextInput"
         />
 
             <TextBox
@@ -120,6 +124,7 @@
         VerticalContentAlignment="Center"
         HorizontalContentAlignment="Center"
         TextChanged="TextBoxMileage_OnTextChanged"
+        PreviewTextInput="TextBoxMileage_OnPreviewTextInput"
         />
 
             <DatePicker
@@ -131,6 +136,7 @@
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
             CalendarClosed="DatePickerLastMaintenance_OnCalendarClosed"
+            SelectedDate="{x:Static sys:DateTime.Now}"
         />
 
         </Grid>

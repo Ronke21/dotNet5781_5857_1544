@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -23,6 +24,15 @@ namespace dotNet5781_03B_5857_1544
                 MessageBox.Show("not valid");
             }
         }
+        private void TextBoxBusLicenseNumber_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+            if (e.Handled)
+            {
+                MessageBox.Show($"digits only\n'{e.Text}' is not a digit");
+            }
+        }
         private void TextBoxBusLicenseNumber_OnMouseLeave(object sender, MouseEventArgs e)
         {
             int.TryParse(TextBoxBusLicenseNumber.Text, out int num);
@@ -34,6 +44,7 @@ namespace dotNet5781_03B_5857_1544
                 }
             }
         }
+
         private void TextBoxFuelAmount_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             int.TryParse(TextBoxFuelAmount.Text, out int fuel);
@@ -41,7 +52,18 @@ namespace dotNet5781_03B_5857_1544
             {
                 MessageBox.Show("not valid");
             }
+
         }
+        private void TextBoxFuelAmount_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+            if (e.Handled)
+            {
+                MessageBox.Show($"digits only\n'{e.Text}' is not a digit");
+            }
+        }
+
         private void TextBoxMileage_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             int.TryParse(TextBoxMileage.Text, out int mileage);
@@ -50,6 +72,16 @@ namespace dotNet5781_03B_5857_1544
                 MessageBox.Show("not valid");
             }
         }
+        private void TextBoxMileage_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+            if (e.Handled)
+            {
+                MessageBox.Show($"digits only\n'{e.Text}' is not a digit");
+            }
+        }
+
         private void DatePickerStart_OnCalendarClosed(object sender, RoutedEventArgs e)
         {
             if (DatePickerStart.Text == String.Empty)
@@ -106,5 +138,6 @@ namespace dotNet5781_03B_5857_1544
 
             Close();
         }
+
     }
 }

@@ -366,15 +366,6 @@
 
             </Button>
 
-            <ProgressBar
-                x:Name ="ProgressReport"
-                Width="150"
-                Height="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
-                Value="55"
-            />
-
         </Grid>
 
     </Grid>

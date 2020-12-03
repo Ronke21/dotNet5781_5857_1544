@@ -120,11 +120,6 @@ namespace dotNet5781_03B_5857_1544
             }
         }
 
-        private void reportFuelAmount(object sender, Reporter e)
-        {
-            ProgressReport.Value = e.PercentageComplete;
-        }
-
         private async Task RefuelAsync(IProgress<Reporter> progress)
         {
             Reporter reporter = new Reporter();
