@@ -122,16 +122,45 @@ namespace dotNet5781_03B_5857_1544
             int.TryParse(TextBoxFuelAmount.Text, out int fuel);
             int.TryParse(TextBoxMileage.Text, out int mileage);
 
-            if (start.Year > 2017)
+            if ((start > DateTime.Today) || (last > DateTime.Today))
             {
-                if (license < 1000000)
+                MessageBox.Show("can't enter future date!");
+                Close();
+                return;
+            }
+            else
+            {
+                if (start.Year > 2017)
                 {
-                    MessageBox.Show("");
+                    if (license < 1000000)
+                    {
+                        MessageBox.Show("New buses (after 2017) use 8 digits id!");
+                    }
+                }
+                else if (license > 99999999)
+                {
+                    MessageBox.Show("Old buses (before 2017) use 7 digits id!");
                 }
             }
-            else if (license > 99999999)
+
+            if ((fuel < 0) || (fuel > 1200))
             {
-                MessageBox.Show("");
+                MessageBox.Show("Fuel only between 0-1200!");
+                Close();
+                return;
+            }
+            if ((mileage < 0) || (mileage > 500000))
+            {
+                MessageBox.Show("mileage only between 0-500,000!");
+                Close();
+                return;
+            }
+
+            if ((license > 99999999) || (license < 1000000))
+            {
+                MessageBox.Show("Bus id only 7 or 8 digits");
+                Close();
+                return;
             }
 
             MainWindow.Eged.Add(new Bus(license, start, fuel, mileage, last));

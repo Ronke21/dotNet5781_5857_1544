@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Threading;
 
 namespace dotNet5781_03B_5857_1544
 {
@@ -41,6 +42,9 @@ namespace dotNet5781_03B_5857_1544
             Eged[2].Fuel = 10;
             Eged[2].setStatus();
 
+            Eged[3].lastMaintDate = (DateTime.Today).AddDays(-3);
+            Eged[3].setStatus(); // = MaintainSoon
+
             LbBuses.ItemsSource = Eged;
 
         }
@@ -52,27 +56,27 @@ namespace dotNet5781_03B_5857_1544
             Eged.Sort((bus1, bus2) => bus1.LICENSENUMINT.CompareTo(bus2.LICENSENUMINT));
             LbBuses.Items.Refresh();
         }
-        private void Sort_by_last_maint(object sender, RoutedEventArgs e)
-        {
-            Eged.Sort((bus1, bus2) => (bus1.MILEAGE - bus1.lastMaintMileage).CompareTo((bus2.MILEAGE - bus2.lastMaintMileage)));
-            LbBuses.Items.Refresh();
-        }
+        //private void Sort_by_last_maint(object sender, RoutedEventArgs e)
+        //{
+        //    Eged.Sort((bus1, bus2) => (bus1.MILEAGE - bus1.lastMaintMileage).CompareTo((bus2.MILEAGE - bus2.lastMaintMileage)));
+        //    LbBuses.Items.Refresh();
+        //}
         private void Sort_by_fuel_Amount(object sender, RoutedEventArgs e)
         {
             Eged.Sort((bus1, bus2) => bus2.Fuel.CompareTo(bus1.Fuel));
             LbBuses.Items.Refresh();
         }
-        private void Sort_by_Mileage(object sender, RoutedEventArgs e)
-        {
-            Eged.Sort((bus1, bus2) => bus1.MILEAGE.CompareTo(bus2.MILEAGE));
-            LbBuses.Items.Refresh();
-        }
-        private void Sort_by_last_Maintenance(object sender, RoutedEventArgs e)
-        {
-            // sort by the time passed from the last maintenance
-            Eged.Sort((bus1, bus2) => bus1.lastMaintDate.CompareTo(bus2.lastMaintDate));
-            LbBuses.Items.Refresh();
-        }
+        //private void Sort_by_Mileage(object sender, RoutedEventArgs e)
+        //{
+        //    Eged.Sort((bus1, bus2) => bus1.MILEAGE.CompareTo(bus2.MILEAGE));
+        //    LbBuses.Items.Refresh();
+        //}
+        //private void Sort_by_last_Maintenance(object sender, RoutedEventArgs e)
+        //{
+        //    // sort by the time passed from the last maintenance
+        //    Eged.Sort((bus1, bus2) => bus1.lastMaintDate.CompareTo(bus2.lastMaintDate));
+        //    LbBuses.Items.Refresh();
+        //}
         private void Sort_by_status(object sender, RoutedEventArgs e)
         {
             // different solution in order to implement stable sort, because many buses are likely to share status
@@ -124,6 +128,7 @@ namespace dotNet5781_03B_5857_1544
         {
             Reporter reporter = new Reporter();
             await Task.Run(() => CurrentDisplay.Refuel());
+
             reporter.PercentageComplete = CurrentDisplay.Fuel;
             progress.Report(reporter);
         }
@@ -163,6 +168,10 @@ namespace dotNet5781_03B_5857_1544
             LbBuses.Items.Refresh();
         }
 
+        public void refresh()
+        {
+            LbBuses.Items.Refresh();
+        }
         private void EXIT_OnClick(object sender, RoutedEventArgs e)
         {
             /*

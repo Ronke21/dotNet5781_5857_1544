@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Windows;
 
 namespace dotNet5781_03B_5857_1544
 {
@@ -9,6 +10,9 @@ namespace dotNet5781_03B_5857_1544
     /// </summary>
     public class Bus
     {
+        
+        MainWindow wnd = (MainWindow)Application.Current.MainWindow;
+
         public static Random r = new Random(DateTime.Now.Millisecond);
 
         private int licenseNum;   // licenseNum is the bus id - can't be changed, so property has only get!
@@ -61,8 +65,14 @@ namespace dotNet5781_03B_5857_1544
         {
             if (!this.qualifiedDate() || !this.qualifiedMilage(ride) || !this.qualifiedFuel(ride))
                 BUSSTATE = Status.Unfit;
+            else if ((this.lastMaintMileage + 1200 >20000) || ((DateTime.Today - this.lastMaintDate).TotalDays<31))
+            {
+                BUSSTATE = Status.MaintainSoon;
+            }
             else
+            {
                 BUSSTATE = Status.Ready;
+            }
         }
         public void addToMileage(int add)            //add to milage, public because it is used after rides
         {

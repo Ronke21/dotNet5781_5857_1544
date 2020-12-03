@@ -22,8 +22,8 @@
         >
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <!--<ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>-->
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -40,43 +40,43 @@
                     Click="Sort_by_ID"
             />
 
-            <Button x:Name="MileageFromLastMaintenance"
+            <!--<Button x:Name="MileageFromLastMaintenance"
                     Content="   mileage from&#xa;last maintenance"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     Grid.Column="1"
                     Click="Sort_by_last_maint"
-            />
+            />-->
 
             <Button x:Name="Fuel"
                     Content="Fuel"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
-                    Grid.Column="2"
+                    Grid.Column="1"
                     Click="Sort_by_fuel_Amount"
             />
 
-            <Button x:Name="TotalMileage"
+            <!--<Button x:Name="TotalMileage"
                     Content="Mileage"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     Grid.Column="3"
                     Click="Sort_by_Mileage"
-            />
+            />-->
 
-            <Button x:Name="LastMaintenance"
+            <!--<Button x:Name="LastMaintenance"
                     Content="Last Maintenance"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     Grid.Column="4"
                     Click="Sort_by_last_Maintenance"
-            />
+            />-->
 
             <Button x:Name="Status"
                     Content="Status"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
-                    Grid.Column="5"
+                    Grid.Column="2"
                     Click="Sort_by_status"
             />
 
@@ -137,10 +137,11 @@
                                 
                                 Binding="{Binding BUSSTATESTR}"
                                 Value="Ready">
-                                
+
                                 <Setter
                                     Property="Background"
                                     Value="LightGreen"/>
+
 
                             </DataTrigger>
 
@@ -163,6 +164,23 @@
                                 <Setter
                                     Property="Background"
                                     Value="Orange"/>
+
+                            </DataTrigger>
+
+                            <DataTrigger 
+
+                                Binding="{Binding BUSSTATESTR}"
+                                Value="MaintainSoon">
+
+                                <Setter
+                                    Property="Background"
+                                    Value="LightGreen"/>
+                                <Setter
+                                    Property="BorderBrush"
+                                    Value="OrangeRed"/>
+                                <Setter
+                                    Property="BorderThickness"
+                                    Value="4"/>
 
                             </DataTrigger>
 
@@ -205,9 +223,9 @@
                               >
 
                             <Grid.ColumnDefinitions>
+                                <!--<ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />-->
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
@@ -227,7 +245,7 @@
                                 HorizontalAlignment="Center"
                                 />
 
-                            <TextBlock
+                            <!--<TextBlock
                                 Name ="mileage"
                                 Grid.Column="1"
                                 Text="{Binding Path=MILAGESINCELASTMAINTSTR}"
@@ -235,11 +253,11 @@
                                 FontSize="12"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
-                            />
+                            />-->
 
                             <TextBlock
                                 Name ="Fuel"
-                                Grid.Column="2"
+                                Grid.Column="1"
                                 Text="{Binding Path=FUELTSTR}"
                                 FontWeight="Bold"
                                 FontSize="12"
@@ -247,7 +265,7 @@
                                 HorizontalAlignment="Center"
                             />
 
-                            <TextBlock
+                            <!--<TextBlock
                                 Name ="Mileage"
                                 Grid.Column="3"
                                 Text="{Binding Path=MILEAGESTR}"
@@ -255,9 +273,9 @@
                                 FontSize="12"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
-                            />
+                            />-->
 
-                            <TextBlock
+                            <!--<TextBlock
                                 Name ="LastMaintenance"
                                 Grid.Column="4"
                                 Text="{Binding Path=LASTMAINTDATESTR}"
@@ -265,11 +283,11 @@
                                 FontSize="12"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
-                            />
+                            />-->
 
                             <TextBlock
                                 Name ="Status"
-                                Grid.Column="5"
+                                Grid.Column="2"
                                 Text="{Binding Path=BUSSTATESTR}"
                                 FontWeight="Bold"
                                 FontSize="12"
@@ -279,7 +297,7 @@
 
                             <Button
 
-                                Grid.Column="6"
+                                Grid.Column="3"
                                 Name="Refuel"
                                 Click="Refuel"
                                 FontSize="12">
@@ -291,7 +309,7 @@
                             </Button>
 
                             <Button Name="ChooseBusForARide"
-                                Grid.Column="7"
+                                Grid.Column="4"
                                 Click="ButtonBase_OnClick"
                                 >
 
@@ -312,12 +330,13 @@
 
                             <ProgressBar
                                 Name="pbStatus"
-                                Grid.Column="8" 
+                                Grid.Column="5" 
                                 Grid.ColumnSpan="3" 
                                 Background="White" 
                                 Minimum = "0"
                                 Value="{Binding Path = Fuel, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
                                 Maximum="1200"
+                                
                                 />
 
 
