@@ -165,6 +165,7 @@ namespace dotNet5781_03B_5857_1544
             setStatus();
         }
 
+
         public void Ride(int km)
         {
             BUSSTATE = Status.During;

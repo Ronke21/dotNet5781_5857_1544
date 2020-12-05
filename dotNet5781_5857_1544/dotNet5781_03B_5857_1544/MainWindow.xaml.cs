@@ -160,6 +160,7 @@ namespace dotNet5781_03B_5857_1544
             {
                 //if (worker.IsBusy != true) 
                 //    worker.RunWorkerAsync(12); // Start the asynchronous operation
+
                 await RefuelAsync(reportProgress);
 
                 LbBuses.Items.Refresh();
@@ -209,11 +210,7 @@ namespace dotNet5781_03B_5857_1544
             doubleC.ShowDialog();
             LbBuses.Items.Refresh();
         }
-
-        public void refresh()
-        {
-            LbBuses.Items.Refresh();
-        }
+        
         private void EXIT_OnClick(object sender, RoutedEventArgs e)
         {
             /*
