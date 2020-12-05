@@ -10,7 +10,7 @@ namespace dotNet5781_03B_5857_1544
     /// </summary>
     public class Bus
     {
-        
+
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;
 
         public static Random r = new Random(DateTime.Now.Millisecond);
@@ -28,6 +28,8 @@ namespace dotNet5781_03B_5857_1544
                 return (num.Length > 7) ? num.Insert(3, "-").Insert(6, "-") : num.Insert(2, "-").Insert(6, "-");
             }
         }
+
+        public int RIDE { get; set; }
 
         private Status busState;
         public Status BUSSTATE
@@ -65,7 +67,7 @@ namespace dotNet5781_03B_5857_1544
         {
             if (!this.qualifiedDate() || !this.qualifiedMilage(ride) || !this.qualifiedFuel(ride))
                 BUSSTATE = Status.Unfit;
-            else if ((this.lastMaintMileage + 1200 >20000) || ((DateTime.Today - this.lastMaintDate).TotalDays<31))
+            else if ((this.lastMaintMileage + 1200 > 20000) || (lastMaintDate < DateTime.Today.AddMonths(-11)))
             {
                 BUSSTATE = Status.MaintainSoon;
             }
@@ -83,7 +85,9 @@ namespace dotNet5781_03B_5857_1544
                 setStatus();
             }
         }
-        public int lastMaintMileage { get; set; } = 0;   //the Kilometers level in the last maintenance care. for qualifacation
+        public int lastMaintMileage { get; set; }   //the Kilometers level in the last maintenance care. for qualifacation
+
+        public int mileageSinceLastMain { get; set; }
         public DateTime lastMaintDate { get; set; }         //the last date of maintenance care. for qualifacation
         public string LASTMAINTDATESTR
         {
@@ -96,6 +100,7 @@ namespace dotNet5781_03B_5857_1544
             this.Fuel = delek;
             this.mileage = km;
             this.lastMaintDate = maint;
+            this.mileageSinceLastMain = mileage - lastMaintMileage;
             setStatus();
         }
 
@@ -106,6 +111,7 @@ namespace dotNet5781_03B_5857_1544
             this.Fuel = 0;
             this.mileage = 0;
             this.lastMaintDate = DateTime.Today;
+            this.mileageSinceLastMain = mileage - lastMaintMileage;
             setStatus();
         }
         /// <summary>
@@ -153,37 +159,26 @@ namespace dotNet5781_03B_5857_1544
             return this.LICENSENUMSTR + "\t" + (this.mileage - this.lastMaintMileage) + "\t" + this.Fuel + "\t" + this.mileage + "\t" + this.lastMaintDate.ToString("dd/MM/yyyy") + "\t" + this.BUSSTATE.ToString();
         }
 
-        public void Refuel()
+        public void Refuel(int amount)
         {
-            BUSSTATE = Status.Refueling;
-            int toFill = 1200 - Fuel;
-            for (; Fuel < 1200; Fuel += (toFill / 10))
-            {
-                Thread.Sleep(500);
-            }
-            Fuel = 1200;
-            setStatus();
+            Thread.Sleep(500);
+            Fuel += amount;
         }
 
-
+        public int MaxRide { get; set; } = 1;
         public void Ride(int km)
         {
-            BUSSTATE = Status.During;
-            //Thread.Sleep(((km / r.Next(20, 50)) / 3600)*1000); // (mileage / 60) * 6000, km/10 = num of seconds
-            Thread.Sleep((km / r.Next(20, 50)) * 6000);
+            Thread.Sleep(500);
+            RIDE += km;
             addToMileage(km);
-            setStatus();
         }
 
-        public void Maintain()
+        public void Maintain(int amount)
         {
-            BUSSTATE = Status.InMaintenance;
-            Thread.Sleep(5000);
-            lastMaintMileage = MILEAGE;
-            Fuel = 1200;
-            lastMaintDate = DateTime.Today;
-            setStatus();
+            Thread.Sleep(1440);
+            mileageSinceLastMain -= amount;
         }
+
     }
 
 }

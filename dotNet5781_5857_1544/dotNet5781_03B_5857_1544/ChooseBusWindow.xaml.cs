@@ -48,20 +48,34 @@ namespace dotNet5781_03B_5857_1544
 
                 else
                 {
+
+
                     Close();
 
-                    await RideAsync();
+                    int mil = mileage / 10;
+
+                    b.MaxRide = mileage;
+
+                    await RideAsync(mil);
 
                     wnd.LbBuses.Items.Refresh();
                 }
             }
         }
 
-        private async Task RideAsync()
+        private async Task RideAsync(int mil)
         {
-            int.TryParse(ChooseMileage.Text, out var mileage);
-            await Task.Run(() => b.Ride(mileage));
+            b.BUSSTATE = Status.During;
+            
+            for (int i = 0; i < 10; i++)
+            {
+                await Task.Run(() => b.Ride(mil));
+                wnd.LbBuses.Items.Refresh();
+            }
+
+            b.RIDE = 0;
             b.setStatus();
+            wnd.LbBuses.Items.Refresh();
         }
 
 

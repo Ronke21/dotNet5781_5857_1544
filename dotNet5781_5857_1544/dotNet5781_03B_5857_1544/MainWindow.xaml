@@ -218,7 +218,7 @@
                     <DataTemplate>
 
                         <Grid Name ="BusDetails"
-                              Height="45"
+                              Height="75"
                               Width="1500"
                               >
 
@@ -231,8 +231,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="0.5*" />
                                 <ColumnDefinition Width="0.5*" />
-                                <ColumnDefinition Width="0.5*" />
-                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
                             <TextBlock
@@ -328,18 +327,76 @@
 
                             </Button>
 
-                            <ProgressBar
-                                x:Name="pbStatus"
-                                Grid.Column="5" 
-                                Grid.ColumnSpan="3" 
+
+                            <Grid 
+                                Grid.Column="5"
+                                >
+
+                                <Grid.RowDefinitions>
+
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <ProgressBar
+                                x:Name="pbFuel"
+                                Grid.Row="0" 
+                                Grid.Column="0"
                                 Background="White" 
                                 Minimum = "0"
-                                Value="{Binding Path = Fuel, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                                Height="23"
+                                Value="{Binding Path = Fuel, Mode = OneWay,UpdateSourceTrigger = PropertyChanged}"
                                 Maximum="1200"
+                                />
                                 
+                                <Label
+                                    Content="Fuel"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                 />
+                                
+                                <ProgressBar
+                                x:Name="pbRide"
+                                Grid.Row="1" 
+                                Grid.Column="0"
+                                Background="White" 
+                                Height="23"
+                                Minimum = "0"
+                                Value="{Binding Path = RIDE, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
+                                Maximum="{Binding Path = MaxRide, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
                                 />
 
+                                <Label
+                                    Content="Ride"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                 />
 
+                                <ProgressBar
+                                x:Name="pbMileage"
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Background="White"
+                                Height="23"
+                                Minimum = "0"
+                                Value="{Binding Path = mileageSinceLastMain, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
+                                Maximum="20000"
+                                />
+
+                                <Label
+                                    Content="Mileage"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                 />
+
+                            </Grid>
 
                         </Grid>
 
@@ -384,20 +441,6 @@
                 </Button.Effect>
 
             </Button>
-            
-            <ProgressBar 
-                Name ="resultProgressBar"
-                HorizontalAlignment="Left" 
-                Height="45" 
-                Margin="229,436,0,-0.2" 
-                VerticalAlignment="Top" 
-                Width="180"/>
-            <Label 
-                Name="resultLabel" 
-                Content="Label" 
-                HorizontalAlignment="Left" 
-                Margin="451,435,0,0" 
-                VerticalAlignment="Top"/>
 
         </Grid>
 

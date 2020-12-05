@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Threading;
-using System.ComponentModel;
-using System.Diagnostics;
 
 namespace dotNet5781_03B_5857_1544
 {
@@ -56,8 +52,10 @@ namespace dotNet5781_03B_5857_1544
             Eged[3].lastMaintDate = (DateTime.Today).AddDays(-3);
             Eged[3].setStatus(); // = MaintainSoon
 
-            LbBuses.ItemsSource = Eged;
+            Eged[4].lastMaintDate = (DateTime.Today).AddMonths(-11).AddDays(-5);
+            Eged[4].setStatus(); // = MaintainSoon
 
+            LbBuses.ItemsSource = Eged;
         }
 
 
@@ -106,45 +104,10 @@ namespace dotNet5781_03B_5857_1544
 
         #endregion
 
-        //       private void Refuel(object sender, RoutedEventArgs e)
-        //       {
-        //           if (sender != null && sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
-        //            LbBuses.SelectedItem = null;
-        //           Button cmd = (Button)sender;
-        //           var p = cmd.Parent as Grid;
-        //           var s = p.Children[6] as ProgressBar;
-        //           s.Value = 0;
-        ////           Bus CurrentBus = (Bus)cmd.DataContext;
-        //           Thread t2 = new Thread(() =>
-        //           {
-        //               if (CurrentDisplay.Fuel < 1200)
-        //               {
-        //                   CurrentDisplay.BUSSTATE = dotNet5781_03B_5857_1544.Status.Refueling;
-        //                   for (int i = 0; i < 12; i++)
-        //                   {
-        //                       s.Value += 1;
-        //                       Thread.Sleep(1000);
-        //                   }
-        //                   CurrentDisplay.Fuel = 1200;
-        //                   CurrentDisplay.setStatus();
-        //               }
-        //           }
-        //           );
-
-        //           t2.Start();
-        //       }
-
-
         private async void Refuel(object sender, RoutedEventArgs e)
         {
             if (sender != null && sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
             LbBuses.SelectedItem = null;
-
-            Progress<Reporter> reportProgress = new Progress<Reporter>();
-            //    reportProgress.ProgressChanged += reportFuelAmount;
-
-            CurrentDisplay.BUSSTATE = dotNet5781_03B_5857_1544.Status.Refueling;
-            LbBuses.Items.Refresh();
 
             if (CurrentDisplay.BUSSTATE == dotNet5781_03B_5857_1544.Status.InMaintenance)
             {
@@ -158,22 +121,28 @@ namespace dotNet5781_03B_5857_1544
 
             else
             {
-                //if (worker.IsBusy != true) 
-                //    worker.RunWorkerAsync(12); // Start the asynchronous operation
+                CurrentDisplay.BUSSTATE = dotNet5781_03B_5857_1544.Status.Refueling;
+                LbBuses.Items.Refresh();
 
-                await RefuelAsync(reportProgress);
+                int amount = (1200 - CurrentDisplay.Fuel) / 10;
+
+                await RefuelAsync(amount, CurrentDisplay);
 
                 LbBuses.Items.Refresh();
             }
         }
 
-        private async Task RefuelAsync(IProgress<Reporter> progress)
+        private async Task RefuelAsync(int amount, Bus b)
         {
-            Reporter reporter = new Reporter();
-            await Task.Run(() => CurrentDisplay.Refuel());
+            for (int i = 0; i < 10; i++)
+            {
+                await Task.Run(() => b.Refuel(amount));
+                LbBuses.Items.Refresh();
+            }
 
-            reporter.PercentageComplete = CurrentDisplay.Fuel;
-            progress.Report(reporter);
+            b.Fuel = 1200;
+            
+            b.setStatus();
         }
 
         private void Add_Bus_to_Eged(object sender, RoutedEventArgs e)
@@ -182,7 +151,7 @@ namespace dotNet5781_03B_5857_1544
             addingWin.ShowDialog();
             LbBuses.Items.Refresh();
         }
-
+        
         void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             if (sender != null && sender is Button btn) CurrentDisplay = (Bus)btn.DataContext;
@@ -210,68 +179,11 @@ namespace dotNet5781_03B_5857_1544
             doubleC.ShowDialog();
             LbBuses.Items.Refresh();
         }
-        
+
         private void EXIT_OnClick(object sender, RoutedEventArgs e)
         {
-            /*
-            ApproveClosing AC = new ApproveClosing();
-            var ans = AC.ShowDialog();
-            if((bool)ans) Close();
-            */
             Close();
         }
-
-        //private void Worker_DoWork(object sender, DoWorkEventArgs e)
-        //{
-        //    Stopwatch stopwatch = new Stopwatch(); 
-        //    stopwatch.Start();
-        //    int length = (int)e.Argument;
-        //    for (int i = 1; i <= length; i++)
-        //    {
-        //        if (worker.CancellationPending == true)
-        //        {
-        //            e.Cancel = true;
-        //            e.Result = stopwatch.ElapsedMilliseconds; // Unnecessary
-        //            break;
-        //        }
-        //        else
-        //        {             // Perform a time consuming operation and report progress.       
-        //            System.Threading.Thread.Sleep(500);
-        //            worker.ReportProgress(i * 100 / length);
-        //        }
-        //    }
-        //    e.Result = stopwatch.ElapsedMilliseconds;
-        //}
-
-        //private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        //{
-        //    int progress = e.ProgressPercentage;
-        //    resultLabel.Content = (progress + "%");
-        //    resultProgressBar.Value = progress;
-        //}
-
-        //private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        //{
-        //    if (e.Cancelled == true)
-        //    {                 // e.Result throw System.InvalidOperationException                 
-        //        resultLabel.Content = "Canceled!";
-        //    }
-        //    else if (e.Error != null)
-        //    {                 // e.Result throw System.Reflection.TargetInvocationException   
-        //        resultLabel.Content = "Error: " + e.Error.Message; // Exception Message            
-        //    }
-        //    else
-        //    {
-        //        long result = (long)e.Result;
-        //        if (result < 1000)
-        //            resultLabel.Content = "Done after " + result + " ms.";
-        //        else
-        //            resultLabel.Content = "Done after " + result / 1000 + " sec.";
-        //    }
-
-
-        //}
     }
-
 }
 

@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Choose Bus"
         Height="250"
-        Width="300">
+        Width="300"
+        WindowStartupLocation="CenterScreen">
 
     <Grid
         Background="DarkCyan"

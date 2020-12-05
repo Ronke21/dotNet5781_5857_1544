@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace dotNet5781_03B_5857_1544
@@ -49,7 +50,22 @@ namespace dotNet5781_03B_5857_1544
 
         private async Task MaintainAsync()
         {
-            await Task.Run(() => currentBus.Maintain());
+            currentBus.BUSSTATE = Status.InMaintenance;
+            wnd.LbBuses.Items.Refresh();
+
+            int amount = currentBus.mileageSinceLastMain / 100;
+
+            for (int i = 0; i < 100; i++)
+            {
+                await Task.Run(() => currentBus.Maintain(amount));
+                wnd.LbBuses.Items.Refresh();
+            }
+
+            currentBus.mileageSinceLastMain = 0;
+            currentBus.lastMaintDate = DateTime.Today;
+            currentBus.Fuel = 1200;
+            currentBus.lastMaintMileage = currentBus.MILEAGE;
+            currentBus.setStatus();
         }
 
         private async void Refuel_Click(object sender, RoutedEventArgs e)
@@ -68,15 +84,25 @@ namespace dotNet5781_03B_5857_1544
 
             else
             {
-                await RefuelAsync();
+                currentBus.BUSSTATE = dotNet5781_03B_5857_1544.Status.Refueling;
+
+                int amount = (1200 - currentBus.Fuel) / 10;
+
+                await RefuelAsync(amount, currentBus);
 
                 wnd.LbBuses.Items.Refresh();
             }
         }
 
-        private async Task RefuelAsync()
+        private async Task RefuelAsync(int amount, Bus b)
         {
-            await Task.Run(() => currentBus.Refuel());
+            for (int i = 0; i < 10; i++)
+            {
+                await Task.Run(() => b.Refuel(amount));
+                wnd.LbBuses.Items.Refresh();
+            }
+            b.Fuel = 1200;
+            b.setStatus();
         }
     }
 }
