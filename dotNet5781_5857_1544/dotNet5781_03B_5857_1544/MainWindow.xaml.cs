@@ -141,7 +141,6 @@ namespace dotNet5781_03B_5857_1544
         /// </summary>
         /// <param name="amount">fuel amount to add in each second</param>
         /// <param name="b">bus to update</param>
-        /// <returns></returns>
         private async Task RefuelAsync(int amount, Bus b)
         {
             for (int i = 0; i < 12; i++)
@@ -166,7 +165,7 @@ namespace dotNet5781_03B_5857_1544
         }
 
         /// <summary>
-        /// a button that sends the bus for a ride - opens a new window to get its kength from user 
+        /// a button that sends the bus for a ride - opens a new window to get its length from user 
         /// activates an asynchronic task that counts the time for riding, updates in real time and shows this in the progres bar.
         /// the task happens in parallel to main thread and alows the user to continue use the program
         /// </summary>

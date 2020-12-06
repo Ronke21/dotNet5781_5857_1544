@@ -197,7 +197,7 @@ namespace dotNet5781_03B_5857_1544
             Fuel += amount;
         }
 
-        public int MaxRide { get; set; } = 1;
+        public int MaxRide { get; set; } = 1; //used to describe the ride available range - to the choose bus for a ride window
 
         /// <summary>
         /// sends the bus for a ride and waits 1 second

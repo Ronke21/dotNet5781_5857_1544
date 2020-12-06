@@ -6,18 +6,20 @@ namespace dotNet5781_03B_5857_1544
 {
 
     /// <summary>
-    /// Interaction logic for listDoubleClick.xaml
+    /// Interaction logic for listDoubleClick.xaml.
+    /// this window opens when the user double clicks on a bus from list box in main window.
     /// </summary>
     public partial class listDoubleClick : Window
     {
-        private Bus currentBus;
-        MainWindow wnd = (MainWindow)Application.Current.MainWindow;
+        private Bus currentBus; //referernce to chosen bus from main window
+        MainWindow wnd = (MainWindow)Application.Current.MainWindow; //reperence to main window in order to update list box items(buses)
 
         public listDoubleClick(Bus b)
         {
             InitializeComponent();
-            currentBus = b;
+            currentBus = b; //refer the bus from main window
 
+            //update all lables with bus properties:
             lbFuel.DataContext = currentBus.FUELTSTR;
             lbID.DataContext = currentBus.LICENSENUMSTR;
             lbKM.DataContext = currentBus.MILEAGESTR;
@@ -26,34 +28,44 @@ namespace dotNet5781_03B_5857_1544
             lbfromLast.DataContext = currentBus.MILAGESINCELASTMAINTSTR;
         }
 
+        /// <summary>
+        /// a button that sends the bus for a maintenance 
+        /// it takes 144 seconds (24 hours in real world)
+        /// activates an asynchronic task that counts the time for maintaing, updates in real time and shows this in the progres bar in main window.
+        /// the task happens in parallel to main thread and alows the user to continue use the program
+        /// </summary>
         private async void Maintain_Click(object sender, RoutedEventArgs e)
         {
             Close();
 
-            if (currentBus.BUSSTATE == Status.Refueling)
+            if (currentBus.BUSSTATE == Status.Refueling) //can't maintain while refuling
             {
                 MessageBox.Show("bus is in refuel, wait until it gets back");
             }
 
-            else if (currentBus.BUSSTATE == Status.During)
+            else if (currentBus.BUSSTATE == Status.During) //can't maintain while riding
             {
                 MessageBox.Show("bus is in a ride, wait until it gets back");
             }
 
-            else
+            else //bus is free
             {
-                await MaintainAsync();
+                await MaintainAsync();  //activate the parallel asynchronic task
 
                 wnd.LbBuses.Items.Refresh();
             }
         }
 
+        /// <summary>
+        /// the task activated by the last function in order to maintain bus
+        /// </summary>
+        /// <returns></returns>
         private async Task MaintainAsync()
         {
             currentBus.BUSSTATE = Status.InMaintenance;
             wnd.LbBuses.Items.Refresh();
 
-            int amount = currentBus.mileageSinceLastMain / 100;
+            int amount = currentBus.mileageSinceLastMain / 100; //the amount of to update in every second - in order to reflect maintenance progress in main window
 
             for (int i = 0; i < 100; i++)
             {
@@ -61,6 +73,7 @@ namespace dotNet5781_03B_5857_1544
                 wnd.LbBuses.Items.Refresh();
             }
 
+            //update bus properties
             currentBus.mileageSinceLastMain = 0;
             currentBus.lastMaintDate = DateTime.Today;
             currentBus.Fuel = 1200;
@@ -68,10 +81,18 @@ namespace dotNet5781_03B_5857_1544
             currentBus.setStatus();
         }
 
+
+        /// <summary>
+        /// a button that sends the bus for a refuel to a level of 1200. 
+        /// it takes 12 seconds (2 hours in real world)
+        /// activates an asynchronic task that counts the time for refuling, updates in real time and shows this in the progres bar.
+        /// the task happens in parallel to main thread and alows the user to continue use the program
+        /// </summary>
         private async void Refuel_Click(object sender, RoutedEventArgs e)
         {
             Close();
 
+            //at first - check if bus is busy in ride/maint and cant refuel
             if (currentBus.BUSSTATE == Status.InMaintenance)
             {
                 MessageBox.Show("bus is in maintenance, no need to refuel twice");
@@ -86,14 +107,19 @@ namespace dotNet5781_03B_5857_1544
             {
                 currentBus.BUSSTATE = dotNet5781_03B_5857_1544.Status.Refueling;
 
-                int amount = (1200 - currentBus.Fuel) / 10;
+                int amount = (1200 - currentBus.Fuel) / 10; //the amount of fuel to update in each second from the 12 of refuling
 
-                await RefuelAsync(amount, currentBus);
+                await RefuelAsync(amount, currentBus); //activate the parallel asynchronic task
 
                 wnd.LbBuses.Items.Refresh();
             }
         }
 
+        /// <summary>
+        /// the task activated by the last function in order to update bus fuel amount
+        /// </summary>
+        /// <param name="amount">fuel amount to add in each second</param>
+        /// <param name="b">bus to update</param>
         private async Task RefuelAsync(int amount, Bus b)
         {
             for (int i = 0; i < 10; i++)
@@ -101,7 +127,7 @@ namespace dotNet5781_03B_5857_1544
                 await Task.Run(() => b.Refuel(amount));
                 wnd.LbBuses.Items.Refresh();
             }
-            b.Fuel = 1200;
+            b.Fuel = 1200; //dividing the amount may cause a lack of few liters - so update to 1200
             b.setStatus();
         }
     }
