@@ -3,8 +3,11 @@ This file contains the class for a bus entity (according to properties demands i
  */
 
 using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
+using dotNet5781_03B_5857_1544.Annotations;
 
 namespace dotNet5781_03B_5857_1544
 {
@@ -12,7 +15,7 @@ namespace dotNet5781_03B_5857_1544
     /// <summary>
     ///     /// class representing a bus unit
     /// </summary>
-    public class Bus
+    public class Bus:INotifyPropertyChanged
     {
 
         MainWindow wnd = (MainWindow)Application.Current.MainWindow; //reperence to main window in order to update list box items(buses)
@@ -33,7 +36,20 @@ namespace dotNet5781_03B_5857_1544
             }
         }
 
-        public int RIDE { get; set; } //reflects a km num of ride if taken. usually 0
+        private int _Ride;
+        public int RIDE
+        {
+            get { return _Ride ;}
+
+            set
+            {
+                _Ride = value;
+                if (PropertyChanged!=null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("RIDE"));
+                }
+            }
+        } //reflects a km num of ride if taken. usually 0
 
         private Status busState; //status of bus by enums (in seperate class)
         public Status BUSSTATE
@@ -182,6 +198,7 @@ namespace dotNet5781_03B_5857_1544
         {
             Console.WriteLine("\nBus number: " + this.LICENSENUMSTR + "\t\tMileage since last maintenance: " + (this.mileage - this.lastMaintMileage) + "\t\tFuel amount: " + this.Fuel + "\t\tMileage: " + this.mileage + "\t\tDate of last maintenance: " + this.lastMaintDate);
         }
+
         public override string ToString()
         {
             return this.LICENSENUMSTR + "\t" + (this.mileage - this.lastMaintMileage) + "\t" + this.Fuel + "\t" + this.mileage + "\t" + this.lastMaintDate.ToString("dd/MM/yyyy") + "\t" + this.BUSSTATE.ToString();
@@ -220,6 +237,14 @@ namespace dotNet5781_03B_5857_1544
             mileageSinceLastMain -= amount;
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
 }

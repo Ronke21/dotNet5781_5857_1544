@@ -7,8 +7,52 @@
         Title="Bus details" 
         Height="360"
         Width="340"
-        WindowStartupLocation="CenterScreen">
-    
+        WindowStartupLocation="CenterScreen"
+        x:Name="PWindow"
+        >
+
+    <Window.Resources>
+        <LinearGradientBrush x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="White" Offset="0.0"/>
+                    <GradientStop Color="White" Offset="0.1"/>
+                    <GradientStop Color="White" Offset="0.9"/>
+                    <GradientStop Color="White" Offset="1.0"/>
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
+        <LinearGradientBrush x:Key="DarkBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="LightGreen" Offset="0.0"/>
+                    <GradientStop Color="Green" Offset="1.0"/>
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="NormalBorderBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="White" Offset="0.0"/>
+                    <GradientStop Color="White" Offset="1.0"/>
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <Style x:Key="{x:Type ProgressBar}" TargetType="{x:Type ProgressBar}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                        <Grid>
+                            <Border Name="PART_Track" CornerRadius="5" Background="{StaticResource PressedBrush}" BorderBrush="{StaticResource SolidBorderBrush}" BorderThickness="0.5" />
+                            <Border Name="PART_Indicator" CornerRadius="5" Background="{StaticResource DarkBrush}" BorderBrush="Transparent"  BorderThickness="2,2,2,2" HorizontalAlignment="Left" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -22,9 +66,10 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-      
+
 
         <Label 
         Content="Bus license number"
@@ -95,7 +140,7 @@
         HorizontalAlignment="Center" 
         VerticalAlignment="Center"
           />
-        
+
         <Label 
         Name="lbFuel"
         Content="{Binding}"
@@ -131,7 +176,7 @@
         HorizontalAlignment="Center" 
         VerticalAlignment="Center"
         />
-        
+
         <Label 
         Name="lbfromLast"  
          Content="{Binding}"
@@ -165,6 +210,15 @@
             </StackPanel>
 
         </Button>
+
+        <ProgressBar
+            x:Name="pbRide"
+            Grid.Row="6" 
+            Background="White"
+            Minimum = "0"
+            Value="{Binding Path = RIDE, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
+            Maximum="{Binding Path = MaxRide, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}" Margin="0,73,-0.4,0.4" Grid.RowSpan="2" Grid.ColumnSpan="2"
+        />
 
     </Grid>
 </Window>

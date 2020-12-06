@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:dotNet5781_03B_5857_1544"
         mc:Ignorable="d"
         Title="MainWindow"
         WindowState="Maximized"
@@ -395,33 +394,7 @@
                                 Value="{Binding Path = Fuel, Mode = OneWay,UpdateSourceTrigger = PropertyChanged}"
                                 Maximum="1200"
                                 />
-
-                                <!--<ProgressBar.Resources>
-
-                                        <Style TargetType="Border">
-
-                                            <Setter Property="CornerRadius"
-                                                    Value="15,15,0,0"/>
-
-                                            <Style.Triggers>
-
-                                                <DataTrigger
-                                                    Binding="{Binding Path = Fuel, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ProgressBar}}}"
-                                                    >
-
-                                                    <Setter
-                                                        Property="CornerRadius" 
-                                                        Value="15,15,0,0"/>
-
-                                                </DataTrigger>
-
-                                            </Style.Triggers>
-
-                                        </Style>
-
-                                    </ProgressBar.Resources>-->
-
-
+                                
                                 <Label
                                     Content="Fuel"
                                     Grid.Row="0"

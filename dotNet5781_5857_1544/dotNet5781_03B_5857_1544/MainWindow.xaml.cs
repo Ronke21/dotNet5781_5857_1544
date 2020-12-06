@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,7 +30,7 @@ namespace dotNet5781_03B_5857_1544
         private Bus CurrentDisplay; //kind of reference for the current chosen bus in the list box
         
         public static List<Bus> Eged = new List<Bus>(); // a list of buses - our data base!
-
+        
         public MainWindow()
         {
             InitializeComponent();

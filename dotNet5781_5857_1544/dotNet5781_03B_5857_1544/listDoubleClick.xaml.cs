@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace dotNet5781_03B_5857_1544
 {
@@ -19,13 +20,18 @@ namespace dotNet5781_03B_5857_1544
             InitializeComponent();
             currentBus = b; //refer the bus from main window
 
+            PWindow.DataContext = currentBus;
+
             //update all lables with bus properties:
+
             lbFuel.DataContext = currentBus.FUELTSTR;
             lbID.DataContext = currentBus.LICENSENUMSTR;
             lbKM.DataContext = currentBus.MILEAGESTR;
             lbLast.DataContext = currentBus.LASTMAINTDATESTR;
             lblState.DataContext = currentBus.BUSSTATESTR;
             lbfromLast.DataContext = currentBus.MILAGESINCELASTMAINTSTR;
+
+
         }
 
         /// <summary>
