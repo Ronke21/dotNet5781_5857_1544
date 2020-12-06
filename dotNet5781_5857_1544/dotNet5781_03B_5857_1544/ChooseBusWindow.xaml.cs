@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -65,14 +66,13 @@ namespace dotNet5781_03B_5857_1544
 
         private async Task RideAsync(int mil)
         {
-            b.BUSSTATE = Status.During;
-            
+
             for (int i = 0; i < 10; i++)
             {
+                b.BUSSTATE = Status.During;
                 await Task.Run(() => b.Ride(mil));
                 wnd.LbBuses.Items.Refresh();
             }
-
             b.RIDE = 0;
             b.setStatus();
             wnd.LbBuses.Items.Refresh();

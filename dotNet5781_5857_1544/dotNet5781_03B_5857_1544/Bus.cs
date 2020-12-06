@@ -81,6 +81,7 @@ namespace dotNet5781_03B_5857_1544
             if (add > 0)
             {
                 this.mileage += add;
+                this.mileageSinceLastMain += add;
                 this.Fuel -= add;
                 setStatus();
             }

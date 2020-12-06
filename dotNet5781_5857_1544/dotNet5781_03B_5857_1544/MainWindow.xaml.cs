@@ -25,15 +25,6 @@ namespace dotNet5781_03B_5857_1544
         {
             InitializeComponent();
 
-            //worker = new BackgroundWorker();
-            //worker.DoWork += Worker_DoWork;
-            //worker.ProgressChanged += Worker_ProgressChanged;
-            //worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
-
-            //worker.WorkerReportsProgress = true;
-            //worker.WorkerSupportsCancellation = true; ;
-
-
             for (int i = 0; i < 5; i++)
             {
                 Eged.Add(new Bus(r.Next(1000000, 9999999), new DateTime(r.Next(1948, 2018), r.Next(1, 13), 1), r.Next(1201), r.Next(19000), DateTime.Now.AddMonths(r.Next(-20, -1))));

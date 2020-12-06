@@ -27,8 +27,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="1.6*"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
 
@@ -174,13 +173,13 @@
 
                                 <Setter
                                     Property="Background"
-                                    Value="LightGreen"/>
-                                <Setter
+                                    Value="GreenYellow"/>
+                                <!--<Setter
                                     Property="BorderBrush"
                                     Value="OrangeRed"/>
                                 <Setter
                                     Property="BorderThickness"
-                                    Value="4"/>
+                                    Value="1"/>-->
 
                             </DataTrigger>
 
@@ -223,9 +222,6 @@
                               >
 
                             <Grid.ColumnDefinitions>
-                                <!--<ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />-->
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
@@ -239,7 +235,7 @@
                                 Grid.Column="0"
                                 Text="{Binding Path=LICENSENUMSTR }"
                                 FontWeight="Bold"
-                                FontSize="12"
+                                FontSize="20"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 />
@@ -259,7 +255,7 @@
                                 Grid.Column="1"
                                 Text="{Binding Path=FUELTSTR}"
                                 FontWeight="Bold"
-                                FontSize="12"
+                                FontSize="20"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                             />
@@ -289,7 +285,7 @@
                                 Grid.Column="2"
                                 Text="{Binding Path=BUSSTATESTR}"
                                 FontWeight="Bold"
-                                FontSize="12"
+                                FontSize="20"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                             />
@@ -355,13 +351,39 @@
                                 Value="{Binding Path = Fuel, Mode = OneWay,UpdateSourceTrigger = PropertyChanged}"
                                 Maximum="1200"
                                 />
-                                
+
+                                <!--<ProgressBar.Resources>
+
+                                        <Style TargetType="Border">
+
+                                            <Setter Property="CornerRadius"
+                                                    Value="15,15,0,0"/>
+
+                                            <Style.Triggers>
+
+                                                <DataTrigger
+                                                    Binding="{Binding Path = Fuel, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ProgressBar}}}"
+                                                    >
+
+                                                    <Setter
+                                                        Property="CornerRadius" 
+                                                        Value="15,15,0,0"/>
+
+                                                </DataTrigger>
+
+                                            </Style.Triggers>
+
+                                        </Style>
+
+                                    </ProgressBar.Resources>-->
+
+
                                 <Label
                                     Content="Fuel"
                                     Grid.Row="0"
                                     Grid.Column="1"
                                  />
-                                
+
                                 <ProgressBar
                                 x:Name="pbRide"
                                 Grid.Row="1" 
