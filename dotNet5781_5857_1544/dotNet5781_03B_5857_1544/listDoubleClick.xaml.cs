@@ -27,7 +27,7 @@ namespace dotNet5781_03B_5857_1544
             lbFuel.DataContext = currentBus.Fuel;
             lbID.DataContext = currentBus.LICENSENUMSTR;
             lbKM.DataContext = (int)Math.Round(currentBus.MILEAGE);
-            lbLast.DataContext = currentBus.lastMaintDate;
+            lbLast.DataContext = currentBus.lastMaintDate.Date;
             lblState.DataContext = currentBus.BUSSTATE;
             lbfromLast.DataContext = (int)Math.Round(currentBus.MileageSinceLastMaint);
         }

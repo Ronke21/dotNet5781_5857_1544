@@ -10,14 +10,27 @@
         Width="300"
         WindowStartupLocation="CenterScreen">
 
-    <Grid
-        Background="DarkCyan"
-        >
+    <Grid>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                        <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#AA01A77C" Offset="0.013"/>
+                <GradientStop Color="#AA30A4B8" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
         <Label
             Grid.Row="0"
@@ -27,7 +40,21 @@
             VerticalAlignment="Center"
             VerticalContentAlignment="Center"
             FontSize="30"
-            />
+            >
+
+            <Label.Effect>
+
+                <DropShadowEffect
+                    Color="White"
+                    Direction="0"
+                    ShadowDepth="0"
+                    BlurRadius="15"
+                />
+
+            </Label.Effect>
+
+        </Label>
+
         <TextBox 
             x:Name="ChooseMileage"
             PreviewTextInput="NumberValidationTextBox"
@@ -40,7 +67,18 @@
             VerticalAlignment="Center"
             VerticalContentAlignment="Center"
             KeyDown="ChooseMileage_OnKeyDown"
-            />
+            >
+
+            <TextBox.Effect>
+
+                <DropShadowEffect
+                    BlurRadius="15"
+                    Direction="20"
+                    />
+
+            </TextBox.Effect>
+
+            </TextBox>
 
     </Grid>
 

@@ -9,12 +9,29 @@
         Icon="https://img.icons8.com/color/344/bus.png"
         mc:Ignorable="d"
         Title="Add Bus"
-        Height="240"
-        Width="250">
+        Height="350"
+        Width="325"
+        WindowStartupLocation="CenterScreen">
 
     <Grid
     Name="MasterGrid"
     >
+
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                        <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#AA01A77C" Offset="0.013"/>
+                <GradientStop Color="#AA30A4B8" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
 
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
@@ -34,48 +51,63 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <Label 
-        Content="Bus starting date"
+        Content="Starting date"
         Grid.Row="0"
         Grid.Column="0"
         HorizontalAlignment="Left" 
         VerticalAlignment="Center"
+        Margin="15,0,0,0"
+        FontSize="15"
+        FontWeight="Medium"
         />
 
             <Label 
-        Content="Bus license number"
+        Content="License number"
         Grid.Row="1"
         Grid.Column="0"
         HorizontalAlignment="Left" 
         VerticalAlignment="Center"
+        Margin="15,0,0,0"
+        FontSize="15"
+        FontWeight="Medium"
         />
 
             <Label 
-              Content="Bus fuel amount"
+              Content="Fuel amount"
               Grid.Row="2"
               Grid.Column="0"
               HorizontalAlignment="Left" 
               VerticalAlignment="Center"
+              Margin="15,0,0,0"
+              FontSize="15"
+              FontWeight="Medium"
           />
 
             <Label 
-        Content="Bus mileage"
+        Content="Mileage"
         Grid.Row="3"
         Grid.Column="0"
         HorizontalAlignment="Left" 
         VerticalAlignment="Center"
+        Margin="15,0,0,0"
+        FontSize="15"
+        FontWeight="Medium"
         />
 
             <Label 
-        Content="Bus last maintenance date"
+        Content="Last maintenance date"
         Grid.Row="4"
         Grid.Column="0"
         HorizontalAlignment="Left" 
         VerticalAlignment="Center"
+        Margin="15,0,0,0"
+        FontSize="15"
+        FontWeight="Medium"
         />
 
             <DatePicker
@@ -86,6 +118,8 @@
         VerticalAlignment="Stretch"
         HorizontalContentAlignment="Center"
         VerticalContentAlignment="Center"
+        Width="110"
+        Height="25"
         CalendarClosed="DatePickerStart_OnCalendarClosed"
         SelectedDate="{x:Static sys:DateTime.Now}"
         />
@@ -98,6 +132,8 @@
         HorizontalAlignment="Stretch"
         VerticalContentAlignment="Center"
         HorizontalContentAlignment="Center"
+        Width="110"
+        Height="30"
         TextChanged="TextBoxBusLicenseNumber_OnTextChanged"
         MouseLeave="TextBoxBusLicenseNumber_OnMouseLeave"
         PreviewTextInput="TextBoxBusLicenseNumber_OnPreviewTextInput"
@@ -111,6 +147,8 @@
         HorizontalAlignment="Stretch"
         VerticalContentAlignment="Center"
         HorizontalContentAlignment="Center"
+        Width="110"
+        Height="30"
         TextChanged="TextBoxFuelAmount_OnTextChanged"
         PreviewTextInput="TextBoxFuelAmount_OnPreviewTextInput"
         />
@@ -123,6 +161,8 @@
         HorizontalAlignment="Stretch"
         VerticalContentAlignment="Center"
         HorizontalContentAlignment="Center"
+        Width="110"
+        Height="30"
         TextChanged="TextBoxMileage_OnTextChanged"
         PreviewTextInput="TextBoxMileage_OnPreviewTextInput"
         />
@@ -135,6 +175,8 @@
             VerticalAlignment="Stretch"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
+            Width="110"
+            Height="25"
             CalendarClosed="DatePickerLastMaintenance_OnCalendarClosed"
             SelectedDate="{x:Static sys:DateTime.Now}"
         />
@@ -145,11 +187,45 @@
             Grid.Row="1">
             <Button
                 Name="Add"
-                Content="Add"
                 VerticalAlignment="Stretch"
                 HorizontalAlignment="Stretch"
                 Click="Add_OnClick"
-            />
+                Margin="5,5,5,5"
+            >
+
+                <Button.Resources>
+
+                    <Style TargetType="Border">
+
+                        <Setter 
+                            Property="CornerRadius"
+                            Value="5"    
+                                />
+
+                    </Style>
+
+                </Button.Resources>
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    >
+
+                    <Label
+                        Content="Add Bus"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        FontWeight="DemiBold"
+                        />
+
+                    <Image
+                        Source="https://img.icons8.com/color/344/bus.png"
+                        Stretch="UniformToFill"
+                        />
+
+                </StackPanel>
+
+            </Button>
         </Grid>
 
 

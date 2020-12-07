@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace dotNet5781_03B_5857_1544
 {
@@ -25,7 +26,14 @@ namespace dotNet5781_03B_5857_1544
             int.TryParse(TextBoxBusLicenseNumber.Text, out int num);
             if (num > 99999999)
             {
+                TextBoxBusLicenseNumber.BorderBrush = Brushes.Red;
+                TextBoxBusLicenseNumber.BorderThickness= new Thickness(3);
                 MessageBox.Show("not valid");
+            }
+            else
+            {
+                TextBoxBusLicenseNumber.BorderBrush = Brushes.DarkGray;
+                TextBoxBusLicenseNumber.BorderThickness= new Thickness(1);
             }
         }
 
@@ -65,7 +73,14 @@ namespace dotNet5781_03B_5857_1544
             int.TryParse(TextBoxFuelAmount.Text, out int fuel);
             if (fuel < 0 || fuel > 1200)
             {
+                TextBoxFuelAmount.BorderBrush = Brushes.Red;
+                TextBoxFuelAmount.BorderThickness = new Thickness(3);
                 MessageBox.Show("not valid");
+            }
+            else
+            {
+                TextBoxFuelAmount.BorderBrush = Brushes.DarkGray;
+                TextBoxFuelAmount.BorderThickness = new Thickness(1);
             }
         }
 
@@ -78,7 +93,14 @@ namespace dotNet5781_03B_5857_1544
             e.Handled = regex.IsMatch(e.Text);
             if (e.Handled)
             {
+                TextBoxFuelAmount.BorderBrush = Brushes.Red;
+                TextBoxFuelAmount.BorderThickness = new Thickness(3);
                 MessageBox.Show($"digits only\n'{e.Text}' is not a digit");
+            }
+            else
+            {
+                TextBoxFuelAmount.BorderBrush = Brushes.DarkGray;
+                TextBoxFuelAmount.BorderThickness = new Thickness(1);
             }
         }
 
@@ -90,7 +112,14 @@ namespace dotNet5781_03B_5857_1544
             int.TryParse(TextBoxMileage.Text, out int mileage);
             if (mileage < 0 || mileage > 1000000)
             {
+                TextBoxMileage.BorderBrush = Brushes.Red;
+                TextBoxMileage.BorderThickness = new Thickness(3);
                 MessageBox.Show("not valid");
+            }
+            else
+            {
+                TextBoxMileage.BorderBrush = Brushes.DarkGray;
+                TextBoxMileage.BorderThickness = new Thickness(1);
             }
         }
 
@@ -103,7 +132,14 @@ namespace dotNet5781_03B_5857_1544
             e.Handled = regex.IsMatch(e.Text);
             if (e.Handled)
             {
+                TextBoxMileage.BorderBrush = Brushes.Red;
+                TextBoxMileage.BorderThickness = new Thickness(3);
                 MessageBox.Show($"digits only\n'{e.Text}' is not a digit");
+            }
+            else
+            {
+                TextBoxMileage.BorderBrush = Brushes.DarkGray;
+                TextBoxMileage.BorderThickness = new Thickness(1);
             }
         }
 
@@ -122,6 +158,7 @@ namespace dotNet5781_03B_5857_1544
                 if (last > DateTime.Today || last < new DateTime(2000, 1, 1))
                 {
                     MessageBox.Show("not valid");
+                    DatePickerStart.SelectedDate = DateTime.Today;
                 }
             }
         }
@@ -141,6 +178,7 @@ namespace dotNet5781_03B_5857_1544
                 if (last > DateTime.Today || last < new DateTime(2000, 1, 1))
                 {
                     MessageBox.Show("not valid");
+                    DatePickerLastMaintenance.SelectedDate = DateTime.Today;
                 }
             }
         }
@@ -165,7 +203,7 @@ namespace dotNet5781_03B_5857_1544
             }
             else //check validity of bus license num - according to year
             {
-                if (start.Year > 2017) 
+                if (start.Year > 2017)
                 {
                     if (license < 1000000)
                     {
@@ -184,6 +222,7 @@ namespace dotNet5781_03B_5857_1544
                 Close();
                 return;
             }
+
             if ((mileage < 0) || (mileage > 500000)) //check validity of mileage
             {
                 MessageBox.Show("mileage only between 0-500,000!");

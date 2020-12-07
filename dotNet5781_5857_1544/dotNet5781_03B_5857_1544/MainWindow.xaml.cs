@@ -35,7 +35,7 @@ namespace dotNet5781_03B_5857_1544
         {
             InitializeComponent();
 
-            for (int i = 0; i < 5; i++) //initiallize Eged with random buses
+            for (int i = 0; i < 10; i++) //initiallize Eged with random buses
             {
                 Eged.Add(new Bus(r.Next(1000000, 9999999), new DateTime(r.Next(1948, 2018), r.Next(1, 13), 1), r.Next(1201), r.Next(19000), DateTime.Now.AddMonths(r.Next(-20, -1))));
                 Eged.Add(new Bus(r.Next(10000000, 99999999), new DateTime(r.Next(2018, 2021), r.Next(1, 13), 1), r.Next(1201), r.Next(19000), DateTime.Now.AddMonths(r.Next(-20, -1))));

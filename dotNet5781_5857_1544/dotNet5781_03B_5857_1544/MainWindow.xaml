@@ -42,8 +42,8 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ProgressBar}">
                         <Grid>
-                            <Border Name="PART_Track" CornerRadius="5" Background="{StaticResource PressedBrush}" BorderBrush="{StaticResource SolidBorderBrush}" BorderThickness="0.5" />
-                            <Border Name="PART_Indicator" CornerRadius="5" Background="{StaticResource DarkBrush}" BorderBrush="Transparent"  BorderThickness="2,2,2,2" HorizontalAlignment="Left" />
+                            <Border Name="PART_Track" CornerRadius="0,5,5,0" Background="{StaticResource PressedBrush}" BorderBrush="{StaticResource SolidBorderBrush}" BorderThickness="0.5" />
+                            <Border Name="PART_Indicator" CornerRadius="0,5,5,0" Background="{StaticResource DarkBrush}" BorderBrush="Transparent"  BorderThickness="2,2,2,2" HorizontalAlignment="Left" />
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -61,59 +61,210 @@
 
         <Grid x:Name="Buttons"
               Grid.Column="0"
-              Grid.Row="0" 
+              Grid.Row="0"
         >
+
+            <Grid.Background>
+
+                <LinearGradientBrush
+                    EndPoint="0.5,1"
+                    MappingMode="RelativeToBoundingBox"
+                    StartPoint="0.5,0">
+
+                    <GradientStop Color="#AA01A77C" 
+                                  Offset="0.987"/>
+
+                    <GradientStop Color="#AA30A4B8"/>
+
+                </LinearGradientBrush>
+
+            </Grid.Background>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="1.6*"/>
-                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="1.7*"/>
+                <ColumnDefinition Width="0.4*"/>
             </Grid.ColumnDefinitions>
 
             <Button x:Name="BusLineNum"
-                    Content="ID"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     Grid.Column="0"
-                    Click="Sort_by_ID"
-            />
+                    Click="Sort_by_ID">
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    >
+
+                    <Label 
+                        Content="ID  "
+                        FontSize="28"
+                        FontWeight="DemiBold"
+                        />
+                    
+                    <Image
+                        Source="https://img.icons8.com/metro/250/generic-sorting-2.png"
+                        Height="25"
+                        />
+
+                </StackPanel>
+
+                <Button.Background>
+
+                    <LinearGradientBrush
+                        EndPoint="0.5,1"
+                        MappingMode="RelativeToBoundingBox"
+                        StartPoint="0.5,0">
+
+                        <GradientStop Color="#AA01A77C" 
+                                      Offset="0.987"/>
+
+                        <GradientStop Color="#AA30A4B8"/>
+
+                    </LinearGradientBrush>
+
+                </Button.Background>
+
+            </Button>
 
             <Button x:Name="Fuel"
-                    Content="Fuel"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     Grid.Column="1"
-                    Click="Sort_by_fuel_Amount"
-            />
+                    Click="Sort_by_fuel_Amount">
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    >
+
+                    <Label
+                    FontSize="25"
+                    Content="Fuel  "
+                    FontWeight="DemiBold"
+                    />
+
+                    <Image
+                        Source="https://img.icons8.com/metro/250/generic-sorting.png"
+                        Height="25"
+                    />
+
+                </StackPanel>
+
+                <Button.Background>
+
+                    <LinearGradientBrush
+                        EndPoint="0.5,1"
+                        MappingMode="RelativeToBoundingBox"
+                        StartPoint="0.5,0">
+
+                        <GradientStop Color="#AA01A77C" 
+                                      Offset="0.987"/>
+
+                        <GradientStop Color="#AA30A4B8"/>
+
+                    </LinearGradientBrush>
+
+                </Button.Background>
+
+            </Button>
 
             <Button x:Name="Status"
-                    Content="Status"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     Grid.Column="2"
                     Click="Sort_by_status"
-            />
-
-            <Button
-                Grid.Column="4"
-                VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch"
-
-                Click="EXIT_OnClick"
             >
 
-                <Image Source="https://img.icons8.com/carbon-copy/344/exit.png"/>
+                <StackPanel
+                    Orientation="Horizontal"
+                    >
+
+                    <Label
+                        Content="Status  "
+                        FontSize="25"
+                        FontWeight="DemiBold"
+                        />
+
+                    <Image
+                        Source="https://img.icons8.com/metro/250/generic-sorting.png"
+                        Height="25"
+                    />
+
+                </StackPanel>
+
+                <Button.Background>
+
+                    <LinearGradientBrush
+                        EndPoint="0.5,1"
+                        MappingMode="RelativeToBoundingBox"
+                        StartPoint="0.5,0">
+
+                        <GradientStop Color="#AA01A77C" 
+                                      Offset="0.987"/>
+
+                        <GradientStop Color="#AA30A4B8"/>
+
+                    </LinearGradientBrush>
+
+                </Button.Background>
+
+            </Button>
+
+            <Label 
+                Grid.Column="3"
+                Content="Ron Keinan 203735857&#xA;    Amihay Hassan 206291544" 
+                HorizontalContentAlignment="Center"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                VerticalAlignment="Stretch"
+                FontSize="20"
+                FontFamily="Consolas"
+            >
+
+                <Label.Background>
+
+                    <LinearGradientBrush
+                        EndPoint="0.5,1"
+                        MappingMode="RelativeToBoundingBox"
+                        StartPoint="0.5,0">
+
+                        <GradientStop Color="#AA01A77C" 
+                                      Offset="0.987"/>
+
+                        <GradientStop Color="#AA30A4B8"/>
+
+                    </LinearGradientBrush>
+
+                </Label.Background>
+
+            </Label>
+
+
+            <Button
+             Grid.Column="4"
+             VerticalAlignment="Stretch"
+             HorizontalAlignment="Stretch"
+             Click="EXIT_OnClick">
+
+                <Image Source="https://img.icons8.com/carbon-copy/344/exit.png">
+                    <Image.OpacityMask>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Image.OpacityMask>
+                </Image>
 
                 <Button.Resources>
 
                     <Style TargetType="Border">
 
                         <Setter 
-                            Property="CornerRadius" 
-                            Value="10"
-                        />
+                                Property="CornerRadius" 
+                                Value="10"
+                            />
 
                     </Style>
 
@@ -121,10 +272,10 @@
 
                 <Button.Effect>
                     <DropShadowEffect
-                        BlurRadius="15"
-                        Color="Gray"
-                        ShadowDepth="1"
-                    />
+                            BlurRadius="15"
+                            Color="Gray"
+                            ShadowDepth="1"
+                        />
                 </Button.Effect>
 
             </Button>
@@ -156,7 +307,7 @@
 
                                 <Setter
                                     Property="Background"
-                                    Value="LightGreen"/>
+                                    Value="#B290EE90"/>
 
 
                             </DataTrigger>
@@ -168,7 +319,8 @@
 
                                 <Setter 
                                     Property="Background"
-                                    Value="Orange"/>
+                                    Value="#B2FFA500"/>
+
 
                             </DataTrigger>
 
@@ -179,7 +331,7 @@
 
                                 <Setter
                                     Property="Background"
-                                    Value="Orange"/>
+                                    Value="#B2FFA500"/>
 
                             </DataTrigger>
 
@@ -190,7 +342,7 @@
 
                                 <Setter
                                     Property="Background"
-                                    Value="GreenYellow"/>
+                                    Value="#B2ADFF2F"/>
                             </DataTrigger>
 
                             <DataTrigger
@@ -199,7 +351,7 @@
 
                                 <Setter 
                                     Property="Background" 
-                                    Value="Yellow"/>
+                                    Value="#B2FFFF00"/>
 
                             </DataTrigger>
 
@@ -210,7 +362,7 @@
 
                                 <Setter
                                     Property="Background" 
-                                    Value="Crimson"/>
+                                    Value="#99DC143C"/>
 
                             </DataTrigger>
 
@@ -281,6 +433,34 @@
                                     <Image Source="https://img.icons8.com/dotty/344/gas-pump.png"/>
                                 </Viewbox>
 
+                                <Button.Resources>
+
+                                    <Style TargetType="Border">
+
+                                        <Setter 
+                                            Property="CornerRadius" 
+                                            Value="15,0,0,15"
+                                        />
+
+                                    </Style>
+
+                                </Button.Resources>
+
+                                <Button.Background>
+
+                                    <LinearGradientBrush
+                                        EndPoint="0.5,1"
+                                        MappingMode="RelativeToBoundingBox"
+                                        StartPoint="0.5,0">
+
+                                        <GradientStop Color="#FFFFFFAA" 
+                                                      Offset="0.987"/>
+                                        <GradientStop Color="#FFFFA55A"/>
+
+                                    </LinearGradientBrush>
+
+                                </Button.Background>
+
                             </Button>
 
                             <Button Name="ChooseBusForARide"
@@ -298,8 +478,23 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         />
-
+                                    
                                 </Viewbox>
+
+                                <Button.Background>
+
+                                    <LinearGradientBrush
+                                        EndPoint="0.5,1"
+                                        MappingMode="RelativeToBoundingBox"
+                                        StartPoint="0.5,0">
+
+                                        <GradientStop Color="#FFFFA55A" 
+                                                      Offset="0.987"/>
+                                        <GradientStop Color="#FFFFFFAA"/>
+
+                                    </LinearGradientBrush>
+
+                                </Button.Background>
 
                             </Button>
 
@@ -331,7 +526,7 @@
                                 Value="{Binding Path = Fuel, Mode = OneWay,UpdateSourceTrigger = PropertyChanged}"
                                 Maximum="1200"
                                 />
-                                
+
                                 <Label
                                     Content="Fuel"
                                     Grid.Row="0"
@@ -382,17 +577,19 @@
             </ListBox>
 
             <Button x:Name="Add"
-                    Width="75"
-                    Height="75"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
+                    Width="100"
+                    Height="100"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    Margin="0,0,15,15"
+                    Margin="0,0,20,20"
                     Click="Add_Bus_to_Eged"
             >
 
-                <Image Source="https://img.icons8.com/pastel-glyph/344/plus--v1.png"/>
+                <Image
+                    Source="https://img.icons8.com/wired/250/ffffff/plus.png"
+                    Margin="2,3,0,0"
+                    Opacity="100"
+                    />
 
                 <Button.Resources>
 
@@ -410,10 +607,18 @@
                 <Button.Effect>
                     <DropShadowEffect
                         BlurRadius="15"
-                        Color="Gray"
+                        Color="DarkGray"
                         ShadowDepth="1"
                     />
                 </Button.Effect>
+
+                <Button.Background>
+
+                    <RadialGradientBrush>
+                        <GradientStop Color="MediumTurquoise"/>
+                    </RadialGradientBrush>
+
+                </Button.Background>
 
             </Button>
 
