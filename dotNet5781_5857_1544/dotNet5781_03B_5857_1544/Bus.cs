@@ -17,7 +17,6 @@ namespace dotNet5781_03B_5857_1544
     /// </summary>
     public class Bus : INotifyPropertyChanged
     {
-
         MainWindow wnd = (MainWindow)Application.Current.MainWindow; //reperence to main window in order to update list box items(buses)
 
         public static Random r = new Random(DateTime.Now.Millisecond); //static random variable to initiallize buses randomly
@@ -45,8 +44,8 @@ namespace dotNet5781_03B_5857_1544
             }
         }
 
-        private int _Ride;
-        public int RIDE
+        private double _Ride;
+        public double RIDE
         {
             get { return _Ride; }
 
@@ -78,8 +77,8 @@ namespace dotNet5781_03B_5857_1544
 
         public DateTime startService { get; set; }   //the day that the bus started riding
 
-        private int _Mileage;                      //the total kilometers the bus drived - private so it won't be changed to less, can be only added.
-        public int MILEAGE
+        private double _Mileage;                      //the total kilometers the bus drived - private so it won't be changed to less, can be only added.
+        public double MILEAGE
         {
             get { return _Mileage; }
             set
@@ -97,8 +96,8 @@ namespace dotNet5781_03B_5857_1544
         //    get { return Convert.ToString(_Mileage); }
         //}
 
-        private int _Fuel;
-        public int Fuel
+        private double _Fuel;
+        public double Fuel
         {
             get { return _Fuel; }
             set
@@ -114,8 +113,8 @@ namespace dotNet5781_03B_5857_1544
         //{
         //    get { return Convert.ToString(Fuel); }
         //}
-        private int _LastMaintMileage;   //the Kilometers level in the last maintenance care. for qualifacation
-        public int LastMaintMileage
+        private double _LastMaintMileage;   //the Kilometers level in the last maintenance care. for qualifacation
+        public double LastMaintMileage
         {
             get { return _LastMaintMileage; }
             set
@@ -129,8 +128,8 @@ namespace dotNet5781_03B_5857_1544
 
         }
 
-        private int _MileageSinceLastMaint;
-        public int MileageSinceLastMaint
+        private double _MileageSinceLastMaint;
+        public double MileageSinceLastMaint
         {
             get { return _MileageSinceLastMaint; }
 
@@ -153,7 +152,7 @@ namespace dotNet5781_03B_5857_1544
         /// / a function that checks the bus details and updates its current status
         /// </summary>
         /// <param name="ride"> can recieve number of km to a ride and check qualifacation to the ride. or dont get and it is 0 - so check regular qualifacation</param>
-        public void SetStatus(int ride = 0)
+        public void SetStatus(double ride = 0)
         {
             if (!this.QualifiedDate() || !this.QualifiedMilage(ride) || !this.QualifiedFuel(ride)) // of fuel = 0 or bus need to maintain by date/mileage -> it is Unfit!
                 BUSSTATE = Status.Unfit;
@@ -170,7 +169,7 @@ namespace dotNet5781_03B_5857_1544
         /// updates all properties after a ride - mileage, fuel, mileage since last maintenance and bus status
         /// </summary>
         /// <param name="add">the mileage number to be added</param>
-        public void AddToMileage(int add)
+        public void AddToMileage(double add)
         {
             if (add > 0)
             {
@@ -194,7 +193,7 @@ namespace dotNet5781_03B_5857_1544
         /// <param name="delek">fuel amount</param>
         /// <param name="km">mileage of bus</param>
         /// <param name="maint">last datwe of maintenance</param>
-        public Bus(int ID, DateTime begin, int delek, int km, DateTime maint)
+        public Bus(int ID, DateTime begin, double delek, double km, DateTime maint)
         {
             this._LicenseNum = ID;
             this.startService = begin;
@@ -224,7 +223,7 @@ namespace dotNet5781_03B_5857_1544
         /// </summary>
         /// <param name="ride">can recieve number of ride km and check qualifaction of mileage for the ride</param>
         /// <returns>true if qualified, else false</returns>
-        private bool QualifiedMilage(int ride = 0)
+        private bool QualifiedMilage(double ride = 0)
         {
             return this.MILEAGE + ride - this._LastMaintMileage <= 20000;
         }
@@ -242,7 +241,7 @@ namespace dotNet5781_03B_5857_1544
         ///checks if we passed 1,200 km which means the fuel tank is empty -so we can't ride until we refuel
         /// <param name="ride">an recieve number of ride km and check qualifaction of fuel for the ride</param>
         /// <returns>true if qualified, else false</returns>
-        private bool QualifiedFuel(int ride)
+        private bool QualifiedFuel(double ride)
         {
             return Fuel - ride > 0;
         }
@@ -251,7 +250,7 @@ namespace dotNet5781_03B_5857_1544
         /// a public function that gather all the private qualifaction checks
         /// <param name="ride">an recieve number of ride km and check qualifaction for the ride</param>
         /// <returns>true if qualified, else false</returns>
-        public bool AllQuailified(int ride)
+        public bool AllQuailified(double ride)
         {
             return QualifiedFuel(ride) && QualifiedDate() && QualifiedMilage();
         }
@@ -273,19 +272,19 @@ namespace dotNet5781_03B_5857_1544
         /// refuals the bus according to recived amount, waits one second for refuling
         /// </summary>
         /// <param name="amount">fuel to refill</param>
-        public void Refuel(int amount)
+        public void Refuel(double amount)
         {
             Thread.Sleep(1000);
             Fuel += amount;
         }
 
-        public int MaxRide { get; set; } = 1; //used to describe the ride available range - to the choose bus for a ride window
+        public double MaxRide { get; set; } = 1; //used to describe the ride available range - to the choose bus for a ride window
 
         /// <summary>
         /// sends the bus for a ride and waits 1 second
         /// </summary>
         /// <param name="km">ride length</param>
-        public void Ride(int km)
+        public void Ride(double km)
         {
             Thread.Sleep(1000);
             RIDE += km;
@@ -296,7 +295,7 @@ namespace dotNet5781_03B_5857_1544
         /// sends the bus for maintenance
         /// </summary>
         /// <param name="amount">way to measure the time for maint - divide th left mileage to maint and minus it</param>
-        public void Maintain(int amount)
+        public void Maintain(double amount)
         {
             Thread.Sleep(1440);
             _MileageSinceLastMaint -= amount;

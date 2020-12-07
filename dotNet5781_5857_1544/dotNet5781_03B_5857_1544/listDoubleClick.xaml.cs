@@ -25,11 +25,11 @@ namespace dotNet5781_03B_5857_1544
             //update all lables with bus properties:
 
             lbFuel.DataContext = currentBus.Fuel;
-            lbID.DataContext = currentBus.LICENSENUM;
-            lbKM.DataContext = currentBus.MILEAGE;
+            lbID.DataContext = currentBus.LICENSENUMSTR;
+            lbKM.DataContext = (int)Math.Round(currentBus.MILEAGE);
             lbLast.DataContext = currentBus.lastMaintDate;
             lblState.DataContext = currentBus.BUSSTATE;
-            lbfromLast.DataContext = currentBus.MileageSinceLastMaint;
+            lbfromLast.DataContext = (int)Math.Round(currentBus.MileageSinceLastMaint);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace dotNet5781_03B_5857_1544
             currentBus.BUSSTATE = Status.InMaintenance;
             //wnd.LbBuses.Items.Refresh();
 
-            int amount = currentBus.MileageSinceLastMaint / 100; //the amount of to update in every second - in order to reflect maintenance progress in main window
+            double amount = currentBus.MileageSinceLastMaint / 100; //the amount of to update in every second - in order to reflect maintenance progress in main window
 
             for (int i = 0; i < 100; i++)
             {
@@ -111,7 +111,7 @@ namespace dotNet5781_03B_5857_1544
             {
                 currentBus.BUSSTATE = dotNet5781_03B_5857_1544.Status.Refueling;
 
-                int amount = (1200 - currentBus.Fuel) / 10; //the amount of fuel to update in each second from the 12 of refuling
+                double amount = (1200 - currentBus.Fuel) / 10; //the amount of fuel to update in each second from the 12 of refuling
 
                 await RefuelAsync(amount, currentBus); //activate the parallel asynchronic task
 
@@ -124,7 +124,7 @@ namespace dotNet5781_03B_5857_1544
         /// </summary>
         /// <param name="amount">fuel amount to add in each second</param>
         /// <param name="b">bus to update</param>
-        private async Task RefuelAsync(int amount, Bus b)
+        private async Task RefuelAsync(double amount, Bus b)
         {
             for (int i = 0; i < 10; i++)
             {

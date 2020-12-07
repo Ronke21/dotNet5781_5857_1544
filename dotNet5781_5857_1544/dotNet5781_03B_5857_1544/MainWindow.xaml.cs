@@ -129,7 +129,7 @@ namespace dotNet5781_03B_5857_1544
                 CurrentDisplay.BUSSTATE = dotNet5781_03B_5857_1544.Status.Refueling;
                 LbBuses.Items.Refresh();
 
-                int amount = (1200 - CurrentDisplay.Fuel) / 10; //the amount of fuel to update in each second from the 12 of refuling
+                double amount = (1200 - CurrentDisplay.Fuel) / 10; //the amount of fuel to update in each second from the 12 of refuling
 
                 await RefuelAsync(amount, CurrentDisplay); //activate the parallel asynchronic task
 
@@ -142,7 +142,7 @@ namespace dotNet5781_03B_5857_1544
         /// </summary>
         /// <param name="amount">fuel amount to add in each second</param>
         /// <param name="b">bus to update</param>
-        private async Task RefuelAsync(int amount, Bus b)
+        private async Task RefuelAsync(double amount, Bus b)
         {
             for (int i = 0; i < 10; i++)
             {
@@ -178,6 +178,16 @@ namespace dotNet5781_03B_5857_1544
             if (!CurrentDisplay.QualifiedDate()) //check if bus can make the ride
             {
                 MessageBox.Show("this bus is not qualified for a ride\ntake it to maintenance");
+            }
+
+            else if (CurrentDisplay.BUSSTATE ==dotNet5781_03B_5857_1544.Status.InMaintenance)
+            {
+                MessageBox.Show("You cant send to a ride bus during maintenance");
+            }
+
+            else if (CurrentDisplay.BUSSTATE == dotNet5781_03B_5857_1544.Status.Refueling)
+            {
+                MessageBox.Show("You cant send to a ride bus during refueling");
             }
 
             else

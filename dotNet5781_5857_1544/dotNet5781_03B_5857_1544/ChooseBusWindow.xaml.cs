@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -63,7 +64,7 @@ namespace dotNet5781_03B_5857_1544
 
                     Close();
 
-                    int mil = mileage / 10; //set the amount of advance for each second the bus is in the ride
+                    double mil = (double)((double)mileage / 10); //set the amount of advance for each second the bus is in the ride
 
                     currentBus.MaxRide = mileage; //set the maximuo range for the progress bar
 
@@ -79,7 +80,7 @@ namespace dotNet5781_03B_5857_1544
         /// </summary>
         /// <param name="mil">advance in km of eac second of a ride</param>
         /// <returns></returns>
-        private async Task RideAsync(int mil)
+        private async Task RideAsync(double mil)
         {
 
             for (int i = 0; i < 10; i++)
@@ -89,6 +90,7 @@ namespace dotNet5781_03B_5857_1544
                 wnd.LbBuses.Items.Refresh();
             }
             currentBus.RIDE = 0;
+            currentBus.Fuel = (int)Math.Round(currentBus.Fuel);
             currentBus.SetStatus();
             wnd.LbBuses.Items.Refresh();
         }
