@@ -24,14 +24,12 @@ namespace dotNet5781_03B_5857_1544
 
             //update all lables with bus properties:
 
-            lbFuel.DataContext = currentBus.FUELTSTR;
-            lbID.DataContext = currentBus.LICENSENUMSTR;
-            lbKM.DataContext = currentBus.MILEAGESTR;
-            lbLast.DataContext = currentBus.LASTMAINTDATESTR;
-            lblState.DataContext = currentBus.BUSSTATESTR;
-            lbfromLast.DataContext = currentBus.MILAGESINCELASTMAINTSTR;
-
-
+            lbFuel.DataContext = currentBus.Fuel;
+            lbID.DataContext = currentBus.LICENSENUM;
+            lbKM.DataContext = currentBus.MILEAGE;
+            lbLast.DataContext = currentBus.lastMaintDate;
+            lblState.DataContext = currentBus.BUSSTATE;
+            lbfromLast.DataContext = currentBus.MileageSinceLastMaint;
         }
 
         /// <summary>
@@ -58,7 +56,7 @@ namespace dotNet5781_03B_5857_1544
             {
                 await MaintainAsync();  //activate the parallel asynchronic task
 
-                wnd.LbBuses.Items.Refresh();
+                //wnd.LbBuses.Items.Refresh();
             }
         }
 
@@ -69,22 +67,22 @@ namespace dotNet5781_03B_5857_1544
         private async Task MaintainAsync()
         {
             currentBus.BUSSTATE = Status.InMaintenance;
-            wnd.LbBuses.Items.Refresh();
+            //wnd.LbBuses.Items.Refresh();
 
-            int amount = currentBus.mileageSinceLastMain / 100; //the amount of to update in every second - in order to reflect maintenance progress in main window
+            int amount = currentBus.MileageSinceLastMaint / 100; //the amount of to update in every second - in order to reflect maintenance progress in main window
 
             for (int i = 0; i < 100; i++)
             {
                 await Task.Run(() => currentBus.Maintain(amount));
-                wnd.LbBuses.Items.Refresh();
+                //wnd.LbBuses.Items.Refresh();
             }
 
             //update bus properties
-            currentBus.mileageSinceLastMain = 0;
+            currentBus.MileageSinceLastMaint = 0;
             currentBus.lastMaintDate = DateTime.Today;
             currentBus.Fuel = 1200;
             currentBus.lastMaintMileage = currentBus.MILEAGE;
-            currentBus.setStatus();
+            currentBus.SetStatus();
         }
 
 
@@ -117,7 +115,7 @@ namespace dotNet5781_03B_5857_1544
 
                 await RefuelAsync(amount, currentBus); //activate the parallel asynchronic task
 
-                wnd.LbBuses.Items.Refresh();
+                //wnd.LbBuses.Items.Refresh();
             }
         }
 
@@ -131,10 +129,10 @@ namespace dotNet5781_03B_5857_1544
             for (int i = 0; i < 10; i++)
             {
                 await Task.Run(() => b.Refuel(amount));
-                wnd.LbBuses.Items.Refresh();
+                //wnd.LbBuses.Items.Refresh();
             }
             b.Fuel = 1200; //dividing the amount may cause a lack of few liters - so update to 1200
-            b.setStatus();
+            b.SetStatus();
         }
     }
 }

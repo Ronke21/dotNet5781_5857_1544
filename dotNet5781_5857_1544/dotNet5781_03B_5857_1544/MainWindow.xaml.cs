@@ -43,19 +43,19 @@ namespace dotNet5781_03B_5857_1544
 
             //change properties of buses according to the exercise demandes
             Eged[0].lastMaintDate = DateTime.Now.AddMonths(-13);
-            Eged[0].setStatus();
+            Eged[0].SetStatus();
 
             Eged[1].lastMaintDate = DateTime.Now.AddMonths(-11);
-            Eged[1].setStatus();
+            Eged[1].SetStatus();
 
             Eged[2].Fuel = 10;
-            Eged[2].setStatus();
+            Eged[2].SetStatus();
 
             Eged[3].lastMaintDate = (DateTime.Today).AddDays(-3);
-            Eged[3].setStatus(); // = MaintainSoon
+            Eged[3].SetStatus(); // = MaintainSoon
 
             Eged[4].lastMaintDate = (DateTime.Today).AddMonths(-11).AddDays(-5);
-            Eged[4].setStatus(); // = MaintainSoon
+            Eged[4].SetStatus(); // = MaintainSoon
 
             LbBuses.ItemsSource = Eged; //relate the listbox to the list of Eged
         }
@@ -68,7 +68,7 @@ namespace dotNet5781_03B_5857_1544
         /// </summary>
         private void Sort_by_ID(object sender, RoutedEventArgs e)
         {
-            Eged.Sort((bus1, bus2) => bus1.LICENSENUMINT.CompareTo(bus2.LICENSENUMINT));
+            Eged.Sort((bus1, bus2) => bus1.LICENSENUM.CompareTo(bus2.LICENSENUM));
             LbBuses.Items.Refresh();
         }
 
@@ -133,7 +133,7 @@ namespace dotNet5781_03B_5857_1544
 
                 await RefuelAsync(amount, CurrentDisplay); //activate the parallel asynchronic task
 
-                LbBuses.Items.Refresh();
+                //LbBuses.Items.Refresh();
             }
         }
 
@@ -147,12 +147,12 @@ namespace dotNet5781_03B_5857_1544
             for (int i = 0; i < 12; i++)
             {
                 await Task.Run(() => b.Refuel(amount));
-                LbBuses.Items.Refresh();
+                //LbBuses.Items.Refresh();
             }
 
             b.Fuel = 1200; //dividing the amount may cause a lack of few liters - so update to 1200
             
-            b.setStatus();
+            b.SetStatus();
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace dotNet5781_03B_5857_1544
             ChooseBusWindow chooseBus = new ChooseBusWindow(CurrentDisplay);
             LbBuses.SelectedItem = null;
 
-            if (!CurrentDisplay.qualifiedDate()) //check if bus can make the ride
+            if (!CurrentDisplay.QualifiedDate()) //check if bus can make the ride
             {
                 MessageBox.Show("this bus is not qualified for a ride\ntake it to maintenance");
             }

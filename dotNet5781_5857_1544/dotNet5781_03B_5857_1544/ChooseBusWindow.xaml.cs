@@ -69,7 +69,7 @@ namespace dotNet5781_03B_5857_1544
 
                     await RideAsync(mil); //activate asynchronic task for ride
 
-                    wnd.LbBuses.Items.Refresh();
+                    //wnd.LbBuses.Items.Refresh();
                 }
             }
         }
@@ -86,11 +86,11 @@ namespace dotNet5781_03B_5857_1544
             {
                 currentBus.BUSSTATE = Status.During;
                 await Task.Run(() => currentBus.Ride(mil)); //the ride func in bus class
-                wnd.LbBuses.Items.Refresh();
+                //wnd.LbBuses.Items.Refresh();
             }
             currentBus.RIDE = 0;
-            currentBus.setStatus();
-            wnd.LbBuses.Items.Refresh();
+            currentBus.SetStatus();
+            //wnd.LbBuses.Items.Refresh();
         }
 
 

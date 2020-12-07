@@ -44,8 +44,8 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ProgressBar}">
                         <Grid>
-                            <Border Name="PART_Track" CornerRadius="5" Background="{StaticResource PressedBrush}" BorderBrush="{StaticResource SolidBorderBrush}" BorderThickness="0.5" />
-                            <Border Name="PART_Indicator" CornerRadius="5" Background="{StaticResource DarkBrush}" BorderBrush="Transparent"  BorderThickness="2,2,2,2" HorizontalAlignment="Left" />
+                            <Border Name="PART_Track" CornerRadius="0" Background="{StaticResource PressedBrush}" BorderBrush="{StaticResource SolidBorderBrush}" BorderThickness="0.5" />
+                            <Border Name="PART_Indicator" CornerRadius="0" Background="{StaticResource DarkBrush}" BorderBrush="Transparent"  BorderThickness="2,2,2,2" HorizontalAlignment="Left" />
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -213,11 +213,12 @@
 
         <ProgressBar
             x:Name="pbRide"
-            Grid.Row="6" 
+            Grid.Row="7"
             Background="White"
             Minimum = "0"
             Value="{Binding Path = RIDE, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
-            Maximum="{Binding Path = MaxRide, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}" Margin="0,73,-0.4,0.4" Grid.RowSpan="2" Grid.ColumnSpan="2"
+            Maximum="{Binding Path = MaxRide, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
+            Grid.ColumnSpan="2"
         />
 
     </Grid>

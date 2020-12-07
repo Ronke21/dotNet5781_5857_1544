@@ -65,8 +65,6 @@
         >
 
             <Grid.ColumnDefinitions>
-                <!--<ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>-->
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -82,14 +80,6 @@
                     Click="Sort_by_ID"
             />
 
-            <!--<Button x:Name="MileageFromLastMaintenance"
-                    Content="   mileage from&#xa;last maintenance"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Grid.Column="1"
-                    Click="Sort_by_last_maint"
-            />-->
-
             <Button x:Name="Fuel"
                     Content="Fuel"
                     HorizontalContentAlignment="Center"
@@ -97,22 +87,6 @@
                     Grid.Column="1"
                     Click="Sort_by_fuel_Amount"
             />
-
-            <!--<Button x:Name="TotalMileage"
-                    Content="Mileage"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Grid.Column="3"
-                    Click="Sort_by_Mileage"
-            />-->
-
-            <!--<Button x:Name="LastMaintenance"
-                    Content="Last Maintenance"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Grid.Column="4"
-                    Click="Sort_by_last_Maintenance"
-            />-->
 
             <Button x:Name="Status"
                     Content="Status"
@@ -123,7 +97,7 @@
             />
 
             <Button
-                Grid.Column="7"
+                Grid.Column="4"
                 VerticalAlignment="Stretch"
                 HorizontalAlignment="Stretch"
 
@@ -177,7 +151,7 @@
 
                             <DataTrigger
                                 
-                                Binding="{Binding BUSSTATESTR}"
+                                Binding="{Binding BUSSTATE}"
                                 Value="Ready">
 
                                 <Setter
@@ -189,7 +163,7 @@
 
                             <DataTrigger
 
-                                Binding="{Binding BUSSTATESTR}"
+                                Binding="{Binding BUSSTATE}"
                                 Value="InMaintenance">
 
                                 <Setter 
@@ -200,7 +174,7 @@
 
                             <DataTrigger 
 
-                                Binding="{Binding BUSSTATESTR}"
+                                Binding="{Binding BUSSTATE}"
                                 Value="Refueling">
 
                                 <Setter
@@ -211,23 +185,16 @@
 
                             <DataTrigger 
 
-                                Binding="{Binding BUSSTATESTR}"
+                                Binding="{Binding BUSSTATE}"
                                 Value="MaintainSoon">
 
                                 <Setter
                                     Property="Background"
                                     Value="GreenYellow"/>
-                                <!--<Setter
-                                    Property="BorderBrush"
-                                    Value="OrangeRed"/>
-                                <Setter
-                                    Property="BorderThickness"
-                                    Value="1"/>-->
-
                             </DataTrigger>
 
                             <DataTrigger
-                                Binding="{Binding BUSSTATESTR}" 
+                                Binding="{Binding BUSSTATE}" 
                                 Value="During">
 
                                 <Setter 
@@ -238,7 +205,7 @@
 
                             <DataTrigger 
 
-                                Binding="{Binding BUSSTATESTR}" 
+                                Binding="{Binding BUSSTATE}" 
                                 Value="Unfit">
 
                                 <Setter
@@ -283,50 +250,20 @@
                                 HorizontalAlignment="Center"
                                 />
 
-                            <!--<TextBlock
-                                Name ="mileage"
-                                Grid.Column="1"
-                                Text="{Binding Path=MILAGESINCELASTMAINTSTR}"
-                                FontWeight="Bold"
-                                FontSize="12"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                            />-->
-
                             <TextBlock
                                 Name ="Fuel"
                                 Grid.Column="1"
-                                Text="{Binding Path=FUELTSTR}"
+                                Text="{Binding Path=Fuel}"
                                 FontWeight="Bold"
                                 FontSize="20"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                             />
 
-                            <!--<TextBlock
-                                Name ="Mileage"
-                                Grid.Column="3"
-                                Text="{Binding Path=MILEAGESTR}"
-                                FontWeight="Bold"
-                                FontSize="12"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                            />-->
-
-                            <!--<TextBlock
-                                Name ="LastMaintenance"
-                                Grid.Column="4"
-                                Text="{Binding Path=LASTMAINTDATESTR}"
-                                FontWeight="Bold"
-                                FontSize="12"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                            />-->
-
                             <TextBlock
                                 Name ="Status"
                                 Grid.Column="2"
-                                Text="{Binding Path=BUSSTATESTR}"
+                                Text="{Binding Path=BUSSTATE}"
                                 FontWeight="Bold"
                                 FontSize="20"
                                 VerticalAlignment="Center"
@@ -425,7 +362,7 @@
                                 Background="White"
                                 Height="23"
                                 Minimum = "0"
-                                Value="{Binding Path = mileageSinceLastMain, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
+                                Value="{Binding Path = MileageSinceLastMaint, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
                                 Maximum="20000"
                                 />
 
