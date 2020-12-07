@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace dotNet5781_03B_5857_1544
 {
@@ -105,7 +106,14 @@ namespace dotNet5781_03B_5857_1544
             e.Handled = regex.IsMatch(e.Text);
             if (e.Handled)
             {
+                ChooseMileage.BorderBrush = Brushes.Red;
+                ChooseMileage.BorderThickness = new Thickness(3);
                 MessageBox.Show($"digits only\n'{e.Text}' is not a digit");
+            }
+            else
+            {
+                ChooseMileage.BorderBrush = Brushes.DarkGray;
+                ChooseMileage.BorderThickness = new Thickness(1);
             }
         }
     }
