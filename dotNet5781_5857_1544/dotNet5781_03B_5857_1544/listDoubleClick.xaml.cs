@@ -56,7 +56,7 @@ namespace dotNet5781_03B_5857_1544
             {
                 await MaintainAsync();  //activate the parallel asynchronic task
 
-                //wnd.LbBuses.Items.Refresh();
+                wnd.LbBuses.Items.Refresh();
             }
         }
 
@@ -74,14 +74,14 @@ namespace dotNet5781_03B_5857_1544
             for (int i = 0; i < 100; i++)
             {
                 await Task.Run(() => currentBus.Maintain(amount));
-                //wnd.LbBuses.Items.Refresh();
+                wnd.LbBuses.Items.Refresh();
             }
 
             //update bus properties
             currentBus.MileageSinceLastMaint = 0;
             currentBus.lastMaintDate = DateTime.Today;
             currentBus.Fuel = 1200;
-            currentBus.lastMaintMileage = currentBus.MILEAGE;
+            currentBus.LastMaintMileage = currentBus.MILEAGE;
             currentBus.SetStatus();
         }
 
@@ -115,7 +115,7 @@ namespace dotNet5781_03B_5857_1544
 
                 await RefuelAsync(amount, currentBus); //activate the parallel asynchronic task
 
-                //wnd.LbBuses.Items.Refresh();
+                wnd.LbBuses.Items.Refresh();
             }
         }
 

@@ -363,8 +363,7 @@
                                 Height="23"
                                 Minimum = "0"
                                 Value="{Binding Path = MileageSinceLastMaint, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
-                                Maximum="20000"
-                                />
+                                Maximum="20000"/>
 
                                 <Label
                                     Content="Mileage"

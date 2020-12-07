@@ -133,7 +133,7 @@ namespace dotNet5781_03B_5857_1544
 
                 await RefuelAsync(amount, CurrentDisplay); //activate the parallel asynchronic task
 
-                //LbBuses.Items.Refresh();
+                LbBuses.Items.Refresh();
             }
         }
 
@@ -144,10 +144,9 @@ namespace dotNet5781_03B_5857_1544
         /// <param name="b">bus to update</param>
         private async Task RefuelAsync(int amount, Bus b)
         {
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 10; i++)
             {
                 await Task.Run(() => b.Refuel(amount));
-                //LbBuses.Items.Refresh();
             }
 
             b.Fuel = 1200; //dividing the amount may cause a lack of few liters - so update to 1200

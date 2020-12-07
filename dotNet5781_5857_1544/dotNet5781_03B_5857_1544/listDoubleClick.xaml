@@ -179,8 +179,8 @@
 
         <Label 
         Name="lbfromLast"  
-         Content="{Binding}"
-       Grid.Row="5"
+        Content="{Binding}"
+        Grid.Row="5"
         Grid.Column="1"
         HorizontalAlignment="Center" 
         VerticalAlignment="Center"
