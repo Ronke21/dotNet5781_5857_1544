@@ -124,6 +124,11 @@ namespace dotNet5781_03B_5857_1544
                 MessageBox.Show("bus is in a ride, wait until it gets back");
             }
 
+            else if (CurrentDisplay.BUSSTATE == dotNet5781_03B_5857_1544.Status.Refueling)
+            {
+                MessageBox.Show("bus is already refueling");
+            }
+
             else //bus is free
             {
                 CurrentDisplay.BUSSTATE = dotNet5781_03B_5857_1544.Status.Refueling;
@@ -188,6 +193,11 @@ namespace dotNet5781_03B_5857_1544
             else if (CurrentDisplay.BUSSTATE == dotNet5781_03B_5857_1544.Status.Refueling)
             {
                 MessageBox.Show("You cant send to a ride bus during refueling");
+            }
+
+            else if (CurrentDisplay.BUSSTATE == dotNet5781_03B_5857_1544.Status.During)
+            {
+                MessageBox.Show("During ride, wait until it gets back");
             }
 
             else

@@ -42,6 +42,11 @@ namespace dotNet5781_03B_5857_1544
         {
             Close();
 
+            if (currentBus.BUSSTATE == Status.InMaintenance) //can't maintain while refuling
+            {
+                MessageBox.Show("bus is already in maintenance");
+            }
+
             if (currentBus.BUSSTATE == Status.Refueling) //can't maintain while refuling
             {
                 MessageBox.Show("bus is in refuel, wait until it gets back");
@@ -105,6 +110,11 @@ namespace dotNet5781_03B_5857_1544
             else if (currentBus.BUSSTATE == Status.During)
             {
                 MessageBox.Show("bus is in a ride, wait until it gets back");
+            }
+
+            else if (currentBus.BUSSTATE == Status.Refueling)
+            {
+                MessageBox.Show("bus is already refueling");
             }
 
             else
