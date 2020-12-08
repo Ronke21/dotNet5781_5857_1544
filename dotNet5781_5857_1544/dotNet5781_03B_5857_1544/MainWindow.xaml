@@ -103,7 +103,7 @@
                         FontSize="28"
                         FontWeight="DemiBold"
                         />
-                    
+
                     <Image
                         Source="https://img.icons8.com/metro/250/generic-sorting-2.png"
                         Height="25"
@@ -294,7 +294,7 @@
             MouseDoubleClick="LbBuses_MouseDoubleClick"
             >
 
-                <ListBox.ItemContainerStyle>
+                <!--<ListBox.ItemContainerStyle>
 
                     <Style TargetType="ListBoxItem">
 
@@ -302,7 +302,7 @@
 
                             <DataTrigger
                                 
-                                Binding="{Binding BUSSTATE}"
+                                Binding="{Binding Path=BUSSTATE}"
                                 Value="Ready">
 
                                 <Setter
@@ -370,7 +370,7 @@
 
                     </Style>
 
-                </ListBox.ItemContainerStyle>
+                </ListBox.ItemContainerStyle>-->
 
 
 
@@ -384,12 +384,15 @@
                               >
 
                             <Grid.ColumnDefinitions>
+
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="0.7*" />
+                                <ColumnDefinition Width="0.3*" />
                                 <ColumnDefinition Width="0.5*" />
                                 <ColumnDefinition Width="0.5*" />
                                 <ColumnDefinition Width="*" />
+
                             </Grid.ColumnDefinitions>
 
                             <TextBlock
@@ -422,9 +425,185 @@
                                 HorizontalAlignment="Center"
                             />
 
+                            <Border
+                                Name="StatusBorder"
+                                Grid.Column="3"
+                                Height="25"
+                                Width="25"
+                                BorderThickness="0.5"
+                                BorderBrush="Gray"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                            >
+
+                                <Border.Resources>
+
+                                    <Style TargetType="Border">
+
+                                        <Setter Property="CornerRadius"
+                                                Value="10"
+                                                />
+
+                                            <Style.Triggers>
+
+                                            <DataTrigger
+                                                Binding="{Binding BUSSTATE}"
+                                                Value="Ready">
+
+                                                <Setter Property="Background"
+                                                        Value="Green"/>
+
+                                                <Setter Property="Effect">
+
+                                                    <Setter.Value>
+
+                                                        <DropShadowEffect
+                                                            ShadowDepth="0"
+                                                            Color="Green"
+                                                            Opacity="1"
+                                                            BlurRadius="10"
+                                                        />
+
+                                                    </Setter.Value>
+
+                                                </Setter>
+
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding BUSSTATE}"
+                                                Value="During">
+
+                                                <Setter Property="Background"
+                                                        Value="Yellow"/>
+
+                                                <Setter Property="Effect">
+
+                                                    <Setter.Value>
+
+                                                        <DropShadowEffect
+                                                            ShadowDepth="0"
+                                                            Color="Yellow"
+                                                            Opacity="1"
+                                                            BlurRadius="10"
+                                                        />
+
+                                                    </Setter.Value>
+
+                                                </Setter>
+
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding BUSSTATE}"
+                                                Value="Refueling">
+
+                                                <Setter Property="Background"
+                                                        Value="Orange"/>
+
+                                                <Setter Property="Effect">
+
+                                                    <Setter.Value>
+
+                                                        <DropShadowEffect
+                                                            ShadowDepth="0"
+                                                            Color="Goldenrod"
+                                                            Opacity="1"
+                                                            BlurRadius="10"
+                                                        />
+
+                                                    </Setter.Value>
+
+                                                </Setter>
+
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding BUSSTATE}"
+                                                Value="InMaintenance">
+
+                                                <Setter Property="Background"
+                                                        Value="DarkOrange"/>
+
+
+                                                <Setter Property="Effect">
+
+                                                    <Setter.Value>
+
+                                                        <DropShadowEffect
+                                                            ShadowDepth="0"
+                                                            Color="Goldenrod"
+                                                            Opacity="1"
+                                                            BlurRadius="10"
+                                                        />
+
+                                                    </Setter.Value>
+
+                                                </Setter>
+
+
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding BUSSTATE}"
+                                                Value="Unfit">
+
+                                                <Setter Property="Background"
+                                                        Value="Crimson"/>
+
+                                                <Setter Property="Effect">
+
+                                                    <Setter.Value>
+
+                                                        <DropShadowEffect
+                                                            ShadowDepth="0"
+                                                            Color="Crimson"
+                                                            Opacity="1"
+                                                            BlurRadius="10"/>
+
+                                                    </Setter.Value>
+
+                                                </Setter>
+
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding BUSSTATE}"
+                                                Value="MaintainSoon">
+
+                                                <Setter Property="Background"
+                                                        Value="GreenYellow"/>
+
+                                                <Setter Property="Effect">
+
+                                                    <Setter.Value>
+
+                                                        <DropShadowEffect
+                                                            ShadowDepth="0"
+                                                            Color="DarkGreen"
+                                                            Opacity="1"
+                                                            BlurRadius="10"
+                                                        />
+
+                                                    </Setter.Value>
+
+                                                </Setter>
+
+                                            </DataTrigger>
+
+
+
+                                        </Style.Triggers>
+
+                                    </Style>
+
+                                </Border.Resources>
+
+                            </Border>
+
                             <Button
 
-                                Grid.Column="3"
+                                Grid.Column="4"
                                 Name="Refuel"
                                 Click="Refuel"
                                 FontSize="12">
@@ -464,7 +643,7 @@
                             </Button>
 
                             <Button Name="ChooseBusForARide"
-                                Grid.Column="4"
+                                Grid.Column="5"
                                 Click="ButtonBase_OnClick"
                                 >
 
@@ -478,7 +657,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         />
-                                    
+
                                 </Viewbox>
 
                                 <Button.Background>
@@ -500,7 +679,7 @@
 
 
                             <Grid 
-                                Grid.Column="5"
+                                Grid.Column="6"
                                 >
 
                                 <Grid.RowDefinitions>
