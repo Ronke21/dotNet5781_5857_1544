@@ -11,7 +11,7 @@
         Title="Add Bus"
         Height="350"
         Width="325"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterOwner">
 
     <Grid
     Name="MasterGrid"

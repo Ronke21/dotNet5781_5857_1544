@@ -8,7 +8,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -132,13 +131,13 @@ namespace dotNet5781_03B_5857_1544
             else //bus is free
             {
                 CurrentDisplay.BUSSTATE = dotNet5781_03B_5857_1544.Status.Refueling;
-                LbBuses.Items.Refresh();
+                //LbBuses.Items.Refresh();
 
                 double amount = (1200 - CurrentDisplay.Fuel) / 10; //the amount of fuel to update in each second from the 12 of refuling
 
                 await RefuelAsync(amount, CurrentDisplay); //activate the parallel asynchronic task
 
-                LbBuses.Items.Refresh();
+                //LbBuses.Items.Refresh();
             }
         }
 
@@ -203,7 +202,7 @@ namespace dotNet5781_03B_5857_1544
             else
             {
                 chooseBus.ShowDialog();
-                LbBuses.Items.Refresh();
+                //LbBuses.Items.Refresh();
             }
         }
 
@@ -216,7 +215,7 @@ namespace dotNet5781_03B_5857_1544
             listDoubleClick doubleC = new listDoubleClick(CurrentDisplay);
             LbBuses.SelectedItem = null;
             doubleC.ShowDialog();
-            LbBuses.Items.Refresh();
+            //LbBuses.Items.Refresh();
         }
 
         /// <summary>

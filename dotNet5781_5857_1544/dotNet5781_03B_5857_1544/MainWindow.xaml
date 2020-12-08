@@ -294,13 +294,13 @@
             MouseDoubleClick="LbBuses_MouseDoubleClick"
             >
 
-                <!--<ListBox.ItemContainerStyle>
+                <ListBox.ItemContainerStyle>
 
                     <Style TargetType="ListBoxItem">
 
                         <Style.Triggers>
 
-                            <DataTrigger
+                            <!--<DataTrigger
                                 
                                 Binding="{Binding Path=BUSSTATE}"
                                 Value="Ready">
@@ -310,9 +310,9 @@
                                     Value="#B290EE90"/>
 
 
-                            </DataTrigger>
+                            </DataTrigger>-->
 
-                            <DataTrigger
+                            <!--<DataTrigger
 
                                 Binding="{Binding BUSSTATE}"
                                 Value="InMaintenance">
@@ -322,9 +322,9 @@
                                     Value="#B2FFA500"/>
 
 
-                            </DataTrigger>
+                            </DataTrigger>-->
 
-                            <DataTrigger 
+                            <!--<DataTrigger 
 
                                 Binding="{Binding BUSSTATE}"
                                 Value="Refueling">
@@ -333,19 +333,19 @@
                                     Property="Background"
                                     Value="#B2FFA500"/>
 
-                            </DataTrigger>
+                            </DataTrigger>-->
 
-                            <DataTrigger 
+                            <!--<DataTrigger 
 
                                 Binding="{Binding BUSSTATE}"
                                 Value="MaintainSoon">
 
                                 <Setter
                                     Property="Background"
-                                    Value="#B2ADFF2F"/>
-                            </DataTrigger>
+                                    Value="PaleVioletRed"/>
+                            </DataTrigger>-->
 
-                            <DataTrigger
+                            <!--<DataTrigger
                                 Binding="{Binding BUSSTATE}" 
                                 Value="During">
 
@@ -353,24 +353,24 @@
                                     Property="Background" 
                                     Value="#B2FFFF00"/>
 
-                            </DataTrigger>
+                            </DataTrigger>-->
 
-                            <DataTrigger 
+                            <!--<DataTrigger 
 
                                 Binding="{Binding BUSSTATE}" 
                                 Value="Unfit">
 
                                 <Setter
                                     Property="Background" 
-                                    Value="#99DC143C"/>
+                                    Value="#50FF0000"/>
 
-                            </DataTrigger>
+                            </DataTrigger>-->
 
                         </Style.Triggers>
 
                     </Style>
 
-                </ListBox.ItemContainerStyle>-->
+                </ListBox.ItemContainerStyle>
 
 
 
@@ -447,7 +447,7 @@
                                             <Style.Triggers>
 
                                             <DataTrigger
-                                                Binding="{Binding BUSSTATE}"
+                                                Binding="{Binding Path =BUSSTATE}"
                                                 Value="Ready">
 
                                                 <Setter Property="Background"
@@ -568,6 +568,30 @@
                                             </DataTrigger>
 
                                             <DataTrigger
+                                                Binding="{Binding BUSSTATE}"
+                                                Value="MaintainSoon">
+
+                                                <Setter Property="Background"
+                                                        Value="GreenYellow"/>
+
+                                                <Setter Property="Effect">
+
+                                                    <Setter.Value>
+
+                                                        <DropShadowEffect
+                                                            ShadowDepth="0"
+                                                            Color="GreenYellow"
+                                                            Opacity="1"
+                                                            BlurRadius="10"
+                                                        />
+
+                                                    </Setter.Value>
+
+                                                </Setter>
+
+                                            </DataTrigger>
+
+                                                <DataTrigger
                                                 Binding="{Binding BUSSTATE}"
                                                 Value="MaintainSoon">
 

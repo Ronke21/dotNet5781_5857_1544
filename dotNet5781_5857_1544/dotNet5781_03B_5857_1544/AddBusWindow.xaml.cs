@@ -241,6 +241,13 @@ namespace dotNet5781_03B_5857_1544
 
             Close();
         }
-
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+                MessageBox.Show("Space is not allowed");
+            }
+        }
     }
 }

@@ -139,7 +139,6 @@ namespace dotNet5781_03B_5857_1544
             for (int i = 0; i < 10; i++)
             {
                 await Task.Run(() => b.Refuel(amount));
-                //wnd.LbBuses.Items.Refresh();
             }
             b.Fuel = 1200; //dividing the amount may cause a lack of few liters - so update to 1200
             b.SetStatus();

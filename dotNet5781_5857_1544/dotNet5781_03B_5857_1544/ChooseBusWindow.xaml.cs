@@ -16,7 +16,6 @@ namespace dotNet5781_03B_5857_1544
     public partial class ChooseBusWindow : Window
     {
         private Bus currentBus; //reference to the current bus chosen to ride from the list
-        MainWindow wnd = (MainWindow)Application.Current.MainWindow; //reperence to main window in order to update list box items(buses)
 
         /// <summary>
         /// initialize the window and connect the reference of current bus to the bus recieved from main window
@@ -36,18 +35,17 @@ namespace dotNet5781_03B_5857_1544
         /// </summary>
         private async void ChooseMileage_OnKeyDown(object sender, KeyEventArgs e)
         {
-
             if (e.Key == Key.Return) //the ride length is set by pressing "ENTER" - as the exercise Bonus demanded
             {
                 int.TryParse(ChooseMileage.Text, out var mileage);
 
-                //if (mileage == 0)
-                //{
-                //    Close();
-                //    MessageBox.Show("distance is not valid");
-                //}
+                if (mileage == 0)
+                {
+                    Close();
+                    MessageBox.Show("distance is not valid");
+                }
 
-                /*else*/ if (currentBus.MILEAGE - currentBus.LastMaintMileage + mileage > 20000) //bus canwt do the ride because it need maintenance
+                else if (currentBus.MILEAGE - currentBus.LastMaintMileage + mileage > 20000) //bus canwt do the ride because it need maintenance
                 {
                     Close();
                     MessageBox.Show("this bus is not qualified for a ride\ntake it to maintenance");
@@ -71,11 +69,9 @@ namespace dotNet5781_03B_5857_1544
 
                     double mil = (double)((double)mileage / 10); //set the amount of advance for each second the bus is in the ride
 
-                    currentBus.MaxRide = mileage; //set the maximuo range for the progress bar
+                    currentBus.MaxRide = mileage; //set the maximal range for the progress bar
 
-                    await RideAsync(mil); //activate asynchronic task for ride
-
-                    wnd.LbBuses.Items.Refresh();
+                    await RideAsync(mil); //activate asynchronous task for ride
                 }
             }
         }
@@ -87,17 +83,14 @@ namespace dotNet5781_03B_5857_1544
         /// <returns></returns>
         private async Task RideAsync(double mil)
         {
-
+            currentBus.BUSSTATE = Status.During;
             for (int i = 0; i < 10; i++)
             {
-                currentBus.BUSSTATE = Status.During;
                 await Task.Run(() => currentBus.Ride(mil)); //the ride func in bus class
-                wnd.LbBuses.Items.Refresh();
             }
             currentBus.RIDE = 0;
             currentBus.Fuel = (int)Math.Round(currentBus.Fuel);
             currentBus.SetStatus();
-            wnd.LbBuses.Items.Refresh();
         }
 
 
@@ -119,6 +112,15 @@ namespace dotNet5781_03B_5857_1544
             {
                 ChooseMileage.BorderBrush = Brushes.DarkGray;
                 ChooseMileage.BorderThickness = new Thickness(1);
+            }
+        }
+
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+                MessageBox.Show("Space is not allowed");
             }
         }
     }

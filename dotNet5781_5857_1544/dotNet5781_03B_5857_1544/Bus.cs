@@ -28,10 +28,7 @@ namespace dotNet5781_03B_5857_1544
             set
             {
                 _LicenseNum = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("LICENSENUM"));
-                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LICENSENUM"));
             }
         }
 
@@ -52,10 +49,7 @@ namespace dotNet5781_03B_5857_1544
             set
             {
                 _Ride = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("RIDE"));
-                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RIDE"));
             }
         } //reflects a km num of ride if taken. usually 0
 
@@ -66,7 +60,7 @@ namespace dotNet5781_03B_5857_1544
             set
             {
                 _BusState = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RIDE"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BUSSTATE"));
             }
         }
 
@@ -84,10 +78,7 @@ namespace dotNet5781_03B_5857_1544
             set
             {
                 _Mileage = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("MILEAGE"));
-                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MILEAGE"));
             }
         }
 
@@ -103,10 +94,7 @@ namespace dotNet5781_03B_5857_1544
             set
             {
                 _Fuel = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Fuel"));
-                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Fuel"));
             }
         }           //amount of fuel in tank
         //public string FUELTSTR
@@ -120,12 +108,8 @@ namespace dotNet5781_03B_5857_1544
             set
             {
                 _LastMaintMileage = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("LastMaintMileage"));
-                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LastMaintMileage"));
             }
-
         }
 
         private double _MileageSinceLastMaint;
@@ -136,13 +120,21 @@ namespace dotNet5781_03B_5857_1544
             set
             {
                 _Mileage = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("MileageSinceLastMain"));
-                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MileageSinceLastMain"));
             }
 
         } //counting 20,000 km since lat maint - to the next one
+
+        private double _MaxRide = 1; //used to describe the ride available range - to the choose bus for a ride window
+        public double MaxRide
+        {
+            get { return _MaxRide; }
+            set
+            {
+                _MaxRide = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MaxRide"));
+            }
+        }
 
         //public string MILAGESINCELASTMAINTSTR
         //{
@@ -277,8 +269,6 @@ namespace dotNet5781_03B_5857_1544
             Thread.Sleep(1000);
             Fuel += amount;
         }
-
-        public double MaxRide { get; set; } = 1; //used to describe the ride available range - to the choose bus for a ride window
 
         /// <summary>
         /// sends the bus for a ride and waits 1 second
