@@ -41,13 +41,13 @@ namespace dotNet5781_03B_5857_1544
             {
                 int.TryParse(ChooseMileage.Text, out var mileage);
 
-                if (mileage == 0)
-                {
-                    Close();
-                    MessageBox.Show("distance is not valid");
-                }
+                //if (mileage == 0)
+                //{
+                //    Close();
+                //    MessageBox.Show("distance is not valid");
+                //}
 
-                else if (currentBus.MILEAGE - currentBus.LastMaintMileage + mileage > 20000) //bus canwt do the ride because it need maintenance
+                /*else*/ if (currentBus.MILEAGE - currentBus.LastMaintMileage + mileage > 20000) //bus canwt do the ride because it need maintenance
                 {
                     Close();
                     MessageBox.Show("this bus is not qualified for a ride\ntake it to maintenance");
