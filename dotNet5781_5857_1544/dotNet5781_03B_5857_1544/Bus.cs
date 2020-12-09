@@ -168,7 +168,6 @@ namespace dotNet5781_03B_5857_1544
                 this.MILEAGE += add;
                 this._MileageSinceLastMaint += add;
                 this.Fuel -= add;
-                //SetStatus();
             }
         }
 
