@@ -430,21 +430,20 @@
                                 Grid.Column="3"
                                 Height="25"
                                 Width="25"
-                                BorderThickness="0.5"
-                                BorderBrush="Gray"
+                                BorderThickness="0"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Left"
                             >
+                                <!--BorderBrush="Gray"-->
 
                                 <Border.Resources>
 
                                     <Style TargetType="Border">
 
                                         <Setter Property="CornerRadius"
-                                                Value="10"
-                                                />
+                                                Value="10"/>
 
-                                            <Style.Triggers>
+                                        <Style.Triggers>
 
                                             <DataTrigger
                                                 Binding="{Binding Path =BUSSTATE}"
@@ -591,7 +590,7 @@
 
                                             </DataTrigger>
 
-                                                <DataTrigger
+                                            <DataTrigger
                                                 Binding="{Binding BUSSTATE}"
                                                 Value="MaintainSoon">
 

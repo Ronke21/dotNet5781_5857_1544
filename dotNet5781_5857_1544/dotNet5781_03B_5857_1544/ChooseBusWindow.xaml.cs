@@ -39,7 +39,7 @@ namespace dotNet5781_03B_5857_1544
             {
                 int.TryParse(ChooseMileage.Text, out var mileage);
 
-                if (mileage == 0)
+                if (mileage <= 0)
                 {
                     Close();
                     MessageBox.Show("distance is not valid");
@@ -73,7 +73,7 @@ namespace dotNet5781_03B_5857_1544
 
                     await RideAsync(mil); //activate asynchronous task for ride
 
-                    currentBus.SetStatus();
+                    //currentBus.SetStatus();
                 }
             }
         }
@@ -92,7 +92,7 @@ namespace dotNet5781_03B_5857_1544
             }
             currentBus.RIDE = 0;
             currentBus.Fuel = (int)Math.Round(currentBus.Fuel);
-            //currentBus.SetStatus();
+            currentBus.SetStatus();
         }
 
 
