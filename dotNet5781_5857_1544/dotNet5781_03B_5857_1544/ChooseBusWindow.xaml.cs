@@ -72,6 +72,8 @@ namespace dotNet5781_03B_5857_1544
                     currentBus.MaxRide = mileage; //set the maximal range for the progress bar
 
                     await RideAsync(mil); //activate asynchronous task for ride
+
+                    currentBus.SetStatus();
                 }
             }
         }
@@ -90,7 +92,7 @@ namespace dotNet5781_03B_5857_1544
             }
             currentBus.RIDE = 0;
             currentBus.Fuel = (int)Math.Round(currentBus.Fuel);
-            currentBus.SetStatus();
+            //currentBus.SetStatus();
         }
 
 

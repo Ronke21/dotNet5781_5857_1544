@@ -168,7 +168,7 @@ namespace dotNet5781_03B_5857_1544
                 this.MILEAGE += add;
                 this._MileageSinceLastMaint += add;
                 this.Fuel -= add;
-                SetStatus();
+                //SetStatus();
             }
         }
 
@@ -224,7 +224,7 @@ namespace dotNet5781_03B_5857_1544
         /// checks if we passed 1 year from last maintenance care -so we can't ride until we do another one
         /// </summary>
         /// <returns>true if qualified, else false</returns>
-        public bool QualifiedDate()
+        private bool QualifiedDate()
         {
             return this.lastMaintDate.AddYears(1).CompareTo(DateTime.Now) > 0;
         }
@@ -242,7 +242,7 @@ namespace dotNet5781_03B_5857_1544
         /// a public function that gather all the private qualifaction checks
         /// <param name="ride">an recieve number of ride km and check qualifaction for the ride</param>
         /// <returns>true if qualified, else false</returns>
-        public bool AllQuailified(double ride)
+        public bool AllQuailified(double ride = 0)
         {
             return QualifiedFuel(ride) && QualifiedDate() && QualifiedMilage();
         }
