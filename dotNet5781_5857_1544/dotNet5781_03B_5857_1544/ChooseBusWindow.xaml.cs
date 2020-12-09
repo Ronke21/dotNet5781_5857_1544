@@ -14,6 +14,8 @@ namespace dotNet5781_03B_5857_1544
     /// </summary>
     public partial class ChooseBusWindow : Window
     {
+        public static Random r = new Random(DateTime.Now.Millisecond); //static random variable to initiallize buses randomly
+
         private Bus currentBus; //reference to the current bus chosen to ride from the list
 
         /// <summary>

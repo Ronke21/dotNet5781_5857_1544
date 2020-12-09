@@ -185,7 +185,7 @@ namespace dotNet5781_03B_5857_1544
             ChooseBusWindow chooseBus = new ChooseBusWindow(CurrentDisplay);
             LbBuses.SelectedItem = null;
 
-            if (!CurrentDisplay.AllQuailified()) //check if bus can make the ride
+            if (!CurrentDisplay.AllQuailified(0)) //check if bus can make the ride
             {
                 MessageBox.Show("this bus is not qualified for a ride\ntake it to maintenance");
             }

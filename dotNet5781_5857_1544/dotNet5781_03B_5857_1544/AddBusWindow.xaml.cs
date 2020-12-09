@@ -202,14 +202,29 @@ namespace dotNet5781_03B_5857_1544
                 return;
             }
 
+            if ((start.Year)<1980 || (last.Year) < 1980) //check validity of dates
+            {
+                MessageBox.Show("Buses before 1980 are forbidden to drive!");
+                Close();
+                return;
+            }
+
+
+            if (start>last) //check validity of dates
+            {
+                MessageBox.Show("Last maintenance date can not be before starting date!");
+                Close();
+                return;
+            }
+
             if (start.Year > 2017)
             {
-                if (license < 1000000)
+                if (license < 10000000)
                 {
                     MessageBox.Show("New buses (after 2017) use 8 digits id!");
                 }
             }
-            else if (license > 99999999)
+            else if (license > 9999999)
             {
                 MessageBox.Show("Old buses (before 2017) use 7 digits id!");
             }

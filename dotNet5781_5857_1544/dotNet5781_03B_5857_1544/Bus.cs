@@ -275,7 +275,7 @@ namespace dotNet5781_03B_5857_1544
         /// <param name="amount">fuel to refill</param>
         public void Refuel(double amount)
         {
-            Thread.Sleep(120);
+            Thread.Sleep(1200);
             Fuel += amount;
         }
 
@@ -285,7 +285,9 @@ namespace dotNet5781_03B_5857_1544
         /// <param name="km">ride length</param>
         public void Ride(double km)
         {
-            Thread.Sleep(100);
+            int speed = 50;// r.Next(20, 50); //random speed in kmh
+            double time = (double) km / speed; //the time in hours that takes 10% of the ride
+            Thread.Sleep((int)(time * 6000)); //6000 is 6 seconds which is hour in the app clock
             RIDE += km;
             AddToMileage(km);
         }
@@ -296,7 +298,8 @@ namespace dotNet5781_03B_5857_1544
         /// <param name="amount">way to measure the time for maint - divide th left mileage to maint and minus it</param>
         public void Maintain(double amount)
         {
-            Thread.Sleep(1440);
+
+            Thread.Sleep(14400);
             _MileageSinceLastMaint -= amount;
         }
 
