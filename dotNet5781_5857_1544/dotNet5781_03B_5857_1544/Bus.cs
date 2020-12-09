@@ -4,10 +4,8 @@ This file contains the class for a bus entity (according to properties demands i
 
 using System;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
-using dotNet5781_03B_5857_1544.Annotations;
 
 namespace dotNet5781_03B_5857_1544
 {
@@ -71,10 +69,10 @@ namespace dotNet5781_03B_5857_1544
 
         public DateTime startService { get; set; }   //the day that the bus started riding
 
-        private double _Mileage;                      //the total kilometers the bus drived - private so it won't be changed to less, can be only added.
+        private double _Mileage;    //the total kilometers the bus drived - private so it won't be changed to less, can be only added.
         public double MILEAGE
         {
-            get { return _Mileage; }
+            get { return Math.Round(_Mileage, 1); }
             set
             {
                 _Mileage = value;
@@ -90,7 +88,7 @@ namespace dotNet5781_03B_5857_1544
         private double _Fuel;
         public double Fuel
         {
-            get { return _Fuel; }
+            get { return Math.Round(_Fuel, 1); }
             set
             {
                 _Fuel = value;
@@ -115,12 +113,12 @@ namespace dotNet5781_03B_5857_1544
         private double _MileageSinceLastMaint;
         public double MileageSinceLastMaint
         {
-            get { return _MileageSinceLastMaint; }
+            get { return Math.Round(_MileageSinceLastMaint, 1); }
 
             set
             {
-                _Mileage = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MileageSinceLastMain"));
+                _MileageSinceLastMaint = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MileageSinceLastMaint"));
             }
 
         } //counting 20,000 km since lat maint - to the next one
@@ -136,6 +134,17 @@ namespace dotNet5781_03B_5857_1544
             }
         }
 
+        private DateTime _lastMaintDate;         //the last date of maintenance care. for qualifacation
+        public DateTime lastMaintDate
+        {
+            get { return _lastMaintDate.Date; }
+            set
+            {
+                _lastMaintDate = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("lastMaintDate"));
+            }
+        }         //the last date of maintenance care. for qualifacation
+
         //public string MILAGESINCELASTMAINTSTR
         //{
         //    get { return Convert.ToString(_Mileage - lastMaintMileage); }
@@ -146,9 +155,11 @@ namespace dotNet5781_03B_5857_1544
         /// <param name="ride"> can recieve number of km to a ride and check qualifacation to the ride. or dont get and it is 0 - so check regular qualifacation</param>
         public void SetStatus(double ride = 0)
         {
-            if (!this.QualifiedDate() || !this.QualifiedMilage(ride) || !this.QualifiedFuel(ride)) // of fuel = 0 or bus need to maintain by date/mileage -> it is Unfit!
+            if (!QualifiedDate() || !QualifiedMilage(ride) || !QualifiedFuel(ride)) // of fuel = 0 or bus need to maintain by date/mileage -> it is Unfit!
+            {
                 BUSSTATE = Status.Unfit;
-            else if ((this._LastMaintMileage + 1200 > 20000) || (lastMaintDate < DateTime.Today.AddMonths(-11))) //If bus has less then month or less than 1200 km to the next maintenance - the status is good for ride but tells the system to prepare for maint
+            }
+            else if(MileageSinceLastMaint + 1200 >= 20000 || lastMaintDate < DateTime.Today.AddMonths(-11)) //If bus has less then month or less than 1200 km to the next maintenance - the status is good for ride but tells the system to prepare for maint
             {
                 BUSSTATE = Status.MaintainSoon;
             }
@@ -165,13 +176,12 @@ namespace dotNet5781_03B_5857_1544
         {
             if (add > 0)
             {
-                this.MILEAGE += add;
-                this._MileageSinceLastMaint += add;
-                this.Fuel -= add;
+                MILEAGE += add;
+                MileageSinceLastMaint += add;
+                Fuel -= add;
             }
         }
 
-        public DateTime lastMaintDate { get; set; }         //the last date of maintenance care. for qualifacation
         //public string LASTMAINTDATESTR
         //{
         //    get { return lastMaintDate.ToString("dd/MM/yyyy"); }
@@ -186,12 +196,12 @@ namespace dotNet5781_03B_5857_1544
         /// <param name="maint">last datwe of maintenance</param>
         public Bus(int ID, DateTime begin, double delek, double km, DateTime maint)
         {
-            this._LicenseNum = ID;
-            this.startService = begin;
-            this._Fuel = delek;
-            this._Mileage = km;
-            this.lastMaintDate = maint;
-            this._MileageSinceLastMaint = km - _LastMaintMileage;
+            _LicenseNum = ID;
+            startService = begin;
+            _Fuel = delek;
+            _Mileage = km;
+            lastMaintDate = maint;
+            _MileageSinceLastMaint = km - _LastMaintMileage;
             SetStatus();
         }
 
@@ -200,12 +210,12 @@ namespace dotNet5781_03B_5857_1544
         /// </summary>
         public Bus()
         {
-            this._LicenseNum = 0;
-            this.startService = DateTime.Today;
-            this.Fuel = 0;
-            this.MILEAGE = 0;
-            this.lastMaintDate = DateTime.Today;
-            this._MileageSinceLastMaint = 0;
+            _LicenseNum = 0;
+            startService = DateTime.Today;
+            Fuel = 0;
+            MILEAGE = 0;
+            lastMaintDate = DateTime.Today;
+            _MileageSinceLastMaint = 0;
             SetStatus();
         }
 
@@ -216,7 +226,7 @@ namespace dotNet5781_03B_5857_1544
         /// <returns>true if qualified, else false</returns>
         private bool QualifiedMilage(double ride = 0)
         {
-            return this.MILEAGE + ride - this._LastMaintMileage <= 20000;
+            return MILEAGE + ride - _LastMaintMileage <= 20000;
         }
 
         /// <summary>
@@ -225,7 +235,7 @@ namespace dotNet5781_03B_5857_1544
         /// <returns>true if qualified, else false</returns>
         private bool QualifiedDate()
         {
-            return this.lastMaintDate.AddYears(1).CompareTo(DateTime.Now) > 0;
+            return lastMaintDate.AddYears(1).CompareTo(DateTime.Now) > 0;
         }
 
         /// <summary>
@@ -265,7 +275,7 @@ namespace dotNet5781_03B_5857_1544
         /// <param name="amount">fuel to refill</param>
         public void Refuel(double amount)
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(120);
             Fuel += amount;
         }
 
@@ -275,7 +285,7 @@ namespace dotNet5781_03B_5857_1544
         /// <param name="km">ride length</param>
         public void Ride(double km)
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             RIDE += km;
             AddToMileage(km);
         }

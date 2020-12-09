@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -24,7 +23,7 @@ namespace dotNet5781_03B_5857_1544
         public ChooseBusWindow(Bus bus)
         {
             InitializeComponent();
-            this.currentBus = bus;
+            currentBus = bus;
         }
 
 
@@ -67,7 +66,7 @@ namespace dotNet5781_03B_5857_1544
                 {
                     Close();
 
-                    double mil = (double)((double)mileage / 10); //set the amount of advance for each second the bus is in the ride
+                    double mil = (double)mileage / 10; //set the amount of advance for each second the bus is in the ride
 
                     currentBus.MaxRide = mileage; //set the maximal range for the progress bar
 

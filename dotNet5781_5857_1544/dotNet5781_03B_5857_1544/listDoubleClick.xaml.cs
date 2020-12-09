@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace dotNet5781_03B_5857_1544
 {
@@ -24,12 +23,12 @@ namespace dotNet5781_03B_5857_1544
 
             //update all lables with bus properties:
 
-            lbFuel.DataContext = currentBus.Fuel;
-            lbID.DataContext = currentBus.LICENSENUMSTR;
-            lbKM.DataContext = (int)Math.Round(currentBus.MILEAGE);
-            lbLast.DataContext = currentBus.lastMaintDate.Date;
-            lblState.DataContext = currentBus.BUSSTATE;
-            lbfromLast.DataContext = (int)Math.Round(currentBus.MileageSinceLastMaint);
+            //lbFuel.DataContext = currentBus.Fuel;
+            //lbID.DataContext = currentBus.LICENSENUMSTR;
+            //lbKM.DataContext = (int)Math.Round(currentBus.MILEAGE);
+            //lbLast.DataContext = currentBus.lastMaintDate.Date;
+            //lblState.DataContext = currentBus.BUSSTATE;
+            //lbfromLast.DataContext = (int)Math.Round(currentBus.MileageSinceLastMaint);
         }
 
         /// <summary>
@@ -102,7 +101,12 @@ namespace dotNet5781_03B_5857_1544
             Close();
 
             //at first - check if bus is busy in ride/maint and cant refuel
-            if (currentBus.BUSSTATE == Status.InMaintenance)
+            if (currentBus.Fuel == 1200)
+            {
+                MessageBox.Show("Tank is full, no need to refuel");
+            }
+
+            else if(currentBus.BUSSTATE == Status.InMaintenance)
             {
                 MessageBox.Show("bus is in maintenance, no need to refuel twice");
             }
@@ -119,7 +123,7 @@ namespace dotNet5781_03B_5857_1544
 
             else
             {
-                currentBus.BUSSTATE = dotNet5781_03B_5857_1544.Status.Refueling;
+                currentBus.BUSSTATE = Status.Refueling;
 
                 double amount = (1200 - currentBus.Fuel) / 10; //the amount of fuel to update in each second from the 12 of refuling
 
@@ -140,7 +144,9 @@ namespace dotNet5781_03B_5857_1544
             {
                 await Task.Run(() => b.Refuel(amount));
             }
+
             b.Fuel = 1200; //dividing the amount may cause a lack of few liters - so update to 1200
+
             b.SetStatus();
         }
     }

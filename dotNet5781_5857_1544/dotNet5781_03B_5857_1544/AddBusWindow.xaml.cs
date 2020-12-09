@@ -201,19 +201,17 @@ namespace dotNet5781_03B_5857_1544
                 Close();
                 return;
             }
-            else //check validity of bus license num - according to year
+
+            if (start.Year > 2017)
             {
-                if (start.Year > 2017)
+                if (license < 1000000)
                 {
-                    if (license < 1000000)
-                    {
-                        MessageBox.Show("New buses (after 2017) use 8 digits id!");
-                    }
+                    MessageBox.Show("New buses (after 2017) use 8 digits id!");
                 }
-                else if (license > 99999999)
-                {
-                    MessageBox.Show("Old buses (before 2017) use 7 digits id!");
-                }
+            }
+            else if (license > 99999999)
+            {
+                MessageBox.Show("Old buses (before 2017) use 7 digits id!");
             }
 
             if ((fuel < 0) || (fuel > 1200)) //check validity of fuel

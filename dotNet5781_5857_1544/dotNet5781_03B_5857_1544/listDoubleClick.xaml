@@ -180,7 +180,7 @@
         </Label>
 
         <Label 
-        Content="State"
+        Content="Status"
         Grid.Row="4"
         Grid.Column="0"
         HorizontalAlignment="Left" 
@@ -230,7 +230,7 @@
 
         <Label 
         Name="lbID"
-        Content="{Binding}"
+        Content="{Binding Path=LICENSENUMSTR}"
         Grid.Row="0"
         Grid.Column="1"
         HorizontalAlignment="Center" 
@@ -239,7 +239,7 @@
 
         <Label 
         Name="lbFuel"
-        Content="{Binding}"
+        Content="{Binding Path=Fuel}"
         Grid.Row="1"
         Grid.Column="1"
         HorizontalAlignment="Center" 
@@ -248,7 +248,7 @@
 
         <Label 
         Name="lbKM"
-        Content="{Binding}"
+        Content="{Binding Path=MILEAGE}"
         Grid.Row="2"
         Grid.Column="1"
         HorizontalAlignment="Center" 
@@ -257,7 +257,7 @@
 
         <Label 
         Name="lbLast"
-        Content="{Binding}"
+        Content="{Binding Path=lastMaintDate}"
         Grid.Row="3"
         Grid.Column="1"
         HorizontalAlignment="Center" 
@@ -266,7 +266,7 @@
 
         <Label 
         Name="lblState"
-        Content="{Binding}"
+        Content="{Binding Path=BUSSTATE}"
         Grid.Row="4"
         Grid.Column="1"
         HorizontalAlignment="Center" 
@@ -275,7 +275,7 @@
 
         <Label 
         Name="lbfromLast"  
-        Content="{Binding}"
+        Content="{Binding Path=MileageSinceLastMaint}"
         Grid.Row="5"
         Grid.Column="1"
         HorizontalAlignment="Center" 

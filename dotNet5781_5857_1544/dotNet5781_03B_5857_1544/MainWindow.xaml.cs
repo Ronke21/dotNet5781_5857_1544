@@ -113,11 +113,17 @@ namespace dotNet5781_03B_5857_1544
             LbBuses.SelectedItem = null;
 
             //at first - check if bus is busy in ride/maint and cant refuel
-            if (CurrentDisplay.BUSSTATE == dotNet5781_03B_5857_1544.Status.InMaintenance) 
+
+            if (CurrentDisplay.Fuel == 1200)
+            {
+                MessageBox.Show("Tank is full, no need to refuel");
+            }
+
+            else if (CurrentDisplay.BUSSTATE == dotNet5781_03B_5857_1544.Status.InMaintenance) 
             {
                 MessageBox.Show("bus is in maintenance, no need to refuel twice");
             }
-
+            
             else if (CurrentDisplay.BUSSTATE == dotNet5781_03B_5857_1544.Status.During)
             {
                 MessageBox.Show("bus is in a ride, wait until it gets back");
