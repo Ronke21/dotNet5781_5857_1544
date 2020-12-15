@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlTypes;
+using dotNet5781_PR_5857_1544;
 
 namespace DO
 {
@@ -34,7 +35,6 @@ namespace DO
 
         #endregion
 
-
         #region Mileage
 
         private double mileage;
@@ -68,6 +68,17 @@ namespace DO
 
         #endregion
 
+        #region Active
+
+        private bool active;
+
+        public bool Active
+        {
+            get { return active; }
+            set { active = value; }
+        }
+
+        #endregion
 
 
         #region CTOR
@@ -78,6 +89,7 @@ namespace DO
             this.mileage = km;
             this.fuel = gas;
             this.stat = s;
+            this.active = true;
         }
 
         #endregion

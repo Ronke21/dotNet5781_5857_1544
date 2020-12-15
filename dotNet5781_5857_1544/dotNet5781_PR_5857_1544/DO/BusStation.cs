@@ -64,6 +64,17 @@ namespace DO
 
         #endregion
 
+        #region Active
+
+        private bool active;
+
+        public bool Active
+        {
+            get { return active; }
+            set { active = value; }
+        }
+
+        #endregion
 
 
         #region CTOR
@@ -75,6 +86,7 @@ namespace DO
             this.name = n;
             this.address = ad;
             this.accessible = acc;
+            this.active = true;
         }
 
         #endregion

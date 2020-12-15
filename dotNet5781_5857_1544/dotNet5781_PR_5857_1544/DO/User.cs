@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using dotNet5781_PR_5857_1544;
 
-namespace dotNet5781_PR_5857_1544.DO
+namespace DO
 {
     class User
     {
@@ -40,6 +41,17 @@ namespace dotNet5781_PR_5857_1544.DO
 
         #endregion
 
+        #region Active
+
+        private bool active;
+
+        public bool Active
+        {
+            get { return active; }
+            set { active = value; }
+        }
+
+        #endregion
 
 
         #region CTOR
@@ -49,9 +61,9 @@ namespace dotNet5781_PR_5857_1544.DO
             this.userName = n;
             this.password= pw;
             this.permmision= per;
+            this.active = true;
         }
 
         #endregion
-
     }
 }

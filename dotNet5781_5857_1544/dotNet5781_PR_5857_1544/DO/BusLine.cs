@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using dotNet5781_PR_5857_1544;
 
 namespace DO
 {
@@ -73,6 +74,17 @@ namespace DO
 
         #endregion
 
+        #region Active
+
+        private bool active;
+
+        public bool Active
+        {
+            get { return active; }
+            set { active = value; }
+        }
+
+        #endregion
 
 
         #region CTOR
@@ -85,6 +97,7 @@ namespace DO
             this.firstStation = first;
             this.lastStation = last;
             this.allAccessible = acc;
+            this.active = true;
         }
 
         #endregion

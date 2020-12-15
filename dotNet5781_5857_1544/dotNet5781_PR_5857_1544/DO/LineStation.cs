@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DO;
 
-namespace dotNet5781_PR_5857_1544.DO
+namespace DO
 {
     class LineStation
     {
@@ -42,6 +42,18 @@ namespace dotNet5781_PR_5857_1544.DO
 
         #endregion
 
+        #region Active
+
+        private bool active;
+
+        public bool Active
+        {
+            get { return active; }
+            set { active = value; }
+        }
+
+        #endregion
+
 
         #region CTOR
 
@@ -50,6 +62,7 @@ namespace dotNet5781_PR_5857_1544.DO
             this.lineNumber = line;
             this.stationNumber = station;
             this.stationIndex = index;
+            this.active = true;
         }
 
         #endregion
