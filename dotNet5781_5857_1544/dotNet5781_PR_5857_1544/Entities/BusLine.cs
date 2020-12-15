@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using dotNet5781_PR_5857_1544;
 
-namespace DO
+namespace DalObject
 {
     class BusLine
     {

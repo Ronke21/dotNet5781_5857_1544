@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9E7DB922-14BA-4F99-AC8F-574065852DD8}</ProjectGuid>
+    <ProjectGuid>{D726CBC9-4139-4D9B-8B67-D81C63697D8A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>PR_DalApi</RootNamespace>
-    <AssemblyName>PR_DalApi</AssemblyName>
+    <RootNamespace>PR_DS</RootNamespace>
+    <AssemblyName>PR_DS</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDal.cs" />
+    <Compile Include="DataSource.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -54,10 +54,6 @@
     <ProjectReference Include="..\dotNet5781_PR_5857_1544\PR_DalObject.csproj">
       <Project>{5ff34ff3-4c0d-46e2-a2dd-5a2eeddc17c8}</Project>
       <Name>PR_DalObject</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PR_DS\PR_DS.csproj">
-      <Project>{d726cbc9-4139-4d9b-8b67-d81c63697d8a}</Project>
-      <Name>PR_DS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

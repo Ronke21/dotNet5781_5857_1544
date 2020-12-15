@@ -78,17 +78,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DO\Bus.cs" />
-    <Compile Include="DO\BusLine.cs" />
-    <Compile Include="DO\BusStation.cs" />
-    <Compile Include="DO\ConsecutiveStations.cs" />
-    <Compile Include="DO\Driver.cs" />
-    <Compile Include="DO\LineExit.cs" />
-    <Compile Include="DO\LineStation.cs" />
-    <Compile Include="DO\TravelingBus.cs" />
-    <Compile Include="DO\User.cs" />
-    <Compile Include="DO\UserTravel.cs" />
+    <Compile Include="Entities\Bus.cs" />
+    <Compile Include="Entities\BusLine.cs" />
+    <Compile Include="Entities\BusStation.cs" />
+    <Compile Include="Entities\ConsecutiveStations.cs" />
+    <Compile Include="Entities\Driver.cs" />
+    <Compile Include="Entities\LineExit.cs" />
+    <Compile Include="Entities\LineStation.cs" />
+    <Compile Include="Entities\TravelingBus.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\UserTravel.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Exceptions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

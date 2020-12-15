@@ -2,7 +2,7 @@
 using System.Data.SqlTypes;
 using dotNet5781_PR_5857_1544;
 
-namespace DO
+namespace DalObject
 {
     public class Bus
     {
