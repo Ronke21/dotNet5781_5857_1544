@@ -1,8 +1,9 @@
-רשימת מטלות:
+TODO:
 
-הוספת המחלקות:
+1. add CRUD to all the classes
 
-אוטובוס בנסיעה
-יציאת קו
-מידע על זוג תחנות עוקבות
-נסיעת משתמש
+2. add IDAL, DALFactory (DAL API)
+
+3. add DS
+
+4. 
