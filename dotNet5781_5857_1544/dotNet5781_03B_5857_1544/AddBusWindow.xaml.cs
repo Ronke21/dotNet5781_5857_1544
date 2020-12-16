@@ -11,6 +11,8 @@ namespace dotNet5781_03B_5857_1544
     /// Interaction logic for AddBusWindow.xaml
     /// This window opens when the user asks to add a new bus - (The + button in main window)
     /// </summary>
+
+
     public partial class AddBusWindow : Window
     {
         public AddBusWindow()
@@ -27,13 +29,23 @@ namespace dotNet5781_03B_5857_1544
             if (num > 99999999)
             {
                 TextBoxBusLicenseNumber.BorderBrush = Brushes.Red;
-                TextBoxBusLicenseNumber.BorderThickness= new Thickness(3);
+                TextBoxBusLicenseNumber.BorderThickness = new Thickness(3);
                 MessageBox.Show("not valid");
             }
             else
             {
                 TextBoxBusLicenseNumber.BorderBrush = Brushes.DarkGray;
-                TextBoxBusLicenseNumber.BorderThickness= new Thickness(1);
+                TextBoxBusLicenseNumber.BorderThickness = new Thickness(1);
+            }
+
+            foreach (var bus in MainWindow.Eged)
+            {
+                if (num == bus.LICENSENUM)
+                {
+                    Close();
+                    MessageBox.Show("Bus already exists");
+                    return;
+                }
             }
         }
 
@@ -202,7 +214,7 @@ namespace dotNet5781_03B_5857_1544
                 return;
             }
 
-            if ((start.Year)<1980 || (last.Year) < 1980) //check validity of dates
+            if ((start.Year) < 1980 || (last.Year) < 1980) //check validity of dates
             {
                 MessageBox.Show("Buses before 1980 are forbidden to drive!");
                 Close();
@@ -210,7 +222,7 @@ namespace dotNet5781_03B_5857_1544
             }
 
 
-            if (start>last) //check validity of dates
+            if (start > last) //check validity of dates
             {
                 MessageBox.Show("Last maintenance date can not be before starting date!");
                 Close();
