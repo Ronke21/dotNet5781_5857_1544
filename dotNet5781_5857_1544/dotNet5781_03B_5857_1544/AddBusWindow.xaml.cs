@@ -15,6 +15,7 @@ namespace dotNet5781_03B_5857_1544
 
     public partial class AddBusWindow : Window
     {
+        private bool exist = false;
         public AddBusWindow()
         {
             InitializeComponent();
@@ -42,10 +43,11 @@ namespace dotNet5781_03B_5857_1544
             {
                 if (num == bus.LICENSENUM)
                 {
-                    Close();
+                    exist = true;
                     MessageBox.Show("Bus already exists");
                     return;
                 }
+                exist = false;
             }
         }
 
@@ -210,14 +212,12 @@ namespace dotNet5781_03B_5857_1544
             if ((start > DateTime.Today) || (last > DateTime.Today)) //check validity of dates
             {
                 MessageBox.Show("can't enter future date!");
-                Close();
                 return;
             }
 
             if ((start.Year) < 1980 || (last.Year) < 1980) //check validity of dates
             {
                 MessageBox.Show("Buses before 1980 are forbidden to drive!");
-                Close();
                 return;
             }
 
@@ -225,7 +225,6 @@ namespace dotNet5781_03B_5857_1544
             if (start > last) //check validity of dates
             {
                 MessageBox.Show("Last maintenance date can not be before starting date!");
-                Close();
                 return;
             }
 
@@ -234,31 +233,36 @@ namespace dotNet5781_03B_5857_1544
                 if (license < 10000000)
                 {
                     MessageBox.Show("New buses (after 2017) use 8 digits id!");
+                    return;
                 }
             }
             else if (license > 9999999)
             {
                 MessageBox.Show("Old buses (before 2017) use 7 digits id!");
+                return;
             }
 
             if ((fuel < 0) || (fuel > 1200)) //check validity of fuel
             {
                 MessageBox.Show("Fuel only between 0-1200!");
-                Close();
                 return;
             }
 
             if ((mileage < 0) || (mileage > 500000)) //check validity of mileage
             {
                 MessageBox.Show("mileage only between 0-500,000!");
-                Close();
                 return;
             }
 
             if ((license > 99999999) || (license < 1000000)) //check validity of id - digit number
             {
                 MessageBox.Show("Bus id only 7 or 8 digits");
-                Close();
+                return;
+            }
+
+            if(exist)
+            {
+                MessageBox.Show("Bus already exists");
                 return;
             }
 
@@ -266,6 +270,7 @@ namespace dotNet5781_03B_5857_1544
 
             Close();
         }
+
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
             if (e.Key == Key.Space)
