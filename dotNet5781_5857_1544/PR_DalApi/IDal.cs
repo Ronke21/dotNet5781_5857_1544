@@ -4,17 +4,6 @@ using DO;
 
 namespace PR_DalApi
 {
-
-    class KeyGenerator
-    {
-        private static int Key = 0;
-        public static int IdGenerator()
-        {
-            return Key++;
-        }
-    }
-
-
     public interface IDal
     {
         #region Bus
@@ -32,9 +21,9 @@ namespace PR_DalApi
         void AddBusLine(BusLine busLine);                                      // C
         IEnumerable<BusLine> GetAllBusLines();                                 // R
         IEnumerable<BusLine> GetAllBusLinesBy(Predicate<BusLine> predicate);   // R
-        BusLine GetBusLine(int busLineId);                                         // R
-        void UpdateBusLine(BusLine bus);                                       // U
-        //void UpdateBusLine(int busLineId, Action<BusLine> update);             // U
+        BusLine GetBusLine(int busLineId);                                     // R
+        void UpdateBusLine(BusLine busLine);                                   // U
+        //void UpdateBusLine(int busLineId, Action<BusLine> update);           // U
         void DeleteBusLine(int busLineId);                                     // D
 
         #endregion
@@ -45,7 +34,7 @@ namespace PR_DalApi
         IEnumerable<BusStation> GetAllBusLinesBy(Predicate<BusStation> predicate);  // R
         BusStation GetBusStation(int code);                                         // R
         void UpdateBusStation(BusStation bus);                                      // U
-        //void UpdateBusStation(int code, Action<BusStation> update);                 // U
+        //void UpdateBusStation(int code, Action<BusStation> update);               // U
         void DeleteBusStation(int code);                                            // D
 
         #endregion
@@ -54,7 +43,7 @@ namespace PR_DalApi
         //IEnumerable<ConsecutiveStations> GetAllConsecutiveStations();
         void AddConsecutiveStations(int statCode1, int statCode2);
         ConsecutiveStations GetConsecutiveStations(int statCode1, int statCode2);
-        void DeleteConsecutiveStations(ConsecutiveStations consecutiveStations);
+        void DeleteConsecutiveStations(int statCode1, int statCode2);
 
         #endregion
 

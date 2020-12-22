@@ -1,9 +1,17 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using DO;
 
 namespace DS
 {
+    public static class KeyGenerator
+    {
+        private static int _key = 0;
+        public static int IdGenerator()
+        {
+            return _key++;
+        }
+    }
+
     public static class DataSource
     {
         public static List<Bus> BusesList;

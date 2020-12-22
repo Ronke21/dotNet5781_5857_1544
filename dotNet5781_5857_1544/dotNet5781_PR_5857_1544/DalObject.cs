@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using DS;
-using Dal;
 using DalObject;
 using DO;
 using PR_DalApi;
@@ -25,7 +24,7 @@ namespace Dal
             {
                 DataSource.BusesList.Add(bus.Clone());
             }
-            else throw new BusAlreadyExistsException($"Bus number {bus.LicenseNum} already exist");
+            else throw new BusAlreadyExistsException($"Bus number {bus.LicenseNum} already exists");
         }
 
         public IEnumerable<DO.Bus> GetAllBuses()
@@ -81,7 +80,7 @@ namespace Dal
             {
                 DataSource.BusLinesList.Add(busLine.Clone());
             }
-            else throw new BusLineAlreadyExistsException($"Bus number {busLine.BusLineId} already exist");
+            else throw new BusLineAlreadyExistsException($"Bus number {busLine.BusLineId} already exists");
         }
 
         public IEnumerable<BusLine> GetAllBusLines()
@@ -114,57 +113,214 @@ namespace Dal
             throw new BusLineDoesNotExistsException($"Bus line number {busLineId} does not exist");
         }
 
-        public void UpdateBusLine(BusLine bus)
+        public void UpdateBusLine(BusLine busLine)
         {
-            DeleteBusLine(bus.BusLineId);
-            AddBusLine(bus);
+            DeleteBusLine(busLine.BusLineId);
+            AddBusLine(busLine);
         }
 
         public void DeleteBusLine(int busLineId)
         {
-            var busLine = DataSource.BusLinesList.Find(b => b.BusLineId == busLineId);
+            var busLine = DataSource.BusLinesList.Find(l => l.BusLineId == busLineId);
             if (busLine is null) throw new BusLineDoesNotExistsException($"Bus line number {busLineId} does not exist");
-            DataSource.BusesList.Remove(GetBus(busLineId));
+            DataSource.BusLinesList.Remove(GetBusLine(busLineId));
         }
 
         #endregion
 
         #region BusStation
-        void AddBusStation(BusStation busStation);
-        IEnumerable<BusStation> GetAllBusStations();
-        IEnumerable<BusStation> GetAllBusLinesBy(Predicate<BusStation> predicate);
-        BusStation GetBusStation(int code);
-        void UpdateBusStation(BusStation bus);
-        void DeleteBusStation(int code);
+        public void AddBusStation(BusStation busStation)
+        {
+            if (DataSource.BusStationsList.Find(b => b.Code == busStation.Code) == null)
+            {
+                DataSource.BusStationsList.Add(busStation);
+            }
+            else throw new StationAlreadyExistsException($"Station {busStation.Code} already exists");
+        }
+        public IEnumerable<BusStation> GetAllBusStations()
+        {
+            if (DataSource.BusStationsList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.BusStationsList)} is Empty");
+            }
+
+            return from busStation in DataSource.BusStationsList
+                   select busStation.Clone();
+        }
+
+        public IEnumerable<BusStation> GetAllBusLinesBy(Predicate<BusStation> predicate)
+        {
+            if (DataSource.BusStationsList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.BusStationsList)} is Empty");
+            }
+
+            return from busStation in DataSource.BusStationsList
+                   where predicate(busStation)
+                   select busStation.Clone();
+        }
+
+        public BusStation GetBusStation(int code)
+        {
+            var busStation = DataSource.BusStationsList.Find(b => b.Code == code);
+            if (busStation != null) return busStation;
+            throw new StationDoesNotExistException($"Bus line number {code} does not exist");
+        }
+        public void UpdateBusStation(BusStation busStation)
+        {
+            DeleteBusStation(busStation.Code);
+            AddBusStation(busStation);
+        }
+
+        public void DeleteBusStation(int code)
+        {
+            var busStation = DataSource.BusStationsList.Find(s => s.Code == code);
+            if (busStation is null) throw new StationDoesNotExistException($"Station {code} does not exist");
+            DataSource.BusStationsList.Remove(GetBusStation(code));
+        }
 
         #endregion
 
         #region ConsecutiveStations
         //IEnumerable<ConsecutiveStations> GetAllConsecutiveStations();
-        void AddConsecutiveStations(int statCode1, int statCode2);
-        ConsecutiveStations GetConsecutiveStations(int statCode1, int statCode2);
-        void DeleteConsecutiveStations(ConsecutiveStations consecutiveStations);
+        public void AddConsecutiveStations(int statCode1, int statCode2)
+        {
+            if (DataSource.ConsecutiveStationsList.Find((c => c.StatCode1 == statCode1 && c.StatCode2 == statCode2)) == null)
+            {
+                DataSource.ConsecutiveStationsList.Add(new ConsecutiveStations( /*?*/ ));
+            }
+            else throw new StationsAlreadyConsecutiveException($"Stations {statCode1} and {statCode2} are already consecutive stations");
+        }
+
+        public ConsecutiveStations GetConsecutiveStations(int statCode1, int statCode2)
+        {
+            var consecutiveStations = DataSource.ConsecutiveStationsList.Find(c => c.StatCode1 == statCode1 && c.StatCode2 == statCode2);
+            if (consecutiveStations != null) return consecutiveStations;
+            throw new StationsAreNotConsecutiveException($"Stations {statCode1} and {statCode2} are not consecutive stations");
+        }
+
+        public void DeleteConsecutiveStations(int statCode1, int statCode2)
+        {
+            var consecutiveStations = DataSource.ConsecutiveStationsList.Find(c => c.StatCode1 == statCode1 && c.StatCode2 == statCode2);
+            if (consecutiveStations is null)
+            {
+                throw new StationsAreNotConsecutiveException($"Stations {statCode1} and {statCode2} are not consecutive stations");
+            }
+
+            DataSource.ConsecutiveStationsList.Remove(consecutiveStations);
+        }
 
         #endregion
 
         #region Driver
 
-        void AddDriver(Driver driver);
-        IEnumerable<Driver> GetAllDrivers();
-        IEnumerable<Driver> GetAllDriversBy(Predicate<Driver> predicate);
-        Driver GetDriver(int id);
-        void UpdateDriver(Driver driver);
-        void DeleteDriver(int id);
+        public void AddDriver(Driver driver)
+        {
+            if (DataSource.DriversList.Find(d => d.Id == driver.Id) == null)
+            {
+                DataSource.DriversList.Add(driver);
+            }
+            else throw new DriverAlreadyExistsException($"Driver {driver.Id} already exists");
+        }
+
+        public IEnumerable<Driver> GetAllDrivers()
+        {
+            if (DataSource.DriversList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.DriversList)} is Empty");
+            }
+
+            return from driver in DataSource.DriversList
+                   select driver.Clone();
+        }
+
+        public IEnumerable<Driver> GetAllDriversBy(Predicate<Driver> predicate)
+        {
+            if (DataSource.DriversList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.DriversList)} is Empty");
+            }
+
+            return from driver in DataSource.DriversList
+                   where predicate(driver)
+                   select driver.Clone();
+        }
+
+        public Driver GetDriver(int id)
+        {
+            var driver = DataSource.DriversList.Find(d => d.Id == id);
+            if (driver != null) return driver;
+            throw new DriverDoesNotExistsException($"Driver {id} does not exist");
+        }
+
+        public void UpdateDriver(Driver driver)
+        {
+            DeleteDriver(driver.Id);
+            AddDriver(driver);
+        }
+
+        public void DeleteDriver(int id)
+        {
+            var driver = DataSource.DriversList.Find(d => d.Id == id);
+            if (driver is null) throw new DriverDoesNotExistsException($"Driver {id} does not exist");
+            DataSource.DriversList.Remove(GetDriver(id));
+        }
 
         #endregion
 
         #region LineStation
-        void AddLineStation(LineStation lineStation);
-        IEnumerable<LineStation> GetAlLineStations();
-        IEnumerable<LineStation> GetAlLineStationsBy(Predicate<LineStation> predicate);
-        LineStation GetLineStation(int lineNumber, int stationNumber);
-        void UpdateLineStation(int lineNumber, int stationNumber, int stationIndex);
-        void DeleteLineStation(int lineNumber, int stationNumber);
+
+        public void AddLineStation(LineStation lineStation)
+        {
+            if (DataSource.LineStationsList.Find(ls => ls.LineNumber == lineStation.LineNumber &&
+                                                       ls.StationNumber == lineStation.StationNumber) == null)
+            {
+                DataSource.LineStationsList.Add(lineStation);
+            }
+            else throw new LineStationsAlreadyExistsException($"Line station {lineStation.LineNumber}/{lineStation.StationNumber} already exists");
+        }
+
+        public IEnumerable<LineStation> GetAlLineStations()
+        {
+            if (DataSource.LineStationsList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.LineStationsList)} is Empty");
+            }
+
+            return from LineStation in DataSource.LineStationsList
+                select LineStation.Clone();
+        }
+
+        public IEnumerable<LineStation> GetAlLineStationsBy(Predicate<LineStation> predicate)
+        {
+            if (DataSource.LineStationsList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.LineStationsList)} is Empty");
+            }
+
+            return from LineStation in DataSource.LineStationsList
+                where predicate(LineStation)
+                select LineStation.Clone();
+        }
+
+        public LineStation GetLineStation(int lineNumber, int stationNumber)
+        {
+            var lineStation = DataSource.LineStationsList.Find(ls => ls.LineNumber == lineNumber && ls.StationNumber == stationNumber);
+            if (lineStation != null) return lineStation;
+            throw new LineStationsDoesNotExistsException($"Line station {lineNumber}/{stationNumber} does not exists");
+        }
+
+        public void UpdateLineStation(int lineNumber, int stationNumber, int stationIndex)
+        {
+            var lineStation = GetLineStation(lineNumber, stationNumber);
+            lineStation.StationIndex = stationIndex;
+        }
+
+        public void DeleteLineStation(int lineNumber, int stationNumber)
+        {
+            var lineStation = GetLineStation(lineNumber, stationNumber);
+            DataSource.LineStationsList.Remove(lineStation);
+        }
 
         #endregion
 

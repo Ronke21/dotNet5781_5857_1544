@@ -108,4 +108,53 @@ namespace DalObject
 
         public EmptyListException(string message) : base(message) { }
     }
+
+    [Serializable]
+    public class StationsAlreadyConsecutiveException : Exception
+    {
+        public StationsAlreadyConsecutiveException() : base() { }
+
+        public StationsAlreadyConsecutiveException(string message) : base(message) { }
+    }
+
+
+    [Serializable]
+    public class StationsAreNotConsecutiveException : Exception
+    {
+        public StationsAreNotConsecutiveException() : base() { }
+
+        public StationsAreNotConsecutiveException(string message) : base(message) { }
+    }
+
+    [Serializable]
+    public class DriverDoesNotExistsException : Exception
+    {
+        public DriverDoesNotExistsException() : base() { }
+
+        public DriverDoesNotExistsException(string message) : base(message) { }
+    }
+
+    [Serializable]
+    public class DriverAlreadyExistsException : Exception
+    {
+        public DriverAlreadyExistsException() : base() { }
+
+        public DriverAlreadyExistsException(string message) : base(message) { }
+    }
+
+    [Serializable]
+    public class LineStationsAlreadyExistsException : Exception
+    {
+        public LineStationsAlreadyExistsException() : base() { }
+
+        public LineStationsAlreadyExistsException(string message) : base(message) { }
+    }
+
+    [Serializable]
+    public class LineStationsDoesNotExistsException : Exception
+    {
+        public LineStationsDoesNotExistsException() : base() { }
+
+        public LineStationsDoesNotExistsException(string message) : base(message) { }
+    }
 }
