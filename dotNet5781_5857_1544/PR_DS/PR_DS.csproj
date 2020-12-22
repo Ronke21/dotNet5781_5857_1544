@@ -35,25 +35,18 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSource.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dotNet5781_PR_5857_1544\PR_DalObject.csproj">
-      <Project>{5ff34ff3-4c0d-46e2-a2dd-5a2eeddc17c8}</Project>
-      <Name>PR_DalObject</Name>
+    <ProjectReference Include="..\PR_DalApi\PR_DalApi.csproj">
+      <Project>{9e7db922-14ba-4f99-ac8f-574065852dd8}</Project>
+      <Name>PR_DalApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
