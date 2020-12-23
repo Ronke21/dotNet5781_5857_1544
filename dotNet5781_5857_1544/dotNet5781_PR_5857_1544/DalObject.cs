@@ -187,7 +187,8 @@ namespace Dal
         {
             if (DataSource.ConsecutiveStationsList.Find((c => c.StatCode1 == statCode1 && c.StatCode2 == statCode2)) == null)
             {
-                DataSource.ConsecutiveStationsList.Add(new ConsecutiveStations( /*?*/ ));
+                var con = new ConsecutiveStations { StatCode1 = statCode1, StatCode2 = statCode2 };
+                DataSource.ConsecutiveStationsList.Add(con);
             }
             else throw new StationsAlreadyConsecutiveException($"Stations {statCode1} and {statCode2} are already consecutive stations");
         }
@@ -288,7 +289,7 @@ namespace Dal
             }
 
             return from LineStation in DataSource.LineStationsList
-                select LineStation.Clone();
+                   select LineStation.Clone();
         }
 
         public IEnumerable<LineStation> GetAlLineStationsBy(Predicate<LineStation> predicate)
@@ -298,9 +299,9 @@ namespace Dal
                 throw new EmptyListException($"{nameof(DataSource.LineStationsList)} is Empty");
             }
 
-            return from LineStation in DataSource.LineStationsList
-                where predicate(LineStation)
-                select LineStation.Clone();
+            return from lineStation in DataSource.LineStationsList
+                   where predicate(lineStation)
+                   select lineStation.Clone();
         }
 
         public LineStation GetLineStation(int lineNumber, int stationNumber)
@@ -325,33 +326,52 @@ namespace Dal
         #endregion
 
         #region TravelingBus
-        void AddTravelingBus(TravelingBus travelingBus);
-        IEnumerable<TravelingBus> GetAllTravelingBuses();
-        IEnumerable<TravelingBus> GetAllTravelingBusesBy(Predicate<TravelingBus> predicate);
-        TravelingBus GetTravelingBus(int travelId);
-        //void Update(TravelingBus travelingBus);
-        void DeleteTravelingBus(int travelId);
+
+        public void AddTravelingBus(TravelingBus travelingBus)
+        {
+
+        }
+
+        public IEnumerable<TravelingBus> GetAllTravelingBuses()
+        {
+
+        }
+
+        public IEnumerable<TravelingBus> GetAllTravelingBusesBy(Predicate<TravelingBus> predicate)
+        {
+
+        }
+
+        public TravelingBus GetTravelingBus(int travelId)
+        {
+
+        }
+
+        public void DeleteTravelingBus(int travelId)
+        {
+
+        }
 
         #endregion
 
         #region User
-        void AddUser(User user);
-        IEnumerable<User> GetAllUsers();
-        IEnumerable<User> GetAllUsersBy(Predicate<User> predicate);
-        User GetUser(string username);
-        void UpdateUser(User user);
-        void UpdateUsername(string username);
-        void UpdatePassword(string password);
-        void DeleteUser(string username, string password);
+        public void AddUser(User user);
+        public IEnumerable<User> GetAllUsers();
+        public IEnumerable<User> GetAllUsersBy(Predicate<User> predicate);
+        public User GetUser(string username);
+        public void UpdateUser(User user);
+        public void UpdateUsername(string username);
+        public void UpdatePassword(string password);
+        public void DeleteUser(string username, string password);
 
         #endregion
 
         #region UserTravel
-        void AddUserTravel(UserTravel userTravel);
-        IEnumerable<UserTravel> GetAllUserTravels();
-        IEnumerable<UserTravel> GetAllUserTravelsBy(Predicate<UserTravel> predicate);
-        UserTravel GetUserTravel(int travelId);
-        void DeleteUserTravel(int travelId);
+        public void AddUserTravel(UserTravel userTravel);
+        public IEnumerable<UserTravel> GetAllUserTravels();
+        public IEnumerable<UserTravel> GetAllUserTravelsBy(Predicate<UserTravel> predicate);
+        public UserTravel GetUserTravel(int travelId);
+        public void DeleteUserTravel(int travelId);
 
         #endregion
     }
