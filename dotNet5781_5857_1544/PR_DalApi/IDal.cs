@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DO;
 
@@ -86,8 +87,8 @@ namespace PR_DalApi
         User GetUser(string username);
         void UpdateUser(User user);
         void UpdateUsername(string username);
-        void UpdatePassword(string password);
-        void DeleteUser(string username, string password);
+        void UpdatePassword(string username, string password);
+        void DeleteUser(string username);
 
         #endregion
 

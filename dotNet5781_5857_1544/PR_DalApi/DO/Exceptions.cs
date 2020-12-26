@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DalObject
+namespace DO
 {
     //exception for input of a station location that is not in Israel
     [Serializable]
@@ -156,5 +156,55 @@ namespace DalObject
         public LineStationsDoesNotExistsException() : base() { }
 
         public LineStationsDoesNotExistsException(string message) : base(message) { }
+    }
+
+    [Serializable]
+    public class TravelingBusesAlreadyExistsException : Exception
+    {
+        public TravelingBusesAlreadyExistsException() : base() { }
+
+        public TravelingBusesAlreadyExistsException(string message) : base(message) { }
+    }
+
+    [Serializable]
+    public class TravelingBusesDoesNotExistsException : Exception
+    {
+        public TravelingBusesDoesNotExistsException() : base() { }
+
+        public TravelingBusesDoesNotExistsException(string message) : base(message) { }
+    }
+
+
+    [Serializable]
+    public class UserAlreadyExistsException : Exception
+    {
+        public UserAlreadyExistsException() : base() { }
+
+        public UserAlreadyExistsException(string message) : base(message) { }
+    }
+
+    [Serializable]
+    public class UserDoesNotExistsException : Exception
+    {
+        public UserDoesNotExistsException() : base() { }
+
+        public UserDoesNotExistsException(string message) : base(message) { }
+    }
+
+
+    [Serializable]
+    public class UserTravelAlreadyExistsException : Exception
+    {
+        public UserTravelAlreadyExistsException() : base() { }
+
+        public UserTravelAlreadyExistsException(string message) : base(message) { }
+    }
+
+    [Serializable]
+    public class UserTravelDoesNotExistsException : Exception
+    {
+        public UserTravelDoesNotExistsException() : base() { }
+
+        public UserTravelDoesNotExistsException(string message) : base(message) { }
     }
 }

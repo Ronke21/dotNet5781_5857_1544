@@ -61,7 +61,7 @@ public class TooLongException : Exception
 }
 #endregion
 
-//exception for a input of busline which is already in the bus collection
+//exception for a input of bus line which is already in the bus collection
 #region BusLineAlreadyExistsException
 [Serializable]
 public class BusLineAlreadyExistsException : Exception

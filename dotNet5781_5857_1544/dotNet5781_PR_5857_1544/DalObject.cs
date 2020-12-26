@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using DS;
-using DalObject;
 using DO;
 using PR_DalApi;
 
@@ -27,7 +26,7 @@ namespace Dal
             else throw new BusAlreadyExistsException($"Bus number {bus.LicenseNum} already exists");
         }
 
-        public IEnumerable<DO.Bus> GetAllBuses()
+        public IEnumerable<Bus> GetAllBuses()
         {
             if (DataSource.BusesList.Count == 0)
             {
@@ -288,8 +287,8 @@ namespace Dal
                 throw new EmptyListException($"{nameof(DataSource.LineStationsList)} is Empty");
             }
 
-            return from LineStation in DataSource.LineStationsList
-                   select LineStation.Clone();
+            return from lineStation in DataSource.LineStationsList
+                   select lineStation.Clone();
         }
 
         public IEnumerable<LineStation> GetAlLineStationsBy(Predicate<LineStation> predicate)
@@ -329,49 +328,166 @@ namespace Dal
 
         public void AddTravelingBus(TravelingBus travelingBus)
         {
-
+            if (DataSource.TravelingBusesList.Find(ls => ls.Id == travelingBus.Id) == null)
+            {
+                DataSource.TravelingBusesList.Add(travelingBus);
+            }
+            else throw new TravelingBusesAlreadyExistsException($"Bus {travelingBus.Id} travel already exists");
         }
 
         public IEnumerable<TravelingBus> GetAllTravelingBuses()
         {
+            if (DataSource.TravelingBusesList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.TravelingBusesList)} is Empty");
+            }
 
+            return from travelingBus in DataSource.TravelingBusesList
+                   select travelingBus.Clone();
         }
 
         public IEnumerable<TravelingBus> GetAllTravelingBusesBy(Predicate<TravelingBus> predicate)
         {
+            if (DataSource.TravelingBusesList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.TravelingBusesList)} is Empty");
+            }
 
+            return from travelingBus in DataSource.TravelingBusesList
+                   where predicate(travelingBus)
+                   select travelingBus.Clone();
         }
 
         public TravelingBus GetTravelingBus(int travelId)
         {
-
+            var travelingBus = DataSource.TravelingBusesList.Find(tb => tb.Id == travelId);
+            if (travelingBus != null) return travelingBus;
+            throw new TravelingBusesDoesNotExistsException($"Bus {travelId} travel does not exist");
         }
 
         public void DeleteTravelingBus(int travelId)
         {
-
+            var travelingBus = DataSource.TravelingBusesList.Find(tb => tb.Id == travelId);
+            if (travelingBus is null) throw new TravelingBusesDoesNotExistsException($"Bus {travelId} travel does not exist");
+            DataSource.TravelingBusesList.Remove(travelingBus);
         }
 
         #endregion
 
         #region User
-        public void AddUser(User user);
-        public IEnumerable<User> GetAllUsers();
-        public IEnumerable<User> GetAllUsersBy(Predicate<User> predicate);
-        public User GetUser(string username);
-        public void UpdateUser(User user);
-        public void UpdateUsername(string username);
-        public void UpdatePassword(string password);
-        public void DeleteUser(string username, string password);
+
+        public void AddUser(User user)
+        {
+            if (DataSource.UsersList.Find(u => u.UserName == user.UserName) == null)
+            {
+                DataSource.UsersList.Add(user.Clone());
+            }
+            else throw new UserAlreadyExistsException($"User {user.UserName} already exists");
+        }
+
+        public IEnumerable<User> GetAllUsers()
+        {
+            if (DataSource.UsersList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.UsersList)} is Empty");
+            }
+
+            return from user in DataSource.UsersList
+                   select user.Clone();
+        }
+        public IEnumerable<User> GetAllUsersBy(Predicate<User> predicate)
+        {
+            if (DataSource.UsersList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.UsersList)} is Empty");
+            }
+
+            return from user in DataSource.UsersList
+                   where predicate(user)
+                   select user.Clone();
+        }
+
+        public User GetUser(string username)
+        {
+            var user = DataSource.UsersList.Find(u => u.UserName == username);
+            if (user != null) return user;
+            throw new UserDoesNotExistsException($"User {username} does not exist");
+        }
+
+        public void UpdateUser(User user)
+        {
+            DeleteUser(user.UserName);
+            AddUser(user);
+        }
+
+        public void UpdateUsername(string username)
+        {
+            var user = GetUser(username);
+            user.UserName = username;
+        }
+
+        public void UpdatePassword(string username, string password)
+        {
+            var user = GetUser(username);
+            user.Password = password;
+        }
+
+        public void DeleteUser(string username)
+        {
+            var user = DataSource.UsersList.Find(b => b.UserName == username);
+            if (user is null) throw new UserDoesNotExistsException($"User {username} does not exist");
+            DataSource.UsersList.Remove(GetUser(username));
+        }
 
         #endregion
 
         #region UserTravel
-        public void AddUserTravel(UserTravel userTravel);
-        public IEnumerable<UserTravel> GetAllUserTravels();
-        public IEnumerable<UserTravel> GetAllUserTravelsBy(Predicate<UserTravel> predicate);
-        public UserTravel GetUserTravel(int travelId);
-        public void DeleteUserTravel(int travelId);
+
+        public void AddUserTravel(UserTravel userTravel)
+        {
+            if (DataSource.UserTravelsList.Find(ut => ut.TravelId == userTravel.TravelId) == null)
+            {
+                DataSource.UserTravelsList.Add(userTravel.Clone());
+            }
+            else throw new UserTravelAlreadyExistsException($"User travel number {userTravel.TravelId} already exists");
+        }
+
+        public IEnumerable<UserTravel> GetAllUserTravels()
+        {
+            if (DataSource.UserTravelsList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.BusesList)} is Empty");
+            }
+
+            return from ut in DataSource.UserTravelsList
+                select ut.Clone();
+        }
+
+        public IEnumerable<UserTravel> GetAllUserTravelsBy(Predicate<UserTravel> predicate)
+        {
+            if (DataSource.UserTravelsList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.BusesList)} is Empty");
+            }
+
+            return from ut in DataSource.UserTravelsList
+                where predicate(ut)
+                select ut.Clone();
+        }
+
+        public UserTravel GetUserTravel(int travelId)
+        {
+            var userTravel = DataSource.UserTravelsList.Find(ut => ut.TravelId == travelId);
+            if (userTravel != null) return userTravel;
+            throw new UserTravelDoesNotExistsException($"User travel number {userTravel.TravelId} does not exist");
+        }
+
+        public void DeleteUserTravel(int travelId)
+        {
+            var userTravel = DataSource.UserTravelsList.Find(ut => ut.TravelId == travelId);
+            if (userTravel is null) throw new UserTravelDoesNotExistsException($"User travel number {travelId} does not exist");
+            DataSource.UserTravelsList.Remove(GetUserTravel(travelId));
+        }
 
         #endregion
     }
