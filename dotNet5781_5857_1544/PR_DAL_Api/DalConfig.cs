@@ -45,8 +45,8 @@ namespace DalApi
             public string NameSpace;
             public string ClassName;
         }
-        internal static string DLName;
-        internal static Dictionary<string, DalPackage> DLPackages;
+        internal static readonly string DalName;
+        internal static Dictionary<string, DalPackage> DalPackages;
 
         /// <summary>
         /// Static constructor extracts Dal packages list and Dal type from
@@ -54,9 +54,9 @@ namespace DalApi
         /// </summary>
         static DalConfig()
         {
-            XElement dlConfig = XElement.Load(@"config.xml");
-            DLName = dlConfig.Element("dl")?.Value;
-            DLPackages = (from pkg in dlConfig.Element("dl-packages")?.Elements()
+            XElement dalConfig = XElement.Load(@"config.xml");
+            DalName = dalConfig.Element("dal")?.Value;
+            DalPackages = (from pkg in dalConfig.Element("dal-packages")?.Elements()
                           let tmp1 = pkg.Attribute("namespace")
                           let nameSpace = tmp1 == null ? "Dal" : tmp1.Value
                           let tmp2 = pkg.Attribute("class")
@@ -76,9 +76,9 @@ namespace DalApi
     /// Represents errors during DalApi initialization
     /// </summary>
     [Serializable]
-    public class DLConfigException : Exception
+    public class DalConfigException : Exception
     {
-        public DLConfigException(string message) : base(message) { }
-        public DLConfigException(string message, Exception inner) : base(message, inner) { }
+        public DalConfigException(string message) : base(message) { }
+        public DalConfigException(string message, Exception inner) : base(message, inner) { }
     }
 }

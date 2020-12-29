@@ -40,7 +40,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PR_BL", "PR_BL\PR_BL.csproj
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{DDB72107-93CE-4CC0-943D-00BB93A9D011}"
 	ProjectSection(SolutionItems) = preProject
-		config.xml = config.xml
+		bin\config.xml = bin\config.xml
 	EndProjectSection
 EndProject
 Global

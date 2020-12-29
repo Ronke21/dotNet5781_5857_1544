@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DO;
 
-namespace PR_DalApi
+namespace DalApi
 {
     public interface IDal
     {

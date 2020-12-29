@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DO;
 
 namespace DS
@@ -33,7 +34,43 @@ namespace DS
 
         private static void InitializeLists()
         {
-            BusesList = new List<Bus>();
+            #region Bus List
+
+            BusesList = new List<Bus>()
+            {
+                new Bus()
+                {
+                    LicenseNum = 10000000,
+                    Active = true,
+                    Fuel = 150,
+                    Mileage = 25000,
+                    StartTime = new DateTime(2020,10,14),
+                    Stat = Status.Ready
+                },
+
+                new Bus()
+                {
+                    LicenseNum = 10000001,
+                    Active = true,
+                    Fuel = 150,
+                    Mileage = 25000,
+                    StartTime = new DateTime(2020,10,14),
+                    Stat = Status.Ready
+                },
+
+                new Bus()
+                {
+                    LicenseNum = 10000002,
+                    Active = true,
+                    Fuel = 150,
+                    Mileage = 25000,
+                    StartTime = new DateTime(2020,10,14),
+                    Stat = Status.Ready
+                }
+            };
+
+            #endregion
+
 
             BusLinesList = new List<BusLine>();
 

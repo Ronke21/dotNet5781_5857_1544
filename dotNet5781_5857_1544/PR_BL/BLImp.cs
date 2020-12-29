@@ -4,19 +4,29 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using BL;
-using PR_DalApi;
+using DalApi;
 using BLApi;
 using BO;
 
 
-namespace PR_BL
+namespace BL
 {
     class BLImp : IBL // internal
     {
-        private readonly IDal dl = DalFactory.GetDal();
+        private readonly IDal dal = DalFactory.GetDal();
+
+        #region Bus
+
+        private static BO.Bus BusDoToBoAdapter(DO.Bus bus)
+        {
+            var boBus = new BO.Bus();
+            bus.CopyPropertiesTo(boBus);
+            return boBus;
+        }
 
         private bool BusIsFit(Bus bus)
         {
@@ -55,7 +65,7 @@ namespace PR_BL
                     {
                         throw new NotValidFuelAmountException("Added bus must have 0 - 250,000 KM mileage");
                     }
-                    dl.AddBus(BusDO);
+                    dal.AddBus(BusDO);
                 }
             }
             catch (DO.BusAlreadyExistsException ex)
@@ -72,11 +82,8 @@ namespace PR_BL
         {
             try
             {
-                IEnumerable<BO.Bus> buses = null;
-                IEnumerable<DO.Bus> b = from bus in dl.GetAllBuses()
-                                        select bus;
-                b.CopyPropertiesTo(buses);
-                return buses;
+                return from bus in dal.GetAllBuses()
+                       select BusDoToBoAdapter(bus);
             }
 
             catch (DO.EmptyListException ex)
@@ -88,13 +95,13 @@ namespace PR_BL
                 throw new Exception("Unknown error GetAllBuses");
             }
         }
-
+        
         public IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate)
         {
             try
             {
                 IEnumerable<BO.Bus> buses = null;
-                IEnumerable<DO.Bus> b = from bus in dl.GetAllBuses()
+                IEnumerable<DO.Bus> b = from bus in dal.GetAllBuses()
                                         where predicate(GetBus(bus.LicenseNum))
                                         select bus;
                 b.CopyPropertiesTo(buses);
@@ -117,7 +124,7 @@ namespace PR_BL
 
             try
             {
-                var BusDO = dl.GetBus(licenseNum);
+                var BusDO = dal.GetBus(licenseNum);
                 BusDO.CopyPropertiesTo(BusBO);
             }
             catch (DO.BusDoesNotExistsException ex)
@@ -140,7 +147,7 @@ namespace PR_BL
                 {
                     var b = new DO.Bus();
                     bus.CopyPropertiesTo(b);
-                    dl.UpdateBus(b);
+                    dal.UpdateBus(b);
                 }
             }
 
@@ -154,7 +161,7 @@ namespace PR_BL
         {
             try
             {
-                dl.DeleteBus(licenseNum);
+                dal.DeleteBus(licenseNum);
             }
             catch (DO.BusDoesNotExistsException ex)
             {
@@ -165,5 +172,6 @@ namespace PR_BL
                 throw new Exception("Unknown error");
             }
         }
+        #endregion
     }
 }

@@ -227,7 +227,7 @@ namespace dotNet5781_03B_5857_1544
         /// <summary>
         /// close the main window
         /// /// </summary>
-
+        
         private void EXIT_OnClick(object sender, RoutedEventArgs e)
         {
             Close();

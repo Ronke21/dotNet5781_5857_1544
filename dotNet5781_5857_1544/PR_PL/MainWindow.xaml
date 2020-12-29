@@ -1,12 +1,46 @@
-﻿<Window x:Class="PR_PL.MainWindow"
+﻿<Window x:Class="PL.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PR_PL"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid
+            x:Name="BusesDataGrid"
+            AutoGenerateColumns="False"
+            EnableRowVirtualization="True"
+            ItemsSource="{Binding}"
+            RowDetailsVisibilityMode="VisibleWhenSelected"
+            Grid.Column="0"
+            Grid.Row="0"
+        >
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn 
+                    x:Name="LicenseNumColumn" 
+                    Binding="{Binding LicenseNumStr}"
+                    Header="License Number"
+                    Width="SizeToHeader"
+                    />
+
+                <DataGridTextColumn 
+                    x:Name="MileageColumn" 
+                    Binding="{Binding Mileage}"
+                    Header="Mileage"
+                    Width="SizeToHeader"
+                />
+
+                <DataGridTextColumn 
+                    x:Name="FuelColumn" 
+                    Binding="{Binding Fuel}"
+                    Header="Fuel"
+                    Width="SizeToHeader"
+                />
+
+            </DataGrid.Columns>
+
+        </DataGrid>
     </Grid>
 </Window>

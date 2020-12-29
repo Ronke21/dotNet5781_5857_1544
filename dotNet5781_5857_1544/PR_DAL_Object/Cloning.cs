@@ -8,8 +8,8 @@ namespace Dal
         //third way - With Bonus // generic shallow copy, properties only
         internal static T Clone<T>(this T original) where T : new()
         {
-            //T copyToObject = new T();
-            var copyToObject = (T)Activator.CreateInstance(typeof(T));
+            var copyToObject = new T();
+            //var copyToObject = (T)Activator.CreateInstance(typeof(T));
 
             foreach (PropertyInfo propertyInfo in typeof(T).GetProperties())
             {
