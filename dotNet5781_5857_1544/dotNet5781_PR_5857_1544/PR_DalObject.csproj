@@ -77,10 +77,6 @@
     <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PR_DalApi\PR_DalApi.csproj">
-      <Project>{9e7db922-14ba-4f99-ac8f-574065852dd8}</Project>
-      <Name>PR_DalApi</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PR_DS\PR_DS.csproj">
       <Project>{d726cbc9-4139-4d9b-8b67-d81c63697d8a}</Project>
       <Name>PR_DS</Name>

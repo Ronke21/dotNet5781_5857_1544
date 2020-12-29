@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<dl>data</dl>
+	<dl-packages>
+
+		<data
+			namespace ="Dal"
+			class ="PR_DAL_Object">
+
+			PR_DAL_Object
+
+		</data>
+
+		<xml
+			namespace="Dal"
+			class="DLXML">
+
+			DLXml
+
+		</xml>
+
+		<oracle
+			namespace="Dal_O"
+			class="DalDbOracle">
+			
+			DalOracle
+
+		</oracle>
+
+	</dl-packages>
+</config>

@@ -4,27 +4,25 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0F52E5DC-4522-4CE6-B499-A2B00CD37EDF}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{086CF3DA-5C30-4137-BD1F-DB74B30722DC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PR_BL</RootNamespace>
     <AssemblyName>PR_BL</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -44,9 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLApi\BLFactory.cs" />
-    <Compile Include="BLApi\IBL.cs" />
     <Compile Include="BLImp.cs" />
+    <Compile Include="BL_Api\BLFactory.cs" />
+    <Compile Include="BL_Api\IBL.cs" />
     <Compile Include="BO\Bus.cs" />
     <Compile Include="BO\BusLine.cs" />
     <Compile Include="BO\BusStation.cs" />
@@ -62,15 +60,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PR_DalApi\PR_DalApi.csproj">
-      <Project>{9e7db922-14ba-4f99-ac8f-574065852dd8}</Project>
-      <Name>PR_DalApi</Name>
+    <ProjectReference Include="..\PR_DAL_Api\PR_DAL_Api.csproj">
+      <Project>{6abc1222-cb74-4b40-ac88-7093cd1b2881}</Project>
+      <Name>PR_DAL_Api</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

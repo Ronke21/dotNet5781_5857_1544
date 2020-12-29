@@ -14,11 +14,11 @@ using BO;
 
 namespace PR_BL
 {
-    internal class BLImp : IBL
+    class BLImp : IBL // internal
     {
-        public readonly IDal dl = DalFactory.GetDal();
+        private readonly IDal dl = DalFactory.GetDal();
 
-        public bool BusIsFit(Bus bus)
+        private bool BusIsFit(Bus bus)
         {
             // year and number
             if (bus.StartTime.Year > 2017 && (bus.LicenseNum < 10000000 || bus.LicenseNum > 99999999))

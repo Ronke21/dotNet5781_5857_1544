@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DalApi")]
+[assembly: AssemblyTitle("PR_DAL_Object")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DalApi")]
+[assembly: AssemblyProduct("PR_DAL_Object")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b5462f1f-51a9-48b8-be10-b14396e56f50")]
+[assembly: Guid("d48cb213-940e-4793-881c-7a6ccc5849ad")]
 
 // Version information for an assembly consists of the following four values:
 //

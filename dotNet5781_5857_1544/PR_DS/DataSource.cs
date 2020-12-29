@@ -4,6 +4,7 @@ using DO;
 namespace DS
 {
     public static class KeyGenerator
+    // after changing to XML the key will be stored in the NVM to guarantee uniformity
     {
         private static int _key = 0;
         public static int IdGenerator()

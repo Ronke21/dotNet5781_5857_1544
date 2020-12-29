@@ -4,27 +4,25 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B5462F1F-51A9-48B8-BE10-B14396E56F50}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>DalApi</RootNamespace>
-    <AssemblyName>DalApi</AssemblyName>
+    <ProjectGuid>{6ABC1222-CB74-4B40-AC88-7093CD1B2881}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PR_DAL_Api</RootNamespace>
+    <AssemblyName>PR_DAL_Api</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,11 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="DalConfig.cs" />
+    <Compile Include="DalFactory.cs" />
+    <Compile Include="DO\Bus.cs" />
+    <Compile Include="DO\BusLine.cs" />
+    <Compile Include="DO\BusStation.cs" />
+    <Compile Include="DO\ConsecutiveStations.cs" />
+    <Compile Include="DO\Driver.cs" />
+    <Compile Include="DO\Enums.cs" />
+    <Compile Include="DO\Exceptions.cs" />
+    <Compile Include="DO\LineExit.cs" />
+    <Compile Include="DO\LineStation.cs" />
+    <Compile Include="DO\TravelingBus.cs" />
+    <Compile Include="DO\User.cs" />
+    <Compile Include="DO\UserTravel.cs" />
+    <Compile Include="IDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
