@@ -46,7 +46,7 @@ namespace DalApi
             public string ClassName;
         }
         internal static readonly string DalName;
-        internal static Dictionary<string, DalPackage> DalPackages;
+        internal static readonly Dictionary<string, DalPackage> DalPackages;
 
         /// <summary>
         /// Static constructor extracts Dal packages list and Dal type from

@@ -38,11 +38,12 @@ namespace DalApi
             }
             string dalPackageName = dalPackage.PkgName;
             string dalNameSpace = dalPackage.NameSpace;
-            string dalClass = "DalObject";//dalPackage.ClassName;
 
             // *********************************************************************
             // TODO: dalClass gets the project name instead of the actual class name
             // *********************************************************************
+            string dalClass = dalPackage.ClassName;
+
 
             try // Load into CLR the dal implementation assembly according to dll file name (taken above)
             {

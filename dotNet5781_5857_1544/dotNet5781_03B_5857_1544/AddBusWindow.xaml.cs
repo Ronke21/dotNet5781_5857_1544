@@ -22,7 +22,7 @@ namespace dotNet5781_03B_5857_1544
         }
 
         /// <summary>
-        /// This function makes sure the text box recives a valid bus number - not more then 8 digits
+        /// This function makes sure the text box receives a valid bus number - not more then 8 digits
         /// </summary>
         private void TextBoxBusLicenseNumber_OnTextChanged(object sender, TextChangedEventArgs e)
         {
@@ -158,7 +158,7 @@ namespace dotNet5781_03B_5857_1544
         }
 
         /// <summary>
-        /// This function makes sure the text box recives a valid starting date - not in future, and not before 2000
+        /// This function makes sure the text box receives a valid starting date - not in future, and not before 2000
         /// </summary> 
         private void DatePickerStart_OnCalendarClosed(object sender, RoutedEventArgs e)
         {

@@ -1,6 +1,24 @@
 ﻿using System.Linq;
 using System.Windows;
 using BLApi;
+using System.Windows.Navigation;
+using PR_PL;
+
+/*
+ * todo: change relevant windows to pages                                                           // 
+ *
+ * todo: how to make sure window is centered any time we open it                                    //
+ *
+ * todo: double click window showing all bus's details ( + buttons for threads)                     // Amihay
+ *
+ * todo: update bus, inside the double click window                                                 // Amihay
+ *
+ * todo: implement remove by pressing on the whole line                                             // Ron
+ *
+ * todo: implement active in all crud BO and DO                                                     // Amihay
+ *
+ * todo: add window showing all inactive buses, implement cRud function to get all inactive buses   // Ron
+ */
 
 namespace PL
 {
@@ -16,9 +34,12 @@ namespace PL
             InitializeComponent();
 
             bl = BLFactory.GetBL("1");
+        }
 
-            BusesDataGrid.DataContext = bl.GetAllBuses().ToList();
-
+        private void ShowBusesList_OnClick(object sender, RoutedEventArgs e)
+        {
+            BusesView bv = new BusesView(bl);
+            bv.Show();
         }
     }
 }

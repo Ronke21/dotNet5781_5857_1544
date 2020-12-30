@@ -16,8 +16,10 @@ namespace BO
             set { }
         }
         public DateTime StartTime { get; set; }
-        public double Mileage { get; set; }
         public double Fuel { get; set; }
+        public double Mileage { get; set; }
+        public DateTime LastMaint { get; set; }
+        public double MileageFromLast { get; set; }
         public Status Stat { get; set; }
         public bool Active { get; set; } //
     }

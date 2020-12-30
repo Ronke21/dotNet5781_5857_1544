@@ -6,41 +6,50 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid
-            x:Name="BusesDataGrid"
-            AutoGenerateColumns="False"
-            EnableRowVirtualization="True"
-            ItemsSource="{Binding}"
-            RowDetailsVisibilityMode="VisibleWhenSelected"
-            Grid.Column="0"
-            Grid.Row="0"
-        >
 
-            <DataGrid.Columns>
+        <Button
+            Name="ShowBusesList"
+            Height="100"
+            Width="100"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Margin="0,0,20,20"
+            Click="ShowBusesList_OnClick">
 
-                <DataGridTextColumn 
-                    x:Name="LicenseNumColumn" 
-                    Binding="{Binding LicenseNumStr}"
-                    Header="License Number"
-                    Width="SizeToHeader"
+            <TextBlock
+                Text="Show list"
+                FontSize="20"
+            />
+
+            <Button.Resources>
+
+                <Style TargetType="Border">
+
+                    <Setter 
+                        Property="CornerRadius" 
+                        Value="50"
                     />
 
-                <DataGridTextColumn 
-                    x:Name="MileageColumn" 
-                    Binding="{Binding Mileage}"
-                    Header="Mileage"
-                    Width="SizeToHeader"
+                </Style>
+
+            </Button.Resources>
+
+            <Button.Effect>
+                <DropShadowEffect
+                    BlurRadius="15"
+                    Color="DarkGray"
+                    ShadowDepth="1"
                 />
+            </Button.Effect>
 
-                <DataGridTextColumn 
-                    x:Name="FuelColumn" 
-                    Binding="{Binding Fuel}"
-                    Header="Fuel"
-                    Width="SizeToHeader"
-                />
+            <Button.Background>
 
-            </DataGrid.Columns>
+                <RadialGradientBrush>
+                    <GradientStop Color="MediumTurquoise"/>
+                </RadialGradientBrush>
 
-        </DataGrid>
+            </Button.Background>
+
+        </Button>
     </Grid>
 </Window>

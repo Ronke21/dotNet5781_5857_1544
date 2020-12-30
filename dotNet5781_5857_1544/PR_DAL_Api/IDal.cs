@@ -9,8 +9,9 @@ namespace DalApi
     {
         #region Bus
         void AddBus(Bus bus);                                       // C
-        IEnumerable<Bus> GetAllBuses();                             // R
-        IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);   // R
+        IEnumerable<Bus> GetAllActiveBuses();                             // R
+        IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);   // R\
+        
         Bus GetBus(int licenseNum);                                 // R
         void UpdateBus(Bus bus);                                    // U
         //void UpdateBus(int licenseNum, Action<Bus> update);         // U

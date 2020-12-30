@@ -30,7 +30,7 @@ namespace Dal
             else throw new BusAlreadyExistsException($"Bus number {bus.LicenseNum} already exists");
         }
 
-        public IEnumerable<Bus> GetAllBuses()
+        public IEnumerable<Bus> GetAllActiveBuses()
         {
             if (DataSource.BusesList.Count == 0)
             {
@@ -38,8 +38,10 @@ namespace Dal
             }
 
             return from bus in DataSource.BusesList
+                   //where bus.Active is true
                    select bus.Clone();
         }
+
 
         public IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate)
         {

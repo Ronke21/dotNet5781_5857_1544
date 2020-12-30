@@ -11,6 +11,8 @@ using BL;
 using DalApi;
 using BLApi;
 using BO;
+using DO;
+using Bus = BO.Bus;
 
 
 namespace BL
@@ -49,10 +51,65 @@ namespace BL
             return true;
         }
 
+
+        #region Set Status and other funcs
+        private static bool QualifiedMileage(Bus bus, double ride = 0)
+        {
+            return bus.MileageFromLast + ride <= 20000;
+        }
+
+        private static bool QualifiedDate(Bus bus)
+        {
+            return bus.LastMaint.AddYears(1).CompareTo(DateTime.Now) > 0;
+        }
+
+        private static bool QualifiedFuel(Bus bus, double ride = 0)
+        {
+            return bus.Fuel - ride > 0;
+        }
+        private void SetStatus(int licenseNum, double ride = 0)
+        {
+            var bus = GetBus(licenseNum);
+
+            if (!QualifiedDate(bus) || !QualifiedMileage(bus, ride) || !QualifiedFuel(bus, ride)) // of fuel = 0 or bus need to maintain by date/mileage -> it is Unfit!
+            {
+                bus.Stat = Status.Unfit;
+            }
+            //If bus has less then month or less than 1200 km to the next maintenance - the status is good for ride but tells the system to prepare for maint
+            else if (bus.MileageFromLast + 1200 >= 20000 || bus.LastMaint < DateTime.Today.AddMonths(-11))
+            {
+                bus.Stat = Status.MaintainSoon;
+            }
+            else
+            {
+                bus.Stat = Status.Ready; //ready for ride!
+            }
+        }
+
+        private void SetNewStatus(Bus bus)
+        {
+            if (!QualifiedDate(bus) || !QualifiedMileage(bus) || !QualifiedFuel(bus)) // of fuel = 0 or bus need to maintain by date/mileage -> it is Unfit!
+            {
+                bus.Stat = Status.Unfit;
+            }
+            //If bus has less then month or less than 1200 km to the next maintenance - the status is good for ride but tells the system to prepare for maint
+            else if (bus.MileageFromLast + 1200 >= 20000 || bus.LastMaint < DateTime.Today.AddMonths(-11))
+            {
+                bus.Stat = Status.MaintainSoon;
+            }
+            else
+            {
+                bus.Stat = Status.Ready; //ready for ride!
+            }
+        }
+
+        #endregion
+
         public void AddBus(Bus bus)
         {
-
             var BusDO = new DO.Bus();
+
+            SetNewStatus(bus);
 
             bus.CopyPropertiesTo(BusDO);
 
@@ -82,7 +139,7 @@ namespace BL
         {
             try
             {
-                return from bus in dal.GetAllBuses()
+                return from bus in dal.GetAllActiveBuses()
                        select BusDoToBoAdapter(bus);
             }
 
@@ -95,13 +152,13 @@ namespace BL
                 throw new Exception("Unknown error GetAllBuses");
             }
         }
-        
+
         public IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate)
         {
             try
             {
                 IEnumerable<BO.Bus> buses = null;
-                IEnumerable<DO.Bus> b = from bus in dal.GetAllBuses()
+                IEnumerable<DO.Bus> b = from bus in dal.GetAllActiveBuses()
                                         where predicate(GetBus(bus.LicenseNum))
                                         select bus;
                 b.CopyPropertiesTo(buses);

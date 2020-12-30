@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using DO;
 
 namespace DS
@@ -52,8 +55,8 @@ namespace DS
                 {
                     LicenseNum = 10000001,
                     Active = true,
-                    Fuel = 150,
-                    Mileage = 25000,
+                    Fuel = 151,
+                    Mileage = 25001,
                     StartTime = new DateTime(2020,10,14),
                     Stat = Status.Ready
                 },
@@ -62,8 +65,68 @@ namespace DS
                 {
                     LicenseNum = 10000002,
                     Active = true,
-                    Fuel = 150,
-                    Mileage = 25000,
+                    Fuel = 152,
+                    Mileage = 25002,
+                    StartTime = new DateTime(2020,10,14),
+                    Stat = Status.Ready
+                },
+
+                new Bus()
+                {
+                    LicenseNum = 10000003,
+                    Active = true,
+                    Fuel = 153,
+                    Mileage = 25003,
+                    StartTime = new DateTime(2020,10,14),
+                    Stat = Status.Ready
+                },
+
+                new Bus()
+                {
+                    LicenseNum = 10000004,
+                    Active = true,
+                    Fuel = 154,
+                    Mileage = 25004,
+                    StartTime = new DateTime(2020,10,14),
+                    Stat = Status.Ready
+                },
+
+                new Bus()
+                {
+                    LicenseNum = 10000005,
+                    Active = true,
+                    Fuel = 155,
+                    Mileage = 25005,
+                    StartTime = new DateTime(2020,10,14),
+                    Stat = Status.Ready
+                },
+
+                new Bus()
+                {
+                    LicenseNum = 10000006,
+                    Active = true,
+                    Fuel = 153,
+                    Mileage = 25006,
+                    StartTime = new DateTime(2020,10,14),
+                    Stat = Status.Ready
+                },
+
+                new Bus()
+                {
+                    LicenseNum = 10000007,
+                    Active = true,
+                    Fuel = 153,
+                    Mileage = 25004,
+                    StartTime = new DateTime(2020,10,14),
+                    Stat = Status.Ready
+                },
+
+                new Bus()
+                {
+                    LicenseNum = 10000008,
+                    Active = true,
+                    Fuel = 153,
+                    Mileage = 25004,
                     StartTime = new DateTime(2020,10,14),
                     Stat = Status.Ready
                 }
