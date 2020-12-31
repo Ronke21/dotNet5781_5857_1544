@@ -11,7 +11,7 @@ using PR_PL;
  *
  * todo: double click window showing all bus's details ( + buttons for threads)                     // Amihay   V
  *
- * todo: update bus, inside the double click window                                                 // Amihay
+ * todo: update bus, inside the double click window                                                 // Amihay   V
  *
  * todo: implement remove by pressing on the whole line                                             // Ron
  *

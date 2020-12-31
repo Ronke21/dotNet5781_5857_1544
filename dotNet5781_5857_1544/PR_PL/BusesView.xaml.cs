@@ -46,8 +46,8 @@ namespace PL
 
         private void BusesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Bus b = (Bus) BusesDataGrid.SelectedItem;
-            BusDetails bd = new BusDetails(b);
+            Bus b = (Bus)BusesDataGrid.SelectedItem;
+            BusDetails bd = new BusDetails(bl, b);
             bd.Show();
         }
     }

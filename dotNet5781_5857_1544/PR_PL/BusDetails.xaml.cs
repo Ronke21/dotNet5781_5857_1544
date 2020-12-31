@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BLApi;
 using BO;
 
 namespace PR_PL
@@ -20,14 +21,22 @@ namespace PR_PL
     /// </summary>
     public partial class BusDetails : Window
     {
-        private Bus bus;
-        public BusDetails(Bus b)
+        private readonly IBL bl;
+        private readonly Bus bus;
+        public BusDetails(IBL b, Bus bu)
         {
             InitializeComponent();
 
-            bus = b;
+            bus = bu;
+            bl = b;
 
             BusDetailsWindow.DataContext = bus;
+        }
+
+        private void Update_OnClick(object sender, RoutedEventArgs e)
+        {
+            UpdateBus ub = new UpdateBus(bl, bus);
+            ub.ShowDialog();
         }
     }
 }

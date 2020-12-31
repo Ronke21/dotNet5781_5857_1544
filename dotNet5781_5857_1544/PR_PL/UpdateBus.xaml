@@ -1,14 +1,14 @@
-﻿<Window x:Class="PR_PL.BusDetails"
+﻿<Window x:Class="PR_PL.UpdateBus"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR_PL"
         mc:Ignorable="d"
-        Title="BusDetails"
+        Title="UpdateBus" 
         Height="360" 
-        Width="360"
-        x:Name="BusDetailsWindow">
+        Width="340"
+        x:Name="UpdateBusWindow">
     <Window.Resources>
         <LinearGradientBrush x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
             <GradientBrush.GradientStops>
@@ -53,10 +53,6 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -261,7 +257,7 @@
         </Label>
 
         <Label 
-        Name="lbID"
+        Name="LicenseNumLabel"
         Content="{Binding Path=LicenseNumStr}"
         Grid.Row="0"
         Grid.Column="3"
@@ -270,28 +266,58 @@
         VerticalAlignment="Center"
           />
 
-        <Label 
-        Name="lbFuel"
-        Content="{Binding Path=Fuel}"
-        Grid.Row="1"
-        Grid.Column="3"
-        Grid.ColumnSpan="3"
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center"
-          />
+        <TextBox
+            Name="TextBoxFuel"
+            Grid.Row="1"
+            Grid.Column="1"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Center"
+            Width="110"
+            Height="30"
+            Text="{Binding Path=Fuel}"
+            PreviewTextInput="TextBox_OnPreviewTextInput"
+        >
 
-        <Label 
-        Name="lbKM"
-        Content="{Binding Path=Mileage}"
-        Grid.Row="2"
-        Grid.Column="3"
-        Grid.ColumnSpan="3"
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center"
-        />
+            <TextBox.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius" 
+                        Value="13"
+                    />
+                </Style>
+            </TextBox.Resources>
+
+        </TextBox>
+
+        <TextBox
+            Name="TextBoxMileage"
+            Grid.Row="2"
+            Grid.Column="1"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Center"
+            Width="110"
+            Height="30"
+            Text="{Binding Path=Mileage}"
+            PreviewTextInput="TextBox_OnPreviewTextInput"
+        >
+
+            <TextBox.Resources>
+                <Style TargetType="Border">
+                    <Setter 
+                        Property="CornerRadius" 
+                        Value="13"
+                    />
+                </Style>
+            </TextBox.Resources>
+
+        </TextBox>
 
         <Label
-            Name="lbStart"
+            Name="StartLabel"
             Content="{Binding Path=StartTime}"
             ContentStringFormat="dd / MM / yyyy"
             Grid.Row="3"
@@ -301,19 +327,17 @@
             VerticalAlignment="Center"
         />
 
-        <Label
-        Name="lbLast"
-        Content="{Binding Path=LastMaint}"
-        ContentStringFormat="dd / MM / yyyy"
+        <DatePicker
+        Name="DpLastMaint"
         Grid.Row="4"
-        Grid.Column="3"
-        Grid.ColumnSpan="3"
+        Grid.Column="1"
+        SelectedDate="{Binding Path=LastMaint}"
         HorizontalAlignment="Center" 
         VerticalAlignment="Center"
         />
 
         <Label 
-        Name="lblState"
+        Name="StatusLabel"
         Content="{Binding Path=Stat}"
         Grid.Row="5"
         Grid.Column="3"
@@ -322,114 +346,39 @@
         VerticalAlignment="Center"
         />
 
-        <Label 
-        Name="lbfromLast"  
-        Content="{Binding Path=MileageFromLast}"
-        Grid.Row="6"
-        Grid.Column="3"
-        Grid.ColumnSpan="3"
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center"
-        />
+        <TextBox
+            Name="TextBoxMileageFromLast"
+            Grid.Row="6"
+            Grid.Column="1"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Center"
+            Width="110"
+            Height="30"
+            Text="{Binding Path=MileageFromLast}"
+            PreviewTextInput="TextBox_OnPreviewTextInput"
+        >
 
-        <Button
-        Name="Refuel"
-        FontSize="12"
-        Grid.Row="7"
-        Margin="5,5,5,5"
-        Grid.Column="0"
-        Grid.ColumnSpan="2">
-            <StackPanel
-                Orientation="Horizontal"
-                >
-                <Label
-                    Content="Refuel"
-                    VerticalAlignment="Center"
-                    FontSize="16"
-                    FontWeight="Medium"
-                    />
-
-
-                <Image Source="https://img.icons8.com/dotty/250/gas-pump.png"
-                       Height="25"/>
-
-            </StackPanel>
-
-            <Button.Resources>
-
+            <TextBox.Resources>
                 <Style TargetType="Border">
-
                     <Setter 
                         Property="CornerRadius" 
-                        Value="5"
+                        Value="13"
                     />
-
                 </Style>
+            </TextBox.Resources>
 
-            </Button.Resources>
-
-            <Button.Effect>
-                <DropShadowEffect
-                    BlurRadius="10"
-                    Color="Gray"
-                    ShadowDepth="1"
-                />
-            </Button.Effect>
-
-        </Button>
-
-        <Button
-        Name="Maintain"
-        Grid.Row="7"
-        Grid.Column="2"
-        Grid.ColumnSpan="2"
-        Margin="5,5,5,5">
-
-            <StackPanel
-                Orientation="Horizontal"
-                >
-                <Label
-                    Content="Maintain"
-                    VerticalAlignment="Center"
-                    FontSize="16"
-                    FontWeight="Medium"
-                    />
-                <Image Source="https://img.icons8.com/wired/250/gear.png"
-                       Height="25"
-                       />
-
-            </StackPanel>
-
-            <Button.Resources>
-
-                <Style TargetType="Border">
-
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="5"
-                    />
-
-                </Style>
-
-            </Button.Resources>
-
-            <Button.Effect>
-                <DropShadowEffect
-                    BlurRadius="10"
-                    Color="Gray"
-                    ShadowDepth="1"
-                />
-            </Button.Effect>
-
-        </Button>
+        </TextBox>
 
         <Button
             Name="Update"
             Grid.Row="7"
-            Grid.Column="4"
+            Grid.Column="0"
             Grid.ColumnSpan="2"
             Margin="5,5,5,5"
-            Click="Update_OnClick">
+            Click="Update_OnClick"
+            >
 
             <StackPanel
                 Orientation="Horizontal"
@@ -437,7 +386,7 @@
                 <Label
                     Content="Update"
                     VerticalAlignment="Center"
-                    FontSize="16"
+                    FontSize="20"
                     FontWeight="Medium"
                 />
                 <Image Source="https://img.icons8.com/material-rounded/72/approve-and-update.png"
