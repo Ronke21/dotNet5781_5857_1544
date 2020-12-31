@@ -151,7 +151,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
             Margin="339,0,354.6,10.2"
-            Click="Remove_OnClick"
+            Click="Remove_Click"
         >
 
             <TextBlock
@@ -245,7 +245,7 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Margin="0,0,15,15"
-            Click="Activate_OnClick"
+            Click="Activate_Click"
         >
 
             <TextBlock

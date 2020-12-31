@@ -61,5 +61,9 @@ namespace PL
 
         }
 
+        private void Remove_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

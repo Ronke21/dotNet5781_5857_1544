@@ -43,25 +43,26 @@ namespace PL
             bd.Show();
         }
 
-        private void Activate(object sender, RoutedEventArgs e)
-        {
-            Bus b = (Bus)BusesDataGrid.SelectedItem;
-            var updated = new Bus
-            {
-                LicenseNum = b.LicenseNum,
-                Fuel = b.fuel,
-                Mileage = b.mileage,
-                StartTime = b.StartTime,
-                LastMaint = b.last,
-                MileageFromLast = b.mileageFromLast,
-                Active = True
-            };
-            bl.UpdateBus(updated);
-        }
-
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Activate_Click(object sender, RoutedEventArgs e)
+        {
+            Bus b = (Bus)BusesDataGrid.SelectedItem;
+
+            Bus updated = new Bus
+            {
+                LicenseNum = b.LicenseNum,
+                Fuel = b.Fuel,
+                Mileage = b.Mileage,
+                StartTime = b.StartTime,
+                LastMaint = b.LastMaint,
+                MileageFromLast = b.MileageFromLast,
+                Active = true
+            };
+            bl.UpdateBus(updated);
         }
     }
 }
