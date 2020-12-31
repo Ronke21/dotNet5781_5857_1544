@@ -17,18 +17,10 @@ namespace dotNet5781_03B_5857_1544
         public listDoubleClick(Bus b)
         {
             InitializeComponent();
+            
             currentBus = b; //refer the bus from main window
 
             PWindow.DataContext = currentBus;
-
-            //update all lables with bus properties:
-
-            //lbFuel.DataContext = currentBus.Fuel;
-            //lbID.DataContext = currentBus.LICENSENUMSTR;
-            //lbKM.DataContext = (int)Math.Round(currentBus.MILEAGE);
-            //lbLast.DataContext = currentBus.lastMaintDate.Date;
-            //lblState.DataContext = currentBus.BUSSTATE;
-            //lbfromLast.DataContext = (int)Math.Round(currentBus.MileageSinceLastMaint);
         }
 
         /// <summary>

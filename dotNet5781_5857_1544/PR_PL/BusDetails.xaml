@@ -1,0 +1,384 @@
+﻿<Window x:Class="PR_PL.BusDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PR_PL"
+        mc:Ignorable="d"
+        Title="BusDetails"
+        Height="360" 
+        Width="340"
+        x:Name="BusDetailsWindow">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="White" Offset="0.0"/>
+                    <GradientStop Color="White" Offset="0.1"/>
+                    <GradientStop Color="White" Offset="0.9"/>
+                    <GradientStop Color="White" Offset="1.0"/>
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
+        <LinearGradientBrush x:Key="DarkBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="LightGreen" Offset="0.0"/>
+                    <GradientStop Color="Green" Offset="1.0"/>
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="NormalBorderBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="White" Offset="0.0"/>
+                    <GradientStop Color="White" Offset="1.0"/>
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <Style x:Key="{x:Type ProgressBar}" TargetType="{x:Type ProgressBar}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                        <Grid>
+                            <Border Name="PART_Track" CornerRadius="3" Background="{StaticResource PressedBrush}" BorderBrush="{StaticResource SolidBorderBrush}" BorderThickness="0.5" />
+                            <Border Name="PART_Indicator" CornerRadius="3" Background="{StaticResource DarkBrush}" BorderBrush="Transparent"  BorderThickness="2,2,2,2" HorizontalAlignment="Left" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                        <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#AA01A77C" Offset="0.013"/>
+                <GradientStop Color="#AA30A4B8" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+
+        <Label 
+        Content="License number"
+        Grid.Row="0"
+        Grid.Column="0"
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Center"
+        FontWeight="Bold"
+        FontSize="12"
+        Margin="15,0,0,0"
+        >
+
+            <Label.Effect>
+
+                <DropShadowEffect
+                    Color="White"
+                    Direction="0"
+                    ShadowDepth="0"
+                    BlurRadius="5"
+                />
+
+            </Label.Effect>
+
+        </Label>
+
+        <Label 
+        Content="Fuel amount"
+        Grid.Row="1"
+        Grid.Column="0"
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Center"
+        FontWeight="Bold"
+        FontSize="12"
+        Margin="15,0,0,0"
+        >
+            <Label.Effect>
+
+                <DropShadowEffect
+                    Color="White"
+                    Direction="0"
+                    ShadowDepth="0"
+                    BlurRadius="5"
+                />
+
+            </Label.Effect>
+
+        </Label>
+
+        <Label 
+        Content="Mileage"
+        Grid.Row="2"
+        Grid.Column="0"
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Center"
+        FontWeight="Bold"
+        FontSize="12"
+        Margin="15,0,0,0"
+        >
+
+            <Label.Effect>
+
+                <DropShadowEffect
+                    Color="White"
+                    Direction="0"
+                    ShadowDepth="0"
+                    BlurRadius="5"
+                />
+
+            </Label.Effect>
+
+        </Label>
+
+        <Label 
+        Content="Last maintenance date"
+        Grid.Row="3"
+        Grid.Column="0"
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Center"
+        FontWeight="Bold"
+        FontSize="12"
+        Margin="15,0,0,0"
+        >
+            <Label.Effect>
+
+                <DropShadowEffect
+                    Color="White"
+                    Direction="0"
+                    ShadowDepth="0"
+                    BlurRadius="5"
+                />
+
+            </Label.Effect>
+
+        </Label>
+
+        <Label 
+        Content="Status"
+        Grid.Row="4"
+        Grid.Column="0"
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Center"
+        FontWeight="Bold"
+        FontSize="12"
+        Margin="15,0,0,0"
+        >
+
+            <Label.Effect>
+
+                <DropShadowEffect
+                    Color="White"
+                    Direction="0"
+                    ShadowDepth="0"
+                    BlurRadius="5"
+                />
+
+            </Label.Effect>
+
+        </Label>
+
+        <Label 
+        Content="Mileage from last maint"
+        Grid.Row="5"
+        Grid.Column="0"
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Center"
+        FontWeight="Bold"
+        FontSize="12"
+        Margin="15,0,0,0"
+        >
+
+            <Label.Effect>
+
+                <DropShadowEffect
+                    Color="White"
+                    Direction="0"
+                    ShadowDepth="0"
+                    BlurRadius="5"
+                />
+
+            </Label.Effect>
+
+        </Label>
+
+
+        <Label 
+        Name="lbID"
+        Content="{Binding Path=LicenseNumStr}"
+        Grid.Row="0"
+        Grid.Column="1"
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Center"
+          />
+
+        <Label 
+        Name="lbFuel"
+        Content="{Binding Path=Fuel}"
+        Grid.Row="1"
+        Grid.Column="1"
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Center"
+          />
+
+        <Label 
+        Name="lbKM"
+        Content="{Binding Path=Mileage}"
+        Grid.Row="2"
+        Grid.Column="1"
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Center"
+        />
+
+        <Label
+        Name="lbLast"
+        Content="{Binding Path=LastMaint}"
+        Grid.Row="3"
+        Grid.Column="1"
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Center"
+        />
+
+        <Label 
+        Name="lblState"
+        Content="{Binding Path=Stat}"
+        Grid.Row="4"
+        Grid.Column="1"
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Center"
+        />
+
+        <Label 
+        Name="lbfromLast"  
+        Content="{Binding Path=MileageFromLast}"
+        Grid.Row="5"
+        Grid.Column="1"
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Center"
+        />
+
+        <Button
+        Name="Refuel"
+        FontSize="12"
+        Grid.Row="6"
+        Margin="5,5,5,5"
+        Grid.Column="0">
+            <StackPanel
+                Orientation="Horizontal"
+                >
+                <Label
+                    Content="Refuel"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    />
+
+
+                <Image Source="https://img.icons8.com/dotty/250/gas-pump.png"
+                       Height="30"/>
+
+            </StackPanel>
+
+            <Button.Resources>
+
+                <Style TargetType="Border">
+
+                    <Setter 
+                        Property="CornerRadius" 
+                        Value="5"
+                    />
+
+                </Style>
+
+            </Button.Resources>
+
+            <Button.Effect>
+                <DropShadowEffect
+                    BlurRadius="10"
+                    Color="Gray"
+                    ShadowDepth="1"
+                />
+            </Button.Effect>
+
+        </Button>
+
+        <Button
+        Grid.Row="6"
+        Grid.Column="1"
+        Name="Maintain"
+        Margin="5,5,5,5">
+
+            <StackPanel
+                Orientation="Horizontal"
+                >
+                <Label
+                    Content="Maintain"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    />
+                <Image Source="https://img.icons8.com/wired/250/gear.png"
+                       Height="30"
+                       />
+
+            </StackPanel>
+
+            <Button.Resources>
+
+                <Style TargetType="Border">
+
+                    <Setter 
+                        Property="CornerRadius" 
+                        Value="5"
+                    />
+
+                </Style>
+
+            </Button.Resources>
+
+            <Button.Effect>
+                <DropShadowEffect
+                    BlurRadius="10"
+                    Color="Gray"
+                    ShadowDepth="1"
+                />
+            </Button.Effect>
+
+        </Button>
+
+        <!--<ProgressBar
+            x:Name="pbRide"
+            Grid.Row="7"
+            Background="White"
+            Minimum = "0"
+            Value="{Binding Path = RIDE, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
+            Maximum="{Binding Path = MaxRide, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
+            Grid.ColumnSpan="2"
+            Margin="5,5,5,5"
+        />-->
+
+    </Grid>
+</Window>

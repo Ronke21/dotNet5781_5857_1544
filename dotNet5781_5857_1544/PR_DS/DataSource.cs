@@ -48,7 +48,8 @@ namespace DS
                     Fuel = 150,
                     Mileage = 25000,
                     StartTime = new DateTime(2020,10,14),
-                    Stat = Status.Ready
+                    Stat = Status.Ready,
+                    LastMaint = new DateTime(2020,10,10)
                 },
 
                 new Bus()
@@ -58,7 +59,8 @@ namespace DS
                     Fuel = 151,
                     Mileage = 25001,
                     StartTime = new DateTime(2020,10,14),
-                    Stat = Status.Ready
+                    Stat = Status.Ready,
+                    LastMaint = new DateTime(2020,10,10)
                 },
 
                 new Bus()
@@ -68,7 +70,8 @@ namespace DS
                     Fuel = 152,
                     Mileage = 25002,
                     StartTime = new DateTime(2020,10,14),
-                    Stat = Status.Ready
+                    Stat = Status.Ready,
+                    LastMaint = new DateTime(2020,10,10)
                 },
 
                 new Bus()
@@ -78,7 +81,8 @@ namespace DS
                     Fuel = 153,
                     Mileage = 25003,
                     StartTime = new DateTime(2020,10,14),
-                    Stat = Status.Ready
+                    Stat = Status.Ready,
+                    LastMaint = new DateTime(2020,10,10)
                 },
 
                 new Bus()
@@ -88,7 +92,8 @@ namespace DS
                     Fuel = 154,
                     Mileage = 25004,
                     StartTime = new DateTime(2020,10,14),
-                    Stat = Status.Ready
+                    Stat = Status.Ready,
+                    LastMaint = new DateTime(2020,10,10)
                 },
 
                 new Bus()
@@ -98,7 +103,8 @@ namespace DS
                     Fuel = 155,
                     Mileage = 25005,
                     StartTime = new DateTime(2020,10,14),
-                    Stat = Status.Ready
+                    Stat = Status.Ready,
+                    LastMaint = new DateTime(2020,10,10)
                 },
 
                 new Bus()
@@ -108,7 +114,8 @@ namespace DS
                     Fuel = 153,
                     Mileage = 25006,
                     StartTime = new DateTime(2020,10,14),
-                    Stat = Status.Ready
+                    Stat = Status.Ready,
+                    LastMaint = new DateTime(2020,10,10)
                 },
 
                 new Bus()
@@ -118,7 +125,8 @@ namespace DS
                     Fuel = 153,
                     Mileage = 25004,
                     StartTime = new DateTime(2020,10,14),
-                    Stat = Status.Ready
+                    Stat = Status.Ready,
+                    LastMaint = new DateTime(2020,10,10)
                 },
 
                 new Bus()
@@ -128,7 +136,8 @@ namespace DS
                     Fuel = 153,
                     Mileage = 25004,
                     StartTime = new DateTime(2020,10,14),
-                    Stat = Status.Ready
+                    Stat = Status.Ready,
+                    LastMaint = new DateTime(2020,10,10)
                 }
             };
 

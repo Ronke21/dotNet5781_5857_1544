@@ -9,7 +9,7 @@ using PR_PL;
  *
  * todo: how to make sure window is centered any time we open it                                    //
  *
- * todo: double click window showing all bus's details ( + buttons for threads)                     // Amihay
+ * todo: double click window showing all bus's details ( + buttons for threads)                     // Amihay   V
  *
  * todo: update bus, inside the double click window                                                 // Amihay
  *

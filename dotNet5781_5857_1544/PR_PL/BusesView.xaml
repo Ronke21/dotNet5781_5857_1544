@@ -9,7 +9,8 @@
         Height="450"
         Width="800"
         WindowStartupLocation="CenterOwner"
-        WindowStyle="None">
+        WindowStyle="None"
+        x:Name="BusesViewWindow">
 
     <Grid>
 
@@ -24,7 +25,8 @@
             VerticalContentAlignment="Center"
             CanUserAddRows="False"
             RowHeight="35"
-            ColumnWidth="*">
+            ColumnWidth="*"
+            MouseDoubleClick="BusesDataGrid_OnMouseDoubleClick">
 
             <DataGrid.Columns>
 

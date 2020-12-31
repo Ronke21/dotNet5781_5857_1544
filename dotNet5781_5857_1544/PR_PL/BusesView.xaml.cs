@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BLApi;
+using BO;
 using PR_PL;
 
 namespace PL
@@ -41,6 +42,13 @@ namespace PL
             AddBus ab = new AddBus(bl);
             ab.ShowDialog();
             BusesDataGrid.DataContext = bl.GetAllBuses().ToList();
+        }
+
+        private void BusesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Bus b = (Bus) BusesDataGrid.SelectedItem;
+            BusDetails bd = new BusDetails(b);
+            bd.Show();
         }
     }
 }
