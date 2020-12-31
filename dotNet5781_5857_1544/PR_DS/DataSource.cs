@@ -138,6 +138,17 @@ namespace DS
                     StartTime = new DateTime(2020,10,14),
                     Stat = Status.Ready,
                     LastMaint = new DateTime(2020,10,10)
+                },
+
+                new Bus()
+                {
+                    LicenseNum = 10000009,
+                    Active = false,
+                    Fuel = 153,
+                    Mileage = 25004,
+                    StartTime = new DateTime(2020,10,14),
+                    Stat = Status.Ready,
+                    LastMaint = new DateTime(2020,10,10)
                 }
             };
 

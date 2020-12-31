@@ -10,6 +10,7 @@ namespace BLApi
         #region Bus
         void AddBus(Bus bus);                                       // C
         IEnumerable<Bus> GetAllBuses();                             // R
+        IEnumerable<Bus> GetAllInActiveBuses();                             // R
         IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);   // R
         Bus GetBus(int licenseNum);                                 // R
         void UpdateBus(Bus bus);                                    // U

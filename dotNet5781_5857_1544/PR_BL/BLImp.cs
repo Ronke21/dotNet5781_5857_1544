@@ -153,6 +153,24 @@ namespace BL
             }
         }
 
+        public IEnumerable<Bus> GetAllInActiveBuses()
+        {
+            try
+            {
+                return from bus in dal.GetAllInActiveBuses()
+                       select BusDoToBoAdapter(bus);
+            }
+
+            catch (DO.EmptyListException ex)
+            {
+                throw new BO.EmptyListException("No buses in the list", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetAllBuses");
+            }
+        }
+
         public IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate)
         {
             try

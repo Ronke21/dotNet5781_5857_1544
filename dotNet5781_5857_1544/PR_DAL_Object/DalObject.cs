@@ -42,6 +42,18 @@ namespace Dal
                    select bus.Clone();
         }
 
+        public IEnumerable<Bus> GetAllInActiveBuses()
+        {
+            if (DataSource.BusesList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.BusesList)} is Empty");
+            }
+
+            return from bus in DataSource.BusesList
+                       where bus.Active is false
+                   select bus.Clone();
+        }
+
 
         public IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate)
         {

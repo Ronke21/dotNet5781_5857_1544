@@ -17,7 +17,7 @@ using PR_PL;
  *
  * todo: implement active in all crud BO and DO                                                     // Amihay
  *
- * todo: add window showing all inactive buses, implement cRud function to get all inactive buses   // Ron
+ * todo: add window showing all inactive buses, implement cRud function to get all inactive buses   // Ron      V - after implementing remove, copy to here
  */
 
 namespace PL

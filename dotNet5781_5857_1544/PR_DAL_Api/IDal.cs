@@ -10,6 +10,7 @@ namespace DalApi
         #region Bus
         void AddBus(Bus bus);                                       // C
         IEnumerable<Bus> GetAllActiveBuses();                             // R
+        IEnumerable<Bus> GetAllInActiveBuses();                             // R
         IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);   // R\
         
         Bus GetBus(int licenseNum);                                 // R
