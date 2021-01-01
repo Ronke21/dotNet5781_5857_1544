@@ -50,19 +50,31 @@ namespace PL
 
         private void Activate_Click(object sender, RoutedEventArgs e)
         {
-            Bus b = (Bus)BusesDataGrid.SelectedItem;
-
-            Bus updated = new Bus
+            if (BusesDataGrid.SelectedItem == null)
             {
-                LicenseNum = b.LicenseNum,
-                Fuel = b.Fuel,
-                Mileage = b.Mileage,
-                StartTime = b.StartTime,
-                LastMaint = b.LastMaint,
-                MileageFromLast = b.MileageFromLast,
-                Active = true
-            };
-            bl.UpdateBus(updated);
+                MessageBox.Show("Please choose at least one bus and then click activate!");
+            }
+            else
+            {
+                var lb = ((IEnumerable<Bus>)BusesDataGrid.SelectedItems).ToList();
+
+                foreach (var b in lb)
+                {
+                    Bus updated = new Bus
+                    {
+                        LicenseNum = b.LicenseNum,
+                        Fuel = b.Fuel,
+                        Mileage = b.Mileage,
+                        StartTime = b.StartTime,
+                        LastMaint = b.LastMaint,
+                        MileageFromLast = b.MileageFromLast,
+                        Active = true
+                    };
+                    bl.UpdateBus(updated);
+                }
+
+                BusesDataGrid.DataContext = bl.GetAllBuses().ToList(); //update view
+            }
         }
     }
 }

@@ -54,16 +54,38 @@ namespace PL
         private void InActive_Click(object sender, RoutedEventArgs e)
         {
 
+            InActiveBusesView iabv = new InActiveBusesView(bl);
+            iabv.ShowDialog();
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
+            if (BusesDataGrid.SelectedItem == null)
+            {
+                MessageBox.Show("Please choose at least one bus and then click remove!");
+            }
+            else
+            {
+                var lb = ((IEnumerable<Bus>)BusesDataGrid.SelectedItems).ToList();
 
+                foreach (var b in lb)
+                {
+                    Bus updated = new Bus
+                    {
+                        LicenseNum = b.LicenseNum,
+                        Fuel = b.Fuel,
+                        Mileage = b.Mileage,
+                        StartTime = b.StartTime,
+                        LastMaint = b.LastMaint,
+                        MileageFromLast = b.MileageFromLast,
+                        Active = false
+                    };
+                    bl.UpdateBus(updated);
+                }
+
+                BusesDataGrid.DataContext = bl.GetAllBuses().ToList(); //update view
+            }
         }
 
-        private void Remove_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

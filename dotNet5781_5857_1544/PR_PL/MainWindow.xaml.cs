@@ -13,11 +13,13 @@ using PR_PL;
  *
  * todo: update bus, inside the double click window                                                 // Amihay   V
  *
- * todo: implement remove by pressing on the whole line                                             // Ron
+ * todo: implement remove by pressing on the whole line                                             // Ron      V
  *
  * todo: implement active in all crud BO and DO                                                     // Amihay
  *
- * todo: add window showing all inactive buses, implement cRud function to get all inactive buses   // Ron      V - after implementing remove, copy to here
+ * todo: add window showing all inactive buses, implement cRud function to get all inactive buses   // Ron      V 
+ * 
+ * ?????maybe delete func 'GetAllBusesBy' - because we pnly get all active or all inactive??????
  */
 
 namespace PL

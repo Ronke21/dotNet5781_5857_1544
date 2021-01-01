@@ -144,53 +144,6 @@
 
         </DataGrid>
 
-        <Button 
-            x:Name="Remove"
-            Width="100"
-            Height="100"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Margin="339,0,354.6,10.2"
-            Click="Remove_Click"
-        >
-
-            <TextBlock
-                Text="Remove"
-                FontSize="20"
-                />
-
-            <Button.Resources>
-
-                <Style TargetType="Border">
-
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="50"
-                    />
-
-                </Style>
-
-            </Button.Resources>
-
-            <Button.Effect>
-                <DropShadowEffect
-                    BlurRadius="15"
-                    Color="DarkGray"
-                    ShadowDepth="1"
-                />
-            </Button.Effect>
-
-            <Button.Background>
-
-                <RadialGradientBrush>
-                    <GradientStop Color="MediumTurquoise"/>
-                </RadialGradientBrush>
-
-            </Button.Background>
-
-        </Button>
-
-
 
         <Button 
             x:Name="Exit"
