@@ -16,17 +16,17 @@ using PR_PL.Manager_Lines;
  *
  * todo: implement remove by pressing on the whole line                                             // Ron      V
  *
- * todo: implement active in all crud BO and DO                                                     // Amihay   
- *
  * todo: add window showing all inactive buses, implement cRud function to get all inactive buses   // Ron      V 
  *
- * todo: logic of buses
+ * todo: logic of buses                                                                             // Amihay
+ * 
+ * todo: implement Stations Dal and BL                                                              // Ron
  *
- * todo: logic of stations
+ * todo: implement BulLines Dal and BL                                                              // Both
  *
- * todo: stations windows
+ * todo: stations windows                                                                           // Ron
  *
- * todo:
+ * todo: learn how to work with pages and resources                                                 // Amihay
  */
 
 namespace PL
