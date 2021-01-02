@@ -3,6 +3,7 @@ using System.Windows;
 using BLApi;
 using System.Windows.Navigation;
 using PR_PL;
+using PR_PL.Manager_Lines;
 
 /*
  * todo: change relevant windows to pages                                                           // 
@@ -15,11 +16,17 @@ using PR_PL;
  *
  * todo: implement remove by pressing on the whole line                                             // Ron      V
  *
- * todo: implement active in all crud BO and DO                                                     // Amihay
+ * todo: implement active in all crud BO and DO                                                     // Amihay   
  *
  * todo: add window showing all inactive buses, implement cRud function to get all inactive buses   // Ron      V 
- * 
- * ?????maybe delete func 'GetAllBusesBy' - because we pnly get all active or all inactive??????
+ *
+ * todo: logic of buses
+ *
+ * todo: logic of stations
+ *
+ * todo: stations windows
+ *
+ * todo:
  */
 
 namespace PL
@@ -42,6 +49,12 @@ namespace PL
         {
             BusesView bv = new BusesView(bl);
             bv.Show();
+        }
+
+        private void BusLines_OnClick(object sender, RoutedEventArgs e)
+        {
+            LinesView lv = new LinesView(bl);
+            lv.Show();
         }
     }
 }

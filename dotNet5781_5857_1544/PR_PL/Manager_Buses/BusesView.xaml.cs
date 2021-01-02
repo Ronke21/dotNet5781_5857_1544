@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,22 +19,30 @@ using PR_PL;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for InActiveBusesView.xaml
+    /// Interaction logic for BusesView.xaml
     /// </summary>
-    public partial class InActiveBusesView : Window
+    public partial class BusesView : Window
     {
         private readonly IBL bl;
-        public InActiveBusesView(IBL b)
+        public BusesView(IBL b)
         {
             InitializeComponent();
 
             bl = b;
 
-            BusesDataGrid.DataContext = bl.GetAllInActiveBuses().ToList();
+            BusesDataGrid.DataContext = bl.GetAllBuses().ToList();
         }
+
         private void Exit_OnClick(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Add_OnClick(object sender, RoutedEventArgs e)
+        {
+            AddBus ab = new AddBus(bl);
+            ab.ShowDialog();
+            BusesDataGrid.DataContext = bl.GetAllBuses().ToList();
         }
 
         private void BusesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -43,38 +52,29 @@ namespace PL
             bd.Show();
         }
 
-        private void Remove_Click(object sender, RoutedEventArgs e)
+        private void InActive_Click(object sender, RoutedEventArgs e)
         {
-
+            InActiveBusesView iabv = new InActiveBusesView(bl, this);
+            iabv.ShowDialog();
         }
 
-        private void Activate_Click(object sender, RoutedEventArgs e)
+        private void Remove_Click(object sender, RoutedEventArgs e)
         {
             if (BusesDataGrid.SelectedItem == null)
             {
-                MessageBox.Show("Please choose at least one bus and then click activate!");
+                MessageBox.Show("Please choose at least one bus and then click remove!");
             }
             else
             {
-                var lb = ((IEnumerable<Bus>)BusesDataGrid.SelectedItems).ToList();
-
+                var lb = (IEnumerable)(BusesDataGrid.SelectedItems);
+                
                 foreach (var b in lb)
                 {
-                    Bus updated = new Bus
-                    {
-                        LicenseNum = b.LicenseNum,
-                        Fuel = b.Fuel,
-                        Mileage = b.Mileage,
-                        StartTime = b.StartTime,
-                        LastMaint = b.LastMaint,
-                        MileageFromLast = b.MileageFromLast,
-                        Active = true
-                    };
-                    bl.UpdateBus(updated);
+                    bl.DeleteBus(((Bus)b).LicenseNum);
                 }
-
                 BusesDataGrid.DataContext = bl.GetAllBuses().ToList(); //update view
             }
         }
+
     }
 }

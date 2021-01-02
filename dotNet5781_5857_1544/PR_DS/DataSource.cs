@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Device.Location;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 using DO;
 
 namespace DS
@@ -154,12 +156,118 @@ namespace DS
 
             #endregion
 
+            #region Bus Lines List
+            
+            BusLinesList = new List<BusLine>()
+            {
+                new BusLine()
+                {
+                    Active = true,
+                    AllAccessible = true,
+                    BusArea = Area.Jerusalem,
+                    BusLineId = KeyGenerator.IdGenerator(),
+                    FirstStation = 73,
+                    LastStation = 75,
+                    LineNumber = 6
+                },
 
-            BusLinesList = new List<BusLine>();
+                new BusLine()
+                {
+                    Active = true,
+                    AllAccessible = true,
+                    BusArea = Area.Jerusalem,
+                    BusLineId = KeyGenerator.IdGenerator(),
+                    FirstStation = 75,
+                    LastStation = 73,
+                    LineNumber = 6
+                },
+            };
 
-            BusStationsList = new List<BusStation>();
+            #endregion
 
-            ConsecutiveStationsList = new List<ConsecutiveStations>();
+            #region Bus station List
+
+            BusStationsList = new List<BusStation>()
+            {
+                new BusStation()
+                {
+                    Code = 73,
+                    Name = "Golda",
+                    Address = "Golda st",
+                    Accessible = true,
+                    Active = true,
+                    Location = new GeoCoordinate(31.825302, 35.188624)
+                },
+
+                new BusStation()
+                {
+                    Code = 74,
+                    Name = "Ron",
+                    Address = "Ron st",
+                    Accessible = false,
+                    Active = true,
+                    Location = new GeoCoordinate(31.825455, 35.188100)
+                },
+
+                new BusStation()
+                {
+                    Code = 75,
+                    Name = "AH",
+                    Address = "AH st",
+                    Accessible = false,
+                    Active = true,
+                    Location = new GeoCoordinate(31.825820, 35.187420)
+                },
+
+                new BusStation()
+                {
+                    Code = 81,
+                    Name = "RK",
+                    Address = "RK st",
+                    Accessible = true,
+                    Active = false,
+                    Location = new GeoCoordinate()
+                }
+            };
+
+            #endregion
+
+            #region Consecutive Stations
+
+            ConsecutiveStationsList = new List<ConsecutiveStations>()
+            {
+                new ConsecutiveStations()
+                {
+                    StatCode1 = 73,
+                    StatCode2 = 74,
+                    Distance = new GeoCoordinate(31.825302, 35.188624).
+                        GetDistanceTo(new GeoCoordinate(31.825455, 35.188100)),
+                    AverageTravelTime = new TimeSpan(0, 3, 0),
+                    Active = true
+                },
+
+                new ConsecutiveStations()
+                {
+                    StatCode1 = 74,
+                    StatCode2 = 75,
+                    Distance = new GeoCoordinate(31.825455, 35.188100).
+                        GetDistanceTo(new GeoCoordinate(31.825820, 35.187420)),
+                    AverageTravelTime = new TimeSpan(0, 3, 0),
+                    Active = true
+                },
+
+                new ConsecutiveStations()
+                {
+                    StatCode1 = 74,
+                    StatCode2 = 75,
+                    Distance = new GeoCoordinate(31.825820, 35.187420).
+                        GetDistanceTo(new GeoCoordinate(31.825820, 35.187420)),
+                    AverageTravelTime = new TimeSpan(0, 3, 0),
+                    Active = true
+                },
+            };
+
+            #endregion
 
             DriversList = new List<Driver>();
 

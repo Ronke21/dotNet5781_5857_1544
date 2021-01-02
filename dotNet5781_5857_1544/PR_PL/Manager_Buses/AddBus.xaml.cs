@@ -20,7 +20,7 @@ namespace PR_PL
 
             bl = b;
         }
-
+        
         private void DatePicker_OnCalendarClosed(object sender, RoutedEventArgs e)
         {
             if (DatePickerStart.Text == String.Empty)

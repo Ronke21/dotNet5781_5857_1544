@@ -11,7 +11,7 @@ namespace DalApi
         void AddBus(Bus bus);                                       // C
         IEnumerable<Bus> GetAllActiveBuses();                             // R
         IEnumerable<Bus> GetAllInActiveBuses();                             // R
-        IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);   // R\
+        //IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);   // R\
         
         Bus GetBus(int licenseNum);                                 // R
         void UpdateBus(Bus bus);                                    // U
@@ -22,7 +22,8 @@ namespace DalApi
 
         #region BusLine
         void AddBusLine(BusLine busLine);                                      // C
-        IEnumerable<BusLine> GetAllBusLines();                                 // R
+        IEnumerable<BusLine> GetAllActiveBusLines();                           // R
+        IEnumerable<BusLine> GetAllInActiveBusLines();                         // R
         IEnumerable<BusLine> GetAllBusLinesBy(Predicate<BusLine> predicate);   // R
         BusLine GetBusLine(int busLineId);                                     // R
         void UpdateBusLine(BusLine busLine);                                   // U

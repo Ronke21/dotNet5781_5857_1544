@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,59 +19,51 @@ using PR_PL;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for BusesView.xaml
+    /// Interaction logic for InActiveBusesView.xaml
     /// </summary>
-    public partial class BusesView : Window
+    public partial class InActiveBusesView : Window
     {
         private readonly IBL bl;
-        public BusesView(IBL b)
+        private BusesView bv;
+        public InActiveBusesView(IBL b, BusesView v)
         {
             InitializeComponent();
 
             bl = b;
+            bv = v;
 
-            BusesDataGrid.DataContext = bl.GetAllBuses().ToList();
+            InActiveBusesDataGrid.DataContext = bl.GetAllInActiveBuses().ToList();
         }
-
         private void Exit_OnClick(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
-        private void Add_OnClick(object sender, RoutedEventArgs e)
-        {
-            AddBus ab = new AddBus(bl);
-            ab.ShowDialog();
-            BusesDataGrid.DataContext = bl.GetAllBuses().ToList();
-        }
-
         private void BusesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Bus b = (Bus)BusesDataGrid.SelectedItem;
+            Bus b = (Bus)InActiveBusesDataGrid.SelectedItem;
             BusDetails bd = new BusDetails(bl, b);
             bd.Show();
         }
 
-        private void InActive_Click(object sender, RoutedEventArgs e)
-        {
-
-            InActiveBusesView iabv = new InActiveBusesView(bl);
-            iabv.ShowDialog();
-        }
-
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
-            if (BusesDataGrid.SelectedItem == null)
+
+        }
+
+        private void Activate_Click(object sender, RoutedEventArgs e)
+        {
+            if (InActiveBusesDataGrid.SelectedItem == null)
             {
-                MessageBox.Show("Please choose at least one bus and then click remove!");
+                MessageBox.Show("Please choose at least one bus and then click activate!");
             }
             else
             {
-                var lb = ((IEnumerable<Bus>)BusesDataGrid.SelectedItems).ToList();
+                var lb = (IEnumerable)(InActiveBusesDataGrid.SelectedItems);
 
-                foreach (var b in lb)
+                foreach (Bus b in lb)
                 {
-                    Bus updated = new Bus
+                    var updated = new Bus
                     {
                         LicenseNum = b.LicenseNum,
                         Fuel = b.Fuel,
@@ -78,14 +71,14 @@ namespace PL
                         StartTime = b.StartTime,
                         LastMaint = b.LastMaint,
                         MileageFromLast = b.MileageFromLast,
-                        Active = false
+                        Active = true
                     };
                     bl.UpdateBus(updated);
                 }
 
-                BusesDataGrid.DataContext = bl.GetAllBuses().ToList(); //update view
+                InActiveBusesDataGrid.DataContext = bl.GetAllInActiveBuses().ToList(); //update view
+                bv.BusesDataGrid.DataContext = bl.GetAllBuses().ToList();
             }
         }
-
     }
 }

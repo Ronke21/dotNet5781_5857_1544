@@ -23,10 +23,18 @@ namespace Dal
 
         public void AddBus(Bus bus)
         {
-            if (DataSource.BusesList.Find(b => b.LicenseNum == bus.LicenseNum) == null)
+            var bu = DataSource.BusesList.Find(b => b.LicenseNum == bus.LicenseNum);
+
+            if (bu == null)
             {
                 DataSource.BusesList.Add(bus.Clone());
             }
+
+            else if (bu.Active is false)
+            {
+                bu.Active = true;
+            }
+
             else throw new BusAlreadyExistsException($"Bus number {bus.LicenseNum} already exists");
         }
 
@@ -38,7 +46,7 @@ namespace Dal
             }
 
             return from bus in DataSource.BusesList
-                   //where bus.Active is true
+                   where bus.Active is true
                    select bus.Clone();
         }
 
@@ -50,22 +58,22 @@ namespace Dal
             }
 
             return from bus in DataSource.BusesList
-                       where bus.Active is false
+                   where bus.Active is false
                    select bus.Clone();
         }
 
 
-        public IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate)
-        {
-            if (DataSource.BusesList.Count == 0)
-            {
-                throw new EmptyListException($"{nameof(DataSource.BusesList)} is Empty");
-            }
+        //public IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate)
+        //{
+        //    if (DataSource.BusesList.Count == 0)
+        //    {
+        //        throw new EmptyListException($"{nameof(DataSource.BusesList)} is Empty");
+        //    }
 
-            return from bus in DataSource.BusesList
-                   where predicate(bus)
-                   select bus.Clone();
-        }
+        //    return from bus in DataSource.BusesList
+        //           where predicate(bus)
+        //           select bus.Clone();
+        //}
 
         public DO.Bus GetBus(int licenseNum)
         {
@@ -92,7 +100,7 @@ namespace Dal
         {
             var bus = DataSource.BusesList.Find(b => b.LicenseNum == licenseNum);
             if (bus is null) throw new BusDoesNotExistsException($"Bus number {licenseNum} does not exist");
-            DataSource.BusesList.Remove(GetBus(licenseNum));
+            bus.Active = false;
         }
 
         #endregion
@@ -107,7 +115,7 @@ namespace Dal
             else throw new BusLineAlreadyExistsException($"Bus number {busLine.BusLineId} already exists");
         }
 
-        public IEnumerable<BusLine> GetAllBusLines()
+        public IEnumerable<BusLine> GetAllActiveBusLines()
         {
             if (DataSource.BusLinesList.Count == 0)
             {
@@ -115,6 +123,19 @@ namespace Dal
             }
 
             return from busLine in DataSource.BusLinesList
+                   where busLine.Active is true
+                   select busLine.Clone();
+        }
+
+        public IEnumerable<BusLine> GetAllInActiveBusLines()
+        {
+            if (DataSource.BusLinesList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.BusLinesList)} is Empty");
+            }
+
+            return from busLine in DataSource.BusLinesList
+                   where busLine.Active is false
                    select busLine.Clone();
         }
 

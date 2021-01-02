@@ -5,7 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Button x:Key="RoundButton">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" 
+                            Value="50"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Window.Resources>
+
+
     <Grid>
+        <Button 
+            Name="BusLines"
+            Width="100"
+                Height="100"
+                Click="BusLines_OnClick">
+
+        </Button>
 
         <Button
             Name="ShowBusesList"
@@ -17,8 +36,8 @@
             Click="ShowBusesList_OnClick">
 
             <TextBlock
-                Text="Show list"
-                FontSize="20"
+                Text="Show Buses list"
+                FontSize="10"
             />
 
             <Button.Resources>
@@ -51,5 +70,6 @@
             </Button.Background>
 
         </Button>
+
     </Grid>
 </Window>

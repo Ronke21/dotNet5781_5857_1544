@@ -37,6 +37,7 @@ namespace PR_PL
         {
             UpdateBus ub = new UpdateBus(bl, bus);
             ub.ShowDialog();
+            Close();
         }
     }
 }

@@ -171,27 +171,27 @@ namespace BL
             }
         }
 
-        public IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate)
-        {
-            try
-            {
-                IEnumerable<BO.Bus> buses = null;
-                IEnumerable<DO.Bus> b = from bus in dal.GetAllActiveBuses()
-                                        where predicate(GetBus(bus.LicenseNum))
-                                        select bus;
-                b.CopyPropertiesTo(buses);
-                return buses;
-            }
+        //public IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate)
+        //{
+        //    try
+        //    {
+        //        IEnumerable<BO.Bus> buses = null;
+        //        IEnumerable<DO.Bus> b = from bus in dal.GetAllActiveBuses()
+        //                                where predicate(GetBus(bus.LicenseNum))
+        //                                select bus;
+        //        b.CopyPropertiesTo(buses);
+        //        return buses;
+        //    }
 
-            catch (DO.EmptyListException ex)
-            {
-                throw new BO.EmptyListException("No buses in the list", ex);
-            }
-            catch (Exception)
-            {
-                throw new Exception("Unknown error GetAllBusesBy");
-            }
-        }
+        //    catch (DO.EmptyListException ex)
+        //    {
+        //        throw new BO.EmptyListException("No buses in the list", ex);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new Exception("Unknown error GetAllBusesBy");
+        //    }
+        //}
 
         public Bus GetBus(int licenseNum)
         {
@@ -218,12 +218,10 @@ namespace BL
         {
             try
             {
-                if (BusIsFit(bus))
-                {
-                    var b = new DO.Bus();
-                    bus.CopyPropertiesTo(b);
-                    dal.UpdateBus(b);
-                }
+                if (!BusIsFit(bus)) return;
+                var b = new DO.Bus();
+                bus.CopyPropertiesTo(b);
+                dal.UpdateBus(b);
             }
 
             catch (Exception)
@@ -247,6 +245,92 @@ namespace BL
                 throw new Exception("Unknown error");
             }
         }
+
         #endregion
+
+        #region BusLines
+
+        private static BO.BusLine BusLineDoToBoAdapter(DO.BusLine busLine)
+        {
+            var boBusLine = new BO.BusLine();
+            busLine.CopyPropertiesTo(boBusLine);
+            return boBusLine;
+        }
+
+        public void AddBusLine(BO.BusLine busLine)
+        {
+            var busLineDo = new DO.BusLine();
+
+            busLine.CopyPropertiesTo(busLineDo);
+
+            try
+            {
+                dal.AddBusLine(busLineDo);
+            }
+            catch (DO.BusLineAlreadyExistsException ex)
+            {
+                throw new BO.BadAdditionException("Can't add bus line", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error AddBusLine");
+            }
+        }
+
+        public IEnumerable<BO.BusLine> GetAllActiveBusLines()
+        {
+            try
+            {
+                return from busLines in dal.GetAllActiveBusLines()
+                       select BusLineDoToBoAdapter(busLines);
+            }
+            catch (DO.EmptyListException ex)
+            {
+                throw new BO.EmptyListException("No buses in the list", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetAllBuses");
+            }
+        }
+
+        public IEnumerable<BO.BusLine> GetAllInActiveBusLines()
+        {
+            try
+            {
+                return from busLines in dal.GetAllInActiveBusLines()
+                       select BusLineDoToBoAdapter(busLines);
+            }
+            catch (DO.EmptyListException ex)
+            {
+                throw new BO.EmptyListException("No buses in the list", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetAllBuses");
+            }
+        }
+        public IEnumerable<BO.BusLine> GetAllBusLinesBy(Predicate<BO.BusLine> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BO.BusLine GetBusLine(int busLineId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateBusLine(BO.BusLine busLine)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteBusLine(int busLineId)
+        {
+            throw new NotImplementedException();
+        }
     }
+
+    #endregion
 }
+

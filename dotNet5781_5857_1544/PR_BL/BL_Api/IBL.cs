@@ -11,7 +11,7 @@ namespace BLApi
         void AddBus(Bus bus);                                       // C
         IEnumerable<Bus> GetAllBuses();                             // R
         IEnumerable<Bus> GetAllInActiveBuses();                             // R
-        IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);   // R
+        //IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);   // R
         Bus GetBus(int licenseNum);                                 // R
         void UpdateBus(Bus bus);                                    // U
         //void UpdateBus(int licenseNum, Action<Bus> update);       // U
@@ -19,16 +19,17 @@ namespace BLApi
 
         #endregion
 
-        //#region BusLine
-        //void AddBusLine(BusLine busLine);                                      // C
-        //IEnumerable<BusLine> GetAllBusLines();                                 // R
-        //IEnumerable<BusLine> GetAllBusLinesBy(Predicate<BusLine> predicate);   // R
-        //BusLine GetBusLine(int busLineId);                                     // R
-        //void UpdateBusLine(BusLine busLine);                                   // U
-        ////void UpdateBusLine(int busLineId, Action<BusLine> update);           // U
-        //void DeleteBusLine(int busLineId);                                     // D
+        #region BusLine
+        void AddBusLine(BusLine busLine);                                      // C
+        IEnumerable<BusLine> GetAllActiveBusLines();                           // R
+        IEnumerable<BusLine> GetAllInActiveBusLines();                         // R
+        IEnumerable<BusLine> GetAllBusLinesBy(Predicate<BusLine> predicate);   // R
+        BusLine GetBusLine(int busLineId);                                     // R
+        void UpdateBusLine(BusLine busLine);                                   // U
+        //void UpdateBusLine(int busLineId, Action<BusLine> update);           // U
+        void DeleteBusLine(int busLineId);                                     // D
 
-        //#endregion
+        #endregion
 
         //#region BusStation
         //void AddBusStation(BusStation busStation);                                  // C
