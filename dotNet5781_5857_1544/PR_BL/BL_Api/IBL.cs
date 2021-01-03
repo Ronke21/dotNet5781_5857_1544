@@ -31,16 +31,16 @@ namespace BLApi
 
         #endregion
 
-        //#region BusStation
-        //void AddBusStation(BusStation busStation);                                  // C
-        //IEnumerable<BusStation> GetAllBusStations();                                // R
-        //IEnumerable<BusStation> GetAllBusLinesBy(Predicate<BusStation> predicate);  // R
-        //BusStation GetBusStation(int code);                                         // R
-        //void UpdateBusStation(BusStation bus);                                      // U
-        ////void UpdateBusStation(int code, Action<BusStation> update);               // U
-        //void DeleteBusStation(int code);                                            // D
+        #region BusStation
+        void AddStation(BO.BusStation bs);
+        IEnumerable<BO.BusStation> GetAllBusStations();
+        IEnumerable<BO.BusStation> GetAllInActiveBusStations();
+        BO.BusStation GetStation(int code);
+        void UpdateBusStation(BO.BusStation bs);
+        void DeleteBusStation(int code);
+        #endregion
 
-        //#endregion
+
 
         //#region ConsecutiveStations
         ////IEnumerable<ConsecutiveStations> GetAllConsecutiveStations();

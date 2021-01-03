@@ -56,5 +56,11 @@ namespace PL
             LinesView lv = new LinesView(bl);
             lv.Show();
         }
+
+        private void ShowStationsList_Click(object sender, RoutedEventArgs e)
+        {
+            StationsView sv = new StationsView(bl);
+            sv.Show();
+        }
     }
 }

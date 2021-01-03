@@ -46,11 +46,6 @@ namespace PL
             bd.Show();
         }
 
-        private void Remove_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Activate_Click(object sender, RoutedEventArgs e)
         {
             if (InActiveBusesDataGrid.SelectedItem == null)
@@ -76,7 +71,7 @@ namespace PL
                     bl.UpdateBus(updated);
                 }
 
-                InActiveBusesDataGrid.DataContext = bl.GetAllInActiveBuses().ToList(); //update view
+                InActiveBusesDataGrid.DataContext = bl.GetAllInActiveBuses().ToList();
                 bv.BusesDataGrid.DataContext = bl.GetAllBuses().ToList();
             }
         }

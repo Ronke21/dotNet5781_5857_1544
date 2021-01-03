@@ -34,8 +34,8 @@ namespace DalApi
 
         #region BusStation
         void AddBusStation(BusStation busStation);                                  // C
-        IEnumerable<BusStation> GetAllBusStations();                                // R
-        IEnumerable<BusStation> GetAllBusLinesBy(Predicate<BusStation> predicate);  // R
+        IEnumerable<BusStation> GetAllActiveBusStations();
+        IEnumerable<BusStation> GetAllInActiveBusStations();                    // R
         BusStation GetBusStation(int code);                                         // R
         void UpdateBusStation(BusStation bus);                                      // U
         //void UpdateBusStation(int code, Action<BusStation> update);               // U

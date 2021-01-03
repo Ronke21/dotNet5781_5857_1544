@@ -15,6 +15,7 @@ using DO;
 using Bus = BO.Bus;
 
 
+
 namespace BL
 {
     class BLImp : IBL // internal
@@ -247,6 +248,143 @@ namespace BL
         }
 
         #endregion
+
+
+        #region BusStation
+
+        private static BO.BusStation BusStationDoToBoAdapter(DO.BusStation stat)
+        {
+            var boStat = new BO.BusStation();
+            stat.CopyPropertiesTo(boStat);
+            return boStat;
+        }
+
+        private bool BusStationIsFit(BO.BusStation bs)
+        {
+            // year and number
+            if (bs.Code < 0)
+            {
+                throw new NotValidIDException("Station Code must be positive!");
+            }
+            if ((bs.Location.Latitude < 31 || bs.Location.Latitude > 33.3) || ( bs.Location.Longitude < 34.3 || bs.Location.Longitude >35.5))
+            {
+                throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
+            }
+            return true;
+        }
+        public void AddStation(BO.BusStation bs)
+        {
+            var BusStationDO = new DO.BusStation();
+
+            bs.CopyPropertiesTo(BusStationDO);
+
+            try
+            {
+                if (BusStationIsFit(bs))
+                {
+                    dal.AddBusStation(BusStationDO);
+                }
+            }
+            catch (DO.BusAlreadyExistsException ex)
+            {
+                throw new BO.BadAdditionException("Can't add bus", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error AddBus");
+            }
+        }
+
+        public IEnumerable<BO.BusStation> GetAllBusStations()
+        {
+            try
+            {
+                return from bs in dal.GetAllActiveBusStations()
+                       select BusStationDoToBoAdapter(bs);
+            }
+
+            catch (DO.EmptyListException ex)
+            {
+                throw new BO.EmptyListException("No buses in the list", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetAllBuses");
+            }
+        }
+
+        public IEnumerable<BO.BusStation> GetAllInActiveBusStations()
+        {
+            try
+            {
+                return from bs in dal.GetAllInActiveBusStations()
+                       select BusStationDoToBoAdapter(bs);
+            }
+
+            catch (DO.EmptyListException ex)
+            {
+                throw new BO.EmptyListException("No buses in the list", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetAllBuses");
+            }
+        }
+        public BO.BusStation GetStation(int code)
+        {
+            var bsBO = new BO.BusStation();
+
+            try
+            {
+                var bsDO = dal.GetBusStation(code);
+                bsDO.CopyPropertiesTo(bsBO);
+            }
+            catch (DO.StationDoesNotExistException ex)
+            {
+                throw new BO.DoesNotExistException("Bus Station number does not exist", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetBus");
+            }
+
+            return bsBO;
+        }
+
+        public void UpdateBusStation(BO.BusStation bs)
+        {
+            try
+            {
+                if (!BusStationIsFit(bs)) return;
+                var b = new DO.BusStation();
+                bs.CopyPropertiesTo(b);
+                dal.UpdateBusStation(b);
+            }
+
+            catch (Exception)
+            {
+                throw new Exception("Unknown error");
+            }
+        }
+
+        public void DeleteBusStation(int code)
+        {
+            try
+            {
+                dal.DeleteBusStation(code);
+            }
+            catch (DO.StationDoesNotExistException ex)
+            {
+                throw new BO.DoesNotExistException("Bus station number does not exist", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error");
+            }
+        }
+
+        #endregion
+
 
         #region BusLines
 

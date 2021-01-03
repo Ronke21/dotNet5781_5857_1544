@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -60,6 +61,18 @@
     </Compile>
     <Compile Include="Manager_Buses\UpdateBus.xaml.cs">
       <DependentUpon>UpdateBus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_Stations\AddStation.xaml.cs">
+      <DependentUpon>AddStation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_Stations\InActiveStationsView.xaml.cs">
+      <DependentUpon>InActiveStationsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_Stations\StationDetails.xaml.cs">
+      <DependentUpon>StationDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_Stations\StationsView.xaml.cs">
+      <DependentUpon>StationsView.xaml</DependentUpon>
     </Compile>
     <Page Include="Manager_Buses\AddBus.xaml">
       <SubType>Designer</SubType>
@@ -106,10 +119,33 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Manager_Stations\AddStation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Stations\InActiveStationsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Stations\StationDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Stations\StationsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Stations\UpdateStation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Manager_Lines\LinesView.xaml.cs">
       <DependentUpon>LinesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_Stations\UpdateStation.xaml.cs">
+      <DependentUpon>UpdateStation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -142,8 +178,6 @@
       <Name>PR_BL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Manager_Stations\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

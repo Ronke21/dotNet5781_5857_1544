@@ -71,5 +71,51 @@
 
         </Button>
 
+        <Button
+            Name="ShowStationsList"
+            Height="100"
+            Width="100"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Margin="0,0,20,20"
+            Click="ShowStationsList_Click">
+
+            <TextBlock
+                Text="Show Stations list"
+                FontSize="10"
+            />
+
+            <Button.Resources>
+
+                <Style TargetType="Border">
+
+                    <Setter 
+                        Property="CornerRadius" 
+                        Value="50"
+                    />
+
+                </Style>
+
+            </Button.Resources>
+
+            <Button.Effect>
+                <DropShadowEffect
+                    BlurRadius="15"
+                    Color="DarkGray"
+                    ShadowDepth="1"
+                />
+            </Button.Effect>
+
+            <Button.Background>
+
+                <RadialGradientBrush>
+                    <GradientStop Color="MediumTurquoise"/>
+                </RadialGradientBrush>
+
+            </Button.Background>
+
+        </Button>
+
+
     </Grid>
 </Window>

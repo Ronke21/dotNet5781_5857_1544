@@ -77,4 +77,11 @@ namespace BO
         public DoesNotExistException(Exception inner) : base() { }
         public DoesNotExistException(string message, Exception inner) : base(message, inner) { }
     }
+
+    [Serializable]
+    public class NotValidIDException : Exception
+    {
+        public NotValidIDException(Exception inner) : base() { }
+        public NotValidIDException(string message) : base(message) { }
+    }
 }
