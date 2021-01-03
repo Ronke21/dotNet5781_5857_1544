@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using BLApi;
+﻿using BLApi;
 using BO;
-using PR_PL;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
 
 namespace PL
 {
@@ -64,9 +53,7 @@ namespace PL
             }
             else
             {
-                var ls = (IEnumerable<BusStation>)(StationsDataGrid.SelectedItems);
-
-                foreach (var s in ls)
+                foreach (var s in StationsDataGrid.SelectedItems)
                 {
                     bl.DeleteBusStation(((BusStation)s).Code);
                 }

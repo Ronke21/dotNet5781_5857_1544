@@ -266,10 +266,10 @@ namespace BL
             {
                 throw new NotValidIDException("Station Code must be positive!");
             }
-            if ((bs.Location.Latitude < 31 || bs.Location.Latitude > 33.3) || ( bs.Location.Longitude < 34.3 || bs.Location.Longitude >35.5))
-            {
-                throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
-            }
+//            if ((bs.Location.Latitude < 31 || bs.Location.Latitude > 33.3) || ( bs.Location.Longitude < 34.3 || bs.Location.Longitude >35.5))
+//            {
+//                throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
+//            }
             return true;
         }
         public void AddStation(BO.BusStation bs)

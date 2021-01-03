@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Device.Location;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using BLApi;
+﻿using BLApi;
 using BO;
-using PR_PL;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
 
 namespace PL
 {
@@ -55,9 +43,7 @@ namespace PL
             }
             else
             {
-                var lb = (IEnumerable<BusStation>)(InActiveStationsDataGrid.SelectedItems);
-
-                foreach (BusStation bs in lb)
+                foreach (BusStation bs in InActiveStationsDataGrid.SelectedItems)
                 {
                     var updated = new BusStation
                     {

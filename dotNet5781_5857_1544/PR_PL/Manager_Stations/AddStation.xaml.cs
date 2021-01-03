@@ -5,9 +5,8 @@ using System.Text.RegularExpressions;
 using System.Device.Location;
 using BLApi;
 using BO;
-using PR_PL;
 
-namespace PR_PL
+namespace PL
 {
     /// <summary>
     /// Interaction logic for AddStation.xaml

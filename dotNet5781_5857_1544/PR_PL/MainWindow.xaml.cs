@@ -20,13 +20,17 @@ using PR_PL.Manager_Lines;
  *
  * todo: logic of buses                                                                             // Amihay
  * 
- * todo: implement Stations Dal and BL                                                              // Ron
+ * todo: implement Stations Dal and BL                                                              // Ron      V
  *
  * todo: implement BulLines Dal and BL                                                              // Both
  *
- * todo: stations windows                                                                           // Ron
+ * todo: stations windows                                                                           // Ron      V
  *
  * todo: learn how to work with pages and resources                                                 // Amihay
+ * 
+ * todo: logic of stations
+ * 
+ * todo: decide what can be updated!
  */
 
 namespace PL

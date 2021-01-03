@@ -226,7 +226,7 @@ namespace DS
                     Address = "RK st",
                     Accessible = true,
                     Active = false,
-                    Location = new GeoCoordinate()
+                    Location = new GeoCoordinate(32, 34.9)
                 }
             };
 

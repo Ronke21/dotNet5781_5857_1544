@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using BLApi;
+﻿using BLApi;
 using BO;
+using System.Windows;
 
 namespace PL
 {
@@ -22,9 +10,27 @@ namespace PL
     public partial class StationDetails : Window
     {
         private readonly IBL bl;
+        private readonly BusStation currentBS;
         public StationDetails(IBL b, BusStation bs)
         {
-           // InitializeComponent();
+            InitializeComponent();
+
+            currentBS = bs;
+            bl = b;
+
+            lbAccess.DataContext = currentBS.Accessible;
+            lbCode.DataContext = currentBS.Code;
+            lbName.DataContext = currentBS.Name;
+        //    lbLocation.DataContext = currentBS.Location.ToString();
+            lbAddress.DataContext = currentBS.Address;
+    //        StationDetailsWindow.DataContext = currentBS;
+        }
+
+        private void Update_OnClick(object sender, RoutedEventArgs e)
+        {
+   //         UpdateStation us = new UpdateStation(bl, currentBS);
+  //          us.ShowDialog();
+            Close();
         }
     }
 }
