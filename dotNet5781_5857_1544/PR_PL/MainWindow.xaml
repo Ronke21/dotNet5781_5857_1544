@@ -9,6 +9,15 @@
         WindowStyle="None"
         Height="900"
         Width="1600"
+
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         >
 
     <Window.Resources>
@@ -55,6 +64,7 @@
             x:Name="DataDisplay"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
+            Margin="10"
             NavigationUIVisibility="Hidden"
         />
 
@@ -62,7 +72,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Grid.Row="0"
-            Background="#1A84CC"
+            Background="#4DA1E3"
             Width="1920"
             Height="80"
             VerticalAlignment="Top"/>
@@ -90,7 +100,7 @@
                 VerticalAlignment="Center"
                 FontSize="80"
                 Foreground="White"
-                Margin="0,0,0,20"/>
+                Margin="0,0,0,0"/>
 
         </Border>
 
@@ -150,7 +160,7 @@
                         Source="Icons/bus_white.png"
                         HorizontalAlignment="Right"
                         Width="75"
-                        Margin="30,0,0,0"/>
+                        Margin="15,0,0,0"/>
 
                 </StackPanel>
 
