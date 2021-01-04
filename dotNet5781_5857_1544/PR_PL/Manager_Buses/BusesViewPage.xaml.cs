@@ -11,51 +11,47 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BLApi;
 using BO;
-using PR_PL;
+using PL;
 
-namespace PL
+namespace PR_PL.Manager_Buses
 {
     /// <summary>
-    /// Interaction logic for BusesView.xaml
+    /// Interaction logic for BusesViewPage.xaml
     /// </summary>
-    public partial class BusesView : Window
+    public partial class BusesViewPage : Page
     {
-        private readonly IBL bl;
-        public BusesView(IBL b)
+        private readonly IBL _bl;
+        public BusesViewPage(IBL b)
         {
+            _bl = b;
+
             InitializeComponent();
 
-            bl = b;
-
-            BusesDataGrid.DataContext = bl.GetAllBuses().ToList();
-        }
-
-        private void Exit_OnClick(object sender, RoutedEventArgs e)
-        {
-            Close();
+            BusesDataGrid.DataContext = _bl.GetAllBuses().ToList();
         }
 
         private void Add_OnClick(object sender, RoutedEventArgs e)
         {
-            AddBus ab = new AddBus(bl);
+            AddBus ab = new AddBus(_bl);
             ab.ShowDialog();
-            BusesDataGrid.DataContext = bl.GetAllBuses().ToList();
+            BusesDataGrid.DataContext = _bl.GetAllBuses().ToList();
         }
 
         private void BusesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Bus b = (Bus)BusesDataGrid.SelectedItem;
-            BusDetails bd = new BusDetails(bl, b);
+            BusDetails bd = new BusDetails(_bl, b);
             bd.Show();
         }
 
         private void InActive_Click(object sender, RoutedEventArgs e)
         {
-            InActiveBusesView iabv = new InActiveBusesView(bl, this);
-            iabv.ShowDialog();
+            //InActiveBusesView iabv = new InActiveBusesView(bl, this);
+            //iabv.ShowDialog();
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)
@@ -67,14 +63,13 @@ namespace PL
             else
             {
                 var lb = (IEnumerable)(BusesDataGrid.SelectedItems);
-                
+
                 foreach (var b in lb)
                 {
-                    bl.DeleteBus(((Bus)b).LicenseNum);
+                    _bl.DeleteBus(((Bus)b).LicenseNum);
                 }
-                BusesDataGrid.DataContext = bl.GetAllBuses().ToList(); //update view
+                BusesDataGrid.DataContext = _bl.GetAllBuses().ToList(); //update view
             }
         }
-
     }
 }

@@ -1,8 +1,14 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using BLApi;
 using System.Windows.Navigation;
 using PR_PL;
+using PR_PL.Manager_Buses;
 using PR_PL.Manager_Lines;
 
 /*
@@ -41,6 +47,8 @@ namespace PL
     public partial class MainWindow : Window
     {
         private IBL bl;
+
+        private bool _hidden = false;
         //private BO.Bus currentBus;
         public MainWindow()
         {
@@ -49,11 +57,11 @@ namespace PL
             bl = BLFactory.GetBL("1");
         }
 
-        private void ShowBusesList_OnClick(object sender, RoutedEventArgs e)
-        {
-            BusesView bv = new BusesView(bl);
-            bv.Show();
-        }
+        //private void ShowBusesList_OnClick(object sender, RoutedEventArgs e)
+        //{
+        //    BusesView bv = new BusesView(bl);
+        //    bv.Show();
+        //}
 
         private void BusLines_OnClick(object sender, RoutedEventArgs e)
         {
@@ -66,5 +74,75 @@ namespace PL
             StationsView sv = new StationsView(bl);
             sv.Show();
         }
+
+        #region mouse effects and functionality for exit button
+        private void Exit_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            BrushConverter bc = new BrushConverter();
+            Exit.Background = (Brush)bc.ConvertFrom("#F1707A");
+        }
+        private void Exit_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            BrushConverter bc = new BrushConverter();
+            Exit.Background = (Brush)bc.ConvertFrom("#E81123");
+        }
+        private void Exit_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+        }
+
+        #endregion
+
+        #region open close menu
+
+        private void OpenCloseMenu_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (_hidden)
+            {
+                Storyboard sb = Resources["OpenMenu"] as Storyboard;
+                sb?.Begin(SideBar);
+                _hidden = false;
+                OpenCloseMenu.Source = new BitmapImage(new Uri("Icons/menu_close.png", UriKind.Relative));
+            }
+            else
+            {
+                Storyboard sb = Resources["CloseMenu"] as Storyboard;
+                sb?.Begin(SideBar);
+                _hidden = true;
+                OpenCloseMenu.Source = new BitmapImage(new Uri("Icons/menu_open.png", UriKind.Relative));
+            }
+        }
+
+        #endregion
+
+        #region Buses button
+
+        #region colors
+        private void BusesSidePanel_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            BrushConverter bc = new BrushConverter();
+            BusesSidePanel.Background = (Brush)bc.ConvertFrom("#30ABFF");
+        }
+
+        private void BusesSidePanel_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            BrushConverter bc = new BrushConverter();
+            BusesSidePanel.Background = (Brush)bc.ConvertFrom("#FF0064A6");
+        }
+
+        #endregion
+
+        private void BusesSidePanel_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!_hidden)
+            {
+                OpenCloseMenu_OnMouseDown(sender, e);
+            }
+
+            //show buses list
+            DataDisplay.Content = new BusesViewPage(bl);
+        }
+        #endregion
+
     }
 }

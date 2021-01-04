@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -58,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Manager_Buses\BusesViewPage.xaml.cs">
+      <DependentUpon>BusesViewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager_Buses\InActiveBusesView.xaml.cs">
       <DependentUpon>InActiveBusesView.xaml</DependentUpon>
     </Compile>
@@ -84,7 +89,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Manager_Buses\BusesView.xaml">
+    <Page Include="Manager_Buses\BusesViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,9 +110,6 @@
     </Compile>
     <Compile Include="Manager_Buses\BusDetails.xaml.cs">
       <DependentUpon>BusDetails.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Manager_Buses\BusesView.xaml.cs">
-      <DependentUpon>BusesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -180,6 +182,12 @@
       <Name>PR_BL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Icons\bus_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\menu_close.png" />
+    <Resource Include="Icons\menu_open.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

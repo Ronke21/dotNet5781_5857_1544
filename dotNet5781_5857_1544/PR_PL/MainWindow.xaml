@@ -4,118 +4,160 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        WindowState="Maximized"
+        WindowStyle="None"
+        Height="900"
+        Width="1600"
+        >
+
     <Window.Resources>
-        <Button x:Key="RoundButton">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" 
-                            Value="50"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+
+        <Storyboard x:Key="OpenMenu">
+
+            <ThicknessAnimation
+                Storyboard.TargetProperty="Margin" 
+                From="-310,0,0,0" 
+                To="0,0,0,0" 
+                DecelerationRatio="0.9" 
+                Duration="0:0:0.3"/>
+
+        </Storyboard>
+
+        <Storyboard x:Key="CloseMenu">
+
+            <ThicknessAnimation 
+                Storyboard.TargetProperty="Margin" 
+                From="0,0,0,0" 
+                To="-310,0,0,0" 
+                DecelerationRatio="0.9" 
+                Duration="0:0:0.3"/>
+
+        </Storyboard>
+
     </Window.Resources>
 
 
-    <Grid>
-        <Button 
-            Name="BusLines"
-            Width="100"
-                Height="100"
-                Click="BusLines_OnClick">
+    <Grid
+        Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        </Button>
+        <Frame
+            Grid.Column="1"
+            Grid.Row="1"
+            x:Name="DataDisplay"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            NavigationUIVisibility="Hidden"
+        />
 
-        <Button
-            Name="ShowBusesList"
-            Height="100"
+        <Border
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="0"
+            Background="#1A84CC"
+            Width="1920"
+            Height="80"
+            VerticalAlignment="Top"/>
+
+        <!--Exit button-->
+        <Border
+            Grid.Column="1"
+            Grid.Row="0"
+            Name="Exit"
             Width="100"
+            Height="80"
             HorizontalAlignment="Right"
-            VerticalAlignment="Bottom"
-            Margin="0,0,20,20"
-            Click="ShowBusesList_OnClick">
+            VerticalAlignment="Top"
+            Background="#E81123"
+            BorderBrush="Transparent"
+            MouseEnter="Exit_OnMouseEnter"
+            MouseLeave="Exit_OnMouseLeave"
+            MouseDown="Exit_OnMouseDown"
+            >
 
             <TextBlock
-                Text="Show Buses list"
-                FontSize="10"
-            />
+                Name="X"
+                Text="×"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="80"
+                Foreground="White"
+                Margin="0,0,0,20"/>
 
-            <Button.Resources>
+        </Border>
 
-                <Style TargetType="Border">
-
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="50"
-                    />
-
-                </Style>
-
-            </Button.Resources>
-
-            <Button.Effect>
-                <DropShadowEffect
-                    BlurRadius="15"
-                    Color="DarkGray"
-                    ShadowDepth="1"
-                />
-            </Button.Effect>
-
-            <Button.Background>
-
-                <RadialGradientBrush>
-                    <GradientStop Color="MediumTurquoise"/>
-                </RadialGradientBrush>
-
-            </Button.Background>
-
-        </Button>
-
-        <Button
-            Name="ShowStationsList"
-            Height="100"
-            Width="100"
+        <!--Side panel-->
+        <Grid
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Name="SideBar"
+            Background="#FF0064A6"
+            Width="400"
             HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            Margin="0,0,20,20"
-            Click="ShowStationsList_Click">
+            >
 
-            <TextBlock
-                Text="Show Stations list"
-                FontSize="10"
-            />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+            </Grid.RowDefinitions>
 
-            <Button.Resources>
+            <!--Open close Button-->
+            <Border
+            Grid.Row="0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Background="Transparent"
+            Width="90"
+            Height="55"
+            BorderBrush="Transparent"
+            MouseDown="OpenCloseMenu_OnMouseDown">
+                <Image Name="OpenCloseMenu"
+                       Source="Icons/menu_close.png"/>
+            </Border>
 
-                <Style TargetType="Border">
+            <Border
+                Name="BusesSidePanel"
+                Grid.Row="1"
+                Margin="0,0,0,0"
+                MouseEnter="BusesSidePanel_OnMouseEnter"
+                MouseLeave="BusesSidePanel_OnMouseLeave"
+                MouseDown="BusesSidePanel_OnMouseDown">
 
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="50"
-                    />
+                <StackPanel Orientation="Horizontal">
+                    
+                    <TextBlock
+                        Name="Buses"
+                        Text="Active Buses"
+                        FontSize="50"
+                        Foreground="White"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="15,0,0,0"/>
 
-                </Style>
+                    <Image
+                        Source="Icons/bus_white.png"
+                        HorizontalAlignment="Right"
+                        Width="75"
+                        Margin="30,0,0,0"/>
 
-            </Button.Resources>
+                </StackPanel>
 
-            <Button.Effect>
-                <DropShadowEffect
-                    BlurRadius="15"
-                    Color="DarkGray"
-                    ShadowDepth="1"
-                />
-            </Button.Effect>
+            </Border>
 
-            <Button.Background>
-
-                <RadialGradientBrush>
-                    <GradientStop Color="MediumTurquoise"/>
-                </RadialGradientBrush>
-
-            </Button.Background>
-
-        </Button>
-
+        </Grid>
 
     </Grid>
+
 </Window>

@@ -58,10 +58,10 @@ namespace dotNet5781_03B_5857_1544
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
-            if (e.Handled)
-            {
-                MessageBox.Show($"digits only\n'{e.Text}' is not a digit");
-            }
+            //if (e.Handled)
+            //{
+            //    MessageBox.Show($"digits only\n'{e.Text}' is not a digit");
+            //}
         }
 
         /// <summary>
@@ -273,11 +273,15 @@ namespace dotNet5781_03B_5857_1544
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
-            if (e.Key == Key.Space)
+            if (e.Key == Key.Delete)
             {
-                e.Handled = true;
-                MessageBox.Show("Space is not allowed");
+                MessageBox.Show("point is not allowed");
             }
+            //if (e.Key == Key.Space)
+            //{
+            //    e.Handled = true;
+            //    MessageBox.Show("Space is not allowed");
+            //}
         }
     }
 }

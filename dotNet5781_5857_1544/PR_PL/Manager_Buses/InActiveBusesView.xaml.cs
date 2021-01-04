@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using BLApi;
 using BO;
 using PR_PL;
+using PR_PL.Manager_Buses;
 
 namespace PL
 {
@@ -24,8 +25,8 @@ namespace PL
     public partial class InActiveBusesView : Window
     {
         private readonly IBL bl;
-        private BusesView bv;
-        public InActiveBusesView(IBL b, BusesView v)
+        private BusesViewPage bv;
+        public InActiveBusesView(IBL b, BusesViewPage v)
         {
             InitializeComponent();
 
