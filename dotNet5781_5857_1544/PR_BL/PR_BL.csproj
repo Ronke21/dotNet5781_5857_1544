@@ -48,7 +48,6 @@
     <Compile Include="BO\Bus.cs" />
     <Compile Include="BO\BusLine.cs" />
     <Compile Include="BO\BusStation.cs" />
-    <Compile Include="BO\ConsecutiveStations.cs" />
     <Compile Include="BO\Driver.cs" />
     <Compile Include="BO\Exceptions.cs" />
     <Compile Include="BO\LineExit.cs" />

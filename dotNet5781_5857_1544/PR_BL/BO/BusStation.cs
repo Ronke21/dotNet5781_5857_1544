@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Device.Location;
+using System.Security;
 using DO;
 
 namespace BO
@@ -15,3 +16,5 @@ namespace BO
         public IEnumerable<BusLine> BusLines { get; set; }
     }
 }
+
+// name, address, accessible, station index, time to next

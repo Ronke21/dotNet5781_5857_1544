@@ -110,6 +110,14 @@ namespace DO
     }
 
     [Serializable]
+    public class AlreadyDeletedException : Exception
+    {
+        public AlreadyDeletedException() : base() { }
+
+        public AlreadyDeletedException(string message) : base(message) { }
+    }
+
+    [Serializable]
     public class StationsAlreadyConsecutiveException : Exception
     {
         public StationsAlreadyConsecutiveException() : base() { }

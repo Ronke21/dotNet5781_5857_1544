@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Device;
 using System.Linq;
+using System.Security;
 using DalApi;
 using BLApi;
 using BO;
 using DO;
 using Bus = BO.Bus;
-
+using BusStation = BO.BusStation;
+using LineStation = DO.LineStation;
 
 
 namespace BL
 {
     class BLImp : IBL // internal
     {
-        private readonly IDal dal = DalFactory.GetDal();
+        private readonly IDal _dal = DalFactory.GetDal();
+
+        private static readonly Random Rand = new Random(DateTime.Now.Millisecond);
 
         #region Bus
 
@@ -24,7 +29,7 @@ namespace BL
             return boBus;
         }
 
-        private bool BusIsFit(Bus bus)
+        private static bool BusIsFit(Bus bus)
         {
             // year and number
             if (bus.StartTime.Year > 2017 && (bus.LicenseNum < 10000000 || bus.LicenseNum > 99999999))
@@ -44,7 +49,6 @@ namespace BL
 
             return true;
         }
-
 
         #region Set Status and other funcs
         private static bool QualifiedMileage(Bus bus, double ride = 0)
@@ -101,11 +105,11 @@ namespace BL
 
         public void AddBus(Bus bus)
         {
-            var BusDO = new DO.Bus();
+            var busDo = new DO.Bus();
 
             SetNewStatus(bus);
 
-            bus.CopyPropertiesTo(BusDO);
+            bus.CopyPropertiesTo(busDo);
 
             try
             {
@@ -116,7 +120,7 @@ namespace BL
                     {
                         throw new NotValidFuelAmountException("Added bus must have 0 - 250,000 KM mileage");
                     }
-                    dal.AddBus(BusDO);
+                    _dal.AddBus(busDo);
                 }
             }
             catch (DO.BusAlreadyExistsException ex)
@@ -133,7 +137,7 @@ namespace BL
         {
             try
             {
-                return from bus in dal.GetAllActiveBuses()
+                return from bus in _dal.GetAllActiveBuses()
                        select BusDoToBoAdapter(bus);
             }
 
@@ -151,7 +155,7 @@ namespace BL
         {
             try
             {
-                return from bus in dal.GetAllInActiveBuses()
+                return from bus in _dal.GetAllInActiveBuses()
                        select BusDoToBoAdapter(bus);
             }
 
@@ -189,12 +193,12 @@ namespace BL
 
         public Bus GetBus(int licenseNum)
         {
-            var BusBO = new BO.Bus();
+            var busBo = new BO.Bus();
 
             try
             {
-                var BusDO = dal.GetBus(licenseNum);
-                BusDO.CopyPropertiesTo(BusBO);
+                var busDo = _dal.GetBus(licenseNum);
+                busDo.CopyPropertiesTo(busBo);
             }
             catch (DO.BusDoesNotExistsException ex)
             {
@@ -205,7 +209,7 @@ namespace BL
                 throw new Exception("Unknown error GetBus");
             }
 
-            return BusBO;
+            return busBo;
         }
 
         public void UpdateBus(Bus bus)
@@ -215,7 +219,7 @@ namespace BL
                 if (!BusIsFit(bus)) return;
                 var b = new DO.Bus();
                 bus.CopyPropertiesTo(b);
-                dal.UpdateBus(b);
+                _dal.UpdateBus(b);
             }
 
             catch (Exception)
@@ -228,7 +232,7 @@ namespace BL
         {
             try
             {
-                dal.DeleteBus(licenseNum);
+                _dal.DeleteBus(licenseNum);
             }
             catch (DO.BusDoesNotExistsException ex)
             {
@@ -236,7 +240,7 @@ namespace BL
             }
             catch (Exception)
             {
-                throw new Exception("Unknown error");
+                throw new Exception("Unknown error DeleteBus");
             }
         }
 
@@ -251,7 +255,7 @@ namespace BL
             return boStat;
         }
 
-        private bool BusStationIsFit(BO.BusStation bs)
+        private static bool BusStationIsFit(BO.BusStation bs)
         {
             // year and number
             if (bs.Code < 0)
@@ -266,15 +270,15 @@ namespace BL
         }
         public void AddStation(BO.BusStation bs)
         {
-            var BusStationDO = new DO.BusStation();
+            var busStationDo = new DO.BusStation();
 
-            bs.CopyPropertiesTo(BusStationDO);
+            bs.CopyPropertiesTo(busStationDo);
 
             try
             {
                 if (BusStationIsFit(bs))
                 {
-                    dal.AddBusStation(BusStationDO);
+                    _dal.AddBusStation(busStationDo);
                 }
             }
             catch (DO.BusAlreadyExistsException ex)
@@ -291,7 +295,7 @@ namespace BL
         {
             try
             {
-                return from bs in dal.GetAllActiveBusStations()
+                return from bs in _dal.GetAllActiveBusStations()
                        select BusStationDoToBoAdapter(bs);
             }
 
@@ -309,7 +313,7 @@ namespace BL
         {
             try
             {
-                return from bs in dal.GetAllInActiveBusStations()
+                return from bs in _dal.GetAllInActiveBusStations()
                        select BusStationDoToBoAdapter(bs);
             }
 
@@ -328,7 +332,7 @@ namespace BL
 
             try
             {
-                var bsDO = dal.GetBusStation(code);
+                var bsDO = _dal.GetBusStation(code);
                 bsDO.CopyPropertiesTo(bsBO);
             }
             catch (DO.StationDoesNotExistException ex)
@@ -350,7 +354,7 @@ namespace BL
                 if (!BusStationIsFit(bs)) return;
                 var b = new DO.BusStation();
                 bs.CopyPropertiesTo(b);
-                dal.UpdateBusStation(b);
+                _dal.UpdateBusStation(b);
             }
 
             catch (Exception)
@@ -363,7 +367,7 @@ namespace BL
         {
             try
             {
-                dal.DeleteBusStation(code);
+                _dal.DeleteBusStation(code);
             }
             catch (DO.StationDoesNotExistException ex)
             {
@@ -392,7 +396,7 @@ namespace BL
 
             try
             {
-                dal.AddBusLine(busLineDo);
+                _dal.AddBusLine(busLineDo);
             }
             catch (DO.BusLineAlreadyExistsException ex)
             {
@@ -407,7 +411,7 @@ namespace BL
         {
             try
             {
-                return from busLines in dal.GetAllActiveBusLines()
+                return from busLines in _dal.GetAllActiveBusLines()
                        select BusLineDoToBoAdapter(busLines);
             }
             catch (DO.EmptyListException ex)
@@ -423,7 +427,7 @@ namespace BL
         {
             try
             {
-                return from busLines in dal.GetAllInActiveBusLines()
+                return from busLines in _dal.GetAllInActiveBusLines()
                        select BusLineDoToBoAdapter(busLines);
             }
             catch (DO.EmptyListException ex)
@@ -457,9 +461,18 @@ namespace BL
         {
             var blBO = new BO.BusLine();
 
+            var lineStations = _dal.GetAlLineStationsByLineNumber(busLineId).ToList();
+
+            lineStations.Sort((s1,s2)=>s1.StationIndex.CompareTo(s2.StationIndex));
+
+            for (var i = 0; i < lineStations.Count() - 1; i++)
+            {
+                AddConsecutiveStations(lineStations[i].StationNumber, lineStations[i + 1].StationNumber);
+            }
+            
             try
             {
-                var blDO = dal.GetBusLine(busLineId);
+                var blDO = _dal.GetBusLine(busLineId);
                 blDO.CopyPropertiesTo(blBO);
             }
             catch (DO.StationDoesNotExistException ex)
@@ -471,6 +484,19 @@ namespace BL
                 throw new Exception("Unknown error GetBusLine");
             }
 
+            //StudentBO.ListOfCourses = from sic in dl.GetStudentsInCourseList(sic => sic.PersonId == id)
+            //    let course = dl.GetCourse(sic.CourseId)
+            //    select course.CopyToStudentCourse(sic);
+
+            //busline.listofstations = from ls in something
+            // let blabla = dl.getlinestation(ls.stationnumber)
+            // select blabla.copy
+
+            //blBO.ListOfLineStations = from ls in lineStations
+            //    select ls.
+
+            //lineStations.CopyPropertiesTo(blBO.ListOfLineStations);
+
             return blBO;
         }
         public void UpdateBusLine(BO.BusLine busLine)
@@ -479,7 +505,7 @@ namespace BL
             {
                 var b = new DO.BusLine();
                 busLine.CopyPropertiesTo(b);
-                dal.UpdateBusLine(b);
+                _dal.UpdateBusLine(b);
             }
 
             catch (Exception)
@@ -491,7 +517,7 @@ namespace BL
         {
             try
             {
-                dal.DeleteBusLine(busLineId);
+                _dal.DeleteBusLine(busLineId);
             }
             catch (DO.BusLineDoesNotExistsException ex)
             {
@@ -502,8 +528,72 @@ namespace BL
                 throw new Exception("Unknown error DeleteBusLine");
             }
         }
-        
+
+
         #endregion
+
+        #region Consecutive stations
+
+        private static double DistanceFactor()
+        {
+            return 1.25 + Rand.NextDouble() * 0.88;
+        }
+
+        private static double SpeedFactor(double dist)
+        {
+            // interurban speed
+            if (dist <= 1000)
+            {
+                return Rand.Next(30, 50) / 3.6;
+            }
+
+            return Rand.Next(50, 80) / 3.6;
+        }
+
+        //public double SpeedFactor(double dist)
+        //{
+        //    double speed = 50;
+
+        //    var chance = Rand.Next(10000);
+
+        //    switch (chance)
+        //    {
+        //        // flat tire
+        //        case 1234:
+        //            speed *= 0.4;
+        //            break;
+        //        // engine overheat
+        //        case 770:
+        //            speed *= 0.01;
+        //            break;
+        //    }
+
+        //    return speed;
+        //}
+
+        public void AddConsecutiveStations(int statCode1, int statCode2)
+        {
+            if (!_dal.CheckConsecutiveStationsNotExist(statCode1, statCode2)) return;
+
+            try
+            {
+                var stat1 = GetBusStation(statCode1);
+                var stat2 = GetBusStation(statCode2);
+
+                var distance = (stat1.Location.GetDistanceTo(stat2.Location)) * DistanceFactor();
+
+                var time = new TimeSpan(0, 0, (int)(distance / SpeedFactor(distance)));
+
+                _dal.AddConsecutiveStations(statCode1, statCode2, time, distance);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        #endregion
+
     }
 
 }

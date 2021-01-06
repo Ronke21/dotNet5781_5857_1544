@@ -177,7 +177,7 @@ namespace DS
                 new BusLine()
                 {
                     Active = true,
-                    AllAccessible = true,
+                    AllAccessible = false,
                     BusArea = Area.Jerusalem,
                     BusLineId = KeyGenerator.IdGenerator(),
                     FirstStation = 39826,
@@ -189,26 +189,26 @@ namespace DS
             #endregion
 
             #region Bus station List
-            /*
+
             var code = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\code.txt");
             var name = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\name.txt");
             var longitude = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\longitude.txt");
             var latitude = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\latitude.txt");
             var address = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\address.txt");
-            
-            var code = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\code.txt");
-            var name = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\name.txt");
-            var longitude = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\longitude.txt");
-            var latitude = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\latitude.txt");
-            var address = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\address.txt");
-            */
-            string filePath = Environment.CurrentDirectory;
 
-            var code = System.IO.File.ReadAllLines(filePath + "\\code.txt");
-            var name = System.IO.File.ReadAllLines(filePath + "\\name.txt");
-            var longitude = System.IO.File.ReadAllLines(filePath + "\\longitude.txt");
-            var latitude = System.IO.File.ReadAllLines(filePath + "\\latitude.txt");
-            var address = System.IO.File.ReadAllLines(filePath + "\\address.txt");
+            //var code = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\code.txt");
+            //var name = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\name.txt");
+            //var longitude = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\longitude.txt");
+            //var latitude = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\latitude.txt");
+            //var address = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\address.txt");
+            
+            //var filePath = Environment.CurrentDirectory;
+
+            //var code = System.IO.File.ReadAllLines(filePath + "\\code.txt");
+            //var name = System.IO.File.ReadAllLines(filePath + "\\name.txt");
+            //var longitude = System.IO.File.ReadAllLines(filePath + "\\longitude.txt");
+            //var latitude = System.IO.File.ReadAllLines(filePath + "\\latitude.txt");
+            //var address = System.IO.File.ReadAllLines(filePath + "\\address.txt");
 
             BusStationsList = new List<BusStation>();
             Match = new Dictionary<int, string>();
@@ -270,10 +270,52 @@ namespace DS
 
             DriversList = new List<Driver>();
 
+            LineStationsList = new List<LineStation>()
+            {
+                new LineStation()
+                {
+                    StationIndex = 0,
+                    StationNumber = 38831,
+                    Active = true,
+                    BusLineId = 0
+                },
+
+                new LineStation()
+                {
+                    StationIndex = 2,
+                    StationNumber = 38832,
+                    Active = true,
+                    BusLineId = 0
+                },
+
+                new LineStation()
+                {
+                    StationIndex = 1,
+                    StationNumber = 38833,
+                    Active = true,
+                    BusLineId = 0
+                },
+
+                new LineStation()
+                {
+                    StationIndex = 3,
+                    StationNumber = 38834,
+                    Active = true,
+                    BusLineId = 0
+                },
+
+                new LineStation()
+                {
+                    StationIndex = 4,
+                    StationNumber = 38836,
+                    Active = true,
+                    BusLineId = 0
+                }
+            };
+
+
             LineExitsList = new List<LineExit>();
-
-            LineStationsList = new List<LineStation>();
-
+            
             TravelingBusesList = new List<TravelingBus>();
 
             UsersList = new List<User>();

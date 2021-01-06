@@ -94,17 +94,25 @@
             BorderBrush="Transparent"
             MouseEnter="Exit_OnMouseEnter"
             MouseLeave="Exit_OnMouseLeave"
-            MouseDown="Exit_OnMouseDown"
-            >
+            MouseDown="Exit_OnMouseDown">
 
-            <TextBlock
+
+            <materialDesign:PackIcon
+                Kind="Close"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="White"
+                Height="40"
+                Width="40"
+                />
+            <!--<TextBlock
                 Name="X"
                 Text="×"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="50"
                 Foreground="White"
-                Margin="0,0,0,0"/>
+                Margin="0,0,0,0"/>-->
 
         </Border>
 
@@ -137,7 +145,7 @@
             Height="80"
             BorderBrush="Transparent"
             Click="ButtonBase_OnClick">
-                
+
                 <materialDesign:PackIcon
                     Name="OpenCloseButtonIcon"
                     Foreground="White"
@@ -145,7 +153,7 @@
                     Height="50"
                     Width="50"
                     />
-                    
+
             </Button>
 
             <Button

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using DalApi;
 using DS;
 using DO;
@@ -106,6 +107,65 @@ namespace Dal
 
         #endregion
 
+        #region BusStation
+        public void AddBusStation(BusStation busStation)
+        {
+            var bs = DataSource.BusStationsList.Find(b => b.Code == busStation.Code);
+
+            if (bs == null)
+            {
+                DataSource.BusStationsList.Add(busStation.Clone());
+            }
+
+            else if (bs.Active is false)
+            {
+                bs.Active = true;
+            }
+
+            else throw new StationAlreadyExistsException($"Station number {busStation.Code} already exists");
+        }
+        public IEnumerable<BusStation> GetAllActiveBusStations()
+        {
+            if (DataSource.BusStationsList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.BusStationsList)} is Empty");
+            }
+
+            return from bs in DataSource.BusStationsList
+                   where bs.Active is true
+                   select bs.Clone();
+        }
+        public IEnumerable<BusStation> GetAllInActiveBusStations()
+        {
+            if (DataSource.BusStationsList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.BusStationsList)} is Empty");
+            }
+
+            return from bs in DataSource.BusStationsList
+                   where bs.Active is false
+                   select bs.Clone();
+        }
+        public DO.BusStation GetBusStation(int code)
+        {
+            var bs = DataSource.BusStationsList.Find(b => b.Code == code);
+            if (bs != null) return bs;
+            throw new StationDoesNotExistException($"Station number {code} does not exist");
+        }
+        public void UpdateBusStation(DO.BusStation bs)
+        {
+            DeleteBusStation(bs.Code);
+            AddBusStation(bs);
+        }
+        public void DeleteBusStation(int code)
+        {
+            var bs = DataSource.BusStationsList.Find(b => b.Code == code);
+            if (bs is null) throw new StationDoesNotExistException($"Station number {code} does not exist");
+            bs.Active = false;
+        }
+
+        #endregion
+
         #region BusLine
         public void AddBusLine(BusLine busLine)
         {
@@ -173,97 +233,182 @@ namespace Dal
 
         #endregion
 
-        #region BusStation
-        public void AddBusStation(BusStation busStation)
+        #region LineStation
+        public void AddLineStation(LineStation lineStation)
         {
-            var bs = DataSource.BusStationsList.Find(b => b.Code == busStation.Code);
-
-            if (bs == null)
+            var ls = DataSource.LineStationsList.Find(l => l.BusLineId == lineStation.BusLineId &&
+                                                            l.StationNumber == lineStation.StationNumber);
+            if (ls == null)
             {
-                DataSource.BusStationsList.Add(busStation.Clone());
+                DataSource.LineStationsList.Add(lineStation.Clone());
             }
 
-            else if (bs.Active is false)
+            else if (ls.Active is false)
             {
-                bs.Active = true;
+                ls.Active = true;
             }
 
-            else throw new StationAlreadyExistsException($"Station number {busStation.Code} already exists");
+            else throw new LineStationsAlreadyExistsException($"Line station {lineStation.BusLineId}/{lineStation.StationNumber} already exists");
         }
-
-        public IEnumerable<BusStation> GetAllActiveBusStations()
+        public IEnumerable<LineStation> GetAlLineStationsByLineNumber(int LineID)
         {
-            if (DataSource.BusStationsList.Count == 0)
+            var stations = from ls in DataSource.LineStationsList
+                           where ls.BusLineId == LineID && ls.Active is true
+                           select ls.Clone();
+
+            if (stations is null)
             {
-                throw new EmptyListException($"{nameof(DataSource.BusStationsList)} is Empty");
+                throw new LineStationsDoesNotExistsException($"Line {LineID} does not have any stations");
             }
 
-            return from bs in DataSource.BusStationsList
-                   where bs.Active is true
-                   select bs.Clone();
+            return stations;
         }
-
-        public IEnumerable<BusStation> GetAllInActiveBusStations()
+        public IEnumerable<LineStation> GetAlLineStationsBy(Predicate<LineStation> predicate)
         {
-            if (DataSource.BusStationsList.Count == 0)
+            var stations = from ls in DataSource.LineStationsList
+                           where ls.Active is true && predicate(ls)
+                           select ls.Clone();
+
+            if (stations is null)
             {
-                throw new EmptyListException($"{nameof(DataSource.BusStationsList)} is Empty");
+                throw new LineStationsDoesNotExistsException($"No stations satisfies the condition {predicate}");
             }
 
-            return from bs in DataSource.BusStationsList
-                   where bs.Active is false
-                   select bs.Clone();
+            return stations;
         }
+        public LineStation GetLineStation(int lineNumber, int stationNumber)
+        {
+            var lineStation = DataSource.LineStationsList.Find(ls => ls.BusLineId == lineNumber &&
+                                                                     ls.StationNumber == stationNumber &&
+                                                                     ls.Active is true);
+            if (lineStation is null)
+            {
+                throw new LineStationsDoesNotExistsException($"Line station {lineNumber}/{stationNumber} does not exists or not active");
 
-        public DO.BusStation GetBusStation(int code)
-        {
-            var bs = DataSource.BusStationsList.Find(b => b.Code == code);
-            if (bs != null) return bs;
-            throw new StationDoesNotExistException($"Station number {code} does not exist");
-        }
+            }
 
-        public void UpdateBusStation(DO.BusStation bs)
-        {
-            DeleteBusStation(bs.Code);
-            AddBusStation(bs);
+            return lineStation;
         }
-        public void DeleteBusStation(int code)
+        public void UpdateLineStation(int lineNumber, int stationNumber, int stationIndex)
         {
-            var bs = DataSource.BusStationsList.Find(b => b.Code == code);
-            if (bs is null) throw new StationDoesNotExistException($"Station number {code} does not exist");
-            bs.Active = false;
+            var lineStation = GetLineStation(lineNumber, stationNumber);
+            lineStation.StationIndex = stationIndex;
+        }
+        public void DeleteLineStation(int lineNumber, int stationNumber)
+        {
+            var lineStation = GetLineStation(lineNumber, stationNumber);
+
+            if (lineStation.Active is true)
+            {
+                lineStation.Active = false;
+            }
+            else throw new AlreadyDeletedException($"Line station {lineNumber}/{stationNumber} already deleted");
         }
 
         #endregion
 
         #region ConsecutiveStations
         //IEnumerable<ConsecutiveStations> GetAllConsecutiveStations();
-        public void AddConsecutiveStations(int statCode1, int statCode2)
+        public void AddConsecutiveStations(int statCode1, int statCode2, TimeSpan toNext, double distance)
         {
-            if (DataSource.ConsecutiveStationsList.Find((c => c.StatCode1 == statCode1 && c.StatCode2 == statCode2)) == null)
+            var cons = DataSource.ConsecutiveStationsList.Find(c => c.StatCode1 == statCode1 &&
+                                                                                    c.StatCode2 == statCode2);
+
+            if (cons is null)
             {
-                var con = new ConsecutiveStations { StatCode1 = statCode1, StatCode2 = statCode2 };
+                var con =
+                    new ConsecutiveStations
+                    {
+                        StatCode1 = statCode1,
+                        StatCode2 = statCode2,
+                        Distance = distance,
+                        AverageTravelTime = toNext,
+                        Active = true
+                    };
                 DataSource.ConsecutiveStationsList.Add(con);
             }
-            else throw new StationsAlreadyConsecutiveException($"Stations {statCode1} and {statCode2} are already consecutive stations");
-        }
 
+            else throw new StationsAlreadyConsecutiveException($"Stations {statCode1} and {statCode2} are already consecutive stations");
+
+            // check if redundant
+        }
         public ConsecutiveStations GetConsecutiveStations(int statCode1, int statCode2)
         {
-            var consecutiveStations = DataSource.ConsecutiveStationsList.Find(c => c.StatCode1 == statCode1 && c.StatCode2 == statCode2);
-            if (consecutiveStations != null) return consecutiveStations;
-            throw new StationsAreNotConsecutiveException($"Stations {statCode1} and {statCode2} are not consecutive stations");
-        }
+            var consecutiveStations = DataSource.ConsecutiveStationsList.Find(c => c.StatCode1 == statCode1 &&
+                                                                                   c.StatCode2 == statCode2);
 
-        public void DeleteConsecutiveStations(int statCode1, int statCode2)
-        {
-            var consecutiveStations = DataSource.ConsecutiveStationsList.Find(c => c.StatCode1 == statCode1 && c.StatCode2 == statCode2);
             if (consecutiveStations is null)
             {
                 throw new StationsAreNotConsecutiveException($"Stations {statCode1} and {statCode2} are not consecutive stations");
             }
 
-            DataSource.ConsecutiveStationsList.Remove(consecutiveStations);
+            return consecutiveStations;
+        }
+        public bool CheckConsecutiveStationsNotExist(int statCode1, int statCode2)
+        {
+            return (DataSource.ConsecutiveStationsList.Find(c => c.StatCode1 == statCode1 &&
+                                                                 c.StatCode2 == statCode2) is null);
+        }
+        //public void DeleteConsecutiveStations(int statCode1, int statCode2)
+        //{
+        //    var consecutiveStations = DataSource.ConsecutiveStationsList.Find(c => c.StatCode1 == statCode1 && c.StatCode2 == statCode2);
+        //    if (consecutiveStations is null)
+        //    {
+        //        throw new StationsAreNotConsecutiveException($"Stations {statCode1} and {statCode2} are not consecutive stations");
+        //    }
+
+        //    DataSource.ConsecutiveStationsList.Remove(consecutiveStations);
+        //}
+
+        #endregion
+
+
+        #region TravelingBus
+
+        public void AddTravelingBus(TravelingBus travelingBus)
+        {
+            if (DataSource.TravelingBusesList.Find(ls => ls.Id == travelingBus.Id) == null)
+            {
+                DataSource.TravelingBusesList.Add(travelingBus);
+            }
+            else throw new TravelingBusesAlreadyExistsException($"Bus {travelingBus.Id} travel already exists");
+        }
+
+        public IEnumerable<TravelingBus> GetAllTravelingBuses()
+        {
+            if (DataSource.TravelingBusesList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.TravelingBusesList)} is Empty");
+            }
+
+            return from travelingBus in DataSource.TravelingBusesList
+                   select travelingBus.Clone();
+        }
+
+        public IEnumerable<TravelingBus> GetAllTravelingBusesBy(Predicate<TravelingBus> predicate)
+        {
+            if (DataSource.TravelingBusesList.Count == 0)
+            {
+                throw new EmptyListException($"{nameof(DataSource.TravelingBusesList)} is Empty");
+            }
+
+            return from travelingBus in DataSource.TravelingBusesList
+                   where predicate(travelingBus)
+                   select travelingBus.Clone();
+        }
+
+        public TravelingBus GetTravelingBus(int travelId)
+        {
+            var travelingBus = DataSource.TravelingBusesList.Find(tb => tb.Id == travelId);
+            if (travelingBus != null) return travelingBus;
+            throw new TravelingBusesDoesNotExistsException($"Bus {travelId} travel does not exist");
+        }
+
+        public void DeleteTravelingBus(int travelId)
+        {
+            var travelingBus = DataSource.TravelingBusesList.Find(tb => tb.Id == travelId);
+            if (travelingBus is null) throw new TravelingBusesDoesNotExistsException($"Bus {travelId} travel does not exist");
+            DataSource.TravelingBusesList.Remove(travelingBus);
         }
 
         #endregion
@@ -320,112 +465,6 @@ namespace Dal
             var driver = DataSource.DriversList.Find(d => d.Id == id);
             if (driver is null) throw new DriverDoesNotExistsException($"Driver {id} does not exist");
             DataSource.DriversList.Remove(GetDriver(id));
-        }
-
-        #endregion
-
-        #region LineStation
-
-        public void AddLineStation(LineStation lineStation)
-        {
-            if (DataSource.LineStationsList.Find(ls => ls.BusLineId == lineStation.BusLineId &&
-                                                       ls.StationNumber == lineStation.StationNumber) == null)
-            {
-                DataSource.LineStationsList.Add(lineStation);
-            }
-            else throw new LineStationsAlreadyExistsException($"Line station {lineStation.BusLineId}/{lineStation.StationNumber} already exists");
-        }
-
-        public IEnumerable<LineStation> GetAlLineStations()
-        {
-            if (DataSource.LineStationsList.Count == 0)
-            {
-                throw new EmptyListException($"{nameof(DataSource.LineStationsList)} is Empty");
-            }
-
-            return from lineStation in DataSource.LineStationsList
-                   select lineStation.Clone();
-        }
-
-        public IEnumerable<LineStation> GetAlLineStationsBy(Predicate<LineStation> predicate)
-        {
-            if (DataSource.LineStationsList.Count == 0)
-            {
-                throw new EmptyListException($"{nameof(DataSource.LineStationsList)} is Empty");
-            }
-
-            return from lineStation in DataSource.LineStationsList
-                   where predicate(lineStation)
-                   select lineStation.Clone();
-        }
-
-        public LineStation GetLineStation(int lineNumber, int stationNumber)
-        {
-            var lineStation = DataSource.LineStationsList.Find(ls => ls.BusLineId == lineNumber && ls.StationNumber == stationNumber);
-            if (lineStation != null) return lineStation;
-            throw new LineStationsDoesNotExistsException($"Line station {lineNumber}/{stationNumber} does not exists");
-        }
-
-        public void UpdateLineStation(int lineNumber, int stationNumber, int stationIndex)
-        {
-            var lineStation = GetLineStation(lineNumber, stationNumber);
-            lineStation.StationIndex = stationIndex;
-        }
-
-        public void DeleteLineStation(int lineNumber, int stationNumber)
-        {
-            var lineStation = GetLineStation(lineNumber, stationNumber);
-            DataSource.LineStationsList.Remove(lineStation);
-        }
-
-        #endregion
-
-        #region TravelingBus
-
-        public void AddTravelingBus(TravelingBus travelingBus)
-        {
-            if (DataSource.TravelingBusesList.Find(ls => ls.Id == travelingBus.Id) == null)
-            {
-                DataSource.TravelingBusesList.Add(travelingBus);
-            }
-            else throw new TravelingBusesAlreadyExistsException($"Bus {travelingBus.Id} travel already exists");
-        }
-
-        public IEnumerable<TravelingBus> GetAllTravelingBuses()
-        {
-            if (DataSource.TravelingBusesList.Count == 0)
-            {
-                throw new EmptyListException($"{nameof(DataSource.TravelingBusesList)} is Empty");
-            }
-
-            return from travelingBus in DataSource.TravelingBusesList
-                   select travelingBus.Clone();
-        }
-
-        public IEnumerable<TravelingBus> GetAllTravelingBusesBy(Predicate<TravelingBus> predicate)
-        {
-            if (DataSource.TravelingBusesList.Count == 0)
-            {
-                throw new EmptyListException($"{nameof(DataSource.TravelingBusesList)} is Empty");
-            }
-
-            return from travelingBus in DataSource.TravelingBusesList
-                   where predicate(travelingBus)
-                   select travelingBus.Clone();
-        }
-
-        public TravelingBus GetTravelingBus(int travelId)
-        {
-            var travelingBus = DataSource.TravelingBusesList.Find(tb => tb.Id == travelId);
-            if (travelingBus != null) return travelingBus;
-            throw new TravelingBusesDoesNotExistsException($"Bus {travelId} travel does not exist");
-        }
-
-        public void DeleteTravelingBus(int travelId)
-        {
-            var travelingBus = DataSource.TravelingBusesList.Find(tb => tb.Id == travelId);
-            if (travelingBus is null) throw new TravelingBusesDoesNotExistsException($"Bus {travelId} travel does not exist");
-            DataSource.TravelingBusesList.Remove(travelingBus);
         }
 
         #endregion

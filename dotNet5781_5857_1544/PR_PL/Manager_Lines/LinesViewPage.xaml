@@ -33,11 +33,11 @@
                 <DataGridTextColumn Header="Area"
                                     Binding="{Binding Path = BusArea}"/>
 
-                <DataGridCheckBoxColumn Header="Accessible"
-                                        ElementStyle="{StaticResource MaterialDesignActionCheckBox}"
-                                        Binding="{Binding Path = AllAccessible}"
-                                        IsReadOnly="False"
-                                        />
+                <DataGridTextColumn Header="Accessible"
+                                        Binding="{Binding Path = AllAccessible}"/>
+
+                                        <!--IsReadOnly="False"
+                                        ElementStyle="{StaticResource MaterialDesignActionCheckBox}"-->
 
                 <DataGridTextColumn Header="First station"
                                     CanUserSort="False"

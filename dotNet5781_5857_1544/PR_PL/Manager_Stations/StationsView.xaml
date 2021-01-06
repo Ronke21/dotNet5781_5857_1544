@@ -10,7 +10,16 @@
         Width="800"
         WindowStartupLocation="CenterOwner"
         WindowStyle="None"
-        x:Name="StationsViewWindow">
+        x:Name="StationsViewWindow"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
 
     <Grid>
         <DataGrid
@@ -43,13 +52,13 @@
                     Binding="{Binding Name}"
                     Header="Station Name"
                     Width="*"/>
-                    
+
                 <DataGridTextColumn 
                     x:Name="Address" 
                     Binding="{Binding Address}"
                     Header="Address"
                     Width="*"/>
-                    
+
 
             </DataGrid.Columns>
 
@@ -63,9 +72,14 @@
             VerticalAlignment="Bottom"
             Margin="427,0,266.6,15.2"
             Click="Remove_Click"
-            Content="Remove"
-        />
-        
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+        >
+            <materialDesign:PackIcon
+                Kind="Remove"
+                Width="50"
+                Height="50"/>
+        </Button>
+
         <Button 
             x:Name="InActive"
             Width="100"
@@ -74,8 +88,13 @@
             VerticalAlignment="Bottom"
             Margin="224,0,469.6,15.2"
             Click="InActive_Click"
-            Content="Inactive Stations"
-        />
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+        >
+            <materialDesign:PackIcon
+                Kind="PackageDown"
+                Width="50"
+                Height="50"/>
+        </Button>
 
         <Button 
             x:Name="Exit"
@@ -85,10 +104,15 @@
             VerticalAlignment="Bottom"
             Margin="15,0,0,15"
             Click="Exit_OnClick"
-            Content="Exit"
-        />
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+        >
+            <materialDesign:PackIcon
+                Kind="Close"
+                Width="50"
+                Height="50"/>
+        </Button>
 
-        
+
         <Button 
             x:Name="Add"
             Width="100"
@@ -97,8 +121,13 @@
             VerticalAlignment="Bottom"
             Margin="0,0,15,15"
             Click="Add_OnClick"
-            Content="Add"
-        />
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+        >
+            <materialDesign:PackIcon
+                Kind="Add"
+                Width="50"
+                Height="50"/>
+        </Button>
 
     </Grid>
 

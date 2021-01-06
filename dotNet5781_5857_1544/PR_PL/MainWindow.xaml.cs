@@ -88,7 +88,7 @@ namespace PL
             BrushConverter bc = new BrushConverter();
             Exit.Background = (Brush)bc.ConvertFrom("#E81123");
         }
-        private void Exit_OnMouseDown(object sender, MouseButtonEventArgs e)
+        private void Exit_OnMouseDown(object sender, MouseEventArgs e)
         {
             Close();
         }
@@ -221,6 +221,5 @@ namespace PL
         }
 
         #endregion
-
     }
 }

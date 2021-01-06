@@ -36,6 +36,7 @@
             VerticalAlignment="Stretch"
             VerticalContentAlignment="Stretch"
             MinColumnWidth="200"
+            Margin="0,0,0,100"
             >
 
             <DataGrid.Columns>
@@ -76,9 +77,9 @@
             Click="Remove_Click"
         >
             <materialDesign:PackIcon
-                Width="60"
-                Height="60"
-                Kind="Delete"
+                Width="50"
+                Height="50"
+                Kind="Remove"
                 />
         </Button>
 
@@ -92,8 +93,8 @@
             Click="InActive_Click"
            >
             <materialDesign:PackIcon
-                Width="60"
-                Height="60"
+                Width="50"
+                Height="50"
                 Kind="PackageDown"
             />
         </Button>

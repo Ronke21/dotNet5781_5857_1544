@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using BO;
+using DO;
+using Bus = BO.Bus;
+using BusLine = BO.BusLine;
 
 namespace BLApi
 {
@@ -40,14 +42,13 @@ namespace BLApi
 
         #endregion
 
-
-        //#region ConsecutiveStations
-        ////IEnumerable<ConsecutiveStations> GetAllConsecutiveStations();
-        //void AddConsecutiveStations(int statCode1, int statCode2);
+        #region ConsecutiveStations
+        //IEnumerable<ConsecutiveStations> GetAllConsecutiveStations();
+        void AddConsecutiveStations(int statCode1, int statCode2);
         //ConsecutiveStations GetConsecutiveStations(int statCode1, int statCode2);
         //void DeleteConsecutiveStations(int statCode1, int statCode2);
 
-        //#endregion
+        #endregion
 
         //#region Driver
 

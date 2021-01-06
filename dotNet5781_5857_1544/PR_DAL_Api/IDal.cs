@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using DO;
 
 namespace DalApi
@@ -45,9 +46,11 @@ namespace DalApi
 
         #region ConsecutiveStations
         //IEnumerable<ConsecutiveStations> GetAllConsecutiveStations();
-        void AddConsecutiveStations(int statCode1, int statCode2);
+        void AddConsecutiveStations(int statCode1, int statCode2, TimeSpan toNext, double distance);
+        bool CheckConsecutiveStationsNotExist(int statCode1, int statCode2);
+
         ConsecutiveStations GetConsecutiveStations(int statCode1, int statCode2);
-        void DeleteConsecutiveStations(int statCode1, int statCode2);
+        //void DeleteConsecutiveStations(int statCode1, int statCode2);
 
         #endregion
 
@@ -65,7 +68,7 @@ namespace DalApi
 
         #region LineStation
         void AddLineStation(LineStation lineStation);
-        IEnumerable<LineStation> GetAlLineStations();
+        IEnumerable<LineStation> GetAlLineStationsByLineNumber(int ID);
         IEnumerable<LineStation> GetAlLineStationsBy(Predicate<LineStation> predicate);
         LineStation GetLineStation(int lineNumber, int stationNumber);
         void UpdateLineStation(int lineNumber, int stationNumber, int stationIndex);

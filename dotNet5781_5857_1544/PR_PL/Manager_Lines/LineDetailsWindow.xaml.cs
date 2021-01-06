@@ -28,7 +28,9 @@ namespace PR_PL.Manager_Lines
 
             _bl = b;
 
-            BusLineDetailsGrid.DataContext = busLine;
+            BusLineDetailsGrid.DataContext = _bl.GetBusLine(busLine.BusLineId);
+
+            StationDataGrid.DataContext = busLine.ListOfLineStations.ToList();
         }
     }
 }

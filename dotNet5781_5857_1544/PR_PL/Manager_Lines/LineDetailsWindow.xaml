@@ -24,6 +24,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.3*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -48,12 +49,12 @@
         <Label
             Grid.Row="0"
             Grid.Column="3"
-            Content="{Binding Path}"
+            Content="{Binding Path=LineNumber}"
             FontSize="50"
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
-            Height="25"
-            Width="25"/>
+            Margin="0,0,15,0"
+            />
 
         <Label
             Grid.Row="0"
@@ -61,15 +62,17 @@
             Content="Bus line ID"
             FontSize="15"
             VerticalAlignment="Center"
-            HorizontalAlignment="Left"/>
+            HorizontalAlignment="Center"
+            Margin="0,0,50,0"/>
 
         <Label
             Grid.Row="0"
             Grid.Column="0"
-            Content="{Binding Path}"
+            Content="{Binding Path = BusLineId}"
             FontSize="15"
             VerticalAlignment="Center"
-            HorizontalAlignment="Right"/>
+            HorizontalAlignment="Right"
+            Margin="0,0,25,0"/>
 
         <Label
             Grid.Row="1"
@@ -77,15 +80,17 @@
             Content="Area"
             FontSize="15"
             VerticalAlignment="Center"
-            HorizontalAlignment="Left"/>
+            HorizontalAlignment="Center"
+            Margin="0,0,50,0"/>
 
         <Label
             Grid.Row="1"
             Grid.Column="0"
-            Content="{Binding Path}"
+            Content="{Binding Path=BusArea}"
             FontSize="15"
             VerticalAlignment="Center"
-            HorizontalAlignment="Right"/>
+            HorizontalAlignment="Right"
+            Margin="0,0,25,0"/>
 
         <Button
             Grid.Row="4"
@@ -106,12 +111,22 @@
         </Button>
 
         <DataGrid
+            Name="StationDataGrid"
             Grid.Row="1"
-            Grid.Column="1"
+            Grid.Column="2"
             Grid.ColumnSpan="3"
             Grid.RowSpan="4"
             Margin="0,0,20,20"
-        />
+            BorderThickness="5"
+            BorderBrush="Red"
+            ItemsSource="{Binding Path}">
+
+            <DataGridTextColumn 
+                Header="License Number"
+                MinWidth="250"
+            />
+
+        </DataGrid>
 
     </Grid>
 </Window>
