@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Device.Location;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using DO;
@@ -188,19 +189,27 @@ namespace DS
             #endregion
 
             #region Bus station List
-            
+            /*
             var code = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\code.txt");
             var name = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\name.txt");
             var longitude = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\longitude.txt");
             var latitude = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\latitude.txt");
             var address = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\address.txt");
-            /*
+            
             var code = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\code.txt");
             var name = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\name.txt");
             var longitude = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\longitude.txt");
             var latitude = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\latitude.txt");
             var address = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\address.txt");
             */
+            string filePath = Environment.CurrentDirectory;
+
+            var code = System.IO.File.ReadAllLines(filePath + "\\code.txt");
+            var name = System.IO.File.ReadAllLines(filePath + "\\name.txt");
+            var longitude = System.IO.File.ReadAllLines(filePath + "\\longitude.txt");
+            var latitude = System.IO.File.ReadAllLines(filePath + "\\latitude.txt");
+            var address = System.IO.File.ReadAllLines(filePath + "\\address.txt");
+
             BusStationsList = new List<BusStation>();
             Match = new Dictionary<int, string>();
 
