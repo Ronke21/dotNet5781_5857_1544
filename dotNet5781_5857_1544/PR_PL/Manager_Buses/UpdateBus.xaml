@@ -9,47 +9,6 @@
         Height="360" 
         Width="340"
         x:Name="UpdateBusWindow">
-    <Window.Resources>
-        <LinearGradientBrush x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
-            <GradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="White" Offset="0.0"/>
-                    <GradientStop Color="White" Offset="0.1"/>
-                    <GradientStop Color="White" Offset="0.9"/>
-                    <GradientStop Color="White" Offset="1.0"/>
-                </GradientStopCollection>
-            </GradientBrush.GradientStops>
-        </LinearGradientBrush>
-        <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
-        <LinearGradientBrush x:Key="DarkBrush" StartPoint="0,0" EndPoint="0,1">
-            <GradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="LightGreen" Offset="0.0"/>
-                    <GradientStop Color="Green" Offset="1.0"/>
-                </GradientStopCollection>
-            </GradientBrush.GradientStops>
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="NormalBorderBrush" StartPoint="0,0" EndPoint="0,1">
-            <GradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="White" Offset="0.0"/>
-                    <GradientStop Color="White" Offset="1.0"/>
-                </GradientStopCollection>
-            </GradientBrush.GradientStops>
-        </LinearGradientBrush>
-        <Style x:Key="{x:Type ProgressBar}" TargetType="{x:Type ProgressBar}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ProgressBar}">
-                        <Grid>
-                            <Border Name="PART_Track" CornerRadius="3" Background="{StaticResource PressedBrush}" BorderBrush="{StaticResource SolidBorderBrush}" BorderThickness="0.5" />
-                            <Border Name="PART_Indicator" CornerRadius="3" Background="{StaticResource DarkBrush}" BorderBrush="Transparent"  BorderThickness="2,2,2,2" HorizontalAlignment="Left" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -67,21 +26,6 @@
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <LinearGradientBrush.RelativeTransform>
-                    <TransformGroup>
-                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                        <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </LinearGradientBrush.RelativeTransform>
-                <GradientStop Color="#AA01A77C" Offset="0.013"/>
-                <GradientStop Color="#AA30A4B8" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-
         <!--License number-->
         <Label 
         Content="License number"
@@ -93,20 +37,7 @@
         FontSize="12"
         Margin="15,0,0,0"
         Grid.ColumnSpan="3"
-        >
-
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
+        />
 
         <!--Fuel amount-->
         <Label 
@@ -119,19 +50,7 @@
         FontSize="12"
         Margin="15,0,0,0"
         Grid.ColumnSpan="3"
-        >
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
+        />
 
         <Label 
         Content="Mileage"
@@ -143,20 +62,7 @@
         FontSize="12"
         Margin="15,0,0,0"
         Grid.ColumnSpan="3"
-        >
-
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
+        />
 
         <Label 
             Content="Starting date"
@@ -168,19 +74,7 @@
             FontSize="12"
             Margin="15,0,0,0"
             Grid.ColumnSpan="3"
-        >
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
+        />
 
         <Label 
         Content="Last maintenance date"
@@ -192,19 +86,7 @@
         FontSize="12"
         Margin="15,0,0,0"
         Grid.ColumnSpan="3"
-        >
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
+        />
 
         <Label 
         Content="Status"
@@ -216,20 +98,7 @@
         FontSize="12"
         Margin="15,0,0,0"
         Grid.ColumnSpan="3"
-        >
-
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
+        />
 
         <Label 
         Content="Mileage from last maint"
@@ -241,20 +110,7 @@
         FontSize="12"
         Margin="15,0,0,0"
         Grid.ColumnSpan="3"
-        >
-
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
+        />
 
         <Label 
         Name="LicenseNumLabel"
@@ -278,18 +134,7 @@
             Height="30"
             Text="{Binding Path=Fuel}"
             PreviewTextInput="TextBox_OnPreviewTextInput"
-        >
-
-            <TextBox.Resources>
-                <Style TargetType="Border">
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="13"
-                    />
-                </Style>
-            </TextBox.Resources>
-
-        </TextBox>
+        />
 
         <TextBox
             Name="TextBoxMileage"
@@ -303,18 +148,7 @@
             Height="30"
             Text="{Binding Path=Mileage}"
             PreviewTextInput="TextBox_OnPreviewTextInput"
-        >
-
-            <TextBox.Resources>
-                <Style TargetType="Border">
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="13"
-                    />
-                </Style>
-            </TextBox.Resources>
-
-        </TextBox>
+        />
 
         <Label
             Name="StartLabel"
@@ -358,18 +192,7 @@
             Height="30"
             Text="{Binding Path=MileageFromLast}"
             PreviewTextInput="TextBox_OnPreviewTextInput"
-        >
-
-            <TextBox.Resources>
-                <Style TargetType="Border">
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="13"
-                    />
-                </Style>
-            </TextBox.Resources>
-
-        </TextBox>
+        />
 
         <Button
             Name="Update"
@@ -378,6 +201,7 @@
             Grid.ColumnSpan="2"
             Margin="5,5,5,5"
             Click="Update_OnClick"
+            Height="50"
             >
 
             <StackPanel
@@ -395,39 +219,8 @@
 
             </StackPanel>
 
-            <Button.Resources>
-
-                <Style TargetType="Border">
-
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="5"
-                    />
-
-                </Style>
-
-            </Button.Resources>
-
-            <Button.Effect>
-                <DropShadowEffect
-                    BlurRadius="10"
-                    Color="Gray"
-                    ShadowDepth="1"
-                />
-            </Button.Effect>
-
         </Button>
 
-        <!--<ProgressBar
-            x:Name="pbRide"
-            Grid.Row="7"
-            Background="White"
-            Minimum = "0"
-            Value="{Binding Path = RIDE, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
-            Maximum="{Binding Path = MaxRide, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
-            Grid.ColumnSpan="2"
-            Margin="5,5,5,5"
-        />-->
-
     </Grid>
+
 </Window>

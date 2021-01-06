@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="MainWindow"
-        WindowState="Maximized"
         WindowStyle="None"
-        Height="900"
-        Width="1600"
+        Height="750"
+        Width="1200"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -18,6 +19,8 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
+
+        Icon="Icons/bus_white.png"
         >
 
     <Window.Resources>
@@ -26,7 +29,7 @@
 
             <ThicknessAnimation
                 Storyboard.TargetProperty="Margin" 
-                From="-310,0,0,0" 
+                From="-210,0,0,0" 
                 To="0,0,0,0" 
                 DecelerationRatio="0.9" 
                 Duration="0:0:0.3"/>
@@ -38,7 +41,7 @@
             <ThicknessAnimation 
                 Storyboard.TargetProperty="Margin" 
                 From="0,0,0,0" 
-                To="-310,0,0,0" 
+                To="-210,0,0,0" 
                 DecelerationRatio="0.9" 
                 Duration="0:0:0.3"/>
 
@@ -59,9 +62,9 @@
         </Grid.ColumnDefinitions>
 
         <Frame
+            x:Name="DataDisplay"
             Grid.Column="1"
             Grid.Row="1"
-            x:Name="DataDisplay"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             Margin="10"
@@ -74,16 +77,17 @@
             Grid.Row="0"
             Background="#4DA1E3"
             Width="1920"
-            Height="80"
-            VerticalAlignment="Top"/>
+            Height="50"
+            VerticalAlignment="Top"
+            MouseDown="UIElement_OnMouseDown"/>
 
         <!--Exit button-->
         <Border
             Grid.Column="1"
             Grid.Row="0"
             Name="Exit"
-            Width="100"
-            Height="80"
+            Width="70"
+            Height="50"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Background="#E81123"
@@ -98,7 +102,7 @@
                 Text="×"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                FontSize="80"
+                FontSize="50"
                 Foreground="White"
                 Margin="0,0,0,0"/>
 
@@ -112,7 +116,7 @@
             Grid.RowSpan="2"
             Name="SideBar"
             Background="#FF0064A6"
-            Width="400"
+            Width="300"
             HorizontalAlignment="Left"
             >
 
@@ -124,47 +128,128 @@
             </Grid.RowDefinitions>
 
             <!--Open close Button-->
-            <Border
+            <Button
             Grid.Row="0"
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
             Background="Transparent"
             Width="90"
-            Height="55"
+            Height="80"
             BorderBrush="Transparent"
-            MouseDown="OpenCloseMenu_OnMouseDown">
-                <Image Name="OpenCloseMenu"
-                       Source="Icons/menu_close.png"/>
-            </Border>
+            Click="ButtonBase_OnClick">
+                
+                <materialDesign:PackIcon
+                    Name="OpenCloseButtonIcon"
+                    Foreground="White"
+                    Kind="MenuOpen"
+                    Height="50"
+                    Width="50"
+                    />
+                    
+            </Button>
 
-            <Border
+            <Button
                 Name="BusesSidePanel"
                 Grid.Row="1"
+                Background="#FF0064A6"
+                BorderBrush="Transparent"
+                Height="120"
                 Margin="0,0,0,0"
                 MouseEnter="BusesSidePanel_OnMouseEnter"
                 MouseLeave="BusesSidePanel_OnMouseLeave"
-                MouseDown="BusesSidePanel_OnMouseDown">
+                Click="BusesSidePanel_OnClick">
 
                 <StackPanel Orientation="Horizontal">
-                    
+
                     <TextBlock
                         Name="Buses"
-                        Text="Active Buses"
-                        FontSize="50"
+                        Text="Buses"
+                        FontSize="30"
                         Foreground="White"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Margin="15,0,0,0"/>
+                        Margin="5,0,0,0"/>
 
-                    <Image
-                        Source="Icons/bus_white.png"
-                        HorizontalAlignment="Right"
-                        Width="75"
-                        Margin="15,0,0,0"/>
+                    <materialDesign:PackIcon
+                        Foreground="White"
+                        Kind="BusMultiple"
+                        Height="50"
+                        Width="50"
+                        Margin="125,0,0,0"
+                        />
 
                 </StackPanel>
 
-            </Border>
+            </Button>
+
+            <Button
+                Name="StationsSidePanel"
+                Grid.Row="2"
+                Background="#FF0064A6"
+                BorderBrush="Transparent"
+                Height="120"
+                Margin="0,0,0,0"
+                MouseEnter="StationsSidePanel_OnMouseEnter"
+                MouseLeave="StationsSidePanel_OnMouseLeave"
+                Click="StationsSidePanel_OnClick">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock
+                        Name="Stations"
+                        Text="Stations"
+                        FontSize="30"
+                        Foreground="White"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="5,0,0,0"/>
+
+                    <materialDesign:PackIcon
+                        Foreground="White"
+                        Kind="BusStop"
+                        Height="50"
+                        Width="50"
+                        Margin="85,0,0,0"
+                    />
+
+                </StackPanel>
+
+            </Button>
+
+            <Button
+                Name="LinesSidePanel"
+                Grid.Row="3"
+                Background="#FF0064A6"
+                BorderBrush="Transparent"
+                Height="120"
+                Margin="0,0,0,0"
+                MouseEnter="LinesSidePanel_OnMouseEnter"
+                MouseLeave="LinesSidePanel_OnMouseLeave"
+                Click="LinesSidePanel_OnClick">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock
+                        Name="Lines"
+                        Text="Lines"
+                        FontSize="30"
+                        Foreground="White"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="5,0,0,0"/>
+
+                    <materialDesign:PackIcon
+                        Foreground="White"
+                        Kind="MapMarkerDistance"
+                        Height="50"
+                        Width="50"
+                        Margin="130,0,0,0"
+                    />
+
+                </StackPanel>
+
+            </Button>
+
 
         </Grid>
 

@@ -36,7 +36,7 @@ namespace Dal
             }
 
             else throw new BusAlreadyExistsException($"Bus number {bus.LicenseNum} already exists");
-        
+
         }
 
         public IEnumerable<Bus> GetAllActiveBuses()
@@ -109,13 +109,17 @@ namespace Dal
         #region BusLine
         public void AddBusLine(BusLine busLine)
         {
-            if (DataSource.BusLinesList.Find(b => b.BusLineId == busLine.BusLineId) == null)
+            var bl = DataSource.BusLinesList.Find(b => b.BusLineId == busLine.BusLineId);
+            if (bl is null)
             {
                 DataSource.BusLinesList.Add(busLine.Clone());
             }
-            else throw new BusLineAlreadyExistsException($"Bus number {busLine.BusLineId} already exists");
+            else if (bl.Active is false)
+            {
+                bl.Active = true;
+            }
+            else throw new BusLineAlreadyExistsException($"Bus line {busLine.LineNumber} already exist and active ({busLine.BusLineId})");
         }
-
         public IEnumerable<BusLine> GetAllActiveBusLines()
         {
             if (DataSource.BusLinesList.Count == 0)
@@ -127,7 +131,6 @@ namespace Dal
                    where busLine.Active is true
                    select busLine.Clone();
         }
-
         public IEnumerable<BusLine> GetAllInActiveBusLines()
         {
             if (DataSource.BusLinesList.Count == 0)
@@ -139,7 +142,6 @@ namespace Dal
                    where busLine.Active is false
                    select busLine.Clone();
         }
-
         public IEnumerable<BusLine> GetAllBusLinesBy(Predicate<BusLine> predicate)
         {
             if (DataSource.BusLinesList.Count == 0)
@@ -151,25 +153,22 @@ namespace Dal
                    where predicate(busLine)
                    select busLine.Clone();
         }
-
         public BusLine GetBusLine(int busLineId)
         {
             var busLine = DataSource.BusLinesList.Find(b => b.BusLineId == busLineId);
             if (busLine != null) return busLine;
             throw new BusLineDoesNotExistsException($"Bus line number {busLineId} does not exist");
         }
-
         public void UpdateBusLine(BusLine busLine)
         {
             DeleteBusLine(busLine.BusLineId);
             AddBusLine(busLine);
         }
-
         public void DeleteBusLine(int busLineId)
         {
             var busLine = DataSource.BusLinesList.Find(l => l.BusLineId == busLineId);
             if (busLine is null) throw new BusLineDoesNotExistsException($"Bus line number {busLineId} does not exist");
-            DataSource.BusLinesList.Remove(GetBusLine(busLineId));
+            busLine.Active = false;
         }
 
         #endregion
@@ -329,12 +328,12 @@ namespace Dal
 
         public void AddLineStation(LineStation lineStation)
         {
-            if (DataSource.LineStationsList.Find(ls => ls.LineNumber == lineStation.LineNumber &&
+            if (DataSource.LineStationsList.Find(ls => ls.BusLineId == lineStation.BusLineId &&
                                                        ls.StationNumber == lineStation.StationNumber) == null)
             {
                 DataSource.LineStationsList.Add(lineStation);
             }
-            else throw new LineStationsAlreadyExistsException($"Line station {lineStation.LineNumber}/{lineStation.StationNumber} already exists");
+            else throw new LineStationsAlreadyExistsException($"Line station {lineStation.BusLineId}/{lineStation.StationNumber} already exists");
         }
 
         public IEnumerable<LineStation> GetAlLineStations()
@@ -362,7 +361,7 @@ namespace Dal
 
         public LineStation GetLineStation(int lineNumber, int stationNumber)
         {
-            var lineStation = DataSource.LineStationsList.Find(ls => ls.LineNumber == lineNumber && ls.StationNumber == stationNumber);
+            var lineStation = DataSource.LineStationsList.Find(ls => ls.BusLineId == lineNumber && ls.StationNumber == stationNumber);
             if (lineStation != null) return lineStation;
             throw new LineStationsDoesNotExistsException($"Line station {lineNumber}/{stationNumber} does not exists");
         }

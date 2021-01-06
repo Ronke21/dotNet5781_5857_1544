@@ -6,29 +6,16 @@
         xmlns:local="clr-namespace:PR_PL"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="AddBus" 
+        Title="Add Bus" 
         Height="420" 
-        Width="325">
+        Width="325"
+        WindowStartupLocation="CenterScreen"
+        Icon="../Icons/bus_black.png">
 
 
     <Grid
     Name="MasterGrid"
     >
-
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <LinearGradientBrush.RelativeTransform>
-                    <TransformGroup>
-                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                        <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </LinearGradientBrush.RelativeTransform>
-                <GradientStop Color="#AA01A77C" Offset="0.013"/>
-                <GradientStop Color="#AA30A4B8" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
 
 
         <Grid.RowDefinitions>
@@ -198,18 +185,8 @@
                 Width="110"
                 Height="30"
                 PreviewTextInput="TextBox_OnPreviewTextInput"
-            >
+            />
 
-                <TextBox.Resources>
-                        <Style TargetType="Border">
-                            <Setter 
-                                Property="CornerRadius" 
-                                Value="13"
-                            />
-                        </Style>
-                </TextBox.Resources>
-
-            </TextBox>
 
         </Grid>
 
@@ -220,6 +197,7 @@
                 <ColumnDefinition Width="35*"/>
                 <ColumnDefinition Width="203*"/>
             </Grid.ColumnDefinitions>
+            
             <Button
                 Name="Add"
                 VerticalAlignment="Stretch"
@@ -227,21 +205,9 @@
                 Click="Add_OnClick"
                 Margin="5,5,5,5"
                 Grid.ColumnSpan="3"
+                Width="140"
+                Height="50"
             >
-
-                <Button.Resources>
-
-                    <Style TargetType="Border">
-
-                        <Setter 
-                            Property="CornerRadius"
-                            Value="5"    
-                                />
-
-                    </Style>
-
-                </Button.Resources>
-
                 <StackPanel
                     Orientation="Horizontal"
                     >
@@ -250,13 +216,14 @@
                         Content="Add Bus"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
-                        FontSize="20"
+                        FontSize="18"
                         FontWeight="DemiBold"
+                        Foreground="White"
                         />
 
                     <Image
-                        Source="https://img.icons8.com/color/344/bus.png"
-                        Stretch="UniformToFill"
+                        Source="../Icons/bus_white.png"
+                        Height="20"
                         />
 
                 </StackPanel>

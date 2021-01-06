@@ -32,6 +32,8 @@ namespace DS
         public static List<User> UsersList;
         public static List<UserTravel> UserTravelsList;
 
+        public static Dictionary<int, string> Match;
+
         static DataSource()
         {
             InitializeLists();
@@ -157,7 +159,7 @@ namespace DS
             #endregion
 
             #region Bus Lines List
-            
+
             BusLinesList = new List<BusLine>()
             {
                 new BusLine()
@@ -166,8 +168,8 @@ namespace DS
                     AllAccessible = true,
                     BusArea = Area.Jerusalem,
                     BusLineId = KeyGenerator.IdGenerator(),
-                    FirstStation = 73,
-                    LastStation = 75,
+                    FirstStation = 39827,
+                    LastStation = 39826,
                     LineNumber = 6
                 },
 
@@ -177,8 +179,8 @@ namespace DS
                     AllAccessible = true,
                     BusArea = Area.Jerusalem,
                     BusLineId = KeyGenerator.IdGenerator(),
-                    FirstStation = 75,
-                    LastStation = 73,
+                    FirstStation = 39826,
+                    LastStation = 39827,
                     LineNumber = 6
                 },
             };
@@ -187,48 +189,30 @@ namespace DS
 
             #region Bus station List
 
-            BusStationsList = new List<BusStation>()
+            var code = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\code.txt");
+            var name = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\name.txt");
+            var longitude = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\longitude.txt");
+            var latitude = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\latitude.txt");
+            var address = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\address.txt");
+
+            BusStationsList = new List<BusStation>();
+            Match = new Dictionary<int, string>();
+
+            for (var i = 0; i < 700; i++)
             {
-                new BusStation()
-                {
-                    Code = 73,
-                    Name = "Golda",
-                    Address = "Golda st",
-                    Accessible = true,
-                    Active = true,
-                    Location = new GeoCoordinate(31.825302, 35.188624)
-                },
+                BusStationsList.Add(
+                    new BusStation()
+                    {
+                        Accessible = true,
+                        Active = true,
+                        Address = address[i],
+                        Code = Convert.ToInt32(code[i]),
+                        Location = new GeoCoordinate(Convert.ToDouble(latitude[i]), Convert.ToDouble(longitude[i])),
+                        Name = name[i]
+                    });
 
-                new BusStation()
-                {
-                    Code = 74,
-                    Name = "Ron",
-                    Address = "Ron st",
-                    Accessible = false,
-                    Active = true,
-                    Location = new GeoCoordinate(31.825455, 35.188100)
-                },
-
-                new BusStation()
-                {
-                    Code = 75,
-                    Name = "AH",
-                    Address = "AH st",
-                    Accessible = false,
-                    Active = true,
-                    Location = new GeoCoordinate(31.825820, 35.187420)
-                },
-
-                new BusStation()
-                {
-                    Code = 81,
-                    Name = "RK",
-                    Address = "RK st",
-                    Accessible = true,
-                    Active = false,
-                    Location = new GeoCoordinate(32, 34.9)
-                }
-            };
+                Match.Add(Convert.ToInt32(code[i]), name[i]);
+            }
 
             #endregion
 

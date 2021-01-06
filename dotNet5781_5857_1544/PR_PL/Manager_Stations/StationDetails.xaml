@@ -5,54 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR_PL"
         mc:Ignorable="d"
-                Title="StationBusDetails"
+        Title="StationDetails"
         Height="360" 
         Width="360"
-        x:Name="StationDetailsWindow">
+        x:Name="StationDetailsWindow"
+        WindowStartupLocation="CenterScreen"
 
-    <Window.Resources>
-        <LinearGradientBrush x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
-            <GradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="White" Offset="0.0"/>
-                    <GradientStop Color="White" Offset="0.1"/>
-                    <GradientStop Color="White" Offset="0.9"/>
-                    <GradientStop Color="White" Offset="1.0"/>
-                </GradientStopCollection>
-            </GradientBrush.GradientStops>
-        </LinearGradientBrush>
-        <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
-        <LinearGradientBrush x:Key="DarkBrush" StartPoint="0,0" EndPoint="0,1">
-            <GradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="LightGreen" Offset="0.0"/>
-                    <GradientStop Color="Green" Offset="1.0"/>
-                </GradientStopCollection>
-            </GradientBrush.GradientStops>
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="NormalBorderBrush" StartPoint="0,0" EndPoint="0,1">
-            <GradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="White" Offset="0.0"/>
-                    <GradientStop Color="White" Offset="1.0"/>
-                </GradientStopCollection>
-            </GradientBrush.GradientStops>
-        </LinearGradientBrush>
-        <Style x:Key="{x:Type ProgressBar}" TargetType="{x:Type ProgressBar}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ProgressBar}">
-                        <Grid>
-                            <Border Name="PART_Track" CornerRadius="3" Background="{StaticResource PressedBrush}" BorderBrush="{StaticResource SolidBorderBrush}" BorderThickness="0.5" />
-                            <Border Name="PART_Indicator" CornerRadius="3" Background="{StaticResource DarkBrush}" BorderBrush="Transparent"  BorderThickness="2,2,2,2" HorizontalAlignment="Left" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        >
 
-    <Grid>
+
+    <Grid
+        VerticalAlignment="Center">
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*" />
             <ColumnDefinition Width="59*"/>
@@ -62,6 +34,7 @@
             <ColumnDefinition Width="58*" />
             <ColumnDefinition Width="58*" />
         </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -71,233 +44,141 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <LinearGradientBrush.RelativeTransform>
-                    <TransformGroup>
-                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                        <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </LinearGradientBrush.RelativeTransform>
-                <GradientStop Color="#AA01A77C" Offset="0.013"/>
-                <GradientStop Color="#AA30A4B8" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-
         <Label 
         Content="Station Code"
         Grid.Row="0"
         Grid.Column="0"
-        HorizontalAlignment="Left" 
-        VerticalAlignment="Center"
         FontWeight="Bold"
         FontSize="12"
         Margin="15,15,0,15.2"
         Grid.ColumnSpan="3"
-        >
-
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
+        />
 
         <Label 
         Content="Station Name"
         Grid.Row="1"
         Grid.Column="0"
-        HorizontalAlignment="Left" 
-        VerticalAlignment="Center"
         FontWeight="Bold"
         FontSize="12"
         Margin="15,14.8,0,14.4"
         Grid.ColumnSpan="3"
-        >
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
+        />
 
         <Label 
         Content="Address"
         Grid.Row="2"
         Grid.Column="0"
-        HorizontalAlignment="Left" 
-        VerticalAlignment="Center"
         FontWeight="Bold"
         FontSize="12"
         Margin="15,14.6,0,14.6"
         Grid.ColumnSpan="3"
-        >
-
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
+        />
 
         <Label 
             Content="Location"
             Grid.Row="3"
             Grid.Column="0"
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Center"
             FontWeight="Bold"
             FontSize="12"
             Margin="15,14.4,0,14.8"
             Grid.ColumnSpan="4"
-        >
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
+        />
 
         <Label 
-        Content="Accessibilty"
+        Content="Accessibility"
         Grid.Row="4"
         Grid.Column="0"
-        HorizontalAlignment="Left" 
-        VerticalAlignment="Center"
         FontWeight="Bold"
         FontSize="12"
         Margin="15,15.2,0,15"
         Grid.ColumnSpan="4"
-        >
-            <Label.Effect>
+        />
 
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
 
-            </Label.Effect>
-
-        </Label>
-
-        <Label 
+        <Label
         Name="lbCode"
-        Content="{Binding}"
+        Content="{Binding Path = Code}"
         Grid.Row="0"
-        Grid.Column="4"
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center" Margin="0.4,20,-0.4,0.4" Grid.ColumnSpan="3" Height="46" Width="176"
-          />
+        Grid.Column="3"
+        Grid.ColumnSpan="3"
+        VerticalContentAlignment="Center"
+        />
 
         <Label 
         Name="lbName"
-        Content="{Binding}"
-        Grid.Column="4"
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center" Margin="0.4,20.6,9.6,65.933" Grid.ColumnSpan="3" Height="46" Grid.RowSpan="2" Width="166" Grid.Row="1"
+        Content="{Binding Path = Name}"
+        Grid.Column="3"
+        Grid.Row="1"
+        Grid.ColumnSpan="3"
+        VerticalContentAlignment="Center"
           />
 
         <Label 
         Name="lbAddress"
-        Content="{Binding}"
+        Content="{Binding Path=Address}"
         Grid.Row="2"
-        Grid.Column="4"
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center" Margin="10.4,28.2,9.6,0.4" Grid.ColumnSpan="3" Height="37" Width="156"
+        Grid.Column="3"
+        Grid.ColumnSpan="3"
+        VerticalContentAlignment="Center"
         />
+
+        <Button
+            Name="Map"
+            Grid.Row="3"
+            Grid.Column="3"
+            Margin="5,5,5,5"
+            Click="Map_OnClick"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            HorizontalAlignment="Right"
+        >
+            <materialDesign:PackIcon
+                Kind="Map"/>
+        </Button>
+
         <Label
-            x:Name="lbAccess"
-            Content="{Binding }"
-            ContentStringFormat="dd / MM / yyyy"
-            Grid.Row="4"
-            Grid.Column="4"
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center" Margin="0.4,20,9.6,-32.6" Grid.ColumnSpan="3" Height="79" Width="166"
-        />
-        <Label
-            x:Name="lbLocation"
-            Content="{Binding ''}"
-            ContentStringFormat="dd / MM / yyyy"
+            Content="Show map"
             Grid.Row="3"
             Grid.Column="4"
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center" Margin="0.4,27.6,9.6,0" Grid.ColumnSpan="3" Height="38" Width="166"
+            Grid.ColumnSpan="3"
+            HorizontalAlignment="Center"
+            FontSize="20"
+            VerticalContentAlignment="Center"
+        />
+
+        <materialDesign:PackIcon
+            Grid.Row="3"
+            Grid.Column="4"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="20"
+            Height="20"
+            Margin="0,0,20,0"
+            Kind="ArrowBack"/>
+
+
+        <Label
+            x:Name="lbAccess"
+            Content="{Binding Path=Accessible}"
+            Grid.Row="4"
+            Grid.Column="3"
+            Grid.ColumnSpan="3"
+            VerticalContentAlignment="Center"
         />
 
         <Button
             Name="Update"
             Grid.Row="5"
-            Grid.Column="4"
-            Grid.ColumnSpan="2"
+            Grid.Column="6"
             Margin="5,5,5,5"
-            Click="Update_OnClick">
-
-            <StackPanel
-                Orientation="Horizontal"
+            Click="Update_OnClick"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            HorizontalAlignment="Right"
             >
-                <Label
-                    Content="Update"
-                    VerticalAlignment="Center"
-                    FontSize="16"
-                    FontWeight="Medium"
-                />
-                <Image Source="https://img.icons8.com/material-rounded/72/approve-and-update.png"
-                       Height="25"
-                />
-
-            </StackPanel>
-
-            <Button.Resources>
-
-                <Style TargetType="Border">
-
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="5"
-                    />
-
-                </Style>
-
-            </Button.Resources>
-
-            <Button.Effect>
-                <DropShadowEffect
-                    BlurRadius="10"
-                    Color="Gray"
-                    ShadowDepth="1"
-                />
-            </Button.Effect>
-
+            <materialDesign:PackIcon
+                Kind="Update"
+                Foreground="White"/>
         </Button>
 
-
     </Grid>
+
 </Window>

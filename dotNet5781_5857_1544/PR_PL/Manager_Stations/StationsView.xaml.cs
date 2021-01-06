@@ -11,13 +11,14 @@ namespace PL
     /// </summary>
     public partial class StationsView : Window
     {
-        private readonly IBL bl;
+        private readonly IBL _bl;
         public StationsView(IBL b)
         {
             InitializeComponent();
 
-            bl = b;
-            StationsDataGrid.DataContext = bl.GetAllBusStations().ToList();
+            _bl = b;
+
+            StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
         }
 
         private void Exit_OnClick(object sender, RoutedEventArgs e)
@@ -27,21 +28,20 @@ namespace PL
 
         private void Add_OnClick(object sender, RoutedEventArgs e)
         {
-            AddStation ast = new AddStation(bl);
+            AddStation ast = new AddStation(_bl);
             ast.ShowDialog();
-            StationsDataGrid.DataContext = bl.GetAllBusStations().ToList();
+            StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
         }
 
         private void StationsDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            BusStation bs = (BusStation)StationsDataGrid.SelectedItem;
-            StationDetails bd = new StationDetails(bl,bs);
+            var bd = new StationDetails(_bl, (BusStation)StationsDataGrid.SelectedItem);
             bd.Show();
         }
 
         private void InActive_Click(object sender, RoutedEventArgs e)
         {
-            InActiveStationsView iasv = new InActiveStationsView(bl, this);
+            InActiveStationsView iasv = new InActiveStationsView(_bl, this);
             iasv.ShowDialog();
         }
 
@@ -55,9 +55,9 @@ namespace PL
             {
                 foreach (var s in StationsDataGrid.SelectedItems)
                 {
-                    bl.DeleteBusStation(((BusStation)s).Code);
+                    _bl.DeleteBusStation(((BusStation)s).Code);
                 }
-                StationsDataGrid.DataContext = bl.GetAllBusStations().ToList();
+                StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
             }
         }
 

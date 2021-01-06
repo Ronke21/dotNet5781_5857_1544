@@ -1,14 +1,12 @@
-﻿<Page x:Class="PR_PL.Manager_Buses.BusesViewPage"
+﻿<Page x:Class="PR_PL.Manager_Buses.InActiveBusesViewPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PR_PL.Manager_Buses"
-      mc:Ignorable="d"
-      Title="BusesViewPage"
-      ShowsNavigationUI="False" 
-      HorizontalAlignment="Stretch"
-      VerticalAlignment="Stretch"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="InActiveBusesViewPage"
       
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -17,26 +15,25 @@
       TextOptions.TextFormattingMode="Ideal" 
       TextOptions.TextRenderingMode="Auto"        
       Background="{DynamicResource MaterialDesignPaper}"
-      FontFamily="{DynamicResource MaterialDesignFont}"
-      >
+      FontFamily="{DynamicResource MaterialDesignFont}">
 
     <Grid>
 
+
         <DataGrid
-            x:Name="BusesDataGrid"
+            x:Name="InActiveBusesDataGrid"
             AutoGenerateColumns="False"
             EnableRowVirtualization="True"
             ItemsSource="{Binding}"
             RowDetailsVisibilityMode="VisibleWhenSelected"
-            IsReadOnly="True"
-            MouseDoubleClick="BusesDataGrid_OnMouseDoubleClick"
-            FontSize="25"
-            HorizontalAlignment="Stretch"
-            HorizontalContentAlignment="Center"
-            VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
             VerticalContentAlignment="Stretch"
-            MinColumnWidth="200"
-            >
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            CanUserAddRows="False"
+            FontSize="25"
+            IsReadOnly="True"
+            MouseDoubleClick="InActiveBusesDataGrid_OnMouseDoubleClick">
 
             <DataGrid.Columns>
 
@@ -46,78 +43,61 @@
                     Header="License Number"
                     MinWidth="250"/>
 
-
                 <DataGridTextColumn 
                     x:Name="MileageColumn" 
                     Binding="{Binding Mileage}"
-                    Header="Mileage"/>
+                    Header="Mileage"
+                    />
 
                 <DataGridTextColumn 
                     x:Name="FuelColumn" 
                     Binding="{Binding Fuel}"
-                    Header="Fuel"/>
+                    Header="Fuel"
+                    />
 
                 <DataGridTextColumn 
                     x:Name="StatusColumn" 
                     Binding="{Binding Stat}"
-                    Header="Status"/>
+                    Header="Status"
+                    />
 
             </DataGrid.Columns>
 
         </DataGrid>
 
+
         <Button 
-            x:Name="Remove"
+            x:Name="Exit"
             Width="100"
-            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
             Height="100"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
-            Click="Remove_Click"
+            Click="Exit_OnClick"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
         >
             <materialDesign:PackIcon
-                Width="60"
-                Height="60"
-                Kind="Delete"
+                Kind ="ExitToApp"
+                Height="50"
+                Width="50"
                 />
         </Button>
 
         <Button 
-            x:Name="InActive"
+            x:Name="Activate"
             Width="100"
-            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
             Height="100"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
-            Click="InActive_Click"
-           >
+            Click="Activate_OnClick"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+        >
             <materialDesign:PackIcon
-                Width="60"
-                Height="60"
-                Kind="PackageDown"
+                Kind ="PackageUp"
+                Height="50"
+                Width="50"
             />
         </Button>
 
-        <Button
-            x:Name="Add"
-            Click="Add_OnClick"
-            Width="100"
-            Height="100"
-            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-            ToolTip="MaterialDesignFloatingActionMiniDarkButton"
-            Background="#FF0064A6"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Bottom">
-
-            <materialDesign:PackIcon
-                Kind="Add"
-                Width="60" 
-                Height="60"
-                BorderBrush="#FFE2EDFF">
-
-            </materialDesign:PackIcon>
-
-        </Button>
 
     </Grid>
 </Page>

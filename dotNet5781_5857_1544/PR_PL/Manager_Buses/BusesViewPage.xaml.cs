@@ -25,6 +25,7 @@ namespace PR_PL.Manager_Buses
     public partial class BusesViewPage : Page
     {
         private readonly IBL _bl;
+        MainWindow wnd = (MainWindow)Application.Current.MainWindow;
         public BusesViewPage(IBL b)
         {
             _bl = b;
@@ -50,8 +51,7 @@ namespace PR_PL.Manager_Buses
 
         private void InActive_Click(object sender, RoutedEventArgs e)
         {
-            //InActiveBusesView iabv = new InActiveBusesView(bl, this);
-            //iabv.ShowDialog();
+            wnd.DataDisplay.Content = new InActiveBusesViewPage(_bl);
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)

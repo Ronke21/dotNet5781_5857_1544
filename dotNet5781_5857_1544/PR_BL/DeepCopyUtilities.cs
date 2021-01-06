@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Device;
+using System.Device.Location;
 
 namespace BL
 {
@@ -11,13 +13,13 @@ namespace BL
     {
         public static void CopyPropertiesTo<T, S>(this S from, T to)
         {
-            foreach (PropertyInfo propTo in to.GetType().GetProperties())
+            foreach (var propTo in to.GetType().GetProperties())
             {
-                PropertyInfo propFrom = typeof(S).GetProperty(propTo.Name);
+                var propFrom = typeof(S).GetProperty(propTo.Name);
                 if (propFrom == null)
                     continue;
                 var value = propFrom.GetValue(from, null);
-                if (value is ValueType || value is string)
+                if (value is ValueType || value is string || value is GeoCoordinate)
                     propTo.SetValue(to, value);
             }
         }

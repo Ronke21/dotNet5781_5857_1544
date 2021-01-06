@@ -51,5 +51,13 @@
       <Name>PR_DAL_Api</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DataSource\address.txt" />
+    <Content Include="DataSource\code.txt" />
+    <Content Include="DataSource\longitude.txt" />
+    <Content Include="DataSource\latitude.txt" />
+    <Content Include="DataSource\name.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

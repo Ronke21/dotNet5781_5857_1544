@@ -1,6 +1,7 @@
 ﻿using BLApi;
 using BO;
 using System.Windows;
+using PR_PL.Manager_Stations;
 
 namespace PL
 {
@@ -16,21 +17,23 @@ namespace PL
             InitializeComponent();
 
             currentBS = bs;
+
             bl = b;
 
-            lbAccess.DataContext = currentBS.Accessible;
-            lbCode.DataContext = currentBS.Code;
-            lbName.DataContext = currentBS.Name;
-        //    lbLocation.DataContext = currentBS.Location.ToString();
-            lbAddress.DataContext = currentBS.Address;
-    //        StationDetailsWindow.DataContext = currentBS;
+            StationDetailsWindow.DataContext = currentBS;
         }
 
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
-   //         UpdateStation us = new UpdateStation(bl, currentBS);
-  //          us.ShowDialog();
+            //UpdateStation us = new UpdateStation(bl, currentBS);
+            //us.ShowDialog();
             Close();
+        }
+
+        private void Map_OnClick(object sender, RoutedEventArgs e)
+        {
+            var smw = new ShowMapWindow(currentBS);
+            smw.ShowDialog();
         }
     }
 }

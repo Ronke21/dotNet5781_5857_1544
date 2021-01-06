@@ -11,10 +11,11 @@
         WindowStartupLocation="CenterOwner"
         WindowStyle="None"
         x:Name="InActiveBusesViewWindow">
-    <Grid>
 
 
-        <DataGrid
+
+    <!--<Grid>
+    <DataGrid
             x:Name="InActiveBusesDataGrid"
             AutoGenerateColumns="False"
             EnableRowVirtualization="True"
@@ -34,113 +35,26 @@
                     x:Name="LicenseNumColumn" 
                     Binding="{Binding LicenseNumStr}"
                     Header="License Number"
-                    Width="150">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter 
-                                Property="HorizontalAlignment"
-                                Value="Center"/>
-                            <Setter
-                                Property="VerticalAlignment"
-                                Value="Center"/>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-
-                    <DataGridColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalAlignment"
-                                    Value="Center"/>
-                            <Setter Property="VerticalAlignment"
-                                    Value="Center"/>
-                        </Style>
-                    </DataGridColumn.HeaderStyle>
-
-                </DataGridTextColumn>
-
-
+                    Width="150"/>
+                    
                 <DataGridTextColumn 
                     x:Name="MileageColumn" 
                     Binding="{Binding Mileage}"
                     Header="Mileage"
-                    Width="150">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter 
-                                Property="HorizontalAlignment"
-                                Value="Center"/>
-                            <Setter
-                                Property="VerticalAlignment"
-                                Value="Center"/>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-
-                    <DataGridColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalAlignment"
-                                    Value="Center"/>
-                            <Setter Property="VerticalAlignment"
-                                    Value="Center"/>
-                        </Style>
-                    </DataGridColumn.HeaderStyle>
-
-                </DataGridTextColumn>
-
+                    Width="150"/>
+                    
                 <DataGridTextColumn 
                     x:Name="FuelColumn" 
                     Binding="{Binding Fuel}"
                     Header="Fuel"
-                    Width="*">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter 
-                                Property="HorizontalAlignment"
-                                Value="Center"/>
-                            <Setter
-                                Property="VerticalAlignment"
-                                Value="Center"/>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-
-                    <DataGridColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                            <Setter Property="VerticalAlignment" Value="Center"/>
-                            <Setter Property="FontSize" Value="30"/>
-                            <Setter Property="Width" Value="150"/>
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                            <Setter Property="VerticalContentAlignment" Value="Center"/>
-                        </Style>
-                    </DataGridColumn.HeaderStyle>
-
-                </DataGridTextColumn>
-
+                    Width="*"/>
+                
                 <DataGridTextColumn 
                     x:Name="StatusColumn" 
                     Binding="{Binding Stat}"
                     Header="Status"
-                    Width="*">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter 
-                                Property="HorizontalAlignment"
-                                Value="Center"/>
-                            <Setter
-                                Property="VerticalAlignment"
-                                Value="Center"/>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-
-                    <DataGridColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalAlignment"
-                                    Value="Center"/>
-                            <Setter Property="VerticalAlignment"
-                                    Value="Center"/>
-                        </Style>
-                    </DataGridColumn.HeaderStyle>
-
-                </DataGridTextColumn>
-
+                    Width="*"/>
+                    
             </DataGrid.Columns>
 
         </DataGrid>
@@ -154,43 +68,8 @@
             VerticalAlignment="Bottom"
             Margin="15,0,0,15"
             Click="Exit_OnClick"
-        >
-
-            <TextBlock
-                Text="Exit"
-                FontSize="20"
-            />
-
-            <Button.Resources>
-
-                <Style TargetType="Border">
-
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="50"
-                    />
-
-                </Style>
-
-            </Button.Resources>
-
-            <Button.Effect>
-                <DropShadowEffect
-                    BlurRadius="15"
-                    Color="DarkGray"
-                    ShadowDepth="1"
-                />
-            </Button.Effect>
-
-            <Button.Background>
-
-                <RadialGradientBrush>
-                    <GradientStop Color="MediumTurquoise"/>
-                </RadialGradientBrush>
-
-            </Button.Background>
-
-        </Button>
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+        />
 
         <Button 
             x:Name="Activate"
@@ -200,43 +79,8 @@
             VerticalAlignment="Bottom"
             Margin="0,0,15,15"
             Click="Activate_Click"
-        >
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+        />
 
-            <TextBlock
-                Text="Activate"
-                FontSize="20"
-            />
-
-            <Button.Resources>
-
-                <Style TargetType="Border">
-
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="50"
-                    />
-
-                </Style>
-
-            </Button.Resources>
-
-            <Button.Effect>
-                <DropShadowEffect
-                    BlurRadius="15"
-                    Color="DarkGray"
-                    ShadowDepth="1"
-                />
-            </Button.Effect>
-
-            <Button.Background>
-
-                <RadialGradientBrush>
-                    <GradientStop Color="MediumTurquoise"/>
-                </RadialGradientBrush>
-
-            </Button.Background>
-
-        </Button>
-
-    </Grid>
+    </Grid>-->
 </Window>

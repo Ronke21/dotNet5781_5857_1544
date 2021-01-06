@@ -82,6 +82,16 @@ namespace BO
     public class NotValidIDException : Exception
     {
         public NotValidIDException(Exception inner) : base() { }
+        public NotValidIDException(string message, Exception inner) : base(message, inner) { }
+        public NotValidIDException() : base() { }
         public NotValidIDException(string message) : base(message) { }
+    }
+
+    [Serializable]
+    public class BusLineDoesNotExistsException : Exception
+    {
+        public BusLineDoesNotExistsException(Exception inner) : base() { }
+
+        public BusLineDoesNotExistsException(string message, Exception inner) : base(message, inner) { }
     }
 }

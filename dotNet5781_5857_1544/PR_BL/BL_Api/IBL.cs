@@ -19,27 +19,26 @@ namespace BLApi
 
         #endregion
 
+        #region BusStation
+        void AddStation(BO.BusStation bs);
+        IEnumerable<BO.BusStation> GetAllBusStations();
+        IEnumerable<BO.BusStation> GetAllInActiveBusStations();
+        BO.BusStation GetBusStation(int code);
+        void UpdateBusStation(BO.BusStation bs);
+        void DeleteBusStation(int code);
+        #endregion
+        
         #region BusLine
         void AddBusLine(BusLine busLine);                                      // C
         IEnumerable<BusLine> GetAllActiveBusLines();                           // R
         IEnumerable<BusLine> GetAllInActiveBusLines();                         // R
-        IEnumerable<BusLine> GetAllBusLinesBy(Predicate<BusLine> predicate);   // R
+        //IEnumerable<BusLine> GetAllBusLinesBy(Predicate<BusLine> predicate);   // R
         BusLine GetBusLine(int busLineId);                                     // R
         void UpdateBusLine(BusLine busLine);                                   // U
         //void UpdateBusLine(int busLineId, Action<BusLine> update);           // U
         void DeleteBusLine(int busLineId);                                     // D
 
         #endregion
-
-        #region BusStation
-        void AddStation(BO.BusStation bs);
-        IEnumerable<BO.BusStation> GetAllBusStations();
-        IEnumerable<BO.BusStation> GetAllInActiveBusStations();
-        BO.BusStation GetStation(int code);
-        void UpdateBusStation(BO.BusStation bs);
-        void DeleteBusStation(int code);
-        #endregion
-
 
 
         //#region ConsecutiveStations

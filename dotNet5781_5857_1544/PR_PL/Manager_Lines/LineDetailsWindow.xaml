@@ -1,0 +1,117 @@
+﻿<Window x:Class="PR_PL.Manager_Lines.LineDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PR_PL.Manager_Lines"
+        mc:Ignorable="d"
+        Title="LineDetailsWindow" Height="450" Width="800"
+        
+        WindowStartupLocation="CenterScreen"
+
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        >
+    <Grid
+        Name="BusLineDetailsGrid"
+        >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="3"
+            Content="Line"
+            FontSize="50"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"/>
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="3"
+            Content="{Binding Path}"
+            FontSize="50"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Height="25"
+            Width="25"/>
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Content="Bus line ID"
+            FontSize="15"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"/>
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Content="{Binding Path}"
+            FontSize="15"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"/>
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="Area"
+            FontSize="15"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"/>
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="{Binding Path}"
+            FontSize="15"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"/>
+
+        <Button
+            Grid.Row="4"
+            Grid.Column="0"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Margin="10,0,0,10"
+            IsEnabled="{Binding Path=AllAccessible}">
+
+            <materialDesign:PackIcon
+                Kind="WheelchairAccessibility"
+                Width="30"
+                Height="30"
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"/>
+
+        </Button>
+
+        <DataGrid
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="3"
+            Grid.RowSpan="4"
+            Margin="0,0,20,20"
+        />
+
+    </Grid>
+</Window>

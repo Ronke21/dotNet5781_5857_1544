@@ -12,22 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BLApi;
+using BO;
 
 namespace PR_PL.Manager_Lines
 {
     /// <summary>
-    /// Interaction logic for LinesView.xaml
+    /// Interaction logic for LineDetailsWindow.xaml
     /// </summary>
-    public partial class LinesView : Window
+    public partial class LineDetailsWindow : Window
     {
-        private readonly IBL bl;
-        public LinesView(IBL b)
+        private readonly IBL _bl;
+        public LineDetailsWindow(IBL b, BusLine busLine)
         {
             InitializeComponent();
-            
-            bl = b;
 
-            LinesDataGrid.DataContext = bl.GetAllActiveBusLines();
+            _bl = b;
+
+            BusLineDetailsGrid.DataContext = busLine;
         }
     }
 }

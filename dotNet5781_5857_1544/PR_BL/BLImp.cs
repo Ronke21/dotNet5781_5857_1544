@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using BL;
 using DalApi;
 using BLApi;
 using BO;
@@ -249,7 +242,6 @@ namespace BL
 
         #endregion
 
-
         #region BusStation
 
         private static BO.BusStation BusStationDoToBoAdapter(DO.BusStation stat)
@@ -266,10 +258,10 @@ namespace BL
             {
                 throw new NotValidIDException("Station Code must be positive!");
             }
-//            if ((bs.Location.Latitude < 31 || bs.Location.Latitude > 33.3) || ( bs.Location.Longitude < 34.3 || bs.Location.Longitude >35.5))
-//            {
-//                throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
-//            }
+            //if ((bs.Location.Latitude < 31 || bs.Location.Latitude > 33.3) || ( bs.Location.Longitude < 34.3 || bs.Location.Longitude >35.5))
+            //{
+            //    throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
+            //}
             return true;
         }
         public void AddStation(BO.BusStation bs)
@@ -309,7 +301,7 @@ namespace BL
             }
             catch (Exception)
             {
-                throw new Exception("Unknown error GetAllBuses");
+                throw new Exception("Unknown error GetAllBusStations");
             }
         }
 
@@ -330,7 +322,7 @@ namespace BL
                 throw new Exception("Unknown error GetAllBuses");
             }
         }
-        public BO.BusStation GetStation(int code)
+        public BO.BusStation GetBusStation(int code)
         {
             var bsBO = new BO.BusStation();
 
@@ -385,16 +377,13 @@ namespace BL
 
         #endregion
 
-
         #region BusLines
-
         private static BO.BusLine BusLineDoToBoAdapter(DO.BusLine busLine)
         {
             var boBusLine = new BO.BusLine();
             busLine.CopyPropertiesTo(boBusLine);
             return boBusLine;
         }
-
         public void AddBusLine(BO.BusLine busLine)
         {
             var busLineDo = new DO.BusLine();
@@ -414,7 +403,6 @@ namespace BL
                 throw new Exception("Unknown error AddBusLine");
             }
         }
-
         public IEnumerable<BO.BusLine> GetAllActiveBusLines()
         {
             try
@@ -431,7 +419,6 @@ namespace BL
                 throw new Exception("Unknown error GetAllBuses");
             }
         }
-
         public IEnumerable<BO.BusLine> GetAllInActiveBusLines()
         {
             try
@@ -448,27 +435,76 @@ namespace BL
                 throw new Exception("Unknown error GetAllBuses");
             }
         }
-        public IEnumerable<BO.BusLine> GetAllBusLinesBy(Predicate<BO.BusLine> predicate)
-        {
-            throw new NotImplementedException();
-        }
 
+        //public IEnumerable<BO.BusLine> GetAllBusLinesBy(Predicate<BO.BusLine> predicate)
+        //{
+        //    try
+        //    {
+        //        return from busLines in dal.GetAllActiveBusLines()
+        //               where predicate(busLines)
+        //            select BusLineDoToBoAdapter(busLines);
+        //    }
+        //    catch (DO.EmptyListException ex)
+        //    {
+        //        throw new BO.EmptyListException("No buses in the list", ex);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new Exception("Unknown error GetAllBuses");
+        //    }
+        //}
         public BO.BusLine GetBusLine(int busLineId)
         {
-            throw new NotImplementedException();
-        }
+            var blBO = new BO.BusLine();
 
+            try
+            {
+                var blDO = dal.GetBusLine(busLineId);
+                blDO.CopyPropertiesTo(blBO);
+            }
+            catch (DO.StationDoesNotExistException ex)
+            {
+                throw new BO.DoesNotExistException("Bus line id does not exist", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetBusLine");
+            }
+
+            return blBO;
+        }
         public void UpdateBusLine(BO.BusLine busLine)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                var b = new DO.BusLine();
+                busLine.CopyPropertiesTo(b);
+                dal.UpdateBusLine(b);
+            }
 
+            catch (Exception)
+            {
+                throw new Exception("Unknown error UpdateBusLine");
+            }
+        }
         public void DeleteBusLine(int busLineId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                dal.DeleteBusLine(busLineId);
+            }
+            catch (DO.BusLineDoesNotExistsException ex)
+            {
+                throw new BO.BusLineDoesNotExistsException("Bus Line number does not exist", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error DeleteBusLine");
+            }
         }
+        
+        #endregion
     }
 
-    #endregion
 }
 

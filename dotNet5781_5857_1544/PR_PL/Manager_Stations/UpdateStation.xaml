@@ -11,23 +11,7 @@
 
 
     <Grid
-    Name="MasterGrid"
-    >
-
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <LinearGradientBrush.RelativeTransform>
-                    <TransformGroup>
-                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                        <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </LinearGradientBrush.RelativeTransform>
-                <GradientStop Color="#AA01A77C" Offset="0.013"/>
-                <GradientStop Color="#AA30A4B8" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+    Name="MasterGrid">
 
 
         <Grid.RowDefinitions>
@@ -201,6 +185,7 @@
             <Button
             Name="Update"
             Grid.Row="5"
+            Height="50"
             Grid.ColumnSpan="4"
             Margin="5,5,5,5"
             Click="Update_OnClick">

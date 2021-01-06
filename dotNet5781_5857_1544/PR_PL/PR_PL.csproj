@@ -72,14 +72,26 @@
     <Compile Include="Manager_Buses\InActiveBusesView.xaml.cs">
       <DependentUpon>InActiveBusesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Manager_Buses\InActiveBusesViewPage.xaml.cs">
+      <DependentUpon>InActiveBusesViewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager_Buses\UpdateBus.xaml.cs">
       <DependentUpon>UpdateBus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_Lines\LineDetailsWindow.xaml.cs">
+      <DependentUpon>LineDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_Lines\LinesViewPage.xaml.cs">
+      <DependentUpon>LinesViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager_Stations\AddStation.xaml.cs">
       <DependentUpon>AddStation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager_Stations\InActiveStationsView.xaml.cs">
       <DependentUpon>InActiveStationsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_Stations\ShowMapWindow.xaml.cs">
+      <DependentUpon>ShowMapWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager_Stations\StationDetails.xaml.cs">
       <DependentUpon>StationDetails.xaml</DependentUpon>
@@ -121,11 +133,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Manager_Buses\InActiveBusesViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Manager_Buses\UpdateBus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Manager_Lines\LinesView.xaml">
+    <Page Include="Manager_Lines\LineDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Lines\LinesViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,11 +157,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Manager_Stations\ShowMapWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Manager_Stations\StationDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Manager_Stations\StationsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Stations\StationsViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -151,8 +179,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Manager_Lines\LinesView.xaml.cs">
-      <DependentUpon>LinesView.xaml</DependentUpon>
+    <Compile Include="Manager_Stations\StationsViewPage.xaml.cs">
+      <DependentUpon>StationsViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager_Stations\UpdateStation.xaml.cs">
       <DependentUpon>UpdateStation.xaml</DependentUpon>
@@ -196,6 +224,13 @@
     <Resource Include="Icons\menu_close.png" />
     <Resource Include="Icons\menu_open.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\bus_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\location_white.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
