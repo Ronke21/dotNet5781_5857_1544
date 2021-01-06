@@ -24,7 +24,6 @@
 
         <WebBrowser
             Name="ShowMap"
-            Source="https://www.google.co.il/maps/@31.6600511,34.5679288,16z?hl=iw"
             />
 
     </Grid>
