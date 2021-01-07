@@ -23,13 +23,17 @@ namespace PR_PL.Manager_Lines
             _bl = b;
 
             LinesDataGrid.ItemsSource = _bl.GetAllActiveBusLines().ToList();
-            //LinesDataGrid.Columns[2].CellStyle = ToggleButton;
-            //FirstStationCol.Binding = Match[]
+
         }
         private void LinesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var x = sender as DataGrid;
-            if (!(x.SelectedItem is BusLine)) ;
+
+            if (x != null && !(x.SelectedItem is BusLine))
+            {
+                // do nothing
+            }
+
             else
             {
                 var ldw = new LineDetailsWindow(_bl, (BusLine)LinesDataGrid.SelectedItem);

@@ -32,19 +32,19 @@ namespace PR_PL.Manager_Lines
             bline = busLine;
 
             BusLineDetailsGrid.DataContext = _bl.GetBusLine(bline.BusLineId);
-            var x =  _bl.UpdateAndReturnLineStationList(bline.BusLineId);
-            StationDataGrid.DataContext = x;
+            StationDataGrid.DataContext = _bl.UpdateAndReturnLineStationList(bline.BusLineId);
         }
 
         private void Map_Click(object sender, RoutedEventArgs e)
         {
-            LineStation current = new LineStation();
-            if (sender != null && sender is Button btn)
+            var current = new LineStation();
+
+            if (sender is Button btn)
             {
                 current = (LineStation)btn.DataContext;
             }
 
-            BusStation toSend = new BusStation()
+            var toSend = new BusStation()
             {
                 
                 Active = current.Active,

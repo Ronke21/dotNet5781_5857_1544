@@ -23,6 +23,7 @@
             FontSize="20"
             ColumnHeaderHeight="50"
             MouseDoubleClick="LinesDataGrid_OnMouseDoubleClick"
+
             >
 
             <DataGrid.Columns>
