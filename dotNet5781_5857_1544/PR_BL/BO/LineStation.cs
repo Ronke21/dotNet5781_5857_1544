@@ -10,6 +10,6 @@ namespace BO
         public int StationIndex { get; set; }
 
         //public bool Active { get; set; } //
-        //public TimeSpan TimeToNext { get; set; }
+        public TimeSpan TimeToNext { get; set; }
     }
 }

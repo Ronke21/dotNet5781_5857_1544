@@ -114,8 +114,8 @@
             x:Name="StationDataGrid"
             Grid.Row="1"
             Grid.RowSpan="3"
-            Grid.Column="2"
-            Grid.ColumnSpan="3"
+            Grid.Column="1"
+            Grid.ColumnSpan="4"
             AutoGenerateColumns="False"
             ItemsSource="{Binding}"
             RowDetailsVisibilityMode="VisibleWhenSelected"
@@ -133,39 +133,50 @@
                     x:Name="Code" 
                     Binding="{Binding Code}"
                     Header="Code"
-                    Width="120"
-                    FontSize="20"
+                    Width="70"
+                    FontSize="10"
                 />
 
                 <DataGridTextColumn 
                     x:Name="Name" 
                     Binding="{Binding Name}"
                     Header="Name"
-                    Width="120"
-                    FontSize="20"
+                    Width="180"
+                    FontSize="10"
                 />
 
                 <DataGridTextColumn 
                     x:Name="Address" 
                     Binding="{Binding Address}"
                     Header="Address"
-                    Width="120"
-                    FontSize="20"
+                    Width="180"
+                    FontSize="10"
                 />
 
-                <DataGridTextColumn 
-                    x:Name="Location" 
-                    Binding="{Binding Location}"
-                    Header="Location"
-                    Width="120"
-                    FontSize="20"
-                />
+                <DataGridTemplateColumn Header="Location" Width="90">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                x:Name="Map"
+                                Click="Map_Click"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                                HorizontalAlignment="Right"
+                                                               >
+                                <materialDesign:PackIcon
+                                    Kind="Map"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+              
 
                 <DataGridTextColumn 
                     x:Name="TimeToNext" 
+                    Binding="{Binding TimeToNext}"
                     Header="TTN"
-                    Width="120"
-                    FontSize="20"
+                    Width="100"
+                    FontSize="10"
                 />
 
             </DataGrid.Columns>

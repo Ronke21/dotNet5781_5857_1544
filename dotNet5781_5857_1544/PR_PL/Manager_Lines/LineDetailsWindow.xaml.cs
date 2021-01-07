@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Device.Location;
 using BLApi;
 using BO;
 
@@ -33,6 +34,28 @@ namespace PR_PL.Manager_Lines
             BusLineDetailsGrid.DataContext = _bl.GetBusLine(bline.BusLineId);
             var x =  _bl.UpdateAndReturnLineStationList(bline.BusLineId);
             StationDataGrid.DataContext = x;
+        }
+
+        private void Map_Click(object sender, RoutedEventArgs e)
+        {
+            LineStation current = new LineStation();
+            if (sender != null && sender is Button btn)
+            {
+                current = (LineStation)btn.DataContext;
+            }
+
+            BusStation toSend = new BusStation()
+            {
+                
+                Active = current.Active,
+                Address = current.Address,
+                Code = current.Code,
+                Location = current.Location,
+                Name = current.Name,
+                Accessible=current.Accessible 
+            };
+            var smw = new PR_PL.Manager_Stations.ShowMapWindow(toSend);
+            smw.ShowDialog();
         }
     }
 }

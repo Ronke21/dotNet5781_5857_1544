@@ -601,10 +601,17 @@ namespace BL
             foreach (var stat in ToReturn)
             {
                 var a = _dal.GetBusStation(stat.StationNumber);
-                //a.CopyPropertiesTo(stat);
-                stat.Name = a.Name;
-                stat.Address = a.Address;
-                stat.Code = a.Code;
+                a.CopyPropertiesTo(stat);
+              //  stat.Name = a.Name;
+               // stat.Address = a.Address;
+             //   stat.Code = a.Code;
+
+            }
+
+            for (int i = 0; i < ToReturn.Count() - 1; i++)
+            {
+                DO.ConsecutiveStations current = _dal.GetConsecutiveStations(ToReturn[i].Code, ToReturn[i + 1].Code);
+                ((BO.LineStation)ToReturn[i]).TimeToNext = (TimeSpan)current.AverageTravelTime;
             }
 
             return ToReturn;
