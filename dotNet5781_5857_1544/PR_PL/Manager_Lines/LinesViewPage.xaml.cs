@@ -41,6 +41,21 @@ namespace PR_PL.Manager_Lines
             }
         }
 
+        private void Remove_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void InActive_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void Add_OnClick(object sender, RoutedEventArgs e)
+        {
+            var abl = new AddBusLineWindow(_bl);
+            abl.ShowDialog();
+        }
     }
 
 }

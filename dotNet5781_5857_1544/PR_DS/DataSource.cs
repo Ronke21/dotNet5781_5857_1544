@@ -10,7 +10,7 @@ using DO;
 
 namespace DS
 {
-    public static class KeyGenerator
+    internal static class KeyGenerator
     // after changing to XML the key will be stored in the NVM to guarantee uniformity
     {
         private static int _key = 0;
@@ -27,7 +27,7 @@ namespace DS
         public static List<BusStation> BusStationsList;
         public static List<ConsecutiveStations> ConsecutiveStationsList;
         public static List<Driver> DriversList;
-        public static List<LineExit> LineExitsList;
+        //public static List<LineExit> LineExitsList;
         public static List<LineStation> LineStationsList;
         public static List<TravelingBus> TravelingBusesList;
         public static List<User> UsersList;
@@ -316,7 +316,7 @@ namespace DS
 
 
 
-            LineExitsList = new List<LineExit>();
+            //LineExitsList = new List<LineExit>();
 
             TravelingBusesList = new List<TravelingBus>();
 

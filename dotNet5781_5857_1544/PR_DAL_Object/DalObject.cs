@@ -12,8 +12,8 @@ namespace Dal
     internal sealed class DalObject : IDal
     {
 
-        #region singelton
-        // ReSharper disable once InconsistentNaming
+        #region singleton
+        
         private static readonly DalObject instance = new DalObject();
         static DalObject() { }// static ctor to ensure instance init is done just before first usage
         private DalObject() { } // default => private

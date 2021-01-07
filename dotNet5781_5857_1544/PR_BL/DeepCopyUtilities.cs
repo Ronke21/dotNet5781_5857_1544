@@ -9,9 +9,9 @@ using System.Device.Location;
 
 namespace BL
 {
-    public static class DeepCopyUtilities
+    internal static class DeepCopyUtilities
     {
-        public static void CopyPropertiesTo<T, S>(this S from, T to)
+        internal static void CopyPropertiesTo<T, S>(this S from, T to)
         {
             foreach (var propTo in to.GetType().GetProperties())
             {
@@ -24,14 +24,14 @@ namespace BL
             }
         }
 
-        public static object CopyPropertiesToNew<S>(this S from, Type type)
+        private static object CopyPropertiesToNew<S>(this S from, Type type)
         {
             object to = Activator.CreateInstance(type); // new object of Type
             from.CopyPropertiesTo(to);
             return to;
         }
 
-        public static BO.LineStation CopyToLineStation(this DO.BusLine bl, DO.BusStation bs)
+        internal static BO.LineStation CopyToLineStation(this DO.BusLine bl, DO.BusStation bs)
         {
             var connect = (BO.LineStation)bl.CopyPropertiesToNew(typeof(BO.LineStation));
             // propertys' names changed? copy them here...

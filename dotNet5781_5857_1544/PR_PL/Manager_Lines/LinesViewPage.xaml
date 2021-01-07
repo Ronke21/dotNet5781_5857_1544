@@ -7,7 +7,17 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LinesViewPage"
-      Name="LinesView">
+      Name="LinesView"
+      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal" 
+      TextOptions.TextRenderingMode="Auto"        
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      >
 
     <Grid>
 
@@ -18,8 +28,6 @@
             HorizontalContentAlignment="Center"
             ColumnWidth="*"
             IsReadOnly="True"
-            MinColumnWidth="50"
-            MaxColumnWidth="150"
             FontSize="20"
             ColumnHeaderHeight="50"
             MouseDoubleClick="LinesDataGrid_OnMouseDoubleClick"
@@ -29,28 +37,88 @@
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Line Number"
+                                    Width="*"
                                     Binding="{Binding Path = LineNumber}"/>
 
                 <DataGridTextColumn Header="Area"
+                                    Width="*"
                                     Binding="{Binding Path = BusArea}"/>
 
                 <DataGridTextColumn Header="Accessible"
-                                        Binding="{Binding Path = AllAccessible}"/>
+                                    Width="*"
+                                    Binding="{Binding Path = AllAccessible}"/>
 
-                                        <!--IsReadOnly="False"
+                <!--IsReadOnly="False"
                                         ElementStyle="{StaticResource MaterialDesignActionCheckBox}"-->
 
                 <DataGridTextColumn Header="First station"
+                                    Width="*"
                                     CanUserSort="False"
                                     Binding="{Binding Path = FirstStation}"/>
 
                 <DataGridTextColumn Header="Last station"
+                                    Width="*"
                                     CanUserSort="False"
                                     Binding="{Binding Path = LastStation}"/>
 
             </DataGrid.Columns>
 
         </DataGrid>
+
+        <Button 
+            x:Name="Remove"
+            Width="100"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            Height="100"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Click="Remove_OnClick"
+        >
+            <materialDesign:PackIcon
+                Width="50"
+                Height="50"
+                Kind="Remove"
+            />
+        </Button>
+
+        <Button 
+            x:Name="InActive"
+            Width="100"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            Height="100"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Click="InActive_OnClick"
+        >
+            <materialDesign:PackIcon
+                Width="50"
+                Height="50"
+                Kind="PackageDown"
+            />
+        </Button>
+
+        <Button
+            x:Name="Add"
+            Width="100"
+            Height="100"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            ToolTip="MaterialDesignFloatingActionMiniDarkButton"
+            Background="#FF0064A6"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Click="Add_OnClick">
+
+            <materialDesign:PackIcon
+                Kind="Add"
+                Width="60" 
+                Height="60"
+                BorderBrush="#FFE2EDFF">
+
+            </materialDesign:PackIcon>
+
+        </Button>
+
+
 
     </Grid>
 

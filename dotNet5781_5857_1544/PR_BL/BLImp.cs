@@ -15,8 +15,16 @@ using LineStation = DO.LineStation;
 
 namespace BL
 {
-    class BLImp : IBL // internal
+    internal class BLImp : IBL // 
     {
+
+        //#region singleton
+        //private static readonly BLImp instance = new BLImp();
+        //static BLImp() { }// static ctor to ensure instance init is done just before first usage
+        //private BLImp() { } // default => private
+        //public static BLImp Instance { get => instance; }// The public Instance property to use
+        //#endregion
+
         private readonly IDal _dal = DalFactory.GetDal();
 
         private static readonly Random Rand = new Random(DateTime.Now.Millisecond);
@@ -602,9 +610,9 @@ namespace BL
             {
                 var a = _dal.GetBusStation(stat.StationNumber);
                 a.CopyPropertiesTo(stat);
-              //  stat.Name = a.Name;
-               // stat.Address = a.Address;
-             //   stat.Code = a.Code;
+                //  stat.Name = a.Name;
+                // stat.Address = a.Address;
+                //   stat.Code = a.Code;
 
             }
 
