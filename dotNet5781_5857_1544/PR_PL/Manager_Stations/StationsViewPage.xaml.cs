@@ -31,7 +31,7 @@ namespace PR_PL.Manager_Stations
             
             _bl = b;
 
-            StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
+            StationsDataGrid.DataContext = _bl.GetAllBusStations();
         }
 
         private void StationsDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)

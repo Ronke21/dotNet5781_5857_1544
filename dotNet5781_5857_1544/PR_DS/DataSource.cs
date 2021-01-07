@@ -190,34 +190,21 @@ namespace DS
 
             #region Bus station List
 
-            var code = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\code.txt");
-            var name = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\name.txt");
-            var longitude = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\longitude.txt");
-            var latitude = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\latitude.txt");
-            var address = System.IO.File.ReadAllLines(@"C:\Users\עמיחי חסן\Source\Repos\Ronke21\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\address.txt");
-
-            //var code = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\code.txt");
-            //var name = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\name.txt");
-            //var longitude = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\longitude.txt");
-            //var latitude = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\latitude.txt");
-            //var address = System.IO.File.ReadAllLines(@"C:\Users\ronke\source\repos\dotNet5781_5857_1544\dotNet5781_5857_1544\PR_DS\DataSource\address.txt");
-            
-            //var filePath = Environment.CurrentDirectory;
-
-            //var code = System.IO.File.ReadAllLines(filePath + "\\code.txt");
-            //var name = System.IO.File.ReadAllLines(filePath + "\\name.txt");
-            //var longitude = System.IO.File.ReadAllLines(filePath + "\\longitude.txt");
-            //var latitude = System.IO.File.ReadAllLines(filePath + "\\latitude.txt");
-            //var address = System.IO.File.ReadAllLines(filePath + "\\address.txt");
+            var code = File.ReadAllLines(@"..\PR_DS\DataSource\code.txt");
+            var name = File.ReadAllLines(@"..\PR_DS\DataSource\name.txt");
+            var longitude = File.ReadAllLines(@"..\PR_DS\DataSource\longitude.txt");
+            var latitude = File.ReadAllLines(@"..\PR_DS\DataSource\latitude.txt");
+            var address = File.ReadAllLines(@"..\PR_DS\DataSource\address.txt");
 
             BusStationsList = new List<BusStation>();
-            Match = new Dictionary<int, string>();
+            //Match = new Dictionary<int, string>();
 
-            for (var i = 0; i < 700; i++)
+            for (var i = 0; i < 27816; i++)
             {
                 BusStationsList.Add(
                     new BusStation()
                     {
+                        //ID = KeyGenerator.IdGenerator(),
                         Accessible = true,
                         Active = true,
                         Address = address[i],
@@ -226,9 +213,19 @@ namespace DS
                         Name = name[i]
                     });
 
-                Match.Add(Convert.ToInt32(code[i]), name[i]);
+                //Match.Add(Convert.ToInt32(code[i]), name[i]);
             }
-
+            //BusStationsList.Add(
+            //    new BusStation()
+            //    {
+            //        ID = KeyGenerator.IdGenerator(),
+            //        Accessible = true,
+            //        Active = true,
+            //        Address = address[22633],
+            //        Code = Convert.ToInt32(code[22633]),
+            //        Location = new GeoCoordinate(Convert.ToDouble(latitude[22633]), Convert.ToDouble(longitude[22633])),
+            //        Name = name[22633]
+            //    });
             #endregion
 
             #region Consecutive Stations
@@ -269,6 +266,8 @@ namespace DS
             #endregion
 
             DriversList = new List<Driver>();
+
+            #region Line station
 
             LineStationsList = new List<LineStation>()
             {
@@ -313,9 +312,12 @@ namespace DS
                 }
             };
 
+            #endregion
+
+
 
             LineExitsList = new List<LineExit>();
-            
+
             TravelingBusesList = new List<TravelingBus>();
 
             UsersList = new List<User>();

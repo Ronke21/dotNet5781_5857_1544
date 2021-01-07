@@ -303,10 +303,10 @@ namespace BL
             {
                 throw new BO.EmptyListException("No buses in the list", ex);
             }
-            catch (Exception)
-            {
-                throw new Exception("Unknown error GetAllBusStations");
-            }
+            //catch (Exception)
+            //{
+            //    throw new Exception("Unknown error GetAllBusStations");
+            //}
         }
 
         public IEnumerable<BO.BusStation> GetAllInActiveBusStations()
