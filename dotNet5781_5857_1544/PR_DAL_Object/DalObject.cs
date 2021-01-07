@@ -250,7 +250,7 @@ namespace Dal
 
             else throw new LineStationsAlreadyExistsException($"Line station {lineStation.BusLineId}/{lineStation.StationNumber} already exists");
         }
-        public IEnumerable<LineStation> GetAlLineStationsByLineNumber(int LineID)
+        public IEnumerable<LineStation> GetAllLineStationsByLineID(int LineID)
         {
             var stations = from ls in DataSource.LineStationsList
                            where ls.BusLineId == LineID && ls.Active is true

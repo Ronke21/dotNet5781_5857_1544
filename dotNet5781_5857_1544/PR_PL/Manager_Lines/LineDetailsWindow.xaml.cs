@@ -22,15 +22,17 @@ namespace PR_PL.Manager_Lines
     public partial class LineDetailsWindow : Window
     {
         private readonly IBL _bl;
+        private readonly BusLine bline;
         public LineDetailsWindow(IBL b, BusLine busLine)
         {
             InitializeComponent();
 
             _bl = b;
+            bline = busLine;
 
-            BusLineDetailsGrid.DataContext = _bl.GetBusLine(busLine.BusLineId);
-
-            StationDataGrid.DataContext = busLine.ListOfLineStations.ToList();
+            BusLineDetailsGrid.DataContext = _bl.GetBusLine(bline.BusLineId);
+            var x =  _bl.UpdateAndReturnLineStationList(bline.BusLineId);
+            StationDataGrid.DataContext = x;
         }
     }
 }

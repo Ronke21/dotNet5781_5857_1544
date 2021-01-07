@@ -63,6 +63,8 @@ namespace BLApi
         //#endregion
 
         //#region LineStation
+        IEnumerable<BO.LineStation> UpdateAndReturnLineStationList(int BusLineID);
+
         //void AddLineStation(LineStation lineStation);
         //IEnumerable<LineStation> GetAlLineStations();
         //IEnumerable<LineStation> GetAlLineStationsBy(Predicate<LineStation> predicate);

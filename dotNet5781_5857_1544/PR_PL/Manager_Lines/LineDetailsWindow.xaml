@@ -111,20 +111,64 @@
         </Button>
 
         <DataGrid
-            Name="StationDataGrid"
+            x:Name="StationDataGrid"
             Grid.Row="1"
+            Grid.RowSpan="3"
             Grid.Column="2"
             Grid.ColumnSpan="3"
-            Grid.RowSpan="4"
-            Margin="0,0,20,20"
-            BorderThickness="5"
-            BorderBrush="Red"
-            ItemsSource="{Binding Path}">
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding}"
+            RowDetailsVisibilityMode="VisibleWhenSelected"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            CanUserAddRows="False"
+            ColumnWidth="*"
+            IsReadOnly="True"
+            FontSize="15"
+            >
 
-            <DataGridTextColumn 
-                Header="License Number"
-                MinWidth="250"
-            />
+            <DataGrid.Columns>
+
+                <DataGridTextColumn 
+                    x:Name="Code" 
+                    Binding="{Binding Code}"
+                    Header="Code"
+                    Width="120"
+                    FontSize="20"
+                />
+
+                <DataGridTextColumn 
+                    x:Name="Name" 
+                    Binding="{Binding Name}"
+                    Header="Name"
+                    Width="120"
+                    FontSize="20"
+                />
+
+                <DataGridTextColumn 
+                    x:Name="Address" 
+                    Binding="{Binding Address}"
+                    Header="Address"
+                    Width="120"
+                    FontSize="20"
+                />
+
+                <DataGridTextColumn 
+                    x:Name="Location" 
+                    Binding="{Binding Location}"
+                    Header="Location"
+                    Width="120"
+                    FontSize="20"
+                />
+
+                <DataGridTextColumn 
+                    x:Name="TimeToNext" 
+                    Header="TTN"
+                    Width="120"
+                    FontSize="20"
+                />
+
+            </DataGrid.Columns>
 
         </DataGrid>
 

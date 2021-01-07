@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Device;
 using System.Linq;
@@ -459,21 +460,12 @@ namespace BL
         //}
         public BO.BusLine GetBusLine(int busLineId)
         {
-            var blBO = new BO.BusLine();
+            var busLineBO = new BO.BusLine();
 
-            var lineStations = _dal.GetAlLineStationsByLineNumber(busLineId).ToList();
-
-            lineStations.Sort((s1,s2)=>s1.StationIndex.CompareTo(s2.StationIndex));
-
-            for (var i = 0; i < lineStations.Count() - 1; i++)
-            {
-                AddConsecutiveStations(lineStations[i].StationNumber, lineStations[i + 1].StationNumber);
-            }
-            
             try
             {
-                var blDO = _dal.GetBusLine(busLineId);
-                blDO.CopyPropertiesTo(blBO);
+                var busLineDO = _dal.GetBusLine(busLineId);
+                busLineDO.CopyPropertiesTo(busLineBO);
             }
             catch (DO.StationDoesNotExistException ex)
             {
@@ -484,20 +476,9 @@ namespace BL
                 throw new Exception("Unknown error GetBusLine");
             }
 
-            //StudentBO.ListOfCourses = from sic in dl.GetStudentsInCourseList(sic => sic.PersonId == id)
-            //    let course = dl.GetCourse(sic.CourseId)
-            //    select course.CopyToStudentCourse(sic);
+            busLineBO.ListOfLineStations = UpdateAndReturnLineStationList(busLineBO.BusLineId);
 
-            //busline.listofstations = from ls in something
-            // let blabla = dl.getlinestation(ls.stationnumber)
-            // select blabla.copy
-
-            //blBO.ListOfLineStations = from ls in lineStations
-            //    select ls.
-
-            //lineStations.CopyPropertiesTo(blBO.ListOfLineStations);
-
-            return blBO;
+            return busLineBO;
         }
         public void UpdateBusLine(BO.BusLine busLine)
         {
@@ -594,6 +575,42 @@ namespace BL
 
         #endregion
 
+        #region LineStation
+
+        private static BO.LineStation LineStationDoToBoAdapter(DO.LineStation DOLineStation)
+        {
+            var BOLineStation = new BO.LineStation();
+            DOLineStation.CopyPropertiesTo(BOLineStation);
+            return BOLineStation;
+        }
+
+        public IEnumerable<BO.LineStation> UpdateAndReturnLineStationList(int BusLineID)
+        {
+            var lineStations = _dal.GetAllLineStationsByLineID(BusLineID).ToList();
+
+            lineStations.Sort((s1, s2) => s1.StationIndex.CompareTo(s2.StationIndex));
+
+            for (var i = 0; i < lineStations.Count() - 1; i++)
+            {
+                AddConsecutiveStations(lineStations[i].StationNumber, lineStations[i + 1].StationNumber);
+            }
+
+            var ToReturn = (from ls in lineStations
+                            select LineStationDoToBoAdapter(ls)).ToList();
+
+            foreach (var stat in ToReturn)
+            {
+                var a = _dal.GetBusStation(stat.StationNumber);
+                //a.CopyPropertiesTo(stat);
+                stat.Name = a.Name;
+                stat.Address = a.Address;
+                stat.Code = a.Code;
+            }
+
+            return ToReturn;
+        }
+
+        #endregion
     }
 
 }
