@@ -28,18 +28,20 @@ namespace BLApi
         BO.BusStation GetBusStation(int code);
         void UpdateBusStation(BO.BusStation bs);
         void DeleteBusStation(int code);
+        IEnumerable<BO.BusStation> GetAllMatches(string text, IEnumerable<BO.BusStation> collection);
+
         #endregion
-        
+
         #region BusLine
-        void AddBusLine(BusLine busLine);                                      // C
+        void AddBusLine(BusLine busLine, List<BO.BusStation> busStations);                                      // C
         IEnumerable<BusLine> GetAllActiveBusLines();                           // R
-        IEnumerable<BusLine> GetAllInActiveBusLines();                         // R
+        IEnumerable<BO.BusLine> GetAllInActiveBusLines();                         // R
         //IEnumerable<BusLine> GetAllBusLinesBy(Predicate<BusLine> predicate);   // R
         BusLine GetBusLine(int busLineId);                                     // R
         void UpdateBusLine(BusLine busLine);                                   // U
         //void UpdateBusLine(int busLineId, Action<BusLine> update);           // U
         void DeleteBusLine(int busLineId);                                     // D
-
+        
         #endregion
 
         #region ConsecutiveStations
@@ -62,7 +64,9 @@ namespace BLApi
 
         //#endregion
 
-        //#region LineStation
+        #region LineStation
+
+        void AddLineStation(BO.LineStation lineStation);
         IEnumerable<BO.LineStation> UpdateAndReturnLineStationList(int BusLineID);
 
         //void AddLineStation(LineStation lineStation);
@@ -72,7 +76,7 @@ namespace BLApi
         //void UpdateLineStation(int lineNumber, int stationNumber, int stationIndex);
         //void DeleteLineStation(int lineNumber, int stationNumber);
 
-        //#endregion
+        #endregion
 
         //#region TravelingBus
         //void AddTravelingBus(TravelingBus travelingBus);

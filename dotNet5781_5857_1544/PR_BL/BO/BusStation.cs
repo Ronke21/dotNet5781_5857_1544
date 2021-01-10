@@ -15,6 +15,11 @@ namespace BO
         public bool Accessible { get; set; }
         public bool Active { get; set; } //
         public IEnumerable<BusLine> BusLines { get; set; }
+
+        public override string ToString()
+        {
+            return (Code + Address + Name).ToLower();
+        }
     }
 }
 

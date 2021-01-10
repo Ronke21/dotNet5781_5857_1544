@@ -1,11 +1,10 @@
-﻿using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using BLApi;
 using BO;
+using PL;
 
 namespace PR_PL.Manager_Lines
 {
@@ -15,6 +14,7 @@ namespace PR_PL.Manager_Lines
 
     public partial class LinesViewPage : Page
     {
+        MainWindow wnd = (MainWindow)Application.Current.MainWindow;
         private readonly IBL _bl;
         public LinesViewPage(IBL b)
         {
@@ -22,8 +22,7 @@ namespace PR_PL.Manager_Lines
 
             _bl = b;
 
-            LinesDataGrid.ItemsSource = _bl.GetAllActiveBusLines().ToList();
-
+            LinesDataGrid.ItemsSource = _bl.GetAllActiveBusLines();
         }
         private void LinesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -43,12 +42,25 @@ namespace PR_PL.Manager_Lines
 
         private void Remove_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            if (LinesDataGrid.SelectedItem == null)
+            {
+                MessageBox.Show("Please choose at least one bus and then click remove!");
+            }
+            else
+            {
+                var lb = (IEnumerable)(LinesDataGrid.SelectedItems);
+
+                foreach (var b in lb)
+                {
+                    _bl.DeleteBusLine(((BusLine)b).BusLineId);
+                }
+                LinesDataGrid.ItemsSource = _bl.GetAllActiveBusLines();
+            }
         }
 
         private void InActive_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            wnd.DataDisplay.Content = new InActiveLinesViewPage(_bl);
         }
 
         private void Add_OnClick(object sender, RoutedEventArgs e)

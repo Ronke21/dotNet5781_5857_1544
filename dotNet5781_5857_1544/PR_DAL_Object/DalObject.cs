@@ -361,8 +361,7 @@ namespace Dal
         //}
 
         #endregion
-
-
+        
         #region TravelingBus
 
         public void AddTravelingBus(TravelingBus travelingBus)
@@ -583,7 +582,11 @@ namespace Dal
             if (userTravel is null) throw new UserTravelDoesNotExistsException($"User travel number {travelId} does not exist");
             DataSource.UserTravelsList.Remove(GetUserTravel(travelId));
         }
-
+        
         #endregion
+        public int GetKey()
+        {
+            return DS.KeyGenerator.IdGenerator();
+        }
     }
 }

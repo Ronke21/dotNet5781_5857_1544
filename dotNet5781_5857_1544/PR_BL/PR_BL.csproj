@@ -49,6 +49,7 @@
     <Compile Include="BO\BusLine.cs" />
     <Compile Include="BO\BusStation.cs" />
     <Compile Include="BO\Driver.cs" />
+    <Compile Include="BO\Enums.cs" />
     <Compile Include="BO\Exceptions.cs" />
     <Compile Include="BO\LineExit.cs" />
     <Compile Include="BO\LineStation.cs" />

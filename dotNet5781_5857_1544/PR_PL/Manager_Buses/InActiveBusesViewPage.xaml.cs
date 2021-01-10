@@ -23,7 +23,7 @@ namespace PR_PL.Manager_Buses
 
             _bl = b;
 
-            InActiveBusesDataGrid.DataContext = _bl.GetAllInActiveBuses().ToList();
+            InActiveBusesDataGrid.DataContext = _bl.GetAllInActiveBuses();
         }
 
         private void InActiveBusesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)

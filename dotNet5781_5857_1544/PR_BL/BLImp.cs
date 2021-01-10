@@ -9,6 +9,7 @@ using BLApi;
 using BO;
 using DO;
 using Bus = BO.Bus;
+using BusLine = BO.BusLine;
 using BusStation = BO.BusStation;
 using LineStation = DO.LineStation;
 
@@ -80,16 +81,16 @@ namespace BL
 
             if (!QualifiedDate(bus) || !QualifiedMileage(bus, ride) || !QualifiedFuel(bus, ride)) // of fuel = 0 or bus need to maintain by date/mileage -> it is Unfit!
             {
-                bus.Stat = Status.Unfit;
+                bus.Stat = BO.Status.Unfit;
             }
             //If bus has less then month or less than 1200 km to the next maintenance - the status is good for ride but tells the system to prepare for maint
             else if (bus.MileageFromLast + 1200 >= 20000 || bus.LastMaint < DateTime.Today.AddMonths(-11))
             {
-                bus.Stat = Status.MaintainSoon;
+                bus.Stat = BO.Status.MaintainSoon;
             }
             else
             {
-                bus.Stat = Status.Ready; //ready for ride!
+                bus.Stat = BO.Status.Ready; //ready for ride!
             }
         }
 
@@ -97,16 +98,16 @@ namespace BL
         {
             if (!QualifiedDate(bus) || !QualifiedMileage(bus) || !QualifiedFuel(bus)) // of fuel = 0 or bus need to maintain by date/mileage -> it is Unfit!
             {
-                bus.Stat = Status.Unfit;
+                bus.Stat = BO.Status.Unfit;
             }
             //If bus has less then month or less than 1200 km to the next maintenance - the status is good for ride but tells the system to prepare for maint
             else if (bus.MileageFromLast + 1200 >= 20000 || bus.LastMaint < DateTime.Today.AddMonths(-11))
             {
-                bus.Stat = Status.MaintainSoon;
+                bus.Stat = BO.Status.MaintainSoon;
             }
             else
             {
-                bus.Stat = Status.Ready; //ready for ride!
+                bus.Stat = BO.Status.Ready; //ready for ride!
             }
         }
 
@@ -263,7 +264,6 @@ namespace BL
             stat.CopyPropertiesTo(boStat);
             return boStat;
         }
-
         private static bool BusStationIsFit(BO.BusStation bs)
         {
             // year and number
@@ -299,7 +299,6 @@ namespace BL
                 throw new Exception("Unknown error AddBus");
             }
         }
-
         public IEnumerable<BO.BusStation> GetAllBusStations()
         {
             try
@@ -317,7 +316,6 @@ namespace BL
             //    throw new Exception("Unknown error GetAllBusStations");
             //}
         }
-
         public IEnumerable<BO.BusStation> GetAllInActiveBusStations()
         {
             try
@@ -355,7 +353,6 @@ namespace BL
 
             return bsBO;
         }
-
         public void UpdateBusStation(BO.BusStation bs)
         {
             try
@@ -371,7 +368,6 @@ namespace BL
                 throw new Exception("Unknown error");
             }
         }
-
         public void DeleteBusStation(int code)
         {
             try
@@ -387,6 +383,12 @@ namespace BL
                 throw new Exception("Unknown error");
             }
         }
+        public IEnumerable<BO.BusStation> GetAllMatches(string text, IEnumerable<BO.BusStation> collection)
+        {
+            return from station in collection
+                   where station.ToString().Contains(text)
+                   select station;
+        }
 
         #endregion
 
@@ -397,15 +399,30 @@ namespace BL
             busLine.CopyPropertiesTo(boBusLine);
             return boBusLine;
         }
-        public void AddBusLine(BO.BusLine busLine)
+        public void AddBusLine(BusLine busLine, List<BO.BusStation> busStations)
         {
             var busLineDo = new DO.BusLine();
 
             busLine.CopyPropertiesTo(busLineDo);
 
+            busLineDo.BusLineId = _dal.GetKey();
+
             try
             {
                 _dal.AddBusLine(busLineDo);
+
+                for (var i = 0; i < busStations.Count; i++)
+                {
+                    var bs = busStations.ToList()[i];
+                    var toAdd = new LineStation()
+                    {
+                        StationIndex = i,
+                        StationNumber = bs.Code,
+                        Active = true,
+                        BusLineId = busLineDo.BusLineId
+                    };
+                    _dal.AddLineStation(toAdd);
+                }
             }
             catch (DO.BusLineAlreadyExistsException ex)
             {
@@ -618,15 +635,37 @@ namespace BL
 
             for (int i = 0; i < ToReturn.Count() - 1; i++)
             {
-                DO.ConsecutiveStations current = _dal.GetConsecutiveStations(ToReturn[i].Code, ToReturn[i + 1].Code);
+                var current = _dal.GetConsecutiveStations(ToReturn[i].Code, ToReturn[i + 1].Code);
                 ((BO.LineStation)ToReturn[i]).TimeToNext = (TimeSpan)current.AverageTravelTime;
             }
 
             return ToReturn;
         }
 
-        #endregion
-    }
+        public void AddLineStation(BO.LineStation lineStation)
+        {
+            var lineStat = new DO.LineStation();
 
+            lineStation.CopyPropertiesTo(lineStat);
+
+            //lineStat.BusLineId = _dal.GetKey();
+
+            try
+            {
+                _dal.AddLineStation(lineStat);
+            }
+            //catch (DO.BusLineAlreadyExistsException ex)
+            //{
+            //    throw new BO.BadAdditionException("Can't add bus line", ex);
+            //}
+            catch (Exception)
+            {
+                throw new Exception("Unknown error AddBusLine");
+            }
+        }
+
+        #endregion
+
+    }
 }
 

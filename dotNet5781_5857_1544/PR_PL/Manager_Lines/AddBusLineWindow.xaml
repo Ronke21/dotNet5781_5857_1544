@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR_PL.Manager_Lines"
         mc:Ignorable="d"
-        Title="AddBusLineWindow" Height="450" Width="800"
+        Title="AddBusLineWindow" Height="450" Width="900"
         
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -18,11 +18,15 @@
         Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         >
 
     <Border
         CornerRadius="30"
         Background="White"
+        MouseDown="UIElement_OnMouseDown"
+        BorderBrush="#007ACC"
+        BorderThickness="2"
         >
 
         <Grid>
@@ -114,7 +118,18 @@
             Grid.Column="1"
             />
 
-            <DataGrid
+            <Border
+                Grid.Row="2"
+                Grid.Column="1"
+                CornerRadius="20"
+                Background="White"
+                MouseDown="UIElement_OnMouseDown"
+                BorderBrush="#007ACC"
+                BorderThickness="1"
+                Margin="5,0,5,0"
+            >
+
+                <DataGrid
                 x:Name="StationsDataGrid"
                 AutoGenerateColumns="False"
                 Grid.Row="2"
@@ -125,31 +140,45 @@
                 FontSize="10"
                 Margin="10">
 
-                <DataGrid.Columns>
+                    <DataGrid.Columns>
 
-                    <DataGridTextColumn 
+                        <DataGridTextColumn 
                         x:Name="Code" 
                         Binding="{Binding Code}"
                         Header="Station Code"
                         Width="*"/>
 
-                    <DataGridTextColumn 
+                        <DataGridTextColumn 
                         x:Name="Name" 
                         Binding="{Binding Name}"
                         Header="Station Name"
                         Width="*"/>
 
-                    <DataGridTextColumn 
+                        <DataGridTextColumn 
                         x:Name="Address" 
                         Binding="{Binding Address}"
                         Header="Address"
                         Width="*"/>
 
-                </DataGrid.Columns>
+                    </DataGrid.Columns>
 
-            </DataGrid>
+                </DataGrid>
 
-            <DataGrid
+            </Border>
+
+
+            <Border
+                Grid.Row="2"
+                Grid.Column="2"
+                CornerRadius="20"
+                Background="White"
+                MouseDown="UIElement_OnMouseDown"
+                BorderBrush="#007ACC"
+                BorderThickness="1"
+                Margin="5,0,5,0"
+            >
+
+                <DataGrid
                 x:Name="ChosenStationsDataGrid"
                 AutoGenerateColumns="False"
                 Grid.Row="2"
@@ -160,36 +189,39 @@
                 FontSize="10"
                 Margin="10">
 
-                <DataGrid.Columns>
+                    <DataGrid.Columns>
 
-                    <DataGridTextColumn 
+                        <DataGridTextColumn 
                         x:Name="ChosenCode" 
                         Binding="{Binding Code}"
                         Header="Station Code"
                         Width="*"/>
 
-                    <DataGridTextColumn 
+                        <DataGridTextColumn 
                         x:Name="ChosenName" 
                         Binding="{Binding Name}"
                         Header="Station Name"
                         Width="*"/>
 
-                    <DataGridTextColumn 
+                        <DataGridTextColumn 
                         x:Name="ChosenAddress" 
                         Binding="{Binding Address}"
                         Header="Address"
                         Width="*"/>
 
-                </DataGrid.Columns>
+                    </DataGrid.Columns>
 
-            </DataGrid>
+                </DataGrid>
+
+            </Border>
 
             <Button
-                Name="Add"
+                Name="Remove"
                 Grid.Row="3"
                 Grid.Column="2"
                 HorizontalAlignment="Center"
                 Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                Click="Remove_OnClick"
             >
                 <materialDesign:PackIcon
                     Kind="ArrowBack"
@@ -199,18 +231,39 @@
             </Button>
 
             <Button
-                Name="Remove"
+                Name="Add"
                 Grid.Row="3"
                 Grid.Column="1"
                 HorizontalAlignment="Center"
                 Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                Click="Remove_OnClick"
+                Click="Add_OnClick"
             >
                 <materialDesign:PackIcon
                     Kind="ArrowForward"
                     Width="30"
                     Height="30"
                 />
+            </Button>
+
+            <Button
+                x:Name="AddLine"
+                Grid.Column="0"
+                Grid.Row="2"
+                Width="100"
+                Height="100"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                Background="#FF0064A6"
+                Click="AddLine_OnClick"
+                >
+
+                <materialDesign:PackIcon
+                    Kind="Add"
+                    Width="60" 
+                    Height="60"
+                    BorderBrush="#FFE2EDFF">
+
+                </materialDesign:PackIcon>
+
             </Button>
 
         </Grid>

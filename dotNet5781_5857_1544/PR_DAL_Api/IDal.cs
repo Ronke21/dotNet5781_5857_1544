@@ -106,5 +106,7 @@ namespace DalApi
         void DeleteUserTravel(int travelId);
 
         #endregion
+
+        int GetKey();
     }
 }

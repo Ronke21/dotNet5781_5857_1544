@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Device.Location;
 using System.IO;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
 using DO;
 
 namespace DS
 {
-    internal static class KeyGenerator
+    public static class KeyGenerator
     // after changing to XML the key will be stored in the NVM to guarantee uniformity
     {
         private static int _key = 0;
@@ -313,9 +309,7 @@ namespace DS
             };
 
             #endregion
-
-
-
+            
             //LineExitsList = new List<LineExit>();
 
             TravelingBusesList = new List<TravelingBus>();
