@@ -21,7 +21,6 @@
 
     <Grid>
 
-        <!--CanUserAddRows="False"-->
         <DataGrid
             x:Name="InActiveLinesDataGrid"
             AutoGenerateColumns="False"

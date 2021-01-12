@@ -42,7 +42,8 @@ namespace PR_PL
                     Mileage = mileage,
                     StartTime = bus.StartTime,
                     LastMaint = last,
-                    MileageFromLast = mileageFromLast
+                    MileageFromLast = mileageFromLast,
+                    Active = bus.Active
                 };
                 bl.UpdateBus(updated);
                 Close();

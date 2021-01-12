@@ -81,11 +81,20 @@
     <Compile Include="Manager_Lines\InActiveLinesViewPage.xaml.cs">
       <DependentUpon>InActiveLinesViewPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Manager_Lines\LineDetailsPage.xaml.cs">
+      <DependentUpon>LineDetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager_Lines\LineDetailsWindow.xaml.cs">
       <DependentUpon>LineDetailsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Manager_Lines\LineDoubleClick.xaml.cs">
+      <DependentUpon>LineDoubleClick.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager_Lines\LinesViewPage.xaml.cs">
       <DependentUpon>LinesViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_Lines\UpdateLinePage.xaml.cs">
+      <DependentUpon>UpdateLinePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager_Stations\AddStation.xaml.cs">
       <DependentUpon>AddStation.xaml</DependentUpon>
@@ -148,11 +157,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Manager_Lines\LineDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Manager_Lines\LineDetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Manager_Lines\LineDoubleClick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Manager_Lines\LinesViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Lines\UpdateLinePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,6 +213,7 @@
     <Compile Include="Manager_Stations\UpdateStation.xaml.cs">
       <DependentUpon>UpdateStation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

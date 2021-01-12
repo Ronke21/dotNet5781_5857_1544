@@ -32,7 +32,7 @@ namespace PR_PL.Manager_Lines
             InitializeComponent();
 
             _bl = b;
-            
+
             InActiveLinesDataGrid.ItemsSource = _bl.GetAllInActiveBusLines();
         }
 
@@ -47,6 +47,7 @@ namespace PR_PL.Manager_Lines
             {
                 MessageBox.Show("Please choose at least one bus and then click activate!");
             }
+
             else
             {
                 var bl = (IEnumerable)(InActiveLinesDataGrid.SelectedItems);
@@ -67,14 +68,16 @@ namespace PR_PL.Manager_Lines
                     _bl.UpdateBusLine(updated);
                 }
 
-                InActiveLinesDataGrid.DataContext = _bl.GetAllInActiveBuses().ToList();
+                InActiveLinesDataGrid.ItemsSource = _bl.GetAllInActiveBusLines();
             }
         }
 
         private void InActiveLinesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            if (sender is DataGrid x && !(x.SelectedItem is BusLine)) return;
+            var ldc = new LineDoubleClick(_bl, (BusLine)InActiveLinesDataGrid.SelectedItem);
+            ldc.Show();
         }
     }
-    
+
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
+using System.Reflection;
 using DalApi;
 using DS;
 using DO;
@@ -64,19 +65,6 @@ namespace Dal
                    select bus.Clone();
         }
 
-
-        //public IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate)
-        //{
-        //    if (DataSource.BusesList.Count == 0)
-        //    {
-        //        throw new EmptyListException($"{nameof(DataSource.BusesList)} is Empty");
-        //    }
-
-        //    return from bus in DataSource.BusesList
-        //           where predicate(bus)
-        //           select bus.Clone();
-        //}
-
         public DO.Bus GetBus(int licenseNum)
         {
             var bus = DataSource.BusesList.Find(b => b.LicenseNum == licenseNum);
@@ -86,15 +74,15 @@ namespace Dal
 
         public void UpdateBus(DO.Bus bus)
         {
-            DeleteBus(bus.LicenseNum);
-            AddBus(bus);
+            var updatedBus = DataSource.BusesList.Find(b => b.LicenseNum == bus.LicenseNum);
+            if (updatedBus is null) throw new BusDoesNotExistsException($"Bus number {bus.LicenseNum} does not exist");
+            bus.Mover(updatedBus);
         }
 
         //  UPDATE EXAMPLE
         //public void UpdateFuel(int num, int km)
         //{
         //    var b = DataSource.BusesList.Find(bus => bus.LicenseNum == num);
-        //    if (b is null) throw new BusDoesNotExistsException($"Bus number {num} does not exist");
         //    b.Fuel -= km;
         //}
 
@@ -154,8 +142,9 @@ namespace Dal
         }
         public void UpdateBusStation(DO.BusStation bs)
         {
-            DeleteBusStation(bs.Code);
-            AddBusStation(bs);
+            var updatedStation = DataSource.BusStationsList.Find(s => s.Code == bs.Code);
+            if (updatedStation is null) throw new StationDoesNotExistException($"Station number {bs.Code} does not exist");
+            bs.Mover(updatedStation);
         }
         public void DeleteBusStation(int code)
         {
@@ -219,11 +208,20 @@ namespace Dal
             if (busLine != null) return busLine;
             throw new BusLineDoesNotExistsException($"Bus line number {busLineId} does not exist");
         }
-        public void UpdateBusLine(BusLine busLine)
+        public void ActivateBusLine(int busLineId)
         {
-            DeleteBusLine(busLine.BusLineId);
-            AddBusLine(busLine);
+            var busLine = DataSource.BusLinesList.Find(l => l.BusLineId == busLineId);
+            if (busLine is null) throw new BusLineDoesNotExistsException($"Bus line number {busLineId} does not exist");
+            busLine.Active = true;
         }
+
+        public void UpdateBusLine(BusLine update)
+        {
+            var updatedLine = DataSource.BusLinesList.Find(bl => bl.BusLineId == update.BusLineId);
+            if (updatedLine is null) throw new BusDoesNotExistsException($"Line number {update.BusLineId} does not exist");
+            update.Mover(updatedLine);
+        }
+
         public void DeleteBusLine(int busLineId)
         {
             var busLine = DataSource.BusLinesList.Find(l => l.BusLineId == busLineId);

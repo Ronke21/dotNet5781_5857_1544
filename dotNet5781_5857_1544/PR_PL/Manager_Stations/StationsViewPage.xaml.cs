@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using BLApi;
 using BO;
 using PL;
+using PR_PL.Manager_Buses;
 
 namespace PR_PL.Manager_Stations
 {
@@ -24,14 +16,15 @@ namespace PR_PL.Manager_Stations
     public partial class StationsViewPage : Page
     {
         private readonly IBL _bl;
+        MainWindow wnd = (MainWindow)Application.Current.MainWindow;
 
         public StationsViewPage(IBL b)
         {
             InitializeComponent();
-            
+
             _bl = b;
 
-            StationsDataGrid.DataContext = _bl.GetAllBusStations();
+            StationsDataGrid.ItemsSource = _bl.GetAllBusStations().OrderBy(s => s.Code);
         }
 
         private void StationsDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -58,7 +51,8 @@ namespace PR_PL.Manager_Stations
 
         private void InActive_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            // wnd.DataDisplay.Content =
+            // CREATE NEW INACTIVE STATIONS PAGE
         }
 
         private void Add_OnClick(object sender, RoutedEventArgs e)

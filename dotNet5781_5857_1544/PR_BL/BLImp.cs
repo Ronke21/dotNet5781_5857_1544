@@ -389,7 +389,14 @@ namespace BL
                    where station.ToString().Contains(text)
                    select station;
         }
+        public IEnumerable<BO.BusStation> GetLineBusStations(int BusLineID)
+        {
+            var lineStations = _dal.GetAllLineStationsByLineID(BusLineID);
 
+
+            return from station in lineStations
+                   select GetBusStation(station.StationNumber);
+        }
         #endregion
 
         #region BusLines
@@ -399,7 +406,7 @@ namespace BL
             busLine.CopyPropertiesTo(boBusLine);
             return boBusLine;
         }
-        public void AddBusLine(BusLine busLine, List<BO.BusStation> busStations)
+        public void AddBusLine(BusLine busLine, IEnumerable<BO.BusStation> busStations)
         {
             var busLineDo = new DO.BusLine();
 
@@ -407,11 +414,13 @@ namespace BL
 
             busLineDo.BusLineId = _dal.GetKey();
 
+            var index = busStations.Count();
+
             try
             {
                 _dal.AddBusLine(busLineDo);
 
-                for (var i = 0; i < busStations.Count; i++)
+                for (var i = 0; i < index; i++)
                 {
                     var bs = busStations.ToList()[i];
                     var toAdd = new LineStation()
@@ -505,18 +514,32 @@ namespace BL
 
             return busLineBO;
         }
-        public void UpdateBusLine(BO.BusLine busLine)
+        public void ActivateBusLine(int busLineId)
         {
             try
             {
-                var b = new DO.BusLine();
-                busLine.CopyPropertiesTo(b);
-                _dal.UpdateBusLine(b);
+                _dal.ActivateBusLine(busLineId);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error UpdateBusLine");
+            }
+        }
+
+        public void UpdateBusLine(BO.BusLine update)
+        {
+            try
+            {
+                //if (!BusIsFit(bus)) return;
+                var bl = new DO.BusLine();
+                update.CopyPropertiesTo(bl);
+                //bl.BusLineId = _dal.GetKey();
+                _dal.UpdateBusLine(bl);
             }
 
             catch (Exception)
             {
-                throw new Exception("Unknown error UpdateBusLine");
+                throw new Exception("Unknown error");
             }
         }
         public void DeleteBusLine(int busLineId)
@@ -534,7 +557,24 @@ namespace BL
                 throw new Exception("Unknown error DeleteBusLine");
             }
         }
+        public bool CompareLines(BusLine b1, BusLine b2, IEnumerable<BO.BusStation> bs1, IEnumerable<BO.BusStation> bs2)
+        {
+            var eq = b1.Active == b2.Active &&
+                     b1.BusArea == b2.BusArea &&
+                     b1.LineNumber == b2.LineNumber &&
+                     bs1.Count() == bs2.Count();
 
+            if (!eq) return false;
+
+            var s1 = bs1.ToList();
+            var s2 = bs2.ToList();
+
+            for (var i = 0; i < s1.Count; i++)
+            {
+                if (s1[i].Code != s2[i].Code) return false;
+            }
+            return true;
+        }
 
         #endregion
 
@@ -668,4 +708,3 @@ namespace BL
 
     }
 }
-

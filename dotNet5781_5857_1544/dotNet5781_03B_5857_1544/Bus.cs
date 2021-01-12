@@ -88,7 +88,7 @@ namespace dotNet5781_03B_5857_1544
         private double _Fuel;
         public double Fuel
         {
-            get { return Math.Round(_Fuel, 1); }
+            get => Math.Round(_Fuel, 1);
             set
             {
                 _Fuel = value;

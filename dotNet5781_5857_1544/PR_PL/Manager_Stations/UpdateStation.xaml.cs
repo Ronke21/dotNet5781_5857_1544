@@ -21,45 +21,46 @@ namespace PL
 
             bl = b;
             currentBusStation = bs;
+
+            DetailsGrid.DataContext = currentBusStation;
+            TextBoxLongitude.Text = currentBusStation.Location.Longitude.ToString();
+            TextBoxLatitude.Text = currentBusStation.Location.Latitude.ToString();
         }
 
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
-            //int.TryParse((string) LicenseNumLabel.Content, out var License);
             try
             {
-                string nam = TextBoxName.Text;
-                string add = TextBoxAddress.Text;
-                double.TryParse(TextBoxLongitude.Text, out double longi);
-                double.TryParse(TextBoxLatitude.Text, out double lati);
-                bool accessi = (bool)CheckBoxAccessible.IsChecked;
+                var nam = TextBoxName.Text;
+                var add = TextBoxAddress.Text;
+                double.TryParse(TextBoxLongitude.Text, out var lon);
+                double.TryParse(TextBoxLatitude.Text, out var lat);
+                var access = CheckBoxAccessible.IsChecked != null && (bool)CheckBoxAccessible.IsChecked;
 
-                try
+                var updated = new BusStation
                 {
-                    BO.BusStation ToAdd = new BusStation()
-                    {
-                        Code = currentBusStation.Code,
-                        Name = nam,
-                        Address = add,
-                        Location = new GeoCoordinate(lati, longi),
-                        Accessible = accessi,
-                        Active = true
-                    };
-                    bl.AddStation(ToAdd);
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception);
-                    throw;
-                }
+                    Code = currentBusStation.Code,
+                    Name = nam,
+                    Address = add,
+                    Location = new GeoCoordinate(lat, lon),
+                    Accessible = access,
+                    Active = currentBusStation.Active
+                };
+
+                bl.UpdateBusStation(updated);
                 Close();
             }
+
+
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
                 throw;
             }
+
+            Close();
         }
+
 
         private void TextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -71,16 +72,17 @@ namespace PL
             }
         }
 
-        protected override void OnPreviewKeyDown(KeyEventArgs e)
-        {
-            if (e.Key == Key.Space)
-            {
-                e.Handled = true;
-                MessageBox.Show("Space is not allowed");
-            }
-        }
+        //protected override void OnPreviewKeyDown(KeyEventArgs e)
+        //{
+        //    if (e.Key == Key.Space)
+        //    {
+        //        e.Handled = true;
+        //        MessageBox.Show("Space is not allowed");
+        //    }
+        //}
 
     }
 
 
 }
+

@@ -26,18 +26,9 @@ namespace PR_PL.Manager_Lines
         }
         private void LinesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var x = sender as DataGrid;
-
-            if (x != null && !(x.SelectedItem is BusLine))
-            {
-                // do nothing
-            }
-
-            else
-            {
-                var ldw = new LineDetailsWindow(_bl, (BusLine)LinesDataGrid.SelectedItem);
-                ldw.Show();
-            }
+            if (sender is DataGrid x && !(x.SelectedItem is BusLine)) return;
+            var ldc = new LineDoubleClick(_bl, (BusLine)LinesDataGrid.SelectedItem);
+            ldc.Show();
         }
 
         private void Remove_OnClick(object sender, RoutedEventArgs e)

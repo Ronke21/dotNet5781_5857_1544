@@ -26,6 +26,7 @@ namespace BLApi
         IEnumerable<BO.BusStation> GetAllBusStations();
         IEnumerable<BO.BusStation> GetAllInActiveBusStations();
         BO.BusStation GetBusStation(int code);
+        IEnumerable<BO.BusStation> GetLineBusStations(int BusLineID);
         void UpdateBusStation(BO.BusStation bs);
         void DeleteBusStation(int code);
         IEnumerable<BO.BusStation> GetAllMatches(string text, IEnumerable<BO.BusStation> collection);
@@ -33,15 +34,18 @@ namespace BLApi
         #endregion
 
         #region BusLine
-        void AddBusLine(BusLine busLine, List<BO.BusStation> busStations);                                      // C
-        IEnumerable<BusLine> GetAllActiveBusLines();                           // R
-        IEnumerable<BO.BusLine> GetAllInActiveBusLines();                         // R
-        //IEnumerable<BusLine> GetAllBusLinesBy(Predicate<BusLine> predicate);   // R
-        BusLine GetBusLine(int busLineId);                                     // R
-        void UpdateBusLine(BusLine busLine);                                   // U
-        //void UpdateBusLine(int busLineId, Action<BusLine> update);           // U
-        void DeleteBusLine(int busLineId);                                     // D
-        
+        void AddBusLine(BusLine busLine, IEnumerable<BO.BusStation> busStations);
+        IEnumerable<BusLine> GetAllActiveBusLines();
+        IEnumerable<BO.BusLine> GetAllInActiveBusLines();
+        //IEnumerable<BusLine> GetAllBusLinesBy(Predicate<BusLine> predicate); 
+        BusLine GetBusLine(int busLineId);
+        void UpdateBusLine(BO.BusLine update);
+        void ActivateBusLine(int busLineId);
+        //void UpdateBusLine(BusLine busLine, IEnumerable<BO.BusStation> busStations);
+        //void UpdateBusLine(int busLineId, Action<BusLine> update);
+        bool CompareLines(BusLine b1, BusLine b2, IEnumerable<BO.BusStation> bs1, IEnumerable<BO.BusStation> bs2);
+        void DeleteBusLine(int busLineId);
+
         #endregion
 
         #region ConsecutiveStations

@@ -90,6 +90,7 @@ namespace dotNet5781_03B_5857_1544
             for (int i = 0; i < 10; i++)
             {
                 await Task.Run(() => currentBus.Ride(mil)); //the ride func in bus class
+                
             }
             currentBus.RIDE = 0;
             currentBus.Fuel = (int)Math.Round(currentBus.Fuel);

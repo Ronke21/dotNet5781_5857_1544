@@ -41,7 +41,7 @@ namespace PR_PL.Manager_Lines
 
         private void RefreshDataGrids()
         {
-            StationsDataGrid.DataContext = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom);
+            StationsDataGrid.DataContext = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom).OrderBy(s=>s.Code);
             StationsDataGrid.Items.Refresh();
             ChosenStationsDataGrid.Items.Refresh();
         }

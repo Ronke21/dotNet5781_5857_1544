@@ -38,21 +38,5 @@ namespace BL
             connect.StationIndex = bs.Code;
             return connect;
         }
-
-        //public static BO.StudentCourse CopyToStudentCourse(this DO.Course course, DO.StudentInCourse sic)
-        //{
-        //    BO.StudentCourse result = (BO.StudentCourse)course.CopyPropertiesToNew(typeof(BO.StudentCourse));
-        //    // propertys' names changed? copy them here...
-        //    result.Grade = sic.Grade;
-        //    return result;
-        //}
-
-        //StudentBO.ListOfCourses = from sic in dl.GetStudentsInCourseList(sic => sic.PersonId == id)
-        //    let course = dl.GetCourse(sic.CourseId)
-        //    select course.CopyToStudentCourse(sic);
-
-        //busline.listofstations = from ls in something
-        // let blabla = dl.getlinestation(ls.stationnumber)
-        // select blabla.copy
     }
 }

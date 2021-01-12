@@ -25,8 +25,8 @@ namespace PL
 
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
-            //UpdateStation us = new UpdateStation(bl, currentBS);
-            //us.ShowDialog();
+            UpdateStation us = new UpdateStation(bl, currentBS);
+            us.ShowDialog();
             Close();
         }
 

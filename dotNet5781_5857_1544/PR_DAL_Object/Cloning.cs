@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace Dal
 {
@@ -17,6 +18,14 @@ namespace Dal
             }
 
             return copyToObject;
+        }
+
+        internal static void Mover<T>(this T src, T dst)
+        {
+            foreach (var pi in typeof(T).GetProperties())
+            {
+                pi.SetValue(dst, pi.GetValue(src, null));
+            }
         }
     }
 }
