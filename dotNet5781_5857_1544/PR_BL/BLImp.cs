@@ -526,14 +526,26 @@ namespace BL
             }
         }
 
-        public void UpdateBusLine(BO.BusLine update)
+        public void UpdateBusLine(BO.BusLine update, IEnumerable<BusStation> chosen)
         {
+
+            if (chosen.Count() < 2)
+            {
+                return;
+            }
+
+            var bline = GetBusLine(update.BusLineId);
+
+            if (CompareLines(bline, update, GetLineBusStations(bline.BusLineId), chosen))
+            {
+                return;
+            }
+
             try
             {
                 //if (!BusIsFit(bus)) return;
                 var bl = new DO.BusLine();
                 update.CopyPropertiesTo(bl);
-                //bl.BusLineId = _dal.GetKey();
                 _dal.UpdateBusLine(bl);
             }
 
@@ -665,7 +677,7 @@ namespace BL
 
             foreach (var stat in ToReturn)
             {
-                var a = _dal.GetBusStation(stat.StationNumber);
+                var a = _dal.GetBusStation(stat.Code);
                 a.CopyPropertiesTo(stat);
                 //  stat.Name = a.Name;
                 // stat.Address = a.Address;

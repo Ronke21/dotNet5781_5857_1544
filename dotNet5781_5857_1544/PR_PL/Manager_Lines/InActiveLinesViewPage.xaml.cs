@@ -45,29 +45,12 @@ namespace PR_PL.Manager_Lines
         {
             if (InActiveLinesDataGrid.SelectedItem == null)
             {
-                MessageBox.Show("Please choose at least one bus and then click activate!");
+                MessageBox.Show("Please choose at least one bus line and then click activate!");
             }
 
             else
             {
-                var bl = (IEnumerable)(InActiveLinesDataGrid.SelectedItems);
-
-                foreach (BusLine b in bl)
-                {
-                    //b.Active = true;
-                    var updated = new BusLine()
-                    {
-                        AllAccessible = b.AllAccessible,
-                        Active = true,
-                        BusArea = b.BusArea,
-                        BusLineId = b.BusLineId,
-                        FirstStation = b.FirstStation,
-                        LastStation = b.LastStation,
-                        LineNumber = b.LineNumber
-                    };
-                    _bl.UpdateBusLine(updated);
-                }
-
+                _bl.ActivateBusLine(((BusLine)InActiveLinesDataGrid.SelectedItem).BusLineId);
                 InActiveLinesDataGrid.ItemsSource = _bl.GetAllInActiveBusLines();
             }
         }

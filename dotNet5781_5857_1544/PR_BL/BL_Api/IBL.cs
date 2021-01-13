@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DO;
 using Bus = BO.Bus;
 using BusLine = BO.BusLine;
+using BusStation = BO.BusStation;
 
 namespace BLApi
 {
@@ -22,28 +23,28 @@ namespace BLApi
         #endregion
 
         #region BusStation
-        void AddStation(BO.BusStation bs);
-        IEnumerable<BO.BusStation> GetAllBusStations();
-        IEnumerable<BO.BusStation> GetAllInActiveBusStations();
-        BO.BusStation GetBusStation(int code);
-        IEnumerable<BO.BusStation> GetLineBusStations(int BusLineID);
-        void UpdateBusStation(BO.BusStation bs);
+        void AddStation(BusStation bs);
+        IEnumerable<BusStation> GetAllBusStations();
+        IEnumerable<BusStation> GetAllInActiveBusStations();
+        BusStation GetBusStation(int code);
+        IEnumerable<BusStation> GetLineBusStations(int BusLineID);
+        void UpdateBusStation(BusStation bs);
         void DeleteBusStation(int code);
-        IEnumerable<BO.BusStation> GetAllMatches(string text, IEnumerable<BO.BusStation> collection);
+        IEnumerable<BusStation> GetAllMatches(string text, IEnumerable<BusStation> collection);
 
         #endregion
 
         #region BusLine
-        void AddBusLine(BusLine busLine, IEnumerable<BO.BusStation> busStations);
+        void AddBusLine(BusLine busLine, IEnumerable<BusStation> busStations);
         IEnumerable<BusLine> GetAllActiveBusLines();
-        IEnumerable<BO.BusLine> GetAllInActiveBusLines();
+        IEnumerable<BusLine> GetAllInActiveBusLines();
         //IEnumerable<BusLine> GetAllBusLinesBy(Predicate<BusLine> predicate); 
         BusLine GetBusLine(int busLineId);
-        void UpdateBusLine(BO.BusLine update);
+        void UpdateBusLine(BusLine update, IEnumerable<BusStation> chosen);
         void ActivateBusLine(int busLineId);
         //void UpdateBusLine(BusLine busLine, IEnumerable<BO.BusStation> busStations);
         //void UpdateBusLine(int busLineId, Action<BusLine> update);
-        bool CompareLines(BusLine b1, BusLine b2, IEnumerable<BO.BusStation> bs1, IEnumerable<BO.BusStation> bs2);
+        bool CompareLines(BusLine b1, BusLine b2, IEnumerable<BusStation> bs1, IEnumerable<BusStation> bs2);
         void DeleteBusLine(int busLineId);
 
         #endregion

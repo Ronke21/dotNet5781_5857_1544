@@ -60,12 +60,6 @@ namespace PR_PL.Manager_Lines
             var lineArea = (Area)LineAreaComboBox.SelectedItem;
             var accessible = _chosen.All(station => station.Accessible);
 
-            if (_chosen.Count == 0)
-            {
-                MessageBox.Show("Line must have stations", "EMPTY CHOSEN");
-                return;
-            }
-
             var newBus = new BO.BusLine()
             {
                 BusLineId = bline.BusLineId,
@@ -74,14 +68,26 @@ namespace PR_PL.Manager_Lines
                 AllAccessible = accessible,
                 BusArea = lineArea,
                 FirstStation = _chosen.ToList()[0].Code,
-                LastStation = _chosen.ToList()[_chosen.Count - 1].Code,
+                LastStation = _chosen.ToList()[_chosen.Count - 1].Code
             };
-            
-            if (_bl.CompareLines(bline, newBus, _bl.GetLineBusStations(bline.BusLineId), _chosen))
-            {
-                MessageBox.Show("No changes detected", "NO CHANGE");
-                return;
-            }
+
+            var index = 0;
+
+            var stations = from station in _chosen
+                     select new LineStation()
+                     {
+                         Code = station.Code,
+                         Accessible = station.Accessible,
+                         Active = station.Active,
+                         Address = station.Address,
+                         StationIndex = index++,
+                         Location = station.Location,
+                         Name = station.Name,
+                         BusLineId = bline.BusLineId,
+                     };
+
+            newBus.ListOfLineStations = stations;
+
 
             try
             {
