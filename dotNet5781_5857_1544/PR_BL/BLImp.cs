@@ -297,25 +297,20 @@ namespace BL
         }
         public void AddStation(BO.BusStation bs)
         {
-            var busStationDo = new DO.BusStation();
-
-            bs.CopyPropertiesTo(busStationDo);
-
             try
             {
                 if (BusStationIsFit(bs))
                 {
+                    var busStationDo = new DO.BusStation();
+                    bs.CopyPropertiesTo(busStationDo);
                     _dal.AddBusStation(busStationDo);
                 }
             }
-            catch (DO.BusAlreadyExistsException ex)
+            catch (Exception ex)
             {
-                throw new BO.BadAdditionException("Can't add bus", ex);
+                throw new BO.BadAdditionException((ex.Message), ex);
             }
-            catch (Exception)
-            {
-                throw new Exception("Unknown error AddBus");
-            }
+
         }
         public IEnumerable<BO.BusStation> GetAllBusStations()
         {
@@ -327,12 +322,12 @@ namespace BL
 
             catch (DO.EmptyListException ex)
             {
-                throw new BO.EmptyListException("No buses in the list", ex);
+                throw new BO.EmptyListException("No stations in the list", ex);
             }
-            //catch (Exception)
-            //{
-            //    throw new Exception("Unknown error GetAllBusStations");
-            //}
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetAllBusStations");
+            }
         }
         public IEnumerable<BO.BusStation> GetAllInActiveBusStations()
         {
