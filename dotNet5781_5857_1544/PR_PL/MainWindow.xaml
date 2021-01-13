@@ -133,6 +133,7 @@
                 <RowDefinition Height="120"/>
                 <RowDefinition Height="120"/>
                 <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
             </Grid.RowDefinitions>
 
             <!--Open close Button-->
@@ -252,6 +253,40 @@
                         Height="50"
                         Width="50"
                         Margin="130,0,0,0"
+                    />
+
+                </StackPanel>
+
+            </Button>
+
+            <Button
+                Name="ConsecutiveStationsSidePanel"
+                Grid.Row="4"
+                Background="#FF0064A6"
+                BorderBrush="Transparent"
+                Height="120"
+                Margin="0,0,0,0"
+                MouseEnter="LinesSidePanel_OnMouseEnter"
+                MouseLeave="LinesSidePanel_OnMouseLeave"
+                Click="LinesSidePanel_OnClick">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock
+                        x:Name="ConsecutiveStations"
+                        FontSize="30"
+                        Foreground="White"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Width="175"
+                        Margin="5,0,0,0"><Run Text="Consecutive"/><LineBreak/><Run Text="Stations"/></TextBlock>
+
+                    <materialDesign:PackIcon
+                        Foreground="White"
+                        Kind="MapMarkerDistance"
+                        Height="50"
+                        Width="50"
+                        Margin="30,10,0,0"
                     />
 
                 </StackPanel>

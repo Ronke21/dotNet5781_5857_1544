@@ -14,7 +14,7 @@ namespace Dal
     {
 
         #region singleton
-        
+
         private static readonly DalObject instance = new DalObject();
         static DalObject() { }// static ctor to ensure instance init is done just before first usage
         private DalObject() { } // default => private
@@ -235,18 +235,19 @@ namespace Dal
         public void AddLineStation(LineStation lineStation)
         {
             var ls = DataSource.LineStationsList.Find(l => l.BusLineId == lineStation.BusLineId &&
-                                                            l.StationNumber == lineStation.StationNumber);
+                                                            l.Code == lineStation.Code);
             if (ls == null)
             {
                 DataSource.LineStationsList.Add(lineStation.Clone());
             }
-
+            
             else if (ls.Active is false)
             {
+                ls.StationIndex = lineStation.StationIndex;
                 ls.Active = true;
             }
 
-            else throw new LineStationsAlreadyExistsException($"Line station {lineStation.BusLineId}/{lineStation.StationNumber} already exists");
+            else throw new LineStationsAlreadyExistsException($"Line station {lineStation.BusLineId}/{lineStation.Code} already exists");
         }
         public IEnumerable<LineStation> GetAllLineStationsByLineID(int LineID)
         {
@@ -277,7 +278,7 @@ namespace Dal
         public LineStation GetLineStation(int lineNumber, int stationNumber)
         {
             var lineStation = DataSource.LineStationsList.Find(ls => ls.BusLineId == lineNumber &&
-                                                                     ls.StationNumber == stationNumber &&
+                                                                     ls.Code == stationNumber &&
                                                                      ls.Active is true);
             if (lineStation is null)
             {
@@ -300,7 +301,7 @@ namespace Dal
             {
                 lineStation.Active = false;
             }
-            else throw new AlreadyDeletedException($"Line station {lineNumber}/{stationNumber} already deleted");
+            //else throw new AlreadyDeletedException($"Line station {lineNumber}/{stationNumber} already deleted");
         }
 
         #endregion
@@ -359,7 +360,7 @@ namespace Dal
         //}
 
         #endregion
-        
+
         #region TravelingBus
 
         public void AddTravelingBus(TravelingBus travelingBus)
@@ -580,7 +581,7 @@ namespace Dal
             if (userTravel is null) throw new UserTravelDoesNotExistsException($"User travel number {travelId} does not exist");
             DataSource.UserTravelsList.Remove(GetUserTravel(travelId));
         }
-        
+
         #endregion
         public int GetKey()
         {

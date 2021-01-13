@@ -19,8 +19,8 @@ namespace PR_PL.Manager_Lines
 
         MainWindow wnd = (MainWindow)Application.Current.MainWindow; //reference to main window in order to update list box items(buses)
 
-        private ObservableCollection<BO.BusStation> _chosen;
-        private ObservableCollection<BO.BusStation> _chooseFrom;
+        private List<BO.BusStation> _chosen;
+        private List<BO.BusStation> _chooseFrom;
 
         private readonly IBL _bl;
         private readonly BusLine bline;
@@ -35,8 +35,8 @@ namespace PR_PL.Manager_Lines
             _bl = b;
             bline = busLine;
 
-            _chosen = new ObservableCollection<BusStation>(_bl.GetLineBusStations(bline.BusLineId));
-            _chooseFrom = new ObservableCollection<BusStation>(_bl.GetAllBusStations().Where(s => _chosen.All(x => s.Code != x.Code)).OrderBy(s => s.Code));
+            _chosen = new List<BusStation>(_bl.GetLineBusStations(bline.BusLineId));
+            _chooseFrom = new List<BusStation>(_bl.GetAllBusStations().Where(s => _chosen.All(x => s.Code != x.Code)).OrderBy(s => s.Code));
 
             StationsDataGrid.ItemsSource = _chooseFrom;
             ChosenStationsDataGrid.ItemsSource = _chosen;
@@ -56,6 +56,10 @@ namespace PR_PL.Manager_Lines
         }
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
+            //var fromDG = (ChosenStationsDataGrid.Items.OfType<BusStation>()).ToList();
+
+            var from = _chosen.ToList();
+
             int.TryParse(LineNumberBox.Text, out var lineNum);
             var lineArea = (Area)LineAreaComboBox.SelectedItem;
             var accessible = _chosen.All(station => station.Accessible);
@@ -87,11 +91,10 @@ namespace PR_PL.Manager_Lines
                      };
 
             newBus.ListOfLineStations = stations;
-
-
+            
             try
             {
-                _bl.UpdateBusLine(newBus);
+                _bl.UpdateBusLine(newBus, _chosen);
 
                 wnd.DataDisplay.Content = new LinesViewPage(_bl);
             }
@@ -123,6 +126,7 @@ namespace PR_PL.Manager_Lines
         private void SearchLinesTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             StationsDataGrid.DataContext = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom);
+            RefreshDataGrids();
         }
     }
 }

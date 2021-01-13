@@ -412,7 +412,7 @@ namespace BL
 
 
             return from station in lineStations
-                   select GetBusStation(station.StationNumber);
+                   select GetBusStation(station.Code);
         }
         #endregion
 
@@ -443,7 +443,7 @@ namespace BL
                     var toAdd = new LineStation()
                     {
                         StationIndex = i,
-                        StationNumber = bs.Code,
+                        Code = bs.Code,
                         Active = true,
                         BusLineId = busLineDo.BusLineId
                     };
@@ -564,6 +564,26 @@ namespace BL
                 var bl = new DO.BusLine();
                 update.CopyPropertiesTo(bl);
                 _dal.UpdateBusLine(bl);
+
+
+
+                foreach (var ls in _dal.GetAllLineStationsByLineID(update.BusLineId))
+                {
+                    _dal.DeleteLineStation(ls.BusLineId, ls.Code);
+                }
+
+                var index = 0;
+
+                foreach (var ls in chosen)
+                {
+                    _dal.AddLineStation(new LineStation()
+                    {
+                        Code = ls.Code,
+                        Active = ls.Active,
+                        BusLineId = update.BusLineId,
+                        StationIndex = index++
+                    });
+                }
             }
 
             catch (Exception)
@@ -686,13 +706,17 @@ namespace BL
 
             for (var i = 0; i < lineStations.Count() - 1; i++)
             {
-                AddConsecutiveStations(lineStations[i].StationNumber, lineStations[i + 1].StationNumber);
+                AddConsecutiveStations(lineStations[i].Code, lineStations[i + 1].Code);
             }
 
-            var ToReturn = (from ls in lineStations
-                            select LineStationDoToBoAdapter(ls)).ToList();
+            var toReturn = new List<BO.LineStation>();
 
-            foreach (var stat in ToReturn)
+            foreach (var ls in lineStations)
+            {
+                toReturn.Add(LineStationDoToBoAdapter(ls));
+            }
+
+            foreach (var stat in toReturn)
             {
                 var a = _dal.GetBusStation(stat.Code);
                 a.CopyPropertiesTo(stat);
@@ -702,13 +726,13 @@ namespace BL
 
             }
 
-            for (int i = 0; i < ToReturn.Count() - 1; i++)
+            for (var i = 0; i < toReturn.Count() - 1; i++)
             {
-                var current = _dal.GetConsecutiveStations(ToReturn[i].Code, ToReturn[i + 1].Code);
-                ((BO.LineStation)ToReturn[i]).TimeToNext = (TimeSpan)current.AverageTravelTime;
+                var current = _dal.GetConsecutiveStations(toReturn[i].Code, toReturn[i + 1].Code);
+                ((BO.LineStation)toReturn[i]).TimeToNext = (TimeSpan)current.AverageTravelTime;
             }
 
-            return ToReturn;
+            return toReturn;
         }
 
         public void AddLineStation(BO.LineStation lineStation)

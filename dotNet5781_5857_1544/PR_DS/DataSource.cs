@@ -270,7 +270,7 @@ namespace DS
                 new LineStation()
                 {
                     StationIndex = 0,
-                    StationNumber = 38831,
+                    Code = 38831,
                     Active = true,
                     BusLineId = 0
                 },
@@ -278,7 +278,7 @@ namespace DS
                 new LineStation()
                 {
                     StationIndex = 2,
-                    StationNumber = 38832,
+                    Code = 38832,
                     Active = true,
                     BusLineId = 0
                 },
@@ -286,7 +286,7 @@ namespace DS
                 new LineStation()
                 {
                     StationIndex = 1,
-                    StationNumber = 38833,
+                    Code = 38833,
                     Active = true,
                     BusLineId = 0
                 },
@@ -294,7 +294,7 @@ namespace DS
                 new LineStation()
                 {
                     StationIndex = 3,
-                    StationNumber = 38834,
+                    Code = 38834,
                     Active = true,
                     BusLineId = 0
                 },
@@ -302,7 +302,7 @@ namespace DS
                 new LineStation()
                 {
                     StationIndex = 4,
-                    StationNumber = 38836,
+                    Code = 38836,
                     Active = true,
                     BusLineId = 0
                 }
