@@ -264,17 +264,34 @@ namespace BL
             stat.CopyPropertiesTo(boStat);
             return boStat;
         }
-        private static bool BusStationIsFit(BO.BusStation bs)
+        private bool BusStationIsFit(BO.BusStation bs)
         {
-            // year and number
+            //code, location, address, accessible, active, BusLines
+
             if (bs.Code < 0)
             {
                 throw new NotValidIDException("Station Code must be positive!");
             }
-            //if ((bs.Location.Latitude < 31 || bs.Location.Latitude > 33.3) || ( bs.Location.Longitude < 34.3 || bs.Location.Longitude >35.5))
-            //{
-            //    throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
-            //}
+            if ((bs.Location.Latitude < 31 || bs.Location.Latitude > 33.3) || ( bs.Location.Longitude < 34.3 || bs.Location.Longitude >35.5))
+            {
+                throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
+            }
+
+            var stations = GetAllBusStations();
+            if (!((from stat in stations
+                   where stat.Code == bs.Code
+            select stat).Any()))
+            {
+                throw new StationAlreadyExistsException("Bus station with this code already exist!");
+            }
+
+            if (!((from stat in stations
+                   where stat.Location == bs.Location
+                   select stat).Any()))
+            {
+                throw new StationAlreadyExistsException("Bus station with this Loacation already exist!");
+            }
+
             return true;
         }
         public void AddStation(BO.BusStation bs)
