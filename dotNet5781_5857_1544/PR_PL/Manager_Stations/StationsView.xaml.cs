@@ -3,6 +3,7 @@ using BO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using System;
 
 namespace PL
 {
@@ -18,7 +19,14 @@ namespace PL
 
             _bl = b;
 
-            StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
+            try
+            {
+                StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Can't load the list of active stations! \n" + e.Message, "Station Loading Error!");
+            }
         }
 
         private void Exit_OnClick(object sender, RoutedEventArgs e)
@@ -30,7 +38,14 @@ namespace PL
         {
             AddStation ast = new AddStation(_bl);
             ast.ShowDialog();
-            StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
+            try
+            {
+                StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't load the list of active stations! \n" + ex.Message, "Station Loading Error!");
+            }
         }
 
         private void StationsDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -49,15 +64,30 @@ namespace PL
         {
             if (StationsDataGrid.SelectedItem == null)
             {
-                MessageBox.Show("Please choose at least one station and then click remove!");
+                MessageBox.Show("Please choose at least one station and then click remove!", "Selection Error");
             }
             else
             {
                 foreach (var s in StationsDataGrid.SelectedItems)
                 {
-                    _bl.DeleteBusStation(((BusStation)s).Code);
+                    try
+                    {
+                        _bl.DeleteBusStation(((BusStation)s).Code);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Can't delete Bus station number " + (((BusStation)s).Code).ToString() + ex.Message, "Station deleting Error!");
+                    }
                 }
+
+                try
+                {
                 StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Can't load the list of active stations! \n" + ex.Message, "Station Loading Error!");
+                }
             }
         }
 

@@ -17,12 +17,18 @@ namespace PR_PL.Manager_Stations
 
             var longitude = station.Location.Longitude;
             var latitude = station.Location.Latitude;
-
+            try
+            {
             var googleMapsAddress = $"https://www.google.co.il//maps/@{longitude},{latitude},18z?hl=iw";
             
             var bingMapsAddress = $"https://www.bing.com/maps?cp={longitude}~{latitude}&lvl=18";
             
             ShowMap.Source = new Uri(googleMapsAddress);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't load the map of station! \n" + ex.Message, "map Loading Error!");
+            }
 
             #region K
             //var k = "AtbpkGlznerExttC1tAEa7wPmubvzBDQa4Byq33BCkde0PKsuOV2PelJw_Zvnx1-";

@@ -61,11 +61,11 @@ namespace PL
                 };
                 bl.AddStation(ToAdd);
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                Console.WriteLine(exception);
-                throw;
+                MessageBox.Show("Can't add bus station! \n" + ex.Message, "Station adding Error!");
             }
+
             Close();
         }
     }

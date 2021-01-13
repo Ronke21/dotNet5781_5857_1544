@@ -24,7 +24,7 @@ namespace PR_PL.Manager_Stations
 
             _bl = b;
 
-            StationsDataGrid.ItemsSource = _bl.GetAllBusStations().OrderBy(s => s.Code);
+            refresh();
         }
 
         private void StationsDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -37,15 +37,23 @@ namespace PR_PL.Manager_Stations
         {
             if (StationsDataGrid.SelectedItem == null)
             {
-                MessageBox.Show("Please choose at least one station and then click remove!");
+                MessageBox.Show("Please choose at least one station and then click remove!", "Selection Error");
             }
             else
             {
                 foreach (var s in StationsDataGrid.SelectedItems)
                 {
-                    _bl.DeleteBusStation(((BusStation)s).Code);
+                    try
+                    {
+                        _bl.DeleteBusStation(((BusStation)s).Code);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Can't delete Bus station number " + (((BusStation)s).Code).ToString() + ex.Message, "Station deleting Error!");
+                    }
                 }
-                StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
+
+                refresh();
             }
         }
 
@@ -59,7 +67,18 @@ namespace PR_PL.Manager_Stations
         {
             var ast = new AddStation(_bl);
             ast.ShowDialog();
-            StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
+
+        }
+        private void refresh()
+        {
+            try
+            {
+                StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't load the list of active stations! \n" + ex.Message, "Station Loading Error!");
+            }
         }
     }
 }

@@ -52,10 +52,9 @@ namespace PL
             }
 
 
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                Console.WriteLine(exception);
-                throw;
+                MessageBox.Show("Can't update bus station! \n" + ex.Message, "Station updating Error!");
             }
 
             Close();

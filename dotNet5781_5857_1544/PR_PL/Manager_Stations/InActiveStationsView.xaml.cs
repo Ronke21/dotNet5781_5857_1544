@@ -1,5 +1,6 @@
 ﻿using BLApi;
 using BO;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -20,7 +21,14 @@ namespace PL
             bl = b;
             sv = v;
 
-            InActiveStationsDataGrid.DataContext = bl.GetAllInActiveBusStations().ToList(); 
+            try
+            {
+                InActiveStationsDataGrid.DataContext = bl.GetAllInActiveBusStations().ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't load the list of in active stations! \n" + ex.Message, "Station Loading Error!");
+            }
         }
 
         private void Exit_OnClick(object sender, RoutedEventArgs e)
@@ -47,18 +55,32 @@ namespace PL
                 {
                     var updated = new BusStation
                     {
-                        Code=bs.Code,
-                        Name=bs.Name,
-                        Location=bs.Location,
-                        Address=bs.Address,
-                        Accessible=bs.Accessible,
-                        Active=true
+                        Code = bs.Code,
+                        Name = bs.Name,
+                        Location = bs.Location,
+                        Address = bs.Address,
+                        Accessible = bs.Accessible,
+                        Active = true
                     };
-                    bl.UpdateBusStation(updated);
+                    try
+                    {
+                        bl.UpdateBusStation(updated);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Can't activate Bus station number " + (((BusStation)bs).Code).ToString() + ex.Message, "Station activating Error!");
+                    }
+                }
+                try
+                {
+                    InActiveStationsDataGrid.DataContext = bl.GetAllInActiveBusStations().ToList(); //update view
+                    sv.StationsDataGrid.DataContext = bl.GetAllBusStations().ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Can't load the list of stations! \n" + ex.Message, "Station Loading Error!");
                 }
 
-                InActiveStationsDataGrid.DataContext = bl.GetAllInActiveBusStations().ToList(); //update view
-                sv.StationsDataGrid.DataContext = bl.GetAllBusStations().ToList();
             }
         }
     }
