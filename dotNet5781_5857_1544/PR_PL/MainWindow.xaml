@@ -249,7 +249,7 @@
 
                     <materialDesign:PackIcon
                         Foreground="White"
-                        Kind="MapMarkerDistance"
+                        Kind="Routes"
                         Height="50"
                         Width="50"
                         Margin="130,0,0,0"
@@ -266,9 +266,9 @@
                 BorderBrush="Transparent"
                 Height="120"
                 Margin="0,0,0,0"
-                MouseEnter="LinesSidePanel_OnMouseEnter"
-                MouseLeave="LinesSidePanel_OnMouseLeave"
-                Click="LinesSidePanel_OnClick">
+                MouseEnter="ConsecutiveStationsSidePanel_OnMouseEnter"
+                MouseLeave="ConsecutiveStationsSidePanel_OnMouseLeave"
+                Click="ConsecutiveStationsSidePanel_OnClick">
 
                 <StackPanel Orientation="Horizontal">
 

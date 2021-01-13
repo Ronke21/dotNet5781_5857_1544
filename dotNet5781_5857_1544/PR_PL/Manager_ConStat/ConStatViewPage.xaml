@@ -1,0 +1,129 @@
+﻿<Page x:Class="PR_PL.Manager_ConStat.ConStatViewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PR_PL.Manager_ConStat"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ConStatViewPage"
+      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal" 
+      TextOptions.TextRenderingMode="Auto"        
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      >
+
+    <Grid>
+
+        <DataGrid
+            x:Name="ConStatDataGrid"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding}"
+            IsReadOnly="True"
+            MouseDoubleClick="ConStatDataGrid_OnMouseDoubleClick"
+            FontSize="25"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Center"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Stretch"
+            Margin="0,0,0,100">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn 
+                    x:Name="FirstStat" 
+                    Binding="{Binding StatCode1}"
+                    Header="First"
+                    />
+
+                <DataGridTextColumn 
+                    x:Name="SecondStat" 
+                    Binding="{Binding StatCode2}"
+                    Header="Second"
+                />
+
+                <DataGridTextColumn 
+                    x:Name="Distance" 
+                    Binding="{Binding Distance}"
+                    Header="Distance"
+                />
+
+                <DataGridTextColumn 
+                    x:Name="AvgTime" 
+                    Header="Time">
+
+                    <DataGridTextColumn.Binding>
+
+                        <Binding Path="AverageTravelTime"
+                                 StringFormat="m\:ss"/>
+
+                    </DataGridTextColumn.Binding>
+
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <Button 
+            x:Name="UpdateTime"
+            Width="100"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            Height="100"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Click="UpdateTime_OnClick"
+        >
+            <materialDesign:PackIcon
+                Width="50"
+                Height="50"
+                Kind="Update"
+            />
+        </Button>
+
+
+        <Button 
+            x:Name="InActive"
+            Width="100"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            Height="100"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Click="InActive_OnClick"
+        >
+            <materialDesign:PackIcon
+                Width="50"
+                Height="50"
+                Kind="PackageDown"
+            />
+        </Button>
+
+        <Button
+            x:Name="Add"
+            Click="Add_OnClick"
+            Width="100"
+            Height="100"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            ToolTip="MaterialDesignFloatingActionMiniDarkButton"
+            Background="#FF0064A6"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom">
+
+            <materialDesign:PackIcon
+                Kind="Add"
+                Width="60" 
+                Height="60"
+                BorderBrush="#FFE2EDFF">
+
+            </materialDesign:PackIcon>
+
+        </Button>
+
+    </Grid>
+
+</Page>

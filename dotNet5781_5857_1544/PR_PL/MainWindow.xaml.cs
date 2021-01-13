@@ -1,15 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
 using BLApi;
-using System.Windows.Navigation;
 using MaterialDesignThemes.Wpf;
-using PR_PL;
 using PR_PL.Manager_Buses;
+using PR_PL.Manager_ConStat;
 using PR_PL.Manager_Lines;
 using PR_PL.Manager_Stations;
 
@@ -207,19 +203,46 @@ namespace PL
 
             else DataDisplay.Content = new LinesViewPage(bl);
         }
-
         private void LinesSidePanel_OnMouseLeave(object sender, MouseEventArgs e)
         {
             var bc = new BrushConverter();
             LinesSidePanel.Background = (Brush)bc.ConvertFrom("#FF0064A6");
         }
-
         private void LinesSidePanel_OnMouseEnter(object sender, MouseEventArgs e)
         {
             var bc = new BrushConverter();
             LinesSidePanel.Background = (Brush)bc.ConvertFrom("#30ABFF");
         }
+        #endregion
 
+
+
+        #region  Consecutive stations
+        private void ConsecutiveStationsSidePanel_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (!_hidden)
+            {
+                ButtonBase_OnClick(sender, e);
+            }
+
+            if (DataDisplay.Content != null)
+            {
+                if (DataDisplay.Content is ConStatViewPage) { }
+                else DataDisplay.Content = new ConStatViewPage(bl);
+            }
+
+            else DataDisplay.Content = new ConStatViewPage(bl);
+        }
+        private void ConsecutiveStationsSidePanel_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            var bc = new BrushConverter();
+            ConsecutiveStationsSidePanel.Background = (Brush)bc.ConvertFrom("#30ABFF");
+        }
+        private void ConsecutiveStationsSidePanel_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            var bc = new BrushConverter();
+            ConsecutiveStationsSidePanel.Background = (Brush)bc.ConvertFrom("#FF0064A6");
+        }
         #endregion
     }
 }

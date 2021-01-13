@@ -50,8 +50,9 @@ namespace BLApi
         #endregion
 
         #region ConsecutiveStations
-        //IEnumerable<ConsecutiveStations> GetAllConsecutiveStations();
+        IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStations();
         void AddConsecutiveStations(int statCode1, int statCode2);
+        void UpdateConsecutiveStations(BO.ConsecutiveStations conStat);
         //ConsecutiveStations GetConsecutiveStations(int statCode1, int statCode2);
         //void DeleteConsecutiveStations(int statCode1, int statCode2);
 

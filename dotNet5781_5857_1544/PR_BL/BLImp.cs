@@ -11,6 +11,7 @@ using DO;
 using Bus = BO.Bus;
 using BusLine = BO.BusLine;
 using BusStation = BO.BusStation;
+using ConsecutiveStations = DO.ConsecutiveStations;
 using LineStation = DO.LineStation;
 
 
@@ -272,7 +273,7 @@ namespace BL
             {
                 throw new NotValidIDException("Station Code must be positive!");
             }
-            if ((bs.Location.Latitude < 31 || bs.Location.Latitude > 33.3) || ( bs.Location.Longitude < 34.3 || bs.Location.Longitude >35.5))
+            if ((bs.Location.Latitude < 31 || bs.Location.Latitude > 33.3) || (bs.Location.Longitude < 34.3 || bs.Location.Longitude > 35.5))
             {
                 throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
             }
@@ -280,7 +281,7 @@ namespace BL
             var stations = GetAllBusStations();
             if (!((from stat in stations
                    where stat.Code == bs.Code
-            select stat).Any()))
+                   select stat).Any()))
             {
                 throw new StationAlreadyExistsException("Bus station with this code already exist!");
             }
@@ -542,7 +543,6 @@ namespace BL
                 throw new Exception("Unknown error UpdateBusLine");
             }
         }
-
         public void UpdateBusLine(BO.BusLine update, IEnumerable<BusStation> chosen)
         {
 
@@ -622,6 +622,7 @@ namespace BL
             {
                 if (s1[i].Code != s2[i].Code) return false;
             }
+
             return true;
         }
 
@@ -666,6 +667,14 @@ namespace BL
         //    return speed;
         //}
 
+
+        private static BO.ConsecutiveStations ConsecutiveStationDoToBoAdapter(DO.ConsecutiveStations DOConStation)
+        {
+            var BOConStation = new BO.ConsecutiveStations();
+            DOConStation.CopyPropertiesTo(BOConStation);
+            return BOConStation;
+        }
+
         public void AddConsecutiveStations(int statCode1, int statCode2)
         {
             if (!_dal.CheckConsecutiveStationsNotExist(statCode1, statCode2)) return;
@@ -679,11 +688,57 @@ namespace BL
 
                 var time = new TimeSpan(0, 0, (int)(distance / SpeedFactor(distance)));
 
-                _dal.AddConsecutiveStations(statCode1, statCode2, time, distance);
+                _dal.AddConsecutiveStations(statCode1, statCode2, time, Math.Round(distance / 1000, 2));
             }
             catch (Exception e)
             {
                 throw;
+            }
+        }
+
+        public void UpdateConsecutiveStations(BO.ConsecutiveStations conStat)
+        {
+            try
+            {
+                var cs = new DO.ConsecutiveStations();
+                conStat.CopyPropertiesTo(cs);
+                _dal.UpdateConsecutiveStations(cs);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStations()
+        {
+            try
+            {
+                foreach (var bl in _dal.GetAllActiveBusLines())
+                {
+                    UpdateAndReturnLineStationList(bl.BusLineId);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+
+            try
+            {
+                return from conStat in _dal.GetAllConsecutiveStations()
+                       select ConsecutiveStationDoToBoAdapter(conStat);
+            }
+            catch (DO.EmptyListException ex)
+            {
+                throw new BO.EmptyListException("No buses in the list", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetAllBuses");
             }
         }
 
@@ -697,7 +752,6 @@ namespace BL
             DOLineStation.CopyPropertiesTo(BOLineStation);
             return BOLineStation;
         }
-
         public IEnumerable<BO.LineStation> UpdateAndReturnLineStationList(int BusLineID)
         {
             var lineStations = _dal.GetAllLineStationsByLineID(BusLineID).ToList();
@@ -734,7 +788,6 @@ namespace BL
 
             return toReturn;
         }
-
         public void AddLineStation(BO.LineStation lineStation)
         {
             var lineStat = new DO.LineStation();

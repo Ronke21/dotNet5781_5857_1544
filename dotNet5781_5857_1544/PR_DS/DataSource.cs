@@ -232,8 +232,8 @@ namespace DS
                 {
                     StatCode1 = 73,
                     StatCode2 = 74,
-                    Distance = new GeoCoordinate(31.825302, 35.188624).
-                        GetDistanceTo(new GeoCoordinate(31.825455, 35.188100)),
+                    Distance = Math.Round(new GeoCoordinate(31.825302, 35.188624).
+                        GetDistanceTo(new GeoCoordinate(31.825455, 35.188100)),2),
                     AverageTravelTime = new TimeSpan(0, 3, 0),
                     Active = true
                 },
@@ -242,8 +242,8 @@ namespace DS
                 {
                     StatCode1 = 74,
                     StatCode2 = 75,
-                    Distance = new GeoCoordinate(31.825455, 35.188100).
-                        GetDistanceTo(new GeoCoordinate(31.825820, 35.187420)),
+                    Distance = Math.Round(new GeoCoordinate(31.825455, 35.188100).
+                        GetDistanceTo(new GeoCoordinate(31.825820, 35.187420)),2),
                     AverageTravelTime = new TimeSpan(0, 3, 0),
                     Active = true
                 },
@@ -252,8 +252,8 @@ namespace DS
                 {
                     StatCode1 = 74,
                     StatCode2 = 75,
-                    Distance = new GeoCoordinate(31.825820, 35.187420).
-                        GetDistanceTo(new GeoCoordinate(31.825820, 35.187420)),
+                    Distance = Math.Round(new GeoCoordinate(31.825820, 35.187420).
+                        GetDistanceTo(new GeoCoordinate(31.825820, 35.187420)),2),
                     AverageTravelTime = new TimeSpan(0, 3, 0),
                     Active = true
                 },

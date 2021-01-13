@@ -240,7 +240,7 @@ namespace Dal
             {
                 DataSource.LineStationsList.Add(lineStation.Clone());
             }
-            
+
             else if (ls.Active is false)
             {
                 ls.StationIndex = lineStation.StationIndex;
@@ -307,7 +307,19 @@ namespace Dal
         #endregion
 
         #region ConsecutiveStations
-        //IEnumerable<ConsecutiveStations> GetAllConsecutiveStations();
+        public IEnumerable<ConsecutiveStations> GetAllConsecutiveStations()
+        {
+            var conStats = from cs in DataSource.ConsecutiveStationsList
+                           where cs.Active
+                           select cs;
+
+            if (conStats is null)
+            {
+                throw new StationsAreNotConsecutiveException("No consecutive stations found");
+            }
+
+            return conStats;
+        }
         public void AddConsecutiveStations(int statCode1, int statCode2, TimeSpan toNext, double distance)
         {
             var cons = DataSource.ConsecutiveStationsList.Find(c => c.StatCode1 == statCode1 &&
@@ -343,6 +355,13 @@ namespace Dal
 
             return consecutiveStations;
         }
+
+        public void UpdateConsecutiveStations(ConsecutiveStations conStat)
+        {
+            var updatedConStat = GetConsecutiveStations(conStat.StatCode1, conStat.StatCode2);
+            conStat.Mover(updatedConStat);
+        }
+
         public bool CheckConsecutiveStationsNotExist(int statCode1, int statCode2)
         {
             return (DataSource.ConsecutiveStationsList.Find(c => c.StatCode1 == statCode1 &&

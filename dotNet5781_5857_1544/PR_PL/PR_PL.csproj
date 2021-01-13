@@ -75,6 +75,12 @@
     <Compile Include="Manager_Buses\UpdateBus.xaml.cs">
       <DependentUpon>UpdateBus.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Manager_ConStat\ConStatViewPage.xaml.cs">
+      <DependentUpon>ConStatViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_ConStat\EditTimeWindow.xaml.cs">
+      <DependentUpon>EditTimeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager_Lines\AddBusLineWindow.xaml.cs">
       <DependentUpon>AddBusLineWindow.xaml</DependentUpon>
     </Compile>
@@ -146,6 +152,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Manager_Buses\UpdateBus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_ConStat\ConStatViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_ConStat\EditTimeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

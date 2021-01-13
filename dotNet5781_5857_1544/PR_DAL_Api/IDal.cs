@@ -45,12 +45,11 @@ namespace DalApi
         #endregion
 
         #region ConsecutiveStations
-        //IEnumerable<ConsecutiveStations> GetAllConsecutiveStations();
+        IEnumerable<ConsecutiveStations> GetAllConsecutiveStations();
         void AddConsecutiveStations(int statCode1, int statCode2, TimeSpan toNext, double distance);
         bool CheckConsecutiveStationsNotExist(int statCode1, int statCode2);
-
         ConsecutiveStations GetConsecutiveStations(int statCode1, int statCode2);
-        //void DeleteConsecutiveStations(int statCode1, int statCode2);
+        void UpdateConsecutiveStations(ConsecutiveStations conStat);
 
         #endregion
 

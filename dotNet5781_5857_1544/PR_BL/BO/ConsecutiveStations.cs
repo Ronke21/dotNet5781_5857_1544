@@ -10,5 +10,6 @@ namespace BO
         public double Distance { get; set; }
         public TimeSpan AverageTravelTime { get; set; }
         public bool Active { get; set; } //
+
     }
 }
