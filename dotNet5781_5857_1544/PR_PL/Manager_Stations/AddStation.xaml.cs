@@ -41,13 +41,28 @@ namespace PL
 
         private void Add_OnClick(object sender, RoutedEventArgs e)
         {
+
             int.TryParse(TextBoxCode.Text, out int cod);
             string nam=TextBoxName.Text;
             string add = TextBoxAddress.Text;
             double.TryParse(TextBoxLongitude.Text, out double longi);
             double.TryParse(TextBoxLatitude.Text, out double lati);
             bool accessi = (bool)CheckBoxAccessible.IsChecked;
-            
+
+            if (cod<=0)
+            {
+                MessageBox.Show("Station code must be positive number!");
+                TextBoxCode.Text = "";
+                return;
+            }
+            if (longi <= 0 || lati<=0)
+            {
+                MessageBox.Show("Station Location must be positive number!");
+                TextBoxLongitude.Text = "";
+                TextBoxLatitude.Text = "";
+                return;
+            }
+
             try
             {
                 BO.BusStation ToAdd = new BusStation()
@@ -64,9 +79,21 @@ namespace PL
             catch (Exception ex)
             {
                 MessageBox.Show("Can't add bus station! \n" + ex.Message, "Station adding Error!");
+                emptyBoxes();
+                return;
+
             }
 
             Close();
+        }
+
+        void emptyBoxes()
+        {
+            TextBoxCode.Text = "";
+            TextBoxName.Text = "";
+            TextBoxAddress.Text = "";
+            TextBoxLongitude.Text = "";
+            TextBoxLatitude.Text = "";
         }
     }
 

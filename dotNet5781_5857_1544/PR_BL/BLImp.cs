@@ -272,7 +272,7 @@ namespace BL
             {
                 throw new NotValidIDException("Station Code must be positive!");
             }
-            if ((bs.Location.Latitude < 31 || bs.Location.Latitude > 33.3) || ( bs.Location.Longitude < 34.3 || bs.Location.Longitude >35.5))
+            if ((bs.Location.Latitude < 31 || bs.Location.Latitude > 33.3) || (bs.Location.Longitude < 34.3 || bs.Location.Longitude > 35.5))
             {
                 throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
             }
@@ -280,7 +280,7 @@ namespace BL
             var stations = GetAllBusStations();
             if (!((from stat in stations
                    where stat.Code == bs.Code
-            select stat).Any()))
+                   select stat).Any()))
             {
                 throw new StationAlreadyExistsException("Bus station with this code already exist!");
             }
@@ -296,25 +296,20 @@ namespace BL
         }
         public void AddStation(BO.BusStation bs)
         {
-            var busStationDo = new DO.BusStation();
-
-            bs.CopyPropertiesTo(busStationDo);
-
             try
             {
                 if (BusStationIsFit(bs))
                 {
+                    var busStationDo = new DO.BusStation();
+                    bs.CopyPropertiesTo(busStationDo);
                     _dal.AddBusStation(busStationDo);
                 }
             }
-            catch (DO.BusAlreadyExistsException ex)
+            catch (Exception ex)
             {
-                throw new BO.BadAdditionException("Can't add bus", ex);
+                throw new BO.BadAdditionException((ex.Message), ex);
             }
-            catch (Exception)
-            {
-                throw new Exception("Unknown error AddBus");
-            }
+
         }
         public IEnumerable<BO.BusStation> GetAllBusStations()
         {
@@ -326,12 +321,12 @@ namespace BL
 
             catch (DO.EmptyListException ex)
             {
-                throw new BO.EmptyListException("No buses in the list", ex);
+                throw new BO.EmptyListException("No stations in the list", ex);
             }
-            //catch (Exception)
-            //{
-            //    throw new Exception("Unknown error GetAllBusStations");
-            //}
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetAllBusStations");
+            }
         }
         public IEnumerable<BO.BusStation> GetAllInActiveBusStations()
         {
