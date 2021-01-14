@@ -123,7 +123,6 @@ namespace PL
 
         #region Buses button
 
-        #region colors
         private void BusesSidePanel_OnMouseEnter(object sender, RoutedEventArgs e)
         {
             var bc = new BrushConverter();
@@ -136,7 +135,6 @@ namespace PL
             BusesSidePanel.Background = (Brush)bc.ConvertFrom("#FF0064A6");
         }
 
-        #endregion
         private void BusesSidePanel_OnClick(object sender, RoutedEventArgs e)
         {
             if (!_hidden)
@@ -214,8 +212,6 @@ namespace PL
             LinesSidePanel.Background = (Brush)bc.ConvertFrom("#30ABFF");
         }
         #endregion
-
-
 
         #region  Consecutive stations
         private void ConsecutiveStationsSidePanel_OnClick(object sender, RoutedEventArgs e)

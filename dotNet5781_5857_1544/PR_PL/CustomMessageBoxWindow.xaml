@@ -1,0 +1,73 @@
+﻿<Window x:Class="PR_PL.CustomMessageBoxWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PR_PL"
+        mc:Ignorable="d"
+        Title="CustomMessageBoxWindow"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        
+        Height="300"
+        Width="300">
+
+    <Border
+        CornerRadius="20"
+        Background="White"
+        BorderBrush="#007ACC"
+        BorderThickness="2">
+
+        <Grid
+            MouseDown="UIElement_OnMouseDown"
+            >
+
+            <Button
+                Name="Close"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                Click="Close_OnClick"
+                Margin="5">
+
+                <materialDesign:PackIcon
+                    Kind="Close"
+                    Width="30"
+                    Height="30"/>
+
+            </Button>
+
+            <Label
+                Name="Caption"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Margin="10"
+                FontSize="25"
+                Content="Caption"
+            />
+
+            <TextBlock
+                Name="Message"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                Margin="20,45,20,15"
+                TextWrapping="Wrap"
+                FontSize="15"
+                Text="Message : the quick brown fox jumps over the lazy dog"
+                />
+
+        </Grid>
+
+    </Border>
+</Window>

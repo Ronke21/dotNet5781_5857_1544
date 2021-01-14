@@ -71,9 +71,13 @@
             />
 
             <TextBox
-            Name="LineNumberBox"
-            Grid.Row="0"
-            Grid.Column="1"
+                Name="LineNumberBox"
+                Grid.Row="0"
+                Grid.Column="1"
+                TextAlignment="Center"
+                VerticalAlignment="Bottom"
+                FontSize="20"
+                Margin="0,0,0,10"
             />
 
             <Label
@@ -103,9 +107,12 @@
                     Name="SearchLinesTextBox"
                     TextChanged="SearchLinesTextBox_OnTextChanged"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Bottom"
+                    Margin="0,0,0,10"
                     Height="50"
                     Width="100"
+                    FontSize="15"
                 />
 
 
@@ -133,6 +140,7 @@
                 AutoGenerateColumns="False"
                 Grid.Row="2"
                 Grid.Column="1"
+                Background="White"
                 ItemsSource="{Binding}"
                 CanUserAddRows="False"
                 IsReadOnly="True"
@@ -144,20 +152,20 @@
                         <DataGridTextColumn 
                         x:Name="Code" 
                         Binding="{Binding Code}"
-                        Header="Station Code"
-                        Width="*"/>
+                        Header="Code"
+                        />
 
                         <DataGridTextColumn 
                         x:Name="Name" 
                         Binding="{Binding Name}"
-                        Header="Station Name"
-                        Width="*"/>
+                        Header="Name"
+                       />
 
                         <DataGridTextColumn 
                         x:Name="Address" 
                         Binding="{Binding Address}"
                         Header="Address"
-                        Width="*"/>
+                        />
 
                     </DataGrid.Columns>
 
@@ -167,6 +175,7 @@
 
 
             <Border
+                Name="ChosenBorder"
                 Grid.Row="2"
                 Grid.Column="2"
                 CornerRadius="20"
@@ -177,10 +186,11 @@
             >
 
                 <DataGrid
-                x:Name="ChosenStationsDataGrid"
+                Name="ChosenStationsDataGrid"
                 AutoGenerateColumns="False"
                 Grid.Row="2"
                 Grid.Column="2"
+                Background="White"
                 ItemsSource="{Binding}"
                 CanUserAddRows="False"
                 IsReadOnly="True"
@@ -192,20 +202,20 @@
                         <DataGridTextColumn 
                         x:Name="ChosenCode" 
                         Binding="{Binding Code}"
-                        Header="Station Code"
-                        Width="*"/>
+                        Header="Code"
+                        />
 
                         <DataGridTextColumn 
                         x:Name="ChosenName" 
                         Binding="{Binding Name}"
-                        Header="Station Name"
-                        Width="*"/>
+                        Header="Name"
+                        />
 
                         <DataGridTextColumn 
                         x:Name="ChosenAddress" 
                         Binding="{Binding Address}"
                         Header="Address"
-                        Width="*"/>
+                        />
 
                     </DataGrid.Columns>
 

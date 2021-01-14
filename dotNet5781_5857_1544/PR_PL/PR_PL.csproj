@@ -66,6 +66,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CustomMessageBoxWindow.xaml.cs">
+      <DependentUpon>CustomMessageBoxWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager_Buses\BusesViewPage.xaml.cs">
       <DependentUpon>BusesViewPage.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
     <Compile Include="Manager_Stations\StationsView.xaml.cs">
       <DependentUpon>StationsView.xaml</DependentUpon>
     </Compile>
+    <Page Include="CustomMessageBoxWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Manager_Buses\AddBus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

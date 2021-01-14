@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using BLApi;
 using BO;
 using PL;
@@ -20,7 +21,7 @@ namespace PR_PL.Manager_Lines
         private readonly IBL _bl;
 
         MainWindow wnd = (MainWindow)Application.Current.MainWindow; //reperence to main window in order to update list box items(buses)
-        
+
         private ObservableCollection<BO.BusStation> _chosen = new ObservableCollection<BusStation>();
         private ObservableCollection<BO.BusStation> _chooseFrom;
         public AddBusLineWindow(IBL b)
@@ -41,9 +42,25 @@ namespace PR_PL.Manager_Lines
 
         private void RefreshDataGrids()
         {
-            StationsDataGrid.DataContext = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom).OrderBy(s=>s.Code);
+            StationsDataGrid.DataContext = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom).OrderBy(s => s.Code);
             StationsDataGrid.Items.Refresh();
             ChosenStationsDataGrid.Items.Refresh();
+            Colors();
+        }
+
+        private void Colors()
+        {
+            if (_chosen.Count < 2)
+            {
+                ChosenBorder.BorderBrush = Brushes.Red;
+                ChosenBorder.BorderThickness = new Thickness(5);
+            }
+            else
+            {
+                var bc = new BrushConverter();
+                ChosenBorder.BorderBrush = (Brush)bc.ConvertFrom("#007ACC");
+                ChosenBorder.BorderThickness = new Thickness(1);
+            }
         }
 
         private void SearchLinesTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -68,17 +85,31 @@ namespace PR_PL.Manager_Lines
         private void Add_OnClick(object sender, RoutedEventArgs e)
         {
             if (StationsDataGrid.SelectedItem is null) return;
-            _chosen.Add((BusStation)StationsDataGrid.SelectedItem);
-            _chooseFrom.Remove((BusStation)StationsDataGrid.SelectedItem);
-            RefreshDataGrids();
+            try
+            {
+                _chosen.Add((BusStation)StationsDataGrid.SelectedItem);
+                _chooseFrom.Remove((BusStation)StationsDataGrid.SelectedItem);
+                RefreshDataGrids();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Can't add station");
+            }
         }
 
         private void Remove_OnClick(object sender, RoutedEventArgs e)
         {
             if (ChosenStationsDataGrid.SelectedItem is null) return;
-            _chooseFrom.Add((BusStation)ChosenStationsDataGrid.SelectedItem);
-            _chosen.Remove((BusStation)ChosenStationsDataGrid.SelectedItem);
-            RefreshDataGrids();
+            try
+            {
+                _chooseFrom.Add((BusStation)ChosenStationsDataGrid.SelectedItem);
+                _chosen.Remove((BusStation)ChosenStationsDataGrid.SelectedItem);
+                RefreshDataGrids();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Can't remove station");
+            }
         }
 
         private void AddLine_OnClick(object sender, RoutedEventArgs e)
@@ -87,9 +118,12 @@ namespace PR_PL.Manager_Lines
             var lineArea = (Area)LineAreaComboBox.SelectedItem;
             var accessible = _chosen.All(station => station.Accessible);
 
+            if (_chosen.Count < 2 || lineNum == 0 || lineNum > 999) return;
+
             try
             {
-                _bl.AddBusLine(new BO.BusLine() {
+                _bl.AddBusLine(new BO.BusLine()
+                {
                     LineNumber = lineNum,
                     Active = true,
                     AllAccessible = accessible,
@@ -104,8 +138,7 @@ namespace PR_PL.Manager_Lines
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
-                throw;
+                MessageBox.Show(exception.ToString());
             }
 
         }

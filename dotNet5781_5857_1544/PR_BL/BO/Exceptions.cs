@@ -11,7 +11,7 @@ namespace BO
         public NotInIsraelException(string message) : base(message) { }
     }
 
-    
+
     //exception for a input of station/bus that contains wrong digit number
     [Serializable]
     public class OutOfRangeException : Exception
@@ -31,6 +31,14 @@ namespace BO
 
         public override string ToString()
         { return "Can't ride over 1 hour without stop, you tried to ride" + Message + "\n"; }
+    }
+
+    [Serializable]
+    public class TooShortException : Exception
+    {
+        public TooShortException() : base() { }
+
+        public TooShortException(string message) : base(message) { }
     }
 
     [Serializable]

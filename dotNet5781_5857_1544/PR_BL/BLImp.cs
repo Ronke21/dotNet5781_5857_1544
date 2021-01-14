@@ -427,15 +427,18 @@ namespace BL
 
             busLineDo.BusLineId = _dal.GetKey();
 
-            var index = busStations.Count();
+            var maxIndex = busStations.Count();
+
+            if (maxIndex < 2) throw new TooShortException("Bus line can't have less then 2 stations");
 
             try
             {
                 _dal.AddBusLine(busLineDo);
 
-                for (var i = 0; i < index; i++)
+                for (var i = 0; i < maxIndex; i++)
                 {
                     var bs = busStations.ToList()[i];
+
                     var toAdd = new LineStation()
                     {
                         StationIndex = i,
@@ -443,6 +446,7 @@ namespace BL
                         Active = true,
                         BusLineId = busLineDo.BusLineId
                     };
+
                     _dal.AddLineStation(toAdd);
                 }
             }

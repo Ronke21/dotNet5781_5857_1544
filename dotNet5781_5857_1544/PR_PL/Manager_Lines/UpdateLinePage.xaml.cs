@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using BLApi;
 using BO;
 using PL;
@@ -53,7 +54,24 @@ namespace PR_PL.Manager_Lines
             StationsDataGrid.ItemsSource = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom).OrderBy(s => s.Code);
             StationsDataGrid.Items.Refresh();
             ChosenStationsDataGrid.Items.Refresh();
+            Colors();
         }
+
+        private void Colors()
+        {
+            if (_chosen.Count < 2)
+            {
+                ChosenBorder.BorderBrush = Brushes.Red;
+                ChosenBorder.BorderThickness = new Thickness(5);
+            }
+            else
+            {
+                var bc = new BrushConverter();
+                ChosenBorder.BorderBrush = (Brush)bc.ConvertFrom("#007ACC");
+                ChosenBorder.BorderThickness = new Thickness(1);
+            }
+        }
+
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
             //var fromDG = (ChosenStationsDataGrid.Items.OfType<BusStation>()).ToList();
@@ -64,44 +82,46 @@ namespace PR_PL.Manager_Lines
             var lineArea = (Area)LineAreaComboBox.SelectedItem;
             var accessible = _chosen.All(station => station.Accessible);
 
-            var newBus = new BO.BusLine()
-            {
-                BusLineId = bline.BusLineId,
-                LineNumber = lineNum,
-                Active = true,
-                AllAccessible = accessible,
-                BusArea = lineArea,
-                FirstStation = _chosen.ToList()[0].Code,
-                LastStation = _chosen.ToList()[_chosen.Count - 1].Code
-            };
+            if (_chosen.Count < 2 || lineNum == 0 || lineNum > 999) return;
 
-            var index = 0;
-
-            var stations = from station in _chosen
-                     select new LineStation()
-                     {
-                         Code = station.Code,
-                         Accessible = station.Accessible,
-                         Active = station.Active,
-                         Address = station.Address,
-                         StationIndex = index++,
-                         Location = station.Location,
-                         Name = station.Name,
-                         BusLineId = bline.BusLineId,
-                     };
-
-            newBus.ListOfLineStations = stations;
-            
             try
             {
+                var newBus = new BO.BusLine()
+                {
+                    BusLineId = bline.BusLineId,
+                    LineNumber = lineNum,
+                    Active = true,
+                    AllAccessible = accessible,
+                    BusArea = lineArea,
+                    FirstStation = _chosen.ToList()[0].Code,
+                    LastStation = _chosen.ToList()[_chosen.Count > 1 ? _chosen.Count - 1 : 0].Code
+                };
+
+                var index = 0;
+
+                var stations = from station in _chosen
+                               select new LineStation()
+                               {
+                                   Code = station.Code,
+                                   Accessible = station.Accessible,
+                                   Active = station.Active,
+                                   Address = station.Address,
+                                   StationIndex = index++,
+                                   Location = station.Location,
+                                   Name = station.Name,
+                                   BusLineId = bline.BusLineId,
+                               };
+
+                newBus.ListOfLineStations = stations;
+
                 _bl.UpdateBusLine(newBus, _chosen);
 
                 wnd.DataDisplay.Content = new LinesViewPage(_bl);
             }
+
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
-                throw;
+                MessageBox.Show(exception.ToString());
             }
 
             father.Close();
