@@ -159,6 +159,7 @@ namespace Dal
         public void AddBusLine(BusLine busLine)
         {
             var bl = DataSource.BusLinesList.Find(b => b.BusLineId == busLine.BusLineId);
+
             if (bl is null)
             {
                 DataSource.BusLinesList.Add(busLine.Clone());
@@ -355,13 +356,11 @@ namespace Dal
 
             return consecutiveStations;
         }
-
         public void UpdateConsecutiveStations(ConsecutiveStations conStat)
         {
             var updatedConStat = GetConsecutiveStations(conStat.StatCode1, conStat.StatCode2);
             conStat.Mover(updatedConStat);
         }
-
         public bool CheckConsecutiveStationsNotExist(int statCode1, int statCode2)
         {
             return (DataSource.ConsecutiveStationsList.Find(c => c.StatCode1 == statCode1 &&

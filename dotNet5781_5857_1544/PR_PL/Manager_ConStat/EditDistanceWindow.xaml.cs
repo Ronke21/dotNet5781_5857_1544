@@ -7,22 +7,22 @@ using PL;
 namespace PR_PL.Manager_ConStat
 {
     /// <summary>
-    /// Interaction logic for EditTimeWindow.xaml
+    /// Interaction logic for EditDistanceWindow.xaml
     /// </summary>
-    public partial class EditTimeWindow : Window
+    public partial class EditDistanceWindow : Window
     {
         MainWindow wnd = (MainWindow)Application.Current.MainWindow; //reference to main window in order to update list box items(buses)
 
         private IBL _bl;
         private ConsecutiveStations cs;
-        public EditTimeWindow(IBL b, ConsecutiveStations c)
+        public EditDistanceWindow(IBL b, ConsecutiveStations c)
         {
             InitializeComponent();
 
             _bl = b;
             cs = c;
 
-            // TimePicker.SelectedTime = new DateTime(1, 1, 1, cs.AverageTravelTime.Minutes, cs.AverageTravelTime.Seconds,0);
+            DistanceTextBox.Text = (cs.Distance).ToString();
         }
 
         private void Close_OnClick(object sender, RoutedEventArgs e)
@@ -32,8 +32,8 @@ namespace PR_PL.Manager_ConStat
 
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
-            var time = (DateTime)TimePicker.SelectedTime;
-            cs.AverageTravelTime = new TimeSpan(0, time.Hour, time.Minute);
+            var dist = Convert.ToDouble(DistanceTextBox.Text);
+            cs.Distance = dist;
             _bl.UpdateConsecutiveStations(cs);
             wnd.DataDisplay.Content = new ConStatViewPage(_bl);
             Close();

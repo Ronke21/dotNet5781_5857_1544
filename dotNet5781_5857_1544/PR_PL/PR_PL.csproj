@@ -78,6 +78,9 @@
     <Compile Include="Manager_ConStat\ConStatViewPage.xaml.cs">
       <DependentUpon>ConStatViewPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Manager_ConStat\EditDistanceWindow.xaml.cs">
+      <DependentUpon>EditDistanceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager_ConStat\EditTimeWindow.xaml.cs">
       <DependentUpon>EditTimeWindow.xaml</DependentUpon>
     </Compile>
@@ -156,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Manager_ConStat\ConStatViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_ConStat\EditDistanceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

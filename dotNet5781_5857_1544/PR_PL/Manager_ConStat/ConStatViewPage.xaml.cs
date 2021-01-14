@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using BLApi;
 using BO;
+using MaterialDesignThemes.Wpf;
 using PL;
 
 namespace PR_PL.Manager_ConStat
@@ -53,9 +54,15 @@ namespace PR_PL.Manager_ConStat
             //throw new NotImplementedException();
         }
 
-        private void UpdateTime_OnClick(object sender, RoutedEventArgs e)
+        private void Update_OnClick(object sender, RoutedEventArgs e)
         {
             var cs = (ConsecutiveStations)ConStatDataGrid.SelectedItem;
+            
+            if(cs is null) return;
+
+            var edw = new EditDistanceWindow(_bl, cs);
+            edw.ShowDialog();
+
             if (cs is null) return;
             var etw = new EditTimeWindow(_bl, cs);
             etw.ShowDialog();

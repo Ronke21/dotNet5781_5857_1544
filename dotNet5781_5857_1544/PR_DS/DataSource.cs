@@ -165,8 +165,8 @@ namespace DS
                     AllAccessible = true,
                     BusArea = Area.Jerusalem,
                     BusLineId = KeyGenerator.IdGenerator(),
-                    FirstStation = 39827,
-                    LastStation = 39826,
+                    FirstStation = 38831,
+                    LastStation = 38836,
                     LineNumber = 6
                 },
 
@@ -246,17 +246,7 @@ namespace DS
                         GetDistanceTo(new GeoCoordinate(31.825820, 35.187420)),2),
                     AverageTravelTime = new TimeSpan(0, 3, 0),
                     Active = true
-                },
-
-                new ConsecutiveStations()
-                {
-                    StatCode1 = 74,
-                    StatCode2 = 75,
-                    Distance = Math.Round(new GeoCoordinate(31.825820, 35.187420).
-                        GetDistanceTo(new GeoCoordinate(31.825820, 35.187420)),2),
-                    AverageTravelTime = new TimeSpan(0, 3, 0),
-                    Active = true
-                },
+                }
             };
 
             #endregion

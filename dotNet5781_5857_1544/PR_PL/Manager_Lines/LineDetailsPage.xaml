@@ -31,16 +31,16 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="0.6*"/>
         </Grid.RowDefinitions>
 
         <TextBlock
             Grid.Row="0"
-            Grid.Column="3"
+            Grid.Column="0"
             Text="{Binding LineNumber,
             StringFormat=Line {0}}"
             FontSize="50"
@@ -51,23 +51,25 @@
 
         <TextBlock
             Grid.Row="0"
-            Grid.Column="0"
+            Grid.Column="4"
             Text="{Binding Path = BusLineId,
             StringFormat=Bus line ID {0}}"
             FontSize="15"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Right"
-            Margin="0,0,25,0"/>
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Margin="0,20,0,0"
+            />
 
         <TextBlock
-            Grid.Row="1"
-            Grid.Column="0"
+            Grid.Row="0"
+            Grid.Column="4"
             Text="{Binding Path=BusArea,
             StringFormat=Area : {0}}"
             FontSize="15"
             VerticalAlignment="Center"
-            HorizontalAlignment="Right"
-            Margin="0,0,25,0"/>
+            HorizontalAlignment="Left"
+            Margin="0,0,0,0"
+            />
 
         <Button
             Grid.Row="4"
@@ -94,17 +96,17 @@
             x:Name="StationDataGrid"
             Grid.Row="1"
             Grid.RowSpan="3"
-            Grid.Column="1"
-            Grid.ColumnSpan="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="5"
             AutoGenerateColumns="False"
             ItemsSource="{Binding}"
             RowDetailsVisibilityMode="VisibleWhenSelected"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
             CanUserAddRows="False"
-            ColumnWidth="*"
             IsReadOnly="True"
             FontSize="15"
+            Margin="10,0,10,0"
             >
 
             <DataGrid.Columns>
@@ -113,7 +115,6 @@
                     x:Name="Code" 
                     Binding="{Binding Code}"
                     Header="Code"
-                    Width="70"
                     FontSize="10"
                 />
 
@@ -121,7 +122,6 @@
                     x:Name="Name" 
                     Binding="{Binding Name}"
                     Header="Name"
-                    Width="180"
                     FontSize="10"
                 />
 
@@ -129,11 +129,11 @@
                     x:Name="Address" 
                     Binding="{Binding Address}"
                     Header="Address"
-                    Width="180"
                     FontSize="10"
                 />
 
-                <DataGridTemplateColumn Header="Location" Width="90">
+                <DataGridTemplateColumn 
+                    Header="Map">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button
@@ -154,7 +154,6 @@
                     x:Name="TimeToNext" 
                     Binding="{Binding TimeToNext}"
                     Header="TTN"
-                    Width="100"
                     FontSize="10"
                 />
 

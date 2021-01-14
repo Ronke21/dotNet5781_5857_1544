@@ -47,6 +47,9 @@
             Grid.Row="0"
             Grid.Column="1"
             TextAlignment="Center"
+            VerticalAlignment="Bottom"
+            FontSize="20"
+            Margin="0,0,0,10"
             />
 
         <Label
@@ -76,9 +79,12 @@
                     Name="SearchLinesTextBox"
                     TextChanged="SearchLinesTextBox_OnTextChanged"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Bottom"
+                    Margin="0,0,0,10"
                     Height="50"
                     Width="100"
+                    FontSize="10"
                 />
 
 
