@@ -35,6 +35,7 @@ namespace DalApi
 
         #region BusStation
         void AddBusStation(BusStation busStation);                                  // C
+        void ActivateBusStation(int code);
         IEnumerable<BusStation> GetAllActiveBusStations();
         IEnumerable<BusStation> GetAllInActiveBusStations();                    // R
         BusStation GetBusStation(int code);                                         // R

@@ -111,8 +111,11 @@
     <Compile Include="Manager_Stations\AddStation.xaml.cs">
       <DependentUpon>AddStation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Manager_Stations\InActiveStationsView.xaml.cs">
-      <DependentUpon>InActiveStationsView.xaml</DependentUpon>
+    <Compile Include="Manager_Stations\TODELETE_InActiveStationsView.xaml.cs">
+      <DependentUpon>TODELETE_InActiveStationsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_Stations\InActiveStationsViewPage.xaml.cs">
+      <DependentUpon>InActiveStationsViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager_Stations\ShowMapWindow.xaml.cs">
       <DependentUpon>ShowMapWindow.xaml</DependentUpon>
@@ -120,8 +123,8 @@
     <Compile Include="Manager_Stations\StationDetails.xaml.cs">
       <DependentUpon>StationDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Manager_Stations\StationsView.xaml.cs">
-      <DependentUpon>StationsView.xaml</DependentUpon>
+    <Compile Include="Manager_Stations\TODELETE_StationsView.xaml.cs">
+      <DependentUpon>TODELETE_StationsView.xaml</DependentUpon>
     </Compile>
     <Page Include="CustomMessageBoxWindow.xaml">
       <SubType>Designer</SubType>
@@ -209,7 +212,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Manager_Stations\InActiveStationsView.xaml">
+    <Page Include="Manager_Stations\TODELETE_InActiveStationsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Stations\InActiveStationsViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -221,7 +228,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Manager_Stations\StationsView.xaml">
+    <Page Include="Manager_Stations\TODELETE_StationsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

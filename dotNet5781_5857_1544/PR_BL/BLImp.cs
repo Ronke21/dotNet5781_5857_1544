@@ -273,24 +273,25 @@ namespace BL
             {
                 throw new NotValidIDException("Station Code must be positive!");
             }
-            if ((bs.Location.Latitude < 31 || bs.Location.Latitude > 33.3) || (bs.Location.Longitude < 34.3 || bs.Location.Longitude > 35.5))
-            {
-                throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
-            }
+       //     if ((bs.Location.Longitude < 31 || bs.Location.Longitude > 33.3) || (bs.Location.Latitude < 34.3 || bs.Location.Latitude > 35.5))
+     //       {
+      //          throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
+      //      }
 
-            var stations = GetAllBusStations();
+            var stations = _dal.GetAllActiveBusStations();
+            
             if (!((from stat in stations
-                   where stat.Code == bs.Code
+                   where (stat.Code == bs.Code)
                    select stat).Any()))
             {
-                throw new StationAlreadyExistsException("Bus station with this code already exist!");
+                throw new BO.StationAlreadyExistsException("Bus station with this code already exist!");
             }
-
+    
             if (!((from stat in stations
-                   where stat.Location == bs.Location
+                   where (stat.Location == bs.Location)
                    select stat).Any()))
             {
-                throw new StationAlreadyExistsException("Bus station with this Loacation already exist!");
+                throw new BO.StationAlreadyExistsException("Bus station with this Loacation already exist!");
             }
 
             return true;
@@ -306,11 +307,22 @@ namespace BL
                     _dal.AddBusStation(busStationDo);
                 }
             }
-            catch (Exception ex)
+            catch (DO.StationAlreadyExistsException ex)
             {
-                throw new BO.BadAdditionException((ex.Message), ex);
+                throw new BO.StationAlreadyExistsException((ex.Message));
             }
 
+        }
+        public void ActivateBusStation(int code)
+        {
+            try
+            {
+                _dal.ActivateBusStation(code);
+            }
+            catch (DO.StationDoesNotExistException ex)
+            {
+                throw new BO.StationDoesNotExistException(ex.Message);
+            }
         }
         public IEnumerable<BO.BusStation> GetAllBusStations()
         {
@@ -339,12 +351,9 @@ namespace BL
 
             catch (DO.EmptyListException ex)
             {
-                throw new BO.EmptyListException("No buses in the list", ex);
+                throw new BO.EmptyListException("No Stations in the list", ex);
             }
-            catch (Exception)
-            {
-                throw new Exception("Unknown error GetAllBuses");
-            }
+
         }
         public BO.BusStation GetBusStation(int code)
         {
@@ -376,13 +385,17 @@ namespace BL
                 _dal.UpdateBusStation(b);
             }
 
-            catch (Exception)
+            catch (DO.StationDoesNotExistException)
             {
-                throw new Exception("Unknown error");
+                throw new BO.StationDoesNotExistException("can't update station");
             }
         }
         public void DeleteBusStation(int code)
         {
+            if (GetBusStation(code).BusLines != null && GetBusStation(code).BusLines.Count()>0)
+            {
+                throw new BO.StationBelongsToActiveBusLine("Can't delete the station! it belongs to active lines!");
+            }
             try
             {
                 _dal.DeleteBusStation(code);
@@ -391,10 +404,7 @@ namespace BL
             {
                 throw new BO.DoesNotExistException("Bus station number does not exist", ex);
             }
-            catch (Exception)
-            {
-                throw new Exception("Unknown error");
-            }
+
         }
         public IEnumerable<BO.BusStation> GetAllMatches(string text, IEnumerable<BO.BusStation> collection)
         {

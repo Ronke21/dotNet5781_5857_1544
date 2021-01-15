@@ -27,7 +27,7 @@
             RowHeight="35"
             ColumnWidth="*"
             IsReadOnly="True"
-            MouseDoubleClick="InActiveStations_OnMouseDoubleClick">
+            MouseDoubleClick="InActiveStations_OnMouseDoubleClick" >
 
             <DataGrid.Columns>
 

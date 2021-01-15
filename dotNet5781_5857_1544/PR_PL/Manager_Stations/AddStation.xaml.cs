@@ -13,12 +13,12 @@ namespace PL
     /// </summary>
     public partial class AddStation : Window
     {
-        private readonly IBL bl;
+        private readonly IBL _bl;
         public AddStation(IBL b)
         {
             InitializeComponent();
 
-            bl=b;
+            _bl=b;
         }
         private void TextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -74,14 +74,13 @@ namespace PL
                     Accessible=accessi,
                     Active=true
                 };
-                bl.AddStation(ToAdd);
+                _bl.AddStation(ToAdd);
             }
-            catch (Exception ex)
+            catch (BO.StationAlreadyExistsException ex)
             {
-                MessageBox.Show("Can't add bus station! \n" + ex.Message, "Station adding Error!");
+                MessageBox.Show(ex.Message, "Station adding Error!");
                 emptyBoxes();
                 return;
-
             }
 
             Close();

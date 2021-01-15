@@ -47,10 +47,15 @@ namespace PR_PL.Manager_Stations
                     {
                         _bl.DeleteBusStation(((BusStation)s).Code);
                     }
-                    catch (Exception ex)
+                    catch (BO.StationBelongsToActiveBusLine ex)
                     {
-                        MessageBox.Show("Can't delete Bus station number " + (((BusStation)s).Code).ToString() + ex.Message, "Station deleting Error!");
+                        MessageBox.Show(ex.Message, "Station deleting Error!");
                     }
+                    catch (BO.DoesNotExistException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Station deleting Error!");
+                    }
+
                 }
 
                 refresh();
@@ -59,8 +64,7 @@ namespace PR_PL.Manager_Stations
 
         private void InActive_OnClick(object sender, RoutedEventArgs e)
         {
-            // wnd.DataDisplay.Content =
-            // CREATE NEW INACTIVE STATIONS PAGE
+            wnd.DataDisplay.Content =new InActiveStationsViewPage(_bl);
         }
 
         private void Add_OnClick(object sender, RoutedEventArgs e)
@@ -75,9 +79,13 @@ namespace PR_PL.Manager_Stations
             {
                 StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
             }
+            catch (BO.EmptyListException e)
+            {
+                MessageBox.Show(e.Message, "Station Loading Error!");
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Can't load the list of active stations! \n" + ex.Message, "Station Loading Error!");
+                MessageBox.Show("Unknown ERROR!" + ex.Message, "Station Loading Error!");
             }
         }
     }

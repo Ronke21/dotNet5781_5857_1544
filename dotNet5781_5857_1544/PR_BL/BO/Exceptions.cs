@@ -33,6 +33,33 @@ namespace BO
         { return "Can't ride over 1 hour without stop, you tried to ride" + Message + "\n"; }
     }
 
+    //exception for a input of station that does not exist in the bus list of stations
+    [Serializable]
+    public class StationDoesNotExistException : Exception
+    {
+        public StationDoesNotExistException() : base() { }
+
+        public StationDoesNotExistException(string message) : base(message) { }
+    }
+
+    //exception for a input of station which is already in the bus list of stations
+    [Serializable]
+    public class StationAlreadyExistsException : Exception
+    {
+        public StationAlreadyExistsException() : base() { }
+
+        public StationAlreadyExistsException(string message) : base(message) { }
+    }
+
+    //exception for a input of station which is already in the bus list of stations
+    [Serializable]
+    public class StationBelongsToActiveBusLine : Exception
+    {
+        public StationBelongsToActiveBusLine() : base() { }
+
+        public StationBelongsToActiveBusLine(string message) : base(message) { }
+    }
+
     [Serializable]
     public class TooShortException : Exception
     {

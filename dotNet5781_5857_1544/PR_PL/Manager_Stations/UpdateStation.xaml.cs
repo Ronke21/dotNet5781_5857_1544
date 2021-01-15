@@ -13,13 +13,13 @@ namespace PL
     /// </summary>
     public partial class UpdateStation : Window
     {
-        private readonly IBL bl;
+        private readonly IBL _bl;
         private readonly BusStation currentBusStation;
         public UpdateStation(IBL b, BusStation bs)
         {
             InitializeComponent();
 
-            bl = b;
+            _bl = b;
             currentBusStation = bs;
 
             DetailsGrid.DataContext = currentBusStation;
@@ -47,14 +47,14 @@ namespace PL
                     Active = currentBusStation.Active
                 };
 
-                bl.UpdateBusStation(updated);
+                _bl.UpdateBusStation(updated);
                 Close();
             }
 
 
-            catch (Exception ex)
+            catch (BO.StationDoesNotExistException ex)
             {
-                MessageBox.Show("Can't update bus station! \n" + ex.Message, "Station updating Error!");
+                MessageBox.Show(ex.Message, "Station updating Error!");
             }
 
             Close();
@@ -70,15 +70,6 @@ namespace PL
                 MessageBox.Show($"digits only\n'{e.Text}' is not a digit");
             }
         }
-
-        //protected override void OnPreviewKeyDown(KeyEventArgs e)
-        //{
-        //    if (e.Key == Key.Space)
-        //    {
-        //        e.Handled = true;
-        //        MessageBox.Show("Space is not allowed");
-        //    }
-        //}
 
     }
 

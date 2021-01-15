@@ -23,9 +23,13 @@ namespace PL
             {
                 StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
             }
-            catch (Exception e)
+            catch (BO.EmptyListException e)
             {
-                MessageBox.Show("Can't load the list of active stations! \n" + e.Message, "Station Loading Error!");
+                MessageBox.Show(e.Message, "Station Loading Error!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unknown ERROR!" + ex.Message, "Station Loading Error!");
             }
         }
 

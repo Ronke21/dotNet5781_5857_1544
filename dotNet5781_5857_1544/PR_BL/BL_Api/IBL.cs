@@ -24,6 +24,7 @@ namespace BLApi
 
         #region BusStation
         void AddStation(BusStation bs);
+        void ActivateBusStation(int code);
         IEnumerable<BusStation> GetAllBusStations();
         IEnumerable<BusStation> GetAllInActiveBusStations();
         BusStation GetBusStation(int code);

@@ -10,7 +10,7 @@ namespace PL
     /// </summary>
     public partial class StationDetails : Window
     {
-        private readonly IBL bl;
+        private readonly IBL _bl;
         private readonly BusStation currentBS;
         public StationDetails(IBL b, BusStation bs)
         {
@@ -18,14 +18,14 @@ namespace PL
 
             currentBS = bs;
 
-            bl = b;
+            _bl = b;
 
             StationDetailsWindow.DataContext = currentBS;
         }
 
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
-            UpdateStation us = new UpdateStation(bl, currentBS);
+            UpdateStation us = new UpdateStation(_bl, currentBS);
             us.ShowDialog();
             Close();
         }

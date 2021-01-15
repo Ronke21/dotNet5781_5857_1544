@@ -112,11 +112,18 @@ namespace Dal
 
             else throw new StationAlreadyExistsException($"Station number {busStation.Code} already exists");
         }
+
+        public void ActivateBusStation(int code)
+        {
+            var busStation = DataSource.BusStationsList.Find(l => l.Code == code); 
+            if (busStation is null) throw new StationDoesNotExistException($"Bus line number {code} does not exist");
+            busStation.Active = true;
+        }
         public IEnumerable<BusStation> GetAllActiveBusStations()
         {
             if (DataSource.BusStationsList.Count == 0)
             {
-                throw new EmptyListException($"{nameof(DataSource.BusStationsList)} is Empty");
+                throw new EmptyListException("Active Bus Station List is Empty!");
             }
 
             return from bs in DataSource.BusStationsList
@@ -127,7 +134,7 @@ namespace Dal
         {
             if (DataSource.BusStationsList.Count == 0)
             {
-                throw new EmptyListException($"{nameof(DataSource.BusStationsList)} is Empty");
+                throw new EmptyListException("In Active Bus Station List is Empty!");
             }
 
             return from bs in DataSource.BusStationsList
