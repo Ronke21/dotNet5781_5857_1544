@@ -118,11 +118,12 @@ namespace PR_PL.Manager_Lines
 
                 wnd.DataDisplay.Content = new LinesViewPage(_bl);
             }
-
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                MessageBox.Show(exception.ToString());
+                MessageBox.Show(ex.Message, "can't update ");
+
             }
+
 
             father.Close();
         }

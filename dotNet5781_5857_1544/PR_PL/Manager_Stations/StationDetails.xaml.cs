@@ -25,6 +25,11 @@ namespace PL
 
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
+            if (currentBS.Active == false)
+            {
+                MessageBox.Show("Please activate the bus and then update!");
+                return;
+            }
             UpdateStation us = new UpdateStation(_bl, currentBS);
             us.ShowDialog();
             Close();

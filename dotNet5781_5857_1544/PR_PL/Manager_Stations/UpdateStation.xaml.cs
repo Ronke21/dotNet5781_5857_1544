@@ -5,6 +5,7 @@ using System.Device.Location;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
+using PR_PL.Manager_Stations;
 
 namespace PL
 {
@@ -15,6 +16,8 @@ namespace PL
     {
         private readonly IBL _bl;
         private readonly BusStation currentBusStation;
+        MainWindow wnd = (MainWindow)Application.Current.MainWindow; //reference to main window in order to update list box items(buses)
+
         public UpdateStation(IBL b, BusStation bs)
         {
             InitializeComponent();
@@ -51,11 +54,18 @@ namespace PL
                 Close();
             }
 
+            catch (BO.NotInIsraelException ex)
+            {
+                MessageBox.Show(ex.Message, "can't update station!");
+
+            }
 
             catch (BO.StationDoesNotExistException ex)
             {
                 MessageBox.Show(ex.Message, "Station updating Error!");
             }
+
+            wnd.DataDisplay.Content = new StationsViewPage(_bl);
 
             Close();
         }

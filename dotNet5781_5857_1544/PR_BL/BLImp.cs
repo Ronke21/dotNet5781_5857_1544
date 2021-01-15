@@ -265,7 +265,7 @@ namespace BL
             stat.CopyPropertiesTo(boStat);
             return boStat;
         }
-        private bool BusStationIsFit(BO.BusStation bs)
+        private bool BusStationIsFit(BO.BusStation bs, bool isUpdate) //boolian id true for update, false for add. checks if already exist
         {
             //code, location, address, accessible, active, BusLines
 
@@ -273,25 +273,28 @@ namespace BL
             {
                 throw new NotValidIDException("Station Code must be positive!");
             }
-       //     if ((bs.Location.Longitude < 31 || bs.Location.Longitude > 33.3) || (bs.Location.Latitude < 34.3 || bs.Location.Latitude > 35.5))
-     //       {
-      //          throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
-      //      }
+                 if ((bs.Location.Longitude < 31 || bs.Location.Longitude > 33.3) || (bs.Location.Latitude < 34.3 || bs.Location.Latitude > 35.5))
+                   {
+                      throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
+                  }
 
-            var stations = _dal.GetAllActiveBusStations();
-            
-            if (!((from stat in stations
-                   where (stat.Code == bs.Code)
-                   select stat).Any()))
+            if (isUpdate == false)
             {
-                throw new BO.StationAlreadyExistsException("Bus station with this code already exist!");
-            }
-    
-            if (!((from stat in stations
-                   where (stat.Location == bs.Location)
-                   select stat).Any()))
-            {
-                throw new BO.StationAlreadyExistsException("Bus station with this Loacation already exist!");
+                var stations = _dal.GetAllActiveBusStations();
+
+                if (!((from stat in stations
+                       where (stat.Code == bs.Code)
+                       select stat).Any()))
+                {
+                    throw new BO.StationAlreadyExistsException("Bus station with this code already exist!");
+                }
+
+                if (!((from stat in stations
+                       where (stat.Location == bs.Location)
+                       select stat).Any()))
+                {
+                    throw new BO.StationAlreadyExistsException("Bus station with this Loacation already exist!");
+                }
             }
 
             return true;
@@ -300,7 +303,7 @@ namespace BL
         {
             try
             {
-                if (BusStationIsFit(bs))
+                if (BusStationIsFit(bs, false))
                 {
                     var busStationDo = new DO.BusStation();
                     bs.CopyPropertiesTo(busStationDo);
@@ -379,12 +382,15 @@ namespace BL
         {
             try
             {
-                if (!BusStationIsFit(bs)) return;
+                if (!BusStationIsFit(bs, true)) return;
                 var b = new DO.BusStation();
                 bs.CopyPropertiesTo(b);
                 _dal.UpdateBusStation(b);
             }
-
+            catch (BO.NotInIsraelException ex)
+            {
+                throw new BO.NotInIsraelException(ex.Message);
+            }
             catch (DO.StationDoesNotExistException)
             {
                 throw new BO.StationDoesNotExistException("can't update station");
@@ -392,7 +398,7 @@ namespace BL
         }
         public void DeleteBusStation(int code)
         {
-            if (GetBusStation(code).BusLines != null && GetBusStation(code).BusLines.Count()>0)
+            if (GetBusStation(code).BusLines != null && GetBusStation(code).BusLines.Count() > 0)
             {
                 throw new BO.StationBelongsToActiveBusLine("Can't delete the station! it belongs to active lines!");
             }
