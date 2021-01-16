@@ -10,10 +10,6 @@ using PR_PL.Manager_Lines;
 using PR_PL.Manager_Stations;
 
 /*
- * todo: change relevant windows to pages                                                           // 
- *
- * todo: how to make sure window is centered any time we open it                                    //
- *
  * todo: double click window showing all bus's details ( + buttons for threads)                     // Amihay   V
  *
  * todo: update bus, inside the double click window                                                 // Amihay   V

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using DalApi;
 using DO;
+using System.Device.Location;
 
 
 namespace Dal
@@ -83,7 +81,6 @@ namespace Dal
             }
 
             return buses;
-
         }
         public IEnumerable<Bus> GetAllInActiveBuses()
         {
@@ -241,6 +238,18 @@ namespace Dal
         }
         public IEnumerable<BusStation> GetAllActiveBusStations()
         {
+            //List<BusStation> x = new List<BusStation>();
+            //x.Add(new BusStation()
+            //{
+            //    Accessible = true,
+            //    Active = true,
+            //    Address = "AA",
+            //    Code = 22,
+            //    Location = new GeoCoordinate(32,35),
+            //    Name = "ABC"
+            //});
+            //XMLTools.SaveListToXMLSerializer(x, busStationsPath);
+
             var busStationsList = XMLTools.LoadListFromXMLSerializer<BusStation>(busStationsPath);
 
             if (busStationsList.Count == 0)

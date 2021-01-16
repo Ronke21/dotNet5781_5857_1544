@@ -11,7 +11,8 @@ namespace Dal
 {
     internal static class XMLTools
     {
-        static string dir = @"xml\";
+        private const string dir = @"xml\";
+
         static XMLTools()
         {
             if (!Directory.Exists(dir))
@@ -38,12 +39,10 @@ namespace Dal
                 {
                     return XElement.Load(dir + filePath);
                 }
-                else
-                {
-                    XElement rootElem = new XElement(dir + filePath);
-                    rootElem.Save(dir + filePath);
-                    return rootElem;
-                }
+
+                var rootElem = new XElement(dir + filePath);
+                rootElem.Save(dir + filePath);
+                return rootElem;
             }
             catch (Exception ex)
             {
@@ -57,8 +56,8 @@ namespace Dal
         {
             try
             {
-                FileStream file = new FileStream(dir + filePath, FileMode.Create);
-                XmlSerializer x = new XmlSerializer(list.GetType());
+                var file = new FileStream(dir + filePath, FileMode.Create);
+                var x = new XmlSerializer(list.GetType());
                 x.Serialize(file, list);
                 file.Close();
             }
@@ -71,17 +70,12 @@ namespace Dal
         {
             try
             {
-                if (File.Exists(dir + filePath))
-                {
-                    List<T> list;
-                    XmlSerializer x = new XmlSerializer(typeof(List<T>));
-                    FileStream file = new FileStream(dir + filePath, FileMode.Open);
-                    list = (List<T>)x.Deserialize(file);
-                    file.Close();
-                    return list;
-                }
-                else
-                    return new List<T>();
+                if (!File.Exists(dir + filePath)) return new List<T>();
+                var x = new XmlSerializer(typeof(List<T>));
+                var file = new FileStream(dir + filePath, FileMode.Open);
+                var l = (List<T>)x.Deserialize(file);
+                file.Close();
+                return l;
             }
             catch (Exception ex)
             {
