@@ -22,7 +22,6 @@ namespace Dal
         #endregion
 
         #region Bus
-
         public void AddBus(Bus bus)
         {
             var bu = DataSource.BusesList.Find(b => b.LicenseNum == bus.LicenseNum);
@@ -38,9 +37,7 @@ namespace Dal
             }
 
             else throw new BusAlreadyExistsException($"Bus number {bus.LicenseNum} already exists");
-
         }
-
         public IEnumerable<Bus> GetAllActiveBuses()
         {
             if (DataSource.BusesList.Count == 0)
@@ -52,7 +49,6 @@ namespace Dal
                    where bus.Active is true
                    select bus.Clone();
         }
-
         public IEnumerable<Bus> GetAllInActiveBuses()
         {
             if (DataSource.BusesList.Count == 0)
@@ -64,35 +60,30 @@ namespace Dal
                    where bus.Active is false
                    select bus.Clone();
         }
-
         public DO.Bus GetBus(int licenseNum)
         {
             var bus = DataSource.BusesList.Find(b => b.LicenseNum == licenseNum);
             if (bus != null) return bus;
             throw new BusDoesNotExistsException($"Bus number {licenseNum} does not exist");
         }
-
         public void UpdateBus(DO.Bus bus)
         {
             var updatedBus = DataSource.BusesList.Find(b => b.LicenseNum == bus.LicenseNum);
             if (updatedBus is null) throw new BusDoesNotExistsException($"Bus number {bus.LicenseNum} does not exist");
             bus.Mover(updatedBus);
         }
-
-        //  UPDATE EXAMPLE
-        //public void UpdateFuel(int num, int km)
-        //{
-        //    var b = DataSource.BusesList.Find(bus => bus.LicenseNum == num);
-        //    b.Fuel -= km;
-        //}
-
         public void DeleteBus(int licenseNum)
         {
             var bus = DataSource.BusesList.Find(b => b.LicenseNum == licenseNum);
             if (bus is null) throw new BusDoesNotExistsException($"Bus number {licenseNum} does not exist");
             bus.Active = false;
         }
-
+        public void ActivateBus(int licenseNum)
+        {
+            var bus = DataSource.BusesList.Find(b => b.LicenseNum == licenseNum);
+            if (bus is null) throw new BusDoesNotExistsException($"Bus number {licenseNum} does not exist");
+            bus.Active = true;
+        }
         #endregion
 
         #region BusStation

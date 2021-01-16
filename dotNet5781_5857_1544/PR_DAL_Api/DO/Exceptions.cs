@@ -2,6 +2,22 @@
 
 namespace DO
 {
+    //exception for xml files
+    public class XMLFileLoadCreateException : Exception
+    {
+        private string xmlFilePath;
+        public XMLFileLoadCreateException(string xmlPath) : base() { xmlFilePath = xmlPath; }
+        public XMLFileLoadCreateException(string xmlPath, string message) :
+            base(message)
+        { xmlFilePath = xmlPath; }
+        public XMLFileLoadCreateException(string xmlPath, string message, Exception innerException) :
+            base(message, innerException)
+        { xmlFilePath = xmlPath; }
+
+        public override string ToString() => base.ToString() + $", fail to load or create xml file: {xmlFilePath}";
+    }
+
+
     //exception for input of a station location that is not in Israel
     [Serializable]
     public class NotInIsraelException : Exception
@@ -9,6 +25,15 @@ namespace DO
         public NotInIsraelException() : base() { }
 
         public NotInIsraelException(string message) : base(message) { }
+    }
+
+    // exception for unreachable serializer
+    [Serializable]
+    public class CantLoadFromXmlException : Exception
+    {
+        public CantLoadFromXmlException() : base() { }
+
+        public CantLoadFromXmlException(string message) : base(message) { }
     }
 
     //exception for a input of station which is already in the bus list of stations

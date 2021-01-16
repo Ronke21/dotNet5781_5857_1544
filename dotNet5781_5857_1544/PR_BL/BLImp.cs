@@ -258,7 +258,6 @@ namespace BL
         #endregion
 
         #region BusStation
-
         private static BO.BusStation BusStationDoToBoAdapter(DO.BusStation stat)
         {
             var boStat = new BO.BusStation();
@@ -273,10 +272,11 @@ namespace BL
             {
                 throw new NotValidIDException("Station Code must be positive!");
             }
-                 if ((bs.Location.Longitude < 31 || bs.Location.Longitude > 33.3) || (bs.Location.Latitude < 34.3 || bs.Location.Latitude > 35.5))
-                   {
-                      throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
-                  }
+
+            if ((bs.Location.Longitude < 31 || bs.Location.Longitude > 33.3) || (bs.Location.Latitude < 34.3 || bs.Location.Latitude > 35.5))
+            {
+                throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
+            }
 
             if (isUpdate == false)
             {
@@ -293,7 +293,7 @@ namespace BL
                        where (stat.Location == bs.Location)
                        select stat).Any()))
                 {
-                    throw new BO.StationAlreadyExistsException("Bus station with this Loacation already exist!");
+                    throw new BO.StationAlreadyExistsException("Bus station with this Location already exist!");
                 }
             }
 
@@ -334,7 +334,6 @@ namespace BL
                 return from bs in _dal.GetAllActiveBusStations()
                        select BusStationDoToBoAdapter(bs);
             }
-
             catch (DO.EmptyListException ex)
             {
                 throw new BO.EmptyListException("No stations in the list", ex);
@@ -440,6 +439,9 @@ namespace BL
             var busLineDo = new DO.BusLine();
 
             busLine.CopyPropertiesTo(busLineDo);
+
+            busLineDo.FirstStation = busStations.ToList()[0].Code;
+            busLineDo.LastStation = busStations.ToList()[busStations.Count() > 1 ? busStations.Count() - 1 : 0].Code;
 
             busLineDo.BusLineId = _dal.GetKey();
 
@@ -578,6 +580,10 @@ namespace BL
                 //if (!BusIsFit(bus)) return;
                 var bl = new DO.BusLine();
                 update.CopyPropertiesTo(bl);
+
+                bl.FirstStation = chosen.ToList()[0].Code;
+                bl.LastStation = chosen.ToList()[chosen.Count() > 1 ? chosen.Count() - 1 : 0].Code;
+
                 _dal.UpdateBusLine(bl);
 
 

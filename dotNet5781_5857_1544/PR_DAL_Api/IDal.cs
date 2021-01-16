@@ -9,15 +9,16 @@ namespace DalApi
     public interface IDal
     {
         #region Bus
-        void AddBus(Bus bus);                                       // C
-        IEnumerable<Bus> GetAllActiveBuses();                             // R
-        IEnumerable<Bus> GetAllInActiveBuses();                             // R
-        //IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);   // R\
+        void AddBus(Bus bus);                                      
+        IEnumerable<Bus> GetAllActiveBuses();                      
+        IEnumerable<Bus> GetAllInActiveBuses();                    
+        //IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);
         
-        Bus GetBus(int licenseNum);                                 // R
-        void UpdateBus(Bus bus);                                    // U
-        //void UpdateBus(int licenseNum, Action<Bus> update);         // U
-        void DeleteBus(int licenseNum);                             // D
+        Bus GetBus(int licenseNum);                                
+        void UpdateBus(Bus bus);                                   
+        //void UpdateBus(int licenseNum, Action<Bus> update);      
+        void DeleteBus(int licenseNum);
+        void ActivateBus(int licenseNum);
 
         #endregion
 
@@ -54,18 +55,6 @@ namespace DalApi
 
         #endregion
 
-        #region Driver
-
-        void AddDriver(Driver driver);
-        IEnumerable<Driver> GetAllDrivers();
-        IEnumerable<Driver> GetAllDriversBy(Predicate<Driver> predicate);
-        Driver GetDriver(int id);
-        void UpdateDriver(Driver driver);
-        //void UpdateDriver(int id, Action<Driver> update);
-        void DeleteDriver(int id);
-
-        #endregion
-
         #region LineStation
         void AddLineStation(LineStation lineStation);
         IEnumerable<LineStation> GetAllLineStationsByLineID(int ID);
@@ -76,36 +65,53 @@ namespace DalApi
 
         #endregion
 
-        #region TravelingBus
-        void AddTravelingBus(TravelingBus travelingBus);
-        IEnumerable<TravelingBus> GetAllTravelingBuses();
-        IEnumerable<TravelingBus> GetAllTravelingBusesBy(Predicate<TravelingBus> predicate);
-        TravelingBus GetTravelingBus(int travelId);
-        //void Update(TravelingBus travelingBus);
-        void DeleteTravelingBus(int travelId);
+        #region Comment
+
+        //#region Driver
+
+        //void AddDriver(Driver driver);
+        //IEnumerable<Driver> GetAllDrivers();
+        //IEnumerable<Driver> GetAllDriversBy(Predicate<Driver> predicate);
+        //Driver GetDriver(int id);
+        //void UpdateDriver(Driver driver);
+        ////void UpdateDriver(int id, Action<Driver> update);
+        //void DeleteDriver(int id);
+
+        //#endregion
+
+        //#region TravelingBus
+        //void AddTravelingBus(TravelingBus travelingBus);
+        //IEnumerable<TravelingBus> GetAllTravelingBuses();
+        //IEnumerable<TravelingBus> GetAllTravelingBusesBy(Predicate<TravelingBus> predicate);
+        //TravelingBus GetTravelingBus(int travelId);
+        ////void Update(TravelingBus travelingBus);
+        //void DeleteTravelingBus(int travelId);
+
+        //#endregion
+
+        //#region User
+        //void AddUser(User user);
+        //IEnumerable<User> GetAllUsers();
+        //IEnumerable<User> GetAllUsersBy(Predicate<User> predicate);
+        //User GetUser(string username);
+        //void UpdateUser(User user);
+        //void UpdateUsername(string username);
+        //void UpdatePassword(string username, string password);
+        //void DeleteUser(string username);
+
+        //#endregion
+
+        //#region UserTravel
+        //void AddUserTravel(UserTravel userTravel);
+        //IEnumerable<UserTravel> GetAllUserTravels();
+        //IEnumerable<UserTravel> GetAllUserTravelsBy(Predicate<UserTravel> predicate);
+        //UserTravel GetUserTravel(int travelId);
+        //void DeleteUserTravel(int travelId);
+
+        //#endregion
 
         #endregion
 
-        #region User
-        void AddUser(User user);
-        IEnumerable<User> GetAllUsers();
-        IEnumerable<User> GetAllUsersBy(Predicate<User> predicate);
-        User GetUser(string username);
-        void UpdateUser(User user);
-        void UpdateUsername(string username);
-        void UpdatePassword(string username, string password);
-        void DeleteUser(string username);
-
-        #endregion
-
-        #region UserTravel
-        void AddUserTravel(UserTravel userTravel);
-        IEnumerable<UserTravel> GetAllUserTravels();
-        IEnumerable<UserTravel> GetAllUserTravelsBy(Predicate<UserTravel> predicate);
-        UserTravel GetUserTravel(int travelId);
-        void DeleteUserTravel(int travelId);
-
-        #endregion
 
         int GetKey();
     }

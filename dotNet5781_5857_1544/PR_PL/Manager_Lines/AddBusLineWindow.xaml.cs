@@ -118,7 +118,7 @@ namespace PR_PL.Manager_Lines
             var lineArea = (Area)LineAreaComboBox.SelectedItem;
             var accessible = _chosen.All(station => station.Accessible);
 
-            if (_chosen.Count < 2 || lineNum == 0 || lineNum > 999) return;
+            //if (_chosen.Count < 2 || lineNum == 0 || lineNum > 999) return;
 
             try
             {
@@ -128,8 +128,8 @@ namespace PR_PL.Manager_Lines
                     Active = true,
                     AllAccessible = accessible,
                     BusArea = lineArea,
-                    FirstStation = _chosen.ToList()[0].Code,
-                    LastStation = _chosen.ToList()[_chosen.Count - 1].Code,
+                    //FirstStation = _chosen.ToList()[0].Code,
+                    //LastStation = _chosen.ToList()[_chosen.Count - 1].Code,
                 }, _chosen.ToList());
 
                 wnd.DataDisplay.Content = new LinesViewPage(_bl);

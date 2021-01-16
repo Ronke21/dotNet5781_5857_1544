@@ -55,7 +55,6 @@ namespace PR_PL.Manager_Stations
                     {
                         MessageBox.Show(ex.Message, "Station deleting Error!");
                     }
-
                 }
 
                 refresh();
@@ -71,7 +70,6 @@ namespace PR_PL.Manager_Stations
         {
             var ast = new AddStation(_bl);
             ast.ShowDialog();
-
         }
         private void refresh()
         {

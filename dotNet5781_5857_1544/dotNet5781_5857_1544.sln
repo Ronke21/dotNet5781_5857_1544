@@ -33,6 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PR_DS", "PR_DS\PR_DS.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PR_BL", "PR_BL\PR_BL.csproj", "{086CF3DA-5C30-4137-BD1F-DB74B30722DC}"
 	ProjectSection(ProjectDependencies) = postProject
+		{B39A480F-7638-41CD-BB75-12B267DD3A3C} = {B39A480F-7638-41CD-BB75-12B267DD3A3C}
 		{D48CB213-940E-4793-881C-7A6CCC5849AD} = {D48CB213-940E-4793-881C-7A6CCC5849AD}
 		{6ABC1222-CB74-4B40-AC88-7093CD1B2881} = {6ABC1222-CB74-4B40-AC88-7093CD1B2881}
 		{CBDEA78C-8DFB-4616-9977-5D55C3400035} = {CBDEA78C-8DFB-4616-9977-5D55C3400035}
@@ -42,6 +43,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		config.xml = config.xml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PR_Dal_XML", "PR_DLXML\PR_Dal_XML.csproj", "{B39A480F-7638-41CD-BB75-12B267DD3A3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +92,10 @@ Global
 		{086CF3DA-5C30-4137-BD1F-DB74B30722DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{086CF3DA-5C30-4137-BD1F-DB74B30722DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{086CF3DA-5C30-4137-BD1F-DB74B30722DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B39A480F-7638-41CD-BB75-12B267DD3A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B39A480F-7638-41CD-BB75-12B267DD3A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B39A480F-7638-41CD-BB75-12B267DD3A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B39A480F-7638-41CD-BB75-12B267DD3A3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
