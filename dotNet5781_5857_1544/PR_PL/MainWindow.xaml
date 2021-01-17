@@ -130,10 +130,11 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
-                <RowDefinition Height="120"/>
-                <RowDefinition Height="120"/>
-                <RowDefinition Height="120"/>
-                <RowDefinition Height="120"/>
+                <RowDefinition Height="115"/>
+                <RowDefinition Height="115"/>
+                <RowDefinition Height="115"/>
+                <RowDefinition Height="115"/>
+                <RowDefinition Height="115"/>
             </Grid.RowDefinitions>
 
             <!--Open close Button-->
@@ -258,7 +259,7 @@
                 </StackPanel>
 
             </Button>
-
+            
             <Button
                 Name="ConsecutiveStationsSidePanel"
                 Grid.Row="4"
@@ -292,6 +293,44 @@
                 </StackPanel>
 
             </Button>
+
+            <Button
+                Name="SimulatorSidePanel"
+                Grid.Row="5"
+                Background="#FF0064A6"
+                BorderBrush="Transparent"
+                Height="120"
+                Margin="0,0,0,0"
+                MouseEnter="SimulatorSidePanel_OnMouseEnter"
+                MouseLeave="SimulatorSidePanel_OnMouseLeave"
+                Click="SimulatorSidePanel_OnClick">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock
+                        x:Name="Simulator"
+                        FontSize="30"
+                        Foreground="White"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Width="175"
+                        Margin="5,0,0,0"
+                        Text="Simulator">
+
+                    </TextBlock>
+
+                    <materialDesign:PackIcon
+                        Foreground="White"
+                        Kind="PlayCircle"
+                        Height="60"
+                        Width="60"
+                        Margin="30,10,0,0"
+                    />
+
+                </StackPanel>
+
+            </Button>
+
 
         </Grid>
 

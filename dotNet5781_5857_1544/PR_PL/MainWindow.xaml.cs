@@ -7,6 +7,7 @@ using MaterialDesignThemes.Wpf;
 using PR_PL.Manager_Buses;
 using PR_PL.Manager_ConStat;
 using PR_PL.Manager_Lines;
+using PR_PL.Manager_Simulation;
 using PR_PL.Manager_Stations;
 
 /*
@@ -236,5 +237,33 @@ namespace PL
             ConsecutiveStationsSidePanel.Background = (Brush)bc.ConvertFrom("#FF0064A6");
         }
         #endregion
+
+        private void SimulatorSidePanel_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            var bc = new BrushConverter();
+            SimulatorSidePanel.Background = (Brush)bc.ConvertFrom("#30ABFF");
+        }
+
+        private void SimulatorSidePanel_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            var bc = new BrushConverter();
+            SimulatorSidePanel.Background = (Brush)bc.ConvertFrom("#FF0064A6");
+        }
+
+        private void SimulatorSidePanel_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (!_hidden)
+            {
+                ButtonBase_OnClick(sender, e);
+            }
+
+            if (DataDisplay.Content != null)
+            {
+                if (DataDisplay.Content is SimulationPage) { }
+                else DataDisplay.Content = new SimulationPage();
+            }
+
+            else DataDisplay.Content = new SimulationPage();
+        }
     }
 }

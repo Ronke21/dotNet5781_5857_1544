@@ -108,6 +108,9 @@
     <Compile Include="Manager_Lines\UpdateLinePage.xaml.cs">
       <DependentUpon>UpdateLinePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Manager_Simulation\SimulationPage.xaml.cs">
+      <DependentUpon>SimulationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager_Stations\AddStation.xaml.cs">
       <DependentUpon>AddStation.xaml</DependentUpon>
     </Compile>
@@ -205,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Manager_Lines\UpdateLinePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Simulation\SimulationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
