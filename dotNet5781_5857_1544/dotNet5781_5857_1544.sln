@@ -44,8 +44,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		config.xml = config.xml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PR_Dal_XML", "PR_DLXML\PR_Dal_XML.csproj", "{B39A480F-7638-41CD-BB75-12B267DD3A3C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XML_storage", "XML_storage", "{E422AA71-4F5B-444D-92E9-78B8A16394B9}"
 	ProjectSection(SolutionItems) = preProject
 		bin\xml\BusesXml.xml = bin\xml\BusesXml.xml
@@ -55,6 +53,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XML_storage", "XML_storage"
 		bin\xml\KeyGeneratorXml.xml = bin\xml\KeyGeneratorXml.xml
 		bin\xml\LineStationsXml.xml = bin\xml\LineStationsXml.xml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PR_Dal_XML", "PR_DLXML\PR_Dal_XML.csproj", "{B39A480F-7638-41CD-BB75-12B267DD3A3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,6 +6,7 @@ using DalApi;
 using DO;
 using System.Device.Location;
 using System.IO;
+using System.Xml;
 
 
 namespace Dal
@@ -21,12 +22,12 @@ namespace Dal
 
         #region DS XML Files
 
-        private const string busesPath = @"BusesXml.xml"; //XElement
 
+        private const string busesPath = @"BusesXml.xml"; //XElement
         private const string busStationsPath = @"BusStationsXml.xml"; //XMLSerializer
         private const string busLinesPath = @"BusLinesXml.xml"; //XMLSerializer
         private const string lineStationsPath = @"LineStationsXml.xml"; //XMLSerializer
-        private const string consecutiveStationsPath = @"ConsecutiveStationsXml.xml"; //XMLSerializer
+        private const string conStatsPath = @"ConsecutiveStationsXml.xml"; //XElement
         private const string keyGeneratorPath = @"KeyGeneratorXml.xml"; //XMLSerializer
 
         #endregion
@@ -528,11 +529,18 @@ namespace Dal
         #region ConsecutiveStations
         public IEnumerable<ConsecutiveStations> GetAllConsecutiveStations()
         {
-            var consecutiveStationsList = XMLTools.LoadListFromXMLSerializer<ConsecutiveStations>(consecutiveStationsPath);
+            var conStatRootElem = XMLTools.LoadListFromXMLElement(conStatsPath);
 
-            var conStats = from cs in consecutiveStationsList
-                           where cs.Active
-                           select cs;
+            var conStats = from cs in conStatRootElem.Elements()
+                           where bool.Parse(cs.Element("Active").Value) // == true
+                           select new ConsecutiveStations()
+                           {
+                               Active = bool.Parse(cs.Element("Active").Value),
+                               Distance = double.Parse(cs.Element("Distance").Value),
+                               StatCode1 = int.Parse(cs.Element("StatCode1").Value),
+                               StatCode2 = int.Parse(cs.Element("StatCode2").Value),
+                               AverageTravelTime = XmlConvert.ToTimeSpan(cs.Element("AverageTravelTime").Value)
+                           };
 
             if (conStats is null)
             {
@@ -543,62 +551,84 @@ namespace Dal
         }
         public void AddConsecutiveStations(int statCode1, int statCode2, TimeSpan toNext, double distance)
         {
-            var consecutiveStationsList = XMLTools.LoadListFromXMLSerializer<ConsecutiveStations>(consecutiveStationsPath);
+            var conStatRootElem = XMLTools.LoadListFromXMLElement(conStatsPath);
 
-            var cons = consecutiveStationsList.Find(c => c.StatCode1 == statCode1 &&
-                                                                                    c.StatCode2 == statCode2);
+            var cons = (from cs in conStatRootElem.Elements()
+                        where bool.Parse(cs.Element("Active").Value) &&
+                              statCode1 == int.Parse(cs.Element("StatCode1").Value) &&
+                              statCode2 == int.Parse(cs.Element("StatCode2").Value)
+                        select cs).FirstOrDefault();
 
-            if (cons is null)
-            {
-                var con =
-                    new ConsecutiveStations
-                    {
-                        StatCode1 = statCode1,
-                        StatCode2 = statCode2,
-                        Distance = distance,
-                        AverageTravelTime = toNext,
-                        Active = true
-                    };
-                consecutiveStationsList.Add(con);
-            }
+            if (!(cons is null)) return;
 
-            XMLTools.SaveListToXMLSerializer(consecutiveStationsList, consecutiveStationsPath);
+            var con = new XElement("ConsecutiveStations",
+                new XElement("Active", true),
+                new XElement("StatCode1", statCode1),
+                new XElement("StatCode2", statCode2),
+                new XElement("Distance", distance),
+                new XElement("AverageTravelTime", XmlConvert.ToString(toNext)));
+
+            conStatRootElem.Add(con);
+
+            XMLTools.SaveListToXMLElement(conStatRootElem, conStatsPath);
         }
         public ConsecutiveStations GetConsecutiveStations(int statCode1, int statCode2)
         {
-            var consecutiveStationsList = XMLTools.LoadListFromXMLSerializer<ConsecutiveStations>(consecutiveStationsPath);
+            var conStatRootElem = XMLTools.LoadListFromXMLElement(conStatsPath);
 
-            var consecutiveStations = consecutiveStationsList.Find(c => c.StatCode1 == statCode1 &&
-                                                                                   c.StatCode2 == statCode2);
+            var cons = (from cs in conStatRootElem.Elements()
+                        where bool.Parse(cs.Element("Active").Value) &&
+                              statCode1 == int.Parse(cs.Element("StatCode1").Value) &&
+                              statCode2 == int.Parse(cs.Element("StatCode2").Value)
+                        select cs).FirstOrDefault();
 
-            if (consecutiveStations is null)
+            if (cons is null)
             {
                 throw new StationsAreNotConsecutiveException($"Stations {statCode1} and {statCode2} are not consecutive stations");
             }
 
-            return consecutiveStations;
+            return new ConsecutiveStations()
+            {
+                Active = bool.Parse(cons.Element("Active").Value),
+                Distance = double.Parse(cons.Element("Distance").Value),
+                StatCode1 = int.Parse(cons.Element("StatCode1").Value),
+                StatCode2 = int.Parse(cons.Element("StatCode2").Value),
+                AverageTravelTime = XmlConvert.ToTimeSpan(cons.Element("AverageTravelTime").Value)
+            };
         }
         public void UpdateConsecutiveStations(ConsecutiveStations conStat)
         {
-            var consecutiveStationsList = XMLTools.LoadListFromXMLSerializer<ConsecutiveStations>(consecutiveStationsPath);
+            var conStatRootElem = XMLTools.LoadListFromXMLElement(conStatsPath);
 
-            var updatedConStat = consecutiveStationsList.Find(c => c.StatCode1 == conStat.StatCode1 &&
-                                                                   c.StatCode2 == conStat.StatCode2);
+            var cons = (from cs in conStatRootElem.Elements()
+                        where bool.Parse(cs.Element("Active").Value) &&
+                              conStat.StatCode1 == int.Parse(cs.Element("StatCode1").Value) &&
+                              conStat.StatCode2 == int.Parse(cs.Element("StatCode2").Value)
+                        select cs).FirstOrDefault();
 
-            if (updatedConStat is null)
+            if (cons is null)
             {
                 throw new StationsAreNotConsecutiveException($"Stations {conStat.StatCode1} and {conStat.StatCode2} are not consecutive stations");
             }
-            conStat.Mover(updatedConStat);
 
-            XMLTools.SaveListToXMLSerializer(consecutiveStationsList, consecutiveStationsPath);
+            cons.Element("Active").Value = conStat.Active.ToString();
+            cons.Element("AverageTravelTime").Value = XmlConvert.ToString(conStat.AverageTravelTime);
+            cons.Element("Distance").Value = conStat.Distance.ToString();
+            cons.Element("StatCode1").Value = conStat.StatCode1.ToString();
+            cons.Element("StatCode2").Value = conStat.StatCode2.ToString();
+
+            XMLTools.SaveListToXMLElement(conStatRootElem, conStatsPath);
         }
         public bool CheckConsecutiveStationsNotExist(int statCode1, int statCode2)
         {
-            var consecutiveStationsList = XMLTools.LoadListFromXMLSerializer<ConsecutiveStations>(consecutiveStationsPath);
+            var conStatRootElem = XMLTools.LoadListFromXMLElement(conStatsPath);
 
-            return (consecutiveStationsList.Find(c => c.StatCode1 == statCode1 &&
-                                                                 c.StatCode2 == statCode2) is null);
+            var cons = (from cs in conStatRootElem.Elements()
+                        where statCode1 == int.Parse(cs.Element("StatCode1").Value) &&
+                              statCode2 == int.Parse(cs.Element("StatCode2").Value)
+                        select cs).FirstOrDefault();
+
+            return cons is null;
         }
         #endregion
 

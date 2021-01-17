@@ -11,16 +11,16 @@ namespace DO
         public int StatCode2 { get; set; }
         public double Distance { get; set; }
 
-        [XmlIgnore]
+        //[XmlIgnore]
         public TimeSpan AverageTravelTime { get; set; }
 
-        [XmlElement("AverageTravelTime", DataType = "duration")]
-        [DefaultValue("PT10M")]
-        public string XmlTime
-        {
-            get => XmlConvert.ToString(AverageTravelTime);
-            set => AverageTravelTime = XmlConvert.ToTimeSpan(value);
-        }
+        //[XmlElement("AverageTravelTime", DataType = "duration")]
+        //[DefaultValue("PT10M")]
+        //public string XmlTime
+        //{
+        //    get => XmlConvert.ToString(AverageTravelTime);
+        //    set => AverageTravelTime = XmlConvert.ToTimeSpan(value);
+        //}
         public bool Active { get; set; }
     }
 }
