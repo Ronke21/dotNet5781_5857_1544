@@ -5,6 +5,7 @@ using System.Xml.Linq;
 using DalApi;
 using DO;
 using System.Device.Location;
+using System.IO;
 
 
 namespace Dal
@@ -27,7 +28,6 @@ namespace Dal
         private const string lineStationsPath = @"LineStationsXml.xml"; //XMLSerializer
         private const string consecutiveStationsPath = @"ConsecutiveStationsXml.xml"; //XMLSerializer
         private const string keyGeneratorPath = @"KeyGeneratorXml.xml"; //XMLSerializer
-
 
         #endregion
 
@@ -238,17 +238,35 @@ namespace Dal
         }
         public IEnumerable<BusStation> GetAllActiveBusStations()
         {
-            //List<BusStation> x = new List<BusStation>();
-            //x.Add(new BusStation()
+            #region init
+
+            //var code = File.ReadAllLines(@"..\PR_DS\DataSource\code.txt");
+            //var name = File.ReadAllLines(@"..\PR_DS\DataSource\name.txt");
+            //var longitude = File.ReadAllLines(@"..\PR_DS\DataSource\longitude.txt");
+            //var latitude = File.ReadAllLines(@"..\PR_DS\DataSource\latitude.txt");
+            //var address = File.ReadAllLines(@"..\PR_DS\DataSource\address.txt");
+
+            //var x = new List<BusStation>();
+
+            //for (var i = 0; i < 300; i++)
             //{
-            //    Accessible = true,
-            //    Active = true,
-            //    Address = "AA",
-            //    Code = 22,
-            //    Location = new GeoCoordinate(32,35),
-            //    Name = "ABC"
-            //});
+            //    x.Add(
+            //        new BusStation()
+            //        {
+            //            Accessible = true,
+            //            Active = true,
+            //            Address = address[i],
+            //            Code = Convert.ToInt32(code[i]),
+            //            Location = new GeoCoordinate(Convert.ToDouble(latitude[i]), Convert.ToDouble(longitude[i])),
+            //            Name = name[i]
+            //        });
+            //}
+
+            //x = x.OrderBy(s => s.Code).ToList();
+
             //XMLTools.SaveListToXMLSerializer(x, busStationsPath);
+
+            #endregion
 
             var busStationsList = XMLTools.LoadListFromXMLSerializer<BusStation>(busStationsPath);
 
@@ -591,13 +609,16 @@ namespace Dal
             var ser = (from s in keyRootElem.Elements()
                        select s).FirstOrDefault();
 
-            if (ser == null) throw new CantLoadFromXmlException("Can't load serializer");
 
-            ser.FirstAttribute.SetValue((int) ser.FirstAttribute + 1);
+            if (ser is null) throw new CantLoadFromXmlException("Can't get key");
+
+            var key = int.Parse(ser.Value);
+
+            ser.Value = (int.Parse(ser.Value) + 1).ToString();
 
             XMLTools.SaveListToXMLElement(keyRootElem, keyGeneratorPath);
 
-            return (int) ser;
+            return key;
         }
     }
 }

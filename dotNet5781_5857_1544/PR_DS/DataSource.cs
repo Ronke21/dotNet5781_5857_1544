@@ -193,14 +193,11 @@ namespace DS
             var address = File.ReadAllLines(@"..\PR_DS\DataSource\address.txt");
 
             BusStationsList = new List<BusStation>();
-            //Match = new Dictionary<int, string>();
-
             for (var i = 0; i < 27816; i++)
             {
                 BusStationsList.Add(
                     new BusStation()
                     {
-                        //ID = KeyGenerator.IdGenerator(),
                         Accessible = true,
                         Active = true,
                         Address = address[i],
@@ -208,20 +205,8 @@ namespace DS
                         Location = new GeoCoordinate(Convert.ToDouble(latitude[i]), Convert.ToDouble(longitude[i])),
                         Name = name[i]
                     });
-
-                //Match.Add(Convert.ToInt32(code[i]), name[i]);
             }
-            //BusStationsList.Add(
-            //    new BusStation()
-            //    {
-            //        ID = KeyGenerator.IdGenerator(),
-            //        Accessible = true,
-            //        Active = true,
-            //        Address = address[22633],
-            //        Code = Convert.ToInt32(code[22633]),
-            //        Location = new GeoCoordinate(Convert.ToDouble(latitude[22633]), Convert.ToDouble(longitude[22633])),
-            //        Name = name[22633]
-            //    });
+
             #endregion
 
             #region Consecutive Stations

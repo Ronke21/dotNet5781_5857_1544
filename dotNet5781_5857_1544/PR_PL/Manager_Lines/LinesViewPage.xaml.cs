@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -22,7 +23,14 @@ namespace PR_PL.Manager_Lines
 
             _bl = b;
 
-            LinesDataGrid.ItemsSource = _bl.GetAllActiveBusLines();
+            try
+            {
+                LinesDataGrid.ItemsSource = _bl.GetAllActiveBusLines();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
         private void LinesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
