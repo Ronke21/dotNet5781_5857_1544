@@ -23,7 +23,7 @@ namespace PR_PL.Manager_Buses
 
             _bl = b;
 
-            InActiveBusesDataGrid.DataContext = _bl.GetAllInActiveBuses();
+            refresh();
         }
 
         private void InActiveBusesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -50,20 +50,30 @@ namespace PR_PL.Manager_Buses
 
                 foreach (Bus b in lb)
                 {
-                    var updated = new Bus
+                    try
                     {
-                        LicenseNum = b.LicenseNum,
-                        Fuel = b.Fuel,
-                        Mileage = b.Mileage,
-                        StartTime = b.StartTime,
-                        LastMaint = b.LastMaint,
-                        MileageFromLast = b.MileageFromLast,
-                        Active = true
-                    };
-                    _bl.UpdateBus(updated);
+                        _bl.ActivateBus(b.LicenseNum);
+
+                    }
+                    catch (BO.BusDoesNotExistsException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Bus activating Error!");
+                    }
                 }
 
-                InActiveBusesDataGrid.DataContext = _bl.GetAllInActiveBuses().ToList();
+                refresh();
+            }
+        }
+
+        private void refresh()
+        {
+            try
+            {
+                InActiveBusesDataGrid.DataContext = _bl.GetAllInActiveBuses();
+            }
+            catch (BO.EmptyListException ex)
+            {
+                MessageBox.Show(ex.Message, "Buses Lodaing Error!");
             }
         }
     }

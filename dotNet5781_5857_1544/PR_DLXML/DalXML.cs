@@ -78,7 +78,7 @@ namespace Dal
 
             if (!buses.Any())
             {
-                throw new EmptyListException("List is Empty");
+                throw new EmptyListException("Buses List is Empty");
             }
 
             return buses;

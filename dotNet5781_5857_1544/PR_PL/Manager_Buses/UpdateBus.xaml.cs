@@ -13,13 +13,13 @@ namespace PR_PL
     public partial class UpdateBus : Window
     {
         private Bus bus;
-        private IBL bl;
+        private IBL _bl;
         public UpdateBus(IBL b, Bus bu)
         {
             InitializeComponent();
 
             bus = bu;
-            bl = b;
+            _bl = b;
 
             UpdateBusWindow.DataContext = bus;
         }
@@ -45,7 +45,7 @@ namespace PR_PL
                     MileageFromLast = mileageFromLast,
                     Active = bus.Active
                 };
-                bl.UpdateBus(updated);
+                _bl.UpdateBus(updated);
                 Close();
             }
             catch (Exception exception)

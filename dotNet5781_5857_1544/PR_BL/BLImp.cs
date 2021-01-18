@@ -57,6 +57,11 @@ namespace BL
             {
                 throw new NotValidFuelAmountException("Bus must have 0 - 1200");
             }
+            // mileage only under 250000 and over 0
+            if (bus.Mileage < 0 || bus.Mileage > 250000)
+            {
+                throw new BO.NotValidFuelAmountException("Added bus must have 0 - 250,000 KM mileage");
+            }
 
             return true;
         }
@@ -126,11 +131,6 @@ namespace BL
             {
                 if (BusIsFit(bus))
                 {
-                    // mileage only under 250000 and over 0
-                    if (bus.Mileage < 0 || bus.Mileage > 250000)
-                    {
-                        throw new NotValidFuelAmountException("Added bus must have 0 - 250,000 KM mileage");
-                    }
                     _dal.AddBus(busDo);
                 }
             }
@@ -138,10 +138,15 @@ namespace BL
             {
                 throw new BO.BadAdditionException("Can't add bus", ex);
             }
-            catch (Exception)
+            catch (BO.NotValidLicenseNumberException ex)
             {
-                throw new Exception("Unknown error AddBus");
+                throw new BO.BadAdditionException("Can't add bus", ex);
             }
+            catch (BO.NotValidFuelAmountException ex)
+            {
+                throw new BO.BadAdditionException("Can't add bus", ex);
+            } 
+
         }
 
         public IEnumerable<Bus> GetAllBuses()
@@ -174,10 +179,6 @@ namespace BL
             catch (DO.EmptyListException ex)
             {
                 throw new BO.EmptyListException("No buses in the list", ex);
-            }
-            catch (Exception)
-            {
-                throw new Exception("Unknown error GetAllBuses");
             }
         }
 
@@ -224,6 +225,18 @@ namespace BL
             return busBo;
         }
 
+        public void ActivateBus(int licenseNum)
+        {
+            try
+            {
+                _dal.ActivateBus(licenseNum);
+            }
+
+            catch (DO.BusDoesNotExistsException ex)
+            {
+                throw new BO.BusDoesNotExistsException("Can't activate the bus!", ex);
+            }
+        }
         public void UpdateBus(Bus bus)
         {
             try
@@ -234,9 +247,17 @@ namespace BL
                 _dal.UpdateBus(b);
             }
 
-            catch (Exception)
+            catch (DO.BusDoesNotExistsException ex)
             {
-                throw new Exception("Unknown error");
+                throw new BO.BusCanNotBeUpdatedException("Can't update bus", ex);
+            }
+            catch (BO.NotValidLicenseNumberException ex)
+            {
+                throw new BO.BusCanNotBeUpdatedException("Can't update bus", ex);
+            }
+            catch (BO.NotValidFuelAmountException ex)
+            {
+                throw new BO.BusCanNotBeUpdatedException("Can't update bus", ex);
             }
         }
 
@@ -248,11 +269,7 @@ namespace BL
             }
             catch (DO.BusDoesNotExistsException ex)
             {
-                throw new BO.DoesNotExistException("Bus license number does not exist", ex);
-            }
-            catch (Exception)
-            {
-                throw new Exception("Unknown error DeleteBus");
+                throw new BO.DoesNotExistException("Can't load the bus!" , ex);
             }
         }
 

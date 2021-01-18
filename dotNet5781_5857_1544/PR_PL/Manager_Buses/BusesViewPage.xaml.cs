@@ -22,14 +22,14 @@ namespace PR_PL.Manager_Buses
 
             InitializeComponent();
 
-            BusesDataGrid.DataContext = _bl.GetAllBuses().ToList();
+            refresh();
         }
 
         private void Add_OnClick(object sender, RoutedEventArgs e)
         {
             AddBus ab = new AddBus(_bl);
             ab.ShowDialog();
-            BusesDataGrid.DataContext = _bl.GetAllBuses().ToList();
+            refresh();
         }
 
         private void BusesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -56,9 +56,30 @@ namespace PR_PL.Manager_Buses
 
                 foreach (var b in lb)
                 {
-                    _bl.DeleteBus(((Bus)b).LicenseNum);
+                    try
+                    {
+                        _bl.DeleteBus(((Bus)b).LicenseNum);
+                    }
+                    catch (BO.DoesNotExistException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Buses Lodaing Error!");
+                    }
                 }
-                BusesDataGrid.DataContext = _bl.GetAllBuses().ToList(); //update view
+
+                refresh();
+
+            }
+        }
+
+        private void refresh()
+        {
+            try
+            {
+                BusesDataGrid.DataContext = _bl.GetAllBuses();
+            }
+            catch (BO.EmptyListException ex)
+            {
+                MessageBox.Show(ex.Message, "Buses Lodaing Error!");
             }
         }
     }

@@ -10,7 +10,25 @@ namespace BO
 
         public NotInIsraelException(string message) : base(message) { }
     }
+    [Serializable]
+    public class BusDoesNotExistsException : Exception
+    {
+        public BusDoesNotExistsException() : base() { }
 
+        public BusDoesNotExistsException(string message) : base(message) { }
+        public BusDoesNotExistsException(string message, Exception inner) : base(message, inner) { }
+
+    }
+
+    [Serializable]
+    public class BusCanNotBeUpdatedException : Exception
+    {
+        public BusCanNotBeUpdatedException() : base() { }
+
+        public BusCanNotBeUpdatedException(string message) : base(message) { }
+        public BusCanNotBeUpdatedException(string message, Exception inner) : base(message, inner) { }
+
+    }
 
     //exception for a input of station/bus that contains wrong digit number
     [Serializable]

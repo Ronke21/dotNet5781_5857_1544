@@ -13,12 +13,12 @@ namespace PR_PL
     /// </summary>
     public partial class AddBus : Window
     {
-        private IBL bl;
+        private IBL _bl;
         public AddBus(IBL b)
         {
             InitializeComponent();
 
-            bl = b;
+            _bl = b;
         }
         
         private void DatePicker_OnCalendarClosed(object sender, RoutedEventArgs e)
@@ -70,13 +70,17 @@ namespace PR_PL
                     LastMaint = last,
                     MileageFromLast = mileageSinceLast
                 };
-                bl.AddBus(ToAdd);
+                _bl.AddBus(ToAdd);
             }
-            catch (Exception exception)
+            catch (BO.NotValidFuelAmountException ex)
             {
-                Console.WriteLine(exception);
-                throw;
+                MessageBox.Show(ex.Message, "Can't add Bus!");
             }
+            catch (BO.BadAdditionException ex)
+            {
+                MessageBox.Show(ex.Message, "Can't add Bus!");
+            }
+
             Close();
         }
     }

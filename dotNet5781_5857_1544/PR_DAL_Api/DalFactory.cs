@@ -24,7 +24,7 @@ namespace DalApi
         public static IDal GetDal()
         {
             // get dal implementation name from config.xml according to <data> element
-            string dalType = DalConfig.DalName;
+            string dalType =  DalConfig.DalName;
             // bring package name (dll file name) for the dal name (above) from the list of packages in config.xml
             DalConfig.DalPackage dalPackage;
             try // get dal package info according to <dal> element value in config file
