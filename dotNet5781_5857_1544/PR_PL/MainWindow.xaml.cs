@@ -52,24 +52,6 @@ namespace PL
             bl = BLFactory.GetBL("1");
         }
 
-        //private void ShowBusesList_OnClick(object sender, RoutedEventArgs e)
-        //{
-        //    BusesView bv = new BusesView(bl);
-        //    bv.Show();
-        //}
-
-        //private void BusLines_OnClick(object sender, RoutedEventArgs e)
-        //{
-        //    LinesView lv = new LinesView(bl);
-        //    lv.Show();
-        //}
-
-        //private void ShowStationsList_Click(object sender, RoutedEventArgs e)
-        //{
-        //    StationsView sv = new StationsView(bl);
-        //    sv.Show();
-        //}
-
         #region mouse effects and functionality for exit button
         private void Exit_OnMouseEnter(object sender, MouseEventArgs e)
         {

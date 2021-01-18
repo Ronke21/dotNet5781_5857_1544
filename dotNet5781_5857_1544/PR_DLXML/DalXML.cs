@@ -458,7 +458,7 @@ namespace Dal
 
             return stations;
         }
-        public IEnumerable<LineStation> GetAlLineStationsBy(Predicate<LineStation> predicate)
+        public IEnumerable<LineStation> GetAllLineStationsBy(Predicate<LineStation> predicate)
         {
             var lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationsPath);
 
@@ -469,6 +469,22 @@ namespace Dal
             if (stations is null)
             {
                 throw new LineStationsDoesNotExistsException($"No stations satisfies the condition {predicate}");
+            }
+
+            return stations;
+        }
+
+        public IEnumerable<LineStation> GetAllLineStations()
+        {
+            var lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationsPath);
+
+            var stations = from ls in lineStationsList
+                where ls.Active is true
+                select ls;
+
+            if (stations is null)
+            {
+                throw new LineStationsDoesNotExistsException($"No stations in this line");
             }
 
             return stations;
@@ -488,6 +504,7 @@ namespace Dal
 
             return lineStation;
         }
+
         public void UpdateLineStation(int lineNumber, int stationNumber, int stationIndex)
         {
             var lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationsPath);

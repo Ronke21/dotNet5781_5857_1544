@@ -1,6 +1,7 @@
 ﻿using BLApi;
 using BO;
 using System.Windows;
+using System.Windows.Input;
 using PR_PL.Manager_Stations;
 
 namespace PL
@@ -39,6 +40,19 @@ namespace PL
         {
             var smw = new ShowMapWindow(currentBS);
             smw.ShowDialog();
+        }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Close_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

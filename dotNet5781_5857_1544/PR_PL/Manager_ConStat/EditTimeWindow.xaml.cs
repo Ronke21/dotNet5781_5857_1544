@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
 using BLApi;
 using BO;
 using PL;
@@ -32,11 +33,19 @@ namespace PR_PL.Manager_ConStat
 
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
-            var time = (DateTime)TimePicker.SelectedTime;
-            cs.AverageTravelTime = new TimeSpan(0, time.Hour, time.Minute);
+            var time = (DateTime)Clock.Time;
+            cs.AverageTravelTime = new TimeSpan(time.Hour, time.Minute, time.Second);
             _bl.UpdateConsecutiveStations(cs);
             wnd.DataDisplay.Content = new ConStatViewPage(_bl);
             Close();
+        }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
     }
 }

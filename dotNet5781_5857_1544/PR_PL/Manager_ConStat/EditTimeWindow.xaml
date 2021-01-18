@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR_PL.Manager_ConStat"
         mc:Ignorable="d"
-        Title="EditTimeWindow" Height="100" Width="300"
+        Title="EditTimeWindow" Height="500" Width="450"
         
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -26,6 +26,7 @@
         Background="White"
         BorderBrush="#007ACC"
         BorderThickness="2"
+        MouseDown="UIElement_OnMouseDown"
     >
 
         <Grid>
@@ -52,12 +53,13 @@
                 Margin="0,5,0,0"
             />
 
-            <materialDesign:TimePicker
-                Name="TimePicker"
-                Width="100"
+            <materialDesign:Clock
+                Name="Clock"
                 HorizontalAlignment="Center"
                 Is24Hours="True"
                 HorizontalContentAlignment="Center"
+                DisplayAutomation="CycleWithSeconds"
+                Background="White"
                 />
 
             <Button

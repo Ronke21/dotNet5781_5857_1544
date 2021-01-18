@@ -58,7 +58,8 @@ namespace DalApi
         #region LineStation
         void AddLineStation(LineStation lineStation);
         IEnumerable<LineStation> GetAllLineStationsByLineID(int ID);
-        IEnumerable<LineStation> GetAlLineStationsBy(Predicate<LineStation> predicate);
+        IEnumerable<LineStation> GetAllLineStationsBy(Predicate<LineStation> predicate);
+        IEnumerable<LineStation> GetAllLineStations();
         LineStation GetLineStation(int lineNumber, int stationNumber);
         void UpdateLineStation(int lineNumber, int stationNumber, int stationIndex);
         void DeleteLineStation(int lineNumber, int stationNumber);

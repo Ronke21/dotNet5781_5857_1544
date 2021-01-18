@@ -15,33 +15,33 @@ namespace PR_PL.Manager_Buses
     public partial class BusesViewPage : Page
     {
         private readonly IBL _bl;
-        MainWindow wnd = (MainWindow)Application.Current.MainWindow;
+        private readonly MainWindow _wnd = (MainWindow)Application.Current.MainWindow;
         public BusesViewPage(IBL b)
         {
             _bl = b;
 
             InitializeComponent();
 
-            refresh();
+            Refresh();
         }
 
         private void Add_OnClick(object sender, RoutedEventArgs e)
         {
-            AddBus ab = new AddBus(_bl);
+            var ab = new AddBus(_bl);
             ab.ShowDialog();
-            refresh();
+            Refresh();
         }
 
         private void BusesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Bus b = (Bus)BusesDataGrid.SelectedItem;
-            BusDetails bd = new BusDetails(_bl, b);
+            var b = (Bus)BusesDataGrid.SelectedItem;
+            var bd = new BusDetails(_bl, b);
             bd.Show();
         }
 
         private void InActive_Click(object sender, RoutedEventArgs e)
         {
-            wnd.DataDisplay.Content = new InActiveBusesViewPage(_bl);
+            _wnd.DataDisplay.Content = new InActiveBusesViewPage(_bl);
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)
@@ -62,16 +62,16 @@ namespace PR_PL.Manager_Buses
                     }
                     catch (BO.DoesNotExistException ex)
                     {
-                        MessageBox.Show(ex.Message, "Buses Lodaing Error!");
+                        MessageBox.Show(ex.Message, "Buses Loading Error!");
                     }
                 }
 
-                refresh();
+                Refresh();
 
             }
         }
 
-        private void refresh()
+        private void Refresh()
         {
             try
             {
@@ -79,7 +79,7 @@ namespace PR_PL.Manager_Buses
             }
             catch (BO.EmptyListException ex)
             {
-                MessageBox.Show(ex.Message, "Buses Lodaing Error!");
+                MessageBox.Show(ex.Message, "Buses Loading Error!");
             }
         }
     }

@@ -30,6 +30,7 @@ namespace BLApi
         IEnumerable<BusStation> GetAllInActiveBusStations();
         BusStation GetBusStation(int code);
         IEnumerable<BusStation> GetLineBusStations(int BusLineID);
+        List<BusLine> LinesInStation(int statCode);
         void UpdateBusStation(BusStation bs);
         void DeleteBusStation(int code);
         IEnumerable<BusStation> GetAllMatches(string text, IEnumerable<BusStation> collection);

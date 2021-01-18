@@ -17,44 +17,55 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
-        Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        >
+        
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+>
+
+    <Border
+        CornerRadius="15"
+        Background="White"
+        MouseDown="UIElement_OnMouseDown"
+        BorderBrush="#007ACC"
+        BorderThickness="2">
+
+        <Grid>
 
 
-    <Grid
+            <Grid
         VerticalAlignment="Center">
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*" />
-            <ColumnDefinition Width="59*"/>
-            <ColumnDefinition Width="59*" />
-            <ColumnDefinition Width="59*" />
-            <ColumnDefinition Width="59*" />
-            <ColumnDefinition Width="58*" />
-            <ColumnDefinition Width="58*" />
-        </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-        <Label 
+                <Label 
         Content="Station Code"
         Grid.Row="0"
         Grid.Column="0"
         FontWeight="Bold"
         FontSize="12"
-        Margin="15,15,0,15.2"
+        Margin="15,15,0,15"
         Grid.ColumnSpan="3"
         />
 
-        <Label 
+                <Label 
         Content="Station Name"
         Grid.Row="1"
         Grid.Column="0"
@@ -64,7 +75,7 @@
         Grid.ColumnSpan="3"
         />
 
-        <Label 
+                <Label 
         Content="Address"
         Grid.Row="2"
         Grid.Column="0"
@@ -74,7 +85,7 @@
         Grid.ColumnSpan="3"
         />
 
-        <Label 
+                <Label 
             Content="Location"
             Grid.Row="3"
             Grid.Column="0"
@@ -84,7 +95,7 @@
             Grid.ColumnSpan="4"
         />
 
-        <Label 
+                <Label 
         Content="Accessibility"
         Grid.Row="4"
         Grid.Column="0"
@@ -95,7 +106,7 @@
         />
 
 
-        <Label
+                <Label
         Name="lbCode"
         Content="{Binding Path = Code}"
         Grid.Row="0"
@@ -104,7 +115,7 @@
         VerticalContentAlignment="Center"
         />
 
-        <Label 
+                <Label 
         Name="lbName"
         Content="{Binding Path = Name}"
         Grid.Column="3"
@@ -113,7 +124,7 @@
         VerticalContentAlignment="Center"
           />
 
-        <Label 
+                <Label 
         Name="lbAddress"
         Content="{Binding Path=Address}"
         Grid.Row="2"
@@ -122,20 +133,22 @@
         VerticalContentAlignment="Center"
         />
 
-        <Button
+                <Button
             Name="Map"
             Grid.Row="3"
-            Grid.Column="3"
+            Grid.Column="2"
             Margin="5,5,5,5"
             Click="Map_OnClick"
             Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
             HorizontalAlignment="Right"
         >
-            <materialDesign:PackIcon
-                Kind="Map"/>
-        </Button>
+                    <materialDesign:PackIcon
+                Kind="Map"
+                Height="30"
+                Width="30"/>
+                </Button>
 
-        <Label
+                <Label
             Content="Show map"
             Grid.Row="3"
             Grid.Column="4"
@@ -145,40 +158,58 @@
             VerticalContentAlignment="Center"
         />
 
-        <materialDesign:PackIcon
+                <materialDesign:PackIcon
             Grid.Row="3"
-            Grid.Column="4"
+            Grid.Column="3"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Width="20"
             Height="20"
-            Margin="0,0,20,0"
             Kind="ArrowBack"/>
 
 
-        <Label
+                <Label
             x:Name="lbAccess"
             Content="{Binding Path=Accessible}"
             Grid.Row="4"
             Grid.Column="3"
             Grid.ColumnSpan="3"
-            VerticalContentAlignment="Center"
-        />
+            VerticalContentAlignment="Center"/>
 
-        <Button
-            Name="Update"
-            Grid.Row="5"
-            Grid.Column="6"
-            Margin="5,5,5,5"
-            Click="Update_OnClick"
-            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            </Grid>
+
+            <Button
+            Name="Close"
             HorizontalAlignment="Right"
-            >
-            <materialDesign:PackIcon
-                Kind="Update"
-                Foreground="White"/>
-        </Button>
+            VerticalAlignment="Top"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            Click="Close_OnClick"
+            Margin="20">
 
-    </Grid>
+                <materialDesign:PackIcon
+                Kind="Close"
+                Width="30"
+                Height="30"
+            />
+            </Button>
+
+            <Button
+                Name="Update"
+                Click="Update_OnClick"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="20"
+            >
+                <materialDesign:PackIcon
+                    Kind="Update"
+                    Width="30"
+                    Height="30"
+                    Foreground="White"/>
+            </Button>
+
+        </Grid>
+
+    </Border>
 
 </Window>

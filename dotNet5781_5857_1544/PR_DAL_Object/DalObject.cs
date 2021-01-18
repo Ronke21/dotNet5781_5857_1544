@@ -261,7 +261,7 @@ namespace Dal
 
             return stations;
         }
-        public IEnumerable<LineStation> GetAlLineStationsBy(Predicate<LineStation> predicate)
+        public IEnumerable<LineStation> GetAllLineStationsBy(Predicate<LineStation> predicate)
         {
             var stations = from ls in DataSource.LineStationsList
                            where ls.Active is true && predicate(ls)
@@ -274,6 +274,13 @@ namespace Dal
 
             return stations;
         }
+
+        public IEnumerable<LineStation> GetAllLineStations()
+        {
+            return new List<LineStation>();
+            //throw new NotImplementedException();
+        }
+
         public LineStation GetLineStation(int lineNumber, int stationNumber)
         {
             var lineStation = DataSource.LineStationsList.Find(ls => ls.BusLineId == lineNumber &&

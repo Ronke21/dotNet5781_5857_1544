@@ -145,7 +145,7 @@ namespace BL
             catch (BO.NotValidFuelAmountException ex)
             {
                 throw new BO.BadAdditionException("Can't add bus", ex);
-            } 
+            }
 
         }
 
@@ -269,7 +269,7 @@ namespace BL
             }
             catch (DO.BusDoesNotExistsException ex)
             {
-                throw new BO.DoesNotExistException("Can't load the bus!" , ex);
+                throw new BO.DoesNotExistException("Can't load the bus!", ex);
             }
         }
 
@@ -321,12 +321,11 @@ namespace BL
         {
             try
             {
-                if (BusStationIsFit(bs, false))
-                {
-                    var busStationDo = new DO.BusStation();
-                    bs.CopyPropertiesTo(busStationDo);
-                    _dal.AddBusStation(busStationDo);
-                }
+                if (!BusStationIsFit(bs, false)) return;
+
+                var busStationDo = new DO.BusStation();
+                bs.CopyPropertiesTo(busStationDo);
+                _dal.AddBusStation(busStationDo);
             }
             catch (DO.StationAlreadyExistsException ex)
             {
@@ -349,8 +348,16 @@ namespace BL
         {
             try
             {
-                return from bs in _dal.GetAllActiveBusStations()
-                       select BusStationDoToBoAdapter(bs);
+                var stationsList = from bs in _dal.GetAllActiveBusStations()
+                        select BusStationDoToBoAdapter(bs);
+
+                // attach lines to station
+                //foreach (var stat in stationsList)
+                //{
+                //    stat.BusLines = LinesInStation(stat.Code);
+                //}
+
+                return stationsList;
             }
             catch (DO.EmptyListException ex)
             {
@@ -394,6 +401,14 @@ namespace BL
             }
 
             return bsBO;
+        }
+        public List<BusLine> LinesInStation(int statCode)
+        {
+            var lineStations = _dal.GetAllLineStations();
+
+            return (from lineStat in lineStations
+                    where lineStat.Code == statCode
+                    select GetBusLine(lineStat.BusLineId)).ToList();
         }
         public void UpdateBusStation(BO.BusStation bs)
         {

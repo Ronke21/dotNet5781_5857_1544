@@ -15,7 +15,7 @@ namespace PR_PL.Manager_Buses
 
     public partial class InActiveBusesViewPage : Page
     {
-        MainWindow wnd = (MainWindow)Application.Current.MainWindow;
+        private readonly MainWindow _wnd = (MainWindow)Application.Current.MainWindow;
         private readonly IBL _bl;
         public InActiveBusesViewPage(IBL b)
         {
@@ -23,7 +23,7 @@ namespace PR_PL.Manager_Buses
 
             _bl = b;
 
-            refresh();
+            Refresh();
         }
 
         private void InActiveBusesDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -35,7 +35,7 @@ namespace PR_PL.Manager_Buses
 
         private void Exit_OnClick(object sender, RoutedEventArgs e)
         {
-            wnd.DataDisplay.Content = new BusesViewPage(_bl);
+            _wnd.DataDisplay.Content = new BusesViewPage(_bl);
         }
 
         private void Activate_OnClick(object sender, RoutedEventArgs e)
@@ -61,11 +61,11 @@ namespace PR_PL.Manager_Buses
                     }
                 }
 
-                refresh();
+                Refresh();
             }
         }
 
-        private void refresh()
+        private void Refresh()
         {
             try
             {

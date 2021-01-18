@@ -62,10 +62,6 @@ namespace PR_PL.Manager_ConStat
 
             var edw = new EditDistanceWindow(_bl, cs);
             edw.ShowDialog();
-
-            if (cs is null) return;
-            var etw = new EditTimeWindow(_bl, cs);
-            etw.ShowDialog();
         }
     }
 }

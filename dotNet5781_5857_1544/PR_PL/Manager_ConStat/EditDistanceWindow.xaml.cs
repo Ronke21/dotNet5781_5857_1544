@@ -28,6 +28,8 @@ namespace PR_PL.Manager_ConStat
         private void Close_OnClick(object sender, RoutedEventArgs e)
         {
             Close();
+
+            OpenEditTimeWindow();
         }
 
         private void Update_OnClick(object sender, RoutedEventArgs e)
@@ -37,6 +39,14 @@ namespace PR_PL.Manager_ConStat
             _bl.UpdateConsecutiveStations(cs);
             wnd.DataDisplay.Content = new ConStatViewPage(_bl);
             Close();
+
+            OpenEditTimeWindow();
+        }
+
+        private void OpenEditTimeWindow()
+        {
+            var etw = new EditTimeWindow(_bl, cs);
+            etw.ShowDialog();
         }
     }
 }

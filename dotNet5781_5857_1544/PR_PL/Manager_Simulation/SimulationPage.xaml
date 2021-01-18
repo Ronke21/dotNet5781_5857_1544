@@ -13,6 +13,7 @@
       VerticalAlignment="Stretch"
       
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       TextElement.FontWeight="Regular"
       TextElement.FontSize="13"
@@ -25,14 +26,16 @@
     <Grid>
 
         <Button 
-            x:Name="Remove"
+            x:Name="StartStop"
             Width="100"
-            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
             Height="100"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
+            Click="StartStop_OnClick"
         >
             <materialDesign:PackIcon
+                Name="StartStopIcon"
                 Width="75"
                 Height="75"
                 Kind="Play"
@@ -40,12 +43,18 @@
         </Button>
 
         <Slider
-            Width="600"
+            Name="RateSlider"
+            Width="250"
             VerticalAlignment="Bottom"
             Margin="70,20,20,40"
+            Style="{StaticResource MaterialDesignDiscreteSlider}"
+            Minimum="5"
+            Maximum="50"
+            TickFrequency="5"
             >
 
         </Slider>
+
 
         <Border
             Width="250"
@@ -56,6 +65,14 @@
             BorderBrush="#007ACC"
             BorderThickness="10"
             CornerRadius="10"
+            />
+
+        <materialDesign:TimePicker
+            Name="Clock"
+            Is24Hours="True"
+            Width="100"
+            SelectedTime="{Binding Source={x:Static sys:DateTime.Now}, Path=Now, Mode=OneWay}"
+            IsInvalidTextAllowed="False"
             />
 
     </Grid>
