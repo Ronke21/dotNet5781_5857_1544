@@ -39,6 +39,7 @@ namespace PR_PL.Manager_Simulation
             _bl.StartSimulator(myTimeSpan, ratio, UpdateClock); // UpdateClock is 'Action' Delegate
         }
 
+
         private void UpdateClock(TimeSpan ts)
         {
             myTimeSpan = ts;
