@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using BLApi;
 using MaterialDesignThemes.Wpf;
+using PL;
 
 namespace PR_PL.Manager_Simulation
 {
@@ -22,15 +14,41 @@ namespace PR_PL.Manager_Simulation
     /// </summary>
     public partial class SimulationPage : Page
     {
-        private bool running = false;
-        private BackgroundWorker simulationWorker = null;
-        public SimulationPage()
+        BackgroundWorker simulatorWorker;
+
+        private bool running;
+        //private BackgroundWorker simulationWorker = null;
+        private TimeSpan myTimeSpan;
+        private int ratio;
+
+        private readonly IBL _bl;
+        MainWindow wnd = (MainWindow)Application.Current.MainWindow;
+
+        public SimulationPage(IBL b)
         {
             InitializeComponent();
 
-            simulationWorker = new BackgroundWorker {WorkerSupportsCancellation = true};
+            _bl = b;
+
+            simulatorWorker = new BackgroundWorker() { WorkerSupportsCancellation = true };
+            simulatorWorker.DoWork += Worker_StartSimulation;
         }
-        
+
+        private void Worker_StartSimulation(object sender, DoWorkEventArgs e)
+        {
+            _bl.StartSimulator(myTimeSpan, ratio, UpdateClock); // UpdateClock is 'Action' Delegate
+        }
+
+        private void UpdateClock(TimeSpan ts)
+        {
+            myTimeSpan = ts;
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                timerTextBlock.Text = myTimeSpan.ToString(@"hh\:mm\:ss");
+                ClockExp.Time = new DateTime(1, 1, 1, 0, 0, 0) + myTimeSpan;
+                TimePicker.SelectedTime = ClockExp.Time;
+            }));
+        }
 
         private void StartStop_OnClick(object sender, RoutedEventArgs e)
         {
@@ -39,16 +57,23 @@ namespace PR_PL.Manager_Simulation
                 running = false;
                 StartStopIcon.Kind = PackIconKind.Play;
                 RateSlider.IsEnabled = true;
-                Clock.IsEnabled = true;
-                simulationWorker.CancelAsync();
+                TimePicker.IsEnabled = true;
+
+
+                simulatorWorker.CancelAsync();
+                _bl.StopSimulator();
             }
             else
             {
                 running = true;
                 StartStopIcon.Kind = PackIconKind.Stop;
                 RateSlider.IsEnabled = false;
-                Clock.IsEnabled = false;
-                simulationWorker.RunWorkerAsync();
+                TimePicker.IsEnabled = false;
+
+                // activated by GUI thread, no need for dispatcher!
+                myTimeSpan = TimePicker.SelectedTime.Value.TimeOfDay;
+                ratio = (int) RateSlider.Value;
+                simulatorWorker.RunWorkerAsync();
             }
         }
     }

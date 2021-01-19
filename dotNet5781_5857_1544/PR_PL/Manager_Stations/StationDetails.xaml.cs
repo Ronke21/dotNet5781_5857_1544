@@ -1,4 +1,6 @@
-﻿using BLApi;
+﻿using System.Collections.Generic;
+using System.Linq;
+using BLApi;
 using BO;
 using System.Windows;
 using System.Windows.Input;
@@ -22,6 +24,10 @@ namespace PL
             _bl = b;
 
             StationDetailsWindow.DataContext = currentBS;
+
+            var lines = _bl.LinesInStation(currentBS.Code).ToList();
+
+            LineNumbersTextBlock.DataContext = lines.Aggregate("", (current, line) => current + line.LineNumber+", ");
         }
 
         private void Update_OnClick(object sender, RoutedEventArgs e)
@@ -31,7 +37,7 @@ namespace PL
                 MessageBox.Show("Please activate the bus and then update!");
                 return;
             }
-            UpdateStation us = new UpdateStation(_bl, currentBS);
+            var us = new UpdateStation(_bl, currentBS);
             us.ShowDialog();
             Close();
         }

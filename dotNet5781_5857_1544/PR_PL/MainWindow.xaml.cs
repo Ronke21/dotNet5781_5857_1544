@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -220,18 +221,18 @@ namespace PL
         }
         #endregion
 
+        #region Simulator
+
         private void SimulatorSidePanel_OnMouseEnter(object sender, MouseEventArgs e)
         {
             var bc = new BrushConverter();
             SimulatorSidePanel.Background = (Brush)bc.ConvertFrom("#30ABFF");
         }
-
         private void SimulatorSidePanel_OnMouseLeave(object sender, MouseEventArgs e)
         {
             var bc = new BrushConverter();
             SimulatorSidePanel.Background = (Brush)bc.ConvertFrom("#FF0064A6");
         }
-
         private void SimulatorSidePanel_OnClick(object sender, RoutedEventArgs e)
         {
             if (!_hidden)
@@ -242,10 +243,12 @@ namespace PL
             if (DataDisplay.Content != null)
             {
                 if (DataDisplay.Content is SimulationPage) { }
-                else DataDisplay.Content = new SimulationPage();
+                else DataDisplay.Content = new SimulationPage(bl);
             }
 
-            else DataDisplay.Content = new SimulationPage();
+            else DataDisplay.Content = new SimulationPage(bl);
         }
+
+        #endregion
     }
 }

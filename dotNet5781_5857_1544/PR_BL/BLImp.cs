@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Device;
+using System.Diagnostics;
 using System.Linq;
 using System.Security;
+using System.Threading;
 using DalApi;
 using BLApi;
 using BO;
 using DO;
+using PR_BL;
 using Bus = BO.Bus;
 using BusLine = BO.BusLine;
 using BusStation = BO.BusStation;
@@ -17,16 +21,8 @@ using LineStation = DO.LineStation;
 
 namespace BL
 {
-    internal class BLImp : IBL // 
+    internal class BLImp : IBL
     {
-
-        //#region singleton
-        //private static readonly BLImp instance = new BLImp();
-        //static BLImp() { }// static ctor to ensure instance init is done just before first usage
-        //private BLImp() { } // default => private
-        //public static BLImp Instance { get => instance; }// The public Instance property to use
-        //#endregion
-
         private readonly IDal _dal = DalFactory.GetDal();
 
         private static readonly Random Rand = new Random(DateTime.Now.Millisecond);
@@ -47,16 +43,19 @@ namespace BL
             {
                 throw new NotValidLicenseNumberException("Buses made after 2017 must have 8 digits number");
             }
+
             // number 7 or 8 only
             if (bus.LicenseNum < 1000000 || bus.LicenseNum > 99999999)
             {
                 throw new NotValidLicenseNumberException("Buses can only have 8 or 7 digits number");
             }
+
             // fuel over 1200 under 0
             if (bus.Fuel < 0 || bus.Fuel > 1200)
             {
                 throw new NotValidFuelAmountException("Bus must have 0 - 1200");
             }
+
             // mileage only under 250000 and over 0
             if (bus.Mileage < 0 || bus.Mileage > 250000)
             {
@@ -67,6 +66,7 @@ namespace BL
         }
 
         #region Set Status and other funcs
+
         private static bool QualifiedMileage(Bus bus, double ride = 0)
         {
             return bus.MileageFromLast + ride <= 20000;
@@ -81,11 +81,13 @@ namespace BL
         {
             return bus.Fuel - ride > 0;
         }
+
         private void SetStatus(int licenseNum, double ride = 0)
         {
             var bus = GetBus(licenseNum);
 
-            if (!QualifiedDate(bus) || !QualifiedMileage(bus, ride) || !QualifiedFuel(bus, ride)) // of fuel = 0 or bus need to maintain by date/mileage -> it is Unfit!
+            if (!QualifiedDate(bus) || !QualifiedMileage(bus, ride) || !QualifiedFuel(bus, ride)
+            ) // of fuel = 0 or bus need to maintain by date/mileage -> it is Unfit!
             {
                 bus.Stat = BO.Status.Unfit;
             }
@@ -102,7 +104,8 @@ namespace BL
 
         private void SetNewStatus(Bus bus)
         {
-            if (!QualifiedDate(bus) || !QualifiedMileage(bus) || !QualifiedFuel(bus)) // of fuel = 0 or bus need to maintain by date/mileage -> it is Unfit!
+            if (!QualifiedDate(bus) || !QualifiedMileage(bus) || !QualifiedFuel(bus)
+            ) // of fuel = 0 or bus need to maintain by date/mileage -> it is Unfit!
             {
                 bus.Stat = BO.Status.Unfit;
             }
@@ -237,6 +240,7 @@ namespace BL
                 throw new BO.BusDoesNotExistsException("Can't activate the bus!", ex);
             }
         }
+
         public void UpdateBus(Bus bus)
         {
             try
@@ -276,13 +280,17 @@ namespace BL
         #endregion
 
         #region BusStation
+
         private static BO.BusStation BusStationDoToBoAdapter(DO.BusStation stat)
         {
             var boStat = new BO.BusStation();
             stat.CopyPropertiesTo(boStat);
             return boStat;
         }
-        private bool BusStationIsFit(BO.BusStation bs, bool isUpdate) //boolian id true for update, false for add. checks if already exist
+
+        private bool
+            BusStationIsFit(BO.BusStation bs,
+                bool isUpdate) //boolian id true for update, false for add. checks if already exist
         {
             //code, location, address, accessible, active, BusLines
 
@@ -291,7 +299,8 @@ namespace BL
                 throw new NotValidIDException("Station Code must be positive!");
             }
 
-            if ((bs.Location.Longitude < 31 || bs.Location.Longitude > 33.3) || (bs.Location.Latitude < 34.3 || bs.Location.Latitude > 35.5))
+            if ((bs.Location.Longitude < 31 || bs.Location.Longitude > 33.3) ||
+                (bs.Location.Latitude < 34.3 || bs.Location.Latitude > 35.5))
             {
                 throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
             }
@@ -317,6 +326,7 @@ namespace BL
 
             return true;
         }
+
         public void AddStation(BO.BusStation bs)
         {
             try
@@ -333,6 +343,7 @@ namespace BL
             }
 
         }
+
         public void ActivateBusStation(int code)
         {
             try
@@ -344,18 +355,19 @@ namespace BL
                 throw new BO.StationDoesNotExistException(ex.Message);
             }
         }
+
         public IEnumerable<BO.BusStation> GetAllBusStations()
         {
             try
             {
                 var stationsList = from bs in _dal.GetAllActiveBusStations()
-                        select BusStationDoToBoAdapter(bs);
+                                   select BusStationDoToBoAdapter(bs);
 
-                // attach lines to station
-                //foreach (var stat in stationsList)
-                //{
-                //    stat.BusLines = LinesInStation(stat.Code);
-                //}
+                //attach lines to station
+                foreach (var stat in stationsList)
+                {
+                    stat.BusLines = LinesInStation(stat.Code);
+                }
 
                 return stationsList;
             }
@@ -368,6 +380,7 @@ namespace BL
                 throw new Exception("Unknown error GetAllBusStations");
             }
         }
+
         public IEnumerable<BO.BusStation> GetAllInActiveBusStations()
         {
             try
@@ -382,6 +395,7 @@ namespace BL
             }
 
         }
+
         public BO.BusStation GetBusStation(int code)
         {
             var bsBO = new BO.BusStation();
@@ -402,6 +416,7 @@ namespace BL
 
             return bsBO;
         }
+
         public List<BusLine> LinesInStation(int statCode)
         {
             var lineStations = _dal.GetAllLineStations();
@@ -410,6 +425,7 @@ namespace BL
                     where lineStat.Code == statCode
                     select GetBusLine(lineStat.BusLineId)).ToList();
         }
+
         public void UpdateBusStation(BO.BusStation bs)
         {
             try
@@ -428,12 +444,14 @@ namespace BL
                 throw new BO.StationDoesNotExistException("can't update station");
             }
         }
+
         public void DeleteBusStation(int code)
         {
             if (GetBusStation(code).BusLines != null && GetBusStation(code).BusLines.Count() > 0)
             {
                 throw new BO.StationBelongsToActiveBusLine("Can't delete the station! it belongs to active lines!");
             }
+
             try
             {
                 _dal.DeleteBusStation(code);
@@ -444,12 +462,14 @@ namespace BL
             }
 
         }
+
         public IEnumerable<BO.BusStation> GetAllMatches(string text, IEnumerable<BO.BusStation> collection)
         {
             return from station in collection
                    where station.ToString().Contains(text)
                    select station;
         }
+
         public IEnumerable<BO.BusStation> GetLineBusStations(int BusLineID)
         {
             var lineStations = _dal.GetAllLineStationsByLineID(BusLineID);
@@ -458,15 +478,18 @@ namespace BL
             return from station in lineStations
                    select GetBusStation(station.Code);
         }
+
         #endregion
 
         #region BusLines
+
         private static BO.BusLine BusLineDoToBoAdapter(DO.BusLine busLine)
         {
             var boBusLine = new BO.BusLine();
             busLine.CopyPropertiesTo(boBusLine);
             return boBusLine;
         }
+
         public void AddBusLine(BusLine busLine, IEnumerable<BO.BusStation> busStations)
         {
             var busLineDo = new DO.BusLine();
@@ -510,6 +533,7 @@ namespace BL
                 throw new Exception("Unknown error AddBusLine");
             }
         }
+
         public IEnumerable<BO.BusLine> GetAllActiveBusLines()
         {
             try
@@ -526,6 +550,7 @@ namespace BL
                 throw new Exception("Unknown error GetAllBuses");
             }
         }
+
         public IEnumerable<BO.BusLine> GetAllInActiveBusLines()
         {
             try
@@ -582,6 +607,7 @@ namespace BL
 
             return busLineBO;
         }
+
         public void ActivateBusLine(int busLineId)
         {
             try
@@ -593,6 +619,7 @@ namespace BL
                 throw new Exception("Unknown error UpdateBusLine");
             }
         }
+
         public void UpdateBusLine(BO.BusLine update, IEnumerable<BusStation> chosen)
         {
 
@@ -645,6 +672,7 @@ namespace BL
                 throw new Exception("Unknown error");
             }
         }
+
         public void DeleteBusLine(int busLineId)
         {
             try
@@ -660,6 +688,7 @@ namespace BL
                 throw new Exception("Unknown error DeleteBusLine");
             }
         }
+
         public bool CompareLines(BusLine b1, BusLine b2, IEnumerable<BO.BusStation> bs1, IEnumerable<BO.BusStation> bs2)
         {
             var eq = b1.Active == b2.Active &&
@@ -806,6 +835,7 @@ namespace BL
             DOLineStation.CopyPropertiesTo(BOLineStation);
             return BOLineStation;
         }
+
         public IEnumerable<BO.LineStation> UpdateAndReturnLineStationList(int BusLineID)
         {
             var lineStations = _dal.GetAllLineStationsByLineID(BusLineID).ToList();
@@ -842,6 +872,8 @@ namespace BL
 
             return toReturn;
         }
+
+
         public void AddLineStation(BO.LineStation lineStation)
         {
             var lineStat = new DO.LineStation();
@@ -862,6 +894,32 @@ namespace BL
             {
                 throw new Exception("Unknown error AddBusLine");
             }
+        }
+
+        #endregion
+
+        #region Simulator
+
+        public void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime)
+        {
+            Clock.Instance.IsRunning = true;
+            Clock.Instance.Time = startTime;
+            Clock.Instance.Rate = rate;
+
+            Clock.Instance.Timer.Restart();
+            Clock.Instance.ClockObserver += updateTime;
+            var x = Clock.Instance.Timer;
+            while (Clock.Instance.IsRunning)
+            {
+                Clock.Instance.Time = startTime + TimeSpan.FromTicks(x.Elapsed.Ticks * rate);
+                //Clock.Instance.Time.Add(new TimeSpan(Clock.Instance.Timer.ElapsedTicks));
+                Thread.Sleep(10);
+            }
+        }
+
+        public void StopSimulator()
+        {
+            Clock.Instance.IsRunning = false;
         }
 
         #endregion

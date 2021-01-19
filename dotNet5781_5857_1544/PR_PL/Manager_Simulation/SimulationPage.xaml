@@ -44,35 +44,56 @@
 
         <Slider
             Name="RateSlider"
-            Width="250"
-            VerticalAlignment="Bottom"
-            Margin="70,20,20,40"
-            Style="{StaticResource MaterialDesignDiscreteSlider}"
+            Width="350"
+            Height="50"
             Minimum="5"
-            Maximum="50"
+            Maximum="120"
+            Style="{StaticResource MaterialDesignSlider}"
             TickFrequency="5"
+            TickPlacement="BottomRight"
+            IsSnapToTickEnabled="True"
+            VerticalAlignment="Bottom"
             >
-
         </Slider>
 
 
-        <Border
-            Width="250"
-            Height="300"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
-            Margin="25"
-            BorderBrush="#007ACC"
-            BorderThickness="10"
-            CornerRadius="10"
-            />
+        <Label
+          Name="SliderValue"
+          Foreground="#2196F3"
+          Content="{Binding ElementName=RateSlider, Path=Value,Mode=OneWay}"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Bottom"
+          Margin="400,0,0,20"
+          FontSize="25"
+                />
+
 
         <materialDesign:TimePicker
-            Name="Clock"
+            Name="TimePicker"
             Is24Hours="True"
             Width="100"
             SelectedTime="{Binding Source={x:Static sys:DateTime.Now}, Path=Now, Mode=OneWay}"
             IsInvalidTextAllowed="False"
+            VerticalAlignment="Top"
+            />
+
+        <TextBlock x:Name="timerTextBlock"
+                   Text="00:00:00" 
+                   Grid.ColumnSpan="2"
+                   FontSize="50"
+                   Width="200"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"
+                   TextAlignment="Right"/>
+
+        <materialDesign:Clock
+            Name="ClockExp"
+            DisplayMode="Seconds"
+            Is24Hours="True"
+            IsEnabled="False"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            DisplayAutomation="CycleWithSeconds"
             />
 
     </Grid>

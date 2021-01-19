@@ -197,7 +197,7 @@
                 <ColumnDefinition Width="35*"/>
                 <ColumnDefinition Width="203*"/>
             </Grid.ColumnDefinitions>
-            
+
             <Button
                 Name="Add"
                 VerticalAlignment="Stretch"

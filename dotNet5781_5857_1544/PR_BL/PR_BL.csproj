@@ -57,6 +57,7 @@
     <Compile Include="BO\TravelingBus.cs" />
     <Compile Include="BO\User.cs" />
     <Compile Include="BO\UserTravel.cs" />
+    <Compile Include="Clock.cs" />
     <Compile Include="DeepCopyUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

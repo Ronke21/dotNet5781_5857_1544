@@ -61,6 +61,13 @@ namespace BLApi
 
         #endregion
 
+        #region Simulator
+
+        void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime);
+        void StopSimulator();
+
+        #endregion
+
         //#region Driver
 
         //void AddDriver(Driver driver);

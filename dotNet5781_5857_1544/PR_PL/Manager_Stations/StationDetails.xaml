@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PR_PL"
         mc:Ignorable="d"
         Title="StationDetails"
-        Height="360" 
+        Height="400" 
         Width="360"
         x:Name="StationDetailsWindow"
         WindowStartupLocation="CenterScreen"
@@ -21,8 +21,7 @@
         
         Background="Transparent"
         AllowsTransparency="True"
-        WindowStyle="None"
->
+        WindowStyle="None">
 
     <Border
         CornerRadius="15"
@@ -184,7 +183,7 @@
             VerticalAlignment="Top"
             Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
             Click="Close_OnClick"
-            Margin="20">
+            Margin="15">
 
                 <materialDesign:PackIcon
                 Kind="Close"
@@ -199,7 +198,7 @@
                 Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                Margin="20"
+                Margin="15"
             >
                 <materialDesign:PackIcon
                     Kind="Update"
@@ -207,6 +206,27 @@
                     Height="30"
                     Foreground="White"/>
             </Button>
+
+            <Border
+            CornerRadius="15"
+            Background="White"
+            MouseDown="UIElement_OnMouseDown"
+            BorderBrush="#007ACC"
+            BorderThickness="2"
+            Height="50"
+            Width="280"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Margin="10"
+            >
+                <TextBlock
+                    Name="LineNumbersTextBlock"
+                    Text="{Binding}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    TextAlignment="Center"
+                    />
+            </Border>
 
         </Grid>
 
