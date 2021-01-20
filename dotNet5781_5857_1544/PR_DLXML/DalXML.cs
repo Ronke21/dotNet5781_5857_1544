@@ -21,13 +21,13 @@ namespace Dal
         #endregion
 
         #region DS XML Files
-
-
+        
         private const string busesPath = @"BusesXml.xml"; //XElement
         private const string busStationsPath = @"BusStationsXml.xml"; //XMLSerializer
         private const string busLinesPath = @"BusLinesXml.xml"; //XMLSerializer
         private const string lineStationsPath = @"LineStationsXml.xml"; //XMLSerializer
         private const string conStatsPath = @"ConsecutiveStationsXml.xml"; //XElement
+        private const string LineExitPath = @"LineExitXml.xml"; //XMLSerializer
         private const string keyGeneratorPath = @"KeyGeneratorXml.xml"; //XMLSerializer
 
         #endregion
@@ -206,7 +206,7 @@ namespace Dal
         }
         #endregion
 
-        #region BusStation
+        #region Bus Station
         public void AddBusStation(BusStation busStation)
         {
             var busStationsList = XMLTools.LoadListFromXMLSerializer<BusStation>(busStationsPath);
@@ -323,7 +323,7 @@ namespace Dal
         }
         #endregion
 
-        #region BusLine
+        #region Bus Line
         public void AddBusLine(BusLine busLine)
         {
             var busLinesList = XMLTools.LoadListFromXMLSerializer<BusLine>(busLinesPath);
@@ -422,7 +422,7 @@ namespace Dal
 
         #endregion
 
-        #region LineStation
+        #region Line Station
         public void AddLineStation(LineStation lineStation)
         {
             var lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationsPath);
@@ -479,8 +479,8 @@ namespace Dal
             var lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationsPath);
 
             var stations = from ls in lineStationsList
-                where ls.Active is true
-                select ls;
+                           where ls.Active is true
+                           select ls;
 
             if (stations is null)
             {
@@ -543,7 +543,7 @@ namespace Dal
 
         #endregion
 
-        #region ConsecutiveStations
+        #region Consecutive Stations
         public IEnumerable<ConsecutiveStations> GetAllConsecutiveStations()
         {
             var conStatRootElem = XMLTools.LoadListFromXMLElement(conStatsPath);
@@ -647,6 +647,98 @@ namespace Dal
 
             return cons is null;
         }
+        #endregion
+
+        #region Line exit
+
+        public void AddLineExit(LineExit lineExit)
+        {
+            var lineExitRootElem = XMLTools.LoadListFromXMLElement(LineExitPath);
+
+            var exit = (from le in lineExitRootElem.Elements()
+                        where (int.Parse(le.Element("BusLineId").Value) == lineExit.BusLineId &&
+                               XmlConvert.ToTimeSpan(le.Element("StartTime").Value) == lineExit.StartTime)
+                        select le).FirstOrDefault();
+            
+            if (exit == null)
+            {
+                var lineExitElem = new XElement("LineExit",
+                    new XElement("BusLineId", lineExit.BusLineId),
+                    new XElement("Active", lineExit.Active),
+                    new XElement("StartTime", XmlConvert.ToString(lineExit.StartTime)),
+                    new XElement("EndTime", XmlConvert.ToString(lineExit.EndTime)),
+                    new XElement("Freq", lineExit.Freq));
+
+                lineExitRootElem.Add(lineExitElem);
+            }
+
+            else if (bool.Parse(exit.Element("Active").Value) is false)
+            {
+                exit.Element("Active").Value = lineExit.Active.ToString();
+            }
+
+            else throw new LineExitAlreadyExistsException($"Line exit number {lineExit.BusLineId},{lineExit.StartTime} does not exist");
+
+            XMLTools.SaveListToXMLElement(lineExitRootElem, LineExitPath);
+        }
+        public IEnumerable<LineExit> getAllLineExits()
+        {
+            var lineExitRootElem = XMLTools.LoadListFromXMLElement(LineExitPath);
+
+            var lineExits = from le in lineExitRootElem.Elements()
+                where bool.Parse(le.Element("Active").Value) // == true
+                select new LineExit()
+                {
+                    BusLineId = int.Parse(le.Element("BusLineId").Value),
+                    Active = bool.Parse(le.Element("Active").Value),
+                    Freq = int.Parse(le.Element("Freq").Value),
+                    StartTime = XmlConvert.ToTimeSpan(le.Element("StartTime").Value),
+                    EndTime = XmlConvert.ToTimeSpan(le.Element("EndTime").Value)
+                };
+
+            //if (!lineExits.Any())
+            //{
+            //    throw new EmptyListException("Buses List is Empty");
+            //}
+
+            return lineExits;
+        }
+        public LineExit getLineExit(int busLineId, TimeSpan startTime)
+        {
+            var lineExitRootElem = XMLTools.LoadListFromXMLElement(LineExitPath);
+
+            var exit = (from le in lineExitRootElem.Elements()
+                        where int.Parse(le.Element("BusLineId").Value) == busLineId &&
+                              XmlConvert.ToTimeSpan(le.Element("StartTime").Value) == startTime
+                        select new LineExit()
+                        {
+                            BusLineId = int.Parse(le.Element("BusLineId").Value),
+                            Active = bool.Parse(le.Element("Active").Value),
+                            Freq = int.Parse(le.Element("Freq").Value),
+                            StartTime = XmlConvert.ToTimeSpan(le.Element("StartTime").Value),
+                            EndTime = XmlConvert.ToTimeSpan(le.Element("EndTime").Value)
+                        }).FirstOrDefault();
+
+            if (exit == null)
+            {
+                throw new LineExitDoesNotExistsException($"Line exit number {busLineId},{startTime} does not exist");
+            }
+
+            return exit;
+        }
+        public void UpdateLineExit(TimeSpan startTime, int freq, TimeSpan endTime)
+        {
+            throw new NotImplementedException();
+        }
+        public void ActivateLineExit(int busLineId, TimeSpan startTime)
+        {
+            throw new NotImplementedException();
+        }
+        public void DeleteLineExit(int busLineId, TimeSpan startTime)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         public int GetKey()

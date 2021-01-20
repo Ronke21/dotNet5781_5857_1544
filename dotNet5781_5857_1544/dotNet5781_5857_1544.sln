@@ -51,6 +51,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XML_storage", "XML_storage"
 		bin\xml\BusStationsXml.xml = bin\xml\BusStationsXml.xml
 		bin\xml\ConsecutiveStationsXml.xml = bin\xml\ConsecutiveStationsXml.xml
 		bin\xml\KeyGeneratorXml.xml = bin\xml\KeyGeneratorXml.xml
+		bin\xml\LineExitXml.xml = bin\xml\LineExitXml.xml
 		bin\xml\LineStationsXml.xml = bin\xml\LineStationsXml.xml
 	EndProjectSection
 EndProject

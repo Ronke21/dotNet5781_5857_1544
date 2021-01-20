@@ -309,6 +309,39 @@ namespace Dal
             }
             //else throw new AlreadyDeletedException($"Line station {lineNumber}/{stationNumber} already deleted");
         }
+        #endregion
+
+        #region Line exit
+
+        public void AddLineExit(LineExit lineExit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<LineExit> getAllLineExits()
+        {
+            throw new NotImplementedException();
+        }
+
+        public LineExit getLineExit(int busLineId, TimeSpan startTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateLineExit(TimeSpan startTime, int freq, TimeSpan endTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ActivateLineExit(int busLineId, TimeSpan startTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteLineExit(int busLineId, TimeSpan startTime)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
 

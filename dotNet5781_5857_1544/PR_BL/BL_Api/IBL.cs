@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using DO;
-using Bus = BO.Bus;
-using BusLine = BO.BusLine;
-using BusStation = BO.BusStation;
 
 namespace BLApi
 {
@@ -11,12 +8,12 @@ namespace BLApi
     public interface IBL
     {
         #region Bus
-        void AddBus(Bus bus);                                       // C
-        IEnumerable<Bus> GetAllBuses();                             // R
-        IEnumerable<Bus> GetAllInActiveBuses();                             // R
+        void AddBus(BO.Bus bus);                                       // C
+        IEnumerable<BO.Bus> GetAllBuses();                             // R
+        IEnumerable<BO.Bus> GetAllInActiveBuses();                             // R
         //IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);   // R
-        Bus GetBus(int licenseNum);                                 // R
-        void UpdateBus(Bus bus);                                    // U
+        BO.Bus GetBus(int licenseNum);                                 // R
+        void UpdateBus(BO.Bus bus);                                    // U
         void ActivateBus(int licenseNum);
         //void UpdateBus(int licenseNum, Action<Bus> update);       // U
         void DeleteBus(int licenseNum);                             // D
@@ -24,30 +21,30 @@ namespace BLApi
         #endregion
 
         #region BusStation
-        void AddStation(BusStation bs);
+        void AddStation(BO.BusStation bs);
         void ActivateBusStation(int code);
-        IEnumerable<BusStation> GetAllBusStations();
-        IEnumerable<BusStation> GetAllInActiveBusStations();
-        BusStation GetBusStation(int code);
-        IEnumerable<BusStation> GetLineBusStations(int BusLineID);
-        List<BusLine> LinesInStation(int statCode);
-        void UpdateBusStation(BusStation bs);
+        IEnumerable<BO.BusStation> GetAllBusStations();
+        IEnumerable<BO.BusStation> GetAllInActiveBusStations();
+        BO.BusStation GetBusStation(int code);
+        IEnumerable<BO.BusStation> GetLineBusStations(int BusLineID);
+        IEnumerable<BO.BusLine> LinesInStation(int statCode);
+        void UpdateBusStation(BO.BusStation bs);
         void DeleteBusStation(int code);
-        IEnumerable<BusStation> GetAllMatches(string text, IEnumerable<BusStation> collection);
+        IEnumerable<BO.BusStation> GetAllMatches(string text, IEnumerable<BO.BusStation> collection);
 
         #endregion
 
         #region BusLine
-        void AddBusLine(BusLine busLine, IEnumerable<BusStation> busStations);
-        IEnumerable<BusLine> GetAllActiveBusLines();
-        IEnumerable<BusLine> GetAllInActiveBusLines();
+        void AddBusLine(BO.BusLine busLine, IEnumerable<BO.BusStation> busStations);
+        IEnumerable<BO.BusLine> GetAllActiveBusLines();
+        IEnumerable<BO.BusLine> GetAllInActiveBusLines();
         //IEnumerable<BusLine> GetAllBusLinesBy(Predicate<BusLine> predicate); 
-        BusLine GetBusLine(int busLineId);
-        void UpdateBusLine(BusLine update, IEnumerable<BusStation> chosen);
+        BO.BusLine GetBusLine(int busLineId);
+        void UpdateBusLine(BO.BusLine update, IEnumerable<BO.BusStation> chosen);
         void ActivateBusLine(int busLineId);
         //void UpdateBusLine(BusLine busLine, IEnumerable<BO.BusStation> busStations);
         //void UpdateBusLine(int busLineId, Action<BusLine> update);
-        bool CompareLines(BusLine b1, BusLine b2, IEnumerable<BusStation> bs1, IEnumerable<BusStation> bs2);
+        //bool CompareLines(BusLine b1, BusLine b2, IEnumerable<BusStation> bs1, IEnumerable<BusStation> bs2);
         void DeleteBusLine(int busLineId);
 
         #endregion
@@ -62,23 +59,10 @@ namespace BLApi
         #endregion
 
         #region Simulator
-
         void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime);
         void StopSimulator();
 
         #endregion
-
-        //#region Driver
-
-        //void AddDriver(Driver driver);
-        //IEnumerable<Driver> GetAllDrivers();
-        //IEnumerable<Driver> GetAllDriversBy(Predicate<Driver> predicate);
-        //Driver GetDriver(int id);
-        //void UpdateDriver(Driver driver);
-        ////void UpdateDriver(int id, Action<Driver> update);
-        //void DeleteDriver(int id);
-
-        //#endregion
 
         #region LineStation
 
@@ -93,6 +77,31 @@ namespace BLApi
         //void DeleteLineStation(int lineNumber, int stationNumber);
 
         #endregion
+
+        #region Line exit
+
+        void AddLineExit(BO.LineExit lineExit);
+        IEnumerable<BO.LineExit> getAllLineExits();
+        BO.LineExit getLineExit(int busLineId, TimeSpan startTime);
+
+        #endregion
+
+        #region comment
+
+
+
+        //#region Driver
+
+        //void AddDriver(Driver driver);
+        //IEnumerable<Driver> GetAllDrivers();
+        //IEnumerable<Driver> GetAllDriversBy(Predicate<Driver> predicate);
+        //Driver GetDriver(int id);
+        //void UpdateDriver(Driver driver);
+        ////void UpdateDriver(int id, Action<Driver> update);
+        //void DeleteDriver(int id);
+
+        //#endregion
+
 
         //#region TravelingBus
         //void AddTravelingBus(TravelingBus travelingBus);
@@ -125,5 +134,6 @@ namespace BLApi
 
         //#endregion
 
+        #endregion
     }
 }

@@ -69,6 +69,9 @@
     <Compile Include="CustomMessageBoxWindow.xaml.cs">
       <DependentUpon>CustomMessageBoxWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LineExitWindowDelete.xaml.cs">
+      <DependentUpon>LineExitWindowDelete.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager_Buses\BusesViewPage.xaml.cs">
       <DependentUpon>BusesViewPage.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,10 @@
       <DependentUpon>TODELETE_StationsView.xaml</DependentUpon>
     </Compile>
     <Page Include="CustomMessageBoxWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LineExitWindowDelete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

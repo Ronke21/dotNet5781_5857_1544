@@ -67,7 +67,7 @@
             Grid.Row="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            Margin="10"
+            Margin="0"
             NavigationUIVisibility="Hidden"
         />
 
@@ -130,6 +130,7 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
+                <RowDefinition Height="115"/>
                 <RowDefinition Height="115"/>
                 <RowDefinition Height="115"/>
                 <RowDefinition Height="115"/>
@@ -331,6 +332,11 @@
 
             </Button>
 
+            <Button
+                Name="lineexitSidePanel"
+                Grid.Row="6"
+                BorderBrush="Transparent"
+                Click="LineexitSidePanel_OnClick"/>
 
         </Grid>
 

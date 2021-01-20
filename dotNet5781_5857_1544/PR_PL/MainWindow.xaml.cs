@@ -5,6 +5,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using BLApi;
 using MaterialDesignThemes.Wpf;
+using PR_PL;
 using PR_PL.Manager_Buses;
 using PR_PL.Manager_ConStat;
 using PR_PL.Manager_Lines;
@@ -222,7 +223,6 @@ namespace PL
         #endregion
 
         #region Simulator
-
         private void SimulatorSidePanel_OnMouseEnter(object sender, MouseEventArgs e)
         {
             var bc = new BrushConverter();
@@ -250,5 +250,11 @@ namespace PL
         }
 
         #endregion
+
+        private void LineexitSidePanel_OnClick(object sender, RoutedEventArgs e)
+        {
+            var lew = new LineExitWindowDelete(bl);
+            lew.Show();
+        }
     }
 }

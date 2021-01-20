@@ -240,4 +240,20 @@ namespace DO
 
         public UserTravelDoesNotExistsException(string message) : base(message) { }
     }
+
+    [Serializable]
+    public class LineExitAlreadyExistsException : Exception
+    {
+        public LineExitAlreadyExistsException() : base() { }
+
+        public LineExitAlreadyExistsException(string message) : base(message) { }
+    }
+
+    [Serializable]
+    public class LineExitDoesNotExistsException : Exception
+    {
+        public LineExitDoesNotExistsException() : base() { }
+
+        public LineExitDoesNotExistsException(string message) : base(message) { }
+    }
 }
