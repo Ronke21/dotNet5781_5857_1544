@@ -1,0 +1,4803 @@
+<?xml version="1.0"?>
+<ArrayOfBusStation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BusStation>
+    <Code>38831</Code>
+    <Location>
+      <Latitude>34.917806</Latitude>
+      <Longitude>32.183921</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>I ' s heart bar / Ben Yehuda</Name>
+    <Address>Ben Yehuda 76, Kfar Saba</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38832</Code>
+    <Location>
+      <Latitude>34.819541</Latitude>
+      <Longitude>31.870034</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Herzl / Bilu Junction</Name>
+    <Address>Herzl , Kiryat Ekron</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38833</Code>
+    <Location>
+      <Latitude>34.782828</Latitude>
+      <Longitude>31.984553</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The surge / fishermen</Name>
+    <Address>The Surge 30, Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38834</Code>
+    <Location>
+      <Latitude>34.790904</Latitude>
+      <Longitude>31.88855</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Fried / The Six Days</Name>
+    <Address>Moshe Fried 9, Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38836</Code>
+    <Location>
+      <Latitude>34.898098</Latitude>
+      <Longitude>31.956392</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>A . Lod Central / Download</Name>
+    <Address>, Lod</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38837</Code>
+    <Location>
+      <Latitude>34.796071</Latitude>
+      <Longitude>31.892166</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Hannah Avrech / Vulcani</Name>
+    <Address>Hana Avrech 9, Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38838</Code>
+    <Location>
+      <Latitude>34.824106</Latitude>
+      <Longitude>31.857565</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Herzl / Moshe Sharet</Name>
+    <Address>Herzl 20, Kiryat Ekron</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38839</Code>
+    <Location>
+      <Latitude>34.821857</Latitude>
+      <Longitude>31.862305</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The boys / Eli Cohen</Name>
+    <Address>The Boys 4, Kiryat Ekron</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38840</Code>
+    <Location>
+      <Latitude>34.822237</Latitude>
+      <Longitude>31.865085</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Weizmann / The Boys</Name>
+    <Address>Weizmann 11, Kiryat Ekron</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38841</Code>
+    <Location>
+      <Latitude>34.818957</Latitude>
+      <Longitude>31.865222</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The iris / anemone</Name>
+    <Address>Iris 13, Kiryat Ekron</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38842</Code>
+    <Location>
+      <Latitude>34.818392</Latitude>
+      <Longitude>31.867597</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The anemone / daffodil</Name>
+    <Address>The Anemone , Kiryat Ekron</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38844</Code>
+    <Location>
+      <Latitude>34.827023</Latitude>
+      <Longitude>31.86244</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Eli Cohen / Ghetto Fighters</Name>
+    <Address>Eli Cohen 62, Kiryat Ekron</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38845</Code>
+    <Location>
+      <Latitude>34.828702</Latitude>
+      <Longitude>31.863501</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Shabazi / Shabbat brothers</Name>
+    <Address>Shabazi 51, Kiryat Ekron</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38846</Code>
+    <Location>
+      <Latitude>34.827102</Latitude>
+      <Longitude>31.865348</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Shabazi / Weizmann</Name>
+    <Address>Shabazi 31, Kiryat Ekron</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38847</Code>
+    <Location>
+      <Latitude>34.763896</Latitude>
+      <Longitude>31.977409</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Haim Bar Lev / Yitzhak Rabin Boulevard</Name>
+    <Address>Haim Barlev , Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38848</Code>
+    <Location>
+      <Latitude>34.912708</Latitude>
+      <Longitude>32.300345</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Lev Hasharon Mental Health Center</Name>
+    <Address>, Tzur Moshe</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38849</Code>
+    <Location>
+      <Latitude>34.912602</Latitude>
+      <Longitude>32.301347</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Lev Hasharon Mental Health Center</Name>
+    <Address>, Tzur Moshe</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38852</Code>
+    <Location>
+      <Latitude>34.807944</Latitude>
+      <Longitude>31.914255</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Holtzman / Science</Name>
+    <Address>Haim Holtzman 2, Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38854</Code>
+    <Location>
+      <Latitude>34.836363</Latitude>
+      <Longitude>31.963668</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Zrifin Camp / Club</Name>
+    <Address>, Zrifin</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38855</Code>
+    <Location>
+      <Latitude>34.825249</Latitude>
+      <Longitude>31.856115</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Herzl / Golani</Name>
+    <Address>Herzl 4, Kiryat Ekron</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38856</Code>
+    <Location>
+      <Latitude>34.81249</Latitude>
+      <Longitude>31.874963</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Rotem / Deganiot</Name>
+    <Address>Rotem 3, Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38859</Code>
+    <Location>
+      <Latitude>34.910842</Latitude>
+      <Longitude>32.300035</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The prairie</Name>
+    <Address>Arava , Tzur Moshe</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38860</Code>
+    <Location>
+      <Latitude>34.948647</Latitude>
+      <Longitude>32.305234</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Introduction to the vine / Slope of the fig</Name>
+    <Address>Introduction to the Vine , Yanuv</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38861</Code>
+    <Location>
+      <Latitude>34.943393</Latitude>
+      <Longitude>32.304022</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Introduction to the vine / extension</Name>
+    <Address>Introduction to the Vine , Yanuv</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38862</Code>
+    <Location>
+      <Latitude>34.940529</Latitude>
+      <Longitude>32.302957</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The extension a</Name>
+    <Address>The extension , redeemed</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38863</Code>
+    <Location>
+      <Latitude>34.939512</Latitude>
+      <Longitude>32.300264</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The extension b</Name>
+    <Address>The extension , redeemed</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38864</Code>
+    <Location>
+      <Latitude>34.938705</Latitude>
+      <Longitude>32.298171</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The extension / veterans</Name>
+    <Address>The extension , redeemed</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38865</Code>
+    <Location>
+      <Latitude>34.8976</Latitude>
+      <Longitude>31.990876</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Airports / Aliyah Authority</Name>
+    <Address>Aliya Boulevard , Ben Gurion Airport</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38866</Code>
+    <Location>
+      <Latitude>34.879725</Latitude>
+      <Longitude>31.998767</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Wing / Cypress</Name>
+    <Address>Wing , Ben Gurion Airport</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38867</Code>
+    <Location>
+      <Latitude>34.818708</Latitude>
+      <Longitude>31.883019</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The gang / Dov Hoz</Name>
+    <Address>The Group 24, Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38869</Code>
+    <Location>
+      <Latitude>34.926837</Latitude>
+      <Longitude>32.349776</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Beit Halevi e</Name>
+    <Address>100 105, Beit Halevi</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38870</Code>
+    <Location>
+      <Latitude>34.899465</Latitude>
+      <Longitude>32.352953</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>First / Route 5700</Name>
+    <Address>Tower 13, Kfar Haim</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38872</Code>
+    <Location>
+      <Latitude>34.775083</Latitude>
+      <Longitude>31.897286</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The genius Ben Ish Chai / Ceylon</Name>
+    <Address>, Streets</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38873</Code>
+    <Location>
+      <Latitude>34.807039</Latitude>
+      <Longitude>31.883941</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Okashi / Levi Eshkol</Name>
+    <Address>Israel Okashi 4, Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38875</Code>
+    <Location>
+      <Latitude>34.816752</Latitude>
+      <Longitude>31.896762</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Rest and estate / Yehuda Gorodisky</Name>
+    <Address>Menucha and Nahala 31, Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38876</Code>
+    <Location>
+      <Latitude>34.823461</Latitude>
+      <Longitude>31.898463</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Gorodsky / Yechiel Paldi</Name>
+    <Address>Yehuda Gorodiski 35, Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38877</Code>
+    <Location>
+      <Latitude>34.904907</Latitude>
+      <Longitude>32.076535</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Derech Menachem Begin / Yaakov Hazan</Name>
+    <Address>Menachem Begin Road 30, Petah Tikva</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38878</Code>
+    <Location>
+      <Latitude>34.878765</Latitude>
+      <Longitude>32.299994</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Through the Park / Rabbi Neria</Name>
+    <Address>Derech HaPark 20, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38879</Code>
+    <Location>
+      <Latitude>34.859437</Latitude>
+      <Longitude>31.865457</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The fig / vine</Name>
+    <Address>The fig , peek</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38880</Code>
+    <Location>
+      <Latitude>34.864555</Latitude>
+      <Longitude>31.866772</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The fig / oak</Name>
+    <Address>The fig , peek</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38881</Code>
+    <Location>
+      <Latitude>34.784347</Latitude>
+      <Longitude>31.809325</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Through the Flowers / Jasmine</Name>
+    <Address>Flower Road 46, Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38883</Code>
+    <Location>
+      <Latitude>34.778239</Latitude>
+      <Longitude>31.80037</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Yitzhak Rabin / Pinchas Sapir</Name>
+    <Address>Yitzhak Rabin Road , Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38884</Code>
+    <Location>
+      <Latitude>34.782985</Latitude>
+      <Longitude>31.799224</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Menachem Begin / Yitzhak Rabin</Name>
+    <Address>4 Menachem Begin Boulevard , Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38885</Code>
+    <Location>
+      <Latitude>34.785069</Latitude>
+      <Longitude>31.800334</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Haim Herzog / Dolev</Name>
+    <Address>Haim Herzog 12, Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38886</Code>
+    <Location>
+      <Latitude>34.786735</Latitude>
+      <Longitude>31.802319</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Shades / Cedar School</Name>
+    <Address>Erez 2, Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38887</Code>
+    <Location>
+      <Latitude>34.786623</Latitude>
+      <Longitude>31.804595</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Through the trees / oak</Name>
+    <Address>Derech HaIlanot 13, Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38888</Code>
+    <Location>
+      <Latitude>34.785098</Latitude>
+      <Longitude>31.805041</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Through the Trees / Menachem Begin</Name>
+    <Address>Derech HaIlanot 3, Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38889</Code>
+    <Location>
+      <Latitude>34.782252</Latitude>
+      <Longitude>31.816751</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Independence / Weizmann</Name>
+    <Address>Independence 1, Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38890</Code>
+    <Location>
+      <Latitude>34.779753</Latitude>
+      <Longitude>31.816579</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Weizmann / The Magic Rug</Name>
+    <Address>Weizmann 19, Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38891</Code>
+    <Location>
+      <Latitude>34.787199</Latitude>
+      <Longitude>31.801182</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Tzala / Coral</Name>
+    <Address>Tzala 25, Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38892</Code>
+    <Location>
+      <Latitude>34.786055</Latitude>
+      <Longitude>31.802279</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Hatzav / Tzala Garden</Name>
+    <Address>Zela 15, Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38893</Code>
+    <Location>
+      <Latitude>34.777574</Latitude>
+      <Longitude>31.814676</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Pines / Levinson</Name>
+    <Address>Pines 15, Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38894</Code>
+    <Location>
+      <Latitude>34.775928</Latitude>
+      <Longitude>31.813285</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Feinberg / Schachwitz</Name>
+    <Address>Feinberg 4, Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38895</Code>
+    <Location>
+      <Latitude>34.773504</Latitude>
+      <Longitude>31.806959</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ben Gurion / Fox</Name>
+    <Address>Ben Gurion Blvd 39, Gedera</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38898</Code>
+    <Location>
+      <Latitude>34.805494</Latitude>
+      <Longitude>31.884187</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Levi Eshkol / Rabbi David Israel</Name>
+    <Address>Levy Eshkol , Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38899</Code>
+    <Location>
+      <Latitude>34.805809</Latitude>
+      <Longitude>31.910118</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Lily / Oppenheimer</Name>
+    <Address>D '' Dr. Arie Shoshan , streets</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38901</Code>
+    <Location>
+      <Latitude>34.80506</Latitude>
+      <Longitude>31.882474</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Rabbi David Israel / Arie Dolcin</Name>
+    <Address>Rabbi David Israel 63, Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38903</Code>
+    <Location>
+      <Latitude>34.81138</Latitude>
+      <Longitude>31.878667</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Kronenberg / Crimson</Name>
+    <Address>Joseph Kronenberg , Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38904</Code>
+    <Location>
+      <Latitude>34.813355</Latitude>
+      <Longitude>31.975479</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Jacob Freiman / Benjamin Shmotkin</Name>
+    <Address>Yaakov Freiman 9, Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38905</Code>
+    <Location>
+      <Latitude>34.789445</Latitude>
+      <Longitude>31.982177</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Anielewicz / Hello Fire</Name>
+    <Address>Anielewicz 13, Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38906</Code>
+    <Location>
+      <Latitude>34.822422</Latitude>
+      <Longitude>31.948552</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Nehemiah / The Cemetery</Name>
+    <Address>Nehemiah 71, Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38907</Code>
+    <Location>
+      <Latitude>34.816339</Latitude>
+      <Longitude>31.967732</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Yehuda Halevi / Yohanan the shoemaker</Name>
+    <Address>Yehuda Halevi 89, Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38908</Code>
+    <Location>
+      <Latitude>34.824617</Latitude>
+      <Longitude>31.893823</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The defense / animal '' Q</Name>
+    <Address>Haganah 37, Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38909</Code>
+    <Location>
+      <Latitude>34.824714</Latitude>
+      <Longitude>31.854169</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Kiryat Ekron / Road 411</Name>
+    <Address>411, carrots</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38910</Code>
+    <Location>
+      <Latitude>34.900793</Latitude>
+      <Longitude>31.811907</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Rat Junction / Road 411</Name>
+    <Address>411, carrots</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38911</Code>
+    <Location>
+      <Latitude>34.814839</Latitude>
+      <Longitude>31.956842</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Greenspan / Yigal Alon</Name>
+    <Address>Greenspan , Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38912</Code>
+    <Location>
+      <Latitude>34.814747</Latitude>
+      <Longitude>31.959821</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The Guardian / Fathers</Name>
+    <Address>Hashomer 22, Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38913</Code>
+    <Location>
+      <Latitude>34.75691</Latitude>
+      <Longitude>31.992306</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Moshe Sharet / Yaakov Kenner</Name>
+    <Address>Moshe Sharet 38, Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38914</Code>
+    <Location>
+      <Latitude>34.78262</Latitude>
+      <Longitude>31.98497</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The fishermen / surge</Name>
+    <Address>The Fishermen 45, Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38916</Code>
+    <Location>
+      <Latitude>34.818099</Latitude>
+      <Longitude>31.968049</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Joseph Burg / Beacons Isaac</Name>
+    <Address>D '' Dr. Yosef Burg 9, Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38917</Code>
+    <Location>
+      <Latitude>34.820043</Latitude>
+      <Longitude>31.968936</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Joseph Burg / Katriel Rapaport</Name>
+    <Address>D '' Dr. Yosef Burg , Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38919</Code>
+    <Location>
+      <Latitude>34.798033</Latitude>
+      <Longitude>31.923041</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Weizmann / Yitzhak Rabin Road</Name>
+    <Address>Weizmann , Ness Ziona</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38920</Code>
+    <Location>
+      <Latitude>34.764014</Latitude>
+      <Longitude>31.98568</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Sderot Moshe Dayan / Yosef Lishansky</Name>
+    <Address>Sderot Moshe Dayan , Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38921</Code>
+    <Location>
+      <Latitude>34.751999</Latitude>
+      <Longitude>31.992583</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Minister Haim Shapira / Yosef Sapir</Name>
+    <Address>Minister Haim Moshe Shapira 4, Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>38922</Code>
+    <Location>
+      <Latitude>34.755683</Latitude>
+      <Longitude>31.990757</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Minister Haim Shapira / Rabbi Shalom c ' Rupee</Name>
+    <Address>Minister Haim Moshe Shapira 16, Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39001</Code>
+    <Location>
+      <Latitude>34.819244</Latitude>
+      <Longitude>31.950254</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Sderot Yaakov / Yosef Hanasi</Name>
+    <Address>Sderot Yaakov 65, Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39002</Code>
+    <Location>
+      <Latitude>34.819766</Latitude>
+      <Longitude>31.95111</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Sderot Yaakov / Ezra</Name>
+    <Address>59 Sderot Yaakov , Rishon Lezion</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39004</Code>
+    <Location>
+      <Latitude>34.818909</Latitude>
+      <Longitude>31.905052</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Leib Yosefzon / Yaakov Berman</Name>
+    <Address>Yehuda Leib Yosefzon , Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39005</Code>
+    <Location>
+      <Latitude>34.819443</Latitude>
+      <Longitude>31.901879</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Rabbi Yaakov Berman / Rabbi Yehuda Zvi Meltzer</Name>
+    <Address>Rabbi Yaakov Berman 4, Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39006</Code>
+    <Location>
+      <Latitude>34.818922</Latitude>
+      <Longitude>31.90281</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Bartender / waiter</Name>
+    <Address>Rabbi Yaakov Berman , Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39007</Code>
+    <Location>
+      <Latitude>34.815296</Latitude>
+      <Longitude>31.904567</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The First President / Weizmann Institute</Name>
+    <Address>First President 55, Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39008</Code>
+    <Location>
+      <Latitude>34.816661</Latitude>
+      <Longitude>31.904755</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The First President / Kipnis</Name>
+    <Address>First President 56, Rehovot</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39012</Code>
+    <Location>
+      <Latitude>34.838609</Latitude>
+      <Longitude>31.937387</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The Jordan / Arava</Name>
+    <Address>Jordan 23, Beer Yaakov</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39013</Code>
+    <Location>
+      <Latitude>34.838341</Latitude>
+      <Longitude>31.936925</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The Jordan / Harod</Name>
+    <Address>Jordan 22, Beer Yaakov</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39014</Code>
+    <Location>
+      <Latitude>34.831964</Latitude>
+      <Longitude>31.939037</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The oaks / palm</Name>
+    <Address>Sderot HaAlonim , Beer Yaakov</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39017</Code>
+    <Location>
+      <Latitude>34.832104</Latitude>
+      <Longitude>31.939656</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The oaks a / the palm</Name>
+    <Address>Sderot HaAlonim , Beer Yaakov</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39018</Code>
+    <Location>
+      <Latitude>35.023589</Latitude>
+      <Longitude>31.914324</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Shilat Industrial Park</Name>
+    <Address>Through the Olive , Shilat</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39019</Code>
+    <Location>
+      <Latitude>35.023028</Latitude>
+      <Longitude>31.914816</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Shilat Industrial Park</Name>
+    <Address>Through the Olive , Shilat</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39024</Code>
+    <Location>
+      <Latitude>35.007955</Latitude>
+      <Longitude>31.908499</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Modiin Municipality Maccabim Reut</Name>
+    <Address>, Modiin Maccabim Reut</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39028</Code>
+    <Location>
+      <Latitude>35.000614</Latitude>
+      <Longitude>31.907828</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Haim Barlev / Mordechai Maklef</Name>
+    <Address>Haim Barlev 30, Modiin Maccabim Reut</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39029</Code>
+    <Location>
+      <Latitude>35.000816</Latitude>
+      <Longitude>31.907603</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Haim Barlev / Mordechai Maklef</Name>
+    <Address>Haim Barlev , Modiin Maccabim Reut</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39035</Code>
+    <Location>
+      <Latitude>34.843114</Latitude>
+      <Longitude>31.941611</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Almog Center / Ephraim Kishon</Name>
+    <Address>Ephraim Kishon 20, Beer Yaakov</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39039</Code>
+    <Location>
+      <Latitude>34.884936</Latitude>
+      <Longitude>31.931068</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Garden Haq ' to / Rabat</Name>
+    <Address>Rabat , Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39040</Code>
+    <Location>
+      <Latitude>34.884956</Latitude>
+      <Longitude>31.931204</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Garden Haq ' to / Rabat</Name>
+    <Address>Rabat , Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39041</Code>
+    <Location>
+      <Latitude>34.887207</Latitude>
+      <Longitude>31.933379</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Z Mall . Ramla Lod / Dokifat</Name>
+    <Address>Dokifat , Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39042</Code>
+    <Location>
+      <Latitude>34.880069</Latitude>
+      <Longitude>31.929318</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Creation / Hope</Name>
+    <Address>The work 2, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39043</Code>
+    <Location>
+      <Latitude>34.879993</Latitude>
+      <Longitude>31.929199</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Creation / Hope</Name>
+    <Address>The work , Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39044</Code>
+    <Location>
+      <Latitude>34.881442</Latitude>
+      <Longitude>31.932402</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Labor / Creation</Name>
+    <Address>Amal , Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39049</Code>
+    <Location>
+      <Latitude>34.864906</Latitude>
+      <Longitude>31.936159</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Frenkel / Vitkin</Name>
+    <Address>Israel Frenkel 10, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39050</Code>
+    <Location>
+      <Latitude>34.86495</Latitude>
+      <Longitude>31.936022</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Frenkel / Vitkin</Name>
+    <Address>Israel Frenkel 11, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39051</Code>
+    <Location>
+      <Latitude>34.863972</Latitude>
+      <Longitude>31.935488</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Israel Frenkel / Dov Hoz</Name>
+    <Address>Israel Frenkel 17, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39052</Code>
+    <Location>
+      <Latitude>34.857638</Latitude>
+      <Longitude>31.936109</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Yoseftal / Hadas</Name>
+    <Address>Giora Yoseftal 6, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39056</Code>
+    <Location>
+      <Latitude>34.853906</Latitude>
+      <Longitude>31.933413</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Aharon Boganim / Moshe Sharet</Name>
+    <Address>Simcha Holzberg , Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39057</Code>
+    <Location>
+      <Latitude>34.853223</Latitude>
+      <Longitude>31.932532</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Gershon that '' Justice / Simcha Holzberg</Name>
+    <Address>Simcha Holzberg 10, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39058</Code>
+    <Location>
+      <Latitude>34.853149</Latitude>
+      <Longitude>31.93166</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Holzberg / Schatz</Name>
+    <Address>Simcha Holzberg 4, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39059</Code>
+    <Location>
+      <Latitude>34.857194</Latitude>
+      <Longitude>31.929827</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Eshkol / Rabbi Shapira</Name>
+    <Address>Levy Eshkol 11, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39060</Code>
+    <Location>
+      <Latitude>34.855866</Latitude>
+      <Longitude>31.926545</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Yehuda Stein / Keren Hayesod</Name>
+    <Address>Yehuda Stein , Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39066</Code>
+    <Location>
+      <Latitude>34.866014</Latitude>
+      <Longitude>31.926441</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The hero Samson / the mosque</Name>
+    <Address>The hero Samson , Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39068</Code>
+    <Location>
+      <Latitude>34.870366</Latitude>
+      <Longitude>31.924484</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Bialik / Hanita</Name>
+    <Address>H . V . Bialik 19, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39069</Code>
+    <Location>
+      <Latitude>34.868205</Latitude>
+      <Longitude>31.92055</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Bialik / Jeremiah</Name>
+    <Address>H . V . Bialik 43, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39070</Code>
+    <Location>
+      <Latitude>34.861221</Latitude>
+      <Longitude>31.9209</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>A . S. Levy / Saadia Mordechai</Name>
+    <Address>A . Cm . Levy 1, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39071</Code>
+    <Location>
+      <Latitude>34.862813</Latitude>
+      <Longitude>31.923666</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Raziel / Zechariah</Name>
+    <Address>Sderot David Raziel 5, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39072</Code>
+    <Location>
+      <Latitude>34.850134</Latitude>
+      <Longitude>31.912572</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Harod A.</Name>
+    <Address>Harod , will take root</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39073</Code>
+    <Location>
+      <Latitude>34.848217</Latitude>
+      <Longitude>31.915977</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Harod / Jordan</Name>
+    <Address>Harod , will take root</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39075</Code>
+    <Location>
+      <Latitude>34.852139</Latitude>
+      <Longitude>31.915489</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Jordan / Dan</Name>
+    <Address>The Jordan , will take root</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39076</Code>
+    <Location>
+      <Latitude>34.868261</Latitude>
+      <Longitude>31.917022</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Uzi Hitman / Shoshana Damari</Name>
+    <Address>Uzi Hitman 44, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39077</Code>
+    <Location>
+      <Latitude>34.870995</Latitude>
+      <Longitude>31.918782</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Uzi Hitman / Dalia Ravikovic</Name>
+    <Address>Uzi Hitman 24, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39078</Code>
+    <Location>
+      <Latitude>34.873447</Latitude>
+      <Longitude>31.918696</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Uzi Hitman / Hanoch Levin</Name>
+    <Address>Uzi Hitman 10, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39079</Code>
+    <Location>
+      <Latitude>34.874461</Latitude>
+      <Longitude>31.916945</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ehud Manor / Hitman</Name>
+    <Address>Ehud Manor , Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39080</Code>
+    <Location>
+      <Latitude>34.872134</Latitude>
+      <Longitude>31.916141</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Shoshana Damari / Ehud Manor</Name>
+    <Address>Shoshana Damari 18, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39081</Code>
+    <Location>
+      <Latitude>34.873652</Latitude>
+      <Longitude>31.916235</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Shoshana Damari / Ehud Manor</Name>
+    <Address>Shoshana Damari , Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39082</Code>
+    <Location>
+      <Latitude>34.874646</Latitude>
+      <Longitude>31.917837</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ehud Manor / Uzi Hitman</Name>
+    <Address>Ehud Manor 9, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39083</Code>
+    <Location>
+      <Latitude>34.868374</Latitude>
+      <Longitude>31.917072</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Uzi Hitman / Shoshana Damari</Name>
+    <Address>Uzi Hitman 44, Ramla</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39086</Code>
+    <Location>
+      <Latitude>35.016294</Latitude>
+      <Longitude>31.92072</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Through the pines / cypress</Name>
+    <Address>Through the Pines , Shilat</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39087</Code>
+    <Location>
+      <Latitude>35.01438</Latitude>
+      <Longitude>31.922468</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Almond / Pines</Name>
+    <Address>Shaked 20, Shilat</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39088</Code>
+    <Location>
+      <Latitude>35.020017</Latitude>
+      <Longitude>31.919711</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Through the Carob / Vine</Name>
+    <Address>Through the Carob , Shilat</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39089</Code>
+    <Location>
+      <Latitude>35.019979</Latitude>
+      <Longitude>31.919795</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Through the Carob / Vine</Name>
+    <Address>Through the Carob , Shilat</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39090</Code>
+    <Location>
+      <Latitude>35.02323</Latitude>
+      <Longitude>31.919163</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The carob a</Name>
+    <Address>Through the Carob , Shilat</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39091</Code>
+    <Location>
+      <Latitude>35.0234</Latitude>
+      <Longitude>31.919207</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The carob a</Name>
+    <Address>Through the Carob , Shilat</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39092</Code>
+    <Location>
+      <Latitude>35.034349</Latitude>
+      <Longitude>31.910544</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Kfar Ruth</Name>
+    <Address>, Kfar Ruth</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39093</Code>
+    <Location>
+      <Latitude>35.034441</Latitude>
+      <Longitude>31.910485</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Kfar Ruth</Name>
+    <Address>, Kfar Ruth</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39100</Code>
+    <Location>
+      <Latitude>34.837598</Latitude>
+      <Longitude>32.270586</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The green beach</Name>
+    <Address>Shulamit 2, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39101</Code>
+    <Location>
+      <Latitude>34.838726</Latitude>
+      <Longitude>32.272632</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Poleg level</Name>
+    <Address>Shosh Atari , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39102</Code>
+    <Location>
+      <Latitude>34.838508</Latitude>
+      <Longitude>32.27242</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Poleg level</Name>
+    <Address>Shosh Atari , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39103</Code>
+    <Location>
+      <Latitude>34.8413</Latitude>
+      <Longitude>32.274543</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ehud Manor / Menachem Begin</Name>
+    <Address>Ehud Manor 1, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39104</Code>
+    <Location>
+      <Latitude>34.842868</Latitude>
+      <Longitude>32.27487</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ehud Manor / Menachem Begin</Name>
+    <Address>Ehud Manor 2, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39105</Code>
+    <Location>
+      <Latitude>34.845201</Latitude>
+      <Longitude>32.27572</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Shazar / Amnon and Tamar</Name>
+    <Address>Zalman Shazar ' R 12, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39106</Code>
+    <Location>
+      <Latitude>34.846404</Latitude>
+      <Longitude>32.276562</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Zalman Shazar ' R / pansies</Name>
+    <Address>Zalman Shazar ' R 9, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39107</Code>
+    <Location>
+      <Latitude>34.847509</Latitude>
+      <Longitude>32.276837</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Pansy / Zalman Shazar '' Dr.</Name>
+    <Address>Zalman Shazar ' R 18, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39108</Code>
+    <Location>
+      <Latitude>34.864843</Latitude>
+      <Longitude>32.256581</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ruby \ that they</Name>
+    <Address>Adam , Beit Yehoshua</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39109</Code>
+    <Location>
+      <Latitude>34.85165</Latitude>
+      <Longitude>32.27659</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Golda Meir Boulevard / Kipnis Lane</Name>
+    <Address>19 Golda Meir Boulevard , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39110</Code>
+    <Location>
+      <Latitude>34.856933</Latitude>
+      <Longitude>32.272698</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Abir Junction / Road 553</Name>
+    <Address>553, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39111</Code>
+    <Location>
+      <Latitude>34.863096</Latitude>
+      <Longitude>32.261931</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Diamond / Sapphire</Name>
+    <Address>Sapir , Beit Yehoshua</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39112</Code>
+    <Location>
+      <Latitude>34.862627</Latitude>
+      <Longitude>32.264446</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Diamond / Monday</Name>
+    <Address>Diamond , House of Joshua</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39113</Code>
+    <Location>
+      <Latitude>34.864793</Latitude>
+      <Longitude>32.260481</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>secretariat</Name>
+    <Address>Adam , Beit Yehoshua</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39114</Code>
+    <Location>
+      <Latitude>34.869559</Latitude>
+      <Longitude>32.312257</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Packers / country ' s</Name>
+    <Address>The country ' s , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39115</Code>
+    <Location>
+      <Latitude>34.858842</Latitude>
+      <Longitude>32.274579</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>IKEA / Sderot Giborei Israel</Name>
+    <Address>Sderot of Heroes of Israel , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39117</Code>
+    <Location>
+      <Latitude>34.84364</Latitude>
+      <Longitude>32.306182</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Oved Ben Ami / Safed Community</Name>
+    <Address>Sderot Oved Ben Ami 109, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39118</Code>
+    <Location>
+      <Latitude>34.844815</Latitude>
+      <Longitude>32.285717</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The crimson iris / shore lily</Name>
+    <Address>The Crimson Iris 31, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39119</Code>
+    <Location>
+      <Latitude>34.848946</Latitude>
+      <Longitude>32.277813</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Zalman Shazar ' R / demon . Ben Gurion</Name>
+    <Address>Zalman Shazar , ' See , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39120</Code>
+    <Location>
+      <Latitude>34.846795</Latitude>
+      <Longitude>32.284726</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The beach lily / crimson iris</Name>
+    <Address>Havatzelet HaHof 12, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39121</Code>
+    <Location>
+      <Latitude>34.847761</Latitude>
+      <Longitude>32.282745</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Shneur / Ben Gurion</Name>
+    <Address>Zalman Shneur 8, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39122</Code>
+    <Location>
+      <Latitude>34.847562</Latitude>
+      <Longitude>32.282812</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Zalman Schneur / Arie Leib Yaffe</Name>
+    <Address>Zalman Shneur 7, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39123</Code>
+    <Location>
+      <Latitude>34.84922</Latitude>
+      <Longitude>32.282979</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>That ' s Agnon / KH</Name>
+    <Address>That ' s Agnon 27, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39124</Code>
+    <Location>
+      <Latitude>34.849395</Latitude>
+      <Longitude>32.283021</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>That ' s Agnon / KH</Name>
+    <Address>That ' s Agnon 28, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39125</Code>
+    <Location>
+      <Latitude>34.846117</Latitude>
+      <Longitude>32.287046</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Iris Hill / Crimson Iris</Name>
+    <Address>The crimson iris , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39126</Code>
+    <Location>
+      <Latitude>34.848222</Latitude>
+      <Longitude>32.286259</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The beach lily / crimson iris</Name>
+    <Address>Lily of the Coast , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39127</Code>
+    <Location>
+      <Latitude>34.844671</Latitude>
+      <Longitude>32.296835</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The Jewish Brigade / Chafetz Chaim</Name>
+    <Address>The Jewish Brigade 30, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39128</Code>
+    <Location>
+      <Latitude>34.844687</Latitude>
+      <Longitude>32.300631</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Ben Gurion / Simcha Erlich</Name>
+    <Address>Simcha Erlich , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39129</Code>
+    <Location>
+      <Latitude>34.845476</Latitude>
+      <Longitude>32.295287</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>David Resnik / Hafetz Chaim</Name>
+    <Address>Hafetz Haim 1, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39130</Code>
+    <Location>
+      <Latitude>34.846977</Latitude>
+      <Longitude>32.296581</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Levi Eshkol / Yaakov Dori</Name>
+    <Address>Levy Eshkol 21, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39131</Code>
+    <Location>
+      <Latitude>34.848266</Latitude>
+      <Longitude>32.296783</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Leo Motzkin / D ' R Stop</Name>
+    <Address>Arie Motzkin 13, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39132</Code>
+    <Location>
+      <Latitude>34.848792</Latitude>
+      <Longitude>32.29704</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Leo Motzkin / D ' R Stop</Name>
+    <Address>D ' R Stop 40, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39133</Code>
+    <Location>
+      <Latitude>34.845308</Latitude>
+      <Longitude>32.298042</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The Jewish Brigade / Haim Barlev</Name>
+    <Address>The Jewish Brigade 16, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39134</Code>
+    <Location>
+      <Latitude>34.846832</Latitude>
+      <Longitude>32.298675</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Blumenfeld / Yaakov Dori</Name>
+    <Address>Yaakov Dori 5, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39135</Code>
+    <Location>
+      <Latitude>34.846765</Latitude>
+      <Longitude>32.299915</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ben Gurion Boulevard / Simcha Erlich</Name>
+    <Address>Simcha Erlich 6, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39136</Code>
+    <Location>
+      <Latitude>34.848019</Latitude>
+      <Longitude>32.298453</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Levi Eshkol / Yaakov Dori</Name>
+    <Address>Levy Eshkol 7, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39138</Code>
+    <Location>
+      <Latitude>34.849289</Latitude>
+      <Longitude>32.299316</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Arie Motzkin / Simcha Erlich</Name>
+    <Address>Simcha Erlich 18, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39139</Code>
+    <Location>
+      <Latitude>34.843196</Latitude>
+      <Longitude>32.302867</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ben Ami / Simcha Erlich</Name>
+    <Address>Sderot Oved Ben Ami , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39141</Code>
+    <Location>
+      <Latitude>34.854475</Latitude>
+      <Longitude>32.276979</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Eldad School / Golda Meir Boulevard</Name>
+    <Address>Golda Meir Boulevard , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39142</Code>
+    <Location>
+      <Latitude>34.842963</Latitude>
+      <Longitude>32.3052</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ben Ami / Safed Community</Name>
+    <Address>Sderot Oved Ben Ami , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39144</Code>
+    <Location>
+      <Latitude>34.851875</Latitude>
+      <Longitude>32.277828</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>'Neot Golda a</Name>
+    <Address>Golda Meir Boulevard , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39145</Code>
+    <Location>
+      <Latitude>34.85214</Latitude>
+      <Longitude>32.278509</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>'Neot Golda b</Name>
+    <Address>Golda Meir Boulevard , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39146</Code>
+    <Location>
+      <Latitude>34.852186</Latitude>
+      <Longitude>32.278717</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Neot Golda / Hazani</Name>
+    <Address>Golda Meir Boulevard 2, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39147</Code>
+    <Location>
+      <Latitude>34.874761</Latitude>
+      <Longitude>32.323511</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Book / 57</Name>
+    <Address>David Pinkas , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39148</Code>
+    <Location>
+      <Latitude>34.851721</Latitude>
+      <Longitude>32.280743</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>That ' s Agnon / Janusz Korczak ' Ek</Name>
+    <Address>That ' s Agnon 1, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39149</Code>
+    <Location>
+      <Latitude>34.852967</Latitude>
+      <Longitude>32.280794</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ruppin / Demon . Pinchas Lavon</Name>
+    <Address>Pinchas Lavon Boulevard , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39150</Code>
+    <Location>
+      <Latitude>34.850372</Latitude>
+      <Longitude>32.281577</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>That ' s Agnon / Yitzhak Epstein</Name>
+    <Address>That ' s Agnon 7, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39151</Code>
+    <Location>
+      <Latitude>34.850746</Latitude>
+      <Longitude>32.281435</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>That ' s Agnon / Yitzhak Epstein</Name>
+    <Address>That ' s Agnon 8, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39152</Code>
+    <Location>
+      <Latitude>34.849358</Latitude>
+      <Longitude>32.283894</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Zalman Shneur / Q ' s Agnon</Name>
+    <Address>Zalman Shneur 27, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39153</Code>
+    <Location>
+      <Latitude>34.853363</Latitude>
+      <Longitude>32.282133</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Lavon / Agnon</Name>
+    <Address>Pinchas Lavon Boulevard 22, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39154</Code>
+    <Location>
+      <Latitude>34.852016</Latitude>
+      <Longitude>32.284632</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Yitzhak Katzenelson / D ' R and Iislbrgr</Name>
+    <Address>Yitzhak Katzenelson 24, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39155</Code>
+    <Location>
+      <Latitude>34.854338</Latitude>
+      <Longitude>32.279793</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Rotenberg / Nordau</Name>
+    <Address>Pinchas Rotenberg 7, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39156</Code>
+    <Location>
+      <Latitude>34.854158</Latitude>
+      <Longitude>32.283161</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Pinchas Lavon / Israel Bar Yehuda</Name>
+    <Address>Pinchas Lavon Blvd. 35, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39157</Code>
+    <Location>
+      <Latitude>34.856436</Latitude>
+      <Longitude>32.281378</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Minister Israel Bar Yehuda / Nordau</Name>
+    <Address>Nordau 35, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39158</Code>
+    <Location>
+      <Latitude>34.85734</Latitude>
+      <Longitude>32.283807</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Mendele sells books / Nordau</Name>
+    <Address>Nordau 16, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39160</Code>
+    <Location>
+      <Latitude>34.85359</Latitude>
+      <Longitude>32.285573</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Yitzhak Katzenelson / Pinchas Lavon Boulevard</Name>
+    <Address>Yitzhak Katzenelson 8, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39161</Code>
+    <Location>
+      <Latitude>34.854552</Latitude>
+      <Longitude>32.285451</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Lavon / Weisselberger Theodore</Name>
+    <Address>Pinchas Lavon Boulevard , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39162</Code>
+    <Location>
+      <Latitude>34.854833</Latitude>
+      <Longitude>32.28675</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Ben Zvi / Sd . Pinchas Lavon</Name>
+    <Address>Pinchas Lavon Boulevard 2, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39163</Code>
+    <Location>
+      <Latitude>34.855052</Latitude>
+      <Longitude>32.286557</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Lavon / Shalom Aleichem</Name>
+    <Address>11 Pinchas Lavon Boulevard , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39164</Code>
+    <Location>
+      <Latitude>34.856197</Latitude>
+      <Longitude>32.285705</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Rabbi Abu Hatzira / Rabbi Raphael Anqwa</Name>
+    <Address>Rabbi Raphael Ankawa 12, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39166</Code>
+    <Location>
+      <Latitude>34.859673</Latitude>
+      <Longitude>32.276114</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Big Center / Sderot Giborei Israel</Name>
+    <Address>Sderot Giborei Israel 5, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39167</Code>
+    <Location>
+      <Latitude>34.860652</Latitude>
+      <Longitude>32.279935</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Sderot Giborei Israel / Habonim</Name>
+    <Address>Sderot Giborei Israel 20, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39168</Code>
+    <Location>
+      <Latitude>34.861197</Latitude>
+      <Longitude>32.280886</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Heroes of Israel / Habonim</Name>
+    <Address>Sderot Giborei Israel 15, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39170</Code>
+    <Location>
+      <Latitude>34.861469</Latitude>
+      <Longitude>32.282477</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Heroes of Israel / The Medicine</Name>
+    <Address>Sderot Giborei Israel 36, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39171</Code>
+    <Location>
+      <Latitude>34.860081</Latitude>
+      <Longitude>32.277345</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Sderot of Heroes of Israel / Art</Name>
+    <Address>Sderot of Heroes of Israel , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39172</Code>
+    <Location>
+      <Latitude>34.863479</Latitude>
+      <Longitude>32.278292</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Diligent art / hand</Name>
+    <Address>Yad Harutzim 3, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39173</Code>
+    <Location>
+      <Latitude>34.864471</Latitude>
+      <Longitude>32.28034</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>A . Sapphire train</Name>
+    <Address>Diligent hand , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39174</Code>
+    <Location>
+      <Latitude>34.862011</Latitude>
+      <Longitude>32.283436</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Sderot Giborei Israel / The Medicine</Name>
+    <Address>Sderot Giborei Israel 21, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39175</Code>
+    <Location>
+      <Latitude>34.863651</Latitude>
+      <Longitude>32.282698</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The drug / Arie Regev</Name>
+    <Address>The Medicine 14, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39176</Code>
+    <Location>
+      <Latitude>34.865661</Latitude>
+      <Longitude>32.2847</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Diligent hand / records</Name>
+    <Address>Diligent hand , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39177</Code>
+    <Location>
+      <Latitude>34.862489</Latitude>
+      <Longitude>32.285635</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Nature factory</Name>
+    <Address>Sderot Giborei Israel 48, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39178</Code>
+    <Location>
+      <Latitude>34.862662</Latitude>
+      <Longitude>32.285429</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Avik factory</Name>
+    <Address>Sderot of Heroes of Israel , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39179</Code>
+    <Location>
+      <Latitude>34.931993</Latitude>
+      <Longitude>32.264318</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Citrus / First</Name>
+    <Address>Citrus 2, Ein Vered</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39180</Code>
+    <Location>
+      <Latitude>34.859914</Latitude>
+      <Longitude>32.277657</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Heroes of Israel / Art</Name>
+    <Address>Sderot of Heroes of Israel , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39181</Code>
+    <Location>
+      <Latitude>34.863673</Latitude>
+      <Longitude>32.286298</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Peace / Crystal</Name>
+    <Address>Harry Truman , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39182</Code>
+    <Location>
+      <Latitude>34.86501</Latitude>
+      <Longitude>32.287621</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The computer / silicon</Name>
+    <Address>Computer 2, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39183</Code>
+    <Location>
+      <Latitude>34.86565</Latitude>
+      <Longitude>32.28872</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Municipality</Name>
+    <Address>Hatzoran , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39184</Code>
+    <Location>
+      <Latitude>34.849667</Latitude>
+      <Longitude>32.294995</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Yitzhak Greenbaum / Ephraim Alenkawa</Name>
+    <Address>Yitzhak Greenbaum 19, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39185</Code>
+    <Location>
+      <Latitude>34.851791</Latitude>
+      <Longitude>32.294705</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Yitzhak Greenbaum / D ' R Shmurak</Name>
+    <Address>Yitzhak Greenbaum 8, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39186</Code>
+    <Location>
+      <Latitude>34.851985</Latitude>
+      <Longitude>32.294485</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Greenbaum / Ben Zvi</Name>
+    <Address>Yitzhak Greenbaum 5, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39187</Code>
+    <Location>
+      <Latitude>34.852491</Latitude>
+      <Longitude>32.293898</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ben Zvi / Granbaum</Name>
+    <Address>102 Ben Zvi Blvd. , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39188</Code>
+    <Location>
+      <Latitude>34.852932</Latitude>
+      <Longitude>32.294922</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Police / Ben Zvi</Name>
+    <Address>87 Ben Zvi Blvd. , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39189</Code>
+    <Location>
+      <Latitude>34.851774</Latitude>
+      <Longitude>32.29569</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Henrietta Szold / Stop</Name>
+    <Address>D ' R Shmurak 18, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39190</Code>
+    <Location>
+      <Latitude>34.853099</Latitude>
+      <Longitude>32.29686</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The Prophets / Demon . Ben-Zvi</Name>
+    <Address>74 Ben Zvi Blvd. , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39191</Code>
+    <Location>
+      <Latitude>34.85401</Latitude>
+      <Longitude>32.297185</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The Prophets / Eternity of Israel</Name>
+    <Address>The Prophets 4, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39193</Code>
+    <Location>
+      <Latitude>34.85357</Latitude>
+      <Longitude>32.297873</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Ben Zvi / Simcha Erlich</Name>
+    <Address>Ben Zvi Boulevard , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39194</Code>
+    <Location>
+      <Latitude>34.855518</Latitude>
+      <Longitude>32.297381</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ezekiel / The Prophets</Name>
+    <Address>Yehezkel Ben Bozi 42, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39195</Code>
+    <Location>
+      <Latitude>34.853804</Latitude>
+      <Longitude>32.300044</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ben Zvi / Maccabi Company</Name>
+    <Address>56 Ben Zvi Blvd. , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39196</Code>
+    <Location>
+      <Latitude>34.85428</Latitude>
+      <Longitude>32.301071</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ben Zvi / Nahum</Name>
+    <Address>Ben Zvi Boulevard , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39197</Code>
+    <Location>
+      <Latitude>34.854651</Latitude>
+      <Longitude>32.300595</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Nahum / Isaiah</Name>
+    <Address>Nahum 1, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39198</Code>
+    <Location>
+      <Latitude>34.854938</Latitude>
+      <Longitude>32.30046</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Nahum / Isaiah</Name>
+    <Address>Nahum 4, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39199</Code>
+    <Location>
+      <Latitude>34.855673</Latitude>
+      <Longitude>32.297593</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The Bukharan Synagogue / Ben Bozi</Name>
+    <Address>Yehezkel Ben Bozi 33, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39200</Code>
+    <Location>
+      <Latitude>34.856236</Latitude>
+      <Longitude>32.299615</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ezekiel ben Bozi / Nahum</Name>
+    <Address>Yehezkel Ben Bozi 26, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39201</Code>
+    <Location>
+      <Latitude>34.856413</Latitude>
+      <Longitude>32.299807</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>'Ezekiel / Nahum a</Name>
+    <Address>Yehezkel Ben Bozi 15, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39203</Code>
+    <Location>
+      <Latitude>34.854339</Latitude>
+      <Longitude>32.302485</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ben Zvi / Nahum</Name>
+    <Address>Sderot Ben Zvi 46, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39204</Code>
+    <Location>
+      <Latitude>34.854597</Latitude>
+      <Longitude>32.309555</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Tchernichovsky / Ben Zvi School</Name>
+    <Address>14 Ben Zvi Blvd. , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39205</Code>
+    <Location>
+      <Latitude>34.854846</Latitude>
+      <Longitude>32.309604</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Tchernichovsky / Ben Zvi School</Name>
+    <Address>Ben Zvi Boulevard , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39207</Code>
+    <Location>
+      <Latitude>34.858045</Latitude>
+      <Longitude>32.296945</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Generation / Prophets Geriatric Center</Name>
+    <Address>The Prophets 21, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39208</Code>
+    <Location>
+      <Latitude>34.84455</Latitude>
+      <Longitude>32.310048</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ben Ami / Koenig</Name>
+    <Address>Sderot Oved Ben Ami , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39209</Code>
+    <Location>
+      <Latitude>34.845828</Latitude>
+      <Longitude>32.313311</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ben Ami Boulevard / Tzahala</Name>
+    <Address>Sderot Oved Ben Ami , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39210</Code>
+    <Location>
+      <Latitude>34.845906</Latitude>
+      <Longitude>32.314372</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ben Ami / Tzahala</Name>
+    <Address>Sderot Oved Ben Ami 29, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39211</Code>
+    <Location>
+      <Latitude>34.846121</Latitude>
+      <Longitude>32.316395</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Oved Ben Ami / Baruch Ram</Name>
+    <Address>Sderot Oved Ben Ami , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39212</Code>
+    <Location>
+      <Latitude>34.848668</Latitude>
+      <Longitude>32.321443</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>M ' Jabotinsky / Smilansky</Name>
+    <Address>Avenue M , Jabotinsky 33 Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39213</Code>
+    <Location>
+      <Latitude>34.848923</Latitude>
+      <Longitude>32.319471</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Father son ' s / bad</Name>
+    <Address>Sderot Ben Father ' s 5, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39214</Code>
+    <Location>
+      <Latitude>34.849462</Latitude>
+      <Longitude>32.324404</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>M ' Jabotinsky / Carlebach</Name>
+    <Address>Avenue M , Jabotinsky 7, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39215</Code>
+    <Location>
+      <Latitude>34.854911</Latitude>
+      <Longitude>32.311076</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ben Zvi / Hagar '' a</Name>
+    <Address>Ben Zvi Blvd. 6, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39216</Code>
+    <Location>
+      <Latitude>34.855105</Latitude>
+      <Longitude>32.310926</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Ben Zvi / Diamond Avraham</Name>
+    <Address>Sderot Ben Zvi 9, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39217</Code>
+    <Location>
+      <Latitude>34.856482</Latitude>
+      <Longitude>32.310378</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Tchernichovsky School / Hagar '' a</Name>
+    <Address>Hagar '' A 9, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39218</Code>
+    <Location>
+      <Latitude>34.855772</Latitude>
+      <Longitude>32.313369</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ovadia Ben Shalom / Shalom Shabazi</Name>
+    <Address>Ovadia Ben Shalom 36, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39220</Code>
+    <Location>
+      <Latitude>34.85431</Latitude>
+      <Longitude>32.315191</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Benjamin / Shalom Shabazi</Name>
+    <Address>Sderot Binyamin , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39221</Code>
+    <Location>
+      <Latitude>34.854722</Latitude>
+      <Longitude>32.315887</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Benjamin / Rabbi Tabib</Name>
+    <Address>Sderot Binyamin 105, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39222</Code>
+    <Location>
+      <Latitude>34.854885</Latitude>
+      <Longitude>32.317684</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Father son ' s / demon . Benjamin</Name>
+    <Address>Sderot Binyamin 78, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39223</Code>
+    <Location>
+      <Latitude>34.856864</Latitude>
+      <Longitude>32.315389</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ovadia Ben Shalom / Maimonides ' in</Name>
+    <Address>Ovadia Ben Shalom 22, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39224</Code>
+    <Location>
+      <Latitude>34.857335</Latitude>
+      <Longitude>32.315897</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ovadia Ben Shalom / Maimonides ' in</Name>
+    <Address>Ovadia Ben Shalom , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39225</Code>
+    <Location>
+      <Latitude>34.851035</Latitude>
+      <Longitude>32.319667</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Eliezer Ben Yehuda / Avraham Abu Shadid</Name>
+    <Address>Eliezer Ben Yehuda 48, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39226</Code>
+    <Location>
+      <Latitude>34.8497</Latitude>
+      <Longitude>32.322012</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Smilansky / Jeremiah Halperin</Name>
+    <Address>Smilansky 70, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39228</Code>
+    <Location>
+      <Latitude>34.852055</Latitude>
+      <Longitude>32.324634</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Smilansky / Jerusalem Boulevard</Name>
+    <Address>Smilansky 42, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39229</Code>
+    <Location>
+      <Latitude>34.851932</Latitude>
+      <Longitude>32.326185</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Dizengoff / Jerusalem</Name>
+    <Address>Dizengoff 52, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39230</Code>
+    <Location>
+      <Latitude>34.852771</Latitude>
+      <Longitude>32.324914</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Smilansky / Sd . Jerusalem</Name>
+    <Address>Sderot Yerushalayim 11, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39231</Code>
+    <Location>
+      <Latitude>34.85454</Latitude>
+      <Longitude>32.318227</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Sderot Ben master ' s / Boulevard Benjamin</Name>
+    <Address>Sderot Ben father ' s 55, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39232</Code>
+    <Location>
+      <Latitude>34.855357</Latitude>
+      <Longitude>32.318437</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Father son ' s / demon . Benjamin</Name>
+    <Address>75 Sderot Binyamin , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39233</Code>
+    <Location>
+      <Latitude>34.855471</Latitude>
+      <Longitude>32.320059</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Benjamin / Tachkemoni</Name>
+    <Address>Sderot Binyamin 62, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39234</Code>
+    <Location>
+      <Latitude>34.856082</Latitude>
+      <Longitude>32.321473</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Benjamin / Tachkemoni</Name>
+    <Address>51 Sderot Binyamin , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39235</Code>
+    <Location>
+      <Latitude>34.855526</Latitude>
+      <Longitude>32.323668</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Jerusalem / demon . Benjamin</Name>
+    <Address>Sderot Yerushalayim 32, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39236</Code>
+    <Location>
+      <Latitude>34.856728</Latitude>
+      <Longitude>32.323959</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Benjamin / Sd . Jerusalem</Name>
+    <Address>Sderot Binyamin 31, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39237</Code>
+    <Location>
+      <Latitude>34.856548</Latitude>
+      <Longitude>32.324201</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Demon . Benjamin / Sd . Jerusalem</Name>
+    <Address>Sderot Binyamin 34, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39238</Code>
+    <Location>
+      <Latitude>34.860947</Latitude>
+      <Longitude>32.312226</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Har " Y / Rabbi Harel " P.</Name>
+    <Address>The country ' s 37, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39239</Code>
+    <Location>
+      <Latitude>34.860675</Latitude>
+      <Longitude>32.312051</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Har '' Y / Dan Shomron</Name>
+    <Address>The country ' s , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39240</Code>
+    <Location>
+      <Latitude>34.857972</Latitude>
+      <Longitude>32.317886</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Petah Tikva / Ache ' to</Name>
+    <Address>Petah Tikva 77, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39242</Code>
+    <Location>
+      <Latitude>34.857753</Latitude>
+      <Longitude>32.317978</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Petah Tikva / Ben Avi</Name>
+    <Address>Petah Tikva 78, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39243</Code>
+    <Location>
+      <Latitude>34.859639</Latitude>
+      <Longitude>32.322091</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Petah Tikva / Ephraim Aharonson</Name>
+    <Address>Petah Tikva 38, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39244</Code>
+    <Location>
+      <Latitude>34.859504</Latitude>
+      <Longitude>32.321309</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Petah Tikva / Tiomkin</Name>
+    <Address>Petah Tikva 45, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39245</Code>
+    <Location>
+      <Latitude>34.860642</Latitude>
+      <Longitude>32.325907</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Petah Tikva / The Pioneers</Name>
+    <Address>Zvi Alon 19, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39246</Code>
+    <Location>
+      <Latitude>34.864958</Latitude>
+      <Longitude>32.325412</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Herzl / Gallows Immigrants</Name>
+    <Address>Herzl 98, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39247</Code>
+    <Location>
+      <Latitude>34.864841</Latitude>
+      <Longitude>32.325694</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Herzl / Gallows Immigrants</Name>
+    <Address>Herzl 91, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39248</Code>
+    <Location>
+      <Latitude>34.851215</Latitude>
+      <Longitude>32.326482</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ussishkin / demon . Jerusalem</Name>
+    <Address>Ussishkin 31, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39249</Code>
+    <Location>
+      <Latitude>34.851367</Latitude>
+      <Longitude>32.329177</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Ussishkin / Rishon Lezion</Name>
+    <Address>Ussishkin 5, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39250</Code>
+    <Location>
+      <Latitude>34.852699</Latitude>
+      <Longitude>32.32771</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Dizengoff / David Remez</Name>
+    <Address>Dizengoff 40, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39251</Code>
+    <Location>
+      <Latitude>34.851149</Latitude>
+      <Longitude>32.331073</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Independence Square</Name>
+    <Address>King David , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39252</Code>
+    <Location>
+      <Latitude>34.854308</Latitude>
+      <Longitude>32.329606</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Dizengoff / Herzl</Name>
+    <Address>Herzl 9, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39253</Code>
+    <Location>
+      <Latitude>34.859631</Latitude>
+      <Longitude>32.331575</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The Six Days \ Weizmann</Name>
+    <Address>The Six Day War 20, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39254</Code>
+    <Location>
+      <Latitude>34.856506</Latitude>
+      <Longitude>32.332163</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Pearlman Square</Name>
+    <Address>Shmuel Hanatziv 23, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39255</Code>
+    <Location>
+      <Latitude>34.852307</Latitude>
+      <Longitude>32.334329</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>King David / Demon . Nice</Name>
+    <Address>King David 30, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39256</Code>
+    <Location>
+      <Latitude>34.854235</Latitude>
+      <Longitude>32.337778</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>I ' s Yehuda President</Name>
+    <Address>King Solomon 34, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39258</Code>
+    <Location>
+      <Latitude>34.856207</Latitude>
+      <Longitude>32.335749</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Andrew / Borochov</Name>
+    <Address>Borochov 4, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39259</Code>
+    <Location>
+      <Latitude>34.856468</Latitude>
+      <Longitude>32.33777</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Borochov / Yehuda the President</Name>
+    <Address>Borochov 18, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39260</Code>
+    <Location>
+      <Latitude>34.856332</Latitude>
+      <Longitude>32.337985</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Borochov / Yehuda the President</Name>
+    <Address>Borochov 19, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39261</Code>
+    <Location>
+      <Latitude>34.856594</Latitude>
+      <Longitude>32.339815</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>D '' Dr. Joshua Thon / Leon Reich</Name>
+    <Address>D '' Dr. Joshua Thon 12, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39262</Code>
+    <Location>
+      <Latitude>34.854239</Latitude>
+      <Longitude>32.341132</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Rabbi Herzog / King Solomon</Name>
+    <Address>King Solomon 58, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39263</Code>
+    <Location>
+      <Latitude>34.856422</Latitude>
+      <Longitude>32.339485</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Yehoshua Tahon / Ichilov</Name>
+    <Address>D '' Dr. Joshua Thon 7, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39264</Code>
+    <Location>
+      <Latitude>34.856578</Latitude>
+      <Longitude>32.341076</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Joshua Tahon / Herzog</Name>
+    <Address>D '' Dr. Joshua Thon 22, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39265</Code>
+    <Location>
+      <Latitude>34.856356</Latitude>
+      <Longitude>32.341278</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>D '' Dr. Joshua Thon / Rabbi Herzog</Name>
+    <Address>D '' Dr. Joshua Thon 17, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39267</Code>
+    <Location>
+      <Latitude>34.858238</Latitude>
+      <Longitude>32.327371</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>A . Central Netanya</Name>
+    <Address>Sderot Binyamin 7, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39269</Code>
+    <Location>
+      <Latitude>34.858496</Latitude>
+      <Longitude>32.328953</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Weizmann / Herzl</Name>
+    <Address>Sderot Haim Weizman 5, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39270</Code>
+    <Location>
+      <Latitude>34.858976</Latitude>
+      <Longitude>32.330186</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Urban market</Name>
+    <Address>Sderot Haim Weizman 16, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39271</Code>
+    <Location>
+      <Latitude>34.858841</Latitude>
+      <Longitude>32.331154</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Weizmann / The Six Days</Name>
+    <Address>Sderot Chaim Weizmann , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39272</Code>
+    <Location>
+      <Latitude>34.861524</Latitude>
+      <Longitude>32.331518</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>The Six Day War / Israel Ginger</Name>
+    <Address>The Six Day War 36, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39273</Code>
+    <Location>
+      <Latitude>34.862473</Latitude>
+      <Longitude>32.326819</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Herzl / Mintz</Name>
+    <Address>Herzl 65, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39274</Code>
+    <Location>
+      <Latitude>34.863338</Latitude>
+      <Longitude>32.326176</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Herzl / Benjamin Mintz</Name>
+    <Address>Herzl 82, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39275</Code>
+    <Location>
+      <Latitude>34.861776</Latitude>
+      <Longitude>32.329126</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Raziel / Diamond Road</Name>
+    <Address>Raziel Road 19, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39276</Code>
+    <Location>
+      <Latitude>34.863264</Latitude>
+      <Longitude>32.331684</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Raziel Road / The Six Day War</Name>
+    <Address>Raziel Road 41, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39277</Code>
+    <Location>
+      <Latitude>34.86348</Latitude>
+      <Longitude>32.331629</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Raziel Road / The Six Day War</Name>
+    <Address>Raziel Road 26, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39278</Code>
+    <Location>
+      <Latitude>34.865072</Latitude>
+      <Longitude>32.33108</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Rabbi Yitzchak Nissenbaum / Moshe Glickson</Name>
+    <Address>Moshe Glickson 10, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39279</Code>
+    <Location>
+      <Latitude>34.864247</Latitude>
+      <Longitude>32.33235</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Derech Raziel / Rabbi Raines</Name>
+    <Address>Raziel Road 53, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39280</Code>
+    <Location>
+      <Latitude>34.865237</Latitude>
+      <Longitude>32.333132</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Derech Raziel / Rabbi Raines</Name>
+    <Address>Rabbi Raines 6, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39281</Code>
+    <Location>
+      <Latitude>34.859208</Latitude>
+      <Longitude>32.334658</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>S . H . Brenner / Demon . Haim Weizmann</Name>
+    <Address>Sderot Haim Weizman 53, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39282</Code>
+    <Location>
+      <Latitude>34.859411</Latitude>
+      <Longitude>32.334382</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Weizmann / Shapira Moshe</Name>
+    <Address>Sderot Chaim Weizmann 48, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39283</Code>
+    <Location>
+      <Latitude>34.859541</Latitude>
+      <Longitude>32.337669</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Weizmann Boulevard / Yehuda Hanasi</Name>
+    <Address>Sderot Chaim Weizmann , Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>39284</Code>
+    <Location>
+      <Latitude>34.859784</Latitude>
+      <Longitude>32.337702</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Weizmann / Sharett</Name>
+    <Address>Sderot Chaim Weizman 76, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+</ArrayOfBusStation>

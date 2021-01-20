@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LineExits>
+  <LineExit>
+    <BusLineId>20</BusLineId>
+    <Active>true</Active>
+    <StartTime>PT11H43M6S</StartTime>
+    <EndTime>PT19H43M6S</EndTime>
+    <Freq>25</Freq>
+  </LineExit>
+  <LineExit>
+    <BusLineId>12</BusLineId>
+    <Active>true</Active>
+    <StartTime>PT17H25M29S</StartTime>
+    <EndTime>P1DT1H25M29S</EndTime>
+    <Freq>25</Freq>
+  </LineExit>
+</LineExits>

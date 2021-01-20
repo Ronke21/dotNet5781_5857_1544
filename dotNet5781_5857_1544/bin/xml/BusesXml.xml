@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Buses>
+  <Bus>
+    <LicenseNum> 10000000 </LicenseNum>
+    <Fuel> 150 </Fuel>
+    <Mileage> 25000 </Mileage>
+    <StartTime> 14/10/2020 00:00:00 </StartTime>
+    <Stat> Ready </Stat>
+    <LastMaint> 20/10/2020 00:00:00 </LastMaint>
+    <MileageFromLast> 250 </MileageFromLast>
+    <Active> true </Active>
+  </Bus>
+  <Bus>
+    <LicenseNum>12345678</LicenseNum>
+    <Active>True</Active>
+    <StartTime>17/01/2021 00:00:00</StartTime>
+    <LastMaint>17/01/2021 00:00:00</LastMaint>
+    <MileageFromLast>120</MileageFromLast>
+    <Stat>Ready</Stat>
+    <Fuel>123</Fuel>
+    <Mileage>15000</Mileage>
+  </Bus>
+  <Bus>
+    <LicenseNum>15632154</LicenseNum>
+    <Active>true</Active>
+    <StartTime>2021-01-17T00:00:00</StartTime>
+    <LastMaint>2021-01-17T00:00:00</LastMaint>
+    <MileageFromLast>1503</MileageFromLast>
+    <Stat>Ready</Stat>
+    <Fuel>411</Fuel>
+    <Mileage>12345</Mileage>
+  </Bus>
+  <Bus>
+    <LicenseNum>12323112</LicenseNum>
+    <Active>true</Active>
+    <StartTime>2021-01-17T00:00:00</StartTime>
+    <LastMaint>2021-01-17T00:00:00</LastMaint>
+    <MileageFromLast>150</MileageFromLast>
+    <Stat>Ready</Stat>
+    <Fuel>152</Fuel>
+    <Mileage>15215</Mileage>
+  </Bus>
+</Buses>

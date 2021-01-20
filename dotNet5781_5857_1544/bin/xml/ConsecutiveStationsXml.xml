@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConStats>
+  <ConsecutiveStations>
+    <Active>True</Active>
+    <StatCode1>38831</StatCode1>
+    <StatCode2>38832</StatCode2>
+    <Distance>42</Distance>
+    <AverageTravelTime>PT40M42S</AverageTravelTime>
+  </ConsecutiveStations>
+  <ConsecutiveStations>
+    <Active>true</Active>
+    <StatCode1>38832</StatCode1>
+    <StatCode2>38833</StatCode2>
+    <Distance>17.22</Distance>
+    <AverageTravelTime>PT14M58S</AverageTravelTime>
+  </ConsecutiveStations>
+  <ConsecutiveStations>
+    <Active>true</Active>
+    <StatCode1>38833</StatCode1>
+    <StatCode2>38834</StatCode2>
+    <Distance>13.89</Distance>
+    <AverageTravelTime>PT11M24S</AverageTravelTime>
+  </ConsecutiveStations>
+  <ConsecutiveStations>
+    <Active>true</Active>
+    <StatCode1>38831</StatCode1>
+    <StatCode2>38836</StatCode2>
+    <Distance>43.37</Distance>
+    <AverageTravelTime>PT44M6S</AverageTravelTime>
+  </ConsecutiveStations>
+  <ConsecutiveStations>
+    <Active>true</Active>
+    <StatCode1>38836</StatCode1>
+    <StatCode2>38838</StatCode2>
+    <Distance>18.99</Distance>
+    <AverageTravelTime>PT18M40S</AverageTravelTime>
+  </ConsecutiveStations>
+</ConStats>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ArrayOfBusLine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BusLine>
+    <BusLineId>19</BusLineId>
+    <LineNumber>15</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>38831</FirstStation>
+    <LastStation>38834</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
+  <BusLine>
+    <BusLineId>20</BusLineId>
+    <LineNumber>3</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>38831</FirstStation>
+    <LastStation>38838</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
+</ArrayOfBusLine>
