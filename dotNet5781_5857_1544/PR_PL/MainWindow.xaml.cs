@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Media;
+using System.Runtime.Remoting.Activation;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using BLApi;
+using BO;
 using MaterialDesignThemes.Wpf;
 using PR_PL;
 using PR_PL.Manager_Buses;
@@ -43,15 +47,32 @@ namespace PL
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly IBL bl;
+        #region init decleration
+        private readonly IBL _bl;
 
-        private bool _hidden = false;
-        //private BO.Bus currentBus;
+        private bool _hidden;
+
+        //private readonly BusesViewPage _busesViewPage;
+        //private readonly StationsViewPage _stationsViewPage;
+        //private readonly LinesViewPage _linesViewPage;
+        //private readonly ConStatViewPage _conStatViewPage;
+        private readonly SimulationPage _simulationPage;
+        #endregion
         public MainWindow()
         {
             InitializeComponent();
 
-            bl = BLFactory.GetBL("1");
+            #region init
+            _bl = BLFactory.GetBL("1");
+
+            //_busesViewPage = new BusesViewPage(_bl);
+            //_stationsViewPage = new StationsViewPage(_bl);
+            //_linesViewPage = new LinesViewPage(_bl);
+            //_conStatViewPage = new ConStatViewPage(_bl);
+            _simulationPage = new SimulationPage(_bl);
+            #endregion
+
+            //PlaySound(@"..\PR_PL\Icons\hero_simple-celebration-03.wav");
         }
 
         #region mouse effects and functionality for exit button
@@ -70,6 +91,13 @@ namespace PL
             Close();
         }
 
+        private static void PlaySound(string path)
+        {
+            var sp = new SoundPlayer(path);
+            sp.Load();
+            sp.Play();
+        }
+
         #endregion
 
         #region open close menu and drag window
@@ -78,6 +106,7 @@ namespace PL
         {
             if (_hidden)
             {
+                PlaySound(@"..\PR_PL\Icons\navigation_forward-selection.wav");
                 var sb = Resources["OpenMenu"] as Storyboard;
                 sb?.Begin(SideBar);
                 _hidden = false;
@@ -85,6 +114,7 @@ namespace PL
             }
             else
             {
+                PlaySound(@"..\PR_PL\Icons\navigation_backward-selection.wav");
                 var sb = Resources["CloseMenu"] as Storyboard;
                 sb?.Begin(SideBar);
                 _hidden = true;
@@ -103,19 +133,16 @@ namespace PL
         #endregion
 
         #region Buses button
-
         private void BusesSidePanel_OnMouseEnter(object sender, RoutedEventArgs e)
         {
             var bc = new BrushConverter();
             BusesSidePanel.Background = (Brush)bc.ConvertFrom("#30ABFF");
         }
-
         private void BusesSidePanel_OnMouseLeave(object sender, MouseEventArgs e)
         {
             var bc = new BrushConverter();
             BusesSidePanel.Background = (Brush)bc.ConvertFrom("#FF0064A6");
         }
-
         private void BusesSidePanel_OnClick(object sender, RoutedEventArgs e)
         {
             if (!_hidden)
@@ -123,13 +150,10 @@ namespace PL
                 ButtonBase_OnClick(sender, e);
             }
 
-            //show buses list
-            if (DataDisplay.Content != null)
+            if (!(DataDisplay.Content is BusesViewPage))
             {
-                if (DataDisplay.Content is BusesViewPage) { }
-                else DataDisplay.Content = new BusesViewPage(bl);
+                DataDisplay.Content = new BusesViewPage(_bl);
             }
-            else DataDisplay.Content = new BusesViewPage(bl);
         }
         #endregion
 
@@ -141,13 +165,10 @@ namespace PL
                 ButtonBase_OnClick(sender, e);
             }
 
-            if (DataDisplay.Content != null)
+            if (!(DataDisplay.Content is StationsViewPage))
             {
-                if (DataDisplay.Content is StationsViewPage) { }
-                else DataDisplay.Content = new StationsViewPage(bl);
+                DataDisplay.Content = new StationsViewPage(_bl, _simulationPage);
             }
-
-            else DataDisplay.Content = new StationsViewPage(bl);
         }
 
         #region colors
@@ -174,13 +195,10 @@ namespace PL
                 ButtonBase_OnClick(sender, e);
             }
 
-            if (DataDisplay.Content != null)
+            if (!(DataDisplay.Content is LinesViewPage))
             {
-                if (DataDisplay.Content is LinesViewPage) { }
-                else DataDisplay.Content = new LinesViewPage(bl);
+                DataDisplay.Content = new LinesViewPage(_bl);
             }
-
-            else DataDisplay.Content = new LinesViewPage(bl);
         }
         private void LinesSidePanel_OnMouseLeave(object sender, MouseEventArgs e)
         {
@@ -202,13 +220,11 @@ namespace PL
                 ButtonBase_OnClick(sender, e);
             }
 
-            if (DataDisplay.Content != null)
+            if (!(DataDisplay.Content is ConStatViewPage))
             {
-                if (DataDisplay.Content is ConStatViewPage) { }
-                else DataDisplay.Content = new ConStatViewPage(bl);
+                DataDisplay.Content = new ConStatViewPage(_bl);
             }
 
-            else DataDisplay.Content = new ConStatViewPage(bl);
         }
         private void ConsecutiveStationsSidePanel_OnMouseEnter(object sender, MouseEventArgs e)
         {
@@ -240,21 +256,26 @@ namespace PL
                 ButtonBase_OnClick(sender, e);
             }
 
-            if (DataDisplay.Content != null)
+            if (!(DataDisplay.Content is SimulationPage))
             {
-                if (DataDisplay.Content is SimulationPage) { }
-                else DataDisplay.Content = new SimulationPage(bl);
+                DataDisplay.Content = _simulationPage;
             }
-
-            else DataDisplay.Content = new SimulationPage(bl);
         }
 
         #endregion
 
         private void LineexitSidePanel_OnClick(object sender, RoutedEventArgs e)
         {
-            var lew = new LineExitWindowDelete(bl);
-            lew.Show();
+            try
+            {
+                var lew = new LineExitWindowDelete(_bl);
+                lew.ShowDialog();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString(), "ERROR");
+            }
         }
+
     }
 }

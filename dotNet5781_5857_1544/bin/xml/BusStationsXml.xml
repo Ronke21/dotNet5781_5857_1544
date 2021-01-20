@@ -638,7 +638,7 @@
     <Name>The fig / oak</Name>
     <Address>The fig , peek</Address>
     <Accessible>true</Accessible>
-    <Active>true</Active>
+    <Active>false</Active>
   </BusStation>
   <BusStation>
     <Code>38881</Code>

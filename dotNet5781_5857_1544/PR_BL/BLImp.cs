@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Device;
-using System.Diagnostics;
 using System.Linq;
-using System.Security;
 using System.Threading;
 using DalApi;
 using BLApi;
 using BO;
-using DO;
 using PR_BL;
-using LineExit = BO.LineExit;
 
 
 namespace BL
@@ -357,6 +350,7 @@ namespace BL
             {
                 var bsDO = _dal.GetBusStation(code);
                 bsDO.CopyPropertiesTo(bsBO);
+                bsBO.BusLines = LinesInStation(bsBO.Code);
             }
             catch (DO.StationDoesNotExistException ex)
             {
@@ -369,9 +363,6 @@ namespace BL
 
             return bsBO;
         }
-        #endregion
-
-        #region Bus lines
         public IEnumerable<BO.BusLine> LinesInStation(int statCode)
         {
             var lineStations = _dal.GetAllLineStations();
@@ -380,6 +371,35 @@ namespace BL
                    where lineStat.Code == statCode
                    select GetBusLine(lineStat.BusLineId);
         }
+        public IEnumerable<LineNumberAndFinalDestination> ListForYellowSign(int statCode)
+        {
+            IEnumerable<LineNumberAndFinalDestination> toReturn = new List<LineNumberAndFinalDestination>();
+
+            var x = GetBusStation(statCode);
+
+            var b = x.BusLines;
+
+            foreach (var line in b)
+            {
+                toReturn = toReturn.Append(new LineNumberAndFinalDestination()
+                {
+                    LineNumber = line.LineNumber,
+                    FinalDestination = GetBusStation(line.LastStation).Name
+                });
+            }
+            return toReturn;
+        }
+        public IEnumerable<LineNumberAndFinalDestination> ListForDigitalSign(int statCode)
+        {
+            IEnumerable<LineNumberAndFinalDestination> l = new List<LineNumberAndFinalDestination>();
+
+
+
+            return l;
+        }
+        #endregion
+
+        #region Bus lines
         public void UpdateBusStation(BO.BusStation bs)
         {
             try
@@ -608,7 +628,6 @@ namespace BL
                 throw new Exception("Unknown error DeleteBusLine");
             }
         }
-
         private static bool CompareLines(BO.BusLine b1, BO.BusLine b2, IEnumerable<BO.BusStation> bs1, IEnumerable<BO.BusStation> bs2)
         {
             var eq = b1.Active == b2.Active &&
@@ -836,10 +855,13 @@ namespace BL
                 Thread.Sleep(10);
             }
         }
-
         public void StopSimulator()
         {
             Clock.Instance.IsRunning = false;
+        }
+        public bool IsSimulatorRunning()
+        {
+            return Clock.Instance.IsRunning;
         }
 
         #endregion
@@ -872,14 +894,15 @@ namespace BL
             {
                 var exits = _dal.getAllLineExits();
 
-                IEnumerable<BO.LineExit> toReturn = new List<LineExit>();
+                IEnumerable<BO.LineExit> toReturn = new List<BO.LineExit>();
 
                 //foreach (var x in exits)
                 //{
                 //    toReturn = toReturn.Append(getLineExit(x.BusLineId, x.StartTime));
                 //}
 
-                return exits.Aggregate(toReturn, (current, x) => current.Append(getLineExit(x.BusLineId, x.StartTime)));
+                //return toReturn;
+                return exits.Aggregate(toReturn, (current, x) => current.Append(GetLineExit(x.BusLineId, x.StartTime)));
             }
 
             catch (DO.EmptyListException ex)
@@ -892,8 +915,7 @@ namespace BL
                 throw new Exception("Unknown error getAllLineExits");
             }
         }
-
-        public BO.LineExit getLineExit(int busLineId, TimeSpan startTime)
+        public BO.LineExit GetLineExit(int busLineId, TimeSpan startTime)
         {
             try
             {
@@ -905,11 +927,11 @@ namespace BL
 
                 x.Times = new List<TimeSpan>();
 
-                for (var i = 0; x.EndTime > a; i++, a += new TimeSpan(0, x.Freq, 0))
+                for (var i = 0; x.EndTime > a; i++, a += x.Freq)
                 {
                     x.Times = x.Times.Append(a);
                 }
-                
+
                 x.Times = x.Times.Append(x.EndTime);
 
                 x.Times.Distinct();
@@ -927,7 +949,35 @@ namespace BL
                 throw new Exception("Unknown error getLineExit");
             }
         }
+        private void SendLineToTravel(int busLineId, TimeSpan startTime)
+        {
+            var line = GetBusLine(busLineId);
+            var lineExit = GetLineExit(busLineId, startTime);
 
+            var lt = new LineTravel()
+            {
+                BusLineId = busLineId,
+                StartTime = lineExit.StartTime
+            };
+
+            var abcd = new TimeSpan(0, 0, 0);
+
+            for (var i = 0; i < line.ListOfLineStations.Count() - 1; i++)
+            {
+                var bs1 = (line.ListOfLineStations.ToList()[i]).Code;
+                var bs2 = (line.ListOfLineStations.ToList()[i + 1]).Code;
+                var x = (from constats in GetAllConsecutiveStations()
+                        where constats.StatCode1 == bs1 && constats.StatCode2 == bs2
+                        select constats.AverageTravelTime).FirstOrDefault();
+
+                abcd = abcd.Add(x);
+
+                lt.NextStationArrivalTime = lt.NextStationArrivalTime.Append(abcd);
+            }
+
+
+
+        }
         #endregion
     }
 }

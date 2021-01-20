@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using BLApi;
 using BO;
 using PL;
+using PR_PL.Manager_Simulation;
 
 namespace PR_PL.Manager_Stations
 {
@@ -25,11 +26,14 @@ namespace PR_PL.Manager_Stations
     {
         private readonly IBL _bl;
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;
-        public InActiveStationsViewPage(IBL b)
+        private SimulationPage _simulationPage;
+
+        public InActiveStationsViewPage(IBL b, SimulationPage sp)
         {
             InitializeComponent();
 
             _bl = b;
+            _simulationPage = sp;
 
             refresh();
         }
@@ -52,7 +56,7 @@ namespace PR_PL.Manager_Stations
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            wnd.DataDisplay.Content = new StationsViewPage(_bl);
+            wnd.DataDisplay.Content = new StationsViewPage(_bl, _simulationPage);
         }
 
         private void Activate_Click(object sender, RoutedEventArgs e)
@@ -83,7 +87,7 @@ namespace PR_PL.Manager_Stations
 
         private void InActiveStationsDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var bd = new StationDetails(_bl, InActiveStationsDataGrid.SelectedItem as BusStation);
+            var bd = new StationDetails(_bl, InActiveStationsDataGrid.SelectedItem as BusStation, _simulationPage);
             bd.Show();
         }
     }

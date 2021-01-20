@@ -44,9 +44,10 @@
                                     Width="*"
                                     Binding="{Binding Path = BusArea}"/>
 
-                <DataGridTextColumn Header="Accessible"
-                                    Width="*"
-                                    Binding="{Binding Path = AllAccessible}"/>
+                <DataGridCheckBoxColumn Header="Accessible"
+                                        IsReadOnly="True"
+                                        Width="*"
+                                        Binding="{Binding Path = AllAccessible}"/>
 
                 <!--IsReadOnly="False"
                                         ElementStyle="{StaticResource MaterialDesignActionCheckBox}"-->

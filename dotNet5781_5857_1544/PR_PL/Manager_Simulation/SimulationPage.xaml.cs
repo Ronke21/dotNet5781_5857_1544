@@ -15,9 +15,7 @@ namespace PR_PL.Manager_Simulation
     public partial class SimulationPage : Page
     {
         BackgroundWorker simulatorWorker;
-
         private bool running;
-        //private BackgroundWorker simulationWorker = null;
         private TimeSpan myTimeSpan;
         private int ratio;
 
@@ -39,7 +37,6 @@ namespace PR_PL.Manager_Simulation
             _bl.StartSimulator(myTimeSpan, ratio, UpdateClock); // UpdateClock is 'Action' Delegate
         }
 
-
         private void UpdateClock(TimeSpan ts)
         {
             myTimeSpan = ts;
@@ -59,8 +56,7 @@ namespace PR_PL.Manager_Simulation
                 StartStopIcon.Kind = PackIconKind.Play;
                 RateSlider.IsEnabled = true;
                 TimePicker.IsEnabled = true;
-
-
+                
                 simulatorWorker.CancelAsync();
                 _bl.StopSimulator();
             }

@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using BLApi;
 using BO;
 
@@ -36,13 +25,14 @@ namespace PR_PL
         private void AddLineExit_Onclick(object sender, RoutedEventArgs e)
         {
             var t = new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+
             bl.AddLineExit(new LineExit()
             {
                 Active = true,
                 StartTime = t,
-                Freq = 25,
+                Freq = new TimeSpan(0,25,0),
                 EndTime = t.Add(new TimeSpan(8,0,0)),
-                BusLineId = 12
+                BusLineId = 21
             });
         }
     }

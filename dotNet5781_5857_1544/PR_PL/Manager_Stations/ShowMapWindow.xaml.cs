@@ -22,7 +22,7 @@ namespace PR_PL.Manager_Stations
                 var googleMapsAddress = $"https://www.google.co.il//maps/@{longitude},{latitude},18z?hl=iw";
 
 
-                var bingMapsAddress = $"https://www.bing.com/maps?cp={longitude}~{latitude}&lvl=18";
+                //var bingMapsAddress = $"https://www.bing.com/maps?cp={longitude}~{latitude}&lvl=18";
 
                 ShowMap.Source = new Uri(googleMapsAddress);
             }

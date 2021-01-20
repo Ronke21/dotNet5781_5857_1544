@@ -7,6 +7,7 @@ using BLApi;
 using BO;
 using PL;
 using PR_PL.Manager_Buses;
+using PR_PL.Manager_Simulation;
 
 namespace PR_PL.Manager_Stations
 {
@@ -17,20 +18,30 @@ namespace PR_PL.Manager_Stations
     {
         private readonly IBL _bl;
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;
-
-        public StationsViewPage(IBL b)
+        private SimulationPage _simulationPage;
+        private bool simulation;
+        public StationsViewPage(IBL b, SimulationPage sp)
         {
             InitializeComponent();
 
             _bl = b;
+            _simulationPage = sp;
 
             refresh();
         }
 
         private void StationsDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var bd = new StationDetails(_bl, StationsDataGrid.SelectedItem as BusStation);
-            bd.Show();
+            if (_bl.IsSimulatorRunning())
+            {
+                var sds = new StationDetailsSimulator(_bl, StationsDataGrid.SelectedItem as BusStation, _simulationPage);
+                sds.ShowDialog();
+            }
+            else
+            {
+                var sd = new StationDetails(_bl, StationsDataGrid.SelectedItem as BusStation, _simulationPage);
+                sd.ShowDialog();
+            }
         }
 
         private void Remove_OnClick(object sender, RoutedEventArgs e)
@@ -63,7 +74,7 @@ namespace PR_PL.Manager_Stations
 
         private void InActive_OnClick(object sender, RoutedEventArgs e)
         {
-            wnd.DataDisplay.Content =new InActiveStationsViewPage(_bl);
+            wnd.DataDisplay.Content = new InActiveStationsViewPage(_bl, _simulationPage);
         }
 
         private void Add_OnClick(object sender, RoutedEventArgs e)

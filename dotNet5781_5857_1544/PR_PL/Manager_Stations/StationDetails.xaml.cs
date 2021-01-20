@@ -4,6 +4,7 @@ using BLApi;
 using BO;
 using System.Windows;
 using System.Windows.Input;
+using PR_PL.Manager_Simulation;
 using PR_PL.Manager_Stations;
 
 namespace PL
@@ -15,13 +16,17 @@ namespace PL
     {
         private readonly IBL _bl;
         private readonly BusStation currentBS;
-        public StationDetails(IBL b, BusStation bs)
+        private SimulationPage _simulationPage;
+
+        public StationDetails(IBL b, BusStation bs, SimulationPage sp)
         {
             InitializeComponent();
 
             currentBS = bs;
 
             _bl = b;
+            _simulationPage = sp;
+
 
             StationDetailsWindow.DataContext = currentBS;
 
@@ -37,7 +42,7 @@ namespace PL
                 MessageBox.Show("Please activate the bus and then update!");
                 return;
             }
-            var us = new UpdateStation(_bl, currentBS);
+            var us = new UpdateStation(_bl, currentBS, _simulationPage);
             us.ShowDialog();
             Close();
         }

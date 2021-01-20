@@ -53,7 +53,9 @@
     <Compile Include="BO\Enums.cs" />
     <Compile Include="BO\Exceptions.cs" />
     <Compile Include="BO\LineExit.cs" />
+    <Compile Include="BO\LineNumberAndFinalDestination.cs" />
     <Compile Include="BO\LineStation.cs" />
+    <Compile Include="BO\LineTravel.cs" />
     <Compile Include="BO\TravelingBus.cs" />
     <Compile Include="BO\User.cs" />
     <Compile Include="BO\UserTravel.cs" />

@@ -42,7 +42,7 @@
                 Storyboard.TargetProperty="Margin" 
                 From="0,0,0,0" 
                 To="-210,0,0,0" 
-                DecelerationRatio="0.9" 
+                DecelerationRatio="0.9"
                 Duration="0:0:0.3"/>
 
         </Storyboard>
@@ -67,7 +67,7 @@
             Grid.Row="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            Margin="0"
+            Margin="10,0,10,10"
             NavigationUIVisibility="Hidden"
         />
 
@@ -168,7 +168,8 @@
                 Margin="0,0,0,0"
                 MouseEnter="BusesSidePanel_OnMouseEnter"
                 MouseLeave="BusesSidePanel_OnMouseLeave"
-                Click="BusesSidePanel_OnClick">
+                Click="BusesSidePanel_OnClick"
+                >
 
                 <StackPanel Orientation="Horizontal">
 
@@ -184,6 +185,7 @@
                     <materialDesign:PackIcon
                         Foreground="White"
                         Kind="BusMultiple"
+                        ToolTip="Buses"
                         Height="50"
                         Width="50"
                         Margin="125,0,0,0"
@@ -260,7 +262,7 @@
                 </StackPanel>
 
             </Button>
-            
+
             <Button
                 Name="ConsecutiveStationsSidePanel"
                 Grid.Row="4"

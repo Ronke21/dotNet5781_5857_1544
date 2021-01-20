@@ -36,7 +36,7 @@ namespace PR_PL.Manager_Lines
         {
             if (sender is DataGrid x && !(x.SelectedItem is BusLine)) return;
             var ldc = new LineDoubleClick(_bl, (BusLine)LinesDataGrid.SelectedItem);
-            ldc.Show();
+            ldc.ShowDialog();
         }
 
         private void Remove_OnClick(object sender, RoutedEventArgs e)

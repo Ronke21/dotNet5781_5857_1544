@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using DO;
+using BO;
+using BusLine = DO.BusLine;
 
 namespace BLApi
 {
@@ -27,6 +28,8 @@ namespace BLApi
         IEnumerable<BO.BusStation> GetAllInActiveBusStations();
         BO.BusStation GetBusStation(int code);
         IEnumerable<BO.BusStation> GetLineBusStations(int BusLineID);
+        IEnumerable<LineNumberAndFinalDestination> ListForYellowSign(int statCode);
+        IEnumerable<LineNumberAndFinalDestination> ListForDigitalSign(int statCode);
         IEnumerable<BO.BusLine> LinesInStation(int statCode);
         void UpdateBusStation(BO.BusStation bs);
         void DeleteBusStation(int code);
@@ -61,6 +64,7 @@ namespace BLApi
         #region Simulator
         void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime);
         void StopSimulator();
+        bool IsSimulatorRunning();
 
         #endregion
 
@@ -79,11 +83,10 @@ namespace BLApi
         #endregion
 
         #region Line exit
-
         void AddLineExit(BO.LineExit lineExit);
         IEnumerable<BO.LineExit> getAllLineExits();
-        BO.LineExit getLineExit(int busLineId, TimeSpan startTime);
-
+        BO.LineExit GetLineExit(int busLineId, TimeSpan startTime);
+        
         #endregion
 
         #region comment

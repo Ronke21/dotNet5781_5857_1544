@@ -10,6 +10,8 @@
         <DataGrid Name="DataGridLE"
                   Height="350"
                   Width="750"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
                   ItemsSource="{Binding}"/>
 
         <Button

@@ -691,7 +691,7 @@ namespace Dal
                 {
                     BusLineId = int.Parse(le.Element("BusLineId").Value),
                     Active = bool.Parse(le.Element("Active").Value),
-                    Freq = int.Parse(le.Element("Freq").Value),
+                    Freq = XmlConvert.ToTimeSpan(le.Element("Freq").Value),
                     StartTime = XmlConvert.ToTimeSpan(le.Element("StartTime").Value),
                     EndTime = XmlConvert.ToTimeSpan(le.Element("EndTime").Value)
                 };
@@ -714,7 +714,7 @@ namespace Dal
                         {
                             BusLineId = int.Parse(le.Element("BusLineId").Value),
                             Active = bool.Parse(le.Element("Active").Value),
-                            Freq = int.Parse(le.Element("Freq").Value),
+                            Freq = XmlConvert.ToTimeSpan(le.Element("Freq").Value),
                             StartTime = XmlConvert.ToTimeSpan(le.Element("StartTime").Value),
                             EndTime = XmlConvert.ToTimeSpan(le.Element("EndTime").Value)
                         }).FirstOrDefault();
