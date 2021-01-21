@@ -56,4 +56,25 @@
     <Distance>17.26</Distance>
     <AverageTravelTime>PT16M10S</AverageTravelTime>
   </ConsecutiveStations>
+  <ConsecutiveStations>
+    <Active>true</Active>
+    <StatCode1>38831</StatCode1>
+    <StatCode2>38837</StatCode2>
+    <Distance>40.32</Distance>
+    <AverageTravelTime>PT33M36S</AverageTravelTime>
+  </ConsecutiveStations>
+  <ConsecutiveStations>
+    <Active>true</Active>
+    <StatCode1>38837</StatCode1>
+    <StatCode2>38912</StatCode2>
+    <Distance>8.76</Distance>
+    <AverageTravelTime>PT9M3S</AverageTravelTime>
+  </ConsecutiveStations>
+  <ConsecutiveStations>
+    <Active>true</Active>
+    <StatCode1>38912</StatCode1>
+    <StatCode2>38838</StatCode2>
+    <Distance>13.2</Distance>
+    <AverageTravelTime>PT11M38S</AverageTravelTime>
+  </ConsecutiveStations>
 </ConStats>

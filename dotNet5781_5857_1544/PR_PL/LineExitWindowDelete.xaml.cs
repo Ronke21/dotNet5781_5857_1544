@@ -17,7 +17,7 @@ namespace PR_PL
 
             bl = b;
 
-            var x = bl.getAllLineExits();
+            var x = bl.GetAllLineExits();
 
             DataGridLE.ItemsSource = x;
         }

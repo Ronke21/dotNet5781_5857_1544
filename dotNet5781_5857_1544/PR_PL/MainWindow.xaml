@@ -335,10 +335,10 @@
             </Button>
 
             <Button
-                Name="lineexitSidePanel"
+                Name="arrivals"
                 Grid.Row="6"
                 BorderBrush="Transparent"
-                Click="LineexitSidePanel_OnClick"/>
+                Click="Arrivals_OnClick"/>
 
         </Grid>
 

@@ -69,10 +69,9 @@ namespace BLApi
         #endregion
 
         #region LineStation
-
         void AddLineStation(BO.LineStation lineStation);
         IEnumerable<BO.LineStation> UpdateAndReturnLineStationList(int BusLineID);
-
+        
         //void AddLineStation(LineStation lineStation);
         //IEnumerable<LineStation> GetAlLineStations();
         //IEnumerable<LineStation> GetAlLineStationsBy(Predicate<LineStation> predicate);
@@ -84,7 +83,7 @@ namespace BLApi
 
         #region Line exit
         void AddLineExit(BO.LineExit lineExit);
-        IEnumerable<BO.LineExit> getAllLineExits();
+        IEnumerable<BO.LineExit> GetAllLineExits();
         BO.LineExit GetLineExit(int busLineId, TimeSpan startTime);
         
         #endregion

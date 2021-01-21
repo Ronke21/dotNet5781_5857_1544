@@ -28,6 +28,7 @@ namespace PR_PL.Manager_Lines
         public LineDoubleClick(IBL b, BusLine busLine)
         {
             InitializeComponent();
+
             _bl = b;
             bline = busLine;
 

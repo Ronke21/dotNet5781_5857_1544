@@ -230,8 +230,8 @@
 
                     <DataGridTextColumn
                             x:Name="DigitalLineNumber"
+                            Header="1"
                             Binding="{Binding LineNumber}"
-
                         />
 
                     <DataGridTextColumn

@@ -681,7 +681,7 @@ namespace Dal
 
             XMLTools.SaveListToXMLElement(lineExitRootElem, LineExitPath);
         }
-        public IEnumerable<LineExit> getAllLineExits()
+        public IEnumerable<LineExit> GetAllLineExits()
         {
             var lineExitRootElem = XMLTools.LoadListFromXMLElement(LineExitPath);
 
@@ -703,7 +703,7 @@ namespace Dal
 
             return lineExits;
         }
-        public LineExit getLineExit(int busLineId, TimeSpan startTime)
+        public LineExit GetLineExit(int busLineId, TimeSpan startTime)
         {
             var lineExitRootElem = XMLTools.LoadListFromXMLElement(LineExitPath);
 
@@ -722,6 +722,28 @@ namespace Dal
             if (exit == null)
             {
                 throw new LineExitDoesNotExistsException($"Line exit number {busLineId},{startTime} does not exist");
+            }
+
+            return exit;
+        }
+        public LineExit GetGeneralLineExit(int busLineId)
+        {
+            var lineExitRootElem = XMLTools.LoadListFromXMLElement(LineExitPath);
+
+            var exit = (from le in lineExitRootElem.Elements()
+                where int.Parse(le.Element("BusLineId").Value) == busLineId
+                select new LineExit()
+                {
+                    BusLineId = int.Parse(le.Element("BusLineId").Value),
+                    Active = bool.Parse(le.Element("Active").Value),
+                    Freq = XmlConvert.ToTimeSpan(le.Element("Freq").Value),
+                    StartTime = new TimeSpan(0,0,0),
+                    EndTime = new TimeSpan(3,0,0)
+                }).FirstOrDefault();
+
+            if (exit == null)
+            {
+                throw new LineExitDoesNotExistsException($"Bus {busLineId} does not have line exists");
             }
 
             return exit;

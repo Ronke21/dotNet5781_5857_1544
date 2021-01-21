@@ -1,17 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LineExits>
-  <LineExit>
-    <BusLineId>21</BusLineId>
-    <Active>true</Active>
-    <StartTime>PT21H54M2S</StartTime>
-    <EndTime>P1DT5H54M2S</EndTime>
-    <Freq>PT25M</Freq>
-  </LineExit>
-  <LineExit>
-    <BusLineId>21</BusLineId>
-    <Active>true</Active>
-    <StartTime>PT23H20M11S</StartTime>
-    <EndTime>P1DT7H20M11S</EndTime>
-    <Freq>PT25M</Freq>
-  </LineExit>
+	<LineExit>
+		<BusLineId>21</BusLineId>
+		<Active>true</Active>
+		<StartTime>PT21H54M2S</StartTime>
+		<EndTime>P1DT5H54M2S</EndTime>
+		<Freq>PT25M</Freq>
+	</LineExit>
+	<LineExit>
+		<BusLineId>21</BusLineId>
+		<Active>true</Active>
+		<StartTime>PT23H20M11S</StartTime>
+		<EndTime>P1DT7H20M11S</EndTime>
+		<Freq>PT25M</Freq>
+	</LineExit>
+	<LineExit>
+		<BusLineId>23</BusLineId>
+		<Active>true</Active>
+		<StartTime>PT23H20M11S</StartTime>
+		<EndTime>P1DT7H20M11S</EndTime>
+		<Freq>PT25M</Freq>
+	</LineExit>
 </LineExits>

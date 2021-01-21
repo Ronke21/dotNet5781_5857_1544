@@ -52,6 +52,7 @@
     <Compile Include="BO\Driver.cs" />
     <Compile Include="BO\Enums.cs" />
     <Compile Include="BO\Exceptions.cs" />
+    <Compile Include="BO\LineArrivalToStation.cs" />
     <Compile Include="BO\LineExit.cs" />
     <Compile Include="BO\LineNumberAndFinalDestination.cs" />
     <Compile Include="BO\LineStation.cs" />

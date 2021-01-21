@@ -69,8 +69,9 @@ namespace DalApi
         #region Line exit
 
         void AddLineExit(LineExit lineExit);
-        IEnumerable<LineExit> getAllLineExits();
-        LineExit getLineExit(int busLineId, TimeSpan startTime);
+        IEnumerable<LineExit> GetAllLineExits();
+        LineExit GetLineExit(int busLineId, TimeSpan startTime);
+        LineExit GetGeneralLineExit(int busLineId);
         void UpdateLineExit(TimeSpan startTime, int freq, TimeSpan endTime);
         void ActivateLineExit(int busLineId, TimeSpan startTime);
         void DeleteLineExit(int busLineId, TimeSpan startTime);

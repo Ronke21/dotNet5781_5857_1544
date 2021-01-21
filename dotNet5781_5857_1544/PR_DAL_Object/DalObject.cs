@@ -318,12 +318,17 @@ namespace Dal
             throw new NotImplementedException();
         }
 
-        public IEnumerable<LineExit> getAllLineExits()
+        public IEnumerable<LineExit> GetAllLineExits()
         {
             throw new NotImplementedException();
         }
 
-        public LineExit getLineExit(int busLineId, TimeSpan startTime)
+        public LineExit GetLineExit(int busLineId, TimeSpan startTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LineExit GetGeneralLineExit(int busLineId)
         {
             throw new NotImplementedException();
         }

@@ -18,4 +18,13 @@
     <AllAccessible>true</AllAccessible>
     <Active>true</Active>
   </BusLine>
+  <BusLine>
+    <BusLineId>23</BusLineId>
+    <LineNumber>152</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>38831</FirstStation>
+    <LastStation>38838</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
 </ArrayOfBusLine>

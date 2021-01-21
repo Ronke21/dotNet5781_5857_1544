@@ -41,7 +41,7 @@ namespace PR_PL.Manager_Stations
             #region list of lines
             var lines = _bl.ListForYellowSign(currentBS.Code);
             YellowLinesDisplayDataGrid.ItemsSource = lines;
-            DigitalDisplayDataGrid.ItemsSource = lines;
+            DigitalDisplayDataGrid.ItemsSource = _bl.ListForDigitalSign(currentBS.Code);
             #endregion
 
             simulatorWorker.RunWorkerAsync();
@@ -56,7 +56,7 @@ namespace PR_PL.Manager_Stations
         {
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                DigitalDisplayDataGrid.ItemsSource = _bl.ListForYellowSign(currentBS.Code);
+                DigitalDisplayDataGrid.ItemsSource = _bl.ListForDigitalSign(currentBS.Code);
             }));
         }
 

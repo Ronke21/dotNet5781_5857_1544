@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BO
+namespace PR_BL.BO
 {
-    public class LineTravel
+   public class LineArrivalToStation
     {
         public int BusLineId { get; set; }
-        public TimeSpan StartTime { get; set; }
-        public IEnumerable<TimeSpan> TimeIntervals { get; set; }
+        public int StationCode { get; set; }
+        public TimeSpan ArrivalTime{ get; set; }
     }
 }
