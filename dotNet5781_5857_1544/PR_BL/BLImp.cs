@@ -20,6 +20,9 @@ namespace BL
 
         private IEnumerable<LineArrivalToStation> MasterList;
 
+        private Thread _fill;
+        public bool IsFillRunning() { return _fill.IsAlive; }
+
         #region Bus
 
         private BO.Bus BusDoToBoAdapter(DO.Bus bus)
@@ -310,6 +313,7 @@ namespace BL
         }
         public IEnumerable<BO.BusStation> GetAllBusStations()
         {
+            if (IsFillRunning()) throw new ThreadInterruptedException("still filling the list");
             try
             {
                 var stationsList = from bs in _dal.GetAllActiveBusStations()
@@ -379,19 +383,27 @@ namespace BL
         {
             IEnumerable<LineNumberAndFinalDestination> toReturn = new List<LineNumberAndFinalDestination>();
 
-            var x = GetBusStation(statCode);
-
-            var b = x.BusLines;
-
-            foreach (var line in b)
-            {
-                toReturn = toReturn.Append(new LineNumberAndFinalDestination()
+            return GetBusStation(statCode).BusLines.Aggregate(toReturn, (current, line)
+                => current.Append(new LineNumberAndFinalDestination()
                 {
                     LineNumber = line.LineNumber,
                     FinalDestination = GetBusStation(line.LastStation).Name
-                });
-            }
-            return toReturn;
+
+                }));
+
+            //var x = GetBusStation(statCode);
+
+            //var b = x.BusLines;
+
+            //foreach (var line in b)
+            //{
+            //    toReturn = toReturn.Append(new LineNumberAndFinalDestination()
+            //    {
+            //        LineNumber = line.LineNumber,
+            //        FinalDestination = GetBusStation(line.LastStation).Name
+            //    });
+            //}
+            //return toReturn;
         }
         private void FillListOfArrivalToStations()
         {
@@ -411,7 +423,7 @@ namespace BL
 
                         var a = ReturnLineTravel(lineExit.BusLineId);
                         var b = a.TimeIntervals.ToList();
-                        b.Add(new TimeSpan(0,0,0));
+                        b.Add(new TimeSpan(0, 0, 0));
                         var c = b[index];
                         var d = time + c;
 
@@ -428,14 +440,16 @@ namespace BL
 
             MasterList = lats;
         }
-        public IEnumerable<LineNumberAndFinalDestination> ListForDigitalSign(int statCode)
+        public IEnumerable<LineNumberAndFinalDestination> GetListForDigitalSign(int statCode)
         {
             IEnumerable<LineNumberAndFinalDestination> l = new List<LineNumberAndFinalDestination>();
 
             #region comment
             foreach (var a in MasterList)
             {
-                if (statCode == a.StationCode)
+                if (statCode == a.StationCode &&
+                    (a.ArrivalTime - Clock.Instance.Time) <= new TimeSpan(0, 30, 0) &&
+                    (a.ArrivalTime - Clock.Instance.Time) >= new TimeSpan(0, 0, 0))
                 {
                     l = l.Append(new LineNumberAndFinalDestination()
                     {
@@ -444,8 +458,10 @@ namespace BL
                         TimeToArrival = a.ArrivalTime - Clock.Instance.Time
                     });
                 }
+
             }
 
+                l = l.OrderBy(arr => arr.TimeToArrival);
             return l;
 
             #endregion
@@ -459,6 +475,9 @@ namespace BL
             //            TimeToArrival = a.ArrivalTime - Clock.Instance.Time
             //        }));
         }
+
+        //public IEnumerable<LineNumberAndFinalDestination>
+
         #endregion
 
         #region Bus lines
@@ -896,7 +915,10 @@ namespace BL
 
         public void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime)
         {
-            FillListOfArrivalToStations();
+            _fill = new Thread(FillListOfArrivalToStations);
+            _fill.Start();
+            //new Thread(FillListOfArrivalToStations).Start();
+            //FillListOfArrivalToStations();
 
             Clock.Instance.IsRunning = true;
             Clock.Instance.Time = startTime;
@@ -904,23 +926,35 @@ namespace BL
 
             Clock.Instance.Timer.Restart();
             Clock.Instance.ClockObserver += updateTime;
-            var x = Clock.Instance.Timer;
+            var timer = Clock.Instance.Timer;
             while (Clock.Instance.IsRunning)
             {
-                Clock.Instance.Time = startTime + TimeSpan.FromTicks(x.Elapsed.Ticks * rate);
-                //Clock.Instance.Time.Add(new TimeSpan(Clock.Instance.Timer.ElapsedTicks));
+                Clock.Instance.Time = startTime + TimeSpan.FromTicks(timer.Elapsed.Ticks * rate);
                 Thread.Sleep(10);
             }
         }
         public void StopSimulator()
         {
-            Clock.Instance.IsRunning = false;
+            if (!IsFillRunning())
+            {
+                Clock.Instance.IsRunning = false;
+            }
+            else
+            {
+                throw new ThreadInterruptedException("still filling the list");
+            }
         }
-        public bool IsSimulatorRunning()
-        {
-            return Clock.Instance.IsRunning;
-        }
+        public bool IsSimulatorRunning() { return Clock.Instance.IsRunning; }
 
+        public void UpdateStationDigitalSign(int statCode, Action<IEnumerable<LineNumberAndFinalDestination>> update)
+        {
+            while (Clock.Instance.IsRunning)
+            {
+                var x = GetListForDigitalSign(statCode);
+                update(x);
+                Thread.Sleep(2000);
+            }
+        }
         #endregion
 
         #region Line exit

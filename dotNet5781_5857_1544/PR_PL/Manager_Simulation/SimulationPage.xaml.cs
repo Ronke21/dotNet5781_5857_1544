@@ -52,13 +52,22 @@ namespace PR_PL.Manager_Simulation
         {
             if (running)
             {
-                running = false;
-                StartStopIcon.Kind = PackIconKind.Play;
-                RateSlider.IsEnabled = true;
-                TimePicker.IsEnabled = true;
-                
-                simulatorWorker.CancelAsync();
-                _bl.StopSimulator();
+                try
+                {
+                    _bl.StopSimulator();
+
+                    running = false;
+                    StartStopIcon.Kind = PackIconKind.Play;
+                    RateSlider.IsEnabled = true;
+                    TimePicker.IsEnabled = true;
+
+                    simulatorWorker.CancelAsync();
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
+                //if (simulatorWorker.IsBusy) MessageBox.Show("still running");
             }
             else
             {
@@ -69,7 +78,7 @@ namespace PR_PL.Manager_Simulation
 
                 // activated by GUI thread, no need for dispatcher!
                 myTimeSpan = TimePicker.SelectedTime.Value.TimeOfDay;
-                ratio = (int) RateSlider.Value;
+                ratio = (int)RateSlider.Value;
                 simulatorWorker.RunWorkerAsync();
             }
         }

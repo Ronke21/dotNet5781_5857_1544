@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -7,6 +10,7 @@ using System.Windows.Input;
 using BLApi;
 using BO;
 using PL;
+using PR_BL.BO;
 using PR_PL.Manager_Simulation;
 
 namespace PR_PL.Manager_Stations
@@ -23,7 +27,6 @@ namespace PR_PL.Manager_Stations
         private readonly BusStation currentBS;
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;
         private SimulationPage _simulationPage;
-
         public StationDetailsSimulator(IBL b, BusStation bs, SimulationPage sp)
         {
             InitializeComponent();
@@ -39,9 +42,7 @@ namespace PR_PL.Manager_Stations
             simulatorWorker.DoWork += Worker_UpdatePanels;
 
             #region list of lines
-            var lines = _bl.ListForYellowSign(currentBS.Code);
-            YellowLinesDisplayDataGrid.ItemsSource = lines;
-            DigitalDisplayDataGrid.ItemsSource = _bl.ListForDigitalSign(currentBS.Code);
+            YellowLinesDisplayDataGrid.ItemsSource = _bl.ListForYellowSign(currentBS.Code);
             #endregion
 
             simulatorWorker.RunWorkerAsync();
@@ -49,14 +50,14 @@ namespace PR_PL.Manager_Stations
 
         private void Worker_UpdatePanels(object sender, DoWorkEventArgs e)
         {
-            //_bl.(, UpdateArrivingTimes);
+            _bl.UpdateStationDigitalSign(currentBS.Code, UpdateArrivingTimes);
         }
 
-        private void UpdateArrivingTimes()
+        private void UpdateArrivingTimes(IEnumerable<LineNumberAndFinalDestination> l)
         {
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                DigitalDisplayDataGrid.ItemsSource = _bl.ListForDigitalSign(currentBS.Code);
+                DigitalDisplayDataGrid.ItemsSource = l.ToList();
             }));
         }
 

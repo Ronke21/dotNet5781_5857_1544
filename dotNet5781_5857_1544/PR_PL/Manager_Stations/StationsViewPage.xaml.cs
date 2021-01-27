@@ -27,7 +27,7 @@ namespace PR_PL.Manager_Stations
             _bl = b;
             _simulationPage = sp;
 
-            refresh();
+            Refresh();
         }
 
         private void StationsDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -68,7 +68,7 @@ namespace PR_PL.Manager_Stations
                     }
                 }
 
-                refresh();
+                Refresh();
             }
         }
 
@@ -82,7 +82,7 @@ namespace PR_PL.Manager_Stations
             var ast = new AddStation(_bl);
             ast.ShowDialog();
         }
-        private void refresh()
+        private void Refresh()
         {
             try
             {

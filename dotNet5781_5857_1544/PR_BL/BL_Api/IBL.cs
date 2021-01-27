@@ -8,6 +8,7 @@ namespace BLApi
     // ReSharper disable once InconsistentNaming
     public interface IBL
     {
+        bool IsFillRunning();
         #region Bus
         void AddBus(BO.Bus bus);                                       // C
         IEnumerable<BO.Bus> GetAllBuses();                             // R
@@ -29,7 +30,7 @@ namespace BLApi
         BO.BusStation GetBusStation(int code);
         IEnumerable<BO.BusStation> GetLineBusStations(int BusLineID);
         IEnumerable<LineNumberAndFinalDestination> ListForYellowSign(int statCode);
-        IEnumerable<LineNumberAndFinalDestination> ListForDigitalSign(int statCode);
+        IEnumerable<LineNumberAndFinalDestination> GetListForDigitalSign(int statCode);
         IEnumerable<BO.BusLine> LinesInStation(int statCode);
         void UpdateBusStation(BO.BusStation bs);
         void DeleteBusStation(int code);
@@ -66,6 +67,8 @@ namespace BLApi
         void StopSimulator();
         bool IsSimulatorRunning();
 
+        void UpdateStationDigitalSign(int statCode, Action<IEnumerable<LineNumberAndFinalDestination>> update);
+        
         #endregion
 
         #region LineStation
@@ -86,6 +89,7 @@ namespace BLApi
         IEnumerable<BO.LineExit> GetAllLineExits();
         BO.LineExit GetLineExit(int busLineId, TimeSpan startTime);
         
+
         #endregion
 
         #region comment

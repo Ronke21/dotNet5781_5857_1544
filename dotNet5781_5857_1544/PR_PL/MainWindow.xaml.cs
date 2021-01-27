@@ -165,10 +165,13 @@ namespace PL
                 ButtonBase_OnClick(sender, e);
             }
 
-            if (!(DataDisplay.Content is StationsViewPage))
+            if (DataDisplay.Content is StationsViewPage) return;
+            if (_bl.IsFillRunning())
             {
-                DataDisplay.Content = new StationsViewPage(_bl, _simulationPage);
+                MessageBox.Show("still filling the list");
+                return;
             }
+            DataDisplay.Content = new StationsViewPage(_bl, _simulationPage);
         }
 
         #region colors

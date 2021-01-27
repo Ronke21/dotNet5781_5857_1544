@@ -223,14 +223,13 @@
                     CanUserSortColumns="False"
                     AutoGenerateColumns="False"
                     FontSize="10"
-                    Foreground="#FAAC58">
+                    Foreground="#FF8045">
 
                 <DataGrid.Columns
                     >
 
                     <DataGridTextColumn
                             x:Name="DigitalLineNumber"
-                            Header="1"
                             Binding="{Binding LineNumber}"
                         />
 
@@ -241,8 +240,8 @@
 
                     <DataGridTextColumn
                             x:Name="DigitalTimeToArrival"
-                            Binding="{Binding TimeToArrival}"
-                        />
+                            Binding="{Binding TimeToArrival,
+                        StringFormat={}{0:mm}:{0:ss}}"/>
 
                 </DataGrid.Columns>
 

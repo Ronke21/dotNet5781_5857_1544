@@ -3,11 +3,11 @@
 	<LineExit>
 		<BusLineId>21</BusLineId>
 		<Active>true</Active>
-		<StartTime>PT21H54M2S</StartTime>
-		<EndTime>P1DT5H54M2S</EndTime>
-		<Freq>PT25M</Freq>
+		<StartTime>PT0H0M0S</StartTime>
+		<EndTime>PT23H30M0S</EndTime>
+		<Freq>PT15M</Freq>
 	</LineExit>
-	<LineExit>
+	<!--<LineExit>
 		<BusLineId>21</BusLineId>
 		<Active>true</Active>
 		<StartTime>PT23H20M11S</StartTime>
@@ -20,5 +20,5 @@
 		<StartTime>PT23H20M11S</StartTime>
 		<EndTime>P1DT7H20M11S</EndTime>
 		<Freq>PT25M</Freq>
-	</LineExit>
+	</LineExit>-->
 </LineExits>
