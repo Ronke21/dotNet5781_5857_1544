@@ -14,13 +14,21 @@ namespace BL
 {
     internal class BLImp : IBL
     {
+        #region singleton
+
+        private static readonly BLImp instance = new BLImp();
+        static BLImp() { }// static ctor to ensure instance init is done just before first usage
+        private BLImp() { } // default => private
+        public static BLImp Instance { get => instance; }// The public Instance property to use
+        #endregion
+
         private readonly IDal _dal = DalFactory.GetDal();
 
         private readonly Random Rand = new Random(DateTime.Now.Millisecond);
 
         private IEnumerable<LineArrivalToStation> MasterList;
 
-        private Thread _fill;
+        private Thread _fill = new Thread(() => { }); // empty
         public bool IsFillRunning() { return _fill.IsAlive; }
 
         #region Bus
@@ -447,21 +455,19 @@ namespace BL
             #region comment
             foreach (var a in MasterList)
             {
-                if (statCode == a.StationCode &&
-                    (a.ArrivalTime - Clock.Instance.Time) <= new TimeSpan(0, 30, 0) &&
-                    (a.ArrivalTime - Clock.Instance.Time) >= new TimeSpan(0, 0, 0))
+                var timeToArrival = (a.ArrivalTime - Clock.Instance.Time);
+                if (statCode == a.StationCode && timeToArrival.Hours == 0 && timeToArrival.Minutes < 30)
                 {
                     l = l.Append(new LineNumberAndFinalDestination()
                     {
                         LineNumber = GetBusLine(a.BusLineId).LineNumber,
                         FinalDestination = GetBusStation(GetBusLine(a.BusLineId).LastStation).Name,
-                        TimeToArrival = a.ArrivalTime - Clock.Instance.Time
+                        TimeToArrival = timeToArrival
                     });
                 }
-
             }
 
-                l = l.OrderBy(arr => arr.TimeToArrival);
+            l = l.OrderBy(arr => arr.TimeToArrival);
             return l;
 
             #endregion
@@ -912,13 +918,10 @@ namespace BL
         #endregion
 
         #region Simulator
-
         public void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime)
         {
             _fill = new Thread(FillListOfArrivalToStations);
             _fill.Start();
-            //new Thread(FillListOfArrivalToStations).Start();
-            //FillListOfArrivalToStations();
 
             Clock.Instance.IsRunning = true;
             Clock.Instance.Time = startTime;

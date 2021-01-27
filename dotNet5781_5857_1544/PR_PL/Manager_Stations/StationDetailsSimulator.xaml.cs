@@ -41,9 +41,11 @@ namespace PR_PL.Manager_Stations
             simulatorWorker = new BackgroundWorker() { WorkerSupportsCancellation = true };
             simulatorWorker.DoWork += Worker_UpdatePanels;
 
-            #region list of lines
             YellowLinesDisplayDataGrid.ItemsSource = _bl.ListForYellowSign(currentBS.Code);
-            #endregion
+            StationDetailsTextBlock.Text = currentBS.Name + "\n" + "station number: " + currentBS.Code;
+
+            var lines = _bl.LinesInStation(currentBS.Code).ToList();
+            LineNumbersTextBlock.DataContext = lines.Aggregate("", (current, line) => current + line.LineNumber + ", ");
 
             simulatorWorker.RunWorkerAsync();
         }

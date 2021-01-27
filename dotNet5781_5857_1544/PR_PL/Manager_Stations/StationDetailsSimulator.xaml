@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="StationDetailsSimulator"
 
-        Height="400" 
+        Height="550" 
         Width="800"
         x:Name="StationDetailsWindow"
         WindowStartupLocation="CenterScreen"
@@ -24,39 +24,44 @@
         AllowsTransparency="True"
         WindowStyle="None">
 
-    <Border
+
+    <StackPanel Orientation="Horizontal">
+
+        <Border
         CornerRadius="15"
         Background="White"
         MouseDown="UIElement_OnMouseDown"
         BorderBrush="#007ACC"
-        BorderThickness="2">
+        BorderThickness="2"
+        Width="360"
+        Height="400"
+        >
 
-        <Grid>
+            <Grid>
 
 
-            <Grid
+                <Grid
         VerticalAlignment="Center">
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="6*"/>
-                    <ColumnDefinition Width="6*" />
-                    <ColumnDefinition Width="6*" />
-                    <ColumnDefinition Width="6*" />
-                    <ColumnDefinition Width="6*" />
-                    <ColumnDefinition Width="6*" />
-                    <ColumnDefinition Width="44*" />
-                </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                <Label 
+                    <Label 
         Content="Station Code"
         Grid.Row="0"
         Grid.Column="0"
@@ -66,7 +71,7 @@
         Grid.ColumnSpan="3"
         />
 
-                <Label 
+                    <Label 
         Content="Station Name"
         Grid.Row="1"
         Grid.Column="0"
@@ -76,7 +81,7 @@
         Grid.ColumnSpan="3"
         />
 
-                <Label 
+                    <Label 
         Content="Address"
         Grid.Row="2"
         Grid.Column="0"
@@ -86,7 +91,7 @@
         Grid.ColumnSpan="3"
         />
 
-                <Label 
+                    <Label 
             Content="Location"
             Grid.Row="3"
             Grid.Column="0"
@@ -96,7 +101,7 @@
             Grid.ColumnSpan="4"
         />
 
-                <Label 
+                    <Label 
         Content="Accessibility"
         Grid.Row="4"
         Grid.Column="0"
@@ -107,7 +112,7 @@
         />
 
 
-                <Label
+                    <Label
         Name="lbCode"
         Content="{Binding Path = Code}"
         Grid.Row="0"
@@ -116,7 +121,7 @@
         VerticalContentAlignment="Center"
         />
 
-                <Label 
+                    <Label 
         Name="lbName"
         Content="{Binding Path = Name}"
         Grid.Column="3"
@@ -125,7 +130,7 @@
         VerticalContentAlignment="Center"
           />
 
-                <Label 
+                    <Label 
         Name="lbAddress"
         Content="{Binding Path=Address}"
         Grid.Row="2"
@@ -134,7 +139,7 @@
         VerticalContentAlignment="Center"
         />
 
-                <Button
+                    <Button
             Name="Map"
             Grid.Row="3"
             Grid.Column="2"
@@ -143,13 +148,13 @@
             Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
             HorizontalAlignment="Right"
         >
-                    <materialDesign:PackIcon
+                        <materialDesign:PackIcon
                 Kind="Map"
                 Height="30"
                 Width="30"/>
-                </Button>
+                    </Button>
 
-                <Label
+                    <Label
             Content="Show map"
             Grid.Row="3"
             Grid.Column="3"
@@ -159,18 +164,17 @@
             VerticalContentAlignment="Center"
         />
 
-                <materialDesign:PackIcon
+                    <materialDesign:PackIcon
             Grid.Row="3"
             Grid.Column="3"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Width="20"
             Height="20"
-            Margin="0,0,20,0"
             Kind="ArrowBack"/>
 
 
-                <Label
+                    <Label
             x:Name="lbAccess"
             Content="{Binding Path=Accessible}"
             Grid.Row="4"
@@ -178,9 +182,9 @@
             Grid.ColumnSpan="3"
             VerticalContentAlignment="Center"/>
 
-            </Grid>
+                </Grid>
 
-            <Button
+                <Button
             Name="Close"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
@@ -188,14 +192,14 @@
             Click="Close_OnClick"
             Margin="15">
 
-                <materialDesign:PackIcon
+                    <materialDesign:PackIcon
                 Kind="Close"
                 Width="30"
                 Height="30"
             />
-            </Button>
+                </Button>
 
-            <Button
+                <Button
                 Name="Update"
                 Click="Update_OnClick"
                 Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
@@ -203,27 +207,142 @@
                 VerticalAlignment="Bottom"
                 Margin="15"
             >
-                <materialDesign:PackIcon
+                    <materialDesign:PackIcon
                     Kind="Update"
                     Width="30"
                     Height="30"
                     Foreground="White"/>
-            </Button>
+                </Button>
+
+                <Border
+            CornerRadius="15"
+            Background="White"
+            MouseDown="UIElement_OnMouseDown"
+            BorderBrush="#007ACC"
+            BorderThickness="2"
+            Height="50"
+            Width="280"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Margin="10"
+            >
+                    <TextBlock
+                    Name="LineNumbersTextBlock"
+                    Text="{Binding}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    TextAlignment="Center"
+                    />
+                </Border>
+
+            </Grid>
+
+        </Border>
+
+
+        <StackPanel
+            Orientation="Vertical"
+            Width="440"
+            >
+
+            <Grid
+                Width="250"
+                Height="300"
+                >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0"
+                      Background="White"
+                      >
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border
+                        Grid.Row="0"
+                        Background="#052DA3"
+                        >
+                        <materialDesign:PackIcon
+                            Foreground="White"
+                            Kind="BusSide"
+                            Width="50"
+                            Height="30"
+                            VerticalAlignment="Center"
+                            />
+                    </Border>
+
+                    <TextBlock
+                        Name="StationDetailsTextBlock"
+                        Grid.Column="1"
+                        Text="{Binding}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        />
+
+                </Grid>
+
+                <Grid Grid.Row="1">
+
+                    <Border
+                        Background="#FFED75">
+
+
+                        <DataGrid
+                        Name="YellowLinesDisplayDataGrid"
+                        Background="#FFED75"
+                        IsReadOnly="True"
+                        CanUserAddRows="False"
+                        CanUserSortColumns="False"
+                        AutoGenerateColumns="False"
+                        FontSize="10"
+                        HeadersVisibility="None"
+                        >
+
+                            <DataGrid.Columns
+                            >
+
+                                <DataGridTextColumn
+                                x:Name="LineNumber"
+                                Binding="{Binding LineNumber}"
+                            />
+
+                                <DataGridTextColumn
+                                x:Name="LastStation"
+                                Binding="{Binding FinalDestination}"
+                                />
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                    </Border>
+
+                </Grid>
+
+            </Grid>
 
             <DataGrid
                     Name="DigitalDisplayDataGrid"
                     Background="#23281F"
-                    Height="250"
-                    Width="200"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right"
-                    Margin="10"
+                    Height="200"
+                    Width="400"
+                    Margin="0,10,0,0"
                     IsReadOnly="True"
                     CanUserAddRows="False"
                     CanUserSortColumns="False"
                     AutoGenerateColumns="False"
                     FontSize="10"
-                    Foreground="#FF8045">
+                    HeadersVisibility="None"
+                    FontFamily="Enhanced LED Board-7"
+                    Foreground="#FF8045"
+                    BorderBrush="#FF8045"
+                    BorderThickness="2">
 
                 <DataGrid.Columns
                     >
@@ -241,56 +360,15 @@
                     <DataGridTextColumn
                             x:Name="DigitalTimeToArrival"
                             Binding="{Binding TimeToArrival,
-                        StringFormat={}{0:mm}:{0:ss}}"/>
+                        StringFormat={}{0:dd}:{0:hh}:{0:mm}:{0:ss}}"/>
 
                 </DataGrid.Columns>
 
             </DataGrid>
 
-            <Border
-                Name="YellowLinesDisplay"
-                Background="#FFED75"
-                CornerRadius="15"
-                Height="250"
-                Width="200"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Margin="150,0,0,0">
+        </StackPanel>
 
-                <Grid>
+    </StackPanel>
 
-                    <DataGrid
-                        Name="YellowLinesDisplayDataGrid"
-                        Background="#FFED75"
-                        IsReadOnly="True"
-                        CanUserAddRows="False"
-                        CanUserSortColumns="False"
-                        AutoGenerateColumns="False"
-                        FontSize="10">
 
-                        <DataGrid.Columns
-                            >
-
-                            <DataGridTextColumn
-                                x:Name="LineNumber"
-                                Binding="{Binding LineNumber}"
-
-                            />
-
-                            <DataGridTextColumn
-                                x:Name="LastStation"
-                                Binding="{Binding FinalDestination}"
-                                />
-
-                        </DataGrid.Columns>
-
-                    </DataGrid>
-
-                </Grid>
-
-            </Border>
-
-        </Grid>
-
-    </Border>
 </Window>

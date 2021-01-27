@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DalApi.DalConfig" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>DalConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DalApi.DalConfigException" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DalConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DalApi.DalFactory" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DalFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.Bus" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAEAAAAAAAAAAACAAAAAIAAAAAIgAgICAAAAAAA=</HashCode>
+      <FileName>DO\Bus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.BusLine" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAgAAAAIAAAAAAAkAAAgAAAAAACAAAA=</HashCode>
+      <FileName>DO\BusLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.BusStation" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIgAAQAAAABAAAiAAAAAAAAAAA=</HashCode>
+      <FileName>DO\BusStation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.ConsecutiveStations" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAEAAAAAAAAAAABgAAAAAAAAAAA=</HashCode>
+      <FileName>DO\ConsecutiveStations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.Driver" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAAAAAAAAAAAAAAAAAAIIAAAiAAAAIAEAAAg=</HashCode>
+      <FileName>DO\Driver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.XMLFileLoadCreateException" Collapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.NotInIsraelException" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.CantLoadFromXmlException" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.StationAlreadyExistsException" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.StationDoesNotExistException" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.OutOfRangeException" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.TooLongException" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.BusLineAlreadyExistsException" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.BusLineDoesNotExistsException" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.NoSuchRouteException" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.BusLineNotActiveException" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.BusAlreadyExistsException" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.BusDoesNotExistsException" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.EmptyListException" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.AlreadyDeletedException" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.StationsAlreadyConsecutiveException" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.StationsAreNotConsecutiveException" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.DriverDoesNotExistsException" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.DriverAlreadyExistsException" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.LineStationsAlreadyExistsException" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.LineStationsDoesNotExistsException" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.TravelingBusesAlreadyExistsException" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.TravelingBusesDoesNotExistsException" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.UserAlreadyExistsException" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.UserDoesNotExistsException" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.UserTravelAlreadyExistsException" Collapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.UserTravelDoesNotExistsException" Collapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.LineExitAlreadyExistsException" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.LineExitDoesNotExistsException" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.LineExit" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAIAAkAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>DO\LineExit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.LineStation" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAEAAAgAAAAAAAQAAA=</HashCode>
+      <FileName>DO\LineStation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.TravelingBus" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAEAAAAAABAAAAAAAAACAAAAACAgQAAChAAAAAQ=</HashCode>
+      <FileName>DO\TravelingBus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.User" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAiAQAAAAAAAAA=</HashCode>
+      <FileName>DO\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.UserTravel" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAACAAAAEQAAAAAAIAAgACAgAAABAAAAAAA=</HashCode>
+      <FileName>DO\UserTravel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DalApi.IDal" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgSBAAHEAQIwDAAAoiAAACWMAAKJQAAAASJgAsAAAAE=</HashCode>
+      <FileName>IDal.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DO.Status" Collapsed="true">
+    <Position X="4" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAEFAAAAAAAQAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>DO\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DO.Area" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAABAAAAAAAAAAAAAAACAAEAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>DO\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DO.Authorization" Collapsed="true">
+    <Position X="2.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

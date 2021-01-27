@@ -40,4 +40,14 @@
     <Fuel>152</Fuel>
     <Mileage>15215</Mileage>
   </Bus>
+  <Bus>
+    <LicenseNum>12345677</LicenseNum>
+    <Active>true</Active>
+    <StartTime>2021-01-12T00:00:00</StartTime>
+    <LastMaint>2021-01-26T00:00:00</LastMaint>
+    <MileageFromLast>321</MileageFromLast>
+    <Stat>Ready</Stat>
+    <Fuel>150</Fuel>
+    <Mileage>22222</Mileage>
+  </Bus>
 </Buses>
