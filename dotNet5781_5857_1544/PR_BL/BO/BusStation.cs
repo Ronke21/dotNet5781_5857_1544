@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Device.Location;
-using System.Security;
-using DO;
 
 namespace BO
 {

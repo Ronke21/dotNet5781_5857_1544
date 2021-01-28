@@ -77,21 +77,16 @@
             Grid.ColumnSpan="2"
             Grid.Row="0"
             Background="#4DA1E3"
-            Width="1920"
             Height="50"
             VerticalAlignment="Top"
             MouseDown="UIElement_OnMouseDown">
 
             <TextBlock x:Name="MainTimerTextBlock"
-                   Text=""
-                   FontSize="50"
-                   Width="259"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   TextAlignment="Center" 
-                   Grid.Column="1" 
-                   Margin="527,-10,1134,-0.4" 
-                   Grid.RowSpan="2" 
+                   FontSize="20"
+                   Margin="0,0,80,0"
+                   Foreground="White"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
                    />
 
         </Border>

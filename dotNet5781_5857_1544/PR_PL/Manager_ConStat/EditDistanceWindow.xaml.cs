@@ -2,9 +2,8 @@
 using System.Windows;
 using BLApi;
 using BO;
-using PL;
 
-namespace PR_PL.Manager_ConStat
+namespace PL
 {
     /// <summary>
     /// Interaction logic for EditDistanceWindow.xaml

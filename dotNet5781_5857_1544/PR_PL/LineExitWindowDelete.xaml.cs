@@ -3,7 +3,7 @@ using System.Windows;
 using BLApi;
 using BO;
 
-namespace PR_PL
+namespace PL
 {
     /// <summary>
     /// Interaction logic for LineExitWindowDelete.xaml

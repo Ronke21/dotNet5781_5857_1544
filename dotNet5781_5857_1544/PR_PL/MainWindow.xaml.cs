@@ -1,20 +1,11 @@
 ﻿using System;
 using System.Media;
-using System.Runtime.Remoting.Activation;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using BLApi;
-using BO;
 using MaterialDesignThemes.Wpf;
-using PR_PL;
-using PR_PL.Manager_Buses;
-using PR_PL.Manager_ConStat;
-using PR_PL.Manager_Lines;
-using PR_PL.Manager_Simulation;
-using PR_PL.Manager_Stations;
 
 /*
  * todo: double click window showing all bus's details ( + buttons for threads)                     // Amihay   V
@@ -72,6 +63,9 @@ namespace PL
             _simulationPage = new SimulationPage(_bl);
             #endregion
 
+            //LoginPage lp = new LoginPage();
+            //lp.Show();
+
             //PlaySound(@"..\PR_PL\Icons\hero_simple-celebration-03.wav");
         }
 
@@ -106,7 +100,7 @@ namespace PL
         {
             if (_hidden)
             {
-                PlaySound(@"..\PR_PL\Icons\navigation_forward-selection.wav");
+                PlaySound(@"..\PR_PL\Icons\navigation_forward-selection-minimal.wav");
                 var sb = Resources["OpenMenu"] as Storyboard;
                 sb?.Begin(SideBar);
                 _hidden = false;
@@ -114,7 +108,7 @@ namespace PL
             }
             else
             {
-                PlaySound(@"..\PR_PL\Icons\navigation_backward-selection.wav");
+                PlaySound(@"..\PR_PL\Icons\navigation_backward-selection-minimal.wav");
                 var sb = Resources["CloseMenu"] as Storyboard;
                 sb?.Begin(SideBar);
                 _hidden = true;

@@ -4,8 +4,6 @@ using System.Linq;
 using System.Xml.Linq;
 using DalApi;
 using DO;
-using System.Device.Location;
-using System.IO;
 using System.Xml;
 
 

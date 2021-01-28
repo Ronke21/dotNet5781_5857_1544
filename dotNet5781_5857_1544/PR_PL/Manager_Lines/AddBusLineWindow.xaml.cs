@@ -7,9 +7,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using BLApi;
 using BO;
-using PL;
 
-namespace PR_PL.Manager_Lines
+namespace PL
 {
     /// <summary>
     /// Interaction logic for AddBusLineWindow.xaml

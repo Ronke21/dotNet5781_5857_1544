@@ -5,9 +5,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using BLApi;
 using BO;
-using PL;
 
-namespace PR_PL.Manager_Buses
+namespace PL
 {
     /// <summary>
     /// Interaction logic for BusesViewPage.xaml

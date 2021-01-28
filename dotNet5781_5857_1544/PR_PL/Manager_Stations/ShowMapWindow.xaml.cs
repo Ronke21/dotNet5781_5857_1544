@@ -2,7 +2,7 @@
 using System.Windows;
 using BO;
 
-namespace PR_PL.Manager_Stations
+namespace PL
 {
     /// <summary>
     /// Interaction logic for ShowMapWindow.xaml

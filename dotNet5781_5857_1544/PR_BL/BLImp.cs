@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.Linq;
 using System.Threading;
 using DalApi;
 using BLApi;
 using BO;
-using PR_BL;
-using PR_BL.BO;
 
 
 namespace BL

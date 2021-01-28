@@ -1,12 +1,9 @@
 ﻿using BLApi;
 using BO;
-using System;
 using System.Device.Location;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
-using PR_PL.Manager_Simulation;
-using PR_PL.Manager_Stations;
 
 namespace PL
 {

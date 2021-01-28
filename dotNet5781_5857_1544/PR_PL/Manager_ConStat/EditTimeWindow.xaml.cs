@@ -3,9 +3,8 @@ using System.Windows;
 using System.Windows.Input;
 using BLApi;
 using BO;
-using PL;
 
-namespace PR_PL.Manager_ConStat
+namespace PL
 {
     /// <summary>
     /// Interaction logic for EditTimeWindow.xaml

@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using BLApi;
 using BO;
-using PL;
-using PR_BL.BO;
-using PR_PL.Manager_Simulation;
 
-namespace PR_PL.Manager_Stations
+namespace PL
 {
     /// <summary>
     /// Interaction logic for StationDetailsSimulator.xaml

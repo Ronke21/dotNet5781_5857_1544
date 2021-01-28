@@ -5,7 +5,7 @@ using System.Windows.Input;
 using BLApi;
 using BO;
 
-namespace PR_PL
+namespace PL
 {
     /// <summary>
     /// Interaction logic for UpdateBus.xaml

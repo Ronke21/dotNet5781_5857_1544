@@ -5,10 +5,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using BLApi;
 using BO;
-using MaterialDesignThemes.Wpf;
-using PL;
 
-namespace PR_PL.Manager_ConStat
+namespace PL
 {
     /// <summary>
     /// Interaction logic for ConStatViewPage.xaml

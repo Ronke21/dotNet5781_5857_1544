@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using BLApi;
 using BO;
 using System.Windows;
 using System.Windows.Input;
-using PR_PL.Manager_Simulation;
-using PR_PL.Manager_Stations;
 
 namespace PL
 {

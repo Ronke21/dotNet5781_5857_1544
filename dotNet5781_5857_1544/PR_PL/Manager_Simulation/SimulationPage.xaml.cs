@@ -1,13 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using BLApi;
 using MaterialDesignThemes.Wpf;
-using PL;
 
-namespace PR_PL.Manager_Simulation
+namespace PL
 {
     /// <summary>
     /// Interaction logic for SimulationPage.xaml

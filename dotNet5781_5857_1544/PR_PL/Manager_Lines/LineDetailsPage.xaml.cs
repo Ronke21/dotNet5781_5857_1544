@@ -1,10 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using BLApi;
 using BO;
 
-namespace PR_PL.Manager_Lines
+namespace PL
 {
     /// <summary>
     /// Interaction logic for LineDetailsPage.xaml
@@ -44,7 +43,7 @@ namespace PR_PL.Manager_Lines
                 Name = current.Name,
                 Accessible = current.Accessible
             };
-            var smw = new PR_PL.Manager_Stations.ShowMapWindow(toSend);
+            var smw = new PL.ShowMapWindow(toSend);
             smw.ShowDialog();
         }
     }

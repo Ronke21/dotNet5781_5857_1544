@@ -36,4 +36,22 @@
     <AllAccessible>true</AllAccessible>
     <Active>true</Active>
   </BusLine>
+  <BusLine>
+    <BusLineId>25</BusLineId>
+    <LineNumber>14</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>38893</FirstStation>
+    <LastStation>39050</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
+  <BusLine>
+    <BusLineId>26</BusLineId>
+    <LineNumber>121</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>38836</FirstStation>
+    <LastStation>39086</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
 </ArrayOfBusLine>
