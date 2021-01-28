@@ -167,11 +167,44 @@ namespace BL
                 throw new Exception("Unknown error GetAllBuses");
             }
         }
+        public IEnumerable<BO.Bus> GetAllBusesByCode(string cod)
+        {
+            try
+            {
+                return from bus in _dal.GetAllActiveBuses()
+                       where bus.LicenseNum.ToString().Contains(cod)
+                       select BusDoToBoAdapter(bus);
+            }
+
+            catch (DO.EmptyListException ex)
+            {
+                throw new BO.EmptyListException("No buses in the list", ex);
+            }
+
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetAllBuses");
+            }
+        }
         public IEnumerable<BO.Bus> GetAllInActiveBuses()
         {
             try
             {
                 return from bus in _dal.GetAllInActiveBuses()
+                       select BusDoToBoAdapter(bus);
+            }
+
+            catch (DO.EmptyListException ex)
+            {
+                throw new BO.EmptyListException("No buses in the list", ex);
+            }
+        }
+        public IEnumerable<BO.Bus> GetAllInActiveBusesByCode(string cod)
+        {
+            try
+            {
+                return from bus in _dal.GetAllInActiveBuses()
+                       where bus.LicenseNum.ToString().Contains(cod)
                        select BusDoToBoAdapter(bus);
             }
 
@@ -344,6 +377,31 @@ namespace BL
                 throw new Exception("Unknown error GetAllBusStations");
             }
         }
+        public IEnumerable<BO.BusStation> GetAllBusStationsByCodeOrName(string code)
+        {
+            try
+            {
+                var stationsList = from bs in _dal.GetAllActiveBusStations()
+                                   where (bs.Code.ToString()).Contains(code) || (bs.Name).Contains(code)
+                                   select BusStationDoToBoAdapter(bs);
+
+                //attach lines to station
+                foreach (var stat in stationsList)
+                {
+                    stat.BusLines = LinesInStation(stat.Code);
+                }
+
+                return stationsList;
+            }
+            catch (DO.EmptyListException ex)
+            {
+                throw new BO.EmptyListException("No stations in the list", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetAllBusStations");
+            }
+        }
         public IEnumerable<BO.BusStation> GetAllInActiveBusStations()
         {
             try
@@ -356,7 +414,20 @@ namespace BL
             {
                 throw new BO.EmptyListException("No Stations in the list", ex);
             }
+        }
+        public IEnumerable<BO.BusStation> GetAllInActiveBusStationsByCodeOrName(string code)
+        {
+            try
+            {
+                return from bs in _dal.GetAllInActiveBusStations()
+                       where (bs.Code.ToString()).Contains(code) || (bs.Name).Contains(code)
+                       select BusStationDoToBoAdapter(bs);
+            }
 
+            catch (DO.EmptyListException ex)
+            {
+                throw new BO.EmptyListException("No Stations in the list", ex);
+            }
         }
         public BO.BusStation GetBusStation(int code)
         {
@@ -841,6 +912,38 @@ namespace BL
             catch (Exception)
             {
                 throw new Exception("Unknown error GetAllBuses");
+            }
+        }
+
+        public IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStationsByCode(string cod)
+        {
+            try
+            {
+                foreach (var bl in _dal.GetAllActiveBusLines())
+                {
+                    UpdateAndReturnLineStationList(bl.BusLineId);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+
+            try
+            {
+                return from conStat in _dal.GetAllConsecutiveStations()
+                       where conStat.StatCode1.ToString().Contains(cod) || conStat.StatCode2.ToString().Contains(cod)
+                       select ConsecutiveStationDoToBoAdapter(conStat);
+            }
+            catch (DO.EmptyListException ex)
+            {
+                throw new BO.EmptyListException("No Stations in the list", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error Get all consecutive stations");
             }
         }
         private BO.ConsecutiveStations GetConsecutiveStations(int statCode1, int statCode2)

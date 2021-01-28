@@ -63,5 +63,10 @@ namespace PR_PL.Manager_ConStat
             var edw = new EditDistanceWindow(_bl, cs);
             edw.ShowDialog();
         }
+
+        private void SearchLinesTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            ConStatDataGrid.ItemsSource = _bl.GetAllConsecutiveStationsByCode(SearchLinesTextBox.Text).ToList();
+        }
     }
 }

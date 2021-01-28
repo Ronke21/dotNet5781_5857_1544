@@ -32,7 +32,7 @@
   </Bus>
   <Bus>
     <LicenseNum>12323112</LicenseNum>
-    <Active>true</Active>
+    <Active>False</Active>
     <StartTime>2021-01-17T00:00:00</StartTime>
     <LastMaint>2021-01-17T00:00:00</LastMaint>
     <MileageFromLast>150</MileageFromLast>
@@ -42,7 +42,7 @@
   </Bus>
   <Bus>
     <LicenseNum>12345677</LicenseNum>
-    <Active>true</Active>
+    <Active>False</Active>
     <StartTime>2021-01-12T00:00:00</StartTime>
     <LastMaint>2021-01-26T00:00:00</LastMaint>
     <MileageFromLast>321</MileageFromLast>

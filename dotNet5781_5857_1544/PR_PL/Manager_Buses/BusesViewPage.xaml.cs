@@ -82,5 +82,32 @@ namespace PR_PL.Manager_Buses
                 MessageBox.Show(ex.Message, "Buses Loading Error!");
             }
         }
+
+        private void Add_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Button b = sender as Button;
+            if (b != null)
+            {
+                b.Height += b.Height;
+                b.Width += b.Width;
+
+            }
+        }
+
+        private void Add_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Button b = sender as Button;
+            if (b != null)
+            {
+                b.Height = b.Height / 2;
+                b.Width = b.Width / 2;
+            }
+        }
+
+        private void SearchLinesTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            BusesDataGrid.DataContext = _bl.GetAllBusesByCode(SearchLinesTextBox.Text).ToList();
+        }
+
     }
 }

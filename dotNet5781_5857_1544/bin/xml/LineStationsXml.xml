@@ -72,4 +72,52 @@
     <StationIndex>3</StationIndex>
     <Active>true</Active>
   </LineStation>
+  <LineStation>
+    <BusLineId>24</BusLineId>
+    <Code>38832</Code>
+    <StationIndex>0</StationIndex>
+    <Active>true</Active>
+  </LineStation>
+  <LineStation>
+    <BusLineId>24</BusLineId>
+    <Code>38833</Code>
+    <StationIndex>1</StationIndex>
+    <Active>true</Active>
+  </LineStation>
+  <LineStation>
+    <BusLineId>24</BusLineId>
+    <Code>38834</Code>
+    <StationIndex>2</StationIndex>
+    <Active>true</Active>
+  </LineStation>
+  <LineStation>
+    <BusLineId>24</BusLineId>
+    <Code>38836</Code>
+    <StationIndex>3</StationIndex>
+    <Active>true</Active>
+  </LineStation>
+  <LineStation>
+    <BusLineId>24</BusLineId>
+    <Code>38837</Code>
+    <StationIndex>4</StationIndex>
+    <Active>true</Active>
+  </LineStation>
+  <LineStation>
+    <BusLineId>24</BusLineId>
+    <Code>38838</Code>
+    <StationIndex>5</StationIndex>
+    <Active>true</Active>
+  </LineStation>
+  <LineStation>
+    <BusLineId>24</BusLineId>
+    <Code>38839</Code>
+    <StationIndex>6</StationIndex>
+    <Active>true</Active>
+  </LineStation>
+  <LineStation>
+    <BusLineId>24</BusLineId>
+    <Code>38840</Code>
+    <StationIndex>7</StationIndex>
+    <Active>true</Active>
+  </LineStation>
 </ArrayOfLineStation>

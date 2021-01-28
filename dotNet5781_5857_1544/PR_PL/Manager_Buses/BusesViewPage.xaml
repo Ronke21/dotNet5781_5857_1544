@@ -21,6 +21,10 @@
       >
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="109*"/>
+            <RowDefinition Height="42*"/>
+        </Grid.RowDefinitions>
 
         <DataGrid
             x:Name="BusesDataGrid"
@@ -36,7 +40,7 @@
             VerticalAlignment="Stretch"
             VerticalContentAlignment="Stretch"
             MinColumnWidth="200"
-            Margin="0,0,0,100"
+            Margin="0,0,-0.4,57.953"
             >
 
             <DataGrid.Columns>
@@ -74,7 +78,7 @@
             Height="100"
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
-            Click="Remove_Click"
+            Click="Remove_Click" Margin="375,0,374.6,0.2" Grid.RowSpan="2"
         >
             <materialDesign:PackIcon
                 Width="50"
@@ -90,7 +94,7 @@
             Height="100"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
-            Click="InActive_Click"
+            Click="InActive_Click" Margin="0,0,0,0.2" Grid.RowSpan="2"
            >
             <materialDesign:PackIcon
                 Width="50"
@@ -108,7 +112,9 @@
             ToolTip="MaterialDesignFloatingActionMiniDarkButton"
             Background="#FF0064A6"
             HorizontalAlignment="Right"
-            VerticalAlignment="Bottom">
+            VerticalAlignment="Bottom"
+            MouseEnter="Add_MouseEnter"
+            MouseLeave="Add_MouseLeave" Margin="0,0,-0.4,0.2" Grid.RowSpan="2">
 
             <materialDesign:PackIcon
                 Kind="Add"
@@ -119,6 +125,19 @@
             </materialDesign:PackIcon>
 
         </Button>
+
+        <TextBox
+                    Name="SearchLinesTextBox"
+                    TextChanged="SearchLinesTextBox_OnTextChanged"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Height="50"
+                    Width="230"
+                    FontSize="15"
+                    BorderBrush="Red" Margin="0,-6,25.6,0"
+                    materialDesign:HintAssist.Hint="Search Bus by license num"  
+                    materialDesign:HintAssist.IsFloating="True"
+                />
 
     </Grid>
 </Page>

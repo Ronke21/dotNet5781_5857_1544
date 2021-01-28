@@ -93,5 +93,17 @@
                 Height="50"/>
         </Button>
 
+        <TextBox
+                    Name="SearchLinesTextBox"
+                    TextChanged="SearchLinesTextBox_OnTextChanged"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Height="50"
+                    Width="230"
+                    FontSize="15"
+                    BorderBrush="Red" Margin="0,-6,26,0"
+                    materialDesign:HintAssist.Hint="Search Station by code / name"  
+                    materialDesign:HintAssist.IsFloating="True"
+                />
     </Grid>
 </Page>

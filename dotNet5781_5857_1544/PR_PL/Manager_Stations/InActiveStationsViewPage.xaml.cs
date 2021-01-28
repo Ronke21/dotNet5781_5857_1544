@@ -90,5 +90,10 @@ namespace PR_PL.Manager_Stations
             var bd = new StationDetails(_bl, InActiveStationsDataGrid.SelectedItem as BusStation, _simulationPage);
             bd.Show();
         }
+
+        private void SearchLinesTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            InActiveStationsDataGrid.DataContext = _bl.GetAllInActiveBusStationsByCodeOrName(SearchLinesTextBox.Text).ToList();
+        }
     }
 }

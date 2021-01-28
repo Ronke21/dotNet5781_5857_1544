@@ -76,5 +76,11 @@ namespace PR_PL.Manager_Buses
                 MessageBox.Show(ex.Message, "Buses Lodaing Error!");
             }
         }
+
+        private void SearchLinesTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            InActiveBusesDataGrid.DataContext = _bl.GetAllInActiveBusesByCode(SearchLinesTextBox.Text).ToList();
+        }
+
     }
 }

@@ -97,5 +97,10 @@ namespace PR_PL.Manager_Stations
                 MessageBox.Show("Unknown ERROR!" + ex.Message, "Station Loading Error!");
             }
         }
+
+        private void SearchLinesTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            StationsDataGrid.DataContext = _bl.GetAllBusStationsByCodeOrName(SearchLinesTextBox.Text).ToList();          
+        }
     }
 }

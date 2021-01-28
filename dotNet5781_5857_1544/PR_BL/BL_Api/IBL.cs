@@ -11,7 +11,9 @@ namespace BLApi
         #region Bus
         void AddBus(BO.Bus bus);                                       // C
         IEnumerable<BO.Bus> GetAllBuses();                             // R
-        IEnumerable<BO.Bus> GetAllInActiveBuses();                             // R
+        IEnumerable<BO.Bus> GetAllBusesByCode(string cod);
+        IEnumerable<BO.Bus> GetAllInActiveBuses();
+        IEnumerable<BO.Bus> GetAllInActiveBusesByCode(string cod);
         //IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);   // R
         BO.Bus GetBus(int licenseNum);                                 // R
         void UpdateBus(BO.Bus bus);                                    // U
@@ -25,7 +27,9 @@ namespace BLApi
         void AddStation(BO.BusStation bs);
         void ActivateBusStation(int code);
         IEnumerable<BO.BusStation> GetAllBusStations();
+        IEnumerable<BO.BusStation> GetAllBusStationsByCodeOrName(string code);
         IEnumerable<BO.BusStation> GetAllInActiveBusStations();
+        IEnumerable<BO.BusStation> GetAllInActiveBusStationsByCodeOrName(string code);
         BO.BusStation GetBusStation(int code);
         IEnumerable<BO.BusStation> GetLineBusStations(int BusLineID);
         IEnumerable<LineNumberAndFinalDestination> ListForYellowSign(int statCode);
@@ -54,6 +58,8 @@ namespace BLApi
 
         #region ConsecutiveStations
         IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStations();
+        IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStationsByCode(string cod);
+
         void AddConsecutiveStations(int statCode1, int statCode2);
         void UpdateConsecutiveStations(BO.ConsecutiveStations conStat);
         //ConsecutiveStations GetConsecutiveStations(int statCode1, int statCode2);
