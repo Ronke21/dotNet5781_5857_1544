@@ -21,6 +21,7 @@ namespace PL
         private readonly BusStation currentBS;
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;
         private SimulationPage _simulationPage;
+        private List<LineTiming> lineTimings = new List<LineTiming>();
         public StationDetailsSimulator(IBL b, BusStation bs, SimulationPage sp)
         {
             InitializeComponent();
@@ -46,17 +47,23 @@ namespace PL
 
         private void Worker_UpdatePanels(object sender, DoWorkEventArgs e)
         {
-            _bl.UpdateStationDigitalSign(currentBS.Code, UpdateArrivingTimes);
+            _bl.SetStationPanel(currentBS.Code, UpdateArrivingTimes);
         }
 
-        private void UpdateArrivingTimes(IEnumerable<LineNumberAndFinalDestination> l)
+        private void UpdateArrivingTimes(LineTiming lineTiming)
         {
+            lineTimings.Remove((from lt in lineTimings
+                                where lt.BusLineId == lineTiming.BusLineId &&
+                                      lt.StartTime == lineTiming.StartTime
+                                select lt).First());
+            if (lineTiming.ArrivalTime != TimeSpan.Zero) lineTimings.Add(lineTiming);
+
+            // get lineTimings and add it to the digital sign
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                DigitalDisplayDataGrid.ItemsSource = l.ToList();
+                DigitalDisplayDataGrid.ItemsSource = lineTimings.OrderBy(l => l.ArrivalTime);
             }));
         }
-
 
         private void Close_OnClick(object sender, RoutedEventArgs e)
         {
@@ -66,7 +73,9 @@ namespace PL
 
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
-            if (System.Windows.MessageBox.Show("Can't update during simulation\ngo back to simulation page to stop simulation", "ERROR", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if (System.Windows.MessageBox.Show("Can't update during simulation\ngo back to simulation page to stop simulation",
+                                                "ERROR", MessageBoxButton.YesNo,
+                                                MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 Close();
                 wnd.DataDisplay.Content = _simulationPage;

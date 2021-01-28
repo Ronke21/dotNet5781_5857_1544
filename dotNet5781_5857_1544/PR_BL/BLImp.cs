@@ -23,10 +23,10 @@ namespace BL
 
         private readonly Random Rand = new Random(DateTime.Now.Millisecond);
 
-        private IEnumerable<LineArrivalToStation> MasterList;
+        private IEnumerable<LineArrivalToStation> MasterList = new List<LineArrivalToStation>();
 
         private Thread _fill = new Thread(() => { }); // empty
-        public bool IsFillRunning() { return _fill.IsAlive; }
+        //public bool IsFillRunning() { return _fill.IsAlive; }
 
         #region Bus
 
@@ -351,7 +351,7 @@ namespace BL
         }
         public IEnumerable<BO.BusStation> GetAllBusStations()
         {
-            if (IsFillRunning()) throw new ThreadInterruptedException("still filling the list");
+            //if (IsFillRunning()) throw new ThreadInterruptedException("still filling the list");
             try
             {
                 var stationsList = from bs in _dal.GetAllActiveBusStations()
@@ -549,8 +549,6 @@ namespace BL
             //            TimeToArrival = a.ArrivalTime - Clock.Instance.Time
             //        }));
         }
-
-        //public IEnumerable<LineNumberAndFinalDestination>
 
         #endregion
 
@@ -896,7 +894,6 @@ namespace BL
                 throw;
             }
 
-
             try
             {
                 return from conStat in _dal.GetAllConsecutiveStations()
@@ -1020,8 +1017,8 @@ namespace BL
         #region Simulator
         public void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime)
         {
-            _fill = new Thread(FillListOfArrivalToStations);
-            _fill.Start();
+            //_fill = new Thread(FillListOfArrivalToStations);
+            //_fill.Start();
 
             Clock.Instance.IsRunning = true;
             Clock.Instance.Time = startTime;
@@ -1038,17 +1035,9 @@ namespace BL
         }
         public void StopSimulator()
         {
-            if (!IsFillRunning())
-            {
-                Clock.Instance.IsRunning = false;
-            }
-            else
-            {
-                throw new ThreadInterruptedException("still filling the list");
-            }
+            Clock.Instance.IsRunning = false;
         }
         public bool IsSimulatorRunning() { return Clock.Instance.IsRunning; }
-
         public void UpdateStationDigitalSign(int statCode, Action<IEnumerable<LineNumberAndFinalDestination>> update)
         {
             while (Clock.Instance.IsRunning)
@@ -1058,6 +1047,66 @@ namespace BL
                 Thread.Sleep(2000);
             }
         }
+        public void SetStationPanel(int statCode, Action<LineTiming> updateBus)
+        {
+            if (Simulator.Instance.StatCode == -1)
+            {
+                Simulator.Instance.StatCode = statCode;
+            }
+            else return;
+
+            var exits = _dal.GetAllLineExits().OrderBy(ex => ex.StartTime);
+
+            while (IsSimulatorRunning())
+            {
+                foreach (var line in exits)
+                {
+                    var start = line.StartTime;
+
+                    while (start != line.EndTime)
+                    {
+                        if (start >= Clock.Instance.Time)
+                        {
+                            var currentLine = GetBusLine(line.BusLineId);
+
+                            var stat = (from st in currentLine.ListOfLineStations
+                                        where st.Code == statCode
+                                        select st).FirstOrDefault();
+
+                            if (stat is null) { } // do nothing
+
+                            else
+                            {
+                                new Thread(() =>
+                                {
+                                    var index = (currentLine.ListOfLineStations).ToList().FindIndex
+                                    (st => st.BusLineId == line.BusLineId);
+
+                                    var conStats = GetConsecutiveStations(statCode,
+                                        (currentLine.ListOfLineStations).ToList()[index + 1].Code);
+
+                                    var lineTiming = new LineTiming()
+                                    {
+                                        StartTime = start,
+                                        ArrivalTime = start + conStats.AverageTravelTime,
+                                        BusLineId = currentLine.BusLineId,
+                                        LineNumber = currentLine.LineNumber,
+                                        LastStationName = GetBusStation(currentLine.LastStation).Name,
+                                    };
+
+                                    updateBus(lineTiming);
+
+                                }).Start();
+
+                            }
+                        }
+
+                        start += line.Freq;
+                    }
+                }
+            }
+        }
+
         #endregion
 
         #region Line exit

@@ -7,7 +7,7 @@ namespace BLApi
     // ReSharper disable once InconsistentNaming
     public interface IBL
     {
-        bool IsFillRunning();
+       // bool IsFillRunning();
         #region Bus
         void AddBus(BO.Bus bus);                                       // C
         IEnumerable<BO.Bus> GetAllBuses();                             // R
@@ -71,9 +71,9 @@ namespace BLApi
         void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime);
         void StopSimulator();
         bool IsSimulatorRunning();
-
         void UpdateStationDigitalSign(int statCode, Action<IEnumerable<LineNumberAndFinalDestination>> update);
-        
+        void SetStationPanel(int statCode, Action<LineTiming> updateBus);
+
         #endregion
 
         #region LineStation

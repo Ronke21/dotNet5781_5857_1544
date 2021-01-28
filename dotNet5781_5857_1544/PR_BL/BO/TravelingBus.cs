@@ -10,7 +10,7 @@ namespace BO
         {
             get
             {
-                string num = LicenseNum.ToString();
+                var num = LicenseNum.ToString();
                 return (num.Length > 7) ? num.Insert(3, "-").Insert(6, "-") : num.Insert(2, "-").Insert(6, "-");
             }
         }
