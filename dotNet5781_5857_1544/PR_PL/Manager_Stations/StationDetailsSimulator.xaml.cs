@@ -18,28 +18,28 @@ namespace PL
     {
         BackgroundWorker simulatorWorker;
         private readonly IBL _bl;
-        private readonly BusStation currentBS;
+        private readonly BusStation currentBusStation;
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;
         private SimulationPage _simulationPage;
         private List<LineTiming> lineTimings = new List<LineTiming>();
-        public StationDetailsSimulator(IBL b, BusStation bs, SimulationPage sp)
+        public StationDetailsSimulator(IBL b, BusStation busStation, SimulationPage sp)
         {
             InitializeComponent();
 
-            currentBS = bs;
+            currentBusStation = busStation;
             _simulationPage = sp;
 
             _bl = b;
 
-            StationDetailsWindow.DataContext = currentBS;
+            StationDetailsWindow.DataContext = currentBusStation;
 
             simulatorWorker = new BackgroundWorker() { WorkerSupportsCancellation = true };
             simulatorWorker.DoWork += Worker_UpdatePanels;
 
-            YellowLinesDisplayDataGrid.ItemsSource = _bl.ListForYellowSign(currentBS.Code);
-            StationDetailsTextBlock.Text = currentBS.Name + "\n" + "station number: " + currentBS.Code;
+            YellowLinesDisplayDataGrid.ItemsSource = _bl.ListForYellowSign(currentBusStation.Code);
+            StationDetailsTextBlock.Text = currentBusStation.Name + "\n" + "station number: " + currentBusStation.Code;
 
-            var lines = _bl.LinesInStation(currentBS.Code).ToList();
+            var lines = _bl.LinesInStation(currentBusStation.Code).ToList();
             LineNumbersTextBlock.DataContext = lines.Aggregate("", (current, line) => current + line.LineNumber + ", ");
 
             simulatorWorker.RunWorkerAsync();
@@ -47,26 +47,32 @@ namespace PL
 
         private void Worker_UpdatePanels(object sender, DoWorkEventArgs e)
         {
-            _bl.SetStationPanel(currentBS.Code, UpdateArrivingTimes);
+            _bl.SetStationPanel(currentBusStation.Code, UpdateArrivingTimes);
         }
 
         private void UpdateArrivingTimes(LineTiming lineTiming)
         {
-            lineTimings.Remove((from lt in lineTimings
-                                where lt.BusLineId == lineTiming.BusLineId &&
-                                      lt.StartTime == lineTiming.StartTime
-                                select lt).First());
-            if (lineTiming.ArrivalTime != TimeSpan.Zero) lineTimings.Add(lineTiming);
 
             // get lineTimings and add it to the digital sign
             Dispatcher.BeginInvoke(new Action(() =>
             {
+                lineTimings.Remove((from lt in lineTimings
+                                    where lt.BusLineId == lineTiming.BusLineId &&
+                                          lt.StartTime == lineTiming.StartTime
+                                    select lt).First());
+
+                if (lineTiming.ArrivalTime != TimeSpan.Zero)
+                {
+                    lineTimings.Add(lineTiming);
+                }
+
                 DigitalDisplayDataGrid.ItemsSource = lineTimings.OrderBy(l => l.ArrivalTime);
             }));
         }
 
         private void Close_OnClick(object sender, RoutedEventArgs e)
         {
+            _bl.StopStationPanel(UpdateArrivingTimes);
             simulatorWorker.CancelAsync();
             Close();
         }
@@ -84,7 +90,7 @@ namespace PL
 
         private void Map_OnClick(object sender, RoutedEventArgs e)
         {
-            var smw = new ShowMapWindow(currentBS);
+            var smw = new ShowMapWindow(currentBusStation);
             smw.ShowDialog();
         }
 

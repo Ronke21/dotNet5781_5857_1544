@@ -32,5 +32,13 @@ namespace BL
             connect.StationIndex = bs.Code;
             return connect;
         }
+
+
+        // extension method
+        public static TimeSpan TimeOnly(this TimeSpan ts)
+        {
+            return ts - new TimeSpan(ts.Days, 0, 0, 0);
+        }
+
     }
 }

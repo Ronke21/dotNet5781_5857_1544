@@ -471,7 +471,6 @@ namespace Dal
 
             return stations;
         }
-
         public IEnumerable<LineStation> GetAllLineStations()
         {
             var lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationsPath);
@@ -502,7 +501,6 @@ namespace Dal
 
             return lineStation;
         }
-
         public void UpdateLineStation(int lineNumber, int stationNumber, int stationIndex)
         {
             var lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationsPath);
@@ -537,8 +535,7 @@ namespace Dal
 
             XMLTools.SaveListToXMLSerializer(lineStationsList, lineStationsPath);
         }
-
-
+        
         #endregion
 
         #region Consecutive Stations

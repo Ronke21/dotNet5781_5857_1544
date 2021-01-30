@@ -11,7 +11,6 @@ namespace BL
         private Simulator() { } // default => private
         public static Simulator Instance { get => instance; }// The public Instance property to use
         #endregion
-
         public int StatCode { get; set; }
 
         private LineTiming _lineTiming;

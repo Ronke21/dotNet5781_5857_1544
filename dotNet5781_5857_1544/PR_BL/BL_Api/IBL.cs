@@ -58,7 +58,7 @@ namespace BLApi
 
         #region ConsecutiveStations
         IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStations();
-        IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStationsByCode(string cod);
+        IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStationsByCode(string code);
 
         void AddConsecutiveStations(int statCode1, int statCode2);
         void UpdateConsecutiveStations(BO.ConsecutiveStations conStat);
@@ -73,6 +73,7 @@ namespace BLApi
         bool IsSimulatorRunning();
         void UpdateStationDigitalSign(int statCode, Action<IEnumerable<LineNumberAndFinalDestination>> update);
         void SetStationPanel(int statCode, Action<LineTiming> updateBus);
+        void StopStationPanel(Action<LineTiming> updateBus);
 
         #endregion
 

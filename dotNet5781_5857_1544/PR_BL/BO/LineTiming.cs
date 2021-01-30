@@ -9,6 +9,7 @@ namespace BO
     public class LineTiming
     {
         public int BusLineId { get; set; }
+        public int StatCode { get; set; }
         public int LineNumber { get; set; }
         public TimeSpan StartTime { get; set; }
         public string LastStationName { get; set; }
