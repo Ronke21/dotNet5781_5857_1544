@@ -1135,7 +1135,7 @@ namespace BL
 
         private void StartLines()
         {
-            foreach (var lineExit in GetAllLineExits())
+            foreach (var lineExit in GetAllLineExits().OrderBy(le => le.StartTime))
             {
                 var currentLine = GetBusLine(lineExit.BusLineId);
                 var allConStats = GetAllConsecutiveStations().ToList();
@@ -1153,9 +1153,10 @@ namespace BL
                                             select time).FirstOrDefault();
 
                         // wait for nearest exit time
-                        var t = (nextExitTime.TimeOnly() - Clock.Instance.Time.TimeOnly()).TotalMilliseconds;
-                        var wait = (int)t / Clock.Instance.Rate;
-                        Thread.Sleep(wait);
+                        var t = nextExitTime - Clock.Instance.Time.TimeOnly();
+                        var wait = t.TotalMilliseconds / Clock.Instance.Rate;
+                        if (wait < 0) wait *= -1;
+                        Thread.Sleep((int)wait);
 
                         // start line exit
                         new Thread(() =>
@@ -1166,7 +1167,17 @@ namespace BL
 
                             for (var i = 0; i < stations.Count - 1; i++)
                             {
-                                var lineTimings = ArrivalTimesToNextStations(currentLine, nextExitTime, i, allConStats, lastStationName);
+                                Simulator.Instance.LineTiming = new LineTiming()
+                                {
+                                    BusLineId = lineExit.BusLineId,
+                                    StartTime = nextExitTime,
+                                    LastStationName = lastStationName,
+                                    LineNumber = lineExit.LineNumber,
+                                    ArrivalTime = TimeSpan.Zero,
+                                    StatCode = stations[i].Code,
+                                };
+
+                                var lineTimings = ArrivalTimesToNextStations(currentLine, nextExitTime, i, allConStats, lastStationName).ToList();
 
                                 var lineTiming = (from lt in lineTimings
                                                   where lt.StatCode == Simulator.Instance.StatCode
@@ -1176,11 +1187,23 @@ namespace BL
                                 {
                                     Simulator.Instance.LineTiming = lineTiming;
                                 }
-                            }
-                        }).Start();
-                        //Thread.Sleep((int)lineExit.Freq.TotalMilliseconds / Clock.Instance.Rate);
-                    }
 
+                                var sleep = lineTimings[0].ArrivalTime.TotalMilliseconds / Clock.Instance.Rate;
+
+                                Thread.Sleep((int)sleep);
+                            }
+
+                            Simulator.Instance.LineTiming = new LineTiming()
+                            {
+                                BusLineId = lineExit.BusLineId,
+                                StartTime = nextExitTime,
+                                LastStationName = lastStationName,
+                                LineNumber = lineExit.LineNumber,
+                                ArrivalTime = TimeSpan.Zero,
+                                StatCode = stations[stations.Count - 1].Code,
+                            };
+                        }).Start();
+                    }
                 }).Start();
             }
         }
@@ -1189,16 +1212,6 @@ namespace BL
         {
             var toReturn = new List<LineTiming>();
             var interval = TimeSpan.Zero;
-
-            toReturn.Add(new LineTiming()
-            {
-                BusLineId = busLine.BusLineId,
-                StartTime = start,
-                LastStationName = lastStatName,
-                LineNumber = busLine.LineNumber,
-                ArrivalTime = interval,
-                StatCode = busLine.ListOfLineStations.ToList()[index].Code,
-            });
 
             for (var i = index; i < busLine.ListOfLineStations.Count() - 1; i++)
             {
@@ -1216,6 +1229,7 @@ namespace BL
                     ArrivalTime = interval,
                     StatCode = busLine.ListOfLineStations.ToList()[i + 1].Code,
                 });
+
             }
 
             return toReturn;

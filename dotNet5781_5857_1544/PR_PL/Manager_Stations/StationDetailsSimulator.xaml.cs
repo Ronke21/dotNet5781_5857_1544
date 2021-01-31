@@ -22,15 +22,16 @@ namespace PL
         private readonly BusStation currentBusStation;
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;
         private SimulationPage _simulationPage;
-        private List<LineTiming> lineTimings = new List<LineTiming>();
+        //private IEnumerable<LineTiming> lineTimings = new List<LineTiming>();
         private ObservableCollection<LineTiming> lineTimesObsColl = new ObservableCollection<LineTiming>();
         public StationDetailsSimulator(IBL b, BusStation busStation, SimulationPage sp)
         {
             InitializeComponent();
 
             DigitalDisplayDataGrid.ItemsSource = lineTimesObsColl;
-            
 
+            // add a new sorting rule, sort by "StartTime"
+            DigitalDisplayDataGrid.Items.SortDescriptions.Add(new SortDescription("StartTime", ListSortDirection.Ascending));
 
             currentBusStation = busStation;
             _simulationPage = sp;
@@ -62,36 +63,19 @@ namespace PL
             // get lineTimings and add it to the digital sign
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                var x = ((from lt in lineTimings
-                          where lt.BusLineId == lineTiming.BusLineId &&
-                                lt.StartTime == lineTiming.StartTime
-                          select lt).FirstOrDefault());
-                if (x!=null)
+                var x = (from lt in lineTimesObsColl
+                         where lt.BusLineId == lineTiming.BusLineId &&
+                               lt.StartTime == lineTiming.StartTime
+                         select lt).FirstOrDefault();
+                if (x != null)
                 {
+                    DigitalDisplayLastBus.ItemsSource = new ObservableCollection<LineTiming> {x};
                     lineTimesObsColl.Remove(x);
                 }
                 if (lineTiming.ArrivalTime != TimeSpan.Zero)
                 {
                     lineTimesObsColl.Add(lineTiming);
                 }
-
-
-                /*
-                if (lineTimings.Count >0)
-                {
-                lineTimings.Remove((from lt in lineTimings
-                                    where lt.BusLineId == lineTiming.BusLineId &&
-                                          lt.StartTime == lineTiming.StartTime
-                                    select lt).First());
-                }
-
-                if (lineTiming.ArrivalTime != TimeSpan.Zero)
-                {
-                    lineTimings.Add(lineTiming);
-                }
-
-                DigitalDisplayDataGrid.ItemsSource = lineTimings.OrderBy(l => l.ArrivalTime);
-            */
             }));
         }
 
@@ -119,12 +103,12 @@ namespace PL
             smw.ShowDialog();
         }
 
-        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
-        }
+        //private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    if (e.LeftButton == MouseButtonState.Pressed)
+        //    {
+        //        DragMove();
+        //    }
+        //}
     }
 }

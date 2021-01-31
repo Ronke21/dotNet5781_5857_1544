@@ -7,18 +7,25 @@
 		<EndTime>PT23H30M0S</EndTime>
 		<Freq>PT15M</Freq>
 	</LineExit>
-	<!--<LineExit>
-		<BusLineId>21</BusLineId>
-		<Active>true</Active>
-		<StartTime>PT23H20M11S</StartTime>
-		<EndTime>P1DT7H20M11S</EndTime>
-		<Freq>PT25M</Freq>
-	</LineExit>
 	<LineExit>
+		<BusLineId>24</BusLineId>
+		<Active>true</Active>
+		<StartTime>PT0H0M0S</StartTime>
+		<EndTime>PT22H30M0S</EndTime>
+		<Freq>PT20M</Freq>
+	</LineExit>
+	<!--<LineExit>
+		<BusLineId>24</BusLineId>
+		<Active>true</Active>
+		<StartTime>PT0H0M0S</StartTime>
+		<EndTime>PT23H30M0S</EndTime>
+		<Freq>PT15M</Freq>
+	</LineExit>-->
+	<!--<LineExit>
 		<BusLineId>23</BusLineId>
 		<Active>true</Active>
-		<StartTime>PT23H20M11S</StartTime>
-		<EndTime>P1DT7H20M11S</EndTime>
-		<Freq>PT25M</Freq>
+		<StartTime>PT7H0M0S</StartTime>
+		<EndTime>PT9H30M0S</EndTime>
+		<Freq>PT30M</Freq>
 	</LineExit>-->
 </LineExits>
