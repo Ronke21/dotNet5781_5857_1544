@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -22,9 +23,14 @@ namespace PL
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;
         private SimulationPage _simulationPage;
         private List<LineTiming> lineTimings = new List<LineTiming>();
+        private ObservableCollection<LineTiming> lineTimesObsColl = new ObservableCollection<LineTiming>();
         public StationDetailsSimulator(IBL b, BusStation busStation, SimulationPage sp)
         {
             InitializeComponent();
+
+            DigitalDisplayDataGrid.ItemsSource = lineTimesObsColl;
+            
+
 
             currentBusStation = busStation;
             _simulationPage = sp;
@@ -56,10 +62,28 @@ namespace PL
             // get lineTimings and add it to the digital sign
             Dispatcher.BeginInvoke(new Action(() =>
             {
+                var x = ((from lt in lineTimings
+                          where lt.BusLineId == lineTiming.BusLineId &&
+                                lt.StartTime == lineTiming.StartTime
+                          select lt).FirstOrDefault());
+                if (x!=null)
+                {
+                    lineTimesObsColl.Remove(x);
+                }
+                if (lineTiming.ArrivalTime != TimeSpan.Zero)
+                {
+                    lineTimesObsColl.Add(lineTiming);
+                }
+
+
+                /*
+                if (lineTimings.Count >0)
+                {
                 lineTimings.Remove((from lt in lineTimings
                                     where lt.BusLineId == lineTiming.BusLineId &&
                                           lt.StartTime == lineTiming.StartTime
                                     select lt).First());
+                }
 
                 if (lineTiming.ArrivalTime != TimeSpan.Zero)
                 {
@@ -67,6 +91,7 @@ namespace PL
                 }
 
                 DigitalDisplayDataGrid.ItemsSource = lineTimings.OrderBy(l => l.ArrivalTime);
+            */
             }));
         }
 

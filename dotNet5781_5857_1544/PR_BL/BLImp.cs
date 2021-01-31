@@ -1153,8 +1153,8 @@ namespace BL
                                             select time).FirstOrDefault();
 
                         // wait for nearest exit time
-                        var t = (nextExitTime.TimeOnly() - Clock.Instance.Time.TimeOnly()).Milliseconds;
-                        var wait = t / Clock.Instance.Rate;
+                        var t = (nextExitTime.TimeOnly() - Clock.Instance.Time.TimeOnly()).TotalMilliseconds;
+                        var wait = (int)t / Clock.Instance.Rate;
                         Thread.Sleep(wait);
 
                         // start line exit
@@ -1189,6 +1189,16 @@ namespace BL
         {
             var toReturn = new List<LineTiming>();
             var interval = TimeSpan.Zero;
+
+            toReturn.Add(new LineTiming()
+            {
+                BusLineId = busLine.BusLineId,
+                StartTime = start,
+                LastStationName = lastStatName,
+                LineNumber = busLine.LineNumber,
+                ArrivalTime = interval,
+                StatCode = busLine.ListOfLineStations.ToList()[index].Code,
+            });
 
             for (var i = index; i < busLine.ListOfLineStations.Count() - 1; i++)
             {
