@@ -19,7 +19,7 @@
     <Grid>
         
         <DataGrid
-            x:Name="StationsDataGrid"
+            Name="StationsDataGrid"
             AutoGenerateColumns="False"
             EnableRowVirtualization="True"
             ItemsSource="{Binding}"
@@ -87,7 +87,7 @@
                     Height="50"
                     Width="230"
                     FontSize="15"
-                    BorderBrush="Red" Margin="0,-6,26,0"
+                    Margin="0,-6,26,0"
                     materialDesign:HintAssist.Hint="Search Station by code / name"  
                     materialDesign:HintAssist.IsFloating="True"
                 />
@@ -107,19 +107,25 @@
                 Height="50"/>
         </Button>
 
-        <Button 
+        <Button
             x:Name="Add"
+            Click="Add_OnClick"
             Width="100"
             Height="100"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
-            Click="Add_OnClick"
-            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            Grid.RowSpan="2"
         >
+
             <materialDesign:PackIcon
                 Kind="Add"
-                Width="50"
-                Height="50"/>
+                Width="60" 
+                Height="60"
+                >
+
+            </materialDesign:PackIcon>
+
         </Button>
 
     </Grid>

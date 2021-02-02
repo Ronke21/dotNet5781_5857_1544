@@ -99,10 +99,10 @@ namespace Dal
                             LastMaint = DateTime.Parse(bs.Element("LastMaint").Value),
                         };
 
-            if (!buses.Any())
-            {
-                throw new EmptyListException("List is Empty");
-            }
+            //if (!buses.Any())
+            //{
+            //    throw new EmptyListException("List is Empty");
+            //}
 
             return buses;
         }

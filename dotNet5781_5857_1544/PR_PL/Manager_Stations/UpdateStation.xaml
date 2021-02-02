@@ -7,38 +7,71 @@
         mc:Ignorable="d"
         Title="UpdateStation"
         Height="420" 
-        Width="325">
+        Width="325"
+        
+        WindowStartupLocation="CenterScreen"
 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None">
 
-    <Grid
-    Name="MasterGrid">
+    <Border
+        CornerRadius="15"
+        Background="White"
+        MouseDown="UIElement_OnMouseDown"
+        BorderBrush="#007ACC"
+        BorderThickness="2">
 
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Grid
-        Grid.Row="0"
-        Name="DetailsGrid"
+        <StackPanel
+            VerticalAlignment="Top"
+            Height="420"
         >
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+            <Button
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
+                Name="Close"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Click="Close_OnClick"
+                Margin="15"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            >
+                <materialDesign:PackIcon
+                    Kind="Close"
+                    Width="30"
+                    Height="30"
+                />
 
-            <Label 
+            </Button>
+
+                <Grid
+                    Name="DetailsGrid"
+                    Height="280"
+                    >
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label 
         Content="Code"
         Grid.Row="0"
         Grid.Column="0"
@@ -49,7 +82,7 @@
         FontWeight="Medium"
         />
 
-            <Label 
+                    <Label 
         Content="Name"
         Grid.Row="1"
         Grid.Column="0"
@@ -60,7 +93,7 @@
         FontWeight="Medium"
         />
 
-            <Label 
+                    <Label 
               Content="Address"
               Grid.Row="2"
               Grid.Column="0"
@@ -71,7 +104,7 @@
               FontWeight="Medium"
           />
 
-            <Label 
+                    <Label 
         Content="Longitude"
         Grid.Row="3"
         Grid.Column="0"
@@ -82,7 +115,7 @@
         FontWeight="Medium"
         />
 
-            <Label 
+                    <Label 
         Content="Latitude"
         Grid.Row="4"
         Grid.Column="0"
@@ -93,7 +126,7 @@
         FontWeight="Medium"
         />
 
-            <Label 
+                    <Label 
                 Content="Accessible?"
                 Grid.Row="5"
                 Grid.Column="0"
@@ -104,16 +137,17 @@
                 FontWeight="Medium"
             />
 
-            <Label 
-        Name="lbCode"
-        Content="{Binding Path=Code}"
-        Grid.Row="0"
-        Grid.Column="1"
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center"
-          />
+                    <Label
+                        Name="lbCode"
+                        Content="{Binding Path=Code}"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        ToolTip="Can't change station number"
+                        />
 
-            <TextBox
+                    <TextBox
         Name="TextBoxName"
         Text="{Binding Path = Name}"
         Grid.Row="1"
@@ -122,11 +156,11 @@
         HorizontalAlignment="Stretch"
         VerticalContentAlignment="Center"
         HorizontalContentAlignment="Center"
-        Width="110"
+        Width="200"
         Height="30"
             />
 
-            <TextBox
+                    <TextBox
         Name="TextBoxAddress"
         Text="{Binding Path = Address}"
         Grid.Row="2"
@@ -135,110 +169,68 @@
         HorizontalAlignment="Stretch"
         VerticalContentAlignment="Center"
         HorizontalContentAlignment="Center"
-        Width="110"
+        Width="200"
         Height="30"
         />
 
-            <TextBox
+                    <TextBox
         Name="TextBoxLongitude"
+        Text="{Binding Path = Location.Longitude}"
         Grid.Row="3"
         Grid.Column="1"
         VerticalAlignment="Stretch"
         HorizontalAlignment="Stretch"
         VerticalContentAlignment="Center"
         HorizontalContentAlignment="Center"
-        Width="110"
+        Width="200"
         Height="30"
-        PreviewTextInput="TextBox_OnPreviewTextInput"
+        PreviewTextInput="TextBoxWithPeriod_OnPreviewTextInput"
         />
 
-            <TextBox
+                    <TextBox
         Name="TextBoxLatitude"
+        Text="{Binding Path = Location.Latitude}"
         Grid.Row="4"
         Grid.Column="1"
         VerticalAlignment="Stretch"
         HorizontalAlignment="Stretch"
         VerticalContentAlignment="Center"
         HorizontalContentAlignment="Center"
-        Width="110"
+        Width="200"
         Height="30"
-        PreviewTextInput="TextBox_OnPreviewTextInput"
+        PreviewTextInput="TextBoxWithPeriod_OnPreviewTextInput"
             />
 
 
-            <CheckBox 
+                    <CheckBox 
                 Name="CheckBoxAccessible"
-                IsChecked="{Binding Path=Accessible}"
+                IsChecked="{Binding Path=Accessible, Mode=OneWay}"
                 Grid.Row="5"
                 Grid.Column="1"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 />
-        </Grid>
 
-        <Grid
-            Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80*"/>
-                <ColumnDefinition Width="35*"/>
-                <ColumnDefinition Width="203*"/>
-            </Grid.ColumnDefinitions>
-
+                </Grid>
 
             <Button
-            Name="Update"
-            Grid.Row="5"
-            Height="50"
-            Grid.ColumnSpan="4"
-            Margin="5,5,5,5"
-            Click="Update_OnClick">
-
-                <StackPanel
-                Orientation="Horizontal"
+                Height="60"
+                Width="60"
+                VerticalAlignment="Bottom"
+                Click="Update_OnClick"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
             >
-                    <Label
-                    Content="Update"
-                    VerticalAlignment="Center"
-                    FontSize="16"
-                    FontWeight="Medium"
+                <materialDesign:PackIcon
+                    Kind="Update"
+                    Width="40"
+                    Height="40"
                 />
-                    <Image Source="https://img.icons8.com/material-rounded/72/approve-and-update.png"
-                       Height="25"
-                />
-
-                </StackPanel>
-
-                <Button.Resources>
-
-                    <Style TargetType="Border">
-
-                        <Setter 
-                        Property="CornerRadius" 
-                        Value="5"
-                    />
-
-                    </Style>
-
-                </Button.Resources>
-
-                <Button.Effect>
-                    <DropShadowEffect
-                    BlurRadius="10"
-                    Color="Gray"
-                    ShadowDepth="1"
-                />
-                </Button.Effect>
 
             </Button>
 
+        </StackPanel>
 
-
-        </Grid>
-
-
-    </Grid>
-
-
+    </Border>
 
 
 </Window>

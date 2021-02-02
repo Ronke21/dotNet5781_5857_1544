@@ -1,4 +1,5 @@
-﻿using BLApi;
+﻿using System;
+using BLApi;
 using BO;
 using System.Device.Location;
 using System.Text.RegularExpressions;
@@ -26,8 +27,6 @@ namespace PL
             _simulationPage = sp;
 
             DetailsGrid.DataContext = currentBusStation;
-            TextBoxLongitude.Text = currentBusStation.Location.Longitude.ToString();
-            TextBoxLatitude.Text = currentBusStation.Location.Latitude.ToString();
         }
 
         private void Update_OnClick(object sender, RoutedEventArgs e)
@@ -38,7 +37,7 @@ namespace PL
                 var add = TextBoxAddress.Text;
                 double.TryParse(TextBoxLongitude.Text, out var lon);
                 double.TryParse(TextBoxLatitude.Text, out var lat);
-                var access = CheckBoxAccessible.IsChecked != null && (bool)CheckBoxAccessible.IsChecked;
+                var access = CheckBoxAccessible.IsChecked != null && (bool) CheckBoxAccessible.IsChecked;
 
                 var updated = new BusStation
                 {
@@ -53,16 +52,25 @@ namespace PL
                 _bl.UpdateBusStation(updated);
                 Close();
             }
-
-            catch (BO.NotInIsraelException ex)
-            {
-                MessageBox.Show(ex.Message, "can't update station!");
-
-            }
-
-            catch (BO.StationDoesNotExistException ex)
+            catch (BO.BadUpdateException ex)
             {
                 MessageBox.Show(ex.Message, "Station updating Error!");
+                return;
+            }
+            catch (BO.GeneralErrorException ex)
+            {
+                MessageBox.Show(ex.Message, "Station updating Error!");
+                return;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Unknown error", "Station updating Error!");
+                return;
+            }
+            finally
+            {
+                TextBoxLongitude.Text = currentBusStation.Location.Longitude.ToString();
+                TextBoxLatitude.Text = currentBusStation.Location.Latitude.ToString();
             }
 
             wnd.DataDisplay.Content = new StationsViewPage(_bl,_simulationPage);
@@ -70,17 +78,27 @@ namespace PL
             Close();
         }
 
-
-        private void TextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Close_OnClick(object sender, RoutedEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+[.]");
+            Close();
+        }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+        private void TextBoxWithPeriod_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^0-9.]+");
             e.Handled = regex.IsMatch(e.Text);
             if (e.Handled)
             {
                 MessageBox.Show($"digits only\n'{e.Text}' is not a digit");
             }
         }
-
     }
 
 

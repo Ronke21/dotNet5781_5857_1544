@@ -6,479 +6,238 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="BusDetails"
-        Height="360" 
-        Width="360"
-        x:Name="BusDetailsWindow">
-    <Window.Resources>
-        <LinearGradientBrush x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
-            <GradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="White" Offset="0.0"/>
-                    <GradientStop Color="White" Offset="0.1"/>
-                    <GradientStop Color="White" Offset="0.9"/>
-                    <GradientStop Color="White" Offset="1.0"/>
-                </GradientStopCollection>
-            </GradientBrush.GradientStops>
-        </LinearGradientBrush>
-        <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
-        <LinearGradientBrush x:Key="DarkBrush" StartPoint="0,0" EndPoint="0,1">
-            <GradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="LightGreen" Offset="0.0"/>
-                    <GradientStop Color="Green" Offset="1.0"/>
-                </GradientStopCollection>
-            </GradientBrush.GradientStops>
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="NormalBorderBrush" StartPoint="0,0" EndPoint="0,1">
-            <GradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="White" Offset="0.0"/>
-                    <GradientStop Color="White" Offset="1.0"/>
-                </GradientStopCollection>
-            </GradientBrush.GradientStops>
-        </LinearGradientBrush>
-        <Style x:Key="{x:Type ProgressBar}" TargetType="{x:Type ProgressBar}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ProgressBar}">
-                        <Grid>
-                            <Border Name="PART_Track" CornerRadius="3" Background="{StaticResource PressedBrush}" BorderBrush="{StaticResource SolidBorderBrush}" BorderThickness="0.5" />
-                            <Border Name="PART_Indicator" CornerRadius="3" Background="{StaticResource DarkBrush}" BorderBrush="Transparent"  BorderThickness="2,2,2,2" HorizontalAlignment="Left" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
+        Height="420" 
+        Width="325"
+        x:Name="BusDetailsWindow"
+        WindowStartupLocation="CenterScreen"
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
-        </Grid.RowDefinitions>
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None">
 
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <LinearGradientBrush.RelativeTransform>
-                    <TransformGroup>
-                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                        <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </LinearGradientBrush.RelativeTransform>
-                <GradientStop Color="#AA01A77C" Offset="0.013"/>
-                <GradientStop Color="#AA30A4B8" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+    <Border
+        CornerRadius="15"
+        Background="White"
+        MouseDown="UIElement_OnMouseDown"
+        BorderBrush="#007ACC"
+        BorderThickness="2">
 
-        <!--License number-->
-        <Label 
-        Content="License number"
+        <StackPanel
+            VerticalAlignment="Top"
+            Height="420"
+        >
+
+            <Button
+
+                Name="Close"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Click="Close_OnClick"
+                Margin="15"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            >
+                <materialDesign:PackIcon
+                    Kind="Close"
+                    Width="30"
+                    Height="30"
+                />
+
+            </Button>
+
+            <Grid
+                Height="280"
+                >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label 
+        Content="Starting date"
         Grid.Row="0"
         Grid.Column="0"
         HorizontalAlignment="Left" 
         VerticalAlignment="Center"
-        FontWeight="Bold"
-        FontSize="12"
         Margin="15,0,0,0"
-        Grid.ColumnSpan="3"
-        >
+        FontSize="15"
+        FontWeight="Medium"
+        />
 
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
-
-        <!--Fuel amount-->
-        <Label 
-        Content="Fuel amount"
+                <Label 
+        Content="License number"
         Grid.Row="1"
         Grid.Column="0"
         HorizontalAlignment="Left" 
         VerticalAlignment="Center"
-        FontWeight="Bold"
-        FontSize="12"
         Margin="15,0,0,0"
-        Grid.ColumnSpan="3"
-        >
-            <Label.Effect>
+        FontSize="15"
+        FontWeight="Medium"
+        />
 
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
+                <Label 
+              Content="Fuel amount"
+              Grid.Row="2"
+              Grid.Column="0"
+              HorizontalAlignment="Left" 
+              VerticalAlignment="Center"
+              Margin="15,0,0,0"
+              FontSize="15"
+              FontWeight="Medium"
+          />
 
-            </Label.Effect>
-
-        </Label>
-
-        <Label 
+                <Label 
         Content="Mileage"
-        Grid.Row="2"
+        Grid.Row="3"
         Grid.Column="0"
         HorizontalAlignment="Left" 
         VerticalAlignment="Center"
-        FontWeight="Bold"
-        FontSize="12"
         Margin="15,0,0,0"
-        Grid.ColumnSpan="3"
-        >
+        FontSize="15"
+        FontWeight="Medium"
+        />
 
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
-
-        <Label 
-            Content="Starting date"
-            Grid.Row="3"
-            Grid.Column="0"
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Center"
-            FontWeight="Bold"
-            FontSize="12"
-            Margin="15,0,0,0"
-            Grid.ColumnSpan="3"
-        >
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
-
-        <Label 
+                <Label 
         Content="Last maintenance date"
         Grid.Row="4"
         Grid.Column="0"
         HorizontalAlignment="Left" 
         VerticalAlignment="Center"
-        FontWeight="Bold"
-        FontSize="12"
         Margin="15,0,0,0"
-        Grid.ColumnSpan="3"
-        >
-            <Label.Effect>
+        FontSize="15"
+        FontWeight="Medium"
+        />
 
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
+                <Label 
+                Content="Mileage since last maintenance"
+                Grid.Row="5"
+                Grid.Column="0"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center"
+                Margin="15,0,0,0"
+                FontSize="12"
+                FontWeight="Medium"
+            />
 
-            </Label.Effect>
-
-        </Label>
-
-        <Label 
-        Content="Status"
-        Grid.Row="5"
-        Grid.Column="0"
-        HorizontalAlignment="Left" 
-        VerticalAlignment="Center"
-        FontWeight="Bold"
-        FontSize="12"
-        Margin="15,0,0,0"
-        Grid.ColumnSpan="3"
-        >
-
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
-
-        <Label 
-        Content="Mileage from last maint"
-        Grid.Row="6"
-        Grid.Column="0"
-        HorizontalAlignment="Left" 
-        VerticalAlignment="Center"
-        FontWeight="Bold"
-        FontSize="12"
-        Margin="15,0,0,0"
-        Grid.ColumnSpan="3"
-        >
-
-            <Label.Effect>
-
-                <DropShadowEffect
-                    Color="White"
-                    Direction="0"
-                    ShadowDepth="0"
-                    BlurRadius="5"
-                />
-
-            </Label.Effect>
-
-        </Label>
-
-        <Label 
-        Name="lbID"
-        Content="{Binding Path=LicenseNumStr}"
+                <Label
+        Name="labelStart"
         Grid.Row="0"
-        Grid.Column="3"
-        Grid.ColumnSpan="3"
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center"
-          />
-
-        <Label 
-        Name="lbFuel"
-        Content="{Binding Path=Fuel}"
-        Grid.Row="1"
-        Grid.Column="3"
-        Grid.ColumnSpan="3"
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center"
-          />
-
-        <Label 
-        Name="lbKM"
-        Content="{Binding Path=Mileage}"
-        Grid.Row="2"
-        Grid.Column="3"
-        Grid.ColumnSpan="3"
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center"
-        />
-
-        <Label
-            Name="lbStart"
-            Content="{Binding Path=StartTime}"
-            ContentStringFormat="dd / MM / yyyy"
-            Grid.Row="3"
-            Grid.Column="3"
-            Grid.ColumnSpan="3"
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center"
-        />
-
-        <Label
-        Name="lbLast"
-        Content="{Binding Path=LastMaint}"
+        Grid.Column="1"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        HorizontalContentAlignment="Center"
+        VerticalContentAlignment="Center"
+        Width="110"
+        Height="25"
+        Content="{Binding Path=StartTime}"
         ContentStringFormat="dd / MM / yyyy"
-        Grid.Row="4"
-        Grid.Column="3"
-        Grid.ColumnSpan="3"
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center"
         />
 
-        <Label 
-        Name="lblState"
-        Content="{Binding Path=Stat}"
-        Grid.Row="5"
-        Grid.Column="3"
-        Grid.ColumnSpan="3"
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center"
+                <Label
+        Name="LabelBusLicenseNumber"
+        Grid.Row="1"
+        Grid.Column="1"
+        VerticalAlignment="Stretch"
+        HorizontalAlignment="Stretch"
+        VerticalContentAlignment="Center"
+        HorizontalContentAlignment="Center"
+        Width="110"
+        Height="30"
+        Content="{Binding Path=LicenseNumStr}"
+                />
+
+                <Label
+        Name="labelFuelAmount"
+        Grid.Row="2"
+        Grid.Column="1"
+        VerticalAlignment="Stretch"
+        HorizontalAlignment="Stretch"
+        VerticalContentAlignment="Center"
+        HorizontalContentAlignment="Center"
+        Width="110"
+        Height="30"
+        Content="{Binding Path=Fuel}"
         />
 
-        <Label 
-        Name="lbfromLast"  
-        Content="{Binding Path=MileageFromLast}"
-        Grid.Row="6"
-        Grid.Column="3"
-        Grid.ColumnSpan="3"
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center"
+                <Label
+        Name="labelMileage"
+        Grid.Row="3"
+        Grid.Column="1"
+        VerticalAlignment="Stretch"
+        HorizontalAlignment="Stretch"
+        VerticalContentAlignment="Center"
+        HorizontalContentAlignment="Center"
+        Width="110"
+        Height="30"
+        Content="{Binding Path=Mileage}"
+                />
+
+                <Label
+            Name="LabelLastMaintenance"
+            Grid.Row="4"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Width="110"
+            Height="25"
+            Content="{Binding Path=LastMaint}"
+            ContentStringFormat="dd / MM / yyyy"
         />
 
-        <Button
-        Name="Refuel"
-        FontSize="12"
-        Grid.Row="7"
-        Margin="5,5,5,5"
-        Grid.Column="0"
-        Grid.ColumnSpan="2">
-            <StackPanel
-                Orientation="Horizontal"
+                <Label
+                Name="LabelMileageSinceLastMaint"
+                Grid.Row="5"
+                Grid.Column="1"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Width="110"
+                Height="30"
+                Content="{Binding Path=MileageFromLast}"
+                />
+
+
+            </Grid>
+
+            <Button
+                Height="60"
+                Width="60"
+                VerticalAlignment="Bottom"
+                Click="Update_OnClick"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
                 >
-                <Label
-                    Content="Refuel"
-                    VerticalAlignment="Center"
-                    FontSize="16"
-                    FontWeight="Medium"
-                    />
+                <materialDesign:PackIcon
+                            Kind="Update"
+                            Width="40"
+                            Height="40"
+                        />
+
+            </Button>
 
 
-                <Image Source="https://img.icons8.com/dotty/250/gas-pump.png"
-                       Height="25"/>
+        </StackPanel>
 
-            </StackPanel>
+    </Border>
 
-            <Button.Resources>
-
-                <Style TargetType="Border">
-
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="5"
-                    />
-
-                </Style>
-
-            </Button.Resources>
-
-            <Button.Effect>
-                <DropShadowEffect
-                    BlurRadius="10"
-                    Color="Gray"
-                    ShadowDepth="1"
-                />
-            </Button.Effect>
-
-        </Button>
-
-        <Button
-        Name="Maintain"
-        Grid.Row="7"
-        Grid.Column="2"
-        Grid.ColumnSpan="2"
-        Margin="5,5,5,5">
-
-            <StackPanel
-                Orientation="Horizontal"
-                >
-                <Label
-                    Content="Maintain"
-                    VerticalAlignment="Center"
-                    FontSize="16"
-                    FontWeight="Medium"
-                    />
-                <Image Source="https://img.icons8.com/wired/250/gear.png"
-                       Height="25"
-                       />
-
-            </StackPanel>
-
-            <Button.Resources>
-
-                <Style TargetType="Border">
-
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="5"
-                    />
-
-                </Style>
-
-            </Button.Resources>
-
-            <Button.Effect>
-                <DropShadowEffect
-                    BlurRadius="10"
-                    Color="Gray"
-                    ShadowDepth="1"
-                />
-            </Button.Effect>
-
-        </Button>
-
-        <Button
-            Name="Update"
-            Grid.Row="7"
-            Grid.Column="4"
-            Grid.ColumnSpan="2"
-            Margin="5,5,5,5"
-            Click="Update_OnClick">
-
-            <StackPanel
-                Orientation="Horizontal"
-            >
-                <Label
-                    Content="Update"
-                    VerticalAlignment="Center"
-                    FontSize="16"
-                    FontWeight="Medium"
-                />
-                <Image Source="https://img.icons8.com/material-rounded/72/approve-and-update.png"
-                       Height="25"
-                />
-
-            </StackPanel>
-
-            <Button.Resources>
-
-                <Style TargetType="Border">
-
-                    <Setter 
-                        Property="CornerRadius" 
-                        Value="5"
-                    />
-
-                </Style>
-
-            </Button.Resources>
-
-            <Button.Effect>
-                <DropShadowEffect
-                    BlurRadius="10"
-                    Color="Gray"
-                    ShadowDepth="1"
-                />
-            </Button.Effect>
-
-        </Button>
-
-        <!--<ProgressBar
-            x:Name="pbRide"
-            Grid.Row="7"
-            Background="White"
-            Minimum = "0"
-            Value="{Binding Path = RIDE, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
-            Maximum="{Binding Path = MaxRide, Mode = OneWay, UpdateSourceTrigger = PropertyChanged}"
-            Grid.ColumnSpan="2"
-            Margin="5,5,5,5"
-        />-->
-
-    </Grid>
 </Window>

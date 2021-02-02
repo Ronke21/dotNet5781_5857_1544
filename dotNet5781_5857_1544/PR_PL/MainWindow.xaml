@@ -53,7 +53,7 @@
     <Grid
         Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -106,7 +106,6 @@
             MouseLeave="Exit_OnMouseLeave"
             MouseDown="Exit_OnMouseDown">
 
-
             <materialDesign:PackIcon
                 Kind="Close"
                 HorizontalAlignment="Center"
@@ -115,14 +114,6 @@
                 Height="40"
                 Width="40"
                 />
-            <!--<TextBlock
-                Name="X"
-                Text="×"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                FontSize="50"
-                Foreground="White"
-                Margin="0,0,0,0"/>-->
 
         </Border>
 
@@ -168,6 +159,17 @@
                     />
 
             </Button>
+
+            <!--<ToggleButton
+                Grid.Row="0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Foreground="White"
+                Width="90"
+                Height="60"
+                Click="ButtonBase_OnClick"
+                Style="{DynamicResource MaterialDesignHamburgerToggleButton}" 
+                />-->
 
             <Button
                 Name="BusesSidePanel"

@@ -638,7 +638,7 @@
     <Name>The fig / oak</Name>
     <Address>The fig , peek</Address>
     <Accessible>true</Accessible>
-    <Active>false</Active>
+    <Active>true</Active>
   </BusStation>
   <BusStation>
     <Code>38881</Code>
@@ -4786,6 +4786,22 @@
   </BusStation>
   <BusStation>
     <Code>39284</Code>
+    <Location>
+      <Latitude>34.859784</Latitude>
+      <Longitude>32.337702</Longitude>
+      <Altitude>NaN</Altitude>
+      <HorizontalAccuracy>NaN</HorizontalAccuracy>
+      <VerticalAccuracy>NaN</VerticalAccuracy>
+      <Speed>NaN</Speed>
+      <Course>NaN</Course>
+    </Location>
+    <Name>Weizmann / Sharett</Name>
+    <Address>Sderot Chaim Weizman 76, Netanya</Address>
+    <Accessible>true</Accessible>
+    <Active>true</Active>
+  </BusStation>
+  <BusStation>
+    <Code>1</Code>
     <Location>
       <Latitude>34.859784</Latitude>
       <Longitude>32.337702</Longitude>

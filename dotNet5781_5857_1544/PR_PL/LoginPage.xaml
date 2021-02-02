@@ -110,9 +110,11 @@
                     <PasswordBox
                         Name="NameTextBox"
                         Width="200"
-                        FontSize="15"
+                        FontSize="18"
                         materialDesign:HintAssist.Hint="Password"  
-                        materialDesign:HintAssist.IsFloating="True"/>
+                        materialDesign:HintAssist.IsFloating="True"
+                        PasswordChar=""
+                        />
 
                     <materialDesign:PackIcon
                         VerticalAlignment="Bottom"

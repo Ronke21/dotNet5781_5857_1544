@@ -40,8 +40,8 @@ namespace PL
                 return;
             }
             var us = new UpdateStation(_bl, currentBS, _simulationPage);
-            us.ShowDialog();
             Close();
+            us.ShowDialog();
         }
 
         private void Map_OnClick(object sender, RoutedEventArgs e)

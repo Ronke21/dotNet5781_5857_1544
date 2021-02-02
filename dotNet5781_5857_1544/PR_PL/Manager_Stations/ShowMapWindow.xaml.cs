@@ -15,6 +15,8 @@ namespace PL
 
             var station = bs;
 
+            DataContext = station;
+
             var longitude = station.Location.Longitude;
             var latitude = station.Location.Latitude;
             try

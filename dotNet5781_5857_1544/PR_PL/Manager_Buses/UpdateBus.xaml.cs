@@ -29,11 +29,11 @@ namespace PL
             //int.TryParse((string) LicenseNumLabel.Content, out var License);
             try
             {
-                int.TryParse(TextBoxFuel.Text, out var fuel);
+                int.TryParse(TextBoxFuelAmount.Text, out var fuel);
                 int.TryParse(TextBoxMileage.Text, out var mileage);
                 //DateTime.TryParse((string)StartLabel.Content, out var start);
-                DateTime.TryParse(DpLastMaint.Text, out var last);
-                int.TryParse(TextBoxMileageFromLast.Text, out var mileageFromLast);
+                DateTime.TryParse(DatePickerLastMaintenance.Text, out var last);
+                int.TryParse(TextBoxMileageSinceLastMaint.Text, out var mileageFromLast);
 
                 var updated = new Bus
                 {
@@ -48,11 +48,24 @@ namespace PL
                 _bl.UpdateBus(updated);
                 Close();
             }
-            catch (Exception exception)
+            catch (BO.BadUpdateException ex)
             {
-                Console.WriteLine(exception);
-                throw;
+                if (ex.InnerException != null)
+                {
+                    MessageBox.Show(ex.InnerException.Message, "Can't add bus");
+                }
+                return;
             }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    MessageBox.Show("unknown error" + ex.InnerException.Message, "Can't add bus");
+                }
+                return;
+            }
+
+            Close();
         }
 
         private void TextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -72,6 +85,19 @@ namespace PL
                 e.Handled = true;
                 MessageBox.Show("Space is not allowed");
             }
+        }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Close_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

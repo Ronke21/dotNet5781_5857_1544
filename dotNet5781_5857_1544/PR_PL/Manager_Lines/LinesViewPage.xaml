@@ -100,20 +100,20 @@
 
         <Button
             x:Name="Add"
+            Click="Add_OnClick"
             Width="100"
             Height="100"
             Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-            ToolTip="MaterialDesignFloatingActionMiniDarkButton"
-            Background="#FF0064A6"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
-            Click="Add_OnClick">
+            Grid.RowSpan="2"
+        >
 
             <materialDesign:PackIcon
                 Kind="Add"
                 Width="60" 
                 Height="60"
-                BorderBrush="#FFE2EDFF">
+               >
 
             </materialDesign:PackIcon>
 

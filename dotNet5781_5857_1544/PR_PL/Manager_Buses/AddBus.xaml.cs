@@ -19,7 +19,7 @@ namespace PL
 
             _bl = b;
         }
-        
+
         private void DatePicker_OnCalendarClosed(object sender, RoutedEventArgs e)
         {
             if (DatePickerStart.Text == String.Empty)
@@ -71,15 +71,36 @@ namespace PL
                 };
                 _bl.AddBus(ToAdd);
             }
-            catch (BO.NotValidFuelAmountException ex)
-            {
-                MessageBox.Show(ex.Message, "Can't add Bus!");
-            }
             catch (BO.BadAdditionException ex)
             {
-                MessageBox.Show(ex.Message, "Can't add Bus!");
+                if (ex.InnerException != null)
+                {
+                    MessageBox.Show(ex.InnerException.Message, "Can't add bus");
+                }
+                return;
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    MessageBox.Show("unknown error" + ex.InnerException.Message, "Can't add bus");
+                }
+                return;
             }
 
+            Close();
+        }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Close_OnClick(object sender, RoutedEventArgs e)
+        {
             Close();
         }
     }

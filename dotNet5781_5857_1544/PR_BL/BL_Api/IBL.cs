@@ -16,7 +16,7 @@ namespace BLApi
         IEnumerable<BO.Bus> GetAllInActiveBusesByCode(string cod);
         //IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);   // R
         BO.Bus GetBus(int licenseNum);                                 // R
-        void UpdateBus(BO.Bus bus);                                    // U
+        void UpdateBus(BO.Bus busBo);                                    // U
         void ActivateBus(int licenseNum);
         //void UpdateBus(int licenseNum, Action<Bus> update);       // U
         void DeleteBus(int licenseNum);                             // D

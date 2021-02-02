@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,13 +18,21 @@ namespace PL
         private readonly IBL _bl;
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;
         private SimulationPage _simulationPage;
-        private bool simulation;
+        private bool _simulation;
+        //private ObservableCollection<BusStation> _display;
         public StationsViewPage(IBL b, SimulationPage sp)
         {
             InitializeComponent();
 
             _bl = b;
             _simulationPage = sp;
+
+            //_display = new ObservableCollection<BusStation>(_bl.GetAllBusStations());
+
+            //StationsDataGrid.ItemsSource = _display;
+
+            //// add a new sorting rule, sort by "Code"
+            //StationsDataGrid.Items.SortDescriptions.Add(new SortDescription("Code", ListSortDirection.Ascending));
 
             Refresh();
         }
@@ -78,12 +88,13 @@ namespace PL
         {
             var ast = new AddStation(_bl);
             ast.ShowDialog();
+            Refresh();
         }
         private void Refresh()
         {
             try
             {
-                StationsDataGrid.DataContext = _bl.GetAllBusStations().ToList();
+                StationsDataGrid.ItemsSource = _bl.GetAllBusStations();
             }
             catch (BO.EmptyListException e)
             {
@@ -93,11 +104,18 @@ namespace PL
             {
                 MessageBox.Show("Unknown ERROR!" + ex.Message, "Station Loading Error!");
             }
+            Sort();
+        }
+
+        private void Sort()
+        {
+            // add a new sorting rule, sort by "Code"
+            StationsDataGrid.Items.SortDescriptions.Add(new SortDescription("Code", ListSortDirection.Ascending));
         }
 
         private void SearchLinesTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            StationsDataGrid.DataContext = _bl.GetAllBusStationsByCodeOrName(SearchLinesTextBox.Text).ToList();          
+            StationsDataGrid.DataContext = _bl.GetAllBusStationsByCodeOrName(SearchLinesTextBox.Text);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace BL
         }
         private bool BusIsFit(BO.Bus bus)
         {
-            // year and number
+            // new buses must have 8 digit number
             if (bus.StartTime.Year > 2017 && (bus.LicenseNum < 10000000 || bus.LicenseNum > 99999999))
             {
                 throw new NotValidLicenseNumberException("Buses made after 2017 must have 8 digits number");
@@ -50,16 +50,34 @@ namespace BL
                 throw new NotValidLicenseNumberException("Buses can only have 8 or 7 digits number");
             }
 
+            // bus cannot be maintained before starting service
+            if (bus.StartTime > bus.LastMaint)
+            {
+                throw new BadDatesException("Maintenance time cannot be before start time");
+            }
+
+            // start/last maint time can't be in the future
+            if (bus.LastMaint > DateTime.Today || bus.StartTime > DateTime.Today)
+            {
+                throw new BadDatesException("Can you see the future?");
+            }
+
             // fuel over 1200 under 0
             if (bus.Fuel < 0 || bus.Fuel > 1200)
             {
-                throw new NotValidFuelAmountException("Bus must have 0 - 1200");
+                throw new NotValidFuelAmountException("Bus must have 0 - 1200 FUEL");
             }
 
             // mileage only under 250000 and over 0
             if (bus.Mileage < 0 || bus.Mileage > 250000)
             {
-                throw new BO.NotValidFuelAmountException("Added bus must have 0 - 250,000 KM mileage");
+                throw new BO.NotValidMileageException("Added bus must have 0 - 250,000 KM mileage");
+            }
+
+            // mileage only under 250000 and over 0
+            if (bus.MileageFromLast > bus.Mileage)
+            {
+                throw new BO.NotValidMileageException("Mileage from last maintenance cannot be more then the overall mileage");
             }
 
             return true;
@@ -140,11 +158,22 @@ namespace BL
             {
                 throw new BO.BadAdditionException("Can't add bus", ex);
             }
+            catch (BO.BadDatesException ex)
+            {
+                throw new BO.BadAdditionException("Can't add bus", ex);
+            }
             catch (BO.NotValidFuelAmountException ex)
             {
                 throw new BO.BadAdditionException("Can't add bus", ex);
             }
-
+            catch (BO.NotValidMileageException ex)
+            {
+                throw new BO.BadAdditionException("Can't add bus", ex);
+            }
+            catch (Exception)
+            {
+                throw new BO.BadAdditionException("Can't add bus, unknown error");
+            }
         }
         public IEnumerable<BO.Bus> GetAllBuses()
         {
@@ -190,11 +219,15 @@ namespace BL
                 return from bus in _dal.GetAllInActiveBuses()
                        select BusDoToBoAdapter(bus);
             }
-
-            catch (DO.EmptyListException ex)
+            catch (Exception)
             {
-                throw new BO.EmptyListException("No buses in the list", ex);
+                throw new GeneralErrorException("Unknown error");
             }
+
+            //catch (DO.EmptyListException ex)
+            //{
+            //    throw new BO.EmptyListException("No buses in the list", ex);
+            //}
         }
         public IEnumerable<BO.Bus> GetAllInActiveBusesByCode(string cod)
         {
@@ -242,27 +275,34 @@ namespace BL
                 throw new BO.BusDoesNotExistsException("Can't activate the bus!", ex);
             }
         }
-        public void UpdateBus(BO.Bus bus)
+        public void UpdateBus(BO.Bus busBo)
         {
             try
             {
-                if (!BusIsFit(bus)) return;
-                var b = new DO.Bus();
-                bus.CopyPropertiesTo(b);
-                _dal.UpdateBus(b);
-            }
-
-            catch (DO.BusDoesNotExistsException ex)
-            {
-                throw new BO.BusCanNotBeUpdatedException("Can't update bus", ex);
+                BusIsFit(busBo);
+                var busDo = new DO.Bus();
+                busBo.CopyPropertiesTo(busDo);
+                _dal.UpdateBus(busDo);
             }
             catch (BO.NotValidLicenseNumberException ex)
             {
-                throw new BO.BusCanNotBeUpdatedException("Can't update bus", ex);
+                throw new BO.BadUpdateException("Can't update bus", ex);
+            }
+            catch (BO.BadDatesException ex)
+            {
+                throw new BO.BadUpdateException("Can't update bus", ex);
             }
             catch (BO.NotValidFuelAmountException ex)
             {
-                throw new BO.BusCanNotBeUpdatedException("Can't update bus", ex);
+                throw new BO.BadUpdateException("Can't update bus", ex);
+            }
+            catch (BO.NotValidMileageException ex)
+            {
+                throw new BO.BadUpdateException("Can't update bus", ex);
+            }
+            catch (Exception)
+            {
+                throw new BO.GeneralErrorException("Can't update bus, unknown error");
             }
         }
         public void DeleteBus(int licenseNum)
@@ -286,39 +326,42 @@ namespace BL
             stat.CopyPropertiesTo(boStat);
             return boStat;
         }
-        private bool BusStationIsFit(BO.BusStation bs, bool isUpdate) //boolean id true for update, false for add. checks if already exist
+        private bool BusStationIsFit(BO.BusStation bs) //boolean id true for update, false for add. checks if already exist
         {
             //code, location, address, accessible, active, BusLines
 
-            if (bs.Code < 0)
+            //if (bs.Code < 0)
+            //{
+            //    throw new NotValidIDException("Station Code must be positive!");
+            //}
+
+            // if out of Israel
+            if (bs.Location.Longitude < 31 ||
+                bs.Location.Longitude > 33.3 ||
+                bs.Location.Latitude < 34.3 ||
+                bs.Location.Latitude > 35.5)
             {
-                throw new NotValidIDException("Station Code must be positive!");
+                throw new BO.NotInIsraelException("Stations can be only in Israel!");
             }
 
-            if ((bs.Location.Longitude < 31 || bs.Location.Longitude > 33.3) ||
-                (bs.Location.Latitude < 34.3 || bs.Location.Latitude > 35.5))
-            {
-                throw new BO.NotInIsraelException("Stations can be only in state of Israel!");
-            }
+            //if (isUpdate == false)
+            //{
+            //    var stations = _dal.GetAllActiveBusStations();
 
-            if (isUpdate == false)
-            {
-                var stations = _dal.GetAllActiveBusStations();
+            //    if (!((from stat in stations
+            //           where (stat.Code == bs.Code)
+            //           select stat).Any()))
+            //    {
+            //        throw new BO.StationAlreadyExistsException("Bus station with this code already exist!");
+            //    }
 
-                if (!((from stat in stations
-                       where (stat.Code == bs.Code)
-                       select stat).Any()))
-                {
-                    throw new BO.StationAlreadyExistsException("Bus station with this code already exist!");
-                }
-
-                if (!((from stat in stations
-                       where (stat.Location == bs.Location)
-                       select stat).Any()))
-                {
-                    throw new BO.StationAlreadyExistsException("Bus station with this Location already exist!");
-                }
-            }
+            //    if (!((from stat in stations
+            //           where (stat.Location == bs.Location)
+            //           select stat).Any()))
+            //    {
+            //        throw new BO.StationAlreadyExistsException("Bus station with this Location already exist!");
+            //    }
+            //}
 
             return true;
         }
@@ -326,7 +369,7 @@ namespace BL
         {
             try
             {
-                if (!BusStationIsFit(bs, false)) return;
+                BusStationIsFit(bs);
 
                 var busStationDo = new DO.BusStation();
                 bs.CopyPropertiesTo(busStationDo);
@@ -334,9 +377,20 @@ namespace BL
             }
             catch (DO.StationAlreadyExistsException ex)
             {
-                throw new BO.StationAlreadyExistsException((ex.Message));
+                throw new BO.BadAdditionException(ex.Message);
             }
-
+            catch (BO.NotInIsraelException ex)
+            {
+                throw new BO.BadAdditionException(ex.Message);
+            }
+            catch (BO.BadAdditionException ex)
+            {
+                throw new BO.BadAdditionException(ex.Message);
+            }
+            catch (Exception)
+            {
+                throw new BO.GeneralErrorException("Unknown error");
+            }
         }
         public void ActivateBusStation(int code)
         {
@@ -557,18 +611,22 @@ namespace BL
         {
             try
             {
-                if (!BusStationIsFit(bs, true)) return;
+                BusStationIsFit(bs);
                 var b = new DO.BusStation();
                 bs.CopyPropertiesTo(b);
                 _dal.UpdateBusStation(b);
             }
             catch (BO.NotInIsraelException ex)
             {
-                throw new BO.NotInIsraelException(ex.Message);
+                throw new BO.BadUpdateException(ex.Message);
             }
-            catch (DO.StationDoesNotExistException)
+            catch (DO.StationDoesNotExistException ex)
             {
-                throw new BO.StationDoesNotExistException("can't update station");
+                throw new BO.BadUpdateException(ex.Message);
+            }
+            catch (Exception)
+            {
+                throw new BO.GeneralErrorException("Unknown error");
             }
         }
         public void DeleteBusStation(int code)

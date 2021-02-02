@@ -30,6 +30,16 @@ namespace BO
 
     }
 
+    [Serializable]
+    public class BadDatesException : Exception
+    {
+        public BadDatesException() : base() { }
+
+        public BadDatesException(string message) : base(message) { }
+        public BadDatesException(string message, Exception inner) : base(message, inner) { }
+
+    }
+
     //exception for a input of station/bus that contains wrong digit number
     [Serializable]
     public class OutOfRangeException : Exception
@@ -113,8 +123,28 @@ namespace BO
     [Serializable]
     public class BadAdditionException : Exception
     {
+        public BadAdditionException() : base() { }
+        public BadAdditionException(string message) : base(message) { }
         public BadAdditionException(Exception inner) : base() { }
         public BadAdditionException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    [Serializable]
+    public class BadUpdateException : Exception
+    {
+        public BadUpdateException() : base() { }
+        public BadUpdateException(string message) : base(message) { }
+        public BadUpdateException(Exception inner) : base() { }
+        public BadUpdateException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    [Serializable]
+    public class GeneralErrorException : Exception
+    {
+        public GeneralErrorException() : base() { }
+        public GeneralErrorException(string message) : base(message) { }
+        public GeneralErrorException(Exception inner) : base() { }
+        public GeneralErrorException(string message, Exception inner) : base(message, inner) { }
     }
 
     [Serializable]

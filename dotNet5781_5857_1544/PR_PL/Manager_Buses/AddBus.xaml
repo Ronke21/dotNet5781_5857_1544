@@ -10,38 +10,67 @@
         Height="420" 
         Width="325"
         WindowStartupLocation="CenterScreen"
-        Icon="../Icons/bus_black.png">
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None">
 
+    <Border
+        CornerRadius="15"
+        Background="White"
+        MouseDown="UIElement_OnMouseDown"
+        BorderBrush="#007ACC"
+        BorderThickness="2">
 
-    <Grid
-    Name="MasterGrid"
-    >
+        <StackPanel
+            VerticalAlignment="Top"
+            Height="420"
+            >
 
+            <Button
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+                Name="Close"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Click="Close_OnClick"
+                Margin="15"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            >
+                <materialDesign:PackIcon
+                    Kind="Close"
+                    Width="30"
+                    Height="30"
+                />
 
-        <Grid
-        Grid.Row="0"
-        >
+            </Button>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+            <Grid
+                Height="280"
+                >
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.5*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-            <Label 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label 
         Content="Starting date"
         Grid.Row="0"
         Grid.Column="0"
@@ -52,7 +81,7 @@
         FontWeight="Medium"
         />
 
-            <Label 
+                <Label 
         Content="License number"
         Grid.Row="1"
         Grid.Column="0"
@@ -63,7 +92,7 @@
         FontWeight="Medium"
         />
 
-            <Label 
+                <Label 
               Content="Fuel amount"
               Grid.Row="2"
               Grid.Column="0"
@@ -74,7 +103,7 @@
               FontWeight="Medium"
           />
 
-            <Label 
+                <Label 
         Content="Mileage"
         Grid.Row="3"
         Grid.Column="0"
@@ -85,7 +114,7 @@
         FontWeight="Medium"
         />
 
-            <Label 
+                <Label 
         Content="Last maintenance date"
         Grid.Row="4"
         Grid.Column="0"
@@ -96,7 +125,7 @@
         FontWeight="Medium"
         />
 
-            <Label 
+                <Label 
                 Content="Mileage since last maintenance"
                 Grid.Row="5"
                 Grid.Column="0"
@@ -107,7 +136,7 @@
                 FontWeight="Medium"
             />
 
-            <DatePicker
+                <DatePicker
         Name="DatePickerStart"
         Grid.Row="0"
         Grid.Column="1"
@@ -121,7 +150,7 @@
         SelectedDate="{x:Static sys:DateTime.Now}"
         />
 
-            <TextBox
+                <TextBox
         Name="TextBoxBusLicenseNumber"
         Grid.Row="1"
         Grid.Column="1"
@@ -134,7 +163,7 @@
         PreviewTextInput="TextBox_OnPreviewTextInput"
             />
 
-            <TextBox
+                <TextBox
         Name="TextBoxFuelAmount"
         Grid.Row="2"
         Grid.Column="1"
@@ -147,7 +176,7 @@
         PreviewTextInput="TextBox_OnPreviewTextInput"
         />
 
-            <TextBox
+                <TextBox
         Name="TextBoxMileage"
         Grid.Row="3"
         Grid.Column="1"
@@ -160,7 +189,7 @@
         PreviewTextInput="TextBox_OnPreviewTextInput"
         />
 
-            <DatePicker
+                <DatePicker
             Name="DatePickerLastMaintenance"
             Grid.Row="4"
             Grid.Column="1"
@@ -174,7 +203,7 @@
             SelectedDate="{x:Static sys:DateTime.Now}"
         />
 
-            <TextBox
+                <TextBox
                 Name="TextBoxMileageSinceLastMaint"
                 Grid.Row="5"
                 Grid.Column="1"
@@ -188,53 +217,26 @@
             />
 
 
-        </Grid>
-
-        <Grid
-            Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80*"/>
-                <ColumnDefinition Width="35*"/>
-                <ColumnDefinition Width="203*"/>
-            </Grid.ColumnDefinitions>
+            </Grid>
 
             <Button
-                Name="Add"
-                VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch"
+                Height="60"
+                Width="60"
+                VerticalAlignment="Bottom"
                 Click="Add_OnClick"
-                Margin="5,5,5,5"
-                Grid.ColumnSpan="3"
-                Width="140"
-                Height="50"
-            >
-                <StackPanel
-                    Orientation="Horizontal"
-                    >
-
-                    <Label
-                        Content="Add Bus"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        FontSize="18"
-                        FontWeight="DemiBold"
-                        Foreground="White"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                >
+                <materialDesign:PackIcon
+                            Kind="Plus"
+                            Width="40"
+                            Height="40"
                         />
-
-                    <Image
-                        Source="../Icons/bus_white.png"
-                        Height="20"
-                        />
-
-                </StackPanel>
 
             </Button>
-        </Grid>
 
+        </StackPanel>
 
-    </Grid>
-
-
+    </Border>
 
 
 

@@ -22,7 +22,7 @@
   </Bus>
   <Bus>
     <LicenseNum>15632154</LicenseNum>
-    <Active>true</Active>
+    <Active>True</Active>
     <StartTime>2021-01-17T00:00:00</StartTime>
     <LastMaint>2021-01-17T00:00:00</LastMaint>
     <MileageFromLast>1503</MileageFromLast>
@@ -32,7 +32,7 @@
   </Bus>
   <Bus>
     <LicenseNum>12323112</LicenseNum>
-    <Active>False</Active>
+    <Active>True</Active>
     <StartTime>2021-01-17T00:00:00</StartTime>
     <LastMaint>2021-01-17T00:00:00</LastMaint>
     <MileageFromLast>150</MileageFromLast>
@@ -42,12 +42,22 @@
   </Bus>
   <Bus>
     <LicenseNum>12345677</LicenseNum>
-    <Active>False</Active>
+    <Active>True</Active>
     <StartTime>2021-01-12T00:00:00</StartTime>
     <LastMaint>2021-01-26T00:00:00</LastMaint>
     <MileageFromLast>321</MileageFromLast>
     <Stat>Ready</Stat>
     <Fuel>150</Fuel>
     <Mileage>22222</Mileage>
+  </Bus>
+  <Bus>
+    <LicenseNum>12365478</LicenseNum>
+    <Active>True</Active>
+    <StartTime>02/02/2021 00:00:00</StartTime>
+    <LastMaint>02/02/2021 00:00:00</LastMaint>
+    <MileageFromLast>1234</MileageFromLast>
+    <Stat>Ready</Stat>
+    <Fuel>1200</Fuel>
+    <Mileage>12345</Mileage>
   </Bus>
 </Buses>

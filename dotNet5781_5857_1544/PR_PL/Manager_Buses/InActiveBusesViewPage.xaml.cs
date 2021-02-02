@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -70,9 +71,13 @@ namespace PL
             {
                 InActiveBusesDataGrid.DataContext = _bl.GetAllInActiveBuses();
             }
-            catch (BO.EmptyListException ex)
+            catch (BO.EmptyListException)
             {
-                MessageBox.Show(ex.Message, "Buses Lodaing Error!");
+                MessageBox.Show("Empty list", "");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Unknown error");
             }
         }
 

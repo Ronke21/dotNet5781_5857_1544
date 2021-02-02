@@ -7,53 +7,72 @@
         mc:Ignorable="d"
         Title="AddStation" 
         Height="420" 
-        Width="325">
+        Width="325"
+        
+        x:Name="AddStationWindow"
+        WindowStartupLocation="CenterScreen"
 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None">
 
-    <Grid
-    Name="MasterGrid"
-    >
+    <Border
+        CornerRadius="15"
+        Background="White"
+        MouseDown="UIElement_OnMouseDown"
+        BorderBrush="#007ACC"
+        BorderThickness="2">
 
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <LinearGradientBrush.RelativeTransform>
-                    <TransformGroup>
-                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                        <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </LinearGradientBrush.RelativeTransform>
-                <GradientStop Color="#AA01A77C" Offset="0.013"/>
-                <GradientStop Color="#AA30A4B8" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Grid
-        Grid.Row="0"
+        <StackPanel
+            VerticalAlignment="Top"
+            Height="420"
         >
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+            <Button
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.5*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+                Name="Close"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Click="Close_OnClick"
+                Margin="15"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            >
+                <materialDesign:PackIcon
+                    Kind="Close"
+                    Width="30"
+                    Height="30"
+                />
 
-            <Label 
+            </Button>
+
+            <Grid
+                Height="280"
+                >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label 
         Content="Code"
         Grid.Row="0"
         Grid.Column="0"
@@ -64,7 +83,7 @@
         FontWeight="Medium"
         />
 
-            <Label 
+                <Label 
         Content="Name"
         Grid.Row="1"
         Grid.Column="0"
@@ -75,7 +94,7 @@
         FontWeight="Medium"
         />
 
-            <Label 
+                <Label 
               Content="Address"
               Grid.Row="2"
               Grid.Column="0"
@@ -86,7 +105,7 @@
               FontWeight="Medium"
           />
 
-            <Label 
+                <Label 
         Content="Location-longitude"
         Grid.Row="3"
         Grid.Column="0"
@@ -97,7 +116,7 @@
         FontWeight="Medium"
         />
 
-            <Label 
+                <Label 
         Content="Location-latitude"
         Grid.Row="4"
         Grid.Column="0"
@@ -108,7 +127,7 @@
         FontWeight="Medium"
         />
 
-            <Label 
+                <Label 
                 Content="Accessible?"
                 Grid.Row="5"
                 Grid.Column="0"
@@ -119,7 +138,7 @@
                 FontWeight="Medium"
             />
 
-            <TextBox
+                <TextBox
         Name="TextBoxCode"
         Grid.Row="0"
         Grid.Column="1"
@@ -129,10 +148,10 @@
         HorizontalContentAlignment="Center"
         Width="110"
         Height="30"
-        PreviewTextInput="TextBox_OnPreviewTextInput"
+        PreviewTextInput="TextBoxNumbersOnly_OnPreviewTextInput"
             />
 
-            <TextBox
+                <TextBox
         Name="TextBoxName"
         Grid.Row="1"
         Grid.Column="1"
@@ -144,7 +163,7 @@
         Height="30"
             />
 
-            <TextBox
+                <TextBox
         Name="TextBoxAddress"
         Grid.Row="2"
         Grid.Column="1"
@@ -156,7 +175,7 @@
         Height="30"
         />
 
-            <TextBox
+                <TextBox
         Name="TextBoxLongitude"
         Grid.Row="3"
         Grid.Column="1"
@@ -166,9 +185,9 @@
         HorizontalContentAlignment="Center"
         Width="110"
         Height="30"
-        PreviewTextInput="TextBox_OnPreviewTextInput"
+        PreviewTextInput="TextBoxWithPeriod_OnPreviewTextInput"
         />
-            <TextBox
+                <TextBox
         Name="TextBoxLatitude"
         Grid.Row="4"
         Grid.Column="1"
@@ -178,71 +197,37 @@
         HorizontalContentAlignment="Center"
         Width="110"
         Height="30"
-        PreviewTextInput="TextBox_OnPreviewTextInput"
+        PreviewTextInput="TextBoxWithPeriod_OnPreviewTextInput"
             />
 
 
-            <CheckBox 
+                <CheckBox
                 Name="CheckBoxAccessible"
                 Grid.Row="5"
                 Grid.Column="1"
-                VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch"
-                VerticalContentAlignment="Center"
-                HorizontalContentAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
                 />
-        </Grid>
+            </Grid>
 
-        <Grid
-            Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80*"/>
-                <ColumnDefinition Width="35*"/>
-                <ColumnDefinition Width="203*"/>
-            </Grid.ColumnDefinitions>
+
             <Button
-                Name="Add"
-                VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch"
+                Height="60"
+                Width="60"
+                VerticalAlignment="Bottom"
                 Click="Add_OnClick"
-                Margin="5,5,5,5"
-                Grid.ColumnSpan="3"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
             >
-
-                <Button.Resources>
-
-                    <Style TargetType="Border">
-
-                        <Setter 
-                            Property="CornerRadius"
-                            Value="5"    
-                                />
-
-                    </Style>
-
-                </Button.Resources>
-
-                <StackPanel
-                    Orientation="Horizontal"
-                    >
-
-                    <Label
-                        Content="Add Station"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        FontSize="20"
-                        FontWeight="DemiBold"
-                        />
-
-
-                </StackPanel>
+                <materialDesign:PackIcon
+                    Kind="Plus"
+                    Width="40"
+                    Height="40"
+                />
 
             </Button>
-        </Grid>
 
+        </StackPanel>
 
-    </Grid>
-
-
+    </Border>
 
 </Window>

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using BLApi;
 using BO;
 
@@ -24,7 +25,20 @@ namespace PL
         private void Update_OnClick(object sender, RoutedEventArgs e)
         {
             UpdateBus ub = new UpdateBus(bl, bus);
+            Close();
             ub.ShowDialog();
+        }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Close_OnClick(object sender, RoutedEventArgs e)
+        {
             Close();
         }
     }

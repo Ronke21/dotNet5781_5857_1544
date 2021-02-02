@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="Map" 
+        Title="{Binding Name}" 
         Height="500"
         Width="750"
         WindowStartupLocation="CenterScreen"
@@ -18,7 +18,8 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        >
+        
+        Icon="https://img.icons8.com/fluent/344/google-maps-new.png">
 
     <Grid>
 

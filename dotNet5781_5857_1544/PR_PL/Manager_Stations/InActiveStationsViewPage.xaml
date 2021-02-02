@@ -64,7 +64,7 @@
         </DataGrid>
 
         <Button 
-            x:Name="Exit"
+            x:Name="ExitToApp"
             Width="100"
             Height="100"
             HorizontalAlignment="Left"
@@ -73,12 +73,12 @@
             Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
         >
             <materialDesign:PackIcon
-                Kind="PackageUp"
+                Kind="ExitToApp"
                 Width="50"
                 Height="50"/>
         </Button>
 
-        <Button 
+        <Button
             x:Name="Activate"
             Width="100"
             Height="100"
@@ -88,7 +88,7 @@
             Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
         >
             <materialDesign:PackIcon
-                Kind="Add"
+                Kind="PackageUp"
                 Width="50"
                 Height="50"/>
         </Button>
@@ -101,7 +101,7 @@
                     Height="50"
                     Width="230"
                     FontSize="15"
-                    BorderBrush="Red" Margin="0,-6,26,0"
+                    Margin="0,-6,26,0"
                     materialDesign:HintAssist.Hint="Search Station by code / name"  
                     materialDesign:HintAssist.IsFloating="True"
                 />

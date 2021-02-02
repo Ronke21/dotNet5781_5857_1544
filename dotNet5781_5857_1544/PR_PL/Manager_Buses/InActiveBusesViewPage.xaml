@@ -55,11 +55,11 @@
                     Header="Fuel"
                     />
 
-                <DataGridTextColumn 
+                <!--<DataGridTextColumn 
                     x:Name="StatusColumn" 
                     Binding="{Binding Stat}"
                     Header="Status"
-                    />
+                    />-->
 
             </DataGrid.Columns>
 
@@ -106,7 +106,7 @@
                     Height="50"
                     Width="230"
                     FontSize="15"
-                    BorderBrush="Red" Margin="0,-6,25.6,0"
+                    Margin="0,-6,25.6,0"
                     materialDesign:HintAssist.Hint="Search Bus by license num"  
                     materialDesign:HintAssist.IsFloating="True"
                 />

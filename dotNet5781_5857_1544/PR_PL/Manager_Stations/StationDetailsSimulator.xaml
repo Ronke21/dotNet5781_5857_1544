@@ -255,8 +255,8 @@
             <DataGrid
                 Name="DigitalDisplayLastBus"
                 Background="#23281F"
-                Height="50"
-                Width="360"
+                Height="35"
+                Width="300"
                 IsReadOnly="True"
                 CanUserAddRows="False"
                 CanUserSortColumns="False"
@@ -268,7 +268,9 @@
                 BorderBrush="GreenYellow"
                 BorderThickness="2"
                 HorizontalScrollBarVisibility="Hidden"
-                >
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center"
+                GridLinesVisibility="None">
 
                 <DataGrid.Columns
                 >
@@ -283,7 +285,7 @@
                         Binding="{Binding LastStationName}"
                     />
 
-                    <DataGridTextColumn
+                    <!--<DataGridTextColumn
                         x:Name="DigitalTimeToArrivalLastBus"
                         Binding="{Binding ArrivalTime,
                         StringFormat={}{0:mm}:{0:ss}}"/>
@@ -291,7 +293,7 @@
                     <DataGridTextColumn
                         x:Name="StartTimeLastBus"
                         Binding="{Binding StartTime,
-                        StringFormat={}{0:mm}:{0:ss}}"/>
+                        StringFormat={}{0:mm}:{0:ss}}"/>-->
 
                 </DataGrid.Columns>
 
