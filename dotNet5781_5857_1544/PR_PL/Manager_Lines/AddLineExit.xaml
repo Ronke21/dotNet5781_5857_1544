@@ -3,10 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="AddLineExit" Height="200" Width="200"
-        
-                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="AddLineExit" 
+        Height="310" 
+        Width="280"
+
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -17,20 +20,50 @@
         AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        >
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height ="*"/>
-            <RowDefinition Height ="*"/>
-            <RowDefinition Height ="*"/>
-            <RowDefinition Height ="*"/>
-        </Grid.RowDefinitions>
+        Background="Transparent"
+>
 
-        <Label
+    <Border
+        CornerRadius="15"
+        Background="White"
+        MouseDown="UIElement_OnMouseDown"
+        BorderBrush="#007ACC"
+        BorderThickness="2">
+
+        <StackPanel
+            VerticalAlignment="Top"
+        >
+
+            <Button
+                Name="Close"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Click="Close_Click"
+                Margin="15"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            >
+                <materialDesign:PackIcon
+                    Kind="Close"
+                    Width="30"
+                    Height="30"
+                />
+
+            </Button>
+
+            <Grid
+                Height="180"
+                >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height ="*"/>
+                    <RowDefinition Height ="*"/>
+                    <RowDefinition Height ="*"/>
+                </Grid.RowDefinitions>
+
+                <Label
                 Content="Start Time:"
                 Grid.Column="0"
                  Grid.Row="0"
@@ -39,7 +72,7 @@
                 VerticalAlignment="Center"
             />
 
-        <Label
+                <Label
                 Content="Frequency:"
                 Grid.Column="0"
                  Grid.Row="1"
@@ -48,7 +81,7 @@
                 VerticalAlignment="Center"
             />
 
-        <Label
+                <Label
                 Content="End Time:"
                 Grid.Column="0"
                  Grid.Row="2"
@@ -57,73 +90,53 @@
                 VerticalAlignment="Center"
             />
 
-        <materialDesign:TimePicker
-            x:Name="StartTimePicker"
-            Grid.Column="1"
-            Grid.Row="0"
+                <materialDesign:TimePicker
+                x:Name="StartTimePicker"
+                Grid.Column="1"
+                Grid.Row="0"
                 HorizontalAlignment="Center"
                 Is24Hours="True"
                 HorizontalContentAlignment="Center"
-                Background="White"
+                SelectedTimeChanged="StartTimePicker_OnSelectedTimeChanged"
                 />
 
-        <materialDesign:TimePicker
-            x:Name="FreqPicker"
-            Grid.Column="1"
-            Grid.Row="1"
-                HorizontalAlignment="Center"
-                Is24Hours="False"
-                HorizontalContentAlignment="Center"
-                Background="White"
-                />
+                <ComboBox
+                    x:Name="FreqPicker"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Width="75"
+                    SelectionChanged="FreqPicker_OnSelectionChanged"
+                    >
 
-        <materialDesign:TimePicker
+                </ComboBox>
+
+                <materialDesign:TimePicker
             x:Name="EndTimePicker"
             Grid.Column="1"
             Grid.Row="2"
                 HorizontalAlignment="Center"
                 Is24Hours="True"
                 HorizontalContentAlignment="Center"
-                Background="White"
                 />
 
 
-        <Button
-                Name="Close"
-            Grid.Column="0"
-            Grid.Row="3"
-                HorizontalAlignment="Right"
-                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                Margin="0,0,20,0"
-                Click="Close_Click"
-            >
-            <materialDesign:PackIcon
-                    Kind="Close"
-                    Width="30"
-                    Height="30"
-                />
-        </Button>
+            </Grid>
 
 
-        <Button
+            <Button
                 Name="Update"
-            Grid.Column="1"
-            Grid.Row="3"
-                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
                 Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                Margin="0,0,20,0"
                 Click="Update_Click"
+                Height="50"
+                Width="50"
             >
-            <materialDesign:PackIcon
+                <materialDesign:PackIcon
                     Kind="Update"
                     Width="30"
                     Height="30"
                 />
-        </Button>
-
-
-
-
-
-    </Grid>
+            </Button>
+        </StackPanel>
+    </Border>
 </Window>

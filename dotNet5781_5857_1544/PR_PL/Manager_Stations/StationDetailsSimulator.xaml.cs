@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using BLApi;
@@ -67,15 +68,20 @@ namespace PL
                          where lt.BusLineId == lineTiming.BusLineId &&
                                lt.StartTime == lineTiming.StartTime
                          select lt).FirstOrDefault();
+
                 if (x != null)
                 {
-                    DigitalDisplayLastBus.ItemsSource = new ObservableCollection<LineTiming> {x};
                     lineTimesObsColl.Remove(x);
+                    //if (x.ArrivalTime == TimeSpan.Zero)
+                    {
+                        DigitalDisplayLastBus.ItemsSource = new ObservableCollection<LineTiming> { x };
+                    }
                 }
-                if (lineTiming.ArrivalTime != TimeSpan.Zero)
+                if (lineTiming.ArrivalTime != TimeSpan.Zero && lineTiming.ArrivalTime < new TimeSpan(0, 45, 0))
                 {
                     lineTimesObsColl.Add(lineTiming);
                 }
+
             }));
         }
 

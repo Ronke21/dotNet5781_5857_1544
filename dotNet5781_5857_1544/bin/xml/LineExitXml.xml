@@ -7,4 +7,11 @@
     <EndTime>PT23H30M0S</EndTime>
     <Freq>PT15M</Freq>
   </LineExit>
+  <LineExit>
+    <BusLineId>21</BusLineId>
+    <Active>true</Active>
+    <StartTime>PT12H55M</StartTime>
+    <EndTime>PT12H55M</EndTime>
+    <Freq>PT0S</Freq>
+  </LineExit>
 </LineExits>

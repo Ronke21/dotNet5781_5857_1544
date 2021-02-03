@@ -346,12 +346,6 @@
 
             </Button>
 
-            <Button
-                Name="arrivals"
-                Grid.Row="6"
-                BorderBrush="Transparent"
-                Click="Arrivals_OnClick"/>
-
         </Grid>
 
     </Grid>

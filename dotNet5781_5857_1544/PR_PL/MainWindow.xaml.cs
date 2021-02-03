@@ -27,8 +27,8 @@ namespace PL
         #endregion
         public MainWindow()
         {
-            var lp = new LoginPage();
-            lp.ShowDialog();
+            //var lp = new LoginPage();
+            //lp.ShowDialog();
 
             InitializeComponent();
 

@@ -376,6 +376,8 @@
                         CanUserSortColumns="False"
                         AutoGenerateColumns="False"
                         FontSize="10"
+                        Foreground="Black"
+                        FontWeight="Bold"
                         HeadersVisibility="None"
                         >
 
@@ -407,7 +409,7 @@
             <DataGrid
                     Name="DigitalDisplayDataGrid"
                     Background="#23281F"
-                    Height="200"
+                    Height="250"
                     Width="420"
                     Margin="0,10,0,0"
                     IsReadOnly="True"

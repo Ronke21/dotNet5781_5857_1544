@@ -24,5 +24,4 @@
         Manager,
         User
     }
-
 }
