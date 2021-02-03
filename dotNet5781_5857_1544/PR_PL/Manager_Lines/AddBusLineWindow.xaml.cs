@@ -31,8 +31,8 @@ namespace PL
 
             _chooseFrom = new ObservableCollection<BusStation>(_bl.GetAllBusStations().OrderBy(s => s.Code));
 
-            StationsDataGrid.DataContext = _chooseFrom;
-            ChosenStationsDataGrid.DataContext = _chosen;
+            StationsDataGrid.ItemsSource = _chooseFrom;
+            ChosenStationsDataGrid.ItemsSource = _chosen;
             RefreshDataGrids();
 
             LineAreaComboBox.ItemsSource = Enum.GetValues(typeof(Area));
@@ -41,7 +41,7 @@ namespace PL
 
         private void RefreshDataGrids()
         {
-            StationsDataGrid.DataContext = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom).OrderBy(s => s.Code);
+            StationsDataGrid.ItemsSource = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom).OrderBy(s => s.Code);
             StationsDataGrid.Items.Refresh();
             ChosenStationsDataGrid.Items.Refresh();
             Colors();
@@ -138,7 +138,7 @@ namespace PL
             catch (Exception exception)
             {
                 MessageBox.Show(exception.ToString());
-            }
+            } 
 
         }
     }
