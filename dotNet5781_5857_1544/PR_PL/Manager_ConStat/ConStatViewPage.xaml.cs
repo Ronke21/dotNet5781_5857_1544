@@ -29,7 +29,7 @@ namespace PL
         {
             try
             {
-                ConStatDataGrid.ItemsSource = _bl.GetAllConsecutiveStations();
+                ConStatDataGrid.ItemsSource = _bl.GetAllSimpleConsecutiveStations();
             }
             catch (Exception ex)
             {

@@ -60,6 +60,7 @@ namespace BLApi
 
         #region ConsecutiveStations
         IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStations();
+        IEnumerable<BO.ConsecutiveStations> GetAllSimpleConsecutiveStations();
         IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStationsByCode(string code);
 
         void AddConsecutiveStations(int statCode1, int statCode2);

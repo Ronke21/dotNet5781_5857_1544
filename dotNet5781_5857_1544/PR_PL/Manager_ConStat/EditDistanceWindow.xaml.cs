@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
 using BLApi;
 using BO;
 
@@ -46,6 +47,14 @@ namespace PL
         {
             var etw = new EditTimeWindow(_bl, cs);
             etw.ShowDialog();
+        }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
     }
 }

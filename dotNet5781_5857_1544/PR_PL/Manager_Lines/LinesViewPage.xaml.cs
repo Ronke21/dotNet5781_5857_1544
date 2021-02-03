@@ -24,13 +24,9 @@ namespace PL
 
             _bl = b;
 
-            AreaCountLB.ItemsSource = _bl.groupLineByAreas();
-
             try
             {
-                LinesDataGrid.ItemsSource = _bl.GetAllActiveBusLines();
-                AreaCountLB.ItemsSource = _bl.groupLineByAreas();
-
+                Refresh();
             }
             catch (Exception e)
             {
@@ -58,9 +54,8 @@ namespace PL
                 {
                     _bl.DeleteBusLine(((BusLine)b).BusLineId);
                 }
-                LinesDataGrid.ItemsSource = _bl.GetAllActiveBusLines();
-                AreaCountLB.ItemsSource = _bl.groupLineByAreas();
 
+                Refresh();
             }
         }
 
@@ -73,6 +68,13 @@ namespace PL
         {
             var abl = new AddBusLineWindow(_bl);
             abl.ShowDialog();
+            Refresh();
+        }
+
+        private void Refresh()
+        {
+            LinesDataGrid.ItemsSource = _bl.GetAllActiveBusLines();
+            AreaCountIC.ItemsSource = _bl.groupLineByAreas();
         }
     }
 

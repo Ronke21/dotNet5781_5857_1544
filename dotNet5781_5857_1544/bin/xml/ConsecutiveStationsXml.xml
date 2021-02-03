@@ -36,18 +36,18 @@
     <AverageTravelTime>PT18M40S</AverageTravelTime>
   </ConsecutiveStations>
   <ConsecutiveStations>
-    <Active>true</Active>
+    <Active>True</Active>
     <StatCode1>39042</StatCode1>
     <StatCode2>39043</StatCode2>
-    <Distance>0.02</Distance>
-    <AverageTravelTime>PT1S</AverageTravelTime>
+    <Distance>0.05</Distance>
+    <AverageTravelTime>PT1M31S</AverageTravelTime>
   </ConsecutiveStations>
   <ConsecutiveStations>
-    <Active>true</Active>
+    <Active>True</Active>
     <StatCode1>39043</StatCode1>
     <StatCode2>39044</StatCode2>
     <Distance>0.68</Distance>
-    <AverageTravelTime>PT1M8S</AverageTravelTime>
+    <AverageTravelTime>PT1M9S</AverageTravelTime>
   </ConsecutiveStations>
   <ConsecutiveStations>
     <Active>true</Active>

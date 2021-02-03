@@ -26,10 +26,8 @@
             x:Name="LinesDataGrid"
             AutoGenerateColumns="False"
             HorizontalContentAlignment="Center"
-            ColumnWidth="*"
             IsReadOnly="True"
             FontSize="20"
-            ColumnHeaderHeight="50"
             MouseDoubleClick="LinesDataGrid_OnMouseDoubleClick"
 
             >
@@ -37,28 +35,23 @@
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Line Number"
-                                    Width="*"
                                     Binding="{Binding Path = LineNumber}"/>
 
                 <DataGridTextColumn Header="Area"
-                                    Width="*"
                                     Binding="{Binding Path = BusArea}"/>
 
                 <DataGridCheckBoxColumn Header="Accessible"
                                         IsReadOnly="True"
-                                        Width="*"
                                         Binding="{Binding Path = AllAccessible}"/>
 
                 <!--IsReadOnly="False"
                                         ElementStyle="{StaticResource MaterialDesignActionCheckBox}"-->
 
                 <DataGridTextColumn Header="First station"
-                                    Width="*"
                                     CanUserSort="False"
                                     Binding="{Binding Path = FirstStation}"/>
 
                 <DataGridTextColumn Header="Last station"
-                                    Width="*"
                                     CanUserSort="False"
                                     Binding="{Binding Path = LastStation}"/>
 
@@ -118,14 +111,34 @@
             </materialDesign:PackIcon>
 
         </Button>
-        <ListBox 
-            Name ="AreaCountLB"
-            HorizontalAlignment="Left" 
-            Height="100" 
-            Margin="162,352,0,-2.4" 
-            VerticalAlignment="Top" 
-            Width="100"
-            />
+
+        <Border
+            CornerRadius="20"
+            Background="White"
+            BorderBrush="#007ACC"
+            BorderThickness="2"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Height="150"
+            Width="150"
+            Margin="0,10,0,0"
+        >
+            <StackPanel>
+
+                <Label
+                    Content="Lines count by area"
+                    HorizontalAlignment="Center"
+                    Margin="0,10,0,0"
+                    />
+
+                <ItemsControl
+                    Name ="AreaCountIC"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    ItemsSource="{Binding}"
+                    />
+            </StackPanel>
+        </Border>
 
 
 

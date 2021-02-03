@@ -124,18 +124,35 @@
 
         </Button>
 
-        <TextBox
-                    Name="SearchLinesTextBox"
-                    TextChanged="SearchLinesTextBox_OnTextChanged"
+
+        <StackPanel
+            Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
+            >
+
+            <TextBox
+                    Name="SearchLinesTextBox"
+                    TextChanged="SearchLinesTextBox_OnTextChanged"
                     Height="50"
                     Width="230"
                     FontSize="15"
-                    BorderBrush="Red" Margin="0,-6,26,0"
+                    Margin="0,-6,0,0"
                     materialDesign:HintAssist.Hint="Search Station by code"  
                     materialDesign:HintAssist.IsFloating="True"
                 />
+
+            <materialDesign:PackIcon
+                    Kind="Search"
+                    Height="40"
+                    Width="40"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Opacity="0.9"
+                    Margin="0,0,10,0"
+                    Foreground="#0069C0"
+                    />
+        </StackPanel>
     </Grid>
 
 </Page>

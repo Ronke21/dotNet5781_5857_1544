@@ -892,17 +892,15 @@ namespace BL
 
         public IEnumerable<string> groupLineByAreas()
         {
-            var x = (GetAllActiveBusLines()).GroupBy(s => s.BusArea);
+            var linesGroupedByArea = (GetAllActiveBusLines()).GroupBy(busLine => busLine.BusArea);
 
-
-            var counts = x.Select(s => new
+            var counts = linesGroupedByArea.Select(busLines => new
             {
-                are = s.Key,
-                coun = s.Count()
-            }).OrderBy(s => s.coun);
+                area = busLines.Key,
+                count = busLines.Count()
+            }).OrderBy(busLines => busLines.count);
             return from c in counts
-                   select c.are.ToString() + ": " + c.coun.ToString();
-
+                   select c.area + ": " + c.count;
         }
         #endregion
 
@@ -1011,22 +1009,37 @@ namespace BL
                 throw new Exception("Unknown error GetAllBuses");
             }
         }
-
-        public IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStationsByCode(string code)
+        public IEnumerable<BO.ConsecutiveStations> GetAllSimpleConsecutiveStations()
         {
             try
             {
-                foreach (var bl in _dal.GetAllActiveBusLines())
-                {
-                    UpdateAndReturnLineStationList(bl.BusLineId);
-                }
+                return from conStat in _dal.GetAllConsecutiveStations()
+                       select ConsecutiveStationDoToBoAdapter(conStat);
             }
-            catch (Exception e)
+            catch (DO.EmptyListException ex)
             {
-                Console.WriteLine(e);
-                throw;
+                throw new BO.EmptyListException("No buses in the list", ex);
             }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetAllBuses");
+            }
+        }
 
+        public IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStationsByCode(string code)
+        {
+            //try
+            //{
+            //    foreach (var bl in _dal.GetAllActiveBusLines())
+            //    {
+            //        UpdateAndReturnLineStationList(bl.BusLineId);
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e);
+            //    throw;
+            //}
 
             try
             {
@@ -1400,8 +1413,8 @@ namespace BL
         {
             try
             {
-                
-            _dal.DeleteLineExit(busLineId, startTime);
+
+                _dal.DeleteLineExit(busLineId, startTime);
             }
 
             catch (DO.LineExitDoesNotExistsException ex)
@@ -1409,7 +1422,7 @@ namespace BL
                 throw new BO.BadUpdateException(ex.Message);
             }
         }
-            public BO.LineExit GetLineExit(int busLineId, TimeSpan startTime)
+        public BO.LineExit GetLineExit(int busLineId, TimeSpan startTime)
         {
             try
             {

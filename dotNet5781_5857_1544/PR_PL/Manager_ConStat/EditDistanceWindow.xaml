@@ -28,6 +28,7 @@
         Background="White"
         BorderBrush="#007ACC"
         BorderThickness="2"
+        MouseDown="UIElement_OnMouseDown"
     >
 
         <Grid>

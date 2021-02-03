@@ -125,17 +125,36 @@
 
         </Button>
 
-        <TextBox
-                    Name="SearchLinesTextBox"
-                    TextChanged="SearchLinesTextBox_OnTextChanged"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Height="50"
-                    Width="230"
-                    FontSize="15"
-                    materialDesign:HintAssist.Hint="Search Bus by license number"  
-                    materialDesign:HintAssist.IsFloating="True"
-                />
+        <StackPanel
+            Orientation="Horizontal"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+        >
+
+            <TextBox
+                Name="SearchLinesTextBox"
+                TextChanged="SearchLinesTextBox_OnTextChanged"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Height="50"
+                Width="230"
+                FontSize="15"
+                materialDesign:HintAssist.Hint="Search Bus by license number"  
+                materialDesign:HintAssist.IsFloating="True"
+            />
+
+            <materialDesign:PackIcon
+                Kind="Search"
+                Height="40"
+                Width="40"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Opacity="0.9"
+                Margin="0,0,10,0"
+                Foreground="#0069C0"
+            />
+        </StackPanel>
+
 
     </Grid>
 </Page>
