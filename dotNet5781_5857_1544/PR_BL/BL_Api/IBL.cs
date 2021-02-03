@@ -54,6 +54,8 @@ namespace BLApi
         //bool CompareLines(BusLine b1, BusLine b2, IEnumerable<BusStation> bs1, IEnumerable<BusStation> bs2);
         void DeleteBusLine(int busLineId);
 
+        IEnumerable<string> groupLineByAreas();
+
         #endregion
 
         #region ConsecutiveStations
@@ -93,8 +95,9 @@ namespace BLApi
         #region Line exit
         void AddLineExit(BO.LineExit lineExit);
         IEnumerable<BO.LineExit> GetAllLineExits();
+        IEnumerable<BO.LineExit> GetAllLineExitsByLine(int bbslID);
         BO.LineExit GetLineExit(int busLineId, TimeSpan startTime);
-        
+        void DeleteLineExit(int bslID, TimeSpan start);
 
         #endregion
 

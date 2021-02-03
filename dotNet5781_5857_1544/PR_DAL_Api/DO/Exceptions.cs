@@ -253,7 +253,6 @@ namespace DO
     public class LineExitDoesNotExistsException : Exception
     {
         public LineExitDoesNotExistsException() : base() { }
-
         public LineExitDoesNotExistsException(string message) : base(message) { }
     }
 }

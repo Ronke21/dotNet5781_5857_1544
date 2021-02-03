@@ -96,6 +96,9 @@
     <Compile Include="Manager_Lines\AddBusLineWindow.xaml.cs">
       <DependentUpon>AddBusLineWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Manager_Lines\AddLineExit.xaml.cs">
+      <DependentUpon>AddLineExit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager_Lines\InActiveLinesViewPage.xaml.cs">
       <DependentUpon>InActiveLinesViewPage.xaml</DependentUpon>
     </Compile>
@@ -192,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Manager_Lines\AddBusLineWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Lines\AddLineExit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

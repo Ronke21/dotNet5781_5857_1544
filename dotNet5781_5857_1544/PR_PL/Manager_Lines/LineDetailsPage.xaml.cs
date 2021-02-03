@@ -22,6 +22,7 @@ namespace PL
 
             BusLineDetailsGrid.DataContext = _bl.GetBusLine(bline.BusLineId);
             StationDataGrid.DataContext = _bl.UpdateAndReturnLineStationList(bline.BusLineId);
+            ExitsDataGrid.DataContext = _bl.GetAllLineExitsByLine(bline.BusLineId);
         }
 
         private void Map_Click(object sender, RoutedEventArgs e)

@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using BLApi;
 using BO;
+using PR_PL.Manager_Lines;
 
 namespace PL
 {
@@ -38,6 +39,8 @@ namespace PL
 
             StationsDataGrid.ItemsSource = _chooseFrom;
             ChosenStationsDataGrid.ItemsSource = _chosen;
+            ExitsDataGrid.DataContext = _bl.GetAllLineExitsByLine(bline.BusLineId);
+
 
             RefreshDataGrids();
 
@@ -51,6 +54,7 @@ namespace PL
             StationsDataGrid.ItemsSource = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom).OrderBy(s => s.Code);
             StationsDataGrid.Items.Refresh();
             ChosenStationsDataGrid.Items.Refresh();
+            ExitsDataGrid.DataContext = _bl.GetAllLineExitsByLine(bline.BusLineId);
             Colors();
         }
 
@@ -144,6 +148,40 @@ namespace PL
         {
             StationsDataGrid.DataContext = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom);
             RefreshDataGrids();
+        }
+
+        private void AddLineExit_OnClick(object sender, RoutedEventArgs e)
+        {
+            var ale = new AddLineExit(_bl, bline);
+            ale.ShowDialog();
+            ExitsDataGrid.DataContext = _bl.GetAllLineExitsByLine(bline.BusLineId);
+
+        }
+        private void DeleteLineExit_OnClick(object sender, RoutedEventArgs e)
+        {
+            LineExit exitL;
+            if (ExitsDataGrid.SelectedItem is null)
+            {
+                MessageBox.Show("Please choose line exit to delete");
+                return;
+            }
+            else
+            {
+                exitL = (LineExit)ExitsDataGrid.SelectedItem;
+            }
+
+            try
+            {
+                _bl.DeleteLineExit(exitL.BusLineId, exitL.StartTime);
+            }
+
+            catch( BO.BadUpdateException ex)
+            {
+                MessageBox.Show(ex.Message, "Can not delete line exit");
+            }
+
+            ExitsDataGrid.DataContext = _bl.GetAllLineExitsByLine(bline.BusLineId);
+
         }
     }
 }

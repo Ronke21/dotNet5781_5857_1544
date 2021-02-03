@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:PL"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1200
+      "
       Title="LineDetailsPage"
       
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -28,6 +29,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -155,6 +157,49 @@
                     x:Name="TimeToNext" 
                     Binding="{Binding TimeToNext}"
                     Header="TTN"
+                    FontSize="10"
+                />
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <DataGrid
+            x:Name="ExitsDataGrid"
+            Grid.Row="1"
+            Grid.RowSpan="3"
+            Grid.Column="5"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding}"
+            RowDetailsVisibilityMode="VisibleWhenSelected"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            FontSize="15"
+            Margin="10,0,10,0"
+            >
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn 
+                    x:Name="StartTime" 
+                    Binding="{Binding StartTime}"
+                    Header="Start Time"
+                    FontSize="10"
+                />
+
+                <DataGridTextColumn 
+                    x:Name="Freq" 
+                    Binding="{Binding Freq}"
+                    Header="Frequency"
+                    FontSize="10"
+                />
+
+                <DataGridTextColumn 
+                    x:Name="EndTime" 
+                    Binding="{Binding EndTime}"
+                    Header="End Time"
                     FontSize="10"
                 />
 

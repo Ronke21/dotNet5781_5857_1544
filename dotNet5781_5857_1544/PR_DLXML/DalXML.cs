@@ -675,7 +675,7 @@ namespace Dal
                 exit.Element("Active").Value = lineExit.Active.ToString();
             }
 
-            else throw new LineExitAlreadyExistsException($"Line exit number {lineExit.BusLineId},{lineExit.StartTime} does not exist");
+            else throw new LineExitAlreadyExistsException($"Line exit number {lineExit.BusLineId},{lineExit.StartTime} already exist");
 
             XMLTools.SaveListToXMLElement(lineExitRootElem, LineExitPath);
         }
@@ -756,7 +756,24 @@ namespace Dal
         }
         public void DeleteLineExit(int busLineId, TimeSpan startTime)
         {
-            throw new NotImplementedException();
+            var lineExitRootElem = XMLTools.LoadListFromXMLElement(LineExitPath);
+
+            var exit = (from le in lineExitRootElem.Elements()
+                        where (int.Parse(le.Element("BusLineId").Value) == busLineId &&
+                               XmlConvert.ToTimeSpan(le.Element("StartTime").Value) == startTime)
+                        select le).FirstOrDefault();
+
+            if (exit == null)
+            {
+                throw new DO.LineExitDoesNotExistsException("This line exit does not exist!");
+            }
+
+            else if (bool.Parse(exit.Element("Active").Value) is true)
+            {
+                exit.Element("Active").Value = false.ToString();
+            }
+
+            XMLTools.SaveListToXMLElement(lineExitRootElem, LineExitPath);
         }
 
         #endregion

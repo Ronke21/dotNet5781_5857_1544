@@ -890,6 +890,20 @@ namespace BL
             return true;
         }
 
+        public IEnumerable<string> groupLineByAreas()
+        {
+            var x = (GetAllActiveBusLines()).GroupBy(s => s.BusArea);
+
+
+            var counts = x.Select(s => new
+            {
+                are = s.Key,
+                coun = s.Count()
+            }).OrderBy(s => s.coun);
+            return from c in counts
+                   select c.are.ToString() + ": " + c.coun.ToString();
+
+        }
         #endregion
 
         #region Consecutive stations
@@ -1374,7 +1388,28 @@ namespace BL
                 throw new Exception("Unknown error getAllLineExits");
             }
         }
-        public BO.LineExit GetLineExit(int busLineId, TimeSpan startTime)
+
+        public IEnumerable<BO.LineExit> GetAllLineExitsByLine(int bslID)
+        {
+            return from z in GetAllLineExits()
+                   where z.BusLineId == bslID
+                   select z;
+        }
+
+        public void DeleteLineExit(int busLineId, TimeSpan startTime)
+        {
+            try
+            {
+                
+            _dal.DeleteLineExit(busLineId, startTime);
+            }
+
+            catch (DO.LineExitDoesNotExistsException ex)
+            {
+                throw new BO.BadUpdateException(ex.Message);
+            }
+        }
+            public BO.LineExit GetLineExit(int busLineId, TimeSpan startTime)
         {
             try
             {

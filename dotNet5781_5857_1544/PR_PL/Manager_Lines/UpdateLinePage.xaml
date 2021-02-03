@@ -30,6 +30,7 @@
             <ColumnDefinition Width="0.8*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Label
@@ -247,6 +248,82 @@
             </materialDesign:PackIcon>
 
         </Button>
+
+
+
+
+        <DataGrid
+            x:Name="ExitsDataGrid"
+            Grid.Row="2"
+            Grid.Column="3"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding}"
+            RowDetailsVisibilityMode="VisibleWhenSelected"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            FontSize="10"
+            Margin="10,0,10,0"
+            >
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn 
+                    x:Name="StartTime" 
+                    Binding="{Binding StartTime}"
+                    Header="Start Time"
+                />
+
+                <DataGridTextColumn 
+                    x:Name="Freq" 
+                    Binding="{Binding Freq}"
+                    Header="Frequency"
+                />
+
+                <DataGridTextColumn 
+                    x:Name="EndTime" 
+                    Binding="{Binding EndTime}"
+                    Header="End Time"
+                />
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+
+        <Button
+                Name="AddLineExit"
+                Grid.Row="3"
+                Grid.Column="3"
+                HorizontalAlignment="Right"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                Click="AddLineExit_OnClick" 
+            Margin="0,12.4,52,11.6"
+            >
+            <materialDesign:PackIcon
+                    Kind="Add"
+                    Width="30"
+                    Height="30"
+                />
+        </Button>
+
+
+        <Button
+                Name="DeleteLineExit"
+                Grid.Row="3"
+                Grid.Column="3"
+                HorizontalAlignment="Right"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                Click="DeleteLineExit_OnClick" Margin="0,12.4,118,11.6"
+            >
+            <materialDesign:PackIcon
+                    Kind="Delete"
+                    Width="30"
+                    Height="30"
+                />
+        </Button>
+
 
     </Grid>
 

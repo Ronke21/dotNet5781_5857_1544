@@ -118,6 +118,14 @@
             </materialDesign:PackIcon>
 
         </Button>
+        <ListBox 
+            Name ="AreaCountLB"
+            HorizontalAlignment="Left" 
+            Height="100" 
+            Margin="162,352,0,-2.4" 
+            VerticalAlignment="Top" 
+            Width="100"
+            />
 
 
 

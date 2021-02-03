@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -22,9 +24,13 @@ namespace PL
 
             _bl = b;
 
+            AreaCountLB.ItemsSource = _bl.groupLineByAreas();
+
             try
             {
                 LinesDataGrid.ItemsSource = _bl.GetAllActiveBusLines();
+                AreaCountLB.ItemsSource = _bl.groupLineByAreas();
+
             }
             catch (Exception e)
             {
@@ -53,6 +59,8 @@ namespace PL
                     _bl.DeleteBusLine(((BusLine)b).BusLineId);
                 }
                 LinesDataGrid.ItemsSource = _bl.GetAllActiveBusLines();
+                AreaCountLB.ItemsSource = _bl.groupLineByAreas();
+
             }
         }
 
