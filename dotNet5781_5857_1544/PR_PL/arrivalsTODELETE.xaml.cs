@@ -15,9 +15,9 @@ namespace PL
 
             bl = b;
 
-            var x = bl.GetListForDigitalSign(38831);
+            //var x = bl.GetListForDigitalSign(38831);
 
-            ArrivalsDataGrid.ItemsSource = x;
+            //ArrivalsDataGrid.ItemsSource = x;
         }
     }
 }

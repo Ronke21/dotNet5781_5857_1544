@@ -64,7 +64,7 @@ namespace PL
 
         private void SearchLinesTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            StationsDataGrid.DataContext = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom);
+            StationsDataGrid.ItemsSource = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom);
         }
 
         private void Close_OnClick(object sender, RoutedEventArgs e)

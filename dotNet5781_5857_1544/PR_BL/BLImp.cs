@@ -23,7 +23,7 @@ namespace BL
 
         private readonly Random Rand = new Random(DateTime.Now.Millisecond);
 
-        private IEnumerable<LineArrivalToStation> MasterList = new List<LineArrivalToStation>();
+        //private IEnumerable<LineArrivalToStation> MasterList = new List<LineArrivalToStation>();
 
         //private Thread _fill = new Thread(() => { }); // empty
         //public bool IsFillRunning() { return _fill.IsAlive; }
@@ -319,7 +319,7 @@ namespace BL
 
         #endregion
 
-        #region BusStation
+        #region Bus Station
         private BO.BusStation BusStationDoToBoAdapter(DO.BusStation stat)
         {
             var boStat = new BO.BusStation();
@@ -411,10 +411,14 @@ namespace BL
                 var stationsList = from bs in _dal.GetAllActiveBusStations()
                                    select BusStationDoToBoAdapter(bs);
 
+                var lineStations = _dal.GetAllLineStations();
+
                 //attach lines to station
                 foreach (var stat in stationsList)
                 {
-                    stat.BusLines = LinesInStation(stat.Code);
+                    stat.BusLines = from lineStat in lineStations
+                                    where lineStat.Code == stat.Code
+                                    select GetSimpleBusLine(lineStat.BusLineId);
                 }
 
                 return stationsList;
@@ -435,11 +439,14 @@ namespace BL
                 var stationsList = from bs in _dal.GetAllActiveBusStations()
                                    where (bs.Code.ToString()).Contains(code) || (bs.Name).Contains(code)
                                    select BusStationDoToBoAdapter(bs);
+                var lineStations = _dal.GetAllLineStations();
 
                 //attach lines to station
                 foreach (var stat in stationsList)
                 {
-                    stat.BusLines = LinesInStation(stat.Code);
+                    stat.BusLines = from lineStat in lineStations
+                                    where lineStat.Code == stat.Code
+                                    select GetSimpleBusLine(lineStat.BusLineId);
                 }
 
                 return stationsList;
@@ -488,7 +495,12 @@ namespace BL
             {
                 var bsDO = _dal.GetBusStation(code);
                 bsDO.CopyPropertiesTo(bsBO);
-                bsBO.BusLines = LinesInStation(bsBO.Code);
+
+                //attach lines to station
+                var lineStations = _dal.GetAllLineStations();
+                bsBO.BusLines = from lineStat in lineStations
+                                where lineStat.Code == bsBO.Code
+                                select GetSimpleBusLine(lineStat.BusLineId);
             }
             catch (DO.StationDoesNotExistException ex)
             {
@@ -507,7 +519,7 @@ namespace BL
 
             return from lineStat in lineStations
                    where lineStat.Code == statCode
-                   select GetBusLine(lineStat.BusLineId);
+                   select GetSimpleBusLine(lineStat.BusLineId);
         }
         public IEnumerable<LineNumberAndFinalDestination> ListForYellowSign(int statCode)
         {
@@ -570,39 +582,39 @@ namespace BL
 
         //    MasterList = lats;
         //}
-        public IEnumerable<LineNumberAndFinalDestination> GetListForDigitalSign(int statCode)
-        {
-            IEnumerable<LineNumberAndFinalDestination> l = new List<LineNumberAndFinalDestination>();
+        //public IEnumerable<LineNumberAndFinalDestination> GetListForDigitalSign(int statCode)
+        //{
+        //    IEnumerable<LineNumberAndFinalDestination> l = new List<LineNumberAndFinalDestination>();
 
-            #region comment
-            foreach (var a in MasterList)
-            {
-                var timeToArrival = (a.ArrivalTime - Clock.Instance.Time);
-                if (statCode == a.StationCode && timeToArrival.Hours == 0 && timeToArrival.Minutes < 30)
-                {
-                    l = l.Append(new LineNumberAndFinalDestination()
-                    {
-                        LineNumber = GetBusLine(a.BusLineId).LineNumber,
-                        FinalDestination = GetBusStation(GetBusLine(a.BusLineId).LastStation).Name,
-                        TimeToArrival = timeToArrival
-                    });
-                }
-            }
+        //    #region comment
+        //    foreach (var a in MasterList)
+        //    {
+        //        var timeToArrival = (a.ArrivalTime - Clock.Instance.Time);
+        //        if (statCode == a.StationCode && timeToArrival.Hours == 0 && timeToArrival.Minutes < 30)
+        //        {
+        //            l = l.Append(new LineNumberAndFinalDestination()
+        //            {
+        //                LineNumber = GetBusLine(a.BusLineId).LineNumber,
+        //                FinalDestination = GetBusStation(GetBusLine(a.BusLineId).LastStation).Name,
+        //                TimeToArrival = timeToArrival
+        //            });
+        //        }
+        //    }
 
-            l = l.OrderBy(arr => arr.TimeToArrival);
-            return l;
+        //    l = l.OrderBy(arr => arr.TimeToArrival);
+        //    return l;
 
-            #endregion
+        //    #endregion
 
-            //return x.Where(a => statCode == a.StationCode).
-            //    Aggregate(l, (current, a) => current.
-            //        Append(new LineNumberAndFinalDestination()
-            //        {
-            //            LineNumber = GetBusLine(a.BusLineId).LineNumber,
-            //            FinalDestination = GetBusStation(GetBusLine(a.BusLineId).LastStation).Name,
-            //            TimeToArrival = a.ArrivalTime - Clock.Instance.Time
-            //        }));
-        }
+        //    //return x.Where(a => statCode == a.StationCode).
+        //    //    Aggregate(l, (current, a) => current.
+        //    //        Append(new LineNumberAndFinalDestination()
+        //    //        {
+        //    //            LineNumber = GetBusLine(a.BusLineId).LineNumber,
+        //    //            FinalDestination = GetBusStation(GetBusLine(a.BusLineId).LastStation).Name,
+        //    //            TimeToArrival = a.ArrivalTime - Clock.Instance.Time
+        //    //        }));
+        //}
 
         #endregion
 
@@ -760,6 +772,25 @@ namespace BL
             }
 
             busLineBO.ListOfLineStations = UpdateAndReturnLineStationList(busLineBO.BusLineId);
+
+            return busLineBO;
+        }
+        private BO.BusLine GetSimpleBusLine(int busLineId)
+        {
+            var busLineBO = new BO.BusLine();
+
+            try
+            {
+                _dal.GetBusLine(busLineId).CopyPropertiesTo(busLineBO);
+            }
+            catch (DO.StationDoesNotExistException ex)
+            {
+                throw new BO.DoesNotExistException("Bus line id does not exist", ex);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unknown error GetBusLine");
+            }
 
             return busLineBO;
         }
@@ -1110,15 +1141,15 @@ namespace BL
             Clock.Instance.IsRunning = false;
         }
         public bool IsSimulatorRunning() { return Clock.Instance.IsRunning; }
-        public void UpdateStationDigitalSign(int statCode, Action<IEnumerable<LineNumberAndFinalDestination>> update)
-        {
-            while (Clock.Instance.IsRunning)
-            {
-                var x = GetListForDigitalSign(statCode);
-                update(x);
-                Thread.Sleep(2000);
-            }
-        }
+        //public void UpdateStationDigitalSign(int statCode, Action<IEnumerable<LineNumberAndFinalDestination>> update)
+        //{
+        //    while (Clock.Instance.IsRunning)
+        //    {
+        //        var x = GetListForDigitalSign(statCode);
+        //        update(x);
+        //        Thread.Sleep(2000);
+        //    }
+        //}
         //public void SetStationPanel(int statCode, Action<LineTiming> updateBus)
         //{
         //    if (Simulator.Instance.StatCode == -1)
@@ -1190,7 +1221,6 @@ namespace BL
 
             Simulator.Instance.SetDigitalPanelObserver -= updateBus;
         }
-
         private void StartLines()
         {
             foreach (var lineExit in GetAllLineExits().OrderBy(le => le.StartTime))
@@ -1265,7 +1295,6 @@ namespace BL
                 }).Start();
             }
         }
-
         private IEnumerable<LineTiming> ArrivalTimesToNextStations(BusLine busLine, TimeSpan start, int index, IReadOnlyCollection<ConsecutiveStations> conStats, string lastStatName)
         {
             var toReturn = new List<LineTiming>();

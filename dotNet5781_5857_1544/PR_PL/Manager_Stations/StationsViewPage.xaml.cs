@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -19,7 +20,10 @@ namespace PL
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;
         private SimulationPage _simulationPage;
         private bool _simulation;
+
+        private int counter;
         //private ObservableCollection<BusStation> _display;
+
         public StationsViewPage(IBL b, SimulationPage sp)
         {
             InitializeComponent();
@@ -33,6 +37,8 @@ namespace PL
 
             //// add a new sorting rule, sort by "Code"
             //StationsDataGrid.Items.SortDescriptions.Add(new SortDescription("Code", ListSortDirection.Ascending));
+
+            counter = SearchLinesTextBox.Text.Length;
 
             Refresh();
         }
@@ -115,7 +121,17 @@ namespace PL
 
         private void SearchLinesTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            StationsDataGrid.DataContext = _bl.GetAllBusStationsByCodeOrName(SearchLinesTextBox.Text);
+            if (((TextBox)sender).Text.Length > counter)
+            {
+                StationsDataGrid.ItemsSource = _bl.GetAllMatches(SearchLinesTextBox.Text, (IEnumerable<BusStation>)StationsDataGrid.ItemsSource);
+                counter++;
+            }
+            if (((TextBox)sender).Text.Length < counter)
+            {
+                StationsDataGrid.ItemsSource = _bl.GetAllBusStationsByCodeOrName(SearchLinesTextBox.Text);
+                counter--;
+            }
+            else StationsDataGrid.ItemsSource = _bl.GetAllBusStationsByCodeOrName(SearchLinesTextBox.Text);
         }
     }
 }

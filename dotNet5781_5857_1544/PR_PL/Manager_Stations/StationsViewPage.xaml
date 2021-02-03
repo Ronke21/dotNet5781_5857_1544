@@ -81,7 +81,6 @@
 
         <TextBox
                     Name="SearchLinesTextBox"
-                    TextChanged="SearchLinesTextBox_OnTextChanged"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Height="50"
@@ -90,6 +89,7 @@
                     Margin="0,-6,26,0"
                     materialDesign:HintAssist.Hint="Search Station by code / name"  
                     materialDesign:HintAssist.IsFloating="True"
+                    TextChanged="SearchLinesTextBox_OnTextChanged"
                 />
 
         <Button 

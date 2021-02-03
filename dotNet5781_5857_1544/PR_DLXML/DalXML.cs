@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Xml.Linq;
 using DalApi;
 using DO;
@@ -273,6 +274,8 @@ namespace Dal
             {
                 throw new EmptyListException("Active Bus Station List is Empty!");
             }
+
+            //return busStationsList;
 
             return from bs in busStationsList
                    where bs.Active // is true

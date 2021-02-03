@@ -33,7 +33,7 @@ namespace BLApi
         BO.BusStation GetBusStation(int code);
         IEnumerable<BO.BusStation> GetLineBusStations(int BusLineID);
         IEnumerable<LineNumberAndFinalDestination> ListForYellowSign(int statCode);
-        IEnumerable<LineNumberAndFinalDestination> GetListForDigitalSign(int statCode);
+        //IEnumerable<LineNumberAndFinalDestination> GetListForDigitalSign(int statCode);
         IEnumerable<BO.BusLine> LinesInStation(int statCode);
         void UpdateBusStation(BO.BusStation bs);
         void DeleteBusStation(int code);
@@ -71,7 +71,7 @@ namespace BLApi
         void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime);
         void StopSimulator();
         bool IsSimulatorRunning();
-        void UpdateStationDigitalSign(int statCode, Action<IEnumerable<LineNumberAndFinalDestination>> update);
+        //void UpdateStationDigitalSign(int statCode, Action<IEnumerable<LineNumberAndFinalDestination>> update);
         void SetStationPanel(int statCode, Action<LineTiming> updateBus);
         void StopStationPanel(Action<LineTiming> updateBus);
 
