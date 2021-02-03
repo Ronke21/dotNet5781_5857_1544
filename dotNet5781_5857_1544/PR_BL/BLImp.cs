@@ -1089,8 +1089,11 @@ namespace BL
 
                         // wait for nearest exit time
                         var t = nextExitTime - Clock.Instance.Time.TimeOnly();
+                        if (t.Hours < 0)
+                        {
+                            t = new TimeSpan(t.Hours + 24, t.Minutes, t.Seconds);
+                        }
                         var wait = t.TotalMilliseconds / Clock.Instance.Rate;
-                        if (wait < 0) wait *= -1;
                         Thread.Sleep((int)wait);
 
                         // start line exit

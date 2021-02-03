@@ -7,30 +7,6 @@ using System.Windows.Media.Animation;
 using BLApi;
 using MaterialDesignThemes.Wpf;
 
-/*
- * todo: double click window showing all bus's details ( + buttons for threads)                     // Amihay   V
- *
- * todo: update bus, inside the double click window                                                 // Amihay   V
- *
- * todo: implement remove by pressing on the whole line                                             // Ron      V
- *
- * todo: add window showing all inactive buses, implement cRud function to get all inactive buses   // Ron      V 
- *
- * todo: logic of buses                                                                             // Amihay
- * 
- * todo: implement Stations Dal and BL                                                              // Ron      V
- *
- * todo: implement BulLines Dal and BL                                                              // Both
- *
- * todo: stations windows                                                                           // Ron      V
- *
- * todo: learn how to work with pages and resources                                                 // Amihay
- * 
- * todo: logic of stations
- * 
- * todo: decide what can be updated!
- */
-
 namespace PL
 {
     /// <summary>
@@ -51,6 +27,9 @@ namespace PL
         #endregion
         public MainWindow()
         {
+            var lp = new LoginPage();
+            lp.ShowDialog();
+
             InitializeComponent();
 
             #region init
@@ -163,11 +142,6 @@ namespace PL
             {
                 DataDisplay.Content = new StationsViewPage(_bl, _simulationPage);
             }
-            //if (_bl.IsFillRunning())
-            //{
-            //    MessageBox.Show("still filling the list");
-            //    return;
-            //}
         }
 
         #region colors

@@ -12,7 +12,7 @@
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
         FontFamily="{DynamicResource MaterialDesignFont}"
-        
+        WindowStartupLocation="CenterScreen"
         Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None"
@@ -28,22 +28,11 @@
         Background="White">
 
 
-        <StackPanel>
-
-            <Button
-            Name="Close"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-            Click="Close_OnClick"
-            Margin="15">
-
-                <materialDesign:PackIcon
-                Kind="Close"
-                Width="30"
-                Height="30"
-            />
-            </Button>
+        <StackPanel
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Margin="0,50,0,0"
+            >
 
             <StackPanel
                 Orientation="Vertical"
@@ -108,7 +97,7 @@
                     HorizontalAlignment="Center"
                 >
                     <PasswordBox
-                        Name="NameTextBox"
+                        Name="PasswordBox"
                         Width="200"
                         FontSize="18"
                         materialDesign:HintAssist.Hint="Password"  
@@ -139,9 +128,10 @@
                         Margin="10"
                         BorderBrush="#0069C0"
                         Opacity="0.8"
-                        MouseDown="UIElement_OnMouseDown"
                         BorderThickness="3"
-                        Background="White">
+                        Background="White"
+                        MouseDown="UIElement_OnMouseLeave"
+                        >
                         <Label 
                             Content="Login"
                             HorizontalAlignment="Center"

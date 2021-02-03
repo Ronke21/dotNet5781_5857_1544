@@ -32,9 +32,12 @@ namespace PL
             }
         }
 
-        private void Close_OnClick(object sender, RoutedEventArgs e)
+        private void UIElement_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            Close();
+            if (UserNameTextBox.Text == "admin" && PasswordBox.Password == "123")
+            {
+                Close();
+            }
         }
     }
 }
