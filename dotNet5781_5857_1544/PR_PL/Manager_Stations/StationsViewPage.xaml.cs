@@ -123,7 +123,7 @@ namespace PL
         {
             if (((TextBox)sender).Text.Length > counter)
             {
-                StationsDataGrid.ItemsSource = _bl.GetAllMatches(SearchLinesTextBox.Text, (IEnumerable<BusStation>)StationsDataGrid.ItemsSource);
+                StationsDataGrid.ItemsSource = _bl.GetAllMatchingBusStations(SearchLinesTextBox.Text, (IEnumerable<BusStation>)StationsDataGrid.ItemsSource);
                 counter++;
             }
             if (((TextBox)sender).Text.Length < counter)

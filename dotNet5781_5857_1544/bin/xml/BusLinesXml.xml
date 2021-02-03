@@ -9,49 +9,4 @@
     <AllAccessible>true</AllAccessible>
     <Active>true</Active>
   </BusLine>
-  <BusLine>
-    <BusLineId>22</BusLineId>
-    <LineNumber>2</LineNumber>
-    <BusArea>General</BusArea>
-    <FirstStation>39042</FirstStation>
-    <LastStation>38833</LastStation>
-    <AllAccessible>true</AllAccessible>
-    <Active>true</Active>
-  </BusLine>
-  <BusLine>
-    <BusLineId>23</BusLineId>
-    <LineNumber>152</LineNumber>
-    <BusArea>General</BusArea>
-    <FirstStation>38831</FirstStation>
-    <LastStation>38838</LastStation>
-    <AllAccessible>true</AllAccessible>
-    <Active>true</Active>
-  </BusLine>
-  <BusLine>
-    <BusLineId>24</BusLineId>
-    <LineNumber>213</LineNumber>
-    <BusArea>North</BusArea>
-    <FirstStation>38832</FirstStation>
-    <LastStation>38840</LastStation>
-    <AllAccessible>true</AllAccessible>
-    <Active>true</Active>
-  </BusLine>
-  <BusLine>
-    <BusLineId>25</BusLineId>
-    <LineNumber>14</LineNumber>
-    <BusArea>Jerusalem</BusArea>
-    <FirstStation>38893</FirstStation>
-    <LastStation>39050</LastStation>
-    <AllAccessible>true</AllAccessible>
-    <Active>true</Active>
-  </BusLine>
-  <BusLine>
-    <BusLineId>26</BusLineId>
-    <LineNumber>121</LineNumber>
-    <BusArea>North</BusArea>
-    <FirstStation>38836</FirstStation>
-    <LastStation>39086</LastStation>
-    <AllAccessible>true</AllAccessible>
-    <Active>true</Active>
-  </BusLine>
 </ArrayOfBusLine>

@@ -45,15 +45,22 @@
                 />
             </Button>
 
-            <Label
+            <StackPanel
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 >
+
+
+                <Label
                 Content="enter new time"
                 HorizontalAlignment="Center"
-                Height="20"
-                VerticalAlignment="Top"
-                Margin="0,5,0,0"
+                VerticalAlignment="Center"
+                Height="30"
+                FontSize="20"
+                Margin="10"
             />
 
-            <materialDesign:Clock
+                <materialDesign:Clock
                 Name="Clock"
                 HorizontalAlignment="Center"
                 Is24Hours="True"
@@ -61,6 +68,8 @@
                 DisplayAutomation="CycleWithSeconds"
                 Background="White"
                 />
+
+            </StackPanel>
 
             <Button
                 Name="Update"

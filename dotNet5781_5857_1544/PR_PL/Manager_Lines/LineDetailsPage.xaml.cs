@@ -20,9 +20,10 @@ namespace PL
             _bl = b;
             bline = busLine;
 
-            BusLineDetailsGrid.DataContext = _bl.GetBusLine(bline.BusLineId);
-            StationDataGrid.DataContext = _bl.UpdateAndReturnLineStationList(bline.BusLineId);
-            ExitsDataGrid.DataContext = _bl.GetAllLineExitsByLine(bline.BusLineId);
+            //BusLineDetailsGrid.DataContext = _bl.GetBusLine(bline.BusLineId);
+            BusLineDetailsGrid.DataContext = bline;
+            StationDataGrid.ItemsSource = _bl.UpdateAndReturnLineStationList(bline.BusLineId);
+            ExitsDataGrid.ItemsSource = _bl.GetAllLineExitsByLine(bline.BusLineId);
         }
 
         private void Map_Click(object sender, RoutedEventArgs e)

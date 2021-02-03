@@ -29,27 +29,12 @@ namespace PL
         {
             try
             {
-                ConStatDataGrid.ItemsSource = _bl.GetAllSimpleConsecutiveStations();
+                ConStatDataGrid.ItemsSource = _bl.GetAllConsecutiveStations();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Can't load the list of consecutive stations! \n" + ex.Message, "Station Loading Error!");
             }
-        }
-
-        private void ConStatDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
-
-        private void Add_OnClick(object sender, RoutedEventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
-
-        private void InActive_OnClick(object sender, RoutedEventArgs e)
-        {
-            //throw new NotImplementedException();
         }
 
         private void Update_OnClick(object sender, RoutedEventArgs e)

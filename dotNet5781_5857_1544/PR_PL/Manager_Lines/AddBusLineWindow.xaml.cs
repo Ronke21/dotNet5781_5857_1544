@@ -41,7 +41,7 @@ namespace PL
 
         private void RefreshDataGrids()
         {
-            StationsDataGrid.ItemsSource = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom).OrderBy(s => s.Code);
+            StationsDataGrid.ItemsSource = _bl.GetAllMatchingBusStations(SearchLinesTextBox.Text, _chooseFrom).OrderBy(s => s.Code);
             StationsDataGrid.Items.Refresh();
             ChosenStationsDataGrid.Items.Refresh();
             Colors();
@@ -64,7 +64,7 @@ namespace PL
 
         private void SearchLinesTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            StationsDataGrid.ItemsSource = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom);
+            StationsDataGrid.ItemsSource = _bl.GetAllMatchingBusStations(SearchLinesTextBox.Text, _chooseFrom);
         }
 
         private void Close_OnClick(object sender, RoutedEventArgs e)

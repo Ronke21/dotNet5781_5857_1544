@@ -388,7 +388,8 @@ namespace Dal
 
             var busLine = busLinesList.Find(b => b.BusLineId == busLineId);
             if (busLine != null) return busLine;
-            throw new BusLineDoesNotExistsException($"Bus line number {busLineId} does not exist");
+            return null;
+            //throw new BusLineDoesNotExistsException($"Bus line number {busLineId} does not exist");
         }
         public void ActivateBusLine(int busLineId)
         {

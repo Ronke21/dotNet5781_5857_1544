@@ -6,7 +6,6 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using BLApi;
 using BO;
-using PR_PL.Manager_Lines;
 
 namespace PL
 {
@@ -51,7 +50,7 @@ namespace PL
 
         private void RefreshDataGrids()
         {
-            StationsDataGrid.ItemsSource = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom).OrderBy(s => s.Code);
+            StationsDataGrid.ItemsSource = _bl.GetAllMatchingBusStations(SearchLinesTextBox.Text, _chooseFrom).OrderBy(s => s.Code);
             StationsDataGrid.Items.Refresh();
             ChosenStationsDataGrid.Items.Refresh();
             ExitsDataGrid.DataContext = _bl.GetAllLineExitsByLine(bline.BusLineId);
@@ -146,7 +145,7 @@ namespace PL
 
         private void SearchLinesTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            StationsDataGrid.DataContext = _bl.GetAllMatches(SearchLinesTextBox.Text, _chooseFrom);
+            StationsDataGrid.DataContext = _bl.GetAllMatchingBusStations(SearchLinesTextBox.Text, _chooseFrom);
             RefreshDataGrids();
         }
 

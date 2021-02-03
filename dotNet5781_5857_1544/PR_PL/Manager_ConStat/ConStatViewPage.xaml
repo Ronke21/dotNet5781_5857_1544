@@ -25,7 +25,6 @@
             AutoGenerateColumns="False"
             ItemsSource="{Binding}"
             IsReadOnly="True"
-            MouseDoubleClick="ConStatDataGrid_OnMouseDoubleClick"
             FontSize="25"
             HorizontalAlignment="Stretch"
             HorizontalContentAlignment="Center"
@@ -85,45 +84,7 @@
                 Kind="Update"
             />
         </Button>
-
-
-        <Button 
-            x:Name="InActive"
-            Width="100"
-            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-            Height="100"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            Click="InActive_OnClick"
-        >
-            <materialDesign:PackIcon
-                Width="50"
-                Height="50"
-                Kind="PackageDown"
-            />
-        </Button>
-
-        <Button
-            x:Name="Add"
-            Click="Add_OnClick"
-            Width="100"
-            Height="100"
-            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-            ToolTip="MaterialDesignFloatingActionMiniDarkButton"
-            Background="#FF0064A6"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Bottom">
-
-            <materialDesign:PackIcon
-                Kind="Add"
-                Width="60" 
-                Height="60"
-                BorderBrush="#FFE2EDFF">
-
-            </materialDesign:PackIcon>
-
-        </Button>
-
+        
 
         <StackPanel
             Orientation="Horizontal"

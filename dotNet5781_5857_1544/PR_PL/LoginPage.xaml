@@ -113,7 +113,6 @@
                         FontSize="18"
                         materialDesign:HintAssist.Hint="Password"  
                         materialDesign:HintAssist.IsFloating="True"
-                        PasswordChar=""
                         />
 
                     <materialDesign:PackIcon

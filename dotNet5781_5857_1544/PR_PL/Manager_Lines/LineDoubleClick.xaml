@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="LineDoubleClick"
-        Height="450"
-        Width="800"
+        Height="500"
+        Width="1100"
         
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
