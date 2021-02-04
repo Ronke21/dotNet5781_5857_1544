@@ -36,6 +36,7 @@ namespace Dal
         {
             var busesRootElem = XMLTools.LoadListFromXMLElement(busesPath);
 
+            //look the bus and create an instance
             var bus = (from bs in busesRootElem.Elements()
                        where int.Parse(bs.Element("LicenseNum").Value) == licenseNum
                        select new Bus()
@@ -61,6 +62,7 @@ namespace Dal
         {
             var busesRootElem = XMLTools.LoadListFromXMLElement(busesPath);
 
+            //look the buses and create an instance
             var buses = from bs in busesRootElem.Elements()
                         where bool.Parse(bs.Element("Active").Value) // == true
                         select new Bus()
@@ -100,17 +102,13 @@ namespace Dal
                             LastMaint = DateTime.Parse(bs.Element("LastMaint").Value),
                         };
 
-            //if (!buses.Any())
-            //{
-            //    throw new EmptyListException("List is Empty");
-            //}
-
             return buses;
         }
         public void AddBus(Bus bus)
         {
             var busesRootElem = XMLTools.LoadListFromXMLElement(busesPath);
 
+            //make shore bus does not exist already
             var bu = (from b in busesRootElem.Elements()
                       where int.Parse(b.Element("LicenseNum").Value) == bus.LicenseNum
                       select b).FirstOrDefault();
@@ -185,6 +183,7 @@ namespace Dal
                       where int.Parse(b.Element("LicenseNum").Value) == bus.LicenseNum
                       select b).FirstOrDefault();
 
+            //replace properties of existing bus in the new updated bus
             if (bs != null)
             {
                 bs.Element("LicenseNum").Value = bus.LicenseNum.ToString();
@@ -274,8 +273,6 @@ namespace Dal
             {
                 throw new EmptyListException("Active Bus Station List is Empty!");
             }
-
-            //return busStationsList;
 
             return from bs in busStationsList
                    where bs.Active // is true
@@ -747,14 +744,6 @@ namespace Dal
 
             return exit;
         }
-        public void UpdateLineExit(TimeSpan startTime, int freq, TimeSpan endTime)
-        {
-            throw new NotImplementedException();
-        }
-        public void ActivateLineExit(int busLineId, TimeSpan startTime)
-        {
-            throw new NotImplementedException();
-        }
         public void DeleteLineExit(int busLineId, TimeSpan startTime)
         {
             var lineExitRootElem = XMLTools.LoadListFromXMLElement(LineExitPath);
@@ -783,6 +772,7 @@ namespace Dal
         {
             var keyRootElem = XMLTools.LoadListFromXMLElement(keyGeneratorPath);
 
+            //check current key in the xml file
             var ser = (from s in keyRootElem.Elements()
                        select s).FirstOrDefault();
 
@@ -791,6 +781,7 @@ namespace Dal
 
             var key = int.Parse(ser.Value);
 
+            //promote the key ++
             ser.Value = (int.Parse(ser.Value) + 1).ToString();
 
             XMLTools.SaveListToXMLElement(keyRootElem, keyGeneratorPath);

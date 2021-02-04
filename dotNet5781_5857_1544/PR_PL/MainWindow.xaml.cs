@@ -250,10 +250,5 @@ namespace PL
             }
         }
 
-        private void Arrivals_OnClick(object sender, RoutedEventArgs e)
-        {
-            var atd = new arrivalsTODELETE(_bl);
-            atd.Show();
-        }
     }
 }

@@ -24,11 +24,6 @@ namespace BL
 
         private readonly Random Rand = new Random(DateTime.Now.Millisecond);
 
-        //private IEnumerable<LineArrivalToStation> MasterList = new List<LineArrivalToStation>();
-
-        //private Thread _fill = new Thread(() => { }); // empty
-        //public bool IsFillRunning() { return _fill.IsAlive; }
-
         #region Bus
 
         private BO.Bus BusDoToBoAdapter(DO.Bus bus)
@@ -1010,18 +1005,7 @@ namespace BL
                 throw new Exception("Unknown error AddBusLine");
             }
         }
-        //private LineStation GetLineStation(int lineNumber, int stationNumber)
-        //{
-        //    try
-        //    {
-        //        return LineStationDoToBoAdapter(_dal.GetLineStation(lineNumber, stationNumber));
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        //Console.WriteLine(e);
-        //        throw;
-        //    }
-        //}
+
         #endregion
 
         #region Simulator
@@ -1322,33 +1306,7 @@ namespace BL
                 throw new Exception("Unknown error getLineExit");
             }
         }
-        private LineTravel ReturnLineTravel(int busLineId)
-        {
-            var line = GetBusLine(busLineId);
-            var lineExit = GetGeneralLineExit(busLineId);
-
-            var lt = new LineTravel()
-            {
-                BusLineId = busLineId,
-                StartTime = lineExit.StartTime,
-                TimeIntervals = new List<TimeSpan>()
-            };
-
-            var abcd = new TimeSpan(0, 0, 0);
-
-            for (var i = 0; i < line.ListOfLineStations.Count() - 1; i++)
-            {
-                var a = GetConsecutiveStations
-                ((line.ListOfLineStations.ToList()[i]).Code,
-                    (line.ListOfLineStations.ToList()[i + 1]).Code).AverageTravelTime;
-
-                abcd = abcd.Add(a);
-
-                lt.TimeIntervals = lt.TimeIntervals.Append(abcd);
-            }
-
-            return lt;
-        }
+      
         #endregion
     }
 }

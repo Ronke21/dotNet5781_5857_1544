@@ -3,6 +3,13 @@ using System.Diagnostics;
 
 namespace BL
 {
+    /// <summary>
+    /// class for the clock in the simulator. 
+    /// singelton - created once and used from then.
+    /// contains a stop watch to calculate the time according to rate.
+    /// has an event to update the clock, 
+    /// an updating action from pl layer is signed to the event and activated in change of clock.
+    /// </summary>
     public class Clock
     {
         #region singelton

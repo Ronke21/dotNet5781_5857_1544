@@ -66,9 +66,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="arrivalsTODELETE.xaml.cs">
-      <DependentUpon>arrivalsTODELETE.xaml</DependentUpon>
-    </Compile>
     <Compile Include="LineExitWindowDelete.xaml.cs">
       <DependentUpon>LineExitWindowDelete.xaml</DependentUpon>
     </Compile>
@@ -132,10 +129,6 @@
     <Compile Include="Manager_Stations\StationDetails.xaml.cs">
       <DependentUpon>StationDetails.xaml</DependentUpon>
     </Compile>
-    <Page Include="arrivalsTODELETE.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="LineExitWindowDelete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

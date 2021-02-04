@@ -2,6 +2,11 @@
 
 namespace DO
 {
+    /// <summary>
+    /// represents a physical bus station somewhere,
+    /// including an accurate location and address.
+    /// primary key - code (original from ministry of transport).
+    /// </summary>
     public class BusStation
     {
         //public int ID {get; set; }

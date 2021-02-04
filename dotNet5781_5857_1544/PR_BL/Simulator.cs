@@ -3,6 +3,12 @@ using BO;
 
 namespace BL
 {
+    /// <summary>
+    /// class for the rides in the simulator. 
+    /// singelton - created once and used from then.
+    /// has an event to update the digital panel of a chosen station- its code also kept in the class, 
+    /// an updating action from pl layer is signed to the event and activated in change of line timing - sends a arrival time of 1 line.
+    /// </summary>
     public class Simulator
     {
         #region singelton

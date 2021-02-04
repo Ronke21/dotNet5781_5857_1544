@@ -48,14 +48,10 @@
     <Compile Include="DO\BusLine.cs" />
     <Compile Include="DO\BusStation.cs" />
     <Compile Include="DO\ConsecutiveStations.cs" />
-    <Compile Include="DO\Driver.cs" />
     <Compile Include="DO\Enums.cs" />
     <Compile Include="DO\Exceptions.cs" />
     <Compile Include="DO\LineExit.cs" />
     <Compile Include="DO\LineStation.cs" />
-    <Compile Include="DO\TravelingBus.cs" />
-    <Compile Include="DO\User.cs" />
-    <Compile Include="DO\UserTravel.cs" />
     <Compile Include="IDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

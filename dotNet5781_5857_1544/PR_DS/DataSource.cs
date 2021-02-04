@@ -22,12 +22,7 @@ namespace DS
         public static List<BusLine> BusLinesList;
         public static List<BusStation> BusStationsList;
         public static List<ConsecutiveStations> ConsecutiveStationsList;
-        public static List<Driver> DriversList;
-        //public static List<LineExit> LineExitsList;
         public static List<LineStation> LineStationsList;
-        public static List<TravelingBus> TravelingBusesList;
-        public static List<User> UsersList;
-        public static List<UserTravel> UserTravelsList;
 
         public static Dictionary<int, string> Match;
 
@@ -236,8 +231,6 @@ namespace DS
 
             #endregion
 
-            DriversList = new List<Driver>();
-
             #region Line station
 
             LineStationsList = new List<LineStation>()
@@ -285,13 +278,7 @@ namespace DS
 
             #endregion
             
-            //LineExitsList = new List<LineExit>();
 
-            TravelingBusesList = new List<TravelingBus>();
-
-            UsersList = new List<User>();
-
-            UserTravelsList = new List<UserTravel>();
         }
     }
 }

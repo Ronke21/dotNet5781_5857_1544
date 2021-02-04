@@ -3,6 +3,12 @@ using System.Device.Location;
 
 namespace BO
 {
+    /// <summary>
+    /// represents a physical bus station somewhere,
+    /// including an accurate location and address.
+    /// primary key - code (original from ministry of transport).
+    /// contains also the list of bus lines going through the station.
+    /// </summary>
     public class BusStation
     {
         //public int ID { get; set; }

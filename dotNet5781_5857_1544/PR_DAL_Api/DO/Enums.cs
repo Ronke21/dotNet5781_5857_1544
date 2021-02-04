@@ -1,5 +1,8 @@
 ﻿namespace DO
 {
+    /// <summary>
+    /// Enum representing status of the bus entity
+    /// </summary>
     public enum Status
     { 
         Ready,
@@ -10,6 +13,9 @@
         Unfit
     }
 
+    /// <summary>
+    /// Area of bus lines.
+    /// </summary>
     public enum Area
     { 
         General,
@@ -19,10 +25,5 @@
         Jerusalem
     }
 
-    public enum Authorization
-    {
-        Manager,
-        User
-    }
 
 }
