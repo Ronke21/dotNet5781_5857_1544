@@ -32,6 +32,16 @@ namespace BL
             bus.CopyPropertiesTo(boBus);
             return boBus;
         }
+
+        /// <summary>
+        /// check validity of a bus instance before added / updated.
+        /// if not valid throws exception.
+        /// license num - length fit to starting date
+        /// fuel and mileage - not negative and not too big
+        /// all dates - logical
+        /// </summary>
+        /// <param name="bus">bus to check</param>
+        /// <returns>tru if bus is valid</returns>
         private bool BusIsFit(BO.Bus bus)
         {
             // new buses must have 8 digit number
@@ -220,10 +230,6 @@ namespace BL
                 throw new GeneralErrorException("Unknown error");
             }
 
-            //catch (DO.EmptyListException ex)
-            //{
-            //    throw new BO.EmptyListException("No buses in the list", ex);
-            //}
         }
         public IEnumerable<BO.Bus> GetAllInActiveBusesByCode(string cod)
         {
@@ -322,6 +328,14 @@ namespace BL
             stat.CopyPropertiesTo(boStat);
             return boStat;
         }
+
+        /// <summary>
+        /// check validity of a bus station instance before added / updated.
+        /// if not valid throws exception.
+        /// check location in state of israel.
+        /// </summary>
+        /// <param name="bs">station to check</param>
+        /// <returns>true if station is valid</returns>
         private bool BusStationIsFit(BO.BusStation bs) //boolean id true for update, false for add. checks if already exist
         {
             // if out of Israel
@@ -502,20 +516,6 @@ namespace BL
                     FinalDestination = GetBusStation(line.LastStation).Name
 
                 }));
-
-            //var x = GetBusStation(statCode);
-
-            //var b = x.BusLines;
-
-            //foreach (var line in b)
-            //{
-            //    toReturn = toReturn.Append(new LineNumberAndFinalDestination()
-            //    {
-            //        LineNumber = line.LineNumber,
-            //        FinalDestination = GetBusStation(line.LastStation).Name
-            //    });
-            //}
-            //return toReturn;
         }
         public void UpdateBusStation(BO.BusStation bs)
         {
@@ -713,7 +713,7 @@ namespace BL
         public void UpdateBusLine(BO.BusLine update, IEnumerable<BO.BusStation> chosen)
         {
 
-            if (chosen.Count() < 2)
+            if (chosen.Count() < 2) //bus must have at least 2 stations
             {
                 return;
             }
@@ -727,7 +727,6 @@ namespace BL
 
             try
             {
-                //if (!BusIsFit(bus)) return;
                 var bl = new DO.BusLine();
                 update.CopyPropertiesTo(bl);
 
@@ -775,6 +774,15 @@ namespace BL
                 throw new Exception("Unknown error DeleteBusLine");
             }
         }
+
+        /// <summary>
+        /// help method - compares 2 buslines - details and stations
+        /// </summary>
+        /// <param name="b1">first bus line</param>
+        /// <param name="b2">second bus line</param>
+        /// <param name="bs1">first station list</param>
+        /// <param name="bs2">second station list</param>
+        /// <returns>true if equal</returns>
         private bool CompareLines(BO.BusLine b1, BO.BusLine b2, IEnumerable<BO.BusStation> bs1, IEnumerable<BO.BusStation> bs2)
         {
             var eq = b1.Active == b2.Active &&
@@ -787,19 +795,14 @@ namespace BL
             var s1 = bs1.ToList();
             var s2 = bs2.ToList();
 
-            return !s1.Where((t, i) => t.Code != s2[i].Code).Any();
+            return !s1.Where((t, i) => t.Code != s2[i].Code).Any(); //if 1 of stations is different - return false
 
-            //for (var i = 0; i < s1.Count; i++)
-            //{
-            //    if (s1[i].Code != s2[i].Code) return false;
-            //}
-
-            //return true;
         }
         public IEnumerable<string> groupLineByAreas()
         {
             var linesGroupedByArea = (GetAllActiveBusLines()).GroupBy(busLine => busLine.BusArea);
 
+            //count the lines grouped by area and create ienumarable af strings with the results
             var counts = linesGroupedByArea.Select(busLines => new
             {
                 area = busLines.Key,
@@ -811,19 +814,27 @@ namespace BL
         #endregion
 
         #region Consecutive stations
+
+        /// <summary>
+        /// calculate distance factor - that effect air distance between 2 consecutive stations
+        /// </summary>
         private double DistanceFactor()
         {
             return 1.25 + Rand.NextDouble() * 0.88;
         }
+
+        /// <summary>
+        /// calculate speed factor - that effect time between 2 consecutive stations
+        /// </summary>
         private double SpeedFactor(double dist)
         {
             // interurban speed
             if (dist <= 1000)
             {
-                return Rand.Next(30, 50) / 3.6;
+                return Rand.Next(30, 50) / 3.6; //30-50 kmh
             }
 
-            return Rand.Next(50, 80) / 3.6;
+            return Rand.Next(50, 80) / 3.6; //50-80 kmh
         }
 
         private BO.ConsecutiveStations ConsecutiveStationDoToBoAdapter(DO.ConsecutiveStations DOConStation)
@@ -841,15 +852,15 @@ namespace BL
                 var stat1 = GetBusStation(statCode1);
                 var stat2 = GetBusStation(statCode2);
 
-                var distance = (stat1.Location.GetDistanceTo(stat2.Location)) * DistanceFactor();
+                var distance = (stat1.Location.GetDistanceTo(stat2.Location)) * DistanceFactor(); //the air distance is not rellevant to ride so use distance factor
 
-                var time = new TimeSpan(0, 0, (int)(distance / SpeedFactor(distance)));
+                var time = new TimeSpan(0, 0, (int)(distance / SpeedFactor(distance))); //time between stations according to random speed
 
                 _dal.AddConsecutiveStations(statCode1, statCode2, time, Math.Round(distance / 1000, 2));
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw;
+                throw new BO.BadAdditionException("Unknown Error!");
             }
         }
         public void UpdateConsecutiveStations(BO.ConsecutiveStations conStat)
@@ -860,10 +871,9 @@ namespace BL
                 conStat.CopyPropertiesTo(cs);
                 _dal.UpdateConsecutiveStations(cs);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e);
-                throw;
+                throw new BO.BadUpdateException("Unknown Error!");
             }
         }
         public IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStations()
@@ -872,13 +882,12 @@ namespace BL
             {
                 foreach (var bl in _dal.GetAllActiveBusLines())
                 {
-                    UpdateAndReturnLineStationList(bl.BusLineId);
+                    UpdateAndReturnLineStationList(bl.BusLineId); //make shore all times are calculated and updated
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e);
-                throw;
+                throw new BO.GeneralErrorException("Unknown Error!");
             }
 
             try
@@ -890,9 +899,9 @@ namespace BL
             {
                 throw new BO.EmptyListException("No buses in the list", ex);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("Unknown error GetAllBuses");
+                throw new BO.GeneralErrorException("Unknown Error!");
             }
         }
         public IEnumerable<BO.ConsecutiveStations> GetAllSimpleConsecutiveStations()
@@ -906,27 +915,14 @@ namespace BL
             {
                 throw new BO.EmptyListException("No buses in the list", ex);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("Unknown error GetAllBuses");
+                throw new BO.GeneralErrorException("Unknown Error!");
             }
         }
 
         public IEnumerable<BO.ConsecutiveStations> GetAllConsecutiveStationsByCode(string code)
         {
-            //try
-            //{
-            //    foreach (var bl in _dal.GetAllActiveBusLines())
-            //    {
-            //        UpdateAndReturnLineStationList(bl.BusLineId);
-            //    }
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e);
-            //    throw;
-            //}
-
             try
             {
                 return from conStat in _dal.GetAllConsecutiveStations()
@@ -939,15 +935,10 @@ namespace BL
             }
             catch (Exception)
             {
-                throw new Exception("Unknown error Get all consecutive stations");
+                throw new BO.GeneralErrorException("Unknown error Get all consecutive stations");
             }
         }
-        private BO.ConsecutiveStations GetConsecutiveStations(int statCode1, int statCode2)
-        {
-            return (from conStats in GetAllConsecutiveStations()
-                    where conStats.StatCode1 == statCode1 && conStats.StatCode2 == statCode2
-                    select conStats).FirstOrDefault();
-        }
+
         #endregion
 
         #region Line Station
@@ -963,7 +954,7 @@ namespace BL
 
             lineStations.Sort((s1, s2) => s1.StationIndex.CompareTo(s2.StationIndex));
 
-            for (var i = 0; i < lineStations.Count() - 1; i++)
+            for (var i = 0; i < lineStations.Count() - 1; i++) //update consecutive stations time and distance
             {
                 AddConsecutiveStations(lineStations[i].Code, lineStations[i + 1].Code);
             }
@@ -990,180 +981,15 @@ namespace BL
 
             lineStation.CopyPropertiesTo(lineStat);
 
-            //lineStat.BusLineId = _dal.GetKey();
-
             try
             {
                 _dal.AddLineStation(lineStat);
             }
-            //catch (DO.BusLineAlreadyExistsException ex)
-            //{
-            //    throw new BO.BadAdditionException("Can't add bus line", ex);
-            //}
-            catch (Exception)
+
+            catch (Exception ex)
             {
-                throw new Exception("Unknown error AddBusLine");
+                throw new BO.GeneralErrorException("Unknown error AddBusLine");
             }
-        }
-
-        #endregion
-
-        #region Simulator
-        public void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime)
-        {
-            Clock.Instance.IsRunning = true;
-            Clock.Instance.Time = startTime;
-            Clock.Instance.Rate = rate;
-
-            Clock.Instance.Timer.Restart();
-            Clock.Instance.ClockObserver += updateTime;
-            var timer = Clock.Instance.Timer;
-
-            Simulator.Instance.StatCode = -1;
-
-            StartLines();
-
-            while (Clock.Instance.IsRunning)
-            {
-                Clock.Instance.Time = startTime + TimeSpan.FromTicks(timer.Elapsed.Ticks * rate);
-                Clock.Instance.Time = Clock.Instance.Time.TimeOnly();
-                Thread.Sleep(10);
-            }
-        }
-        public void StopSimulator()
-        {
-            Clock.Instance.IsRunning = false;
-        }
-        public bool IsSimulatorRunning() { return Clock.Instance.IsRunning; }
-        public void SetStationPanel(int statCode, Action<LineTiming> updateBus)
-        {
-            Simulator.Instance.StatCode = statCode;
-
-            Simulator.Instance.SetDigitalPanelObserver += updateBus;
-        }
-        public void StopStationPanel(Action<LineTiming> updateBus)
-        {
-            Simulator.Instance.StatCode = -1;
-
-            Simulator.Instance.SetDigitalPanelObserver -= updateBus;
-        }
-
-        private void StartLines()
-        {
-            var allConStats = GetAllConsecutiveStations().ToList();
-
-            // SendLines:
-            foreach (var lineExit in GetAllLineExits().OrderBy(le => le.StartTime))
-            {
-                var currentLine = GetBusLine(lineExit.BusLineId);
-                var lastStationName = GetBusStation(currentLine.LastStation).Name;
-
-                new Thread(() =>
-                {
-                    while (Clock.Instance.IsRunning)
-                    {
-                        var nextExitTime = (from time in lineExit.Times
-                                            where time > Clock.Instance.Time.TimeOnly()
-                                            select time).FirstOrDefault();
-
-                        if (nextExitTime == TimeSpan.Zero)
-                        {
-                            nextExitTime = lineExit.StartTime;
-                        }
-
-                        // wait for nearest exit time
-                        var t = nextExitTime - Clock.Instance.Time.TimeOnly();
-                        if (t.Hours < 0)
-                        {
-                            t = new TimeSpan(t.Hours + 24, t.Minutes, t.Seconds);
-                        }
-                        var wait = t.TotalMilliseconds / Clock.Instance.Rate;
-                        Thread.Sleep((int)wait);
-
-                        // start line exit
-                        new Thread(() =>
-                        {
-                            var stations = currentLine.ListOfLineStations.ToList();
-
-                            // var lineTimings = new List<LineTiming>();
-
-                            for (var i = 0; i < stations.Count - 1; i++)
-                            {
-                                Simulator.Instance.LineTiming = new LineTiming()
-                                {
-                                    BusLineId = lineExit.BusLineId,
-                                    StartTime = nextExitTime,
-                                    LastStationName = lastStationName,
-                                    LineNumber = lineExit.LineNumber,
-                                    ArrivalTime = TimeSpan.Zero,
-                                    StatCode = stations[i].Code,
-                                };
-
-                                var lineTimings = ArrivalTimesToNextStations(currentLine, nextExitTime, i, allConStats, lastStationName).ToList();
-
-                                var lineTiming = (from lt in lineTimings
-                                                  where lt.StatCode == Simulator.Instance.StatCode
-                                                  select lt).FirstOrDefault();
-
-                                if (!(lineTiming is null))
-                                {
-                                    Simulator.Instance.LineTiming = lineTiming;
-                                }
-
-                                var sleep = lineTimings[0].ArrivalTime.TotalMilliseconds / Clock.Instance.Rate;
-
-                                sleep *= (double)Rand.Next(9, 20) / 10;
-
-                                Thread.Sleep((int)sleep);
-                            }
-
-                            Simulator.Instance.LineTiming = new LineTiming()
-                            {
-                                BusLineId = lineExit.BusLineId,
-                                StartTime = nextExitTime,
-                                LastStationName = lastStationName,
-                                LineNumber = lineExit.LineNumber,
-                                ArrivalTime = TimeSpan.Zero,
-                                StatCode = stations[stations.Count - 1].Code,
-                            };
-                        }).Start();
-                    }
-                }).Start();
-            }
-
-            //if (Clock.Instance.IsRunning)
-            //{
-            //    goto SendLines;
-            //}
-
-        }
-        //ArrivalTimesToNextStations(currentLine, nextExitTime, i, allConStats, lastStationName).ToList();
-        private IEnumerable<LineTiming> ArrivalTimesToNextStations(BusLine busLine, TimeSpan start, int index, IReadOnlyCollection<ConsecutiveStations> conStats, string lastStatName)
-        {
-            var toReturn = new List<LineTiming>();
-            var interval = TimeSpan.Zero;
-
-            for (var i = index; i < busLine.ListOfLineStations.Count() - 1; i++)
-            {
-                interval += (from s in conStats
-                             where s.StatCode1 == busLine.ListOfLineStations.ToList()[i].Code &&
-                                   s.StatCode2 == busLine.ListOfLineStations.ToList()[i + 1].Code
-                             select s).FirstOrDefault().AverageTravelTime;
-                // add speed factor
-
-                toReturn.Add(new LineTiming()
-                {
-                    BusLineId = busLine.BusLineId,
-                    StartTime = start,
-                    LastStationName = lastStatName,
-                    LineNumber = busLine.LineNumber,
-                    ArrivalTime = interval,
-                    StatCode = busLine.ListOfLineStations.ToList()[i + 1].Code,
-                });
-
-            }
-
-            return toReturn;
         }
 
         #endregion
@@ -1185,9 +1011,9 @@ namespace BL
             {
                 _dal.AddLineExit(lineExitDo);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-
+                throw new BO.BadAdditionException("Unknoen error adding line exit!");
             }
         }
         public IEnumerable<BO.LineExit> GetAllLineExits()
@@ -1198,14 +1024,18 @@ namespace BL
 
                 IEnumerable<BO.LineExit> toReturn = new List<BO.LineExit>();
 
-                //foreach (var x in exits)
-                //{
-                //    toReturn = toReturn.Append(getLineExit(x.BusLineId, x.StartTime));
-                //}
-
-                //return toReturn;
+                //recives the flat details from dal and fills the times list of each instance
                 return exits.Aggregate(toReturn, (current, x) => current.
                     Append(GetLineExit(x.BusLineId, x.StartTime)));
+
+                /*equal to:
+                foreach(var x in exits)
+{
+                    toReturn = toReturn.Append(getLineExit(x.BusLineId, x.StartTime));
+                }
+
+                return toReturn;
+                */
             }
 
             catch (DO.EmptyListException ex)
@@ -1215,7 +1045,7 @@ namespace BL
 
             catch (Exception)
             {
-                throw new Exception("Unknown error getAllLineExits");
+                throw new GeneralErrorException("Unknown error getAllLineExits");
             }
         }
 
@@ -1268,7 +1098,7 @@ namespace BL
 
             catch (Exception)
             {
-                throw new Exception("Unknown error getLineExit");
+                throw new GeneralErrorException("Unknown error getLineExit");
             }
         }
 
@@ -1303,10 +1133,180 @@ namespace BL
 
             catch (Exception)
             {
-                throw new Exception("Unknown error getLineExit");
+                throw new BO.GeneralErrorException("Unknown error getLineExit");
             }
         }
       
+        #endregion
+
+        #region Simulator
+        public void StartSimulator(TimeSpan startTime, int rate, Action<TimeSpan> updateTime)
+        {
+            Clock.Instance.IsRunning = true;
+            Clock.Instance.Time = startTime;
+            Clock.Instance.Rate = rate;
+
+            Clock.Instance.Timer.Restart();
+            Clock.Instance.ClockObserver += updateTime; //sign to event - the action that updates the presentation layer clock
+            var timer = Clock.Instance.Timer;
+
+            Simulator.Instance.StatCode = -1;
+
+            StartLines();
+
+            while (Clock.Instance.IsRunning) //update PL every 0.01 seconds
+            {
+                Clock.Instance.Time = startTime + TimeSpan.FromTicks(timer.Elapsed.Ticks * rate);
+                Clock.Instance.Time = Clock.Instance.Time.TimeOnly(); //in case 1 day had passed - ignore the days
+                Thread.Sleep(10);
+            }
+        }
+        public void StopSimulator()
+        {
+            Clock.Instance.IsRunning = false;
+        }
+        public bool IsSimulatorRunning() 
+        { 
+            return Clock.Instance.IsRunning; 
+        }
+        public void SetStationPanel(int statCode, Action<LineTiming> updateBus)
+        {
+            Simulator.Instance.StatCode = statCode;
+
+            Simulator.Instance.SetDigitalPanelObserver += updateBus; //sign to event - the action that updates the presentation digital panel
+        }
+        public void StopStationPanel(Action<LineTiming> updateBus)
+        {
+            Simulator.Instance.StatCode = -1;
+
+            Simulator.Instance.SetDigitalPanelObserver -= updateBus;
+        }
+
+        private void StartLines()
+        {
+            var allConStats = GetAllConsecutiveStations().ToList(); //get all the details before - to be done only once for all lines
+
+            // SendLines:
+            foreach (var lineExit in GetAllLineExits().OrderBy(le => le.StartTime))
+            {
+                //get all the details before - to be done only once for all line exits
+                var currentLine = GetBusLine(lineExit.BusLineId);
+                var lastStationName = GetBusStation(currentLine.LastStation).Name;
+
+                //for each line exit - opens a new thread that activates the line exit. waits for a time that a line needs to go and sends it in a new thread
+                new Thread(() =>
+                {
+                    while (Clock.Instance.IsRunning)
+                    {
+                        var nextExitTime = (from time in lineExit.Times
+                                            where time > Clock.Instance.Time.TimeOnly()
+                                            select time).FirstOrDefault();
+
+                        if (nextExitTime == TimeSpan.Zero) //default - so wait for first exit
+                        {
+                            nextExitTime = lineExit.StartTime;
+                        }
+
+                        // wait for nearest exit time
+                        var t = nextExitTime - Clock.Instance.Time.TimeOnly();
+                        if (t.Hours < 0)//after a day passed it turnes to negative so add 24 hours
+                        {
+                            t = new TimeSpan(t.Hours + 24, t.Minutes, t.Seconds);
+                        }
+
+                        var wait = t.TotalMilliseconds / Clock.Instance.Rate;
+                        Thread.Sleep((int)wait); //sleep until it is time to start ride!
+
+                        // start line exit - every time in the line exit get a different thread
+                        new Thread(() =>
+                        {
+                            var stations = currentLine.ListOfLineStations.ToList();
+
+                            for (var i = 0; i < stations.Count - 1; i++) //go through every stations. in each station check the time to all other stations
+                            {
+                                Simulator.Instance.LineTiming = new LineTiming()//first station - already arrived, send with arrival 0
+                                {
+                                    BusLineId = lineExit.BusLineId,
+                                    StartTime = nextExitTime,
+                                    LastStationName = lastStationName,
+                                    LineNumber = lineExit.LineNumber,
+                                    ArrivalTime = TimeSpan.Zero,
+                                    StatCode = stations[i].Code,
+                                };
+
+                                //calculate for time for the rest of the stations from the current one
+                                var lineTimings = ArrivalTimesToNextStations(currentLine, nextExitTime, i, allConStats, lastStationName).ToList();
+
+                                //if one of stations is opend in PL - send the update to digital panel
+                                var lineTiming = (from lt in lineTimings
+                                                  where lt.StatCode == Simulator.Instance.StatCode
+                                                  select lt).FirstOrDefault();
+
+                                if (!(lineTiming is null))
+                                {
+                                    Simulator.Instance.LineTiming = lineTiming;
+                                }
+
+                                //sleep until the next station - according to time to it with a random factor - early or delay
+                                var sleep = lineTimings[0].ArrivalTime.TotalMilliseconds / Clock.Instance.Rate;
+                                sleep *= (double)Rand.Next(9, 20) / 10;
+                                Thread.Sleep((int)sleep);
+                            }
+
+                            Simulator.Instance.LineTiming = new LineTiming() //update arrival for the last station
+                            {
+                                BusLineId = lineExit.BusLineId,
+                                StartTime = nextExitTime,
+                                LastStationName = lastStationName,
+                                LineNumber = lineExit.LineNumber,
+                                ArrivalTime = TimeSpan.Zero,
+                                StatCode = stations[stations.Count - 1].Code,
+                            };
+                        }).Start();
+                    }
+                }).Start();
+            }
+
+        }
+
+        /// <summary>
+        /// help method - recives the current bus line that is in ride,
+        /// its starting time and index of cuurent station,
+        /// and calculates the arrivale time to all left stations
+        /// </summary>
+        /// <param name="busLine">line in ride</param>
+        /// <param name="start">this ride start time</param>
+        /// <param name="index">index of current station in line</param>
+        /// <param name="conStats">list of all consecutive stations</param>
+        /// <param name="lastStatName">this line last station name</param>
+        /// <returns>ienumarable of the arrivale times</returns>
+        private IEnumerable<LineTiming> ArrivalTimesToNextStations(BusLine busLine, TimeSpan start, int index, IReadOnlyCollection<ConsecutiveStations> conStats, string lastStatName)
+        {
+            var toReturn = new List<LineTiming>();
+            var interval = TimeSpan.Zero;
+
+            for (var i = index; i < busLine.ListOfLineStations.Count() - 1; i++)
+            {
+                interval += (from s in conStats
+                             where s.StatCode1 == busLine.ListOfLineStations.ToList()[i].Code &&
+                                   s.StatCode2 == busLine.ListOfLineStations.ToList()[i + 1].Code
+                             select s).FirstOrDefault().AverageTravelTime;
+
+                toReturn.Add(new LineTiming()
+                {
+                    BusLineId = busLine.BusLineId,
+                    StartTime = start,
+                    LastStationName = lastStatName,
+                    LineNumber = busLine.LineNumber,
+                    ArrivalTime = interval,
+                    StatCode = busLine.ListOfLineStations.ToList()[i + 1].Code,
+                });
+
+            }
+
+            return toReturn;
+        }
+
         #endregion
     }
 }
