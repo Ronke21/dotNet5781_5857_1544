@@ -43,7 +43,7 @@ namespace PL
                 timerTextBlock.Text = myTimeSpan.ToString(@"hh\:mm\:ss");
                 ClockExp.Time = new DateTime(1, 1, 1, 0, 0, 0) + myTimeSpan;
                 TimePicker.SelectedTime = ClockExp.Time;
-                wnd.MainTimerTextBlock.Text = myTimeSpan.ToString(@"dd\:hh\:mm\:ss");
+                wnd.MainTimerTextBlock.Text = myTimeSpan.ToString(@"hh\:mm\:ss");
             }));
         }
 

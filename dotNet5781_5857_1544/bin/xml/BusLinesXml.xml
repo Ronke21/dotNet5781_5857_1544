@@ -1,11 +1,92 @@
 <?xml version="1.0"?>
 <ArrayOfBusLine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <BusLine>
-    <BusLineId>21</BusLineId>
+    <BusLineId>39</BusLineId>
     <LineNumber>1</LineNumber>
     <BusArea>General</BusArea>
     <FirstStation>38831</FirstStation>
-    <LastStation>38834</LastStation>
+    <LastStation>38856</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
+  <BusLine>
+    <BusLineId>40</BusLineId>
+    <LineNumber>2</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>38842</FirstStation>
+    <LastStation>38895</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
+  <BusLine>
+    <BusLineId>41</BusLineId>
+    <LineNumber>3</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>38832</FirstStation>
+    <LastStation>38889</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
+  <BusLine>
+    <BusLineId>42</BusLineId>
+    <LineNumber>4</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>39114</FirstStation>
+    <LastStation>39149</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
+  <BusLine>
+    <BusLineId>43</BusLineId>
+    <LineNumber>5</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>38859</FirstStation>
+    <LastStation>38867</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
+  <BusLine>
+    <BusLineId>44</BusLineId>
+    <LineNumber>6</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>39076</FirstStation>
+    <LastStation>39117</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
+  <BusLine>
+    <BusLineId>45</BusLineId>
+    <LineNumber>7</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>38831</FirstStation>
+    <LastStation>38848</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
+  <BusLine>
+    <BusLineId>46</BusLineId>
+    <LineNumber>8</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>38837</FirstStation>
+    <LastStation>38860</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
+  <BusLine>
+    <BusLineId>47</BusLineId>
+    <LineNumber>9</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>38837</FirstStation>
+    <LastStation>38869</LastStation>
+    <AllAccessible>true</AllAccessible>
+    <Active>true</Active>
+  </BusLine>
+  <BusLine>
+    <BusLineId>48</BusLineId>
+    <LineNumber>10</LineNumber>
+    <BusArea>General</BusArea>
+    <FirstStation>38903</FirstStation>
+    <LastStation>38836</LastStation>
     <AllAccessible>true</AllAccessible>
     <Active>true</Active>
   </BusLine>

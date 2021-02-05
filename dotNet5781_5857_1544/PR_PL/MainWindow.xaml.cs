@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using BLApi;
 using MaterialDesignThemes.Wpf;
+using PR_PL;
 
 namespace PL
 {
@@ -27,8 +28,9 @@ namespace PL
         #endregion
         public MainWindow()
         {
-            //var lp = new LoginPage();
-            //lp.ShowDialog();
+            var lp = new LoginPage();
+            lp.ShowDialog();
+            PlaySound(@"..\PR_PL\Icons\hero_simple-celebration-03.wav");
 
             InitializeComponent();
 
@@ -42,10 +44,6 @@ namespace PL
             _simulationPage = new SimulationPage(_bl);
             #endregion
 
-            //LoginPage lp = new LoginPage();
-            //lp.Show();
-
-            //PlaySound(@"..\PR_PL\Icons\hero_simple-celebration-03.wav");
         }
 
         #region mouse effects and functionality for exit button
@@ -237,18 +235,10 @@ namespace PL
 
         #endregion
 
-        private void LineexitSidePanel_OnClick(object sender, RoutedEventArgs e)
+        private void InfoButton_OnClick(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var lew = new LineExitWindowDelete(_bl);
-                lew.ShowDialog();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.ToString(), "ERROR");
-            }
+            var info = new InfoWindow();
+            info.ShowDialog();
         }
-
     }
 }

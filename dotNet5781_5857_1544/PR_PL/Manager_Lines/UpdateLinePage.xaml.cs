@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using BLApi;
 using BO;
@@ -181,6 +183,16 @@ namespace PL
 
             ExitsDataGrid.DataContext = _bl.GetAllLineExitsByLine(bline.BusLineId);
 
+        }
+
+        private void LineNumberBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+            if (e.Handled)
+            {
+                MessageBox.Show($"digits only\n'{e.Text}' is not a digit");
+            }
         }
     }
 }

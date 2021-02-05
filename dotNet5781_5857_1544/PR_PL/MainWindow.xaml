@@ -160,16 +160,25 @@
 
             </Button>
 
-            <!--<ToggleButton
+            <Button
+                Name="InfoButton"
                 Grid.Row="0"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Right"
-                Foreground="White"
+                HorizontalAlignment="Left"
+                Background="Transparent"
                 Width="90"
-                Height="60"
-                Click="ButtonBase_OnClick"
-                Style="{DynamicResource MaterialDesignHamburgerToggleButton}" 
-                />-->
+                Height="80"
+                BorderBrush="Transparent"
+                Click="InfoButton_OnClick">
+
+                <materialDesign:PackIcon
+                    Foreground="White"
+                    Kind="InformationOutline"
+                    Height="50"
+                    Width="50"
+                />
+
+            </Button>
 
             <Button
                 Name="BusesSidePanel"

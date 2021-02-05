@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="LoginPage" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -17,7 +17,8 @@
         AllowsTransparency="True"
         WindowStyle="None"
         Height="450"
-        Width="400"
+        Width="370"
+        Icon="Icons/bus_white.png"
         >
 
     <Border
@@ -31,8 +32,24 @@
         <StackPanel
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Margin="0,50,0,0"
+            Margin="0,0,0,0"
             >
+
+            <Button
+                Name="Close"
+                Grid.Row="0"
+                Grid.Column="2"
+                HorizontalAlignment="Right"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                Margin="0,20,0,0"
+                Click="Close_OnClick"
+            >
+                <materialDesign:PackIcon
+                    Kind="Close"
+                    Width="30"
+                    Height="30"
+                />
+            </Button>
 
             <StackPanel
                 Orientation="Vertical"
@@ -80,6 +97,7 @@
                         FontSize="18"
                         materialDesign:HintAssist.Hint="Username"  
                         materialDesign:HintAssist.IsFloating="True"
+                        TextChanged="UserNameTextBox_OnTextChanged"
                     />
                     <materialDesign:PackIcon
                         VerticalAlignment="Bottom"
@@ -102,6 +120,7 @@
                         FontSize="18"
                         materialDesign:HintAssist.Hint="Password"  
                         materialDesign:HintAssist.IsFloating="True"
+                        PasswordChanged="PasswordBox_OnPasswordChanged"
                         />
 
                     <materialDesign:PackIcon
@@ -116,10 +135,10 @@
 
                 <Grid Grid.Row="4">
 
-                    <Grid.ColumnDefinitions>
+                    <!--<Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    </Grid.ColumnDefinitions>-->
 
                     <Border
                         Grid.Column="0"
@@ -140,7 +159,7 @@
                             Foreground="#0069C0"/>
                     </Border>
 
-                    <Border
+                    <!--<Border
                         Grid.Column="1"
                         CornerRadius="30"
                         Height="60"
@@ -156,9 +175,17 @@
                             VerticalAlignment="Center"
                             FontSize="20"
                             Foreground="#0069C0"/>
-                    </Border>
+                    </Border>-->
 
                 </Grid>
+
+                <TextBlock
+                    Name="WrongPassword"
+                    Grid.Row="3"
+                    FontSize="15"
+                    TextAlignment="Left"
+                    Foreground="Red"
+                />
 
 
             </Grid>

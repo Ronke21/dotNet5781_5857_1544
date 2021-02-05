@@ -17,8 +17,10 @@ namespace PL
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
+
     public partial class LoginPage : Window
     {
+        MainWindow wnd = (MainWindow)Application.Current.MainWindow;
         public LoginPage()
         {
             InitializeComponent();
@@ -38,6 +40,26 @@ namespace PL
             {
                 Close();
             }
+            else
+            {
+                WrongPassword.Text = "username or password are incorrect";
+            }
+        }
+
+        private void UserNameTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            WrongPassword.Text = "";
+        }
+
+        private void PasswordBox_OnPasswordChanged(object sender, RoutedEventArgs e)
+        {
+            WrongPassword.Text = "";
+        }
+
+        private void Close_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+            wnd.Close();
         }
     }
 }

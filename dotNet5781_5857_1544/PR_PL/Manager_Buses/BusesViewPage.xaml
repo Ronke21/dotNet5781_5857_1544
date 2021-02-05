@@ -21,12 +21,9 @@
       >
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="109*"/>
-            <RowDefinition Height="42*"/>
-        </Grid.RowDefinitions>
 
         <DataGrid
+            Grid.Row="0"
             x:Name="BusesDataGrid"
             AutoGenerateColumns="False"
             EnableRowVirtualization="True"
@@ -40,7 +37,7 @@
             VerticalAlignment="Stretch"
             VerticalContentAlignment="Stretch"
             MinColumnWidth="200"
-            Margin="0,0,-0.4,57.953"
+            Margin="0,0,0,100"
             >
 
             <DataGrid.Columns>
@@ -72,6 +69,7 @@
         </DataGrid>
 
         <Button 
+            Grid.Row="1"
             x:Name="Remove"
             Width="100"
             Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
@@ -89,13 +87,15 @@
         </Button>
 
         <Button 
+            Grid.Row="1"
             x:Name="InActive"
             Width="100"
             Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
             Height="100"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
-            Click="InActive_Click" Margin="0,0,0,0.2" Grid.RowSpan="2"
+            Click="InActive_Click"
+            Grid.RowSpan="2"
            >
             <materialDesign:PackIcon
                 Width="50"
@@ -105,6 +105,7 @@
         </Button>
 
         <Button
+            Grid.Row="1"
             x:Name="Add"
             Click="Add_OnClick"
             Width="100"

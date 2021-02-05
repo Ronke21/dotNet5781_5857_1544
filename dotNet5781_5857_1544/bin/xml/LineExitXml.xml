@@ -1,17 +1,87 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LineExits>
   <LineExit>
-    <BusLineId>21</BusLineId>
+    <BusLineId>39</BusLineId>
     <Active>true</Active>
-    <StartTime>PT0H30M0S</StartTime>
-    <EndTime>PT23H30M0S</EndTime>
+    <StartTime>PT0S</StartTime>
+    <EndTime>PT23H30M</EndTime>
     <Freq>PT15M</Freq>
   </LineExit>
   <LineExit>
-    <BusLineId>21</BusLineId>
+    <BusLineId>40</BusLineId>
     <Active>true</Active>
-    <StartTime>PT12H55M</StartTime>
-    <EndTime>PT12H55M</EndTime>
-    <Freq>PT0S</Freq>
+    <StartTime>PT1H</StartTime>
+    <EndTime>PT5H</EndTime>
+    <Freq>PT30M</Freq>
+  </LineExit>
+  <LineExit>
+    <BusLineId>40</BusLineId>
+    <Active>true</Active>
+    <StartTime>PT6H</StartTime>
+    <EndTime>PT22H50M</EndTime>
+    <Freq>PT20M</Freq>
+  </LineExit>
+  <LineExit>
+    <BusLineId>41</BusLineId>
+    <Active>true</Active>
+    <StartTime>PT0S</StartTime>
+    <EndTime>PT23H55M</EndTime>
+    <Freq>PT30M</Freq>
+  </LineExit>
+  <LineExit>
+    <BusLineId>42</BusLineId>
+    <Active>true</Active>
+    <StartTime>PT3H</StartTime>
+    <EndTime>PT21H</EndTime>
+    <Freq>PT45M</Freq>
+  </LineExit>
+  <LineExit>
+    <BusLineId>43</BusLineId>
+    <Active>true</Active>
+    <StartTime>PT1H</StartTime>
+    <EndTime>PT21H</EndTime>
+    <Freq>PT15M</Freq>
+  </LineExit>
+  <LineExit>
+    <BusLineId>44</BusLineId>
+    <Active>true</Active>
+    <StartTime>PT8H10M</StartTime>
+    <EndTime>PT12H30M</EndTime>
+    <Freq>PT45M</Freq>
+  </LineExit>
+  <LineExit>
+    <BusLineId>45</BusLineId>
+    <Active>true</Active>
+    <StartTime>PT9H</StartTime>
+    <EndTime>PT16H</EndTime>
+    <Freq>PT15M</Freq>
+  </LineExit>
+  <LineExit>
+    <BusLineId>46</BusLineId>
+    <Active>true</Active>
+    <StartTime>PT10H55M</StartTime>
+    <EndTime>PT15H55M</EndTime>
+    <Freq>PT20M</Freq>
+  </LineExit>
+  <LineExit>
+    <BusLineId>46</BusLineId>
+    <Active>true</Active>
+    <StartTime>PT0S</StartTime>
+    <EndTime>PT23H</EndTime>
+    <Freq>PT1H</Freq>
+  </LineExit>
+  <LineExit>
+    <BusLineId>47</BusLineId>
+    <Active>true</Active>
+    <StartTime>PT9H</StartTime>
+    <EndTime>PT21H</EndTime>
+    <Freq>PT30M</Freq>
+  </LineExit>
+  <LineExit>
+    <BusLineId>48</BusLineId>
+    <Active>true</Active>
+    <StartTime>PT2H</StartTime>
+    <EndTime>PT22H</EndTime>
+    <Freq>PT45M</Freq>
   </LineExit>
 </LineExits>

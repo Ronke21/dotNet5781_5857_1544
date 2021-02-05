@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -19,7 +20,7 @@ namespace PL
     {
         private readonly IBL _bl;
 
-        MainWindow wnd = (MainWindow)Application.Current.MainWindow; //reperence to main window in order to update list box items(buses)
+        MainWindow wnd = (MainWindow)Application.Current.MainWindow; //reference to main window in order to update list box items(buses)
 
         private ObservableCollection<BO.BusStation> _chosen = new ObservableCollection<BusStation>();
         private ObservableCollection<BO.BusStation> _chooseFrom;
@@ -140,6 +141,16 @@ namespace PL
                 MessageBox.Show(exception.ToString());
             } 
 
+        }
+
+        private void LineNumberBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+            if (e.Handled)
+            {
+                MessageBox.Show($"digits only\n'{e.Text}' is not a digit");
+            }
         }
     }
 }

@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="StationDetailsSimulator"
 
-        Height="550" 
-        Width="800"
+        Height="750" 
+        Width="1000"
         x:Name="StationDetailsWindow"
         WindowStartupLocation="CenterScreen"
 
@@ -308,7 +308,8 @@
 
         <StackPanel
             Orientation="Vertical"
-            Width="440"
+            Width="500"
+            Height="600"
             >
 
 
@@ -362,7 +363,10 @@
 
                     </Grid>
 
-                    <Grid Grid.Row="1" Margin="0,0.4,0,0" Grid.RowSpan="2">
+                    <Grid 
+                        Grid.Row="1"
+                        Margin="0,0,0,0" 
+                        Grid.RowSpan="2">
 
                         <Border
                         Background="#FFED75">
@@ -379,6 +383,7 @@
                         Foreground="Black"
                         FontWeight="Bold"
                         HeadersVisibility="None"
+                        HorizontalScrollBarVisibility="Hidden"
                         >
 
                                 <DataGrid.Columns
@@ -410,8 +415,8 @@
                     Name="DigitalDisplayDataGrid"
                     Background="#23281F"
                     Height="250"
-                    Width="420"
-                    Margin="0,10,0,0"
+                    Width="450"
+                    Margin="10,10,0,0"
                     IsReadOnly="True"
                     CanUserAddRows="False"
                     CanUserSortColumns="False"

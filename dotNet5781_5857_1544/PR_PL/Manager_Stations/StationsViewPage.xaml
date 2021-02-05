@@ -16,7 +16,8 @@
       TextOptions.TextRenderingMode="Auto"        
       Background="{DynamicResource MaterialDesignPaper}"
       FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid Margin="0,0,0,-0.4">
+
+    <Grid Margin="0,0,0,0">
 
         <DataGrid
             Name="StationsDataGrid"

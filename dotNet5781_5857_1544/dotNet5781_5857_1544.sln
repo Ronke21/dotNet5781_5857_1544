@@ -42,6 +42,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{DDB72107-93CE-4CC0-943D-00BB93A9D011}"
 	ProjectSection(SolutionItems) = preProject
 		config.xml = config.xml
+		..\..\..\..\..\Downloads\Telegram Desktop\הערות_הגשה_לפרויקט_מערכת_לניהול_קווי_אוטובוס_עמיחי_חסן_ורון_קינן.docx = ..\..\..\..\..\Downloads\Telegram Desktop\הערות_הגשה_לפרויקט_מערכת_לניהול_קווי_אוטובוס_עמיחי_חסן_ורון_קינן.docx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XML_storage", "XML_storage", "{E422AA71-4F5B-444D-92E9-78B8A16394B9}"
