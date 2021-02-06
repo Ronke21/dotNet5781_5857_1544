@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="StationDetailsSimulator"
-
         Height="750" 
         Width="1000"
         x:Name="StationDetailsWindow"
