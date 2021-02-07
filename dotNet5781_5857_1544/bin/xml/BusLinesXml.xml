@@ -30,7 +30,7 @@
   <BusLine>
     <BusLineId>42</BusLineId>
     <LineNumber>4</LineNumber>
-    <BusArea>General</BusArea>
+    <BusArea>North</BusArea>
     <FirstStation>39114</FirstStation>
     <LastStation>39149</LastStation>
     <AllAccessible>true</AllAccessible>
@@ -39,7 +39,7 @@
   <BusLine>
     <BusLineId>43</BusLineId>
     <LineNumber>5</LineNumber>
-    <BusArea>General</BusArea>
+    <BusArea>North</BusArea>
     <FirstStation>38859</FirstStation>
     <LastStation>38867</LastStation>
     <AllAccessible>true</AllAccessible>
@@ -48,7 +48,7 @@
   <BusLine>
     <BusLineId>44</BusLineId>
     <LineNumber>6</LineNumber>
-    <BusArea>General</BusArea>
+    <BusArea>South</BusArea>
     <FirstStation>39076</FirstStation>
     <LastStation>39117</LastStation>
     <AllAccessible>true</AllAccessible>
@@ -57,7 +57,7 @@
   <BusLine>
     <BusLineId>45</BusLineId>
     <LineNumber>7</LineNumber>
-    <BusArea>General</BusArea>
+    <BusArea>Jerusalem</BusArea>
     <FirstStation>38831</FirstStation>
     <LastStation>38848</LastStation>
     <AllAccessible>true</AllAccessible>
