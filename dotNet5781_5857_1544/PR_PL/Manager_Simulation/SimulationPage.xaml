@@ -67,7 +67,6 @@
           FontSize="25"
                 />
 
-
         <materialDesign:TimePicker
             Name="TimePicker"
             Is24Hours="True"
