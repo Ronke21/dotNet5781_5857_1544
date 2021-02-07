@@ -60,6 +60,7 @@ namespace PL
 
         private void UpdateArrivingTimes(LineTiming lineTiming)
         {
+            bool greenSign = false; //flag - if need to updte green sign of last bus
 
             // get lineTimings and add it to the digital sign
             Dispatcher.BeginInvoke(new Action(() =>
@@ -71,15 +72,17 @@ namespace PL
 
                 if (x != null)
                 {
+                    greenSign = true;
                     lineTimesObsColl.Remove(x);
-                    //if (x.ArrivalTime == TimeSpan.Zero)
-                    {
-                        DigitalDisplayLastBus.ItemsSource = new ObservableCollection<LineTiming> { x };
-                    }
                 }
                 if (lineTiming.ArrivalTime != TimeSpan.Zero && lineTiming.ArrivalTime < new TimeSpan(0, 45, 0))
                 {
                     lineTimesObsColl.Add(lineTiming);
+                }
+                else if (greenSign==true)
+                {
+                    DigitalDisplayLastBus.ItemsSource = new ObservableCollection<LineTiming> { x };
+                    greenSign = false;
                 }
 
             }));

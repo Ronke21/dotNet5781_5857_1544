@@ -61,6 +61,10 @@ namespace PL
                     TimePicker.IsEnabled = true;
 
                     simulatorWorker.CancelAsync();
+                    Dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        wnd.MainTimerTextBlock.Text = "";
+                    }));
                 }
                 catch (Exception exception)
                 {
