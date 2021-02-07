@@ -44,10 +44,10 @@
 
         <Slider
             Name="RateSlider"
-            Width="350"
+            Width="500"
             Height="50"
             Minimum="5"
-            Maximum="300"
+            Maximum="180"
             Style="{StaticResource MaterialDesignSlider}"
             TickFrequency="5"
             TickPlacement="BottomRight"
@@ -63,10 +63,9 @@
           Content="{Binding ElementName=RateSlider, Path=Value,Mode=OneWay}"
           HorizontalAlignment="Center"
           VerticalAlignment="Bottom"
-          Margin="400,0,0,20"
+          Margin="565,0,0,20"
           FontSize="25"
                 />
-
 
         <materialDesign:TimePicker
             Name="TimePicker"
@@ -75,24 +74,16 @@
             SelectedTime="{Binding Source={x:Static sys:DateTime.Now}, Path=Now, Mode=OneWay}"
             IsInvalidTextAllowed="False"
             VerticalAlignment="Top"
+            Margin="0,20,0,0"
             />
-
-        <TextBlock x:Name="timerTextBlock"
-                   Text="00:00:00" 
-                   Grid.ColumnSpan="2"
-                   FontSize="50"
-                   Width="200"
-                   HorizontalAlignment="Right"
-                   VerticalAlignment="Top"
-                   TextAlignment="Right"/>
 
         <materialDesign:Clock
             Name="ClockExp"
             DisplayMode="Seconds"
             Is24Hours="True"
             IsEnabled="False"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
             DisplayAutomation="CycleWithSeconds"
             />
 

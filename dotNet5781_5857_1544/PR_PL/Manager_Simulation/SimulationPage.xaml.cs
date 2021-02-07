@@ -40,7 +40,6 @@ namespace PL
             myTimeSpan = ts;
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                timerTextBlock.Text = myTimeSpan.ToString(@"hh\:mm\:ss");
                 ClockExp.Time = new DateTime(1, 1, 1, 0, 0, 0) + myTimeSpan;
                 TimePicker.SelectedTime = ClockExp.Time;
                 wnd.MainTimerTextBlock.Text = myTimeSpan.ToString(@"hh\:mm\:ss");
@@ -61,6 +60,7 @@ namespace PL
                     TimePicker.IsEnabled = true;
 
                     simulatorWorker.CancelAsync();
+
                     Dispatcher.BeginInvoke(new Action(() =>
                     {
                         wnd.MainTimerTextBlock.Text = "";
