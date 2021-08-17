@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30611.23
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNet5781_00_5857_1544", "dotNet5781_00_5857_1544\dotNet5781_00_5857_1544.csproj", "{C5772400-C60A-41AF-AD2B-DC65D8D20CE4}"
 EndProject
@@ -41,7 +41,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PR_BL", "PR_BL\PR_BL.csproj
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{DDB72107-93CE-4CC0-943D-00BB93A9D011}"
 	ProjectSection(SolutionItems) = preProject
-		config.xml = config.xml
+		bin\config.xml = bin\config.xml
 		..\..\..\..\..\Downloads\Telegram Desktop\הערות_הגשה_לפרויקט_מערכת_לניהול_קווי_אוטובוס_עמיחי_חסן_ורון_קינן.docx = ..\..\..\..\..\Downloads\Telegram Desktop\הערות_הגשה_לפרויקט_מערכת_לניהול_קווי_אוטובוס_עמיחי_חסן_ורון_קינן.docx
 	EndProjectSection
 EndProject
