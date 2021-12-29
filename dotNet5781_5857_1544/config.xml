@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<dal>xml</dal>
+	<dal-packages>
+		<data namespace ="Dal" class ="DalObject">PR_DAL_Object</data>
+		<xml namespace="Dal" class="DalXML">PR_Dal_XML</xml>
+		<oracle namespace="Dal_O" class="DalDbOracle">DalOracle</oracle>
+	</dal-packages>
+</config>
